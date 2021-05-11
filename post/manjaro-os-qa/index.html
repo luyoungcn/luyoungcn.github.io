@@ -4,19 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-    <title>Tags - 南美</title>
+    <title>Manjaro OS Q&amp;A - 南美</title>
     <meta name="keywords" content="搬运工">
     
-    <meta property="og:title" content="Tags">
+    <meta property="og:title" content="Manjaro OS Q&amp;A">
     <meta property="og:site_name" content="南美">
     <meta property="og:image" content="/img/author.jpg"> 
-    <meta name="title" content="Tags - 南美" />
+    <meta name="title" content="Manjaro OS Q&amp;A - 南美" />
     <meta name="description" content="蘭陵N散記 | 博客 | 软件 | 架构 | Java | Golang"> 
     <link rel="shortcut icon" href="https://luyoungcn.github.io/img/favicon.ico" />
     <link rel="apple-touch-icon" href="https://luyoungcn.github.io/img/apple-touch-icon.png" />
     <link rel="apple-touch-icon-precomposed" href="https://luyoungcn.github.io/img/apple-touch-icon.png" />
     <link href="https://luyoungcn.github.io/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-    
+    <link href="https://luyoungcn.github.io/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
     <link href="https://luyoungcn.github.io/css/main.css" rel="stylesheet" type="text/css" />
     <link href="https://luyoungcn.github.io/css/syntax.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" id="hexo.configuration">
@@ -24,13 +24,13 @@
   var CONFIG = {
     scheme: 'Pisces',
     sidebar: {"position":"left","display":"post"},
-    fancybox: false, 
+     fancybox: true, 
     motion: true
   };
 </script>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-<div class="container one-collumn sidebar-position-left   ">
+<div class="container one-collumn sidebar-position-left page-home  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -111,29 +111,131 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-<div id="posts" class="posts-expand">
-    
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://luyoungcn.github.io/post/manjaro-os-qa/" itemprop="url">
+        Manjaro OS Q&amp;A
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="0001-01-01">
+    0001-01-01
+</time>
+</span> 
+      
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">503 字 ~2分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <h2 id="系统基本信息">系统基本信息</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">[baihao@vstation ~]$ screenfetch
 
-      
-       <div class="tag-cloud">
-        <div class="tag-cloud-title">
-            目前共计 3 个标签
-        </div>
-        <div class="tag-cloud-tags">
-            
-             <a href="https://luyoungcn.github.io/tags/android" style="font-size: 24.5px; color: #212121">android</a>
-             <span class="tag-list-count"><sup>1</sup></span>
-             
-             <a href="https://luyoungcn.github.io/tags/ccache" style="font-size: 24.5px; color: #212121">ccache</a>
-             <span class="tag-list-count"><sup>1</sup></span>
-             
-             <a href="https://luyoungcn.github.io/tags/windows" style="font-size: 24.5px; color: #212121">windows</a>
-             <span class="tag-list-count"><sup>1</sup></span>
-             
-        </div>
-       </div>
-      
+ ██████████████████  ████████     baihao@vstation
+ ██████████████████  ████████     OS: Manjaro 20.2.1 Nibia
+ ██████████████████  ████████     Kernel: x86_64 Linux 5.9.16-1-MANJARO
+ ██████████████████  ████████     Uptime: 17m
+ ████████            ████████     Packages: 1220
+ ████████  ████████  ████████     Shell: bash 5.1.0
+ ████████  ████████  ████████     Resolution: 1920x951
+ ████████  ████████  ████████     DE: Xfce4
+ ████████  ████████  ████████     WM: Xfwm4
+ ████████  ████████  ████████     WM Theme: Matcha-sea
+ ████████  ████████  ████████     GTK Theme: Matcha-sea [GTK2]
+ ████████  ████████  ████████     Icon Theme: Papirus-Maia
+ ████████  ████████  ████████     Font: Noto Sans 10
+ ████████  ████████  ████████     Disk: 241G / 674G (37%)
+                                  CPU: Intel Core i7-10510U @ 2x 2.304GHz
+                                  GPU: llvmpipe (LLVM 11.0.0, 256 bits)
+                                  RAM: 2134MiB / 3935MiB
+</code></pre></div><h2 id="wps--fcitx5-无法输入中文">wps + fcitx5 无法输入中文</h2>
+<p><strong>参考</strong></p>
+<ul>
+<li><a href="https://www.cnblogs.com/lunar-ubuntu/p/14015792.html">在wps中使用fcitx5</a></li>
+<li><a href="https://www.cnblogs.com/zbqhc/p/12416211.html">WPS for Linux 无法使用fcitx中文输入法问题的解决方案</a></li>
+</ul>
+<p>修改如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">[baihao@vstation ~]$ head /usr/bin/wps
+#!/bin/bash
+
+gOpt=
+
+<span style="color:#a6e22e">+export GTK_IM_MODULE=fcitx
+</span><span style="color:#a6e22e">+export QT_IM_MODULE=fcitx5
+</span><span style="color:#a6e22e">+export XMODIFIERS=@im=fcitx
+</span><span style="color:#a6e22e"></span>
+
+#gOptExt=-multiply
+[baihao@vstation ~]$ head /usr/bin/et
+#!/bin/bash
+
+gOpt=
+
+<span style="color:#a6e22e">+export GTK_IM_MODULE=fcitx
+</span><span style="color:#a6e22e">+export QT_IM_MODULE=fcitx5
+</span><span style="color:#a6e22e">+export XMODIFIERS=@im=fcitx
+</span><span style="color:#a6e22e"></span>
+#gOptExt=-multiply
+gTemplateExt=(&#34;ett&#34; &#34;xlt&#34; &#34;xltx&#34; &#34;xltm&#34;)
+[baihao@vstation ~]$ head /usr/bin/wpp
+#!/bin/bash
+
+gOpt=
+
+<span style="color:#a6e22e">+export GTK_IM_MODULE=fcitx
+</span><span style="color:#a6e22e">+export QT_IM_MODULE=fcitx5
+</span><span style="color:#a6e22e">+export XMODIFIERS=@im=fcitx
+</span><span style="color:#a6e22e"></span>
+#gOptExt=-multiply
+gTemplateExt=(&#34;dpt&#34; &#34;pot&#34; &#34;potx&#34; &#34;potm&#34;)
+</code></pre></div>
+    </div>
+    <footer class="post-footer">
+     
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://luyoungcn.github.io/post/hugo-%E9%85%8D%E7%BD%AE/" rel="next" title="hugo 配置">
+        <i class="fa fa-chevron-left"></i> hugo 配置
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://luyoungcn.github.io/post/android-java-1.7-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="prev" title="ndroid-java-1.7-环境配置">
+        ndroid-java-1.7-环境配置 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
 </div>
+      
+     
+     
+     
+
+
+
+
+
+
+    </footer>
+  </article>
+</section>
 
           </div>
         </div>
@@ -183,13 +285,6 @@
     </div>
 </nav>
       
-<div class="feed-link motion-element">
-<a href="https://luyoungcn.github.io/tags/index.xml" rel="alternate" type="application/rss+xml" target="_blank">
-    <i class="fa fa-rss"></i>
-    RSS 订阅
-</a>
-</div>
-
       
 <div class="links-of-author motion-element">
     
@@ -257,16 +352,18 @@
 <script type="text/javascript" src="https://luyoungcn.github.io/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
 <script src="https://luyoungcn.github.io/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
 
+<script src="https://luyoungcn.github.io/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
 <script type="text/javascript" src="https://luyoungcn.github.io/js/utils.js"></script>
 <script type="text/javascript" src="https://luyoungcn.github.io/js/motion.js"></script>
 <script type="text/javascript" src="https://luyoungcn.github.io/js/affix.js"></script>
 <script type="text/javascript" src="https://luyoungcn.github.io/js/schemes/pisces.js"></script>
 
-<script type="text/javascript" src="https://luyoungcn.github.io/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://luyoungcn.github.io/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://luyoungcn.github.io/js/post-details.js"></script>
+<script type="text/javascript" src="https://luyoungcn.github.io/js/toc.js"></script>
 
-<script type="text/javascript" id="motion.page.archive">
-  $('.archive-year').velocity('transition.slideLeftIn');
-</script>
+<script type="text/javascript" src="https://luyoungcn.github.io/js/bootstrap.js"></script>
 
 <script type="text/javascript" src="https://luyoungcn.github.io/js/search.js"></script>
 <script type="text/x-mathjax-config">

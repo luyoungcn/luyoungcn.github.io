@@ -4,19 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-    <title>Tags - 南美</title>
+    <title>Android10编译开启ccache - 南美</title>
     <meta name="keywords" content="搬运工">
     
-    <meta property="og:title" content="Tags">
+    <meta property="og:title" content="Android10编译开启ccache">
     <meta property="og:site_name" content="南美">
     <meta property="og:image" content="/img/author.jpg"> 
-    <meta name="title" content="Tags - 南美" />
+    <meta name="title" content="Android10编译开启ccache - 南美" />
     <meta name="description" content="蘭陵N散記 | 博客 | 软件 | 架构 | Java | Golang"> 
     <link rel="shortcut icon" href="https://luyoungcn.github.io/img/favicon.ico" />
     <link rel="apple-touch-icon" href="https://luyoungcn.github.io/img/apple-touch-icon.png" />
     <link rel="apple-touch-icon-precomposed" href="https://luyoungcn.github.io/img/apple-touch-icon.png" />
     <link href="https://luyoungcn.github.io/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-    
+    <link href="https://luyoungcn.github.io/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
     <link href="https://luyoungcn.github.io/css/main.css" rel="stylesheet" type="text/css" />
     <link href="https://luyoungcn.github.io/css/syntax.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" id="hexo.configuration">
@@ -24,13 +24,13 @@
   var CONFIG = {
     scheme: 'Pisces',
     sidebar: {"position":"left","display":"post"},
-    fancybox: false, 
+     fancybox: true, 
     motion: true
   };
 </script>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-<div class="container one-collumn sidebar-position-left   ">
+<div class="container one-collumn sidebar-position-left page-home  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -111,29 +111,126 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-<div id="posts" class="posts-expand">
-    
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://luyoungcn.github.io/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/" itemprop="url">
+        Android10编译开启ccache
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="0001-01-01">
+    0001-01-01
+</time>
+</span> 
+      
 
-      
-       <div class="tag-cloud">
-        <div class="tag-cloud-title">
-            目前共计 3 个标签
-        </div>
-        <div class="tag-cloud-tags">
-            
-             <a href="https://luyoungcn.github.io/tags/android" style="font-size: 24.5px; color: #212121">android</a>
-             <span class="tag-list-count"><sup>1</sup></span>
-             
-             <a href="https://luyoungcn.github.io/tags/ccache" style="font-size: 24.5px; color: #212121">ccache</a>
-             <span class="tag-list-count"><sup>1</sup></span>
-             
-             <a href="https://luyoungcn.github.io/tags/windows" style="font-size: 24.5px; color: #212121">windows</a>
-             <span class="tag-list-count"><sup>1</sup></span>
-             
-        </div>
-       </div>
-      
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://luyoungcn.github.io/categories/%E5%B7%A5%E5%85%B7" itemprop="url" rel="index">
+        <span itemprop="name">工具</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">181 字 ~1分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>Android10的基线代码google已经将prebuilt的ccache移除,但是保留了相关功能选项</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843
+Author: Dan Willemsen &lt;dwillemsen@google.com&gt;
+Date:   Thu Apr 5 15:48:16 2018 -0700
+
+    Remove our binary of ccache
+    
+    This version is rather old, and has many known bugs. The build system is
+    no longer providing ccache, but preserving the option to use your own at
+    your own risk.
+    
+    Bug: 32748498
+    Test: cs/ccache
+    Change-Id: I894a11445127bf8cb3a7ac5a119c500f2c572fb9
+</code></pre></div><p>安卓10之前配置</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export USE_CCACHE<span style="color:#f92672">=</span>true
+export CCACHE_DIR<span style="color:#f92672">=</span>$HOME/.cache
+prebuilts/misc/linux-x86/ccache/ccache -M 10G
+</code></pre></div><p>安卓10+通过使用的HOST操作系统安装对应的ccache软件包</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export USE_CCACHE<span style="color:#f92672">=</span>true
+export CCACHE_EXEC<span style="color:#f92672">=</span>/usr/bin/ccache
+export CCACHE_DIR<span style="color:#f92672">=</span>$HOME/.cache
+<span style="color:#e6db74">${</span>CCACHE_EXEC<span style="color:#e6db74">}</span> -M 50G
+</code></pre></div><p>可以通过如下命令查询cache状态
+<code>ccache -s</code></p>
+
+    </div>
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="https://luyoungcn.github.io/tags/windows" rel="tag" title="windows">#windows#</a>
+    
+    <a href="https://luyoungcn.github.io/tags/android" rel="tag" title="android">#android#</a>
+    
+    <a href="https://luyoungcn.github.io/tags/ccache" rel="tag" title="ccache">#ccache#</a>
+    
 </div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://luyoungcn.github.io/post/android-studio-env/" rel="next" title="Android Studio Env">
+        <i class="fa fa-chevron-left"></i> Android Studio Env
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://luyoungcn.github.io/post/beyondcompare/" rel="prev" title="BeyondCompare">
+        BeyondCompare <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     
+     
+     
+
+
+
+
+
+
+    </footer>
+  </article>
+</section>
 
           </div>
         </div>
@@ -183,13 +280,6 @@
     </div>
 </nav>
       
-<div class="feed-link motion-element">
-<a href="https://luyoungcn.github.io/tags/index.xml" rel="alternate" type="application/rss+xml" target="_blank">
-    <i class="fa fa-rss"></i>
-    RSS 订阅
-</a>
-</div>
-
       
 <div class="links-of-author motion-element">
     
@@ -257,16 +347,18 @@
 <script type="text/javascript" src="https://luyoungcn.github.io/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
 <script src="https://luyoungcn.github.io/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
 
+<script src="https://luyoungcn.github.io/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
 <script type="text/javascript" src="https://luyoungcn.github.io/js/utils.js"></script>
 <script type="text/javascript" src="https://luyoungcn.github.io/js/motion.js"></script>
 <script type="text/javascript" src="https://luyoungcn.github.io/js/affix.js"></script>
 <script type="text/javascript" src="https://luyoungcn.github.io/js/schemes/pisces.js"></script>
 
-<script type="text/javascript" src="https://luyoungcn.github.io/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://luyoungcn.github.io/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://luyoungcn.github.io/js/post-details.js"></script>
+<script type="text/javascript" src="https://luyoungcn.github.io/js/toc.js"></script>
 
-<script type="text/javascript" id="motion.page.archive">
-  $('.archive-year').velocity('transition.slideLeftIn');
-</script>
+<script type="text/javascript" src="https://luyoungcn.github.io/js/bootstrap.js"></script>
 
 <script type="text/javascript" src="https://luyoungcn.github.io/js/search.js"></script>
 <script type="text/x-mathjax-config">

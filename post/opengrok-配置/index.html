@@ -4,19 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-    <title>Tags - 南美</title>
+    <title>opengrok 配置 - 南美</title>
     <meta name="keywords" content="搬运工">
     
-    <meta property="og:title" content="Tags">
+    <meta property="og:title" content="opengrok 配置">
     <meta property="og:site_name" content="南美">
     <meta property="og:image" content="/img/author.jpg"> 
-    <meta name="title" content="Tags - 南美" />
+    <meta name="title" content="opengrok 配置 - 南美" />
     <meta name="description" content="蘭陵N散記 | 博客 | 软件 | 架构 | Java | Golang"> 
     <link rel="shortcut icon" href="https://luyoungcn.github.io/img/favicon.ico" />
     <link rel="apple-touch-icon" href="https://luyoungcn.github.io/img/apple-touch-icon.png" />
     <link rel="apple-touch-icon-precomposed" href="https://luyoungcn.github.io/img/apple-touch-icon.png" />
     <link href="https://luyoungcn.github.io/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-    
+    <link href="https://luyoungcn.github.io/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
     <link href="https://luyoungcn.github.io/css/main.css" rel="stylesheet" type="text/css" />
     <link href="https://luyoungcn.github.io/css/syntax.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" id="hexo.configuration">
@@ -24,13 +24,13 @@
   var CONFIG = {
     scheme: 'Pisces',
     sidebar: {"position":"left","display":"post"},
-    fancybox: false, 
+     fancybox: true, 
     motion: true
   };
 </script>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-<div class="container one-collumn sidebar-position-left   ">
+<div class="container one-collumn sidebar-position-left page-home  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -111,29 +111,132 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-<div id="posts" class="posts-expand">
-    
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://luyoungcn.github.io/post/opengrok-%E9%85%8D%E7%BD%AE/" itemprop="url">
+        opengrok 配置
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="0001-01-01">
+    0001-01-01
+</time>
+</span> 
+      
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">359 字 ~1分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <h2 id="环境">环境</h2>
+<p>ubuntu 18.04 x64</p>
+<h2 id="依赖工具">依赖工具</h2>
+<ul>
+<li>jdk 1.8</li>
+<li>universal-ctags</li>
+<li>tomcat8</li>
+<li><a href="https://github.com/OpenGrok/OpenGrok/releases">opengrok</a></li>
+</ul>
+<h2 id="配置流程">配置流程</h2>
+<h3 id="jdk-安装">jdk 安装</h3>
+<p><code>sudo apt install openjdk-8-jdk openjdk-8-jdk-headless openjdk-8-jre openjdk-8-jre-dcevm openjdk-8-jre-headless</code></p>
+<p>通常android编译环境能够正常工作jdk环境已经ok.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ java -version
+openjdk version <span style="color:#e6db74">&#34;1.8.0_252&#34;</span>
+OpenJDK Runtime Environment <span style="color:#f92672">(</span>build 1.8.0_252-8u252-b09-1~18.04-b09<span style="color:#f92672">)</span>
+OpenJDK 64-Bit Server VM <span style="color:#f92672">(</span>build 25.252-b09, mixed mode<span style="color:#f92672">)</span>
+</code></pre></div><h3 id="universal-ctags">universal-ctags</h3>
+<p>ubuntu 自带包管理器安装的 <code>ctags</code> 是 <code>exuberant-ctags</code>, 如果已经安装请先通过如下命令卸载</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt purge exuberant-ctags
+</code></pre></div><p>通过源码安装 <code>universal-ctags</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://gitee.com/neo532/universal-ctags.git
+cd universal-ctags
+./autogen.sh
+./configure
+make
+sudo make install
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ /usr/local/bin/ctags --version
+Universal Ctags 0.0.0<span style="color:#f92672">(</span>054bee0<span style="color:#f92672">)</span>, Copyright <span style="color:#f92672">(</span>C<span style="color:#f92672">)</span> <span style="color:#ae81ff">2015</span> Universal Ctags Team
+Universal Ctags is derived from Exuberant Ctags.
+Exuberant Ctags 5.8, Copyright <span style="color:#f92672">(</span>C<span style="color:#f92672">)</span> 1996-2009 Darren Hiebert
+  Compiled: May <span style="color:#ae81ff">10</span> 2020, 10:34:29
+  URL: https://ctags.io/
+  Optional compiled features: +wildcards, +regex, +iconv, +option-directory
+</code></pre></div><h3 id="tomcat8">tomcat8</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install tomcat8
+sudo service tomcat8 start
+</code></pre></div><h3 id="opengrok">opengrok</h3>
+<blockquote>
+<p><a href="https://github.com/oracle/opengrok/wiki/How-to-setup-OpenGrok">How to setup OpenGrok</a></p>
+</blockquote>
+<h4 id="安装工具包">安装工具包</h4>
+<p><a href="https://github.com/oracle/opengrok/releases">下载opengrok-非source code版， 漫长的等待&hellip;&hellip;</a></p>
+<p>搭建 opengrok 目录结构 <code>sudo mkdir /opengrok/{src,data,dist,etc,log}</code></p>
+<p>解压opengrok到指定路径 <code>tar -C /opengrok/dist --strip-components=1 -xzf opengrok-X.Y.Z.tar.gz</code></p>
+<h4 id="install-management-tools-optional">Install management tools (optional)</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd /opengrok/dist/tools
+python3 -m pip install opengrok-tools.tar.gz
+</code></pre></div><h4 id="deploy-the-web-application">Deploy the web application</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp /opengrok/dist/lib/source.war /var/lib/tomcat8/webapps/
+</code></pre></div><h4 id="indexing">Indexing</h4>
+<p>通过修改如下 <code>-s</code> 选项来配置修改源码路径.</p>
+<p>假设我的android源码路径为 <code>/opengrok/src/A64_android</code> ，则使用如下参数：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">java <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -Djava.util.logging.config.file<span style="color:#f92672">=</span>/opengrok/etc/logging.properties <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -jar /opengrok/dist/lib/opengrok.jar <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -c /usr/local/bin/ctags <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -s /opengrok/src -d /opengrok/data -H -P -S -G <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -W /opengrok/etc/configuration.xml -U http://localhost:8080/source
+</code></pre></div><h2 id="rtfsc">RTFSC</h2>
+<p>访问网址： <code>http://localhost:8080/source/</code></p>
 
-      
-       <div class="tag-cloud">
-        <div class="tag-cloud-title">
-            目前共计 3 个标签
-        </div>
-        <div class="tag-cloud-tags">
-            
-             <a href="https://luyoungcn.github.io/tags/android" style="font-size: 24.5px; color: #212121">android</a>
-             <span class="tag-list-count"><sup>1</sup></span>
-             
-             <a href="https://luyoungcn.github.io/tags/ccache" style="font-size: 24.5px; color: #212121">ccache</a>
-             <span class="tag-list-count"><sup>1</sup></span>
-             
-             <a href="https://luyoungcn.github.io/tags/windows" style="font-size: 24.5px; color: #212121">windows</a>
-             <span class="tag-list-count"><sup>1</sup></span>
-             
-        </div>
-       </div>
-      
+    </div>
+    <footer class="post-footer">
+     
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://luyoungcn.github.io/post/android-java-1.7-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="next" title="ndroid-java-1.7-环境配置">
+        <i class="fa fa-chevron-left"></i> ndroid-java-1.7-环境配置
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://luyoungcn.github.io/post/samba/" rel="prev" title="samba 配置">
+        samba 配置 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
 </div>
+      
+     
+     
+     
+
+
+
+
+
+
+    </footer>
+  </article>
+</section>
 
           </div>
         </div>
@@ -183,13 +286,6 @@
     </div>
 </nav>
       
-<div class="feed-link motion-element">
-<a href="https://luyoungcn.github.io/tags/index.xml" rel="alternate" type="application/rss+xml" target="_blank">
-    <i class="fa fa-rss"></i>
-    RSS 订阅
-</a>
-</div>
-
       
 <div class="links-of-author motion-element">
     
@@ -257,16 +353,18 @@
 <script type="text/javascript" src="https://luyoungcn.github.io/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
 <script src="https://luyoungcn.github.io/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
 
+<script src="https://luyoungcn.github.io/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
 <script type="text/javascript" src="https://luyoungcn.github.io/js/utils.js"></script>
 <script type="text/javascript" src="https://luyoungcn.github.io/js/motion.js"></script>
 <script type="text/javascript" src="https://luyoungcn.github.io/js/affix.js"></script>
 <script type="text/javascript" src="https://luyoungcn.github.io/js/schemes/pisces.js"></script>
 
-<script type="text/javascript" src="https://luyoungcn.github.io/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://luyoungcn.github.io/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://luyoungcn.github.io/js/post-details.js"></script>
+<script type="text/javascript" src="https://luyoungcn.github.io/js/toc.js"></script>
 
-<script type="text/javascript" id="motion.page.archive">
-  $('.archive-year').velocity('transition.slideLeftIn');
-</script>
+<script type="text/javascript" src="https://luyoungcn.github.io/js/bootstrap.js"></script>
 
 <script type="text/javascript" src="https://luyoungcn.github.io/js/search.js"></script>
 <script type="text/x-mathjax-config">

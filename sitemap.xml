@@ -1,3 +1,365 @@
 <search>
     
+     <entry>
+        <title></title>
+        <url>https://luyoungcn.github.io/post/about/</url>
+        <categories>
+          
+        </categories>
+        <tags>
+          
+        </tags>
+        <content type="html"> hello world
+</content>
+    </entry>
+    
+     <entry>
+        <title>Android Studio Env</title>
+        <url>https://luyoungcn.github.io/post/android-studio-env/</url>
+        <categories>
+          
+        </categories>
+        <tags>
+          
+        </tags>
+        <content type="html"> 工具  AndroidStudio  信息 Android Studio 默认设置
+ SDK Folder:  &amp;ldquo;%APPDATA%\Local\Android\Sdk&amp;rdquo;   JDK Folder:  &amp;ldquo;C:\Program Files\Android\Android Studio\jre&amp;rdquo;    问题解决 安装完Android Studio首次启动报错 Unable to access Android SDK add-on list 选择cancel
+gradle 下载环境配置 For Windows
+C:\Users\luyang\.gradle\init.gradle 如果没有该文件就自己新建一个，内容如下
+allprojects{ repositories { def ALIYUN_REPOSITORY_URL = &amp;#39;https://maven.aliyun.com/repository/public/&amp;#39; def ALIYUN_JCENTER_URL = &amp;#39;https://maven.aliyun.com/repository/jcenter/&amp;#39; def ALIYUN_GOOGLE_URL = &amp;#39;https://maven.aliyun.com/repository/google/&amp;#39; def ALIYUN_GRADLE_PLUGIN_URL = &amp;#39;https://maven.aliyun.com/repository/gradle-plugin/&amp;#39; all { ArtifactRepository repo -&amp;gt; if(repo instanceof MavenArtifactRepository){ def url = repo.url.toString() if (url.startsWith(&amp;#39;https://repo1.maven.org/maven2/&amp;#39;)) { project.logger.lifecycle &amp;#34;Repository ${repo.url} replaced by $ALIYUN_REPOSITORY_URL.&amp;#34; remove repo } if (url.startsWith(&amp;#39;https://jcenter.bintray.com/&amp;#39;)) { project.logger.lifecycle &amp;#34;Repository ${repo.url} replaced by $ALIYUN_JCENTER_URL.&amp;#34; remove repo } if (url.startsWith(&amp;#39;https://dl.google.com/dl/android/maven2/&amp;#39;)) { project.logger.lifecycle &amp;#34;Repository ${repo.url} replaced by $ALIYUN_GOOGLE_URL.&amp;#34; remove repo } if (url.startsWith(&amp;#39;https://plugins.gradle.org/m2/&amp;#39;)) { project.logger.lifecycle &amp;#34;Repository ${repo.url} replaced by $ALIYUN_GRADLE_PLUGIN_URL.&amp;#34; remove repo } } } maven { url ALIYUN_REPOSITORY_URL } maven { url ALIYUN_JCENTER_URL } maven { url ALIYUN_GOOGLE_URL } maven { url ALIYUN_GRADLE_PLUGIN_URL } } } ubuntu android studio system entry Android Studio -&amp;gt; Tools -&amp;gt; Create Desktop Entry
+</content>
+    </entry>
+    
+     <entry>
+        <title>Android10编译开启ccache</title>
+        <url>https://luyoungcn.github.io/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</url>
+        <categories>
+          <category>工具</category>
+        </categories>
+        <tags>
+          <tag>windows</tag><tag>android</tag><tag>ccache</tag>
+        </tags>
+        <content type="html"> Android10的基线代码google已经将prebuilt的ccache移除,但是保留了相关功能选项
+commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843 Author: Dan Willemsen &amp;lt;dwillemsen@google.com&amp;gt; Date: Thu Apr 5 15:48:16 2018 -0700 Remove our binary of ccache This version is rather old, and has many known bugs. The build system is no longer providing ccache, but preserving the option to use your own at your own risk. Bug: 32748498 Test: cs/ccache Change-Id: I894a11445127bf8cb3a7ac5a119c500f2c572fb9 安卓10之前配置
+export USE_CCACHE=true export CCACHE_DIR=$HOME/.cache prebuilts/misc/linux-x86/ccache/ccache -M 10G 安卓10&#43;通过使用的HOST操作系统安装对应的ccache软件包
+export USE_CCACHE=true export CCACHE_EXEC=/usr/bin/ccache export CCACHE_DIR=$HOME/.cache ${CCACHE_EXEC} -M 50G 可以通过如下命令查询cache状态 ccache -s
+</content>
+    </entry>
+    
+     <entry>
+        <title>BeyondCompare</title>
+        <url>https://luyoungcn.github.io/post/beyondcompare/</url>
+        <categories>
+          
+        </categories>
+        <tags>
+          
+        </tags>
+        <content type="html"> Window10 Beyond Compare BCompare-4.2.4.22795 key key
+H1bJTd2SauPv5Garuaq0Ig43uqq5NJOEw94wxdZTpU-pFB9GmyPk677gJ vC1Ro6sbAvKR4pVwtxdCfuoZDb6hJ5bVQKqlfihJfSYZt-xVrVU27&#43;0Ja hFbqTmYskatMTgPyjvv99CF2Te8ec&#43;Ys2SPxyZAF0YwOCNOWmsyqN5y9t q2Kw2pjoiDs5gIH-uw5U49JzOB6otS7kThBJE-H9A76u4uUvR8DKb&#43;VcB rWu5qSJGEnbsXNfJdq5L2D8QgRdV-sXHp2A-7j1X2n4WIISvU1V9koIyS NisHFBTcWJS0sC5BTFwrtfLEE9lEwz2bxHQpWJiu12ZeKpi&#43;7oUSqebX&#43; 如果运行Beyond Compare报错
+This license key has been revoked ..... C:\Users\&amp;lt;username&amp;gt;\AppData\Roaming\Scooter Software\ 目录下的内容全部删除重新启动BeyondCompare即可。
+fix windows 右键菜单中没有beyond compare选项 Explorer Shell Extension
+</content>
+    </entry>
+    
+     <entry>
+        <title>debian 4.9 config static ip</title>
+        <url>https://luyoungcn.github.io/post/debian_4.9_config_static_ip/</url>
+        <categories>
+          
+        </categories>
+        <tags>
+          
+        </tags>
+        <content type="html">  Linux debian 4.9.0-6-amd64 #1 SMP Debian 4.9.82-1&#43;deb9u3 (2018-03-02) x86_64
+ kk@debian:~$ cat /etc/network/interfaces
+# This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo iface lo inet loopback 修改后
+# This file describes the network interfaces available on your system # and how to activate them. For more information, see interfaces(5). source /etc/network/interfaces.d/* # The loopback network interface auto lo enp0s3 iface lo inet loopback iface enp0s3 inet static address 192.168.20.103 netmask 255.255.255.0 gateway 192.168.20.1 dns-nameservers 114.114.114.114 kk@debian:~$ /sbin/ifconfig
+enp0s3: flags=4163&amp;lt;UP,BROADCAST,RUNNING,MULTICAST&amp;gt; mtu 1500 inet 192.168.20.103 netmask 255.255.255.0 broadcast 192.168.20.255 inet6 fe80::a00:27ff:fe30:e855 prefixlen 64 scopeid 0x20&amp;lt;link&amp;gt; ether 08:00:27:30:e8:55 txqueuelen 1000 (Ethernet) RX packets 87 bytes 8538 (8.3 KiB) RX errors 0 dropped 0 overruns 0 frame 0 TX packets 155 bytes 21027 (20.5 KiB) TX errors 0 dropped 0 overruns 0 carrier 0 collisions 0 lo: flags=73&amp;lt;UP,LOOPBACK,RUNNING&amp;gt; mtu 65536 inet 127.0.0.1 netmask 255.0.0.0 inet6 ::1 prefixlen 128 scopeid 0x10&amp;lt;host&amp;gt; loop txqueuelen 1 (Local Loopback) RX packets 0 bytes 0 (0.0 B) RX errors 0 dropped 0 overruns 0 frame 0 TX packets 0 bytes 0 (0.0 B) TX errors 0 dropped 0 overruns 0 carrier 0 collisions 0 重启网络服务
+sudo /etc/init.d/networking restart
+这样修改之后, 内网可以 ssh 登陆虚拟机, 但是虚拟机无法连接外网.
+修改方案:
+sudo vim /etc/resolv.conf
+默认该文件是空, 添加如下行:
+nameserver 114.114.114.114 重启网络服务
+sudo /etc/init.d/networking restart
+</content>
+    </entry>
+    
+     <entry>
+        <title>dokuwiki</title>
+        <url>https://luyoungcn.github.io/post/dokuwiki/</url>
+        <categories>
+          
+        </categories>
+        <tags>
+          
+        </tags>
+        <content type="html"> 关于 Dokuwiki 详细信息, 请访问官网.
+安装配置  本教程基于 ubuntu 17.10 x64
+ 参考  DokuWiki Installation  安装 apache php apt-get install apache2 apt-get install php7.1 libapache2-mod-php7.1 php7.1-xml 配置 apache php  修改文件 apache2/sites-available/000-default.conf 配置 apache2 document root 为 dokuwiki 根目录  - DocumentRoot /var/www/html &#43; DocumentRoot /var/www/wikihub 修改文件 /etc/apache2/apache2.conf 配置 apache security  &amp;lt;Directory /&amp;gt; Options FollowSymLinks - AllowOverride none &#43; AllowOverride All  Require all denied &amp;lt;/Directory&amp;gt; &amp;lt;Directory /usr/share&amp;gt; AllowOverride None Require all granted &amp;lt;/Directory&amp;gt; &amp;lt;Directory /var/www/&amp;gt; Options Indexes FollowSymLinks - AllowOverride none &#43; AllowOverride All  Require all granted &amp;lt;/Directory&amp;gt; Activate the &amp;lsquo;mod_rewrite&amp;rsquo; in apache2 to enable .htaccess  sudo a2enmod rewrite &amp;amp;&amp;amp; sudo service apache2 restart 安装 dokuwiki 从 dokuwiki 官方下载页面 下载最新版的安装包.
+解压缩下载的压缩包, 并上传/复制到你的网站空间中.
+注意这里一定要将 dokuwiki 的根目录修改为与前边 apache 的配置一致
+我的目录结构如下
+root@jerry-VirtualBox:/var/www/wikihub# ll total 96 drwxr-xr-x 9 www-data www-data 4096 10月 30 13:30 ./ drwxr-xr-x 3 root root 4096 10月 30 13:29 ../ drwxr-xr-x 2 www-data www-data 4096 10月 30 13:30 bin/ drwxr-xr-x 2 www-data www-data 4096 10月 30 13:30 conf/ -rw-r--r-- 1 www-data www-data 18092 10月 30 13:30 COPYING drwxr-xr-x 12 www-data www-data 4096 10月 30 13:30 data/ -rw-r--r-- 1 www-data www-data 3692 10月 30 13:30 doku.php -rw-r--r-- 1 www-data www-data 19374 10月 30 13:30 feed.php drwxr-xr-x 8 www-data www-data 4096 10月 30 13:35 .git/ -rw-r--r-- 1 www-data www-data 1744 10月 30 13:30 .htaccess.dist drwxr-xr-x 6 www-data www-data 4096 10月 30 13:30 inc/ -rw-r--r-- 1 www-data www-data 2097 10月 30 13:30 index.php drwxr-xr-x 8 www-data www-data 4096 10月 30 13:30 lib/ -rw-r--r-- 1 www-data www-data 306 10月 30 13:30 README drwxr-xr-x 8 www-data www-data 4096 10月 30 13:30 vendor/ -rw-r--r-- 1 www-data www-data 33 10月 30 13:30 VERSION 修改文件权限(否则可能因为权限问题导致访问失败)
+sudo chown -R www-data:www-data /var/www/wikihub 通过浏览器访问 http://localhost/install.php, 并按照页面给出的提示进行安装. 相关填写项描述如下
+ 维基名称：你wiki的名字，比如我的是wikihub 启用ACL（推荐）：即启用权限控制，这个保持默认（选中状态） 超级用户：输入超级用户的用户名 全名：超级用户的全名，和上一个一样就行 E-Mail：超级用户的电子邮件地址 密码：超级用户的密码 请再输一次：再次输入密码 初始的ACL政策：全局权限控制策略，在下拉列表中选择一个合适的  开放的维基（任何人都有读、写、上传的权限） 公开的维基（任何人都有读的权限，只有注册用户才有写和上传的权限） 关闭的维基（只有注册用户才有读、写、上传的权限）   填写完成后按 保存 完成安装.  为了安全, 最好删除目录下的 install.php 文件. 虽然 Dokuwiki 自身也有保护, install.php 已经不能再次运行, 不过还是以防万一吧.
+通过浏览器访问 http://localhost/dokuwiki.php, 就可以用之前注册的账户登陆进行 wiki 的撰写了.
+常用插件 vshare Plugin to easily embed videos from various video sharing sites into DokuWiki
+</content>
+    </entry>
+    
+     <entry>
+        <title>gitbook 环境搭建</title>
+        <url>https://luyoungcn.github.io/post/gitbook/</url>
+        <categories>
+          
+        </categories>
+        <tags>
+          
+        </tags>
+        <content type="html"> nvm node npm curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash source ~/.zshrc nvm install node npm config set registry https://registry.npm.taobao.org gitbook npm install gitbook-cli -g gitbook 常见命令 List installed versions:
+gitbook ls List available versions on NPM:
+gitbook ls-remote Install a specific version:
+gitbook fetch 2.1.0 # or a pre-release gitbook fetch beta Update to the latest version
+gitbook update Uninstall a specific version
+gitbook uninstall 2.0.1 使用 gitbook init gitbook serve (该命令首先会执行 gitbook build 编译书籍, 完成以后会打开一个 web 服务器, 监听在本地的 4000 端口) plugin 安装方法 在 git book 项目的根目录下执行
+npm install &amp;lt;plugin_name&amp;gt; 常用 plugins 列表 gitbook-plugin-page-toc  install this plugin  npm install gitbook-plugin-page-toc add below code to book.json under the root dir of your git book repo  { &amp;#34;plugins&amp;#34;: [ &amp;#34;page-toc&amp;#34; ], &amp;#34;pluginsConfig&amp;#34;: { } } gitbook-plugin-todo  install this plugin  npm install --save gitbook-plugin-todo add below code to book.json under the root dir of your git book repo  { &amp;#34;plugins&amp;#34;: [&amp;#34;todo&amp;#34;] } gitbook-plugin-toggle-chapters  install this plugin  npm install gitbook-plugin-toggle-chapters add below code to book.json under the root dir of your git book repo  { &amp;#34;plugins&amp;#34;: [&amp;#34;toggle-chapters&amp;#34;] } gitbook-plugin-youtubex  install this plugin  git clone https://github.com/ymcatar/gitbook-plugin-youtubex node_modules/gitbook-plugin-youtubex add below code to book.json under the root dir of your git book repo  &amp;#34;plugins&amp;#34;: [&amp;#34;youtubex&amp;#34;] &amp;#34;pluginsConfig&amp;#34;: { &amp;#34;youtubex&amp;#34;: { &amp;#34;embedDescription&amp;#34;: { &amp;#34;en&amp;#34;: &amp;#34;Watch this video!&amp;#34;, &amp;#34;de&amp;#34;: &amp;#34;Eingebettetes video:&amp;#34; } } } jadu/gitbook-theme  clone theme project  git clone https://github.com/jadu/gitbook-theme.git cp -r gitbook-theme/assets node_modules/ add below code to book.json under the root dir of your git book repo  &amp;#34;styles&amp;#34;:{ &amp;#34;website&amp;#34;: &amp;#34;assets/continuum/cxm.css&amp;#34; } 执行命令  gitbook install  生成 pdf epub 在gitbook中实现多级导航栏的支持  </content>
+    </entry>
+    
+     <entry>
+        <title>hugo 配置</title>
+        <url>https://luyoungcn.github.io/post/hugo-%E9%85%8D%E7%BD%AE/</url>
+        <categories>
+          
+        </categories>
+        <tags>
+          
+        </tags>
+        <content type="html"> hugo release https://github.com/gohugoio/hugo/releases
+theme https://themes.gohugo.io/hugo_theme_adam_eve/
+stepbystep  install hugo create a new site  hugo new site &amp;lt;sitename&amp;gt;
+add theme  cd &amp;lt;sitename&amp;gt;/theme/ git clone https://github.com/blankoworld/hugo_theme_adam_eve.git echo &#39;theme = &amp;quot;&amp;lt;themename&amp;gt;&amp;quot;&#39; &amp;gt;&amp;gt; config.toml
+start server  hugo server --bind 0.0.0.0 --baseURL http://10.0.0.7:1313
+Q&amp;amp;A https://discourse.gohugo.io/t/binding-server-to-local-ip-or-0-0-0-0-does-not-work/18999
+https://wefox.me/docs/create_blog_on_github_by_hugo/
+</content>
+    </entry>
+    
+     <entry>
+        <title>Manjaro OS Q&amp;A</title>
+        <url>https://luyoungcn.github.io/post/manjaro-os-qa/</url>
+        <categories>
+          
+        </categories>
+        <tags>
+          
+        </tags>
+        <content type="html"> 系统基本信息 [baihao@vstation ~]$ screenfetch ██████████████████ ████████ baihao@vstation ██████████████████ ████████ OS: Manjaro 20.2.1 Nibia ██████████████████ ████████ Kernel: x86_64 Linux 5.9.16-1-MANJARO ██████████████████ ████████ Uptime: 17m ████████ ████████ Packages: 1220 ████████ ████████ ████████ Shell: bash 5.1.0 ████████ ████████ ████████ Resolution: 1920x951 ████████ ████████ ████████ DE: Xfce4 ████████ ████████ ████████ WM: Xfwm4 ████████ ████████ ████████ WM Theme: Matcha-sea ████████ ████████ ████████ GTK Theme: Matcha-sea [GTK2] ████████ ████████ ████████ Icon Theme: Papirus-Maia ████████ ████████ ████████ Font: Noto Sans 10 ████████ ████████ ████████ Disk: 241G / 674G (37%) CPU: Intel Core i7-10510U @ 2x 2.304GHz GPU: llvmpipe (LLVM 11.0.0, 256 bits) RAM: 2134MiB / 3935MiB wps &#43; fcitx5 无法输入中文 参考
+ 在wps中使用fcitx5 WPS for Linux 无法使用fcitx中文输入法问题的解决方案  修改如下：
+[baihao@vstation ~]$ head /usr/bin/wps #!/bin/bash gOpt= &#43;export GTK_IM_MODULE=fcitx &#43;export QT_IM_MODULE=fcitx5 &#43;export XMODIFIERS=@im=fcitx  #gOptExt=-multiply [baihao@vstation ~]$ head /usr/bin/et #!/bin/bash gOpt= &#43;export GTK_IM_MODULE=fcitx &#43;export QT_IM_MODULE=fcitx5 &#43;export XMODIFIERS=@im=fcitx  #gOptExt=-multiply gTemplateExt=(&amp;#34;ett&amp;#34; &amp;#34;xlt&amp;#34; &amp;#34;xltx&amp;#34; &amp;#34;xltm&amp;#34;) [baihao@vstation ~]$ head /usr/bin/wpp #!/bin/bash gOpt= &#43;export GTK_IM_MODULE=fcitx &#43;export QT_IM_MODULE=fcitx5 &#43;export XMODIFIERS=@im=fcitx  #gOptExt=-multiply gTemplateExt=(&amp;#34;dpt&amp;#34; &amp;#34;pot&amp;#34; &amp;#34;potx&amp;#34; &amp;#34;potm&amp;#34;) </content>
+    </entry>
+    
+     <entry>
+        <title>ndroid-java-1.7-环境配置</title>
+        <url>https://luyoungcn.github.io/post/android-java-1.7-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
+        <categories>
+          
+        </categories>
+        <tags>
+          
+        </tags>
+        <content type="html"> 下载jdk 1.7
+https://repo.huaweicloud.com/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz
+解压
+tar xzvf jdk-7u80-linux-x64.tar.gz
+ android 18.04 jdk1.7 android 7.1  安装
+sudo mv jdk1.7.0_80 /usr/lib/
+switchjdk7.sh 文件内容如下，该文件放在代码顶层目录：
+# add JDK7 cofig ---- export JAVA_HOME=/usr/lib/jdk1.7.0_80/ export JRE_HOME=${JAVA_HOME}/jre export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib export PATH=${JAVA_HOME}/bin:$PATH # add JDK7 cofig ---- 执行如下命令切换java 1.7，仅当前终端有效
+source switchjdk7.sh
+https://repo.huaweicloud.com/java/jdk/6u45-b06/
+https://repo.huaweicloud.com/java/jdk/7u80-b15/
+https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+</content>
+    </entry>
+    
+     <entry>
+        <title>opengrok 配置</title>
+        <url>https://luyoungcn.github.io/post/opengrok-%E9%85%8D%E7%BD%AE/</url>
+        <categories>
+          
+        </categories>
+        <tags>
+          
+        </tags>
+        <content type="html"> 环境 ubuntu 18.04 x64
+依赖工具  jdk 1.8 universal-ctags tomcat8 opengrok  配置流程 jdk 安装 sudo apt install openjdk-8-jdk openjdk-8-jdk-headless openjdk-8-jre openjdk-8-jre-dcevm openjdk-8-jre-headless
+通常android编译环境能够正常工作jdk环境已经ok.
+$ java -version openjdk version &amp;#34;1.8.0_252&amp;#34; OpenJDK Runtime Environment (build 1.8.0_252-8u252-b09-1~18.04-b09) OpenJDK 64-Bit Server VM (build 25.252-b09, mixed mode) universal-ctags ubuntu 自带包管理器安装的 ctags 是 exuberant-ctags, 如果已经安装请先通过如下命令卸载
+sudo apt purge exuberant-ctags 通过源码安装 universal-ctags
+git clone https://gitee.com/neo532/universal-ctags.git cd universal-ctags ./autogen.sh ./configure make sudo make install $ /usr/local/bin/ctags --version Universal Ctags 0.0.0(054bee0), Copyright (C) 2015 Universal Ctags Team Universal Ctags is derived from Exuberant Ctags. Exuberant Ctags 5.8, Copyright (C) 1996-2009 Darren Hiebert Compiled: May 10 2020, 10:34:29 URL: https://ctags.io/ Optional compiled features: &#43;wildcards, &#43;regex, &#43;iconv, &#43;option-directory tomcat8 sudo apt install tomcat8 sudo service tomcat8 start opengrok  How to setup OpenGrok
+ 安装工具包 下载opengrok-非source code版， 漫长的等待&amp;hellip;&amp;hellip;
+搭建 opengrok 目录结构 sudo mkdir /opengrok/{src,data,dist,etc,log}
+解压opengrok到指定路径 tar -C /opengrok/dist --strip-components=1 -xzf opengrok-X.Y.Z.tar.gz
+Install management tools (optional) cd /opengrok/dist/tools python3 -m pip install opengrok-tools.tar.gz Deploy the web application cp /opengrok/dist/lib/source.war /var/lib/tomcat8/webapps/ Indexing 通过修改如下 -s 选项来配置修改源码路径.
+假设我的android源码路径为 /opengrok/src/A64_android ，则使用如下参数：
+java \  -Djava.util.logging.config.file=/opengrok/etc/logging.properties \  -jar /opengrok/dist/lib/opengrok.jar \  -c /usr/local/bin/ctags \  -s /opengrok/src -d /opengrok/data -H -P -S -G \  -W /opengrok/etc/configuration.xml -U http://localhost:8080/source RTFSC 访问网址： http://localhost:8080/source/
+</content>
+    </entry>
+    
+     <entry>
+        <title>samba 配置</title>
+        <url>https://luyoungcn.github.io/post/samba/</url>
+        <categories>
+          
+        </categories>
+        <tags>
+          
+        </tags>
+        <content type="html"> 安装 For ubuntu
+# smbclient 用来测试 samba 服务 sudo apt install samba smbclient For arch
+sudo pacman -Sy samba smbclient 配置文件 /etc/samba/smb.conf 末尾追加如下内容:
+注意这里的 [share] windows 映射网络驱动器的时候路径为: \\&amp;lt;ubuntu ip&amp;gt;\share
+[share] path = /home/username/Public public = yes writable = yes valid users = username //映射时的登陆名 create mask = 0644 force create mode = 0644 directory mask = 0755 force directory mode = 0755 available = yes 设置密码 sudo touch /etc/samba/smbpasswd sudo smbpasswd -a username # then insert password 重启 samba 服务 For ubuntu
+sudo service smbd restart For arch
+sudo systemctl restart smb 测试 samba 服务 smbclient -L //localhost/Public # 如果提示输入密码说明共享服务成功 windows 挂载 samba 共享 两种挂载方式
+ win&#43;r, 输入 ubuntu ip windows 文件管理器, 映射网络驱动器, 输入路径 \\&amp;lt;ubuntu ip&amp;gt;\share  Linux CLI 挂载 samba 共享 sudo mount -t cifs -o username=${USER},password=${PASSWORD},uid=&amp;lt;user&amp;gt;,gid=&amp;lt;group&amp;gt; //server-address/folder /mount/path/on/ubuntu  uid,gid 指定为对应smb client用户的id，如果不指定挂载后所有文件显示为root:root mode.  </content>
+    </entry>
+    
+     <entry>
+        <title>source insight</title>
+        <url>https://luyoungcn.github.io/post/source-insight/</url>
+        <categories>
+          
+        </categories>
+        <tags>
+          
+        </tags>
+        <content type="html"> 注释字体设置  Options-&amp;gt;Style Properties 左边Style Name下找到Comment、Comment Multi Line、Comment Right、Comment Single Line 在右边对应的Font属性框下的Font Name中选“Pick...” 设置自己喜欢的字体然后确定，退回Style Properties界面，Size设为12。 Options-&amp;gt;Save Configuration  背景护眼颜色 在顶部菜单栏依次选择 Option→Preferences，中文版的选择 选项&amp;ndash;&amp;gt;参数选择，选择上面的colors（颜色）选项，箭头移至第二项Window Background( 窗口背景)左键单击选中，再点击右边的Color选项在右边的RGB框输入如下参数：
+ R(红) 204 G(绿)232 B(蓝)207 添加到自定义颜色-&amp;gt;确定  </content>
+    </entry>
+    
+     <entry>
+        <title>virtualbox-opensuse-无网络图标,-无法上网</title>
+        <url>https://luyoungcn.github.io/post/virtualbox-opensuse-%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87-%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/</url>
+        <categories>
+          
+        </categories>
+        <tags>
+          
+        </tags>
+        <content type="html"> 参考链接
+ https://forum.suse.org.cn/t/eth0/2049/4 https://zh.opensuse.org/openSUSE:13.1%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98  Virtualbox 虚拟机装完没有网络？
+sudo systemctl start NetworkManager
+启动 NetworkManager 服务，会自动运行 DHCP 分配 IP 地址给你。之后可用：ping 127.0.0.1 或 ping 192.168.1.1测试（按 Ctrl &#43; C 可停止 ping，不然会一直进行）。
+或用：
+sudo systemctl status NetworkManager
+查看其状态。一般情况下这时你的网络已经激活了。但你如果运行比如
+ping www.baidu.com
+或者
+nslookup www.baidu.com
+是没有结果的。因为我们没指定系统查询域名所用的 DNS 服务器。
+/etc/resolv.conf文件的最后加入：
+nameserver 8.8.8.8 nameserver 8.8.4.4 之后就能 ping 或者 nslookup 百度了。
+</content>
+    </entry>
+    
+     <entry>
+        <title>wifi adb</title>
+        <url>https://luyoungcn.github.io/post/wifi-adb/</url>
+        <categories>
+          
+        </categories>
+        <tags>
+          
+        </tags>
+        <content type="html"> 操作手顺 手机USB连接电脑
+adb shell &amp;#34;setprop persist.adb.tcp.port 5555&amp;#34; adb tcpip 5555 手机连上wifi，确认ip地址 此时可以断开手USB，然后通过wifiadb连接
+adb connect 10.100.2.5 Q&amp;amp;A Issue 执行命令 adb connect 10.100.2.5 报错
+missing port in specification: tcp:10.100.2.5 Answer 使用命令 adb connect 10.100.2.5:5555 解决
+</content>
+    </entry>
+    
+     <entry>
+        <title>win10-开启远程桌面连接</title>
+        <url>https://luyoungcn.github.io/post/win10-%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5/</url>
+        <categories>
+          
+        </categories>
+        <tags>
+          
+        </tags>
+        <content type="html"> &amp;ldquo;此电脑&amp;rdquo; 右键 属性
+远程设置
+  远程协助
+ 允许远程协助连接这台计算机(R)    远程桌面
+ 允许远程连接到此计算机  仅允许运行使用网络级别身份验证的远程桌面的计算机连接(建议)(N)      请注意关闭防火墙. 否则可能出现连接失败.
+</content>
+    </entry>
+    
+     <entry>
+        <title>windows vscode plantuml</title>
+        <url>https://luyoungcn.github.io/post/windows-vscode-plantuml-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+        <categories>
+          
+        </categories>
+        <tags>
+          
+        </tags>
+        <content type="html">   下载安装vscode
+  下载安装java，不然无法预览plantuml
+ 下载安装该java安装包后没有设置相关java环境变量就可以预览plantuml了。    下载安装graphivz，不然预览类图报错如下：
+  Dot Executable:null No dot executable found Cannot find Graphivz. You should try @startuml testdot @enduml or java -jar plantuml.jar -testdot  vscode插件列表（plantuml相关）  Graphviz Preview by EFanZh PlantUML by jebbs    </content>
+    </entry>
+    
+     <entry>
+        <title>windows-激活码</title>
+        <url>https://luyoungcn.github.io/post/windows-%E6%BF%80%E6%B4%BB%E7%A0%81/</url>
+        <categories>
+          
+        </categories>
+        <tags>
+          
+        </tags>
+        <content type="html"> win10 激活码
+ VK7JG-NPHTM-C97JM-9MPGT-3V66T  WIN8 MSDN key
+ RTM核心版 334NH-RXG76-64THK-C7CKG-D3VPT` MSDN专业版 XHQ8N-C3MCJ-RQXB6-WCHYG-C9WKB  </content>
+    </entry>
+    
+     <entry>
+        <title>交叉编译工具链</title>
+        <url>https://luyoungcn.github.io/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE/</url>
+        <categories>
+          
+        </categories>
+        <tags>
+          
+        </tags>
+        <content type="html"> 交叉编译工具链是一个由编译器、连接器和解释器组成的综合开发环境，交叉编译工具链主要由binutils、gcc和glibc三个部分组成。
+有时出于减小 libc 库大小的考虑，也可以用别的 c 库来代替 glibc，例如 uClibc、dietlibc 和 newlib。
+从授权上，分为免费授权版和付费授权版。
+  免费版目前有三大主流工具商提供
+ 第一是GNU（提供源码，自行编译制作） 第二是 Codesourcery 第三是Linora    收费版
+ ARM原厂提供的armcc IAR提供的编译器 等等    arm-none-linux-gnueabi-gcc：是 Codesourcery 公司（目前已经被Mentor收购）基于GCC推出的的ARM交叉编译工具。可用于交叉编译ARM（32位）系统中所有环节的代码，包括裸机程序、u-boot、Linux kernel、filesystem和App应用程序。
+  arm-linux-gnueabihf-gcc：是由 Linaro 公司基于GCC推出的的ARM交叉编译工具。可用于交叉编译ARM（32位）系统中所有环节的代码，包括裸机程序、u-boot、Linux kernel、filesystem和App应用程序。
+  aarch64-linux-gnu-gcc：是由 Linaro 公司基于GCC推出的的ARM交叉编译工具。可用于交叉编译ARMv8 64位目标中的裸机程序、u-boot、Linux kernel、filesystem和App应用程序。
+  arm-none-elf-gcc：是 Codesourcery 公司（目前已经被Mentor收购）基于GCC推出的的ARM交叉编译工具。可用于交叉编译ARM MCU（32位）芯片，如ARM7、ARM9、Cortex-M/R芯片程序。
+  arm-none-eabi-gcc：是 GNU 推出的的ARM交叉编译工具。可用于交叉编译ARM MCU（32位）芯片，如ARM7、ARM9、Cortex-M/R芯片程序。
+  交叉编译工具链的命名规则为：arch [-vendor] [-os] [-(gnu)eabi]
+ arch – 体系架构，如ARM，MIPS（通过交叉编译工具生成的可执行文件或系统镜像的运行平台或环境） vendor – 工具链提供商 os – 目标操作系统（host主要操作平台，也就是编译时的系统） eabi – 嵌入式应用二进制接口（Embedded Application Binary Interface）根据对操作系统的支持与否，  根据对操作系统的支持与否，ARM GCC可分为支持和不支持操作系统
+ arm-none-eabi：这个是没有操作系统的，自然不可能支持那些跟操作系统关系密切的函数，比如fork(2)。他使用的是newlib这个专用于嵌入式系统的C库。 arm-none-linux-eabi：用于Linux的，使用Glibc  实例
+1、arm-none-eabi-gcc（ARM architecture，no vendor，not target an operating system，complies with the ARM EABI） 用于编译 ARM 架构的裸机系统（包括 ARM Linux 的 boot、kernel，不适用编译 Linux 应用 Application），一般适合 ARM7、Cortex-M 和 Cortex-R 内核的芯片使用，所以不支持那些跟操作系统关系密切的函数，比如fork(2)，他使用的是 newlib 这个专用于嵌入式系统的C库。
+2、arm-none-linux-gnueabi-gcc (ARM architecture, no vendor, creates binaries that run on the Linux operating system, and uses the GNU EABI) 主要用于基于ARM架构的Linux系统，可用于编译 ARM 架构的 u-boot、Linux内核、linux应用等。arm-none-linux-gnueabi基于GCC，使用Glibc库，经过 Codesourcery 公司优化过推出的编译器。arm-none-linux-gnueabi-xxx 交叉编译工具的浮点运算非常优秀。一般ARM9、ARM11、Cortex-A 内核，带有 Linux 操作系统的会用到。
+3、arm-eabi-gcc Android ARM 编译器。
+4、armcc ARM 公司推出的编译工具，功能和 arm-none-eabi 类似，可以编译裸机程序（u-boot、kernel），但是不能编译 Linux 应用程序。armcc一般和ARM开发工具一起，Keil MDK、ADS、RVDS和DS-5中的编译器都是armcc，所以 armcc 编译器都是收费的（爱国版除外，呵呵~~）。
+5、arm-none-uclinuxeabi-gcc 和 arm-none-symbianelf-gcc arm-none-uclinuxeabi 用于uCLinux，使用Glibc。 arm-none-symbianelf 用于symbian，没用过，不知道C库是什么 。
+ABI 和 EABIABI
+二进制应用程序接口(Application Binary Interface (ABI) for the ARM Architecture)。在计算机中，应用二进制接口描述了应用程序（或者其他类型）和操作系统之间或其他应用程序的低级接口。 EABI：嵌入式ABI。嵌入式应用二进制接口指定了文件格式、数据类型、寄存器使用、堆积组织优化和在一个嵌入式软件中的参数的标准约定。开发者使用自己的汇编语言也可以使用 EABI 作为与兼容的编译器生成的汇编语言的接口。 两者主要区别是，ABI是计算机上的，EABI是嵌入式平台上（如ARM，MIPS等）。arm-linux-gnueabi-gcc 和 arm-linux-gnueabihf-gcc 两个交叉编译器分别适用于 armel 和 armhf 两个不同的架构，armel 和 armhf 这两种架构在对待浮点运算采取了不同的策略（有 fpu 的 arm 才能支持这两种浮点运算策略）。 其实这两个交叉编译器只不过是 gcc 的选项 -mfloat-abi 的默认值不同。gcc 的选项 -mfloat-abi 有三种值 soft、softfp、hard（其中后两者都要求 arm 里有 fpu 浮点运算单元，soft 与后两者是兼容的，但 softfp 和 hard 两种模式互不兼容）： soft： 不用fpu进行浮点计算，即使有fpu浮点运算单元也不用，而是使用软件模式。 softfp： armel架构（对应的编译器为 arm-linux-gnueabi-gcc ）采用的默认值，用fpu计算，但是传参数用普通寄存器传，这样中断的时候，只需要保存普通寄存器，中断负荷小，但是参数需要转换成浮点的再计算。 hard： armhf架构（对应的编译器 arm-linux-gnueabihf-gcc ）采用的默认值，用fpu计算，传参数也用fpu中的浮点寄存器传，省去了转换，性能最好，但是中断负荷高。 把以下测试使用的C文件内容保存成 mfloat.c： #include &amp;lt;stdio.h&amp;gt; int main(void) { double a,b,c; a = 23.543; b = 323.234; c = b/a; printf(“the 13/2 = %f\n”, c); printf(“hello world !\n”); return 0; } 1、使用 arm-linux-gnueabihf-gcc 编译，使用“-v”选项以获取更详细的信息：
+arm-linux-gnueabihf-gcc -v mfloat.c COLLECT_GCC_OPTIONS=’-v’ ‘-march=armv7-a’ ‘-mfloat-abi=hard’ ‘-mfpu=vfpv3-d16′ ‘-mthumb’ -mfloat-abi=hard 可看出使用hard硬件浮点模式。 2、使用 arm-linux-gnueabi-gcc 编译：
+arm-linux-gnueabi-gcc -v mfloat.c COLLECT_GCC_OPTIONS=’-v’ ‘-march=armv7-a’ ‘-mfloat-abi=softfp’ ‘-mfpu=vfpv3-d16′ ‘-mthumb’ -mfloat-abi=softfp 可看出使用softfp模式。
+参考资料
+ 交叉编译器 arm-linux-gnueabi 和 arm-linux-gnueabihf 的区别：http://www.cnblogs.com/xiaotlili/p/3306100.html arm-none-linux-gnueabi，arm-none-eabi 与arm-eabi 区别：http://blog.csdn.net/mantis_1984/article/details/21049273 What’s the difference between arm-linux- / arm-none-linux-gnueabi- / arm-fsl-linux-gnueabi- in LTIB?https://community.freescale.com/thread/313490 http://elinux.org/RPi_Kernel_Compilation https://github.com/raspberrypi/linux http://packages.ubuntu.com/precise/gcc-arm-linux-gnueabi http://mitchtech.net/raspberry-pi-kernel-compile/  </content>
+    </entry>
+    
 </search>

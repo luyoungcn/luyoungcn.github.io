@@ -4,19 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-    <title>Tags - 南美</title>
+    <title>windows vscode plantuml - 南美</title>
     <meta name="keywords" content="搬运工">
     
-    <meta property="og:title" content="Tags">
+    <meta property="og:title" content="windows vscode plantuml">
     <meta property="og:site_name" content="南美">
     <meta property="og:image" content="/img/author.jpg"> 
-    <meta name="title" content="Tags - 南美" />
+    <meta name="title" content="windows vscode plantuml - 南美" />
     <meta name="description" content="蘭陵N散記 | 博客 | 软件 | 架构 | Java | Golang"> 
     <link rel="shortcut icon" href="https://luyoungcn.github.io/img/favicon.ico" />
     <link rel="apple-touch-icon" href="https://luyoungcn.github.io/img/apple-touch-icon.png" />
     <link rel="apple-touch-icon-precomposed" href="https://luyoungcn.github.io/img/apple-touch-icon.png" />
     <link href="https://luyoungcn.github.io/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-    
+    <link href="https://luyoungcn.github.io/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
     <link href="https://luyoungcn.github.io/css/main.css" rel="stylesheet" type="text/css" />
     <link href="https://luyoungcn.github.io/css/syntax.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" id="hexo.configuration">
@@ -24,13 +24,13 @@
   var CONFIG = {
     scheme: 'Pisces',
     sidebar: {"position":"left","display":"post"},
-    fancybox: false, 
+     fancybox: true, 
     motion: true
   };
 </script>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-<div class="container one-collumn sidebar-position-left   ">
+<div class="container one-collumn sidebar-position-left page-home  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -111,29 +111,104 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-<div id="posts" class="posts-expand">
-    
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://luyoungcn.github.io/post/windows-vscode-plantuml-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" itemprop="url">
+        windows vscode plantuml
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="0001-01-01">
+    0001-01-01
+</time>
+</span> 
+      
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">148 字 ~1分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <ul>
+<li>
+<p><a href="https://code.visualstudio.com/">下载</a>安装vscode</p>
+</li>
+<li>
+<p><a href="https://www.java.com/zh_CN/download/windows_offline.jsp">下载</a>安装java，不然无法预览plantuml</p>
+<ul>
+<li>下载安装该java安装包后没有设置相关java环境变量就可以预览plantuml了。</li>
+</ul>
+</li>
+<li>
+<p><a href="https://www2.graphviz.org/Packages/stable/windows/10/msbuild/Release/Win32/">下载</a>安装graphivz，不然预览类图报错如下：</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Dot Executable:null
+No dot executable found
+Cannot find Graphivz. You should try
 
-      
-       <div class="tag-cloud">
-        <div class="tag-cloud-title">
-            目前共计 3 个标签
-        </div>
-        <div class="tag-cloud-tags">
-            
-             <a href="https://luyoungcn.github.io/tags/android" style="font-size: 24.5px; color: #212121">android</a>
-             <span class="tag-list-count"><sup>1</sup></span>
-             
-             <a href="https://luyoungcn.github.io/tags/ccache" style="font-size: 24.5px; color: #212121">ccache</a>
-             <span class="tag-list-count"><sup>1</sup></span>
-             
-             <a href="https://luyoungcn.github.io/tags/windows" style="font-size: 24.5px; color: #212121">windows</a>
-             <span class="tag-list-count"><sup>1</sup></span>
-             
-        </div>
-       </div>
-      
+@startuml
+testdot
+@enduml
+
+or
+
+java -jar plantuml.jar -testdot
+</code></pre></div><ul>
+<li>vscode插件列表（plantuml相关）
+<ul>
+<li>Graphviz Preview by EFanZh</li>
+<li>PlantUML by jebbs</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+    <footer class="post-footer">
+     
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://luyoungcn.github.io/post/win10-%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5/" rel="next" title="win10-开启远程桌面连接">
+        <i class="fa fa-chevron-left"></i> win10-开启远程桌面连接
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://luyoungcn.github.io/post/windows-%E6%BF%80%E6%B4%BB%E7%A0%81/" rel="prev" title="windows-激活码">
+        windows-激活码 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
 </div>
+      
+     
+     
+     
+
+
+
+
+
+
+    </footer>
+  </article>
+</section>
 
           </div>
         </div>
@@ -183,13 +258,6 @@
     </div>
 </nav>
       
-<div class="feed-link motion-element">
-<a href="https://luyoungcn.github.io/tags/index.xml" rel="alternate" type="application/rss+xml" target="_blank">
-    <i class="fa fa-rss"></i>
-    RSS 订阅
-</a>
-</div>
-
       
 <div class="links-of-author motion-element">
     
@@ -257,16 +325,18 @@
 <script type="text/javascript" src="https://luyoungcn.github.io/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
 <script src="https://luyoungcn.github.io/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
 
+<script src="https://luyoungcn.github.io/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
 <script type="text/javascript" src="https://luyoungcn.github.io/js/utils.js"></script>
 <script type="text/javascript" src="https://luyoungcn.github.io/js/motion.js"></script>
 <script type="text/javascript" src="https://luyoungcn.github.io/js/affix.js"></script>
 <script type="text/javascript" src="https://luyoungcn.github.io/js/schemes/pisces.js"></script>
 
-<script type="text/javascript" src="https://luyoungcn.github.io/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://luyoungcn.github.io/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://luyoungcn.github.io/js/post-details.js"></script>
+<script type="text/javascript" src="https://luyoungcn.github.io/js/toc.js"></script>
 
-<script type="text/javascript" id="motion.page.archive">
-  $('.archive-year').velocity('transition.slideLeftIn');
-</script>
+<script type="text/javascript" src="https://luyoungcn.github.io/js/bootstrap.js"></script>
 
 <script type="text/javascript" src="https://luyoungcn.github.io/js/search.js"></script>
 <script type="text/x-mathjax-config">

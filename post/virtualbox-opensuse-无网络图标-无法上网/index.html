@@ -4,19 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-    <title>Tags - 南美</title>
+    <title>virtualbox-opensuse-无网络图标,-无法上网 - 南美</title>
     <meta name="keywords" content="搬运工">
     
-    <meta property="og:title" content="Tags">
+    <meta property="og:title" content="virtualbox-opensuse-无网络图标,-无法上网">
     <meta property="og:site_name" content="南美">
     <meta property="og:image" content="/img/author.jpg"> 
-    <meta name="title" content="Tags - 南美" />
+    <meta name="title" content="virtualbox-opensuse-无网络图标,-无法上网 - 南美" />
     <meta name="description" content="蘭陵N散記 | 博客 | 软件 | 架构 | Java | Golang"> 
     <link rel="shortcut icon" href="https://luyoungcn.github.io/img/favicon.ico" />
     <link rel="apple-touch-icon" href="https://luyoungcn.github.io/img/apple-touch-icon.png" />
     <link rel="apple-touch-icon-precomposed" href="https://luyoungcn.github.io/img/apple-touch-icon.png" />
     <link href="https://luyoungcn.github.io/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-    
+    <link href="https://luyoungcn.github.io/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
     <link href="https://luyoungcn.github.io/css/main.css" rel="stylesheet" type="text/css" />
     <link href="https://luyoungcn.github.io/css/syntax.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" id="hexo.configuration">
@@ -24,13 +24,13 @@
   var CONFIG = {
     scheme: 'Pisces',
     sidebar: {"position":"left","display":"post"},
-    fancybox: false, 
+     fancybox: true, 
     motion: true
   };
 </script>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-<div class="container one-collumn sidebar-position-left   ">
+<div class="container one-collumn sidebar-position-left page-home  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -111,29 +111,90 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-<div id="posts" class="posts-expand">
-    
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://luyoungcn.github.io/post/virtualbox-opensuse-%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87-%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/" itemprop="url">
+        virtualbox-opensuse-无网络图标,-无法上网
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="0001-01-01">
+    0001-01-01
+</time>
+</span> 
+      
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">200 字 ~1分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>参考链接</p>
+<ul>
+<li><a href="https://forum.suse.org.cn/t/eth0/2049/4">https://forum.suse.org.cn/t/eth0/2049/4</a></li>
+<li><a href="https://zh.opensuse.org/openSUSE:13.1%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">https://zh.opensuse.org/openSUSE:13.1%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98</a></li>
+</ul>
+<p>Virtualbox 虚拟机装完没有网络？</p>
+<p><code>sudo systemctl start NetworkManager</code></p>
+<p>启动 NetworkManager 服务，会自动运行 DHCP 分配 IP 地址给你。之后可用：<code>ping 127.0.0.1</code> 或 <code>ping 192.168.1.1</code>测试（按 Ctrl + C 可停止 ping，不然会一直进行）。</p>
+<p>或用：</p>
+<p><code>sudo systemctl status NetworkManager</code></p>
+<p>查看其状态。一般情况下这时你的网络已经激活了。但你如果运行比如</p>
+<p><code>ping www.baidu.com</code></p>
+<p>或者</p>
+<p><code>nslookup www.baidu.com</code></p>
+<p>是没有结果的。因为我们没指定系统查询域名所用的 DNS 服务器。</p>
+<p><code>/etc/resolv.conf</code>文件的最后加入：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">nameserver 8.8.8.8
+nameserver 8.8.4.4
+</code></pre></div><p>之后就能 <code>ping</code> 或者 <code>nslookup</code> 百度了。</p>
 
-      
-       <div class="tag-cloud">
-        <div class="tag-cloud-title">
-            目前共计 3 个标签
-        </div>
-        <div class="tag-cloud-tags">
-            
-             <a href="https://luyoungcn.github.io/tags/android" style="font-size: 24.5px; color: #212121">android</a>
-             <span class="tag-list-count"><sup>1</sup></span>
-             
-             <a href="https://luyoungcn.github.io/tags/ccache" style="font-size: 24.5px; color: #212121">ccache</a>
-             <span class="tag-list-count"><sup>1</sup></span>
-             
-             <a href="https://luyoungcn.github.io/tags/windows" style="font-size: 24.5px; color: #212121">windows</a>
-             <span class="tag-list-count"><sup>1</sup></span>
-             
-        </div>
-       </div>
-      
+    </div>
+    <footer class="post-footer">
+     
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://luyoungcn.github.io/post/source-insight/" rel="next" title="source insight">
+        <i class="fa fa-chevron-left"></i> source insight
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://luyoungcn.github.io/post/wifi-adb/" rel="prev" title="wifi adb">
+        wifi adb <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
 </div>
+      
+     
+     
+     
+
+
+
+
+
+
+    </footer>
+  </article>
+</section>
 
           </div>
         </div>
@@ -183,13 +244,6 @@
     </div>
 </nav>
       
-<div class="feed-link motion-element">
-<a href="https://luyoungcn.github.io/tags/index.xml" rel="alternate" type="application/rss+xml" target="_blank">
-    <i class="fa fa-rss"></i>
-    RSS 订阅
-</a>
-</div>
-
       
 <div class="links-of-author motion-element">
     
@@ -257,16 +311,18 @@
 <script type="text/javascript" src="https://luyoungcn.github.io/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
 <script src="https://luyoungcn.github.io/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
 
+<script src="https://luyoungcn.github.io/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
 <script type="text/javascript" src="https://luyoungcn.github.io/js/utils.js"></script>
 <script type="text/javascript" src="https://luyoungcn.github.io/js/motion.js"></script>
 <script type="text/javascript" src="https://luyoungcn.github.io/js/affix.js"></script>
 <script type="text/javascript" src="https://luyoungcn.github.io/js/schemes/pisces.js"></script>
 
-<script type="text/javascript" src="https://luyoungcn.github.io/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://luyoungcn.github.io/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://luyoungcn.github.io/js/post-details.js"></script>
+<script type="text/javascript" src="https://luyoungcn.github.io/js/toc.js"></script>
 
-<script type="text/javascript" id="motion.page.archive">
-  $('.archive-year').velocity('transition.slideLeftIn');
-</script>
+<script type="text/javascript" src="https://luyoungcn.github.io/js/bootstrap.js"></script>
 
 <script type="text/javascript" src="https://luyoungcn.github.io/js/search.js"></script>
 <script type="text/x-mathjax-config">
