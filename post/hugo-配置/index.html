@@ -136,34 +136,48 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">40 字 ~1分钟</span>
+<span class="leancloud-visitors-count">210 字 ~1分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <h2 id="hugo-release">hugo release</h2>
-<p><a href="https://github.com/gohugoio/hugo/releases">https://github.com/gohugoio/hugo/releases</a></p>
-<h2 id="theme">theme</h2>
-<p><a href="https://themes.gohugo.io/hugo_theme_adam_eve/">https://themes.gohugo.io/hugo_theme_adam_eve/</a></p>
-<h2 id="stepbystep">stepbystep</h2>
+    <p><a href="https://gohugo.io/">hugo</a></p>
+<p>theme: <a href="https://github.com/xtfly/hugo-theme-next">next</a></p>
 <ol>
 <li>install hugo</li>
-<li>create a new site</li>
+<li>create a new site <code>hugo new site &lt;sitename&gt;</code></li>
+<li>add theme
+<a href="https://github.com/xtfly/hugo-theme-next">Usage of next theme</a>
+<ul>
+<li>download theme file: git clone <code>https://github.com/xtfly/hugo-theme-next.git</code> next</li>
+<li>copy next directory to themes directory in your hugo site</li>
+<li>move config.toml to the root directory in your hugo site, and modify it to the actual information for your site.</li>
+<li>create some markdown files in directory(content/post), like <code>https://github.com/xtfly/xtfly.github.io/tree/hugo/content</code></li>
+<li>start hugo server in root directory: hugo server</li>
+<li>open browser: <code>http://localhost:1313/</code></li>
+</ul>
+</li>
+<li>start server <code>hugo server --bind 0.0.0.0 --baseURL http://10.0.0.7:1313</code></li>
 </ol>
-<p><code>hugo new site &lt;sitename&gt;</code></p>
-<ol start="3">
-<li>add theme</li>
+<h2 id="框架">框架</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>blog<span style="color:#f92672">]</span>$ ls
+archetypes  config.toml  content  data  layouts  public  resources  static  themes
+</code></pre></div><h2 id="博客内容">博客内容</h2>
+<ol>
+<li>将你写的博客内容markdown文档所在目录链接到 content 目录，链接文件命名为 post</li>
+<li>将你的about目录链接到 content 目录，链接文件名为 about</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd &lt;sitename&gt;/theme/
-git clone https://github.com/blankoworld/hugo_theme_adam_eve.git
-</code></pre></div><p><code>echo 'theme = &quot;&lt;themename&gt;&quot;' &gt;&gt; config.toml</code></p>
-<ol start="4">
-<li>start server</li>
-</ol>
-<p><code>hugo server --bind 0.0.0.0 --baseURL http://10.0.0.7:1313</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>blog<span style="color:#f92672">]</span>$ tree content/
+content/
+├── about -&gt; /home/lv/post/about
+└── post -&gt; /home/lv/post
+</code></pre></div><h2 id="博客发布">博客发布</h2>
+<p>将博客发布内容路径链接为 hugo 的根目录， 链接文件命名为 public</p>
 <h2 id="qa">Q&amp;A</h2>
-<p><a href="https://discourse.gohugo.io/t/binding-server-to-local-ip-or-0-0-0-0-does-not-work/18999">https://discourse.gohugo.io/t/binding-server-to-local-ip-or-0-0-0-0-does-not-work/18999</a></p>
-<p><a href="https://wefox.me/docs/create_blog_on_github_by_hugo/">https://wefox.me/docs/create_blog_on_github_by_hugo/</a></p>
+<ul>
+<li><a href="https://discourse.gohugo.io/t/binding-server-to-local-ip-or-0-0-0-0-does-not-work/18999">https://discourse.gohugo.io/t/binding-server-to-local-ip-or-0-0-0-0-does-not-work/18999</a></li>
+<li><a href="https://wefox.me/docs/create_blog_on_github_by_hugo/">https://wefox.me/docs/create_blog_on_github_by_hugo/</a></li>
+</ul>
 
     </div>
     <footer class="post-footer">
