@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gitbook on 南美</title>
+    <link>https://luyoungcn.github.io/tags/gitbook/</link>
+    <description>Recent content in gitbook on 南美</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/gitbook/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>gitbook</title>
+      <link>https://luyoungcn.github.io/post/gitbook/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      
+      <guid>https://luyoungcn.github.io/post/gitbook/</guid>
+      <description>nvm node npm curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash source ~/.zshrc nvm install node npm config set registry https://registry.npm.taobao.org gitbook npm install gitbook-cli -g gitbook 常见命令 List installed versions: gitbook ls List available versions on NPM: gitbook ls-remote Install a specific version: gitbook fetch 2.1.0 # or a pre-release gitbook fetch beta Update to the latest version gitbook update Uninstall a specific version gitbook uninstall 2.0.1 使用</description>
+    </item>
+    
+  </channel>
+</rss>

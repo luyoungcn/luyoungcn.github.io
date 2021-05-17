@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blog on 南美</title>
+    <link>https://luyoungcn.github.io/tags/blog/</link>
+    <description>Recent content in blog on 南美</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hugo</title>
+      <link>https://luyoungcn.github.io/post/hugo/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      
+      <guid>https://luyoungcn.github.io/post/hugo/</guid>
+      <description>hugo theme: next install hugo create a new site hugo new site &amp;lt;sitename&amp;gt; add theme Usage of next theme download theme file: git clone https://github.com/xtfly/hugo-theme-next.git next copy next directory to themes directory in your hugo site move config.toml to the root directory in your hugo site, and modify it to the actual information for your site. create some markdown files in directory(content/post), like https://github.com/xtfly/xtfly.github.io/tree/hugo/content start hugo server in root directory:</description>
+    </item>
+    
+  </channel>
+</rss>
