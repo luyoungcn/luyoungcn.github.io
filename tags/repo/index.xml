@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>repo on 南美</title>
+    <link>https://luyoungcn.github.io/tags/repo/</link>
+    <description>Recent content in repo on 南美</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/repo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>repo</title>
+      <link>https://luyoungcn.github.io/post/repo/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      
+      <guid>https://luyoungcn.github.io/post/repo/</guid>
+      <description>环境准备 下载repo工具 user110@server005:~/bin$ curl https://mirrors.tuna.tsinghua.edu.cn/git/git-repo -o repo user110@server005:~/bin$ chmod +x repo 添加环境变量中 user110@server005:~/bin$ vim ~/.bashrc # add code PATH=$PATH:$HOME/bin export REPO_URL=‘git://10.20.6.145/git-re</description>
+    </item>
+    
+  </channel>
+</rss>

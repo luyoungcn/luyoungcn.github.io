@@ -192,6 +192,24 @@ java \  -Djava.util.logging.config.file=/opengrok/etc/logging.properties \  -jar
     </entry>
     
      <entry>
+        <title>repo</title>
+        <url>https://luyoungcn.github.io/post/repo/</url>
+        <categories>
+          <category>工具</category>
+        </categories>
+        <tags>
+          <tag>android</tag><tag>repo</tag>
+        </tags>
+        <content type="html"> 环境准备 下载repo工具
+user110@server005:~/bin$ curl https://mirrors.tuna.tsinghua.edu.cn/git/git-repo -o repo user110@server005:~/bin$ chmod &#43;x repo 添加环境变量中
+user110@server005:~/bin$ vim ~/.bashrc # add code PATH=$PATH:$HOME/bin export REPO_URL=‘git://10.20.6.145/git-repo’ # repo 源地址 user110@server005:~/bin$ source ~/.bashrc 上传 ssh public key
+拉代码 初始化
+user110@server005:~/delete$ repo init -u &amp;lt;ssh://user112@10.20.6.136:29418/platform/manifest.git&amp;gt; -b &amp;lt;branch&amp;gt; -m &amp;lt;manifest_xml&amp;gt; -u:表示git仓库地址 -m:表示具体的xml文件 -b:表示指定特殊的分支 同步
+user110@server005:~/delete$ repo sync –j8 工作流 创建开发分支 repo start &amp;lt;branch_name&amp;gt; -all 修改 修改代码
+提交 git add &amp;lt;files to be added&amp;gt; git commit -m &amp;#34;xxxxxx&amp;#34; 上传 repo upload or git push origin HEAD:refs/for/&amp;lt;branch_name&amp;gt; repo 目录内容简介    条目 描述     manifests 各种 manifest 配置(每一个对应一种项目配置) 的源代码   manifests.git 管理 manifests 源代码的 .git 文件   manifest.xml repo init 初始化项目时(-m), 从 manifests 里(软)链接过来的对应配置   project.list 所有 project 的清单   project-objects 保存所有 private project 的 git 库   projects 保存所有 public project 的 git 库   repo repo 工具的源代码    </content>
+    </entry>
+    
+     <entry>
         <title>samba</title>
         <url>https://luyoungcn.github.io/post/samba/</url>
         <categories>

@@ -35,6 +35,15 @@
     </item>
     
     <item>
+      <title>repo</title>
+      <link>https://luyoungcn.github.io/post/repo/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      
+      <guid>https://luyoungcn.github.io/post/repo/</guid>
+      <description>环境准备 下载repo工具 user110@server005:~/bin$ curl https://mirrors.tuna.tsinghua.edu.cn/git/git-repo -o repo user110@server005:~/bin$ chmod +x repo 添加环境变量中 user110@server005:~/bin$ vim ~/.bashrc # add code PATH=$PATH:$HOME/bin export REPO_URL=‘git://10.20.6.145/git-re</description>
+    </item>
+    
+    <item>
       <title>Wifi Adb</title>
       <link>https://luyoungcn.github.io/post/wifiadb/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
