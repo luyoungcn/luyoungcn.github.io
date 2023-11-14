@@ -176,7 +176,11 @@ ping www.baidu.com
 nslookup www.baidu.com
 是没有结果的。因为我们没指定系统查询域名所用的 DNS 服务器。
 /etc/resolv.conf文件的最后加入：
-nameserver 8.8.8.8 nameserver 8.8.4.4 之后就能 ping 或者 nslookup 百度了。</content></entry><entry><title>Wifi Adb</title><url>/post/wifiadb/</url><categories><category>工具</category></categories><tags><tag>android</tag><tag>adb</tag></tags><content type="html">操作手顺 手机USB连接电脑
+nameserver 8.8.8.8 nameserver 8.8.4.4 之后就能 ping 或者 nslookup 百度了。</content></entry><entry><title>vscode 阅读 Linux 内核代码配置</title><url>/post/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/</url><categories><category>工具</category></categories><tags><tag>kernel</tag><tag>linux</tag><tag>vscode</tag></tags><content type="html"><![CDATA[内核源码根目录下创建 .vscode 目录
+.vscode 目录下创建 c_cpp_properties.json 文件，内容如下：
+{ &#34;configurations&#34;: [ { &#34;name&#34;: &#34;Linux&#34;, &#34;includePath&#34;: [ &#34;${workspaceFolder}/**&#34; ], &#34;defines&#34;: [ &#34;__KERNEL__&#34; ], [&#34;compilerPath&#34;: &#34;/opt/bstos/2.3.0.4/sysroots/x86_64-bstsdk-linux/usr/bin/aarch64-bst-linux/aarch64-bst-linux-gcc&#34;,](&lt;https://www.notion.so/Docker-22f588b5e85d492895231b70d4b5c4a0?pvs=21&gt;) &#34;cStandard&#34;: &#34;c11&#34;, &#34;cppStandard&#34;: &#34;c++17&#34;, &#34;intelliSenseMode&#34;: &#34;gcc-x64&#34; } ], &#34;version&#34;: 4 } 说明：
+compilerPath 需要指定编译器bin文件的路径，而不是编译器所在目录 defines 添加 “KERNEL” 为了解决 uapi 相关头文件中会根据该宏控区分应用层和内核层，如果不定义可能出现头文件不存在问题 例如 include/uapi/linux/videodev2.h 中
+#ifndef __KERNEL__ #include &lt;sys/time.h&gt; #endif ]]></content></entry><entry><title>Wifi Adb</title><url>/post/wifiadb/</url><categories><category>工具</category></categories><tags><tag>android</tag><tag>adb</tag></tags><content type="html">操作手顺 手机USB连接电脑
 adb shell &amp;#34;setprop persist.adb.tcp.port 5555&amp;#34; adb tcpip 5555 手机连上wifi，确认ip地址 此时可以断开手USB，然后通过wifiadb连接
 adb connect 10.100.2.5 Q&amp;amp;A Issue 执行命令 adb connect 10.100.2.5 报错
 missing port in specification: tcp:10.100.2.5 Answer 使用命令 adb connect 10.100.2.5:5555 解决</content></entry><entry><title>windows</title><url>/post/windows/</url><categories><category>工具</category></categories><tags><tag>windows</tag></tags><content type="html">win8 MSDN key RTM核心版 334NH-RXG76-64THK-C7CKG-D3VPT` MSDN专业版 XHQ8N-C3MCJ-RQXB6-WCHYG-C9WKB win10 激活码 VK7JG-NPHTM-C97JM-9MPGT-3V66T win10 开启远程桌面连接 &amp;ldquo;此电脑&amp;rdquo; 右键 属性
