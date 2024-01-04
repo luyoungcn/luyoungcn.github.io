@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><search><entry><title>perror</title><url>/post/perror_func/</url><categories><category>coding</category></categories><tags><tag>c</tag><tag>perror</tag><tag>errnum</tag><tag>glibc</tag><tag>RTFSC</tag></tags><content type="html"><![CDATA[重点学习 errnum 转 str 的实现方法
-妙 妙 妙 stdio-common/perror.c perror (const char *s) static void perror_internal (FILE *fp, const char *s, int errnum)
+妙 妙 妙 perror stdio-common/perror.c - perror (const char *s) - static void perror_internal (FILE *fp, const char *s, int errnum)
 __strerror_r string/_strerror.c
 /* Return a string describing the errno code in ERRNUM. */ char * __strerror_r (int errnum, char *buf, size_t buflen) { char *err = (char *) __get_errlist (errnum); if (__glibc_unlikely (err == NULL)) { __snprintf (buf, buflen, &#34;%s%d&#34;, _(&#34;Unknown error &#34;), errnum); return buf; } return _(err); } __get_errlist stdio-common/errlist.c
 const char * __get_errlist (int errnum) { int mapped = ERR_MAP (errnum); if (mapped &gt;= 0 &amp;&amp; mapped &lt; _sys_errlist_internal_len) return _sys_errlist_internal[mapped]; return NULL; } _sys_errlist_internal stdio-common/errlist-data-gen.c
