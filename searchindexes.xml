@@ -290,7 +290,7 @@ ssh-keygen -t rsa -C &#34;email@qq.com&#34; 3.密钥使用 创建好密钥之后
 Linux/Mac：～/.ssh/id_rsa.pub windows：C:/User/Administrator/.ssh/id_rsa.pub（在安装git时指定） 4. 本地代码提交 有两种方式：
 先将服务器建立的空仓库 clone 到本地，然后添加并提交本地文件 本地先建立代码仓库，然后关联本地仓库和服务器建立的仓库，然后提交文件 添加文件，并提交到本地都一样：
 准备好需要提交的文件，为了将空目录添加到 git 仓库，需要在空目录下创建 .gitkeep 文件, 忽略 .git 目录
-find . -type d -empty -not -path &#39;./.git*&#39; -exec sh -c &#39;test -z &#34;$(git ls-files &#34;{}&#34;)&#34; &amp;&amp; touch &#34;{}/.gitkeep&#34;&#39; \\; -print 在源码跟目录下添加所有文件并提交
+find . -type d -empty -not -path &#39;./.git*&#39; -exec sh -c &#39;test -z &#34;$(git ls-files &#34;{}&#34;)&#34; &amp;&amp; touch &#34;{}/.gitkeep&#34;&#39; \; -print 在源码跟目录下添加所有文件并提交
 git add .; git commit -m &#34;init commit&#34; 关联本地仓库和远程仓库
 cd /path/to/your/local/repository git remote add origin git@192.168.2.2:/path/to/my_project.git 将本地代码推送到服务器
 git push -u origin master ]]></content></entry><entry><title>Virtualbox Opensuse 无网络图标 无法上网</title><url>/post/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/</url><categories><category>工具</category></categories><tags><tag>OpenSuse</tag><tag>linux</tag><tag>network</tag><tag>virtualbox</tag></tags><content type="html">参考链接
