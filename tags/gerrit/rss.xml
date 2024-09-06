@@ -1,1 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gerrit on LuyangのBlog</title><link>/tags/gerrit/</link><description>Recent content in Gerrit on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Jun 2023 00:00:00 +0800</lastBuildDate><atom:link href="/tags/gerrit/rss.xml" rel="self" type="application/rss+xml"/><item><title>gerrit 环境搭建</title><link>/post/gerrit/</link><pubDate>Thu, 01 Jun 2023 00:00:00 +0800</pubDate><guid>/post/gerrit/</guid><description>R1 - Gerrit 环境搭建 环境说明 ubuntu 20.04 Gerrit 3.8.0 openjdk version &amp;ldquo;11.0.19&amp;rdquo; 2023-04-18 安装依赖软件包 sudo apt install openjdk-11-jdk openjdk-11-jdk-headless openjdk-11-jre openjdk-11-jre-headless 创建 Gerrit 用户 sudo adduser gerrit sudo usermod -a -G sudo gerrit sudo su gerrit mkdir ~/gerrit java -jar gerrit-3.8.0.war init -d ~/gerrit 安装 Gerrit $ java -jar gerrit-3.8.0.war init -d ~/gerrit Using secure</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gerrit on LuyangのBlog</title><link>/tags/gerrit/</link><description>Recent content in Gerrit on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Jun 2023 00:00:00 +0800</lastBuildDate><atom:link href="/tags/gerrit/rss.xml" rel="self" type="application/rss+xml"/><item><title>gerrit 环境搭建</title><link>/post/gerrit/</link><pubDate>Thu, 01 Jun 2023 00:00:00 +0800</pubDate><guid>/post/gerrit/</guid><description>&lt;h1 id="r1---gerrit-环境搭建">R1 - Gerrit 环境搭建&lt;/h1>
+&lt;h1 id="环境说明">环境说明&lt;/h1>
+&lt;ul>
+&lt;li>ubuntu 20.04&lt;/li>
+&lt;li>Gerrit 3.8.0&lt;/li>
+&lt;li>openjdk version &amp;ldquo;11.0.19&amp;rdquo; 2023-04-18&lt;/li>
+&lt;/ul>
+&lt;h1 id="安装依赖软件包">安装依赖软件包&lt;/h1>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt install openjdk-11-jdk openjdk-11-jdk-headless openjdk-11-jre openjdk-11-jre-headless
+&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item></channel></rss>

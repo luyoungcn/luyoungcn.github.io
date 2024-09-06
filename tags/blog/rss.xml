@@ -1,1 +1,34 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on LuyangのBlog</title><link>/tags/blog/</link><description>Recent content in Blog on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="/tags/blog/rss.xml" rel="self" type="application/rss+xml"/><item><title>hugo</title><link>/post/hugo/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/hugo/</guid><description>hugo theme: next install hugo create a new site hugo new site &amp;lt;sitename&amp;gt; add theme Usage of next theme download theme file: git clone https://github.com/xtfly/hugo-theme-next.git next copy next directory to themes directory in your hugo site move config.toml to the root directory in your hugo site, and modify it to the actual information for your site. create some markdown files in directory(content/post), like https://github.com/xtfly/xtfly.github.io/tree/hugo/content start hugo server in root directory:</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on LuyangのBlog</title><link>/tags/blog/</link><description>Recent content in Blog on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="/tags/blog/rss.xml" rel="self" type="application/rss+xml"/><item><title>hugo</title><link>/post/hugo/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/hugo/</guid><description>&lt;p>
+&lt;a href="https://gohugo.io/" title="hugo" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ hugo
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>theme: 
+&lt;a href="https://github.com/xtfly/hugo-theme-next" title="next" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ next
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;ol>
+&lt;li>install hugo&lt;/li>
+&lt;li>create a new site &lt;code>hugo new site &amp;lt;sitename&amp;gt;&lt;/code>&lt;/li>
+&lt;li>add theme
+
+&lt;a href="https://github.com/xtfly/hugo-theme-next" title="Usage of next theme" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ Usage of next theme
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>
+&lt;ul>
+&lt;li>download theme file: git clone &lt;code>https://github.com/xtfly/hugo-theme-next.git&lt;/code> next&lt;/li>
+&lt;li>copy next directory to themes directory in your hugo site&lt;/li>
+&lt;li>move config.toml to the root directory in your hugo site, and modify it to the actual information for your site.&lt;/li>
+&lt;li>create some markdown files in directory(content/post), like &lt;code>https://github.com/xtfly/xtfly.github.io/tree/hugo/content&lt;/code>&lt;/li>
+&lt;li>start hugo server in root directory: hugo server&lt;/li>
+&lt;li>open browser: &lt;code>http://localhost:1313/&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>start server &lt;code>hugo server --bind 0.0.0.0 --baseURL http://10.0.0.7:1313&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;h2 id="框架">框架&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>blog&lt;span style="color:#f92672">]&lt;/span>$ ls
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>archetypes config.toml content data layouts public resources static themes
+&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item></channel></rss>

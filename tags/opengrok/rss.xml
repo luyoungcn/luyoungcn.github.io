@@ -1,1 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Opengrok on LuyangのBlog</title><link>/tags/opengrok/</link><description>Recent content in Opengrok on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="/tags/opengrok/rss.xml" rel="self" type="application/rss+xml"/><item><title>opengrok</title><link>/post/opengrok/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/opengrok/</guid><description>环境 ubuntu 18.04 x64 依赖工具 jdk 1.8 universal-ctags tomcat8 opengrok 配置流程 jdk 安装 sudo apt install openjdk-8-jdk openjdk-8-jdk-headless openjdk-8-jre openjdk-8-jre-dcevm openjdk-8-jre-headless 通常android编译环境能够正常工作jdk环境已经ok. $ java -version openjdk version &amp;#34;1.8.0_252&amp;#34; OpenJDK Runtime Environment (build 1.8.0_252-8u252-b09-1~18.04-b09) OpenJDK</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Opengrok on LuyangのBlog</title><link>/tags/opengrok/</link><description>Recent content in Opengrok on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="/tags/opengrok/rss.xml" rel="self" type="application/rss+xml"/><item><title>opengrok</title><link>/post/opengrok/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/opengrok/</guid><description>&lt;h2 id="环境">环境&lt;/h2>
+&lt;p>ubuntu 18.04 x64&lt;/p>
+&lt;h2 id="依赖工具">依赖工具&lt;/h2>
+&lt;ul>
+&lt;li>jdk 1.8&lt;/li>
+&lt;li>universal-ctags&lt;/li>
+&lt;li>tomcat8&lt;/li>
+&lt;li>
+&lt;a href="https://github.com/OpenGrok/OpenGrok/releases" title="opengrok" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ opengrok
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="配置流程">配置流程&lt;/h2>
+&lt;h3 id="jdk-安装">jdk 安装&lt;/h3>
+&lt;p>&lt;code>sudo apt install openjdk-8-jdk openjdk-8-jdk-headless openjdk-8-jre openjdk-8-jre-dcevm openjdk-8-jre-headless&lt;/code>&lt;/p></description></item></channel></rss>

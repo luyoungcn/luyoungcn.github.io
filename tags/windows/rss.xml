@@ -1,1 +1,77 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Windows on LuyangのBlog</title><link>/tags/windows/</link><description>Recent content in Windows on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Tue, 16 May 2023 20:19:08 +0800</lastBuildDate><atom:link href="/tags/windows/rss.xml" rel="self" type="application/rss+xml"/><item><title>windows vcpkg</title><link>/post/vcpkg_windows/</link><pubDate>Tue, 16 May 2023 20:19:08 +0800</pubDate><guid>/post/vcpkg_windows/</guid><description>Install vcpkg https://github.com/microsoft/vcpkg#quick-start-windows powershell 终端执行如下命令： git clone https://github.com/microsoft/vcpkg .\vcpkg\bootstrap-vcpkg.bat Install Package # To install the libraries for your project, run: # This will install x86 libraries by default. .\vcpkg\vcpkg install [packages to install] # To install x64, run: .\vcpkg\vcpkg install [package name]:x64-windows Tab-Completion/Auto-Completion https://github.com/microsoft/vcpkg#tab-completionauto-completion vcpkg supports auto-completion of commands, package names, and options in both powershell and bash. To enable tab-completion in</description></item><item><title>windows10 WSL setup</title><link>/post/windows10_wsl/</link><pubDate>Thu, 09 Feb 2023 00:00:00 +0800</pubDate><guid>/post/windows10_wsl/</guid><description>win10 安装 wsl2 安装 WSL | Microsoft Docs 必须运行 Windows 10 版本 2004 及更高版本（内部版本 19041 及更高版本）或 Windows 11。 → 我的电脑win10已经更新到最新，应该没问题。 设置→系统</description></item><item><title>Android10编译开启ccache</title><link>/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</guid><description>Android10的基线代码google已经将prebuilt的ccache移除,但是保留了相关功能选项 commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843 Author: Dan Willemsen &amp;lt;dwillemsen@google.com&amp;gt; Date: Thu Apr 5 15:48:16 2018 -0700 Remove our binary of ccache</description></item><item><title>windows</title><link>/post/windows/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/windows/</guid><description>win8 MSDN key RTM核心版 334NH-RXG76-64THK-C7CKG-D3VPT` MSDN专业版 XHQ8N-C3MCJ-RQXB6-WCHYG-C9WKB win10 激活码 VK7JG-NPHTM-C97JM-9MPGT-3V66T win10 开启远程桌面连接 &amp;ldquo;此电脑&amp;rdquo; 右键 属性 远程设置 远程协助 允许远程协助连接这</description></item><item><title>Windows Remote Desktop</title><link>/post/windows_remote_desktop/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/windows_remote_desktop/</guid><description>远程电脑启用远程桌面 如何使用远程桌面 - Microsoft 支持 设置你想要连接以使其允许远程连接的电脑： 确保你拥有 Windows 11 专业版。 若要检查这一点，请选择“开始”，然</description></item><item><title>Windows Vscode Plantuml 环境搭建</title><link>/post/windowsvscodeplantuml%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/windowsvscodeplantuml%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid><description>下载 安装vscode 下载 安装java，不然无法预览plantuml 下载安装该java安装包后没有设置相关java环境变量就可以预览plant</description></item><item><title>word</title><link>/post/word/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/word/</guid><description>基于 office 2016如何隐藏 word 行尾的换行标记 文件-选项,弹出 Word 选项对话框 选择 显示 取消勾选 段落标记(M) 删除隐藏的数据和个人信息 打开要删除个人信息的</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Windows on LuyangのBlog</title><link>/tags/windows/</link><description>Recent content in Windows on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Tue, 16 May 2023 20:19:08 +0800</lastBuildDate><atom:link href="/tags/windows/rss.xml" rel="self" type="application/rss+xml"/><item><title>windows vcpkg</title><link>/post/vcpkg_windows/</link><pubDate>Tue, 16 May 2023 20:19:08 +0800</pubDate><guid>/post/vcpkg_windows/</guid><description>&lt;h1 id="install-vcpkg">Install vcpkg&lt;/h1>
+&lt;p>
+&lt;a href="https://github.com/microsoft/vcpkg#quick-start-windows" title="https://github.com/microsoft/vcpkg#quick-start-windows" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ https://github.com/microsoft/vcpkg#quick-start-windows
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>powershell 终端执行如下命令：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git clone https://github.com/microsoft/vcpkg
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#ae81ff">\v&lt;/span>cpkg&lt;span style="color:#ae81ff">\b&lt;/span>ootstrap-vcpkg.bat
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="install-package">Install Package&lt;/h1>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># To install the libraries for your project, run:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># This will install x86 libraries by default.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#ae81ff">\v&lt;/span>cpkg&lt;span style="color:#ae81ff">\v&lt;/span>cpkg install &lt;span style="color:#f92672">[&lt;/span>packages to install&lt;span style="color:#f92672">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># To install x64, run:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#ae81ff">\v&lt;/span>cpkg&lt;span style="color:#ae81ff">\v&lt;/span>cpkg install &lt;span style="color:#f92672">[&lt;/span>package name&lt;span style="color:#f92672">]&lt;/span>:x64-windows
+&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item><item><title>windows10 WSL setup</title><link>/post/windows10_wsl/</link><pubDate>Thu, 09 Feb 2023 00:00:00 +0800</pubDate><guid>/post/windows10_wsl/</guid><description>&lt;h1 id="win10-安装-wsl2">win10 安装 wsl2&lt;/h1>
+&lt;p>
+&lt;a href="https://docs.microsoft.com/zh-cn/windows/wsl/install" title="安装 WSL | Microsoft Docs" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ 安装 WSL | Microsoft Docs
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>Android10编译开启ccache</title><link>/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</guid><description>&lt;p>Android10的基线代码google已经将prebuilt的ccache移除,但是保留了相关功能选项&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-diff" data-lang="diff">&lt;span style="display:flex;">&lt;span>commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Author: Dan Willemsen &amp;lt;dwillemsen@google.com&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Date: Thu Apr 5 15:48:16 2018 -0700
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Remove our binary of ccache
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> This version is rather old, and has many known bugs. The build system is
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> no longer providing ccache, but preserving the option to use your own at
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> your own risk.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Bug: 32748498
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Test: cs/ccache
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Change-Id: I894a11445127bf8cb3a7ac5a119c500f2c572fb9
+&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item><item><title>windows</title><link>/post/windows/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/windows/</guid><description>&lt;h2 id="win8-msdn-key">win8 MSDN key&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>RTM核心版 &lt;/code>334NH-RXG76-64THK-C7CKG-D3VPT`&lt;/li>
+&lt;li>&lt;code>MSDN专业版&lt;/code> &lt;code>XHQ8N-C3MCJ-RQXB6-WCHYG-C9WKB&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h2 id="win10-激活码">win10 激活码&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>VK7JG-NPHTM-C97JM-9MPGT-3V66T&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h2 id="win10-开启远程桌面连接">win10 开启远程桌面连接&lt;/h2>
+&lt;p>&amp;ldquo;此电脑&amp;rdquo; 右键 &lt;code>属性&lt;/code>&lt;/p></description></item><item><title>Windows Remote Desktop</title><link>/post/windows_remote_desktop/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/windows_remote_desktop/</guid><description>&lt;h1 id="远程电脑启用远程桌面">远程电脑启用远程桌面&lt;/h1>
+&lt;p>
+&lt;a href="https://support.microsoft.com/zh-cn/windows/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2-5fe128d5-8fb1-7a23-3b8a-41e636865e8c" title="如何使用远程桌面 - Microsoft 支持" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ 如何使用远程桌面 - Microsoft 支持
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>Windows Vscode Plantuml 环境搭建</title><link>/post/windowsvscodeplantuml%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/windowsvscodeplantuml%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid><description>&lt;ul>
+&lt;li>
+&lt;p>
+&lt;a href="https://code.visualstudio.com/" title="下载" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ 下载
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>安装vscode&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>
+&lt;a href="https://www.java.com/zh_CN/download/windows_offline.jsp" title="下载" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ 下载
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>安装java，不然无法预览plantuml&lt;/p></description></item><item><title>word</title><link>/post/word/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/word/</guid><description>&lt;h2 id="基于-office-2016如何隐藏-word-行尾的换行标记">基于 office 2016如何隐藏 word 行尾的换行标记&lt;/h2>
+&lt;ol>
+&lt;li>文件-选项,弹出 Word 选项对话框&lt;/li>
+&lt;li>选择 显示&lt;/li>
+&lt;li>取消勾选 段落标记(M)&lt;/li>
+&lt;/ol>
+&lt;h2 id="删除隐藏的数据和个人信息">删除隐藏的数据和个人信息&lt;/h2>
+&lt;ol>
+&lt;li>打开要删除个人信息的文件&lt;/li>
+&lt;li>文件-信息&lt;/li>
+&lt;li>检查问题-检查文档&lt;/li>
+&lt;li>点击检查&lt;/li>
+&lt;li>点击需要删除信息部分的 全部删除&lt;/li>
+&lt;/ol></description></item></channel></rss>

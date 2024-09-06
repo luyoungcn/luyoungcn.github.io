@@ -1,1 +1,93 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Android on LuyangのBlog</title><link>/tags/android/</link><description>Recent content in Android on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0800</lastBuildDate><atom:link href="/tags/android/rss.xml" rel="self" type="application/rss+xml"/><item><title>Windows WSL ubuntu adb 配置</title><link>/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate><guid>/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</guid><description>配置前的状态 windows 11 + wsl + ubuntu 18.04 windows 可以识别 adb devices C:\Users&amp;gt;adb devices List of devices attached fada-018b4209f24d0001 device wsl 识别不到 adb devices luyang@LUYANG:~$ adb devices * daemon not running; starting now at tcp:5037 * daemon started successfully List of devices attached Windows 安装工具包 windows 安装 usbipd-win WSL 安装工具包</description></item><item><title>gerrit 环境搭建</title><link>/post/gerrit/</link><pubDate>Thu, 01 Jun 2023 00:00:00 +0800</pubDate><guid>/post/gerrit/</guid><description>R1 - Gerrit 环境搭建 环境说明 ubuntu 20.04 Gerrit 3.8.0 openjdk version &amp;ldquo;11.0.19&amp;rdquo; 2023-04-18 安装依赖软件包 sudo apt install openjdk-11-jdk openjdk-11-jdk-headless openjdk-11-jre openjdk-11-jre-headless 创建 Gerrit 用户 sudo adduser gerrit sudo usermod -a -G sudo gerrit sudo su gerrit mkdir ~/gerrit java -jar gerrit-3.8.0.war init -d ~/gerrit 安装 Gerrit $ java -jar gerrit-3.8.0.war init -d ~/gerrit Using secure</description></item><item><title>Android Java 1.7 环境配置</title><link>/post/androidjava-.7%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/androidjava-.7%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid><description>下载jdk 1.7 https://repo.huaweicloud.com/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz 解压 tar xzvf jdk-7u80-linux-x64.tar.gz android 18.04 jdk1.7 android 7.1 安装 sudo mv jdk1.7.0_80 /usr/lib/ switchjdk7.sh 文件内容如下，该文件放在代码顶层目录： # add JDK7 cofig ---- export JAVA_HOME=/usr/lib/jdk1.7.0_80/ export JRE_HOME=${JAVA_HOME}/jre export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib export PATH=${JAVA_HOME}/bin:$PATH # add JDK7 cofig ---- 执行如下命令切换j</description></item><item><title>Android Studio Env</title><link>/post/androidstudioenv/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/androidstudioenv/</guid><description>工具 AndroidStudio 信息 Android Studio 默认设置 SDK Folder: &amp;ldquo;%APPDATA%\Local\Android\Sdk&amp;rdquo; JDK Folder: &amp;ldquo;C:\Program Files\Android\Android Studio\jre&amp;rdquo; 问题解决 安装完Android Studio首次启动报错 Unable to access Android SDK add-on list 选择cancel gradle 下载环境配置 For Windows C:\Users\luyang\.gradle\init.gradle</description></item><item><title>Android 使用 am 命令启动一个活动组件</title><link>/post/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</guid><description>am 命令说明 am start -n 命令是 Android 调试桥（ADB）工具的一部分，用于在 Android 设备上启动一个活动。以下是该命令及其组成部分的详细解释： am: 代表 Activity Manager</description></item><item><title>Android10编译开启ccache</title><link>/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</guid><description>Android10的基线代码google已经将prebuilt的ccache移除,但是保留了相关功能选项 commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843 Author: Dan Willemsen &amp;lt;dwillemsen@google.com&amp;gt; Date: Thu Apr 5 15:48:16 2018 -0700 Remove our binary of ccache</description></item><item><title>repo</title><link>/post/repo/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/repo/</guid><description>环境准备 下载repo工具 user110@server005:~/bin$ curl https://mirrors.tuna.tsinghua.edu.cn/git/git-repo -o repo user110@server005:~/bin$ chmod +x repo 添加环境变量中 user110@server005:~/bin$ vim ~/.bashrc # add code PATH=$PATH:$HOME/bin export REPO_URL=‘git://10.20.6.145/git-re</description></item><item><title>Wifi Adb</title><link>/post/wifiadb/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/wifiadb/</guid><description>操作手顺 手机USB连接电脑 adb shell &amp;#34;setprop persist.adb.tcp.port 5555&amp;#34; adb tcpip 5555 手机连上wifi，确认ip地址 此时可以断开手USB，然后通过wifiadb连接 adb connect 10.100.2.5 Q&amp;amp;A Issue 执行命令 adb</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Android on LuyangのBlog</title><link>/tags/android/</link><description>Recent content in Android on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0800</lastBuildDate><atom:link href="/tags/android/rss.xml" rel="self" type="application/rss+xml"/><item><title>Windows WSL ubuntu adb 配置</title><link>/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate><guid>/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</guid><description>&lt;h2 id="配置前的状态">配置前的状态&lt;/h2>
+&lt;ul>
+&lt;li>windows 11 + wsl + ubuntu 18.04&lt;/li>
+&lt;/ul>
+&lt;p>windows 可以识别 adb devices&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>C:\Users&amp;gt;adb devices
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>List of devices attached
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>fada-018b4209f24d0001 device
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>wsl 识别不到 adb devices&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>luyang@LUYANG:~$ adb devices
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>* daemon not running; starting now at tcp:5037
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>* daemon started successfully
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>List of devices attached
+&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item><item><title>gerrit 环境搭建</title><link>/post/gerrit/</link><pubDate>Thu, 01 Jun 2023 00:00:00 +0800</pubDate><guid>/post/gerrit/</guid><description>&lt;h1 id="r1---gerrit-环境搭建">R1 - Gerrit 环境搭建&lt;/h1>
+&lt;h1 id="环境说明">环境说明&lt;/h1>
+&lt;ul>
+&lt;li>ubuntu 20.04&lt;/li>
+&lt;li>Gerrit 3.8.0&lt;/li>
+&lt;li>openjdk version &amp;ldquo;11.0.19&amp;rdquo; 2023-04-18&lt;/li>
+&lt;/ul>
+&lt;h1 id="安装依赖软件包">安装依赖软件包&lt;/h1>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt install openjdk-11-jdk openjdk-11-jdk-headless openjdk-11-jre openjdk-11-jre-headless
+&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item><item><title>Android Java 1.7 环境配置</title><link>/post/androidjava-.7%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/androidjava-.7%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>下载jdk 1.7&lt;/p>
+&lt;p>
+&lt;a href="https://repo.huaweicloud.com/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz" title="https://repo.huaweicloud.com/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ https://repo.huaweicloud.com/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>解压&lt;/p>
+&lt;p>tar xzvf jdk-7u80-linux-x64.tar.gz&lt;/p>
+&lt;ul>
+&lt;li>android 18.04&lt;/li>
+&lt;li>jdk1.7&lt;/li>
+&lt;li>android 7.1&lt;/li>
+&lt;/ul>
+&lt;p>安装&lt;/p>
+&lt;p>&lt;code>sudo mv jdk1.7.0_80 /usr/lib/&lt;/code>&lt;/p>
+&lt;p>switchjdk7.sh 文件内容如下，该文件放在代码顶层目录：&lt;/p></description></item><item><title>Android Studio Env</title><link>/post/androidstudioenv/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/androidstudioenv/</guid><description>&lt;h2 id="工具">工具&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;a href="https://developer.android.google.cn/studio" title="AndroidStudio" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ AndroidStudio
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="信息">信息&lt;/h2>
+&lt;p>Android Studio 默认设置&lt;/p>
+&lt;ul>
+&lt;li>SDK Folder:
+&lt;ul>
+&lt;li>&amp;ldquo;%APPDATA%\Local\Android\Sdk&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>JDK Folder:
+&lt;ul>
+&lt;li>&amp;ldquo;C:\Program Files\Android\Android Studio\jre&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="问题解决">问题解决&lt;/h2>
+&lt;h3 id="安装完android-studio首次启动报错">安装完Android Studio首次启动报错&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-markdown" data-lang="markdown">&lt;span style="display:flex;">&lt;span>Unable to access Android SDK add-on list
+&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item><item><title>Android 使用 am 命令启动一个活动组件</title><link>/post/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</guid><description>&lt;h2 id="am-命令说明">am 命令说明&lt;/h2>
+&lt;p>&lt;code>am start -n&lt;/code> 命令是 Android 调试桥（ADB）工具的一部分，用于在 Android 设备上启动一个活动。以下是该命令及其组成部分的详细解释：&lt;/p></description></item><item><title>Android10编译开启ccache</title><link>/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</guid><description>&lt;p>Android10的基线代码google已经将prebuilt的ccache移除,但是保留了相关功能选项&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-diff" data-lang="diff">&lt;span style="display:flex;">&lt;span>commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Author: Dan Willemsen &amp;lt;dwillemsen@google.com&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Date: Thu Apr 5 15:48:16 2018 -0700
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Remove our binary of ccache
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> This version is rather old, and has many known bugs. The build system is
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> no longer providing ccache, but preserving the option to use your own at
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> your own risk.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Bug: 32748498
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Test: cs/ccache
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Change-Id: I894a11445127bf8cb3a7ac5a119c500f2c572fb9
+&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item><item><title>repo</title><link>/post/repo/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/repo/</guid><description>&lt;h2 id="环境准备">环境准备&lt;/h2>
+&lt;p>下载repo工具&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>user110@server005:~/bin$ curl https://mirrors.tuna.tsinghua.edu.cn/git/git-repo -o repo
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>user110@server005:~/bin$ chmod +x repo
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>添加环境变量中&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>user110@server005:~/bin$ vim ~/.bashrc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># add code&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>PATH&lt;span style="color:#f92672">=&lt;/span>$PATH:$HOME/bin
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export REPO_URL&lt;span style="color:#f92672">=&lt;/span>‘git://10.20.6.145/git-repo’ &lt;span style="color:#75715e"># repo 源地址&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>user110@server005:~/bin$ source ~/.bashrc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item><item><title>Wifi Adb</title><link>/post/wifiadb/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/wifiadb/</guid><description>&lt;h2 id="操作手顺">操作手顺&lt;/h2>
+&lt;p>手机USB连接电脑&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>adb shell &lt;span style="color:#e6db74">&amp;#34;setprop persist.adb.tcp.port 5555&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>adb tcpip &lt;span style="color:#ae81ff">5555&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>手机连上wifi，确认ip地址
+此时可以断开手USB，然后通过wifiadb连接&lt;/p></description></item></channel></rss>

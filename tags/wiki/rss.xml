@@ -1,1 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Wiki on LuyangのBlog</title><link>/tags/wiki/</link><description>Recent content in Wiki on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="/tags/wiki/rss.xml" rel="self" type="application/rss+xml"/><item><title>dokuwiki</title><link>/post/dokuwiki/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/dokuwiki/</guid><description>关于 Dokuwiki 详细信息, 请访问 官网 . 安装配置 本教程基于 ubuntu 17.10 x64 参考 DokuWiki Installation 安装 apache php apt-get install apache2 apt-get install php7.1 libapache2-mod-php7.1 php7.1-xml 配置 apache php 修改文件 apache2/sites-available/000-default.conf 配置 apache2 document root 为 dokuwiki 根目录 - DocumentRoot /var/www/html + DocumentRoot /var/www/wikihub 修改文</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Wiki on LuyangのBlog</title><link>/tags/wiki/</link><description>Recent content in Wiki on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="/tags/wiki/rss.xml" rel="self" type="application/rss+xml"/><item><title>dokuwiki</title><link>/post/dokuwiki/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/dokuwiki/</guid><description>&lt;p>关于 Dokuwiki 详细信息, 请访问
+&lt;a href="https://www.dokuwiki.org/" title="官网" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ 官网
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>.&lt;/p>
+&lt;h2 id="安装配置">安装配置&lt;/h2>
+&lt;blockquote>
+&lt;p>本教程基于 ubuntu 17.10 x64&lt;/p></description></item></channel></rss>

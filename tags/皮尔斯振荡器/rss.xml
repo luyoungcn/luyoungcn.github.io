@@ -1,1 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>皮尔斯振荡器 on LuyangのBlog</title><link>/tags/%E7%9A%AE%E5%B0%94%E6%96%AF%E6%8C%AF%E8%8D%A1%E5%99%A8/</link><description>Recent content in 皮尔斯振荡器 on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="/tags/%E7%9A%AE%E5%B0%94%E6%96%AF%E6%8C%AF%E8%8D%A1%E5%99%A8/rss.xml" rel="self" type="application/rss+xml"/><item><title>crystal</title><link>/post/crystal/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/crystal/</guid><description>Crystal Oscillator 晶体振荡器 无源晶振 晶振本身并不能起振，需要借助外部振荡电路。因此在实际电路中需要IC上电正常后晶振才能起振。 此时才能测量出晶振波形。 常见</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>皮尔斯振荡器 on LuyangのBlog</title><link>/tags/%E7%9A%AE%E5%B0%94%E6%96%AF%E6%8C%AF%E8%8D%A1%E5%99%A8/</link><description>Recent content in 皮尔斯振荡器 on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="/tags/%E7%9A%AE%E5%B0%94%E6%96%AF%E6%8C%AF%E8%8D%A1%E5%99%A8/rss.xml" rel="self" type="application/rss+xml"/><item><title>crystal</title><link>/post/crystal/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/crystal/</guid><description>&lt;p>Crystal Oscillator 晶体振荡器&lt;/p>
+&lt;h1 id="无源晶振">无源晶振&lt;/h1>
+&lt;ul>
+&lt;li>晶振本身并不能起振，需要借助外部振荡电路。因此在实际电路中需要IC上电正常后晶振才能起振。
+此时才能测量出晶振波形。&lt;/li>
+&lt;/ul>
+&lt;h2 id="常见晶振频率">常见晶振频率&lt;/h2>
+&lt;p>晶振常用的频率为 4MHz ~ 50MHz&lt;/p></description></item></channel></rss>

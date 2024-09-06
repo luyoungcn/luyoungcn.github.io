@@ -1,1 +1,43 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tcpdump on LuyangのBlog</title><link>/tags/tcpdump/</link><description>Recent content in Tcpdump on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Fri, 03 Feb 2023 12:00:00 +0800</lastBuildDate><atom:link href="/tags/tcpdump/rss.xml" rel="self" type="application/rss+xml"/><item><title>交叉编译 tcpdump-4.99.1</title><link>/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-tcpdump-4.99.1/</link><pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate><guid>/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-tcpdump-4.99.1/</guid><description>交叉编译 tcpdump-4.99.1 tcp dump 主页 tcpdump-4.99.1.tar.gz libpcap-1.10.1.tar.gz 参考：https://blog.csdn.net/onlyshi/article/details/81081707 tcpdump 依</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tcpdump on LuyangのBlog</title><link>/tags/tcpdump/</link><description>Recent content in Tcpdump on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Fri, 03 Feb 2023 12:00:00 +0800</lastBuildDate><atom:link href="/tags/tcpdump/rss.xml" rel="self" type="application/rss+xml"/><item><title>交叉编译 tcpdump-4.99.1</title><link>/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-tcpdump-4.99.1/</link><pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate><guid>/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-tcpdump-4.99.1/</guid><description>&lt;h1 id="交叉编译-tcpdump-4991">交叉编译 tcpdump-4.99.1&lt;/h1>
+&lt;ul>
+&lt;li>tcp dump 
+&lt;a href="https://www.tcpdump.org/" title="主页" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ 主页
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>
+&lt;ul>
+&lt;li>
+&lt;a href="https://www.tcpdump.org/release/tcpdump-4.99.1.tar.gz" title="tcpdump-4.99.1.tar.gz" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ tcpdump-4.99.1.tar.gz
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://www.tcpdump.org/release/libpcap-1.10.1.tar.gz" title="libpcap-1.10.1.tar.gz" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ libpcap-1.10.1.tar.gz
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>参考：https://blog.csdn.net/onlyshi/article/details/81081707&lt;/li>
+&lt;li>tcpdump 依赖 libpcap，需要先编译 libcap。&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#!/bin/bash
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export LIBCAP&lt;span style="color:#f92672">=&lt;/span>/code/libpcap-1.10.1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export TCPDUMP&lt;span style="color:#f92672">=&lt;/span>/code/tcpdump-4.99.1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export CROSS_COMPILETOOL&lt;span style="color:#f92672">=&lt;/span>aarch64-bst-linux
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd $LIBCAP
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkdir -p install
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./configure --prefix&lt;span style="color:#f92672">=&lt;/span>./install --host&lt;span style="color:#f92672">=&lt;/span>arm-linux-gnueabihf --with-pcap&lt;span style="color:#f92672">=&lt;/span>linux
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>make
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>make install
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd $TCPDUMP
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkdir -p install
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./configure --prefix&lt;span style="color:#f92672">=&lt;/span>./install --host&lt;span style="color:#f92672">=&lt;/span>arm-linux-gnueabihf
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>make
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>make install
+&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item></channel></rss>

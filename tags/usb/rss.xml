@@ -1,1 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Usb on LuyangのBlog</title><link>/tags/usb/</link><description>Recent content in Usb on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0800</lastBuildDate><atom:link href="/tags/usb/rss.xml" rel="self" type="application/rss+xml"/><item><title>Windows WSL ubuntu adb 配置</title><link>/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate><guid>/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</guid><description>配置前的状态 windows 11 + wsl + ubuntu 18.04 windows 可以识别 adb devices C:\Users&amp;gt;adb devices List of devices attached fada-018b4209f24d0001 device wsl 识别不到 adb devices luyang@LUYANG:~$ adb devices * daemon not running; starting now at tcp:5037 * daemon started successfully List of devices attached Windows 安装工具包 windows 安装 usbipd-win WSL 安装工具包</description></item><item><title>wsl 使用 usbipd 访问 USB 设备</title><link>/post/usbipd/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/usbipd/</guid><description>注意：如下 usbipd 命令需要在 以管理员身份运行 的 powershell 中执行 usbipd: USB/IP open-source project PS C:\WINDOWS\system32&amp;gt; usbipd wsl attach --busid 4-4 usbipd: error: The service is currently not running; a reboot should fix that. https://github.com/dorssel/usbipd-win/issues/122 参考了上述链接，也做了重启，仍然报错，于是</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Usb on LuyangのBlog</title><link>/tags/usb/</link><description>Recent content in Usb on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0800</lastBuildDate><atom:link href="/tags/usb/rss.xml" rel="self" type="application/rss+xml"/><item><title>Windows WSL ubuntu adb 配置</title><link>/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate><guid>/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</guid><description>&lt;h2 id="配置前的状态">配置前的状态&lt;/h2>
+&lt;ul>
+&lt;li>windows 11 + wsl + ubuntu 18.04&lt;/li>
+&lt;/ul>
+&lt;p>windows 可以识别 adb devices&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>C:\Users&amp;gt;adb devices
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>List of devices attached
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>fada-018b4209f24d0001 device
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>wsl 识别不到 adb devices&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>luyang@LUYANG:~$ adb devices
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>* daemon not running; starting now at tcp:5037
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>* daemon started successfully
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>List of devices attached
+&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item><item><title>wsl 使用 usbipd 访问 USB 设备</title><link>/post/usbipd/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/usbipd/</guid><description>&lt;blockquote>
+&lt;p>注意：如下 usbipd 命令需要在 &lt;code>以管理员身份运行&lt;/code> 的 powershell 中执行&lt;/p>
+&lt;/blockquote>
+&lt;p>usbipd: USB/IP open-source project&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>PS C:&lt;span style="color:#ae81ff">\W&lt;/span>INDOWS&lt;span style="color:#ae81ff">\s&lt;/span>ystem32&amp;gt; usbipd wsl attach --busid 4-4
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>usbipd: error: The service is currently not running; a reboot should fix that.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>
+&lt;a href="https://github.com/dorssel/usbipd-win/issues/122" title="https://github.com/dorssel/usbipd-win/issues/122" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ https://github.com/dorssel/usbipd-win/issues/122
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item></channel></rss>

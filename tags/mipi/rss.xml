@@ -1,1 +1,35 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mipi on LuyangのBlog</title><link>/tags/mipi/</link><description>Recent content in Mipi on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="/tags/mipi/rss.xml" rel="self" type="application/rss+xml"/><item><title>GMSL SERDES 笔记</title><link>/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/</guid><description>a# MAX96724 MAX96724 相关资源 product overview MAX96724/F/R 英文数据手册 Rev.4 MAX96724/F/R Users Guide GMSL2 Channel Specification User Guide Rev 1 MAX96717F: CSI-2 to GMSL2 Serializer Data Sheet (Rev. 5) 如何确认 DEV_ID 0xD 如何配置并确认 GMSL mode 和 GMSL RX rate 0x6 0x10 0x11 0x18 如何确认 GMSL Link Lock Status 配置流</description></item><item><title>关于雷达 AWR2243 ADC OVER CSI HSI</title><link>/post/awr2243_adc/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/awr2243_adc/</guid><description>关于雷达 AWR2243 ADC OVER CSI HSI AWR2243 的 CSI2 支持最高数据位速率（Data bit rate）为 600Mbps，DDR 时钟最高为 300Mhz。外部处理器 CSI2 支持的最高时钟至</description></item><item><title>摄像头图像数据格式从cmos到mipi</title><link>/post/camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mipi on LuyangのBlog</title><link>/tags/mipi/</link><description>Recent content in Mipi on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="/tags/mipi/rss.xml" rel="self" type="application/rss+xml"/><item><title>GMSL SERDES 笔记</title><link>/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/</guid><description>&lt;p>a# MAX96724&lt;/p>
+&lt;h1 id="max96724-相关资源">MAX96724 相关资源&lt;/h1>
+&lt;ul>
+&lt;li>
+&lt;a href="https://www.analog.com/cn/products/max96724.html#product-overview" title="product overview" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ product overview
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://www.analog.com/media/en/technical-documentation/data-sheets/max96724.pdf" title="MAX96724/F/R 英文数据手册 Rev.4" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ MAX96724/F/R 英文数据手册 Rev.4
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://www.analog.com/media/en/technical-documentation/user-guides/max96724fr-user-guide.pdf" title="MAX96724/F/R Users Guide" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ MAX96724/F/R Users Guide
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-channel-specification-user-guide.pdf" title="GMSL2 Channel Specification User Guide Rev 1" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ GMSL2 Channel Specification User Guide Rev 1
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://www.analog.com/media/en/technical-documentation/data-sheets/max96717f.pdf" title="MAX96717F: CSI-2 to GMSL2 Serializer Data Sheet (Rev. 5)" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ MAX96717F: CSI-2 to GMSL2 Serializer Data Sheet (Rev. 5)
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h1 id="如何确认-dev_id">如何确认 DEV_ID&lt;/h1>
+&lt;ul>
+&lt;li>0xD&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="max96724_reg_d.png" alt="Untitled" />&lt;/p></description></item><item><title>关于雷达 AWR2243 ADC OVER CSI HSI</title><link>/post/awr2243_adc/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/awr2243_adc/</guid><description>&lt;h1 id="关于雷达-awr2243-adc-over-csi-hsi">关于雷达 AWR2243 ADC OVER CSI HSI&lt;/h1>
+&lt;p>AWR2243 的 CSI2 支持最高数据位速率（Data bit rate）为 600Mbps，DDR 时钟最高为 300Mhz。外部处理器 CSI2 支持的最高时钟至少要等于 AWR2243 配置的 CSI2 输出时钟。&lt;/p></description></item><item><title>摄像头图像数据格式从cmos到mipi</title><link>/post/camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi/</guid><description>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="camera_%e5%9b%be%e5%83%8f%e6%95%b0%e6%8d%ae%e6%a0%bc%e5%bc%8f_%e4%bb%8ecmos%e5%88%b0mipi.png" alt="" />&lt;/p></description></item></channel></rss>
