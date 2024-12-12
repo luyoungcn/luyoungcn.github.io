@@ -658,7 +658,16 @@ ubuntu 18.04&lt;/p>
  POSIX time
  &lt;i class="fa fa-external-link-alt">&lt;/i>
 &lt;/a>
-Unix 和 POSIX 兼容系统将 &lt;code>time_t&lt;/code> 类型作为带符号整数（通常为 32 或 64 位宽）来实现，它表示自 Unix 时间开始以来的秒数&lt;/p></description></item><item><title>git clone 包含 submodule 的仓库</title><link>/post/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/post/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/</guid><description>&lt;ol>
+Unix 和 POSIX 兼容系统将 &lt;code>time_t&lt;/code> 类型作为带符号整数（通常为 32 或 64 位宽）来实现，它表示自 Unix 时间开始以来的秒数&lt;/p></description></item><item><title/><link>/post/ubuntu-20.04-%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/post/ubuntu-20.04-%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/</guid><description>&lt;h1 id="系统信息">系统信息&lt;/h1>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ lsb_release -a
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>No LSB modules are available.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Distributor ID: Ubuntu
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Description: Ubuntu 20.04.6 LTS
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Release: 20.04
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Codename: focal
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ uname -a
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Linux kang-HP-ProBook-440-14-inch-G10-Notebook-PC 5.15.0-67-generic &lt;span style="color:#75715e">#74~20.04.1-Ubuntu SMP Wed Feb 22 14:52:34 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item><item><title>git clone 包含 submodule 的仓库</title><link>/post/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/post/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/</guid><description>&lt;ol>
 &lt;li>使用 git clone 命令来克隆主仓库：&lt;/li>
 &lt;/ol>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git clone &amp;lt;主仓库 URL&amp;gt;
