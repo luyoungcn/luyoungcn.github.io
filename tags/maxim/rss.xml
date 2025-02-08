@@ -1,4 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MAXIM on LuyangのBlog</title><link>/tags/maxim/</link><description>Recent content in MAXIM on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="/tags/maxim/rss.xml" rel="self" type="application/rss+xml"/><item><title>GMSL SERDES 笔记</title><link>/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/</guid><description>&lt;h1 id="max96724">MAX96724&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MAXIM on LuyangのBlog</title><link>/tags/maxim/</link><description>Recent content in MAXIM on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="/tags/maxim/rss.xml" rel="self" type="application/rss+xml"/><item><title>ADI GMSL2 SERDES SPI</title><link>/post/adi_gmsl2_serdes_spi/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/adi_gmsl2_serdes_spi/</guid><description>&lt;p>
+&lt;a href="https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-general-user-guide.pdf" title="https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-general-user-guide.pdf" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-general-user-guide.pdf
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>
+&lt;a href="https://www.analog.com/media/en/technical-documentation/data-sheets/max96752.pdf" title="https://www.analog.com/media/en/technical-documentation/data-sheets/max96752.pdf" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ https://www.analog.com/media/en/technical-documentation/data-sheets/max96752.pdf
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>
+&lt;a href="https://www.analog.com/media/en/technical-documentation/data-sheets/max9295d.pdf" title="https://www.analog.com/media/en/technical-documentation/data-sheets/max9295d.pdf" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ https://www.analog.com/media/en/technical-documentation/data-sheets/max9295d.pdf
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;h1 id="gmsl2-general-user-guidehttpswwwanalogcommediaentechnical-documentationuser-guidesgmsl2-general-user-guidepdf">
+&lt;a href="https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-general-user-guide.pdf" title="GMSL2 General User Guide" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ GMSL2 General User Guide
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/h1>
+&lt;h2 id="key-features">Key Features&lt;/h2>
+&lt;p>• Four-wire main (connects to remote peripheral) or four-wire subordinate (connects to µC/SoC).&lt;/p>
+&lt;p>• Remote-side SPI bus supports SPI modes 0 or 3; local-side SPI bus supports SPI mode 0.&lt;/p></description></item><item><title>GMSL SERDES 笔记</title><link>/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/</guid><description>&lt;h1 id="max96724">MAX96724&lt;/h1>
 &lt;h1 id="max96724-相关资源">MAX96724 相关资源&lt;/h1>
 &lt;ul>
 &lt;li>

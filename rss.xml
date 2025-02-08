@@ -692,7 +692,29 @@ ubuntu 18.04&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>sudo apt-get install -y wget zip openssh-server sshfs expect gcc python2.7 python3 xz-utils git make vim android-tools-adb android-tools-fastboot libyaml-dev libssl-dev bc u-boot-tools nfs-common gawk rsync rdiff android-tools-fsutils
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt-get install libncurses5-dev libncursesw5-dev libelf-dev libgmp-dev libmpc-dev
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Android Java 1.7 环境配置</title><link>/post/androidjava-.7%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/androidjava-.7%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>下载jdk 1.7&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>ADI GMSL2 SERDES SPI</title><link>/post/adi_gmsl2_serdes_spi/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/adi_gmsl2_serdes_spi/</guid><description>&lt;p>
+&lt;a href="https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-general-user-guide.pdf" title="https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-general-user-guide.pdf" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-general-user-guide.pdf
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>
+&lt;a href="https://www.analog.com/media/en/technical-documentation/data-sheets/max96752.pdf" title="https://www.analog.com/media/en/technical-documentation/data-sheets/max96752.pdf" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ https://www.analog.com/media/en/technical-documentation/data-sheets/max96752.pdf
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>
+&lt;a href="https://www.analog.com/media/en/technical-documentation/data-sheets/max9295d.pdf" title="https://www.analog.com/media/en/technical-documentation/data-sheets/max9295d.pdf" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ https://www.analog.com/media/en/technical-documentation/data-sheets/max9295d.pdf
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;h1 id="gmsl2-general-user-guidehttpswwwanalogcommediaentechnical-documentationuser-guidesgmsl2-general-user-guidepdf">
+&lt;a href="https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-general-user-guide.pdf" title="GMSL2 General User Guide" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ GMSL2 General User Guide
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/h1>
+&lt;h2 id="key-features">Key Features&lt;/h2>
+&lt;p>• Four-wire main (connects to remote peripheral) or four-wire subordinate (connects to µC/SoC).&lt;/p>
+&lt;p>• Remote-side SPI bus supports SPI modes 0 or 3; local-side SPI bus supports SPI mode 0.&lt;/p></description></item><item><title>Android Java 1.7 环境配置</title><link>/post/androidjava-.7%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/androidjava-.7%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>下载jdk 1.7&lt;/p>
 &lt;p>
 &lt;a href="https://repo.huaweicloud.com/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz" title="https://repo.huaweicloud.com/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
  https://repo.huaweicloud.com/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz
@@ -2824,44 +2846,7 @@ Dart 版本：3.4.4
  POSIX time
  &lt;i class="fa fa-external-link-alt">&lt;/i>
 &lt;/a>
-Unix 和 POSIX 兼容系统将 &lt;code>time_t&lt;/code> 类型作为带符号整数（通常为 32 或 64 位宽）来实现，它表示自 Unix 时间开始以来的秒数&lt;/p></description></item><item><title/><link>/post/adi_gmsl2_serdes_spi/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/post/adi_gmsl2_serdes_spi/</guid><description>&lt;h1 id="adi-gmsl2-serdes-spi">ADI GMSL2 SERDES SPI&lt;/h1>
-&lt;hr>
-&lt;p>title: ADI GMSL2 SERDES SPI
-date: 1970-01-01T00:00:00+08:00
-tags:&lt;/p>
-&lt;ul>
-&lt;li>ADI&lt;/li>
-&lt;li>MAXIM&lt;/li>
-&lt;li>SERDES&lt;/li>
-&lt;li>GMSL&lt;/li>
-&lt;li>MIPI&lt;/li>
-&lt;li>SPI
-categories:&lt;/li>
-&lt;li>SERDES&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;p>
-&lt;a href="https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-general-user-guide.pdf" title="https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-general-user-guide.pdf" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
- https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-general-user-guide.pdf
- &lt;i class="fa fa-external-link-alt">&lt;/i>
-&lt;/a>&lt;/p>
-&lt;p>
-&lt;a href="https://www.analog.com/media/en/technical-documentation/data-sheets/max96752.pdf" title="https://www.analog.com/media/en/technical-documentation/data-sheets/max96752.pdf" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
- https://www.analog.com/media/en/technical-documentation/data-sheets/max96752.pdf
- &lt;i class="fa fa-external-link-alt">&lt;/i>
-&lt;/a>&lt;/p>
-&lt;p>
-&lt;a href="https://www.analog.com/media/en/technical-documentation/data-sheets/max9295d.pdf" title="https://www.analog.com/media/en/technical-documentation/data-sheets/max9295d.pdf" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
- https://www.analog.com/media/en/technical-documentation/data-sheets/max9295d.pdf
- &lt;i class="fa fa-external-link-alt">&lt;/i>
-&lt;/a>&lt;/p>
-&lt;h1 id="gmsl2-general-user-guidehttpswwwanalogcommediaentechnical-documentationuser-guidesgmsl2-general-user-guidepdf">
-&lt;a href="https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-general-user-guide.pdf" title="GMSL2 General User Guide" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
- GMSL2 General User Guide
- &lt;i class="fa fa-external-link-alt">&lt;/i>
-&lt;/a>&lt;/h1>
-&lt;h2 id="key-features">Key Features&lt;/h2>
-&lt;p>• Four-wire main (connects to remote peripheral) or four-wire subordinate (connects to µC/SoC).&lt;/p></description></item><item><title>Lu Yang</title><link>/post/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/post/about/</guid><description>&lt;h2 id="六戒">六戒&lt;/h2>
+Unix 和 POSIX 兼容系统将 &lt;code>time_t&lt;/code> 类型作为带符号整数（通常为 32 或 64 位宽）来实现，它表示自 Unix 时间开始以来的秒数&lt;/p></description></item><item><title>Lu Yang</title><link>/post/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/post/about/</guid><description>&lt;h2 id="六戒">六戒&lt;/h2>
 &lt;ul>
 &lt;li>第一戒：久利之事勿为，众争之地勿往&lt;/li>
 &lt;li>第二戒：勿以小恶弃人大美，勿以小怨忘人大恩&lt;/li>
