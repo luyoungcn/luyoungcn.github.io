@@ -935,7 +935,7 @@ Dart 版本：3.4.4
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gitbook serve &lt;span style="color:#f92672">(&lt;/span>该命令首先会执行 gitbook build 编译书籍, 完成以后会打开一个 web 服务器, 监听在本地的 &lt;span style="color:#ae81ff">4000&lt;/span> 端口&lt;span style="color:#f92672">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="plugin">plugin&lt;/h2>
 &lt;h3 id="安装方法">安装方法&lt;/h3>
-&lt;p>在 git book 项目的根目录下执行&lt;/p></description></item><item><title>GMSL SERDES 笔记</title><link>/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/</guid><description>&lt;p>a# MAX96724&lt;/p>
+&lt;p>在 git book 项目的根目录下执行&lt;/p></description></item><item><title>GMSL SERDES 笔记</title><link>/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/</guid><description>&lt;h1 id="max96724">MAX96724&lt;/h1>
 &lt;h1 id="max96724-相关资源">MAX96724 相关资源&lt;/h1>
 &lt;ul>
 &lt;li>
@@ -2825,6 +2825,21 @@ Dart 版本：3.4.4
  &lt;i class="fa fa-external-link-alt">&lt;/i>
 &lt;/a>
 Unix 和 POSIX 兼容系统将 &lt;code>time_t&lt;/code> 类型作为带符号整数（通常为 32 或 64 位宽）来实现，它表示自 Unix 时间开始以来的秒数&lt;/p></description></item><item><title/><link>/post/adi_gmsl2_serdes_spi/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/post/adi_gmsl2_serdes_spi/</guid><description>&lt;h1 id="adi-gmsl2-serdes-spi">ADI GMSL2 SERDES SPI&lt;/h1>
+&lt;hr>
+&lt;p>title: ADI GMSL2 SERDES SPI
+date: 1970-01-01T00:00:00+08:00
+tags:&lt;/p>
+&lt;ul>
+&lt;li>ADI&lt;/li>
+&lt;li>MAXIM&lt;/li>
+&lt;li>SERDES&lt;/li>
+&lt;li>GMSL&lt;/li>
+&lt;li>MIPI&lt;/li>
+&lt;li>SPI
+categories:&lt;/li>
+&lt;li>SERDES&lt;/li>
+&lt;/ul>
+&lt;hr>
 &lt;p>
 &lt;a href="https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-general-user-guide.pdf" title="https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-general-user-guide.pdf" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
  https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-general-user-guide.pdf
@@ -2846,8 +2861,7 @@ Unix 和 POSIX 兼容系统将 &lt;code>time_t&lt;/code> 类型作为带符号�
  &lt;i class="fa fa-external-link-alt">&lt;/i>
 &lt;/a>&lt;/h1>
 &lt;h2 id="key-features">Key Features&lt;/h2>
-&lt;p>• Four-wire main (connects to remote peripheral) or four-wire subordinate (connects to µC/SoC).&lt;/p>
-&lt;p>• Remote-side SPI bus supports SPI modes 0 or 3; local-side SPI bus supports SPI mode 0.&lt;/p></description></item><item><title>Lu Yang</title><link>/post/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/post/about/</guid><description>&lt;h2 id="六戒">六戒&lt;/h2>
+&lt;p>• Four-wire main (connects to remote peripheral) or four-wire subordinate (connects to µC/SoC).&lt;/p></description></item><item><title>Lu Yang</title><link>/post/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/post/about/</guid><description>&lt;h2 id="六戒">六戒&lt;/h2>
 &lt;ul>
 &lt;li>第一戒：久利之事勿为，众争之地勿往&lt;/li>
 &lt;li>第二戒：勿以小恶弃人大美，勿以小怨忘人大恩&lt;/li>

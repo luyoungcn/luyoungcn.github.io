@@ -759,7 +759,7 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gitbook serve &lt;span style="color:#f92672">(&lt;/span>该命令首先会执行 gitbook build 编译书籍, 完成以后会打开一个 web 服务器, 监听在本地的 &lt;span style="color:#ae81ff">4000&lt;/span> 端口&lt;span style="color:#f92672">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="plugin">plugin&lt;/h2>
 &lt;h3 id="安装方法">安装方法&lt;/h3>
-&lt;p>在 git book 项目的根目录下执行&lt;/p></description></item><item><title>GMSL SERDES 笔记</title><link>/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/</guid><description>&lt;p>a# MAX96724&lt;/p>
+&lt;p>在 git book 项目的根目录下执行&lt;/p></description></item><item><title>GMSL SERDES 笔记</title><link>/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/</guid><description>&lt;h1 id="max96724">MAX96724&lt;/h1>
 &lt;h1 id="max96724-相关资源">MAX96724 相关资源&lt;/h1>
 &lt;ul>
 &lt;li>
