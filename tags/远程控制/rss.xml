@@ -3,4 +3,18 @@
 &lt;a href="https://support.microsoft.com/zh-cn/windows/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2-5fe128d5-8fb1-7a23-3b8a-41e636865e8c" title="如何使用远程桌面 - Microsoft 支持" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
  如何使用远程桌面 - Microsoft 支持
  &lt;i class="fa fa-external-link-alt">&lt;/i>
-&lt;/a>&lt;/p></description></item></channel></rss>
+&lt;/a>&lt;/p>
+&lt;ol>
+&lt;li>设置你想要连接以使其允许远程连接的电脑：
+&lt;ul>
+&lt;li>确保你拥有 Windows 11 专业版。 若要检查这一点，请选择“&lt;strong>开始&lt;/strong>”，然后打开“&lt;strong>设置&lt;/strong>”。 然后，在“&lt;strong>系统&lt;/strong>”下，选择“&lt;strong>关于&lt;/strong>”，并在“&lt;strong>Windows 规范&lt;/strong>”下，查找“&lt;strong>版本&lt;/strong>”。 有关如何获取 Windows 11 专业版的详细信息，请转到
+&lt;a href="https://support.microsoft.com/help/12384/" title="“将 Windows 家庭版升级为 Windows 专业版”。" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ “将 Windows 家庭版升级为 Windows 专业版”。
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/li>
+&lt;li>准备就绪后，选择“&lt;strong>开始&lt;/strong>”，然后打开“&lt;strong>设置&lt;/strong>”。 然后，在“&lt;strong>系统&lt;/strong>”下，选择“&lt;strong>远程桌面&lt;/strong>”，将“&lt;strong>远程桌面&lt;/strong>”设置为“&lt;strong>打开&lt;/strong>”，然后选择“&lt;strong>确认&lt;/strong>”。&lt;/li>
+&lt;li>记下“&lt;strong>电脑名称&lt;/strong>”下的这台电脑的名称。 稍后将需要使用此名称。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;p>注意事项：&lt;/p></description></item></channel></rss>

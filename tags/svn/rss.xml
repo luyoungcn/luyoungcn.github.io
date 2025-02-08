@@ -7,4 +7,28 @@
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo adduser svn
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo adduser svn sudo
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo su svn
-&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="创建仓库目录">创建仓库目录&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo mkdir /svn
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo mkdir /svn/repos
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo mkdir /svn/repos/public
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo chmod &lt;span style="color:#ae81ff">777&lt;/span> -R /svn/repos/public
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo chown svn:svn -R /svn
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="创建版本库">创建版本库&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo svnadmin create /svn/repos/public
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ ls -lah /svn/repos/public
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>total 32K
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>drwxrwxrwx &lt;span style="color:#ae81ff">6&lt;/span> svn svn 4.0K 6月 &lt;span style="color:#ae81ff">19&lt;/span> 14:15 .
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>drwxr-xr-x &lt;span style="color:#ae81ff">3&lt;/span> svn svn 4.0K 6月 &lt;span style="color:#ae81ff">19&lt;/span> 14:15 ..
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>drwxr-xr-x &lt;span style="color:#ae81ff">2&lt;/span> root root 4.0K 6月 &lt;span style="color:#ae81ff">19&lt;/span> 14:15 conf
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>drwxr-sr-x &lt;span style="color:#ae81ff">6&lt;/span> root root 4.0K 6月 &lt;span style="color:#ae81ff">19&lt;/span> 14:15 db
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-r--r--r-- &lt;span style="color:#ae81ff">1&lt;/span> root root &lt;span style="color:#ae81ff">2&lt;/span> 6月 &lt;span style="color:#ae81ff">19&lt;/span> 14:15 format
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>drwxr-xr-x &lt;span style="color:#ae81ff">2&lt;/span> root root 4.0K 6月 &lt;span style="color:#ae81ff">19&lt;/span> 14:15 hooks
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>drwxr-xr-x &lt;span style="color:#ae81ff">2&lt;/span> root root 4.0K 6月 &lt;span style="color:#ae81ff">19&lt;/span> 14:15 locks
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-rw-r--r-- &lt;span style="color:#ae81ff">1&lt;/span> root root &lt;span style="color:#ae81ff">246&lt;/span> 6月 &lt;span style="color:#ae81ff">19&lt;/span> 14:15 README.txt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cd /svn/repos/public
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo chmod -R &lt;span style="color:#ae81ff">777&lt;/span> db
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cd conf
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo cp svnserve.conf svnserve.conf.bak
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo vim svnserve.conf
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>取消注释：&lt;/p></description></item></channel></rss>

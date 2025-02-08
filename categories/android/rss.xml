@@ -1,2 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Android on LuyangのBlog</title><link>/categories/android/</link><description>Recent content in Android on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="/categories/android/rss.xml" rel="self" type="application/rss+xml"/><item><title>Android 使用 am 命令启动一个活动组件</title><link>/post/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</guid><description>&lt;h2 id="am-命令说明">am 命令说明&lt;/h2>
-&lt;p>&lt;code>am start -n&lt;/code> 命令是 Android 调试桥（ADB）工具的一部分，用于在 Android 设备上启动一个活动。以下是该命令及其组成部分的详细解释：&lt;/p></description></item></channel></rss>
+&lt;p>&lt;code>am start -n&lt;/code> 命令是 Android 调试桥（ADB）工具的一部分，用于在 Android 设备上启动一个活动。以下是该命令及其组成部分的详细解释：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>&lt;code>am&lt;/code>&lt;/strong>: 代表 &lt;strong>Activity Manager（活动管理器）&lt;/strong>。它是一个命令行工具，可以用于在 Android 设备上执行各种与活动、服务和广播相关的操作。&lt;/li>
+&lt;li>&lt;strong>&lt;code>start&lt;/code>&lt;/strong>: 这个子命令用于启动一个活动。活动表示一个带有用户界面的单个屏幕，启动活动意味着打开一个特定的应用程序界面。&lt;/li>
+&lt;li>&lt;strong>&lt;code>-n&lt;/code>&lt;/strong>: 该选项指定你想要启动的活动的组件名称。组件名称由两部分组成：
+&lt;ul>
+&lt;li>应用程序的 &lt;strong>包名&lt;/strong>（例如 &lt;code>com.android.gallery3d&lt;/code>）。&lt;/li>
+&lt;li>你想要启动的活动的 &lt;strong>完整类名&lt;/strong>（例如 &lt;code>.app.GalleryActivity&lt;/code>）。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>组件名称的格式为 &lt;code>package_name/.ActivityName&lt;/code>。&lt;/p></description></item></channel></rss>

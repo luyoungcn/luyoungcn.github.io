@@ -5,4 +5,51 @@
 &lt;/a>.&lt;/p>
 &lt;h2 id="安装配置">安装配置&lt;/h2>
 &lt;blockquote>
-&lt;p>本教程基于 ubuntu 17.10 x64&lt;/p></description></item></channel></rss>
+&lt;p>本教程基于 ubuntu 17.10 x64&lt;/p>&lt;/blockquote>
+&lt;h3 id="参考">参考&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;a href="https://www.dokuwiki.org/zh:install" title="DokuWiki Installation" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ DokuWiki Installation
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="安装-apache-php">安装 apache php&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>apt-get install apache2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>apt-get install php7.1 libapache2-mod-php7.1 php7.1-xml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="配置-apache-php">配置 apache php&lt;/h3>
+&lt;ol>
+&lt;li>修改文件 &lt;code>apache2/sites-available/000-default.conf&lt;/code>
+配置 &lt;code>apache2 document root&lt;/code> 为 dokuwiki 根目录&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-diff" data-lang="diff">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">- DocumentRoot /var/www/html
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&lt;/span>&lt;span style="color:#a6e22e">+ DocumentRoot /var/www/wikihub
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>修改文件 &lt;code>/etc/apache2/apache2.conf&lt;/code> 配置 apache security&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-diff" data-lang="diff">&lt;span style="display:flex;">&lt;span>&amp;lt;Directory /&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Options FollowSymLinks
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">- AllowOverride none
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&lt;/span>&lt;span style="color:#a6e22e">+ AllowOverride All
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">&lt;/span> Require all denied
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/Directory&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;Directory /usr/share&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> AllowOverride None
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Require all granted
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/Directory&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;Directory /var/www/&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Options Indexes FollowSymLinks
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">- AllowOverride none
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&lt;/span>&lt;span style="color:#a6e22e">+ AllowOverride All
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">&lt;/span> Require all granted
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/Directory&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
+&lt;li>Activate the &amp;lsquo;mod_rewrite&amp;rsquo; in apache2 to enable .htaccess&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo a2enmod rewrite &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> sudo service apache2 restart
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="安装-dokuwiki">安装 dokuwiki&lt;/h3>
+&lt;p>从 dokuwiki 
+&lt;a href="https://download.dokuwiki.org/" title="官方下载页面" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ 官方下载页面
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a> 下载最新版的安装包.&lt;/p></description></item></channel></rss>

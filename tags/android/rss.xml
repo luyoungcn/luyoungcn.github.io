@@ -11,7 +11,14 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>* daemon not running; starting now at tcp:5037
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>* daemon started successfully
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>List of devices attached
-&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item><item><title>gerrit 环境搭建</title><link>/post/gerrit/</link><pubDate>Thu, 01 Jun 2023 00:00:00 +0800</pubDate><guid>/post/gerrit/</guid><description>&lt;h1 id="r1---gerrit-环境搭建">R1 - Gerrit 环境搭建&lt;/h1>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="windows-安装工具包">Windows 安装工具包&lt;/h2>
+&lt;p>windows 安装 
+&lt;a href="https://github.com/dorssel/usbipd-win/releases" title="usbipd-win" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ usbipd-win
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;h2 id="wsl-安装工具包">WSL 安装工具包&lt;/h2>
+&lt;p>WSL ubuntu 安装 adb 工具&lt;/p></description></item><item><title>gerrit 环境搭建</title><link>/post/gerrit/</link><pubDate>Thu, 01 Jun 2023 00:00:00 +0800</pubDate><guid>/post/gerrit/</guid><description>&lt;h1 id="r1---gerrit-环境搭建">R1 - Gerrit 环境搭建&lt;/h1>
 &lt;h1 id="环境说明">环境说明&lt;/h1>
 &lt;ul>
 &lt;li>ubuntu 20.04&lt;/li>
@@ -20,7 +27,156 @@
 &lt;/ul>
 &lt;h1 id="安装依赖软件包">安装依赖软件包&lt;/h1>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt install openjdk-11-jdk openjdk-11-jdk-headless openjdk-11-jre openjdk-11-jre-headless
-&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item><item><title>Android Java 1.7 环境配置</title><link>/post/androidjava-.7%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/androidjava-.7%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>下载jdk 1.7&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="创建-gerrit-用户">创建 Gerrit 用户&lt;/h1>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo adduser gerrit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo usermod -a -G sudo gerrit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo su gerrit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkdir ~/gerrit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>java -jar gerrit-3.8.0.war init -d ~/gerrit
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="安装-gerrit">安装 Gerrit&lt;/h1>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ java -jar gerrit-3.8.0.war init -d ~/gerrit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Using secure store: com.google.gerrit.server.securestore.DefaultSecureStore
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>2023-06-03 12:19:03,027&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>main&lt;span style="color:#f92672">]&lt;/span> INFO com.google.gerrit.server.config.GerritServerConfigProvider : No /home/gerrit/gerrit/etc/gerrit.config; assuming defaults
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** Gerrit Code Review 3.8.0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Create &lt;span style="color:#e6db74">&amp;#39;/home/gerrit/gerrit&amp;#39;&lt;/span> &lt;span style="color:#f92672">[&lt;/span>Y/n&lt;span style="color:#f92672">]&lt;/span>? Y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** Git Repositories
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Location of Git repositories &lt;span style="color:#f92672">[&lt;/span>git&lt;span style="color:#f92672">]&lt;/span>: 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** JGit Configuration
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Auto-configured &lt;span style="color:#e6db74">&amp;#34;receive.autogc = false&amp;#34;&lt;/span> to disable auto-gc after git-receive-pack.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** Index
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Type &lt;span style="color:#f92672">[&lt;/span>lucene&lt;span style="color:#f92672">]&lt;/span>: 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** User Authentication
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Authentication method &lt;span style="color:#f92672">[&lt;/span>openid/?&lt;span style="color:#f92672">]&lt;/span>: ?
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Supported options are:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> openid
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> openid_sso
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> http
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> http_ldap
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> client_ssl_cert_ldap
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ldap
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ldap_bind
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> custom_extension
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> development_become_any_account
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> oauth
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Authentication method &lt;span style="color:#f92672">[&lt;/span>openid/?&lt;span style="color:#f92672">]&lt;/span>: http
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Get username from custom HTTP header &lt;span style="color:#f92672">[&lt;/span>y/N&lt;span style="color:#f92672">]&lt;/span>? y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Username HTTP header &lt;span style="color:#f92672">[&lt;/span>SM_USER&lt;span style="color:#f92672">]&lt;/span>: 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>SSO logout URL : 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Enable signed push support &lt;span style="color:#f92672">[&lt;/span>y/N&lt;span style="color:#f92672">]&lt;/span>? y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Use &lt;span style="color:#66d9ef">case&lt;/span> insensitive usernames &lt;span style="color:#f92672">[&lt;/span>Y/n&lt;span style="color:#f92672">]&lt;/span>? Y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** Review Labels
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Install Verified label &lt;span style="color:#f92672">[&lt;/span>y/N&lt;span style="color:#f92672">]&lt;/span>? N
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** Email Delivery
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>SMTP server hostname &lt;span style="color:#f92672">[&lt;/span>localhost&lt;span style="color:#f92672">]&lt;/span>: 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>SMTP server port &lt;span style="color:#f92672">[(&lt;/span>default&lt;span style="color:#f92672">)]&lt;/span>: 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>SMTP encryption &lt;span style="color:#f92672">[&lt;/span>none/?&lt;span style="color:#f92672">]&lt;/span>: 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>SMTP username : 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** Container Process
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Run as &lt;span style="color:#f92672">[&lt;/span>gerrit&lt;span style="color:#f92672">]&lt;/span>: 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Java runtime &lt;span style="color:#f92672">[&lt;/span>/usr/lib/jvm/java-11-openjdk-amd64&lt;span style="color:#f92672">]&lt;/span>: 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copy gerrit-3.8.0.war to /home/gerrit/gerrit/bin/gerrit.war &lt;span style="color:#f92672">[&lt;/span>Y/n&lt;span style="color:#f92672">]&lt;/span>? Y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copying gerrit-3.8.0.war to /home/gerrit/gerrit/bin/gerrit.war
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** SSH Daemon
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Listen on address &lt;span style="color:#f92672">[&lt;/span>*&lt;span style="color:#f92672">]&lt;/span>: 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Listen on port &lt;span style="color:#f92672">[&lt;/span>29418&lt;span style="color:#f92672">]&lt;/span>: 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Generating SSH host key ... rsa... ed25519... ecdsa 256... ecdsa 384... ecdsa 521... &lt;span style="color:#66d9ef">done&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** HTTP Daemon
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Behind reverse proxy &lt;span style="color:#f92672">[&lt;/span>y/N&lt;span style="color:#f92672">]&lt;/span>? y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Proxy uses SSL &lt;span style="color:#f92672">(&lt;/span>https://&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">[&lt;/span>y/N&lt;span style="color:#f92672">]&lt;/span>? N
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Subdirectory on proxy server &lt;span style="color:#f92672">[&lt;/span>/&lt;span style="color:#f92672">]&lt;/span>: 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Listen on address &lt;span style="color:#f92672">[&lt;/span>*&lt;span style="color:#f92672">]&lt;/span>: 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Listen on port &lt;span style="color:#f92672">[&lt;/span>8081&lt;span style="color:#f92672">]&lt;/span>: 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Canonical URL &lt;span style="color:#f92672">[&lt;/span>http://luyang-VirtualBox/&lt;span style="color:#f92672">]&lt;/span>: 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** Cache
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** Plugins
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>*** 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Installing plugins.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Install plugin codemirror-editor version v3.8.0 &lt;span style="color:#f92672">[&lt;/span>y/N&lt;span style="color:#f92672">]&lt;/span>? y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Installed codemirror-editor v3.8.0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Install plugin commit-message-length-validator version v3.8.0 &lt;span style="color:#f92672">[&lt;/span>y/N&lt;span style="color:#f92672">]&lt;/span>? y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Installed commit-message-length-validator v3.8.0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Install plugin delete-project version v3.8.0 &lt;span style="color:#f92672">[&lt;/span>y/N&lt;span style="color:#f92672">]&lt;/span>? y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Installed delete-project v3.8.0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Install plugin download-commands version v3.8.0 &lt;span style="color:#f92672">[&lt;/span>y/N&lt;span style="color:#f92672">]&lt;/span>? y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Installed download-commands v3.8.0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Install plugin gitiles version v3.8.0 &lt;span style="color:#f92672">[&lt;/span>y/N&lt;span style="color:#f92672">]&lt;/span>? y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Installed gitiles v3.8.0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Install plugin hooks version v3.8.0 &lt;span style="color:#f92672">[&lt;/span>y/N&lt;span style="color:#f92672">]&lt;/span>? y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Installed hooks v3.8.0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Install plugin plugin-manager version v3.8.0 &lt;span style="color:#f92672">[&lt;/span>y/N&lt;span style="color:#f92672">]&lt;/span>? y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Installed plugin-manager v3.8.0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Install plugin replication version v3.8.0 &lt;span style="color:#f92672">[&lt;/span>y/N&lt;span style="color:#f92672">]&lt;/span>? y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Installed replication v3.8.0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Install plugin reviewnotes version v3.8.0 &lt;span style="color:#f92672">[&lt;/span>y/N&lt;span style="color:#f92672">]&lt;/span>? y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Installed reviewnotes v3.8.0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Install plugin singleusergroup version v3.8.0 &lt;span style="color:#f92672">[&lt;/span>y/N&lt;span style="color:#f92672">]&lt;/span>? y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Installed singleusergroup v3.8.0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Install plugin webhooks version v3.8.0 &lt;span style="color:#f92672">[&lt;/span>y/N&lt;span style="color:#f92672">]&lt;/span>? y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Installed webhooks v3.8.0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Initializing plugins.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">============================================================================&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Welcome to the Gerrit community
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Find more information on the homepage: https://www.gerritcodereview.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Discuss Gerrit on the mailing list: https://groups.google.com/g/repo-discuss
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">============================================================================&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Initialized /home/gerrit/gerrit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Init complete, reindexing accounts,changes,groups,projects with: reindex --site-path /home/gerrit/gerrit --threads &lt;span style="color:#ae81ff">1&lt;/span> --index accounts --index changes --index groups --index projectsReindexed &lt;span style="color:#ae81ff">0&lt;/span> documents in accounts index in 0.0s &lt;span style="color:#f92672">(&lt;/span>0.0/s&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Index accounts in version &lt;span style="color:#ae81ff">12&lt;/span> is ready
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Reindexing groups: 100% &lt;span style="color:#f92672">(&lt;/span>2/2&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Reindexed &lt;span style="color:#ae81ff">2&lt;/span> documents in groups index in 0.2s &lt;span style="color:#f92672">(&lt;/span>9.9/s&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Index groups in version &lt;span style="color:#ae81ff">9&lt;/span> is ready
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Reindexing changes: Slicing projects: 100% &lt;span style="color:#f92672">(&lt;/span>2/2&lt;span style="color:#f92672">)&lt;/span>, &lt;span style="color:#66d9ef">done&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Reindexed &lt;span style="color:#ae81ff">0&lt;/span> documents in changes index in 0.0s &lt;span style="color:#f92672">(&lt;/span>0.0/s&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Index changes in version &lt;span style="color:#ae81ff">82&lt;/span> is ready
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Reindexing projects: 100% &lt;span style="color:#f92672">(&lt;/span>2/2&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Reindexed &lt;span style="color:#ae81ff">2&lt;/span> documents in projects index in 0.1s &lt;span style="color:#f92672">(&lt;/span>25.0/s&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Index projects in version &lt;span style="color:#ae81ff">5&lt;/span> is ready
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Executing /home/gerrit/gerrit/bin/gerrit.sh start
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Starting Gerrit Code Review: WARNING: Could not adjust Gerrit&lt;span style="color:#e6db74">&amp;#39;s process for the kernel&amp;#39;&lt;/span>s out-of-memory killer.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> This may be caused by /home/gerrit/gerrit/bin/gerrit.sh not being run as root.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Consider changing the OOM score adjustment manually &lt;span style="color:#66d9ef">for&lt;/span> Gerrit&lt;span style="color:#e6db74">&amp;#39;s PID=4510 with e.g.:
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> echo &amp;#39;&lt;/span>-1000&lt;span style="color:#960050;background-color:#1e0010">&amp;#39;&lt;/span> | sudo tee /proc/4510/oom_score_adj
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>OK
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Waiting &lt;span style="color:#66d9ef">for&lt;/span> server on luyang-VirtualBox:80 ... OK
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Please open the following URL in the browser: http://luyang-VirtualBox/#/admin/projects/
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="配置-gerrit">配置 Gerrit&lt;/h1>
+&lt;p>&lt;code>etc/gerrit.config&lt;/code>&lt;/p></description></item><item><title>Android Java 1.7 环境配置</title><link>/post/androidjava-.7%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/androidjava-.7%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>下载jdk 1.7&lt;/p>
 &lt;p>
 &lt;a href="https://repo.huaweicloud.com/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz" title="https://repo.huaweicloud.com/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
  https://repo.huaweicloud.com/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz
@@ -35,7 +191,14 @@
 &lt;/ul>
 &lt;p>安装&lt;/p>
 &lt;p>&lt;code>sudo mv jdk1.7.0_80 /usr/lib/&lt;/code>&lt;/p>
-&lt;p>switchjdk7.sh 文件内容如下，该文件放在代码顶层目录：&lt;/p></description></item><item><title>Android Studio Env</title><link>/post/androidstudioenv/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/androidstudioenv/</guid><description>&lt;h2 id="工具">工具&lt;/h2>
+&lt;p>switchjdk7.sh 文件内容如下，该文件放在代码顶层目录：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># add JDK7 cofig ----&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export JAVA_HOME&lt;span style="color:#f92672">=&lt;/span>/usr/lib/jdk1.7.0_80/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export JRE_HOME&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>JAVA_HOME&lt;span style="color:#e6db74">}&lt;/span>/jre
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export CLASSPATH&lt;span style="color:#f92672">=&lt;/span>.:&lt;span style="color:#e6db74">${&lt;/span>JAVA_HOME&lt;span style="color:#e6db74">}&lt;/span>/lib:&lt;span style="color:#e6db74">${&lt;/span>JRE_HOME&lt;span style="color:#e6db74">}&lt;/span>/lib
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export PATH&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>JAVA_HOME&lt;span style="color:#e6db74">}&lt;/span>/bin:$PATH
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># add JDK7 cofig ----&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>执行如下命令切换java 1.7，仅当前终端有效&lt;/p></description></item><item><title>Android Studio Env</title><link>/post/androidstudioenv/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/androidstudioenv/</guid><description>&lt;h2 id="工具">工具&lt;/h2>
 &lt;ul>
 &lt;li>
 &lt;a href="https://developer.android.google.cn/studio" title="AndroidStudio" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
@@ -60,8 +223,22 @@
 &lt;h2 id="问题解决">问题解决&lt;/h2>
 &lt;h3 id="安装完android-studio首次启动报错">安装完Android Studio首次启动报错&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-markdown" data-lang="markdown">&lt;span style="display:flex;">&lt;span>Unable to access Android SDK add-on list
-&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item><item><title>Android 使用 am 命令启动一个活动组件</title><link>/post/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</guid><description>&lt;h2 id="am-命令说明">am 命令说明&lt;/h2>
-&lt;p>&lt;code>am start -n&lt;/code> 命令是 Android 调试桥（ADB）工具的一部分，用于在 Android 设备上启动一个活动。以下是该命令及其组成部分的详细解释：&lt;/p></description></item><item><title>Android10编译开启ccache</title><link>/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</guid><description>&lt;p>Android10的基线代码google已经将prebuilt的ccache移除,但是保留了相关功能选项&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>选择cancel&lt;/p>
+&lt;h3 id="gradle-下载环境配置">gradle 下载环境配置&lt;/h3>
+&lt;p>For Windows&lt;/p>
+&lt;p>&lt;code>C:\Users\luyang\.gradle\init.gradle&lt;/code> 如果没有该文件就自己新建一个，内容如下&lt;/p></description></item><item><title>Android 使用 am 命令启动一个活动组件</title><link>/post/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</guid><description>&lt;h2 id="am-命令说明">am 命令说明&lt;/h2>
+&lt;p>&lt;code>am start -n&lt;/code> 命令是 Android 调试桥（ADB）工具的一部分，用于在 Android 设备上启动一个活动。以下是该命令及其组成部分的详细解释：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>&lt;code>am&lt;/code>&lt;/strong>: 代表 &lt;strong>Activity Manager（活动管理器）&lt;/strong>。它是一个命令行工具，可以用于在 Android 设备上执行各种与活动、服务和广播相关的操作。&lt;/li>
+&lt;li>&lt;strong>&lt;code>start&lt;/code>&lt;/strong>: 这个子命令用于启动一个活动。活动表示一个带有用户界面的单个屏幕，启动活动意味着打开一个特定的应用程序界面。&lt;/li>
+&lt;li>&lt;strong>&lt;code>-n&lt;/code>&lt;/strong>: 该选项指定你想要启动的活动的组件名称。组件名称由两部分组成：
+&lt;ul>
+&lt;li>应用程序的 &lt;strong>包名&lt;/strong>（例如 &lt;code>com.android.gallery3d&lt;/code>）。&lt;/li>
+&lt;li>你想要启动的活动的 &lt;strong>完整类名&lt;/strong>（例如 &lt;code>.app.GalleryActivity&lt;/code>）。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>组件名称的格式为 &lt;code>package_name/.ActivityName&lt;/code>。&lt;/p></description></item><item><title>Android10编译开启ccache</title><link>/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</guid><description>&lt;p>Android10的基线代码google已经将prebuilt的ccache移除,但是保留了相关功能选项&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-diff" data-lang="diff">&lt;span style="display:flex;">&lt;span>commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Author: Dan Willemsen &amp;lt;dwillemsen@google.com&amp;gt;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Date: Thu Apr 5 15:48:16 2018 -0700
@@ -75,7 +252,7 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Bug: 32748498
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Test: cs/ccache
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Change-Id: I894a11445127bf8cb3a7ac5a119c500f2c572fb9
-&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item><item><title>repo</title><link>/post/repo/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/repo/</guid><description>&lt;h2 id="环境准备">环境准备&lt;/h2>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>安卓10之前配置&lt;/p></description></item><item><title>repo</title><link>/post/repo/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/repo/</guid><description>&lt;h2 id="环境准备">环境准备&lt;/h2>
 &lt;p>下载repo工具&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>user110@server005:~/bin$ curl https://mirrors.tuna.tsinghua.edu.cn/git/git-repo -o repo
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>user110@server005:~/bin$ chmod +x repo
@@ -85,9 +262,29 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>PATH&lt;span style="color:#f92672">=&lt;/span>$PATH:$HOME/bin
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export REPO_URL&lt;span style="color:#f92672">=&lt;/span>‘git://10.20.6.145/git-repo’ &lt;span style="color:#75715e"># repo 源地址&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>user110@server005:~/bin$ source ~/.bashrc
-&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item><item><title>Wifi Adb</title><link>/post/wifiadb/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/wifiadb/</guid><description>&lt;h2 id="操作手顺">操作手顺&lt;/h2>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>上传 ssh public key&lt;/p>
+&lt;h2 id="拉代码">拉代码&lt;/h2>
+&lt;p>初始化&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>user110@server005:~/delete$ repo init -u &amp;lt;ssh://user112@10.20.6.136:29418/platform/manifest.git&amp;gt; -b &amp;lt;branch&amp;gt; -m &amp;lt;manifest_xml&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-u:表示git仓库地址
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-m:表示具体的xml文件
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-b:表示指定特殊的分支
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>同步&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>user110@server005:~/delete$ repo sync –j8
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="工作流">工作流&lt;/h2>
+&lt;h3 id="创建开发分支">创建开发分支&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>repo start &amp;lt;branch_name&amp;gt; -all
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="修改">修改&lt;/h3>
+&lt;p>修改代码&lt;/p></description></item><item><title>Wifi Adb</title><link>/post/wifiadb/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/wifiadb/</guid><description>&lt;h2 id="操作手顺">操作手顺&lt;/h2>
 &lt;p>手机USB连接电脑&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>adb shell &lt;span style="color:#e6db74">&amp;#34;setprop persist.adb.tcp.port 5555&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>adb tcpip &lt;span style="color:#ae81ff">5555&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>手机连上wifi，确认ip地址
-此时可以断开手USB，然后通过wifiadb连接&lt;/p></description></item></channel></rss>
+此时可以断开手USB，然后通过wifiadb连接&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>adb connect 10.100.2.5
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="qa">Q&amp;amp;A&lt;/h2>
+&lt;h3 id="issue">Issue&lt;/h3>
+&lt;p>执行命令 &lt;code>adb connect 10.100.2.5&lt;/code> 报错&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-txt" data-lang="txt">&lt;span style="display:flex;">&lt;span>missing port in specification: tcp:10.100.2.5
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="answer">Answer&lt;/h3>
+&lt;p>使用命令 &lt;code>adb connect 10.100.2.5:5555&lt;/code> 解决&lt;/p></description></item></channel></rss>

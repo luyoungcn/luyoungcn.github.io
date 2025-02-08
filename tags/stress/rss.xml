@@ -8,4 +8,7 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>» free -m
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> total used free shared buff/cache available
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Mem: &lt;span style="color:#ae81ff">15814&lt;/span> &lt;span style="color:#ae81ff">1231&lt;/span> &lt;span style="color:#ae81ff">13598&lt;/span> &lt;span style="color:#ae81ff">6&lt;/span> &lt;span style="color:#ae81ff">984&lt;/span> &lt;span style="color:#ae81ff">14252&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>根据 available 至设置 DDR 压测内存大小。&lt;/p>
+&lt;h2 id="stressapptest">stressapptest&lt;/h2>
+&lt;h3 id="安装-stressapptest">安装 stressapptest&lt;/h3>
+&lt;p>stressapptest - stress test application for simulating high load situations&lt;/p></description></item></channel></rss>

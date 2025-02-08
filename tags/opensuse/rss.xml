@@ -12,4 +12,5 @@
 &lt;/a>&lt;/li>
 &lt;/ul>
 &lt;p>Virtualbox 虚拟机装完没有网络？&lt;/p>
-&lt;p>&lt;code>sudo systemctl start NetworkManager&lt;/code>&lt;/p></description></item></channel></rss>
+&lt;p>&lt;code>sudo systemctl start NetworkManager&lt;/code>&lt;/p>
+&lt;p>启动 NetworkManager 服务，会自动运行 DHCP 分配 IP 地址给你。之后可用：&lt;code>ping 127.0.0.1&lt;/code> 或 &lt;code>ping 192.168.1.1&lt;/code>测试（按 Ctrl + C 可停止 ping，不然会一直进行）。&lt;/p></description></item></channel></rss>

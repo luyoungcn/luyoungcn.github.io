@@ -3,9 +3,10 @@
 &lt;a href="https://docs.microsoft.com/zh-cn/windows/wsl/install" title="安装 WSL | Microsoft Docs" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
  安装 WSL | Microsoft Docs
  &lt;i class="fa fa-external-link-alt">&lt;/i>
-&lt;/a>&lt;/p></description></item><item><title>wsl 使用 usbipd 访问 USB 设备</title><link>/post/usbipd/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/usbipd/</guid><description>&lt;blockquote>
-&lt;p>注意：如下 usbipd 命令需要在 &lt;code>以管理员身份运行&lt;/code> 的 powershell 中执行&lt;/p>
-&lt;/blockquote>
+&lt;/a>&lt;/p>
+&lt;p>必须运行 Windows 10 版本 2004 及更高版本（内部版本 19041 及更高版本）或 Windows 11。&lt;/p>
+&lt;p>→ 我的电脑win10已经更新到最新，应该没问题。&lt;/p></description></item><item><title>wsl 使用 usbipd 访问 USB 设备</title><link>/post/usbipd/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/usbipd/</guid><description>&lt;blockquote>
+&lt;p>注意：如下 usbipd 命令需要在 &lt;code>以管理员身份运行&lt;/code> 的 powershell 中执行&lt;/p>&lt;/blockquote>
 &lt;p>usbipd: USB/IP open-source project&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>PS C:&lt;span style="color:#ae81ff">\W&lt;/span>INDOWS&lt;span style="color:#ae81ff">\s&lt;/span>ystem32&amp;gt; usbipd wsl attach --busid 4-4
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>usbipd: error: The service is currently not running; a reboot should fix that.
@@ -13,4 +14,5 @@
 &lt;a href="https://github.com/dorssel/usbipd-win/issues/122" title="https://github.com/dorssel/usbipd-win/issues/122" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
  https://github.com/dorssel/usbipd-win/issues/122
  &lt;i class="fa fa-external-link-alt">&lt;/i>
-&lt;/a>&lt;/p></description></item></channel></rss>
+&lt;/a>&lt;/p>
+&lt;p>参考了上述链接，也做了重启，仍然报错，于是决定升级 &lt;code>usbipd&lt;/code>&lt;/p></description></item></channel></rss>

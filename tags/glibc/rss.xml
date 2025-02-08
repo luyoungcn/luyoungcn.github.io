@@ -34,10 +34,21 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">_&lt;/span>(err);
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item><item><title>交叉编译 glibc-2.35</title><link>/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2.35/</link><pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate><guid>/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2.35/</guid><description>&lt;p>//localhost:1313/&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="__get_errlist">__get_errlist&lt;/h1>
+&lt;p>&lt;code>stdio-common/errlist.c&lt;/code>&lt;/p></description></item><item><title>交叉编译 glibc-2.35</title><link>/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2.35/</link><pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate><guid>/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2.35/</guid><description>&lt;p>//localhost:1313/&lt;/p>
 &lt;h1 id="交叉编译-glibc-235">交叉编译 glibc-2.35&lt;/h1>
 &lt;p>glibc-2.35 更新需要同步用新版本的交叉编译器，这里直接在 Linaro 官网
 &lt;a href="https://releases.linaro.org/components/toolchain/binaries/" title="下载" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
  下载
  &lt;i class="fa fa-external-link-alt">&lt;/i>
-&lt;/a>了最新的 &lt;code>gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf&lt;/code>&lt;/p></description></item></channel></rss>
+&lt;/a>了最新的 &lt;code>gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>export PATH&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;/code/gcc-linaro-7.5.0-2019.12-x86_64_armlinux-gnueabihf/bin&amp;#34;&lt;/span>:$PATH
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export CROSS_COMPILE&lt;span style="color:#f92672">=&lt;/span>arm-linux-gnueabihf-
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkdir build_out; cd build_out
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>../configure --prefix&lt;span style="color:#f92672">=&lt;/span>/code/glibc-2.35/build_out &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>--host&lt;span style="color:#f92672">=&lt;/span>arm-linux-gnueabihf
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>make
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>make install
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>

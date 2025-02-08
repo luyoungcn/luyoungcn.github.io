@@ -13,4 +13,11 @@
 &lt;/ul>
 &lt;h2 id="配置流程">配置流程&lt;/h2>
 &lt;h3 id="jdk-安装">jdk 安装&lt;/h3>
-&lt;p>&lt;code>sudo apt install openjdk-8-jdk openjdk-8-jdk-headless openjdk-8-jre openjdk-8-jre-dcevm openjdk-8-jre-headless&lt;/code>&lt;/p></description></item></channel></rss>
+&lt;p>&lt;code>sudo apt install openjdk-8-jdk openjdk-8-jdk-headless openjdk-8-jre openjdk-8-jre-dcevm openjdk-8-jre-headless&lt;/code>&lt;/p>
+&lt;p>通常android编译环境能够正常工作jdk环境已经ok.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ java -version
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>openjdk version &lt;span style="color:#e6db74">&amp;#34;1.8.0_252&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>OpenJDK Runtime Environment &lt;span style="color:#f92672">(&lt;/span>build 1.8.0_252-8u252-b09-1~18.04-b09&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>OpenJDK 64-Bit Server VM &lt;span style="color:#f92672">(&lt;/span>build 25.252-b09, mixed mode&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="universal-ctags">universal-ctags&lt;/h3>
+&lt;p>ubuntu 自带包管理器安装的 &lt;code>ctags&lt;/code> 是 &lt;code>exuberant-ctags&lt;/code>, 如果已经安装请先通过如下命令卸载&lt;/p></description></item></channel></rss>

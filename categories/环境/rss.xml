@@ -7,4 +7,28 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Codename: focal
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ uname -a
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Linux kang-HP-ProBook-440-14-inch-G10-Notebook-PC 5.15.0-67-generic &lt;span style="color:#75715e">#74~20.04.1-Ubuntu SMP Wed Feb 22 14:52:34 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="安装依赖">安装依赖&lt;/h1>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt update &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> sudo apt upgrade
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt install binutils build-essential gcc make perl net-tools libncurses-dev &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>				openssh-server git fakeroot libssl-dev bc flex libelf-dev bison &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>				dwarves zstd
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="linux-源码下载">Linux 源码下载&lt;/h1>
+&lt;ul>
+&lt;li>官网：
+&lt;a href="https://www.kernel.org/pub/" title="https://www.kernel.org/pub/" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ https://www.kernel.org/pub/
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/li>
+&lt;li>Git：
+&lt;a href="https://git.kernel.org/" title="https://git.kernel.org/" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ https://git.kernel.org/
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/li>
+&lt;li>ftp：
+&lt;a href="http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/" title="http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h1 id="拷贝-config-配置文件">拷贝 .config 配置文件&lt;/h1>
+&lt;p>解压源代码并进入源码根目录，然后执行&lt;/p></description></item></channel></rss>

@@ -13,4 +13,11 @@
 &lt;/ul>
 &lt;p>安装&lt;/p>
 &lt;p>&lt;code>sudo mv jdk1.7.0_80 /usr/lib/&lt;/code>&lt;/p>
-&lt;p>switchjdk7.sh 文件内容如下，该文件放在代码顶层目录：&lt;/p></description></item></channel></rss>
+&lt;p>switchjdk7.sh 文件内容如下，该文件放在代码顶层目录：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># add JDK7 cofig ----&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export JAVA_HOME&lt;span style="color:#f92672">=&lt;/span>/usr/lib/jdk1.7.0_80/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export JRE_HOME&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>JAVA_HOME&lt;span style="color:#e6db74">}&lt;/span>/jre
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export CLASSPATH&lt;span style="color:#f92672">=&lt;/span>.:&lt;span style="color:#e6db74">${&lt;/span>JAVA_HOME&lt;span style="color:#e6db74">}&lt;/span>/lib:&lt;span style="color:#e6db74">${&lt;/span>JRE_HOME&lt;span style="color:#e6db74">}&lt;/span>/lib
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export PATH&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>JAVA_HOME&lt;span style="color:#e6db74">}&lt;/span>/bin:$PATH
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># add JDK7 cofig ----&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>执行如下命令切换java 1.7，仅当前终端有效&lt;/p></description></item></channel></rss>

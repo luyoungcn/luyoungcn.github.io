@@ -4,4 +4,5 @@
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span>if (&lt;span style="color:#e6db74">MOCK_DATA&lt;/span>)&lt;span style="color:#960050;background-color:#1e0010">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span> add_definitions(&lt;span style="color:#e6db74">-DMOCK_DATA_MICRO&lt;/span>)&lt;span style="color:#960050;background-color:#1e0010">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span>endif()&lt;span style="color:#960050;background-color:#1e0010">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>同理子目录道理一样，通过判断 cmake 变量，来决定是否定义源码中的宏定义。&lt;/p>
+&lt;p>此时在 cpp 源代码中可以通过如下形式使用宏定义：&lt;code>MOCK_DATA_MICRO&lt;/code>&lt;/p></description></item></channel></rss>

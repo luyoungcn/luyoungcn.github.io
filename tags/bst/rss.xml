@@ -1,3 +1,44 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bst on LuyangのBlog</title><link>/tags/bst/</link><description>Recent content in Bst on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 09 Feb 2023 00:00:00 +0800</lastBuildDate><atom:link href="/tags/bst/rss.xml" rel="self" type="application/rss+xml"/><item><title>黑芝麻平台交叉编译 openssl</title><link>/post/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/</link><pubDate>Thu, 09 Feb 2023 00:00:00 +0800</pubDate><guid>/post/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/</guid><description>&lt;h1 id="黑芝麻平台交叉编译-openssl">黑芝麻平台交叉编译 openssl&lt;/h1>
 &lt;h2 id="前置条件">前置条件&lt;/h2>
-&lt;p>编译环境：黑芝麻 Linux23 Docker 开发环境，已经默认配置了交叉编译环境。&lt;/p></description></item></channel></rss>
+&lt;p>编译环境：黑芝麻 Linux23 Docker 开发环境，已经默认配置了交叉编译环境。&lt;/p>
+&lt;h2 id="源码下载">源码下载&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>wget https://www.openssl.org/source/openssl-1.1.1k.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar -xzvf openssl-1.1.1k.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd openssl-1.1.1k
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="配置">配置&lt;/h2>
+&lt;p>准备目标文件安装目录：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mkdir _INSTALL
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查看帮助手册：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>root@028337952dd7:/home/misc/openssl-1.1.1k# ./Configure
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Usage: Configure &lt;span style="color:#f92672">[&lt;/span>no-&amp;lt;cipher&amp;gt; ...&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>enable-&amp;lt;cipher&amp;gt; ...&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>-Dxxx&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>-lxxx&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>-Lxxx&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>-fxxx&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>-Kxxx&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>no-hw-xxx|no-hw&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[[&lt;/span>no-&lt;span style="color:#f92672">]&lt;/span>threads&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[[&lt;/span>no-&lt;span style="color:#f92672">]&lt;/span>shared&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[[&lt;/span>no-&lt;span style="color:#f92672">]&lt;/span>zlib|zlib-dynamic&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>no-asm&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>no-egd&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>sctp&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>386&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>--prefix&lt;span style="color:#f92672">=&lt;/span>DIR&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>--openssldir&lt;span style="color:#f92672">=&lt;/span>OPENSSLDIR&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>--with-xxx&lt;span style="color:#f92672">[=&lt;/span>vvv&lt;span style="color:#f92672">]]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>--config&lt;span style="color:#f92672">=&lt;/span>FILE&lt;span style="color:#f92672">]&lt;/span> os/compiler&lt;span style="color:#f92672">[&lt;/span>:flags&lt;span style="color:#f92672">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>pick os/compiler from:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>BS2000-OSD BSD-generic32 BSD-generic64 BSD-ia64 BSD-sparc64 BSD-sparcv8
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>BSD-x86 BSD-x86-elf BSD-x86_64 Cygwin Cygwin-i386 Cygwin-i486 Cygwin-i586
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Cygwin-i686 Cygwin-x86 Cygwin-x86_64 DJGPP MPE/iX-gcc UEFI UWIN VC-CE VC-WIN32
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>VC-WIN32-ARM VC-WIN32-ONECORE VC-WIN64-ARM VC-WIN64A VC-WIN64A-ONECORE
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>VC-WIN64A-masm VC-WIN64I aix-cc aix-gcc aix64-cc aix64-gcc android-arm
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>android-arm64 android-armeabi android-mips android-mips64 android-x86
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>android-x86_64 android64 android64-aarch64 android64-mips64 android64-x86_64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>bsdi-elf-gcc cc darwin-i386-cc darwin-ppc-cc darwin64-arm64-cc darwin64-ppc-cc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>darwin64-x86_64-cc gcc haiku-x86 haiku-x86_64 hpux-ia64-cc hpux-ia64-gcc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hpux-parisc-cc hpux-parisc-gcc hpux-parisc1_1-cc hpux-parisc1_1-gcc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hpux64-ia64-cc hpux64-ia64-gcc hpux64-parisc2-cc hpux64-parisc2-gcc hurd-x86
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ios-cross ios-xcrun ios64-cross ios64-xcrun iossimulator-xcrun iphoneos-cross
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>irix-mips3-cc irix-mips3-gcc irix64-mips4-cc irix64-mips4-gcc linux-aarch64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>linux-alpha-gcc linux-aout linux-arm64ilp32 linux-armv4 linux-c64xplus
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>linux-elf linux-generic32 linux-generic64 linux-ia64 linux-mips32 linux-mips64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>linux-ppc linux-ppc64 linux-ppc64le linux-sparcv8 linux-sparcv9 linux-x32
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>linux-x86 linux-x86-clang linux-x86_64 linux-x86_64-clang linux32-s390x
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>linux64-mips64 linux64-s390x linux64-sparcv9 mingw mingw64 nextstep
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>nextstep3.3 sco5-cc sco5-gcc solaris-sparcv7-cc solaris-sparcv7-gcc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>solaris-sparcv8-cc solaris-sparcv8-gcc solaris-sparcv9-cc solaris-sparcv9-gcc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>solaris-x86-gcc solaris64-sparcv9-cc solaris64-sparcv9-gcc solaris64-x86_64-cc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>solaris64-x86_64-gcc tru64-alpha-cc tru64-alpha-gcc uClinux-dist
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>uClinux-dist64 unixware-2.0 unixware-2.1 unixware-7 unixware-7-gcc vms-alpha
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>vms-alpha-p32 vms-alpha-p64 vms-ia64 vms-ia64-p32 vms-ia64-p64 vos-gcc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>vxworks-mips vxworks-ppc405 vxworks-ppc60x vxworks-ppc750 vxworks-ppc750-debug
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>vxworks-ppc860 vxworks-ppcgen vxworks-simlinux
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>NOTE: If in doubt, on Unix-ish systems use &lt;span style="color:#e6db74">&amp;#39;./config&amp;#39;&lt;/span>.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>上面提示如果编译 Unix-ish x86 平台目标文件，直接使用 &lt;code>./config&lt;/code>&lt;/p></description></item></channel></rss>

@@ -11,4 +11,11 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>* daemon not running; starting now at tcp:5037
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>* daemon started successfully
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>List of devices attached
-&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="windows-安装工具包">Windows 安装工具包&lt;/h2>
+&lt;p>windows 安装 
+&lt;a href="https://github.com/dorssel/usbipd-win/releases" title="usbipd-win" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ usbipd-win
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;h2 id="wsl-安装工具包">WSL 安装工具包&lt;/h2>
+&lt;p>WSL ubuntu 安装 adb 工具&lt;/p></description></item></channel></rss>

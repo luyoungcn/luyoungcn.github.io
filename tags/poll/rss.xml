@@ -2,4 +2,21 @@
 &lt;h2 id="文件节点">文件节点&lt;/h2>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>/sys/class/gpio/gpio666# ls
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>active_low device direction edge subsystem uevent value
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>只用对应 GPIO 有 irq 功能时才会有 edge 文件。&lt;/p></description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>只用对应 GPIO 有 irq 功能时才会有 edge 文件。&lt;/p>
+&lt;ul>
+&lt;li>/sys/class/gpio/export：是一个只写文件，用于导出需要使用的 GPIO 引脚&lt;/li>
+&lt;li>/sys/class/gpio/gpiox/: 是一个文件夹，在引脚导出后自动在 / sys/class/gpio / 目录下生成的&lt;/li>
+&lt;li>/sys/class/gpio/gpiox/active_low：是一个文件，用来控制电平的极性（写 1 是高电平还是写 0 是高电平），默认写 1 是高电平，这个文件不用去管它&lt;/li>
+&lt;li>/sys/class/gpio/gpiox/direction：是一个文件，用来控制 GPIO 是输入还是输出，往direction写 out 就是输出引脚，往direction写 in 就是输入引脚&lt;/li>
+&lt;li>/sys/class/gpio/gpiox/edge：是一个文件，在输入模式下，写 edge 文件，配置 gpio 为外部中断引脚&lt;/li>
+&lt;li>非中断引脚： none&lt;/li>
+&lt;li>上升沿触发： rising&lt;/li>
+&lt;li>下降沿触发： falling&lt;/li>
+&lt;li>边沿触发： both&lt;/li>
+&lt;li>/sys/class/gpio/gpiox/value: 是一个文件，在输出模式下，写该文件表示 gpio 输出；在输入模式下读该文件表示输入&lt;/li>
+&lt;/ul>
+&lt;p>
+&lt;a href="https://www.kernel.org/doc/Documentation/gpio/sysfs.txt" title="sysfs.txt" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ sysfs.txt
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item></channel></rss>

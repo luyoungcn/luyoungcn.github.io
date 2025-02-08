@@ -10,6 +10,6 @@
 &lt;h2 id="服务器-ubuntu-配置">服务器 ubuntu 配置&lt;/h2>
 &lt;ol>
 &lt;li>
-&lt;p>安装 ssh server: &lt;code>sudo apt install openssh-server&lt;/code>&lt;/p></description></item><item><title>git 使用指定的 ssh key</title><link>/post/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/post/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/</guid><description>&lt;p>Git 提供了以下两种方式来指定使用哪个 SSH Key 进行认证：&lt;/p>
+&lt;p>安装 ssh server: &lt;code>sudo apt install openssh-server&lt;/code>&lt;/p></description></item><item><title>git 使用指定的 ssh key</title><link>/post/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/</guid><description>&lt;p>Git 提供了以下两种方式来指定使用哪个 SSH Key 进行认证：&lt;/p>
 &lt;h2 id="使用-git-config-命令">使用 Git Config 命令&lt;/h2>
 &lt;p>使用 &lt;code>git config&lt;/code> 命令来配置 Git 的全局或本地参数。在这个命令中，可以使用 &lt;code>core.sshCommand&lt;/code> 参数来指定使用哪个 SSH Key 进行认证。&lt;/p></description></item></channel></rss>

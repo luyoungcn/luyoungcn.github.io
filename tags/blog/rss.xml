@@ -31,4 +31,14 @@
 &lt;h2 id="框架">框架&lt;/h2>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>blog&lt;span style="color:#f92672">]&lt;/span>$ ls
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>archetypes config.toml content data layouts public resources static themes
-&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="博客内容">博客内容&lt;/h2>
+&lt;ol>
+&lt;li>将你写的博客内容markdown文档所在目录链接到 content 目录，链接文件命名为 post&lt;/li>
+&lt;li>将你的about目录链接到 content 目录，链接文件名为 about&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>blog&lt;span style="color:#f92672">]&lt;/span>$ tree content/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>content/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── about -&amp;gt; /home/lv/post/about
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>└── post -&amp;gt; /home/lv/post
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="博客发布">博客发布&lt;/h2>
+&lt;p>将博客发布内容路径链接为 hugo 的根目录， 链接文件命名为 public&lt;/p></description></item></channel></rss>

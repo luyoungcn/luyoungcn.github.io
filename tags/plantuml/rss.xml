@@ -11,4 +11,14 @@
 &lt;a href="https://www.java.com/zh_CN/download/windows_offline.jsp" title="下载" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
  下载
  &lt;i class="fa fa-external-link-alt">&lt;/i>
-&lt;/a>安装java，不然无法预览plantuml&lt;/p></description></item></channel></rss>
+&lt;/a>安装java，不然无法预览plantuml&lt;/p>
+&lt;ul>
+&lt;li>下载安装该java安装包后没有设置相关java环境变量就可以预览plantuml了。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>
+&lt;a href="https://www2.graphviz.org/Packages/stable/windows/10/msbuild/Release/Win32/" title="下载" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ 下载
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>安装graphivz，不然预览类图报错如下：&lt;/p></description></item></channel></rss>

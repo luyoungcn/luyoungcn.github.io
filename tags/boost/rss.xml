@@ -12,4 +12,19 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">link_directories(${Boost_LIBRARY_DIRS})&lt;/span> 
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">endif&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">()&lt;/span> 
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">endif&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">(WIN32)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>编译报错&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">====================[&lt;/span> Build | radar_data_local_storage | Release-Visual Studio &lt;span style="color:#f92672">]====&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>......
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>CMake Error at C:/Program Files/JetBrains/CLion 2023.1.4/bin/cmake/win/x64/share/cmake-3.25/Modules/FindPackageHandleStandardArgs.cmake:230 &lt;span style="color:#f92672">(&lt;/span>message&lt;span style="color:#f92672">)&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Could NOT find Boost &lt;span style="color:#f92672">(&lt;/span>missing: Boost_INCLUDE_DIR filesystem system&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Call Stack &lt;span style="color:#f92672">(&lt;/span>most recent call first&lt;span style="color:#f92672">)&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> C:/Program Files/JetBrains/CLion 2023.1.4/bin/cmake/win/x64/share/cmake-3.25/Modules/FindPackageHandleStandardArgs.cmake:600 &lt;span style="color:#f92672">(&lt;/span>_FPHSA_FAILURE_MESSAGE&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> C:/Program Files/JetBrains/CLion 2023.1.4/bin/cmake/win/x64/share/cmake-3.25/Modules/FindBoost.cmake:2377 &lt;span style="color:#f92672">(&lt;/span>find_package_handle_standard_args&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> C:/Users/luyang/.clion-vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake:855 &lt;span style="color:#f92672">(&lt;/span>_find_package&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> TestDemo/CMakeLists.txt:8 &lt;span style="color:#f92672">(&lt;/span>find_package&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>CMake Configure step failed. Build files cannot be regenerated correctly.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-- Configuring incomplete, errors occurred!
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>See also &lt;span style="color:#e6db74">&amp;#34;C:/Users/luyang/Documents/TestDemo/cmake-build-release-visual-studio/CMakeFiles/CMakeOutput.log&amp;#34;&lt;/span>.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>增加 ：&lt;code>set(Boost_INCLUDE_DIR ${_VCPKG_INSTALLED_DIR}/x64-windows/include)&lt;/code>&lt;/p></description></item></channel></rss>

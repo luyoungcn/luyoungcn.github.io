@@ -1,14 +1,63 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on LuyangのBlog</title><link>/tags/linux/</link><description>Recent content in Linux on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 09 Feb 2023 00:00:00 +0800</lastBuildDate><atom:link href="/tags/linux/rss.xml" rel="self" type="application/rss+xml"/><item><title>Linux date 命令用法</title><link>/post/linux_date_cmd/</link><pubDate>Thu, 09 Feb 2023 00:00:00 +0800</pubDate><guid>/post/linux_date_cmd/</guid><description>&lt;h2 id="基本用法-date">基本用法 date&lt;/h2>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ date
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>2023年 02月 09日 星期四 16:22:29 CST
-&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item><item><title>windows10 WSL setup</title><link>/post/windows10_wsl/</link><pubDate>Thu, 09 Feb 2023 00:00:00 +0800</pubDate><guid>/post/windows10_wsl/</guid><description>&lt;h1 id="win10-安装-wsl2">win10 安装 wsl2&lt;/h1>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="精确到-ms">精确到 ms&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ date +&lt;span style="color:#e6db74">&amp;#39;%d/%m/%Y %H:%M:%S:%3N&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>09/02/2023 16:23:20:252
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="精确到-ns">精确到 ns&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ date +&lt;span style="color:#e6db74">&amp;#39;%d/%m/%Y %H:%M:%S:%N&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>09/02/2023 16:23:24:918036405
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>windows10 WSL setup</title><link>/post/windows10_wsl/</link><pubDate>Thu, 09 Feb 2023 00:00:00 +0800</pubDate><guid>/post/windows10_wsl/</guid><description>&lt;h1 id="win10-安装-wsl2">win10 安装 wsl2&lt;/h1>
 &lt;p>
 &lt;a href="https://docs.microsoft.com/zh-cn/windows/wsl/install" title="安装 WSL | Microsoft Docs" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
  安装 WSL | Microsoft Docs
  &lt;i class="fa fa-external-link-alt">&lt;/i>
-&lt;/a>&lt;/p></description></item><item><title>黑芝麻平台交叉编译 openssl</title><link>/post/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/</link><pubDate>Thu, 09 Feb 2023 00:00:00 +0800</pubDate><guid>/post/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/</guid><description>&lt;h1 id="黑芝麻平台交叉编译-openssl">黑芝麻平台交叉编译 openssl&lt;/h1>
+&lt;/a>&lt;/p>
+&lt;p>必须运行 Windows 10 版本 2004 及更高版本（内部版本 19041 及更高版本）或 Windows 11。&lt;/p>
+&lt;p>→ 我的电脑win10已经更新到最新，应该没问题。&lt;/p></description></item><item><title>黑芝麻平台交叉编译 openssl</title><link>/post/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/</link><pubDate>Thu, 09 Feb 2023 00:00:00 +0800</pubDate><guid>/post/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/</guid><description>&lt;h1 id="黑芝麻平台交叉编译-openssl">黑芝麻平台交叉编译 openssl&lt;/h1>
 &lt;h2 id="前置条件">前置条件&lt;/h2>
-&lt;p>编译环境：黑芝麻 Linux23 Docker 开发环境，已经默认配置了交叉编译环境。&lt;/p></description></item><item><title>I2C command</title><link>/post/i2c_cmd/</link><pubDate>Tue, 07 Feb 2023 00:00:00 +0800</pubDate><guid>/post/i2c_cmd/</guid><description>&lt;h1 id="i2c-寄存器读写命令">I2C 寄存器读写命令&lt;/h1>
+&lt;p>编译环境：黑芝麻 Linux23 Docker 开发环境，已经默认配置了交叉编译环境。&lt;/p>
+&lt;h2 id="源码下载">源码下载&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>wget https://www.openssl.org/source/openssl-1.1.1k.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar -xzvf openssl-1.1.1k.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd openssl-1.1.1k
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="配置">配置&lt;/h2>
+&lt;p>准备目标文件安装目录：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mkdir _INSTALL
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查看帮助手册：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>root@028337952dd7:/home/misc/openssl-1.1.1k# ./Configure
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Usage: Configure &lt;span style="color:#f92672">[&lt;/span>no-&amp;lt;cipher&amp;gt; ...&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>enable-&amp;lt;cipher&amp;gt; ...&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>-Dxxx&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>-lxxx&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>-Lxxx&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>-fxxx&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>-Kxxx&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>no-hw-xxx|no-hw&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[[&lt;/span>no-&lt;span style="color:#f92672">]&lt;/span>threads&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[[&lt;/span>no-&lt;span style="color:#f92672">]&lt;/span>shared&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[[&lt;/span>no-&lt;span style="color:#f92672">]&lt;/span>zlib|zlib-dynamic&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>no-asm&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>no-egd&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>sctp&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>386&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>--prefix&lt;span style="color:#f92672">=&lt;/span>DIR&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>--openssldir&lt;span style="color:#f92672">=&lt;/span>OPENSSLDIR&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>--with-xxx&lt;span style="color:#f92672">[=&lt;/span>vvv&lt;span style="color:#f92672">]]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>--config&lt;span style="color:#f92672">=&lt;/span>FILE&lt;span style="color:#f92672">]&lt;/span> os/compiler&lt;span style="color:#f92672">[&lt;/span>:flags&lt;span style="color:#f92672">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>pick os/compiler from:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>BS2000-OSD BSD-generic32 BSD-generic64 BSD-ia64 BSD-sparc64 BSD-sparcv8
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>BSD-x86 BSD-x86-elf BSD-x86_64 Cygwin Cygwin-i386 Cygwin-i486 Cygwin-i586
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Cygwin-i686 Cygwin-x86 Cygwin-x86_64 DJGPP MPE/iX-gcc UEFI UWIN VC-CE VC-WIN32
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>VC-WIN32-ARM VC-WIN32-ONECORE VC-WIN64-ARM VC-WIN64A VC-WIN64A-ONECORE
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>VC-WIN64A-masm VC-WIN64I aix-cc aix-gcc aix64-cc aix64-gcc android-arm
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>android-arm64 android-armeabi android-mips android-mips64 android-x86
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>android-x86_64 android64 android64-aarch64 android64-mips64 android64-x86_64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>bsdi-elf-gcc cc darwin-i386-cc darwin-ppc-cc darwin64-arm64-cc darwin64-ppc-cc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>darwin64-x86_64-cc gcc haiku-x86 haiku-x86_64 hpux-ia64-cc hpux-ia64-gcc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hpux-parisc-cc hpux-parisc-gcc hpux-parisc1_1-cc hpux-parisc1_1-gcc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hpux64-ia64-cc hpux64-ia64-gcc hpux64-parisc2-cc hpux64-parisc2-gcc hurd-x86
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ios-cross ios-xcrun ios64-cross ios64-xcrun iossimulator-xcrun iphoneos-cross
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>irix-mips3-cc irix-mips3-gcc irix64-mips4-cc irix64-mips4-gcc linux-aarch64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>linux-alpha-gcc linux-aout linux-arm64ilp32 linux-armv4 linux-c64xplus
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>linux-elf linux-generic32 linux-generic64 linux-ia64 linux-mips32 linux-mips64
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>linux-ppc linux-ppc64 linux-ppc64le linux-sparcv8 linux-sparcv9 linux-x32
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>linux-x86 linux-x86-clang linux-x86_64 linux-x86_64-clang linux32-s390x
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>linux64-mips64 linux64-s390x linux64-sparcv9 mingw mingw64 nextstep
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>nextstep3.3 sco5-cc sco5-gcc solaris-sparcv7-cc solaris-sparcv7-gcc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>solaris-sparcv8-cc solaris-sparcv8-gcc solaris-sparcv9-cc solaris-sparcv9-gcc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>solaris-x86-gcc solaris64-sparcv9-cc solaris64-sparcv9-gcc solaris64-x86_64-cc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>solaris64-x86_64-gcc tru64-alpha-cc tru64-alpha-gcc uClinux-dist
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>uClinux-dist64 unixware-2.0 unixware-2.1 unixware-7 unixware-7-gcc vms-alpha
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>vms-alpha-p32 vms-alpha-p64 vms-ia64 vms-ia64-p32 vms-ia64-p64 vos-gcc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>vxworks-mips vxworks-ppc405 vxworks-ppc60x vxworks-ppc750 vxworks-ppc750-debug
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>vxworks-ppc860 vxworks-ppcgen vxworks-simlinux
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>NOTE: If in doubt, on Unix-ish systems use &lt;span style="color:#e6db74">&amp;#39;./config&amp;#39;&lt;/span>.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>上面提示如果编译 Unix-ish x86 平台目标文件，直接使用 &lt;code>./config&lt;/code>&lt;/p></description></item><item><title>I2C command</title><link>/post/i2c_cmd/</link><pubDate>Tue, 07 Feb 2023 00:00:00 +0800</pubDate><guid>/post/i2c_cmd/</guid><description>&lt;h1 id="i2c-寄存器读写命令">I2C 寄存器读写命令&lt;/h1>
 &lt;h2 id="探测设备">探测设备&lt;/h2>
 &lt;h3 id="i2cdetect">i2cdetect&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>HELLO@WORLD:~# i2cdetect
@@ -18,7 +67,78 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> i2cdetect -l
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> I2CBUS is an integer or an I2C bus name
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> If provided, FIRST and LAST limit the probing range.
-&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item><item><title>dmesg use CST timestamp</title><link>/post/dmesg_support_iso_timestamp/</link><pubDate>Wed, 01 Feb 2023 00:00:00 +0800</pubDate><guid>/post/dmesg_support_iso_timestamp/</guid><description>&lt;h2 id="痛点说明">痛点说明&lt;/h2>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># I2CBUS: 0 1 2 ...&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Notice: -r 参数很重要，不带 -r 参数有些设备探测不到&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>i2cdetect -y -r &amp;lt;I2CBUS&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="对于8bit的reg-value-可以使用-i2cget--i2cset">对于8bit的reg, value 可以使用 &lt;code>i2cget / i2cset&lt;/code>&lt;/h2>
+&lt;h3 id="i2cget">i2cget&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>HELLO@WORLD:~# i2cget
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Usage: i2cget &lt;span style="color:#f92672">[&lt;/span>-f&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>-y&lt;span style="color:#f92672">]&lt;/span> I2CBUS CHIP-ADDRESS &lt;span style="color:#f92672">[&lt;/span>DATA-ADDRESS &lt;span style="color:#f92672">[&lt;/span>MODE&lt;span style="color:#f92672">]]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> I2CBUS is an integer or an I2C bus name
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ADDRESS is an integer &lt;span style="color:#f92672">(&lt;/span>0x03 - 0x77&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> MODE is one of:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> b &lt;span style="color:#f92672">(&lt;/span>read byte data, default&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> w &lt;span style="color:#f92672">(&lt;/span>read word data&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> c &lt;span style="color:#f92672">(&lt;/span>write byte/read byte&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Append p &lt;span style="color:#66d9ef">for&lt;/span> SMBus PEC
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># SLAVE_ADDRESS: 使用i2cdetect 出来的结果&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>i2cget -y -f &amp;lt;I2CBUS&amp;gt; &amp;lt;SLAVE_ADDRESS&amp;gt; &amp;lt;REG&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="i2cset">i2cset&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>HELLO@WORLD:~# i2cset
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Usage: i2cset &lt;span style="color:#f92672">[&lt;/span>-f&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>-y&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>-m MASK&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>-r&lt;span style="color:#f92672">]&lt;/span> I2CBUS CHIP-ADDRESS DATA-ADDRESS &lt;span style="color:#f92672">[&lt;/span>VALUE&lt;span style="color:#f92672">]&lt;/span> ... &lt;span style="color:#f92672">[&lt;/span>MODE&lt;span style="color:#f92672">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> I2CBUS is an integer or an I2C bus name
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ADDRESS is an integer &lt;span style="color:#f92672">(&lt;/span>0x03 - 0x77&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> MODE is one of:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> c &lt;span style="color:#f92672">(&lt;/span>byte, no value&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> b &lt;span style="color:#f92672">(&lt;/span>byte data, default&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> w &lt;span style="color:#f92672">(&lt;/span>word data&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> i &lt;span style="color:#f92672">(&lt;/span>I2C block data&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> s &lt;span style="color:#f92672">(&lt;/span>SMBus block data&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Append p &lt;span style="color:#66d9ef">for&lt;/span> SMBus PEC
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>i2cset -y -f &amp;lt;I2CBUS&amp;gt; &amp;lt;SLAVE_ADDRESS&amp;gt; &amp;lt;REG&amp;gt; &amp;lt;VALUE&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="对于16bit的reg-value-需要使用-i2ctransfer">对于16bit+的reg, value 需要使用 &lt;code>i2ctransfer&lt;/code>&lt;/h2>
+&lt;h3 id="i2ctransfer">i2ctransfer&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>root@J3Pilot-B:~# i2ctransfer
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Usage: i2ctransfer &lt;span style="color:#f92672">[&lt;/span>-f&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>-y&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>-v&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>-V&lt;span style="color:#f92672">]&lt;/span> I2CBUS DESC &lt;span style="color:#f92672">[&lt;/span>DATA&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>DESC &lt;span style="color:#f92672">[&lt;/span>DATA&lt;span style="color:#f92672">]]&lt;/span>...
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> I2CBUS is an integer or an I2C bus name
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> DESC describes the transfer in the form: &lt;span style="color:#f92672">{&lt;/span>r|w&lt;span style="color:#f92672">}&lt;/span>LENGTH&lt;span style="color:#f92672">[&lt;/span>@address&lt;span style="color:#f92672">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 1&lt;span style="color:#f92672">)&lt;/span> read/write-flag 2&lt;span style="color:#f92672">)&lt;/span> LENGTH &lt;span style="color:#f92672">(&lt;/span>range 0-65535&lt;span style="color:#f92672">)&lt;/span> 3&lt;span style="color:#f92672">)&lt;/span> I2C address &lt;span style="color:#f92672">(&lt;/span>use last one &lt;span style="color:#66d9ef">if&lt;/span> omitted&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> DATA are LENGTH bytes &lt;span style="color:#66d9ef">for&lt;/span> a write message. They can be shortened by a suffix:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">(&lt;/span>keep value constant &lt;span style="color:#66d9ef">until&lt;/span> LENGTH&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> + &lt;span style="color:#f92672">(&lt;/span>increase value by &lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#66d9ef">until&lt;/span> LENGTH&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">(&lt;/span>decrease value by &lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#66d9ef">until&lt;/span> LENGTH&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> p &lt;span style="color:#f92672">(&lt;/span>use pseudo random generator &lt;span style="color:#66d9ef">until&lt;/span> LENGTH with value as seed&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Example &lt;span style="color:#f92672">(&lt;/span>bus 0, read &lt;span style="color:#ae81ff">8&lt;/span> byte at offset 0x64 from EEPROM at 0x50&lt;span style="color:#f92672">)&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># i2ctransfer 0 w1@0x50 0x64 r8&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Example &lt;span style="color:#f92672">(&lt;/span>same EEPROM, at offset 0x42 write 0xff 0xfe ... 0xf0&lt;span style="color:#f92672">)&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># i2ctransfer 0 w17@0x50 0x42 0xff-&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># W3 写三个参数 16bit 寄存器 （2 Bytes）+ value（1 Byte）&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># i2c bus 0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># slave address 0x36&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>i2ctransfer -y -f &lt;span style="color:#ae81ff">0&lt;/span> w3@0x33 0x3B 0x9D 0x01
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># w2 （16bit寄存器）写两个参数 0x4F 0x0C 寄存器（0x4F0C）到 0x36 slave address&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># i2c bus 总线 0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 读取 i2c 总线 0 的 slave address 为 0x36 的设备的寄存器 0x4F0C, 读一个 char&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 0x36 是 ovx3c 的 slave address （7bit i2c address）&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>i2ctransfer -y -f &lt;span style="color:#ae81ff">0&lt;/span> w2@0x36 0x4F 0x0C r1
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="dump-寄存器-00ff">dump 寄存器 00~FF&lt;/h2>
+&lt;h3 id="i2cdump">i2cdump&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>HELLO@WORLD:~# i2cdump 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Error: No i2c-bus specified!
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Usage: i2cdump &lt;span style="color:#f92672">[&lt;/span>-f&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>-y&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">[&lt;/span>-r first-last&lt;span style="color:#f92672">]&lt;/span> I2CBUS ADDRESS &lt;span style="color:#f92672">[&lt;/span>MODE &lt;span style="color:#f92672">[&lt;/span>BANK &lt;span style="color:#f92672">[&lt;/span>BANKREG&lt;span style="color:#f92672">]]]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> I2CBUS is an integer or an I2C bus name
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ADDRESS is an integer &lt;span style="color:#f92672">(&lt;/span>0x03 - 0x77&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> MODE is one of:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> b &lt;span style="color:#f92672">(&lt;/span>byte, default&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> w &lt;span style="color:#f92672">(&lt;/span>word&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> W &lt;span style="color:#f92672">(&lt;/span>word on even register addresses&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> s &lt;span style="color:#f92672">(&lt;/span>SMBus block&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> i &lt;span style="color:#f92672">(&lt;/span>I2C block&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> c &lt;span style="color:#f92672">(&lt;/span>consecutive byte&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Append p &lt;span style="color:#66d9ef">for&lt;/span> SMBus PEC
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>i2cdump -f -y &amp;lt;I2CBUS&amp;gt; &amp;lt;SLAVE_ADDRESS&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>dmesg use CST timestamp</title><link>/post/dmesg_support_iso_timestamp/</link><pubDate>Wed, 01 Feb 2023 00:00:00 +0800</pubDate><guid>/post/dmesg_support_iso_timestamp/</guid><description>&lt;h2 id="痛点说明">痛点说明&lt;/h2>
 &lt;p>当前板子集成的是 busybox dmesg，打印内核日志不支持 CST 时间戳格式，无法与应用层日志时间对齐&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>root@qualcomm:~# busybox dmesg --help
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>BusyBox v1.29.2 &lt;span style="color:#f92672">(&lt;/span>2021-07-28 06:25:45 UTC&lt;span style="color:#f92672">)&lt;/span> multi-call binary.
@@ -31,21 +151,101 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> -n LEVEL Set console logging level
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> -s SIZE Buffer size
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> -r Print raw message buffer
-&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item><item><title>Linux Test Disk with dd command</title><link>/post/linux_test_disk_i_o_with_dd/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/linux_test_disk_i_o_with_dd/</guid><description>&lt;h1 id="关键命令">关键命令&lt;/h1>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>时间戳格式&lt;/p></description></item><item><title>Linux Test Disk with dd command</title><link>/post/linux_test_disk_i_o_with_dd/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/linux_test_disk_i_o_with_dd/</guid><description>&lt;h1 id="关键命令">关键命令&lt;/h1>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 清空文件系统缓存, 测试读写命令之前需要执行该命令&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo sh -c &lt;span style="color:#e6db74">&amp;#34;sync &amp;amp;&amp;amp; echo 3 &amp;gt; /proc/sys/vm/drop_caches&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># dd 写入速度测试&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>dd &lt;span style="color:#66d9ef">if&lt;/span>&lt;span style="color:#f92672">=&lt;/span>/dev/zero of&lt;span style="color:#f92672">=&lt;/span>./test_write count&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">200&lt;/span> bs&lt;span style="color:#f92672">=&lt;/span>1024k
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># dd 读取速度测试&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>dd &lt;span style="color:#66d9ef">if&lt;/span>&lt;span style="color:#f92672">=&lt;/span>./test_write of&lt;span style="color:#f92672">=&lt;/span>/dev/null bs&lt;span style="color:#f92672">=&lt;/span>1024k
-&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item><item><title>samba</title><link>/post/samba/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/samba/</guid><description>&lt;h2 id="安装">安装&lt;/h2>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="测试脚本">测试脚本&lt;/h1>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#!/bin/bash
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 检查是否提供了足够的参数&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">[&lt;/span> $# -lt &lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">]&lt;/span>; &lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Usage: &lt;/span>$0&lt;span style="color:#e6db74"> test_count&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> exit &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># ANSI颜色码&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>green_color&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;\e[32m&amp;#34;&lt;/span> &lt;span style="color:#75715e"># 绿色&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>red_color&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;\e[31m&amp;#34;&lt;/span> &lt;span style="color:#75715e"># 红色&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>reset_color&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;\e[0m&amp;#34;&lt;/span> &lt;span style="color:#75715e"># 重置颜色&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>total_iterations&lt;span style="color:#f92672">=&lt;/span>$1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 初始化计数器&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>write_success_count&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>write_failure_count&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>read_success_count&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>read_failure_count&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">&amp;#34;Total number of iterations: &lt;/span>$total_iterations&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> &lt;span style="color:#f92672">((&lt;/span>i&lt;span style="color:#f92672">=&lt;/span>1; i&amp;lt;&lt;span style="color:#f92672">=&lt;/span>$total_iterations; i++&lt;span style="color:#f92672">))&lt;/span>; &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#75715e"># 清空文件系统缓存&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	sudo sh -c &lt;span style="color:#e6db74">&amp;#34;sync &amp;amp;&amp;amp; echo 3 &amp;gt; /proc/sys/vm/drop_caches&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#75715e"># 执行dd写入测试&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">if&lt;/span> dd &lt;span style="color:#66d9ef">if&lt;/span>&lt;span style="color:#f92672">=&lt;/span>/dev/zero of&lt;span style="color:#f92672">=&lt;/span>./test_write count&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">200&lt;/span> bs&lt;span style="color:#f92672">=&lt;/span>1024k 2&amp;gt;&amp;amp;&lt;span style="color:#ae81ff">1&lt;/span> | grep -q &lt;span style="color:#e6db74">&amp;#34;records in&amp;#34;&lt;/span>; &lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	 write_speed&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">$(&lt;/span>dd &lt;span style="color:#66d9ef">if&lt;/span>&lt;span style="color:#f92672">=&lt;/span>./test_write of&lt;span style="color:#f92672">=&lt;/span>/dev/null bs&lt;span style="color:#f92672">=&lt;/span>1024k 2&amp;gt;&amp;amp;&lt;span style="color:#ae81ff">1&lt;/span> | awk &lt;span style="color:#e6db74">&amp;#39;/copied/ {print $(NF-1), $NF}&amp;#39;&lt;/span>&lt;span style="color:#66d9ef">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	 echo &lt;span style="color:#e6db74">&amp;#34;write speed: &lt;/span>$write_speed&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	 &lt;span style="color:#f92672">((&lt;/span>write_success_count++&lt;span style="color:#f92672">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	 echo &lt;span style="color:#e6db74">&amp;#34;write failed&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	 &lt;span style="color:#f92672">((&lt;/span>write_failure_count++&lt;span style="color:#f92672">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#75715e"># 再次清空文件系统缓存&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	sudo sh -c &lt;span style="color:#e6db74">&amp;#34;sync &amp;amp;&amp;amp; echo 3 &amp;gt; /proc/sys/vm/drop_caches&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#75715e"># 执行dd读取测试&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">if&lt;/span> dd &lt;span style="color:#66d9ef">if&lt;/span>&lt;span style="color:#f92672">=&lt;/span>./test_write of&lt;span style="color:#f92672">=&lt;/span>/dev/null bs&lt;span style="color:#f92672">=&lt;/span>1024k 2&amp;gt;&amp;amp;&lt;span style="color:#ae81ff">1&lt;/span> | grep -q &lt;span style="color:#e6db74">&amp;#34;records in&amp;#34;&lt;/span>; &lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	 read_speed&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">$(&lt;/span>dd &lt;span style="color:#66d9ef">if&lt;/span>&lt;span style="color:#f92672">=&lt;/span>./test_write of&lt;span style="color:#f92672">=&lt;/span>/dev/null bs&lt;span style="color:#f92672">=&lt;/span>1024k 2&amp;gt;&amp;amp;&lt;span style="color:#ae81ff">1&lt;/span> | awk &lt;span style="color:#e6db74">&amp;#39;/copied/ {print $(NF-1), $NF}&amp;#39;&lt;/span>&lt;span style="color:#66d9ef">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	 echo &lt;span style="color:#e6db74">&amp;#34;read speed: &lt;/span>$read_speed&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	 &lt;span style="color:#f92672">((&lt;/span>read_success_count++&lt;span style="color:#f92672">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	 echo &lt;span style="color:#e6db74">&amp;#34;read failed&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	 &lt;span style="color:#f92672">((&lt;/span>read_failed_count++&lt;span style="color:#f92672">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	&lt;span style="color:#66d9ef">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>	echo &lt;span style="color:#e6db74">&amp;#34;----------------&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">done&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 输出总的测试次数、成功次数和失败次数&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">&amp;#34;Total number of tests: &lt;/span>$total_iterations&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo -e &lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>green_color&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">Number of write successful tests: &lt;/span>$write_success_count&lt;span style="color:#e6db74">${&lt;/span>reset_color&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo -e &lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>green_color&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">Number of read successful tests: &lt;/span>$read_success_count&lt;span style="color:#e6db74">${&lt;/span>reset_color&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo -e &lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>red_color&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">Number of write failed tests: &lt;/span>$write_failure_count&lt;span style="color:#e6db74">${&lt;/span>reset_color&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo -e &lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>red_color&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">Number of read failed tests: &lt;/span>$read_failure_count&lt;span style="color:#e6db74">${&lt;/span>reset_color&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>samba</title><link>/post/samba/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/samba/</guid><description>&lt;h2 id="安装">安装&lt;/h2>
 &lt;p>For ubuntu&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># smbclient 用来测试 samba 服务&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt install samba smbclient
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>For arch&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo pacman -Sy samba smbclient
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="配置文件">配置文件&lt;/h2>
-&lt;p>&lt;code>/etc/samba/smb.conf&lt;/code> 末尾追加如下内容:&lt;/p></description></item><item><title>Virtualbox Opensuse 无网络图标 无法上网</title><link>/post/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/</guid><description>&lt;p>参考链接&lt;/p>
+&lt;p>&lt;code>/etc/samba/smb.conf&lt;/code> 末尾追加如下内容:&lt;/p>
+&lt;p>&lt;em>注意这里的 &lt;code>[share]&lt;/code>&lt;/em>
+&lt;em>windows 映射网络驱动器的时候路径为: &lt;code>\\&amp;lt;ubuntu ip&amp;gt;\share&lt;/code>&lt;/em>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-markdown" data-lang="markdown">&lt;span style="display:flex;">&lt;span>[share]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>path = /home/username/Public
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>public = yes
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>writable = yes
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>valid users = username //映射时的登陆名
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>create mask = 0644
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>force create mode = 0644
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>directory mask = 0755
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>force directory mode = 0755
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>available = yes
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="设置密码">设置密码&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo touch /etc/samba/smbpasswd
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo smbpasswd -a username
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># then insert password&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="重启-samba-服务">重启 samba 服务&lt;/h2>
+&lt;p>For ubuntu&lt;/p></description></item><item><title>Virtualbox Opensuse 无网络图标 无法上网</title><link>/post/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/</guid><description>&lt;p>参考链接&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;a href="https://forum.suse.org.cn/t/eth0/2049/4" title="https://forum.suse.org.cn/t/eth0/2049/4" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
@@ -59,7 +259,8 @@
 &lt;/a>&lt;/li>
 &lt;/ul>
 &lt;p>Virtualbox 虚拟机装完没有网络？&lt;/p>
-&lt;p>&lt;code>sudo systemctl start NetworkManager&lt;/code>&lt;/p></description></item><item><title>vscode 阅读 Linux 内核代码配置</title><link>/post/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>内核源码根目录下创建 .vscode 目录&lt;/p>
+&lt;p>&lt;code>sudo systemctl start NetworkManager&lt;/code>&lt;/p>
+&lt;p>启动 NetworkManager 服务，会自动运行 DHCP 分配 IP 地址给你。之后可用：&lt;code>ping 127.0.0.1&lt;/code> 或 &lt;code>ping 192.168.1.1&lt;/code>测试（按 Ctrl + C 可停止 ping，不然会一直进行）。&lt;/p></description></item><item><title>vscode 阅读 Linux 内核代码配置</title><link>/post/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>内核源码根目录下创建 .vscode 目录&lt;/p>
 &lt;p>.vscode 目录下创建 c_cpp_properties.json 文件，内容如下：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;configurations&amp;#34;&lt;/span>: [
@@ -79,11 +280,33 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ],
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;version&amp;#34;&lt;/span>: &lt;span style="color:#ae81ff">4&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item><item><title>如何在 Linux 用户空间中进行类似 GPIO 中断的处理</title><link>/post/how_to_handle_gpio_interrupt_like_handling_in_linux_userspace/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/how_to_handle_gpio_interrupt_like_handling_in_linux_userspace/</guid><description>&lt;h1 id="how-to-handle-gpio-interrupt-like-handling-in-linux-userspace">How to handle GPIO interrupt-like handling in Linux userspace&lt;/h1>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>说明：&lt;/p>
+&lt;ol>
+&lt;li>compilerPath 需要指定编译器bin文件的路径，而不是编译器所在目录&lt;/li>
+&lt;li>defines 添加 “&lt;strong>KERNEL&lt;/strong>” 为了解决 uapi 相关头文件中会根据该宏控区分应用层和内核层，如果不定义可能出现头文件不存在问题&lt;/li>
+&lt;/ol>
+&lt;p>例如 &lt;code>include/uapi/linux/videodev2.h&lt;/code> 中&lt;/p></description></item><item><title>如何在 Linux 用户空间中进行类似 GPIO 中断的处理</title><link>/post/how_to_handle_gpio_interrupt_like_handling_in_linux_userspace/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/how_to_handle_gpio_interrupt_like_handling_in_linux_userspace/</guid><description>&lt;h1 id="how-to-handle-gpio-interrupt-like-handling-in-linux-userspace">How to handle GPIO interrupt-like handling in Linux userspace&lt;/h1>
 &lt;h2 id="文件节点">文件节点&lt;/h2>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>/sys/class/gpio/gpio666# ls
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>active_low device direction edge subsystem uevent value
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>只用对应 GPIO 有 irq 功能时才会有 edge 文件。&lt;/p></description></item><item><title>一文搞懂应用开发所需 Linux 系统时间的相关知识点</title><link>/post/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/</guid><description>&lt;h2 id="秒级精度">秒级精度&lt;/h2>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>只用对应 GPIO 有 irq 功能时才会有 edge 文件。&lt;/p>
+&lt;ul>
+&lt;li>/sys/class/gpio/export：是一个只写文件，用于导出需要使用的 GPIO 引脚&lt;/li>
+&lt;li>/sys/class/gpio/gpiox/: 是一个文件夹，在引脚导出后自动在 / sys/class/gpio / 目录下生成的&lt;/li>
+&lt;li>/sys/class/gpio/gpiox/active_low：是一个文件，用来控制电平的极性（写 1 是高电平还是写 0 是高电平），默认写 1 是高电平，这个文件不用去管它&lt;/li>
+&lt;li>/sys/class/gpio/gpiox/direction：是一个文件，用来控制 GPIO 是输入还是输出，往direction写 out 就是输出引脚，往direction写 in 就是输入引脚&lt;/li>
+&lt;li>/sys/class/gpio/gpiox/edge：是一个文件，在输入模式下，写 edge 文件，配置 gpio 为外部中断引脚&lt;/li>
+&lt;li>非中断引脚： none&lt;/li>
+&lt;li>上升沿触发： rising&lt;/li>
+&lt;li>下降沿触发： falling&lt;/li>
+&lt;li>边沿触发： both&lt;/li>
+&lt;li>/sys/class/gpio/gpiox/value: 是一个文件，在输出模式下，写该文件表示 gpio 输出；在输入模式下读该文件表示输入&lt;/li>
+&lt;/ul>
+&lt;p>
+&lt;a href="https://www.kernel.org/doc/Documentation/gpio/sysfs.txt" title="sysfs.txt" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ sysfs.txt
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>一文搞懂应用开发所需 Linux 系统时间的相关知识点</title><link>/post/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/</guid><description>&lt;h2 id="秒级精度">秒级精度&lt;/h2>
 &lt;p>&lt;code>time_t&lt;/code> 保存自 UTC 1970 年 1 月 1 日 00:00 以来的秒数（不包括闰秒），对应于
 &lt;a href="https://en.wikipedia.org/wiki/Unix_time" title="POSIX time" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
  POSIX time

@@ -14,4 +14,10 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># To install x64, run:&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#ae81ff">\v&lt;/span>cpkg&lt;span style="color:#ae81ff">\v&lt;/span>cpkg install &lt;span style="color:#f92672">[&lt;/span>package name&lt;span style="color:#f92672">]&lt;/span>:x64-windows
-&lt;/span>&lt;/span>&lt;/code>&lt;/pr</description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="tab-completionauto-completion">Tab-Completion/Auto-Completion&lt;/h1>
+&lt;p>
+&lt;a href="https://github.com/microsoft/vcpkg#tab-completionauto-completion" title="https://github.com/microsoft/vcpkg#tab-completionauto-completion" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ https://github.com/microsoft/vcpkg#tab-completionauto-completion
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>&lt;code>vcpkg&lt;/code> supports auto-completion of commands, package names, and options in both powershell and bash. To enable tab-completion in the shell of your choice, run:&lt;/p></description></item></channel></rss>

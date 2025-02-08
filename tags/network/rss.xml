@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Network on LuyangのBlog</title><link>/tags/network/</link><description>Recent content in Network on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="/tags/network/rss.xml" rel="self" type="application/rss+xml"/><item><title>Debian 4.9 Config Static Ip.md</title><link>/post/debian4.9configstaticip/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/debian4.9configstaticip/</guid><description>&lt;blockquote>
-&lt;p>Linux debian 4.9.0-6-amd64 #1 SMP Debian 4.9.82-1+deb9u3 (2018-03-02) x86_64&lt;/p>
-&lt;/blockquote>
+&lt;p>Linux debian 4.9.0-6-amd64 #1 SMP Debian 4.9.82-1+deb9u3 (2018-03-02) x86_64&lt;/p>&lt;/blockquote>
 &lt;p>kk@debian:~$ &lt;code>cat /etc/network/interfaces&lt;/code>&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span># This file describes the network interfaces available on your system
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># and how to activate them. For more information, see interfaces(5).
@@ -10,7 +9,22 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># The loopback network interface
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>auto lo
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>iface lo inet loopback
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>修改后&lt;/p></description></item><item><title>iperf 测试网络带宽</title><link>/post/iperf-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/iperf-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD/</guid><description>&lt;p>&lt;code>100BASE-TX&lt;/code>&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>修改后&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span># This file describes the network interfaces available on your system
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># and how to activate them. For more information, see interfaces(5).
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>source /etc/network/interfaces.d/*
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># The loopback network interface
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>auto lo enp0s3
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>iface lo inet loopback
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>iface enp0s3 inet static
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> address 192.168.20.103
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> netmask 255.255.255.0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> gateway 192.168.20.1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>dns-nameservers 114.114.114.114
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>kk@debian:~$ &lt;code>/sbin/ifconfig&lt;/code>&lt;/p></description></item><item><title>iperf 测试网络带宽</title><link>/post/iperf-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/iperf-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD/</guid><description>&lt;p>&lt;code>100BASE-TX&lt;/code>&lt;/p>
 &lt;p>
 &lt;a href="https://iperf.fr/" title="iPerf" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
  iPerf
@@ -20,7 +34,15 @@
 &lt;li>Test the limits of your network + Internet neutrality test&lt;/li>
 &lt;/ul>
 &lt;h1 id="编译安装-iperf">编译安装 iperf&lt;/h1>
-&lt;p>windows 端直接下载二进制文件&lt;/p></description></item><item><title>Virtualbox Opensuse 无网络图标 无法上网</title><link>/post/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/</guid><description>&lt;p>参考链接&lt;/p>
+&lt;p>windows 端直接下载二进制文件&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;a href="https://iperf.fr/download/windows/iperf-3.1.3-win64.zip" title="iPerf 3.1.3" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ iPerf 3.1.3
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a> (8 jun 2016 - 1.3 MiB for Windows Vista 64bits to Windows 10 64bits)&lt;/li>
+&lt;/ul>
+&lt;p>嵌入式平台需要从源码[[交叉编译]]安装&lt;/p></description></item><item><title>Virtualbox Opensuse 无网络图标 无法上网</title><link>/post/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/</guid><description>&lt;p>参考链接&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;a href="https://forum.suse.org.cn/t/eth0/2049/4" title="https://forum.suse.org.cn/t/eth0/2049/4" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
@@ -34,4 +56,5 @@
 &lt;/a>&lt;/li>
 &lt;/ul>
 &lt;p>Virtualbox 虚拟机装完没有网络？&lt;/p>
-&lt;p>&lt;code>sudo systemctl start NetworkManager&lt;/code>&lt;/p></description></item><item><title>windows WSL 端口映射</title><link>/post/windows_wsl_%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/windows_wsl_%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/</guid><description>&lt;p>实际应用中需要将嵌入式开发板的数据通过网络发送出去，如果 WSL 中运行的 client 要与嵌入式开发板进行通讯，则需要将 windows 的端口转发到 WSL 中，反之，如果配置了 windows 端口转发到 WSL 中，则 windows client 无法正常接收开发板的数据，这一点需要注意，需要取消端口转发 windows 端才可以正常接收数据。&lt;/p></description></item></channel></rss>
+&lt;p>&lt;code>sudo systemctl start NetworkManager&lt;/code>&lt;/p>
+&lt;p>启动 NetworkManager 服务，会自动运行 DHCP 分配 IP 地址给你。之后可用：&lt;code>ping 127.0.0.1&lt;/code> 或 &lt;code>ping 192.168.1.1&lt;/code>测试（按 Ctrl + C 可停止 ping，不然会一直进行）。&lt;/p></description></item><item><title>windows WSL 端口映射</title><link>/post/windows_wsl_%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/windows_wsl_%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/</guid><description>&lt;p>实际应用中需要将嵌入式开发板的数据通过网络发送出去，如果 WSL 中运行的 client 要与嵌入式开发板进行通讯，则需要将 windows 的端口转发到 WSL 中，反之，如果配置了 windows 端口转发到 WSL 中，则 windows client 无法正常接收开发板的数据，这一点需要注意，需要取消端口转发 windows 端才可以正常接收数据。&lt;/p></description></item></channel></rss>
