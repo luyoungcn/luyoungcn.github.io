@@ -990,7 +990,10 @@ Dart 版本：3.4.4
 &lt;ul>
 &lt;li>0xD&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="max96724_reg_d.png" alt="Untitled" />&lt;/p></description></item><item><title>hugo</title><link>/post/hugo/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/hugo/</guid><description>&lt;p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="max96724_reg_d.png" alt="Untitled" />&lt;/p></description></item><item><title>Harmony HPM 包管理器</title><link>/post/harmony-hpm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/harmony-hpm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</guid><description>&lt;h1 id="hpm">HPM&lt;/h1>
+&lt;p>OpenHarmony HPM 指的是 “Harmony Package Manager”&lt;/p>
+&lt;h1 id="hpm-part">HPM Part&lt;/h1>
+&lt;p>Module level HPM Part：用于实现模块或 Part 的复用。分发的内容可以是源码或二进制文件。通常，这样的 HPM Part 对应着一个代码仓库，是代码仓库的一个版本。&lt;/p></description></item><item><title>hugo</title><link>/post/hugo/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/hugo/</guid><description>&lt;p>
 &lt;a href="https://gohugo.io/" title="hugo" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
  hugo
  &lt;i class="fa fa-external-link-alt">&lt;/i>
@@ -1163,7 +1166,11 @@ Dart 版本：3.4.4
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>OpenJDK Runtime Environment &lt;span style="color:#f92672">(&lt;/span>build 1.8.0_252-8u252-b09-1~18.04-b09&lt;span style="color:#f92672">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>OpenJDK 64-Bit Server VM &lt;span style="color:#f92672">(&lt;/span>build 25.252-b09, mixed mode&lt;span style="color:#f92672">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="universal-ctags">universal-ctags&lt;/h3>
-&lt;p>ubuntu 自带包管理器安装的 &lt;code>ctags&lt;/code> 是 &lt;code>exuberant-ctags&lt;/code>, 如果已经安装请先通过如下命令卸载&lt;/p></description></item><item><title>repo</title><link>/post/repo/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/repo/</guid><description>&lt;h2 id="环境准备">环境准备&lt;/h2>
+&lt;p>ubuntu 自带包管理器安装的 &lt;code>ctags&lt;/code> 是 &lt;code>exuberant-ctags&lt;/code>, 如果已经安装请先通过如下命令卸载&lt;/p></description></item><item><title>OpenHarmony 代码下载编译</title><link>/post/openharmony-%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/openharmony-%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91/</guid><description>&lt;h2 id="代码下载">代码下载&lt;/h2>
+&lt;p>OpenHarmony源代码以 [[HPM]] 部分的形式提供，可以通过以下任意方式获取：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>从Gitee代码库获取源码。您可以使用repo或git工具从代码仓库下载最新的代码。&lt;/p></description></item><item><title>repo</title><link>/post/repo/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/repo/</guid><description>&lt;h2 id="环境准备">环境准备&lt;/h2>
 &lt;p>下载repo工具&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>user110@server005:~/bin$ curl https://mirrors.tuna.tsinghua.edu.cn/git/git-repo -o repo
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>user110@server005:~/bin$ chmod +x repo
