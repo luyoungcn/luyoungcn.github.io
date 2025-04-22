@@ -1,129 +1,393 @@
-<!doctype html><html lang=zh-CN data-theme=dark><head><meta charset=UTF-8><meta name=viewport content="width=device-width"><meta name=theme-color content="#222" media="(prefers-color-scheme: dark)"><meta name=generator content="Hugo 0.143.1"><link rel="shortcut icon" type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=/imgs/icons/favicon_16x16_next.png><link rel=icon type=image/png sizes=32x32 href=/imgs/icons/favicon_32_32_next.png><link rel=apple-touch-icon sizes=180x180 href=/imgs/icons/apple_touch_icon_next.png><meta itemprop=name content="Posts"><meta itemprop=description content><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=keywords content="Hugo,NexT,主题,简单,强大"><meta property="og:type" content="website"><meta property="og:title" content="Posts"><meta property="og:description" content><meta property="og:image" content="/imgs/luyang_avatar.png"><meta property="og:image:width" content="312"><meta property="og:image:height" content="312"><meta property="og:image:type" content="image/jpeg/png/svg/jpg"><meta property="og:url" content="/post/"><meta property="og:site_name" content="LuyangのBlog"><meta property="og:locale" content="zh-CN"><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/font-awesome/6.1.2/css/all.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.css><link rel=stylesheet href=/css/main.min.f472ecba1160e6845c7e411ace211fe16545c60bed8e67710ff4251070fc7e55.css><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return void 0;const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),void 0):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script class=next-config data-name=page type=application/json>{"comments":true,"isHome":false,"isPage":false,"path":"post","permalink":"/post/","title":"Posts","waline":{"js":[{"alias":"waline","alias_name":"@waline/client","file":"dist/pageview.js","name":"pageview","version":"2.13.0"},{"alias":"waline","alias_name":"@waline/client","file":"dist/comment.js","name":"comment","version":"2.13.0"}]}}</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>post - LuyangのBlog</title><noscript><link rel=stylesheet href=/css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label=切换导航栏 role=button><span class=toggle-line></span>
-<span class=toggle-line></span>
-<span class=toggle-line></span></div></div><div class=site-meta><a href=/ class=brand rel=start><i class=logo-line></i><h1 class=site-title>LuyangのBlog</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description></p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=/ class=hvr-icon-pulse rel=section><i class="fa fa-home hvr-icon"></i>首页</a></li><li class="menu-item menu-item-about"><a href=/ class=hvr-icon-pulse rel=section><i class="fa fa-user hvr-icon"></i>关于</a></li><li class="menu-item menu-item-flinks"><a href=/flinks.html class=hvr-icon-pulse rel=section><i class="fa fa-thumbs-up hvr-icon"></i>站点示例</a></li><li class="menu-item menu-item-archives"><a href=/archives/ class=hvr-icon-pulse rel=section><i class="fa fa-archive hvr-icon"></i>归档
-<span class=badge>69</span></a></li><li class="menu-item menu-item-commonweal"><a href=/404.html class=hvr-icon-pulse rel=section><i class="fa fa-heartbeat hvr-icon"></i>公益 404</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
-<span class=toggle-line></span>
-<span class=toggle-line></span></div><aside class=sidebar><div class="sidebar-inner sidebar-overview-active"><ul class=sidebar-nav><li class=sidebar-nav-toc>文章目录</li><li class=sidebar-nav-overview>站点概览</li></ul><div class=sidebar-panel-container><div class="post-toc-wrap sidebar-panel"><div class="post-toc animated"><nav id=TableOfContents></nav></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author site-overview-item animated" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image alt=Luyang src=/imgs/img-lazy-loading.gif data-src=/imgs/luyang_avatar.png><p class=site-author-name itemprop=name>Luyang</p><div class=site-description itemprop=description></div></div><div class="site-state-wrap site-overview-item animated"><nav class=site-state><div class="site-state-item site-state-posts"><a href=/archives/><span class=site-state-item-count>69</span>
-<span class=site-state-item-name>日志</span></a></div><div class="site-state-item site-state-categories"><a href=/categories/><span class=site-state-item-count>12</span>
-<span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href=/tags/><span class=site-state-item-count>113</span>
-<span class=site-state-item-name>标签</span></a></div></nav></div><div class="links-of-social site-overview-item animated"><span class=links-of-social-item><a href=https://github.com/luyoungcn title="Github → https://github.com/luyoungcn" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-github fa-fw hvr-icon"></i>Github</a></span></div><div class="cc-license animated" itemprop=license><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh class=cc-opacity rel=noopener target=_blank title=共享知识><img src=/imgs/img-lazy-loading.gif data-src=/imgs/cc/big/by_nc_sa.svg alt=共享知识></a></div><div class="links-of-blogroll site-overview-item animated"><div class=links-of-blogroll-title><i class="fa fa-globe fa-fw"></i>友情链接</div><ul class=links-of-blogroll-list><li class=links-of-blogroll-item><a href=https://home.cnblogs.com/u/liuqiongcn/ title=https://home.cnblogs.com/u/liuqiongcn/ target=_blank>一条名叫西西的狗</a></li><li class=links-of-blogroll-item><a href=https://lisenhui.cn title=https://lisenhui.cn target=_blank>凡梦星尘空间站</a></li><li class=links-of-blogroll-item><a href=https://gitee.com/hugo-next/hugo-theme-next title=https://gitee.com/hugo-next/hugo-theme-next target=_blank>Hugo-NexT</a></li></ul></div></div></div></div><div id=siteinfo-card-widget class=sidebar-card-widget><div class=item-headline><i class="fas fa-chart-line"></i>
-<span>网站资讯</span></div><div class=siteinfo><div class=siteinfo-item><div class=item-name><i class="fa-solid fa-calendar-check"></i>已运行：</div><div class=item-count id=runTimes data-publishdate=0001-01-01T00:00:00+00:00></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-user"></i>总访客数：</div><div class=item-count id=busuanzi_value_site_uv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-eye"></i>页面浏览：</div><div class=item-count id=busuanzi_value_site_pv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-font"></i>总字数：</div><div class=item-count id=wordsCount data-count=51508></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-mug-hot"></i>阅读约：</div><div class=item-count id=readTimes data-times=141></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-clock-rotate-left"></i>最后更新于：</div><div class=item-count id=last-push-date data-lastpushdate=2024-01-01T20:19:08+08:00></div></div></div></div></aside><div class=sidebar-dimmer></div></header><div class=tool-buttons><div id=goto-comments class="button goto-comments" title=直达评论><i class="fas fa-comments"></i></div><div id=goto-gtranslate class=button title=多语言翻译><i class="fas fa-globe"></i></div><div id=toggle-theme class=button title=深浅模式切换><i class="fas fa-adjust"></i></div><div class=back-to-top role=button title=返回顶部><i class="fa fa-arrow-up"></i>
-<span>0%</span></div></div><div class=reading-progress-bar></div><a role=button class="book-mark-link book-mark-link-fixed"></a><a href=https://github.com/hugo-next rel="noopener external nofollow noreferrer" target=_blank title="Follow me on GitHub" class="exturl github-corner"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0 0 115 115h15l12 27L250 250V0z"/><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentcolor" style="transform-origin:130px 106px" class="octo-arm"/><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4l13.9-13.8C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8z" fill="currentcolor" class="octo-body"/></svg>
-</a><script type=text/javascript src=//sidecar.gitter.im/dist/sidecar.v1.js async></script><script type=text/javascript>((window.gitter={}).chat={}).options={room:"hugo-next/community"}</script><noscript><div class=noscript-warning>Theme NexT works best with JavaScript enabled</div></noscript><div class="main-inner index posts-expand"><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=name content="Luyang"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Luyang"><meta itemprop=description content></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="Android10编译开启ccache"><meta itemprop=description content="Android10的基线代码google已经将prebuilt的ccache移除,但是保留了相关功能选项
-commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843
-Author: Dan Willemsen <dwillemsen@google.com>
-Date:   Thu Apr 5 15:48:16 2018 -0700
+<!DOCTYPE html>
+<html class="nojs" lang="en-GB" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Post – Hugo Zen theme</title>
+<link rel="alternate" type="application/rss+xml" title="rss" href="https://example.org/post/index.xml">
+<link rel="alternate" type="application/json" title="json" href="https://example.org/post/index.json">
 
-    Remove our binary of ccache
-    
-    This version is rather old, and has many known bugs. The build system is
-    no longer providing ccache, but preserving the option to use your own at
-    your own risk.
-    
-    Bug: 32748498
-    Test: cs/ccache
-    Change-Id: I894a11445127bf8cb3a7ac5a119c500f2c572fb9
-安卓10之前配置"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/ itemprop=url class=post-title-link>Android10编译开启ccache</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
-</span><span class=post-meta-item-text>发表于：</span>
-<time title="发表于：1970-01-01 00:00:00 +0800 CST" itemprop="dateCreated datePublished" datetime="1970-01-01 00:00:00 +0800 CST">1970-01-01</time>
-</span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
-</span><span class=post-meta-item-text>分类于：</span>
-<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%B7%A5%E5%85%B7 itemprop=url rel=index><span itemprop=name>工具</span></a></span></span><div class=post-meta-items><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
-</span><span class=post-meta-item-text>浏览：
-</span><span id=busuanzi_value_page_pv class=waline-pageview-count data-path=/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/><i class="fa fa-sync fa-spin"></i>
-</span></span><span class=post-meta-item title=评论><span class=post-meta-item-icon><i class="far fa-comments"></i>
-</span><span class=post-meta-item-text>评论：
-</span><span class=waline-comment-count data-path=/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/><i class="fa fa-sync fa-spin"></i></span></span></div></div></div></header><div class="post-body autonumber" itemprop=articleBody><p>Android10的基线代码google已经将prebuilt的ccache移除,但是保留了相关功能选项</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-diff data-lang=diff><span style=display:flex><span>commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843
-</span></span><span style=display:flex><span>Author: Dan Willemsen &lt;dwillemsen@google.com&gt;
-</span></span><span style=display:flex><span>Date:   Thu Apr 5 15:48:16 2018 -0700
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    Remove our binary of ccache
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    This version is rather old, and has many known bugs. The build system is
-</span></span><span style=display:flex><span>    no longer providing ccache, but preserving the option to use your own at
-</span></span><span style=display:flex><span>    your own risk.
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    Bug: 32748498
-</span></span><span style=display:flex><span>    Test: cs/ccache
-</span></span><span style=display:flex><span>    Change-Id: I894a11445127bf8cb3a7ac5a119c500f2c572fb9
-</span></span></code></pre></div><p>安卓10之前配置</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/beyondcompare/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=name content="Luyang"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Luyang"><meta itemprop=description content></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="BeyondCompare"><meta itemprop=description content="Window10 Beyond Compare  BCompare-4.2.4.22795 key
-key
-H1bJTd2SauPv5Garuaq0Ig43uqq5NJOEw94wxdZTpU-pFB9GmyPk677gJ
-vC1Ro6sbAvKR4pVwtxdCfuoZDb6hJ5bVQKqlfihJfSYZt-xVrVU27+0Ja
-hFbqTmYskatMTgPyjvv99CF2Te8ec+Ys2SPxyZAF0YwOCNOWmsyqN5y9t
-q2Kw2pjoiDs5gIH-uw5U49JzOB6otS7kThBJE-H9A76u4uUvR8DKb+VcB
-rWu5qSJGEnbsXNfJdq5L2D8QgRdV-sXHp2A-7j1X2n4WIISvU1V9koIyS
-NisHFBTcWJS0sC5BTFwrtfLEE9lEwz2bxHQpWJiu12ZeKpi+7oUSqebX+
-如果运行Beyond Compare报错
-This license key has been revoked
-.....
-C:\Users\<username>\AppData\Roaming\Scooter Software\ 目录下的内容全部删除重新启动BeyondCompare即可。
-fix windows 右键菜单中没有beyond compare选项
+<meta name="created" content="2024-01-01T20:19:08+0800">
+<meta name="modified" content="2024-01-01T20:19:08+0800">
+<meta name="author" content="Your Name">
+<meta name="contact" content="info@example.org">
+<meta property="og:site_name" content="Hugo Zen theme">
+<meta property="og:title" content="Post">
+<meta property="og:url" content="https://example.org/post/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://example.org/apple-touch-icon.png">
+<meta name="generator" content="Hugo 0.146.6">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
 
 
-    Explorer Shell Extension
-    
-"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/beyondcompare/ itemprop=url class=post-title-link>BeyondCompare</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
-</span><span class=post-meta-item-text>发表于：</span>
-<time title="发表于：1970-01-01 00:00:00 +0800 CST" itemprop="dateCreated datePublished" datetime="1970-01-01 00:00:00 +0800 CST">1970-01-01</time>
-</span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
-</span><span class=post-meta-item-text>分类于：</span>
-<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%B7%A5%E5%85%B7 itemprop=url rel=index><span itemprop=name>工具</span></a></span></span><div class=post-meta-items><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
-</span><span class=post-meta-item-text>浏览：
-</span><span id=busuanzi_value_page_pv class=waline-pageview-count data-path=/post/beyondcompare/><i class="fa fa-sync fa-spin"></i>
-</span></span><span class=post-meta-item title=评论><span class=post-meta-item-icon><i class="far fa-comments"></i>
-</span><span class=post-meta-item-text>评论：
-</span><span class=waline-comment-count data-path=/post/beyondcompare/><i class="fa fa-sync fa-spin"></i></span></span></div></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=window10-beyond-compare--bcompare-42422795-key>Window10 Beyond Compare BCompare-4.2.4.22795 key</h2><p>key</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-txt data-lang=txt><span style=display:flex><span>H1bJTd2SauPv5Garuaq0Ig43uqq5NJOEw94wxdZTpU-pFB9GmyPk677gJ
-</span></span><span style=display:flex><span>vC1Ro6sbAvKR4pVwtxdCfuoZDb6hJ5bVQKqlfihJfSYZt-xVrVU27+0Ja
-</span></span><span style=display:flex><span>hFbqTmYskatMTgPyjvv99CF2Te8ec+Ys2SPxyZAF0YwOCNOWmsyqN5y9t
-</span></span><span style=display:flex><span>q2Kw2pjoiDs5gIH-uw5U49JzOB6otS7kThBJE-H9A76u4uUvR8DKb+VcB
-</span></span><span style=display:flex><span>rWu5qSJGEnbsXNfJdq5L2D8QgRdV-sXHp2A-7j1X2n4WIISvU1V9koIyS
-</span></span><span style=display:flex><span>NisHFBTcWJS0sC5BTFwrtfLEE9lEwz2bxHQpWJiu12ZeKpi+7oUSqebX+
-</span></span></code></pre></div><p>如果运行Beyond Compare报错</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-txt data-lang=txt><span style=display:flex><span>This license key has been revoked
-</span></span><span style=display:flex><span>.....
-</span></span></code></pre></div><p><code>C:\Users\&lt;username>\AppData\Roaming\Scooter Software\</code> 目录下的内容全部删除重新启动BeyondCompare即可。</p><h2 id=fix-windows-右键菜单中没有beyond-compare选项>fix windows 右键菜单中没有beyond compare选项</h2><p><a href="https://www.scootersoftware.com/support.php?zz=kb_shellex" title="Explorer Shell Extension" rel="noopener external nofollow noreferrer" target=_blank class=exturl>Explorer Shell Extension
-<i class="fa fa-external-link-alt"></i></a></p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/beyondcompare/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/cmake/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=name content="Luyang"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Luyang"><meta itemprop=description content></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="cmake"><meta itemprop=description content='子目录代码中如何关联 cmake 宏定义
-CMakeLists.txt 增加如下内容：
-OPTION(MOCK_DATA "Hello World" OFF)
-if (MOCK_DATA)
-    add_definitions(-DMOCK_DATA_MICRO)
-endif()
-同理子目录道理一样，通过判断 cmake 变量，来决定是否定义源码中的宏定义。
-此时在 cpp 源代码中可以通过如下形式使用宏定义：MOCK_DATA_MICRO'></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/cmake/ itemprop=url class=post-title-link>cmake</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
-</span><span class=post-meta-item-text>发表于：</span>
-<time title="发表于：1970-01-01 00:00:00 +0800 CST" itemprop="dateCreated datePublished" datetime="1970-01-01 00:00:00 +0800 CST">1970-01-01</time>
-</span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
-</span><span class=post-meta-item-text>分类于：</span>
-<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/build itemprop=url rel=index><span itemprop=name>build</span></a></span></span><div class=post-meta-items><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
-</span><span class=post-meta-item-text>浏览：
-</span><span id=busuanzi_value_page_pv class=waline-pageview-count data-path=/post/cmake/><i class="fa fa-sync fa-spin"></i>
-</span></span><span class=post-meta-item title=评论><span class=post-meta-item-icon><i class="far fa-comments"></i>
-</span><span class=post-meta-item-text>评论：
-</span><span class=waline-comment-count data-path=/post/cmake/><i class="fa fa-sync fa-spin"></i></span></span></div></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=子目录代码中如何关联-cmake-宏定义>子目录代码中如何关联 cmake 宏定义</h2><p>CMakeLists.txt 增加如下内容：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-cmake data-lang=cmake><span style=display:flex><span>OPTION(<span style=color:#e6db74>MOCK_DATA</span> <span style=color:#e6db74>&#34;Hello World&#34;</span> <span style=color:#e6db74>OFF</span>)<span style=color:#960050;background-color:#1e0010>
-</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span>if (<span style=color:#e6db74>MOCK_DATA</span>)<span style=color:#960050;background-color:#1e0010>
-</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span>    add_definitions(<span style=color:#e6db74>-DMOCK_DATA_MICRO</span>)<span style=color:#960050;background-color:#1e0010>
-</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span>endif()<span style=color:#960050;background-color:#1e0010>
-</span></span></span></code></pre></div><p>同理子目录道理一样，通过判断 cmake 变量，来决定是否定义源码中的宏定义。</p><p>此时在 cpp 源代码中可以通过如下形式使用宏定义：<code>MOCK_DATA_MICRO</code></p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/cmake/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/crystal/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=name content="Luyang"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Luyang"><meta itemprop=description content></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="crystal"><meta itemprop=description content="Crystal Oscillator 晶体振荡器
-无源晶振
+<link rel="canonical" href="https://example.org/post/">
 
-晶振本身并不能起振，需要借助外部振荡电路。因此在实际电路中需要IC上电正常后晶振才能起振。
-此时才能测量出晶振波形。
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-常见晶振频率
-晶振常用的频率为 4MHz ~ 50MHz"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/crystal/ itemprop=url class=post-title-link>crystal</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
-</span><span class=post-meta-item-text>发表于：</span>
-<time title="发表于：1970-01-01 00:00:00 +0800 CST" itemprop="dateCreated datePublished" datetime="1970-01-01 00:00:00 +0800 CST">1970-01-01</time>
-</span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
-</span><span class=post-meta-item-text>分类于：</span>
-<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/hardware itemprop=url rel=index><span itemprop=name>hardware</span></a></span></span><div class=post-meta-items><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
-</span><span class=post-meta-item-text>浏览：
-</span><span id=busuanzi_value_page_pv class=waline-pageview-count data-path=/post/crystal/><i class="fa fa-sync fa-spin"></i>
-</span></span><span class=post-meta-item title=评论><span class=post-meta-item-icon><i class="far fa-comments"></i>
-</span><span class=post-meta-item-text>评论：
-</span><span class=waline-comment-count data-path=/post/crystal/><i class="fa fa-sync fa-spin"></i></span></span></div></div></div></header><div class="post-body autonumber" itemprop=articleBody><p>Crystal Oscillator 晶体振荡器</p><h1 id=无源晶振>无源晶振</h1><ul><li>晶振本身并不能起振，需要借助外部振荡电路。因此在实际电路中需要IC上电正常后晶振才能起振。
-此时才能测量出晶振波形。</li></ul><h2 id=常见晶振频率>常见晶振频率</h2><p>晶振常用的频率为 4MHz ~ 50MHz</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/crystal/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/debian4.9configstaticip/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=name content="Luyang"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Luyang"><meta itemprop=description content></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="Debian 4.9 Config Static Ip.md"><meta itemprop=description content="
-Linux debian 4.9.0-6-amd64 #1 SMP Debian 4.9.82-1+deb9u3 (2018-03-02) x86_64
-kk@debian:~$ cat /etc/network/interfaces
+<link rel="stylesheet" href="/css/styles.2fa1df15b347581e582e5e8899cf40bdf7908f76e104ed06eeba4c6443012e8c.css">
+<link rel="stylesheet" href="/css/mobilemenu.dbbf7de443967fe1d83dce47fb19895d79710b23ccd02b84f54d4d39c37e3d2d.css" media="screen">
+<link rel="stylesheet" href="/css/print.1912ba13950e7434fb50dd14d3951bc7f57bb0c16b4f204158b72f0b3844f7a1.css" media="print">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "url" : "https://example.org/post/",
+    "name": "Post",
+    "description": "The zen theme for Hugo example site.",
+    "image" : "https://example.org/apple-touch-icon.png",
+    "author": {
+      "@type": "Person",
+      "name": "Your Name"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://example.org/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Hugo Zen theme",
+      "logo" : {
+        "@type": "ImageObject",
+        "url": "https://example.org/apple-touch-icon.png"
+      },
+      "url": "https://example.org/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.2d6255816e36e34bd1948dc5c26ede35687a256c4e2e516e0cd75f383a510c6a.js"></script>
+
+<script defer src="/js/mobilemenu.7ce1f75fd1d49cd683a008352ad9001f800349629be01d531a19c02b5a84817b.js"></script>
+<script defer src="/js/script.f2979a93a325fecf9605263bd141398a311c8e23388ed7dcff74f92f7e632866.js"></script>
+
+
+
+
+
+
+</head>
+
+<body class="list-page">
+<div class="page layout__page layout__sidebar-second">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo">
+<img src="/images/logo.png" width="64" alt="Home" class="header__logo-image">
+</a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>Hugo Zen theme</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu mx--xs layout__navigation" aria-label="Main menu">
+<ul class="flex-inline mx--0">
+<li><a href="/"><span>Home</span></a></li>
+<li><a href="/"><span>Documentation</span></a></li>
+<li><a href="/"><span>About</span></a></li>
+<li><a href="/"><span>Contact</span></a></li>
+<li><a href="/"><span>Search</span></a></li>
+</ul>
+</nav>
+<div class="mobile-nav" dir="ltr" hidden>
+  <div class="mobile-nav__cover"></div>
+  <button class="mobile-nav__toggle" aria-expanded="false" aria-controls="sheet">
+    Menu
+    <svg class="mobile-nav__hamburger" viewBox="0 0 100 100" focusable="false" aria-hidden="true">
+      <rect width="80" height="12" x="10" y="20" rx="5"></rect>
+      <rect width="80" height="12" x="10" y="45" rx="5"></rect>
+      <rect width="80" height="12" x="10" y="70" rx="5"></rect>
+    </svg>
+  </button>
+  <div class="mobile-nav__sheet link-inverted link-nav" id="sheet" aria-hidden="true">
+    <div class="mobile-nav__region"></div>
+    <nav class="mobile-nav__main-menu" aria-label="Main menu">
+    <ul class="mobile-nav__navbar">
+    <li><a href="/"><span>Home</span></a></li>
+    <li><a href="/"><span>Documentation</span></a></li>
+    <li><a href="/"><span>About</span></a></li>
+    <li><a href="/"><span>Contact</span></a></li>
+    <li><a href="/"><span>Search</span></a></li>
+    </ul>
+    </nav>
+  </div>
+</div>
+<main class="main layout__main">
+<header>
+<h1 class="title">Post</h1>
+</header>
+
+
+
+<article class="list-view list-view--post">
+<header>
+<h2 class="title mt--s mb--xxs"><a href="/post/androidstudioenv/">Android Studio Env</a></h2>
+<div class="submitted meta">
+<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
+
+</div>
+
+</header>
+<h2 id="工具">工具</h2>
+<ul>
+<li><a href="https://developer.android.google.cn/studio">AndroidStudio</a></li>
+</ul>
+<h2 id="信息">信息</h2>
+<p>Android Studio 默认设置</p>
+<ul>
+<li>SDK Folder:
+<ul>
+<li>&ldquo;%APPDATA%\Local\Android\Sdk&rdquo;</li>
+</ul>
+</li>
+<li>JDK Folder:
+<ul>
+<li>&ldquo;C:\Program Files\Android\Android Studio\jre&rdquo;</li>
+</ul>
+</li>
+</ul>
+<h2 id="问题解决">问题解决</h2>
+<h3 id="安装完android-studio首次启动报错">安装完Android Studio首次启动报错</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Unable to access Android SDK add-on list
+</span></span></code></pre></div><p>选择cancel</p>
+<h3 id="gradle-下载环境配置">gradle 下载环境配置</h3>
+<p>For Windows</p>
+<p><code>C:\Users\luyang\.gradle\init.gradle</code> 如果没有该文件就自己新建一个，内容如下</p>
+<p>
+$$
+allprojects{
+  repositories {
+    def ALIYUN_REPOSITORY_URL = &#39;https://maven.aliyun.com/repository/public/&#39;
+    def ALIYUN_JCENTER_URL = &#39;https://maven.aliyun.com/repository/jcenter/&#39;
+    def ALIYUN_GOOGLE_URL = &#39;https://maven.aliyun.com/repository/google/&#39;
+    def ALIYUN_GRADLE_PLUGIN_URL = &#39;https://maven.aliyun.com/repository/gradle-plugin/&#39;
+    all { ArtifactRepository repo -&gt;
+      if(repo instanceof MavenArtifactRepository){
+        def url = repo.url.toString()
+        if (url.startsWith(&#39;https://repo1.maven.org/maven2/&#39;)) {
+          project.logger.lifecycle &#34;Repository ${repo.url} replaced by $ALIYUN_REPOSITORY_URL.&#34;
+          remove repo
+        }
+        if (url.startsWith(&#39;https://jcenter.bintray.com/&#39;)) {
+          project.logger.lifecycle &#34;Repository ${repo.url} replaced by $ALIYUN_JCENTER_URL.&#34;
+          remove repo
+        }
+        if (url.startsWith(&#39;https://dl.google.com/dl/android/maven2/&#39;)) {
+          project.logger.lifecycle &#34;Repository ${repo.url} replaced by $ALIYUN_GOOGLE_URL.&#34;
+          remove repo
+        }
+        if (url.startsWith(&#39;https://plugins.gradle.org/m2/&#39;)) {
+          project.logger.lifecycle &#34;Repository ${repo.url} replaced by $ALIYUN_GRADLE_PLUGIN_URL.&#34;
+          remove repo
+        }
+      }
+    }
+    maven { url ALIYUN_REPOSITORY_URL }
+    maven { url ALIYUN_JCENTER_URL }
+    maven { url ALIYUN_GOOGLE_URL }
+    maven { url ALIYUN_GRADLE_PLUGIN_URL }
+  }
+}
+$$
+</p>
+</article>
+
+<article class="list-view list-view--post">
+<header>
+<h2 class="title mt--s mb--xxs"><a href="/post/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/">Android 使用 am 命令启动一个活动组件</a></h2>
+<div class="submitted meta">
+<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
+
+</div>
+
+</header>
+<h2 id="am-命令说明">am 命令说明</h2>
+<p><code>am start -n</code> 命令是 Android 调试桥（ADB）工具的一部分，用于在 Android 设备上启动一个活动。以下是该命令及其组成部分的详细解释：</p>
+<ul>
+<li><strong><code>am</code></strong>: 代表 <strong>Activity Manager（活动管理器）</strong>。它是一个命令行工具，可以用于在 Android 设备上执行各种与活动、服务和广播相关的操作。</li>
+<li><strong><code>start</code></strong>: 这个子命令用于启动一个活动。活动表示一个带有用户界面的单个屏幕，启动活动意味着打开一个特定的应用程序界面。</li>
+<li><strong><code>-n</code></strong>: 该选项指定你想要启动的活动的组件名称。组件名称由两部分组成：
+<ul>
+<li>应用程序的 <strong>包名</strong>（例如 <code>com.android.gallery3d</code>）。</li>
+<li>你想要启动的活动的 <strong>完整类名</strong>（例如 <code>.app.GalleryActivity</code>）。</li>
+</ul>
+</li>
+</ul>
+<p>组件名称的格式为 <code>package_name/.ActivityName</code>。</p>
+<h3 id="使用示例">使用示例</h3>
+<p>启动图库应用的主活动：</p>
+<p>
+$$
+adb shell am start -n com.android.gallery3d/.app.GalleryActivity
+$$
+</p>
+<ul>
+<li><strong><code>adb shell</code></strong>: 在设备上打开一个命令行界面。</li>
+<li><strong><code>am start -n</code></strong>: 启动指定的活动。</li>
+<li><strong><code>com.android.gallery3d/.app.GalleryActivity</code></strong>: 指定要启动的包名和活动。</li>
+</ul>
+<h3 id="其他选项">其他选项</h3>
+<ul>
+<li><strong><code>--display &lt;display_id&gt;</code></strong>: 如果设备有多个显示屏，可以指定使用哪个显示屏。</li>
+<li><strong><code>-d &lt;data_uri&gt;</code></strong>: 指定一个数据 URI（例如文件路径或网页链接），活动在启动时可以使用这个 URI。</li>
+<li><strong><code>-a &lt;action&gt;</code></strong>: 指定要执行的操作，例如 <code>android.intent.action.VIEW</code>。</li>
+</ul>
+<h3 id="实际示例">实际示例</h3>
+<p>如果你想在显示屏 3 上打开图库应用中的特定图片：</p>
+<p>
+$$
+adb shell am start -n com.android.gallery3d/.app.GalleryActivity --display 3
+$$
+</p>
+</article>
+
+<article class="list-view list-view--post">
+<header>
+<h2 class="title mt--s mb--xxs"><a href="/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/">Android10编译开启ccache</a></h2>
+<div class="submitted meta">
+<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
+
+</div>
+
+</header>
+<p>Android10的基线代码google已经将prebuilt的ccache移除,但是保留了相关功能选项</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843
+</span></span><span style="display:flex;"><span>Author: Dan Willemsen &lt;dwillemsen@google.com&gt;
+</span></span><span style="display:flex;"><span>Date:   Thu Apr 5 15:48:16 2018 -0700
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Remove our binary of ccache
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    This version is rather old, and has many known bugs. The build system is
+</span></span><span style="display:flex;"><span>    no longer providing ccache, but preserving the option to use your own at
+</span></span><span style="display:flex;"><span>    your own risk.
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    Bug: 32748498
+</span></span><span style="display:flex;"><span>    Test: cs/ccache
+</span></span><span style="display:flex;"><span>    Change-Id: I894a11445127bf8cb3a7ac5a119c500f2c572fb9
+</span></span></code></pre></div><p>安卓10之前配置</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export USE_CCACHE<span style="color:#f92672">=</span>true
+</span></span><span style="display:flex;"><span>export CCACHE_DIR<span style="color:#f92672">=</span>$HOME/.cache
+</span></span><span style="display:flex;"><span>prebuilts/misc/linux-x86/ccache/ccache -M 10G
+</span></span></code></pre></div><p>安卓10+通过使用的HOST操作系统安装对应的ccache软件包</p>
+</article>
+
+<article class="list-view list-view--post">
+<header>
+<h2 class="title mt--s mb--xxs"><a href="/post/beyondcompare/">BeyondCompare</a></h2>
+<div class="submitted meta">
+<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
+
+</div>
+
+</header>
+<h2 id="window10-beyond-compare--bcompare-42422795-key">Window10 Beyond Compare  BCompare-4.2.4.22795 key</h2>
+<p>key</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>H1bJTd2SauPv5Garuaq0Ig43uqq5NJOEw94wxdZTpU-pFB9GmyPk677gJ
+</span></span><span style="display:flex;"><span>vC1Ro6sbAvKR4pVwtxdCfuoZDb6hJ5bVQKqlfihJfSYZt-xVrVU27+0Ja
+</span></span><span style="display:flex;"><span>hFbqTmYskatMTgPyjvv99CF2Te8ec+Ys2SPxyZAF0YwOCNOWmsyqN5y9t
+</span></span><span style="display:flex;"><span>q2Kw2pjoiDs5gIH-uw5U49JzOB6otS7kThBJE-H9A76u4uUvR8DKb+VcB
+</span></span><span style="display:flex;"><span>rWu5qSJGEnbsXNfJdq5L2D8QgRdV-sXHp2A-7j1X2n4WIISvU1V9koIyS
+</span></span><span style="display:flex;"><span>NisHFBTcWJS0sC5BTFwrtfLEE9lEwz2bxHQpWJiu12ZeKpi+7oUSqebX+
+</span></span></code></pre></div><p>如果运行Beyond Compare报错</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>This license key has been revoked
+</span></span><span style="display:flex;"><span>.....
+</span></span></code></pre></div><p><code>C:\Users\&lt;username&gt;\AppData\Roaming\Scooter Software\</code> 目录下的内容全部删除重新启动BeyondCompare即可。</p>
+<h2 id="fix-windows-右键菜单中没有beyond-compare选项">fix windows 右键菜单中没有beyond compare选项</h2>
+<p><a href="https://www.scootersoftware.com/support.php?zz=kb_shellex">Explorer Shell Extension</a></p>
+</article>
+
+<article class="list-view list-view--post">
+<header>
+<h2 class="title mt--s mb--xxs"><a href="/post/cmake/">cmake</a></h2>
+<div class="submitted meta">
+<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
+
+</div>
+
+</header>
+<h2 id="子目录代码中如何关联-cmake-宏定义">子目录代码中如何关联 cmake 宏定义</h2>
+<p>CMakeLists.txt 增加如下内容：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>OPTION(<span style="color:#e6db74">MOCK_DATA</span> <span style="color:#e6db74">&#34;Hello World&#34;</span> <span style="color:#e6db74">OFF</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if (<span style="color:#e6db74">MOCK_DATA</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    add_definitions(<span style="color:#e6db74">-DMOCK_DATA_MICRO</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>同理子目录道理一样，通过判断 cmake 变量，来决定是否定义源码中的宏定义。</p>
+<p>此时在 cpp 源代码中可以通过如下形式使用宏定义：<code>MOCK_DATA_MICRO</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#ifdef MOCK_DATA_MICRO
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	hello_world();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span></code></pre></div><p>如果想使能 <code>MOCK_DATA_MICRO</code> 宏定义则需要在 cmake 编译是指定参数:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cmake -DMOCK_DATA<span style="color:#f92672">=</span>ON ../; make -j8
+</span></span></code></pre></div><h2 id="cmake-中-ifnot-xxx-和-ifnot-defined-xxx-的区别">cmake 中 if(NOT XXX) 和 if(NOT DEFINED XXX) 的区别</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>OPTION(<span style="color:#e6db74">MOCK_DATA</span> <span style="color:#e6db74">&#34;Hello World&#34;</span> <span style="color:#e6db74">OFF</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if (<span style="color:#e6db74">MOCK_DATA</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    add_definitions(<span style="color:#e6db74">-DMOCK_DATA_MICRO</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if(<span style="color:#e6db74">NOT</span> <span style="color:#e6db74">DEFINED</span> <span style="color:#e6db74">MOCK_DATA</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>	message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;MOCK_DATA ---&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">else
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>	message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;MOCK_DATA +++&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">endif
+</span></span></span></code></pre></div><p>尽管我编译时 cmake 命令行没有指定 -DMOCK_DATA=ON 选项，仍然打印的是 <code>MOCK_DATA +++</code></p>
+<p>总结：虽然命令行没有指定对应选项，但是 CMakeLists.txt 文件中声明了 <code>OPTION(MOCK_DATA &quot;Hello World&quot; OFF)</code> 则 MOCK_DATA 就是 DEFINED 只不过值为 OFF。</p>
+</article>
+
+<article class="list-view list-view--post">
+<header>
+<h2 class="title mt--s mb--xxs"><a href="/post/crystal/">crystal</a></h2>
+<div class="submitted meta">
+<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
+
+</div>
+
+</header>
+<p>Crystal Oscillator 晶体振荡器</p>
+<h1 id="无源晶振">无源晶振</h1>
+<ul>
+<li>晶振本身并不能起振，需要借助外部振荡电路。因此在实际电路中需要IC上电正常后晶振才能起振。
+此时才能测量出晶振波形。</li>
+</ul>
+<h2 id="常见晶振频率">常见晶振频率</h2>
+<p>晶振常用的频率为 4MHz ~ 50MHz</p>
+<ul>
+<li>网络PHY常见 25MHz</li>
+<li>GMSL SERDES常见 25MHz</li>
+<li>电子钟表常见 32.768MHz</li>
+</ul>
+<h2 id="常见无源晶振pin脚定义">常见无源晶振pin脚定义</h2>
+<p>无源晶振的频率pin脚不分正负极</p>
+<ul>
+<li>两pin脚无源晶振：一个pin脚为频率输出pin脚，另外一个pin脚是频率输入pin脚。即使反过来，晶振依旧正常工作。</li>
+<li>三pin脚晶振：两侧引脚为频率输出pin脚与频率输入pin脚，中间引脚接地。除了注意让这个接地pin脚去接地(GND)，两侧引脚的用法与两脚晶振无异。</li>
+<li>四脚贴片无源晶振：pin 1和pin 3为频率输入引脚及频率输出引脚，其余两个pin脚均为接地引脚，即使把它旋转180度，也只是pin 1和pin 3互换位置，即输入pin脚变成了输出pin脚，而输出pin脚则变成输入pin脚，晶振依旧可以正常工作，不会导致任何性能及功能差异。</li>
+</ul>
+<h2 id="无源晶振两边加谐振电容">无源晶振两边加谐振电容</h2>
+<p>无源晶振的标称频率指在测试时有一个“负载电容”的条件—在晶振工作时满足这个条件，
+振荡频率才可能与频率标称值一致（只有在合适的外接电容值满足无源晶振的起振要求时，晶振才能正常工作）。</p>
+<p>无源晶振的实际输出频率并不是完全固定的，而是可以在一定范围内微调，起微调作用的就是这两个外接电容。</p>
+<p><strong>切记: 谐振电容一定要按照芯片参考设计来，搞错了不起振，爱因斯坦可不负责, 高尔基血的教训</strong></p>
+<h2 id="awr2243-40mhz-晶振起振后波形">AWR2243 40MHz 晶振起振后波形</h2>
+<p><img src="AWR2243ABIGABLQ1_crystal_circuit.png" alt=""></p>
+<p><img src="AWR2243ABIGABLQ1_crystal_%E7%A4%BA%E6%B3%A2%E5%99%A8%E6%B3%A2%E5%BD%A2.jpg" alt=""></p>
+</article>
+
+<article class="list-view list-view--post">
+<header>
+<h2 class="title mt--s mb--xxs"><a href="/post/debian4/">Debian 4.9 Config Static Ip.md</a></h2>
+<div class="submitted meta">
+<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
+
+</div>
+
+</header>
+<blockquote>
+<p>Linux debian 4.9.0-6-amd64 #1 SMP Debian 4.9.82-1+deb9u3 (2018-03-02) x86_64</p></blockquote>
+<p>kk@debian:~$ <code>cat /etc/network/interfaces</code></p>
+<p>
+$$
 # This file describes the network interfaces available on your system
 # and how to activate them. For more information, see interfaces(5).
 
@@ -132,7 +396,11 @@ source /etc/network/interfaces.d/*
 # The loopback network interface
 auto lo
 iface lo inet loopback
-修改后
+$$
+</p>
+<p>修改后</p>
+<p>
+$$
 # This file describes the network interfaces available on your system
 # and how to activate them. For more information, see interfaces(5).
 
@@ -147,265 +415,229 @@ iface enp0s3 inet static
         netmask 255.255.255.0
         gateway 192.168.20.1
 dns-nameservers 114.114.114.114
-kk@debian:~$ /sbin/ifconfig"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/debian4.9configstaticip/ itemprop=url class=post-title-link>Debian 4.9 Config Static Ip.md</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
-</span><span class=post-meta-item-text>发表于：</span>
-<time title="发表于：1970-01-01 00:00:00 +0800 CST" itemprop="dateCreated datePublished" datetime="1970-01-01 00:00:00 +0800 CST">1970-01-01</time>
-</span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
-</span><span class=post-meta-item-text>分类于：</span>
-<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%B7%A5%E5%85%B7 itemprop=url rel=index><span itemprop=name>工具</span></a></span></span><div class=post-meta-items><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
-</span><span class=post-meta-item-text>浏览：
-</span><span id=busuanzi_value_page_pv class=waline-pageview-count data-path=/post/debian4.9configstaticip/><i class="fa fa-sync fa-spin"></i>
-</span></span><span class=post-meta-item title=评论><span class=post-meta-item-icon><i class="far fa-comments"></i>
-</span><span class=post-meta-item-text>评论：
-</span><span class=waline-comment-count data-path=/post/debian4.9configstaticip/><i class="fa fa-sync fa-spin"></i></span></span></div></div></div></header><div class="post-body autonumber" itemprop=articleBody><blockquote><p>Linux debian 4.9.0-6-amd64 #1 SMP Debian 4.9.82-1+deb9u3 (2018-03-02) x86_64</p></blockquote><p>kk@debian:~$ <code>cat /etc/network/interfaces</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span># This file describes the network interfaces available on your system
-</span></span><span style=display:flex><span># and how to activate them. For more information, see interfaces(5).
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>source /etc/network/interfaces.d/*
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span># The loopback network interface
-</span></span><span style=display:flex><span>auto lo
-</span></span><span style=display:flex><span>iface lo inet loopback
-</span></span></code></pre></div><p>修改后</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span># This file describes the network interfaces available on your system
-</span></span><span style=display:flex><span># and how to activate them. For more information, see interfaces(5).
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>source /etc/network/interfaces.d/*
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span># The loopback network interface
-</span></span><span style=display:flex><span>auto lo enp0s3
-</span></span><span style=display:flex><span>iface lo inet loopback
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>iface enp0s3 inet static
-</span></span><span style=display:flex><span>        address 192.168.20.103
-</span></span><span style=display:flex><span>        netmask 255.255.255.0
-</span></span><span style=display:flex><span>        gateway 192.168.20.1
-</span></span><span style=display:flex><span>dns-nameservers 114.114.114.114
-</span></span></code></pre></div><p>kk@debian:~$ <code>/sbin/ifconfig</code></p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/debian4.9configstaticip/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/dokuwiki/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=name content="Luyang"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Luyang"><meta itemprop=description content></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="dokuwiki"><meta itemprop=description content="关于 Dokuwiki 详细信息, 请访问
+$$
+</p>
+</article>
 
-    官网
-    
-.
-安装配置
+<article class="list-view list-view--post">
+<header>
+<h2 class="title mt--s mb--xxs"><a href="/post/dokuwiki/">dokuwiki</a></h2>
+<div class="submitted meta">
+<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
 
-本教程基于 ubuntu 17.10 x64
-参考
+</div>
 
+</header>
+<p>关于 Dokuwiki 详细信息, 请访问<a href="https://www.dokuwiki.org/">官网</a>.</p>
+<h2 id="安装配置">安装配置</h2>
+<blockquote>
+<p>本教程基于 ubuntu 17.10 x64</p></blockquote>
+<h3 id="参考">参考</h3>
+<ul>
+<li><a href="https://www.dokuwiki.org/zh:install">DokuWiki Installation</a></li>
+</ul>
+<h3 id="安装-apache-php">安装 apache php</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt-get install apache2
+</span></span><span style="display:flex;"><span>apt-get install php7.1 libapache2-mod-php7.1 php7.1-xml
+</span></span></code></pre></div><h3 id="配置-apache-php">配置 apache php</h3>
+<ol>
+<li>修改文件 <code>apache2/sites-available/000-default.conf</code>
+配置 <code>apache2 document root</code> 为 dokuwiki 根目录</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span><span style="color:#f92672">- DocumentRoot /var/www/html
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+ DocumentRoot /var/www/wikihub
+</span></span></span></code></pre></div><ol start="2">
+<li>修改文件 <code>/etc/apache2/apache2.conf</code> 配置 apache security</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>&lt;Directory /&gt;
+</span></span><span style="display:flex;"><span>        Options FollowSymLinks
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-       AllowOverride none
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+       AllowOverride All
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span>        Require all denied
+</span></span><span style="display:flex;"><span>&lt;/Directory&gt;
+</span></span><span style="display:flex;"><span>&lt;Directory /usr/share&gt;
+</span></span><span style="display:flex;"><span>        AllowOverride None
+</span></span><span style="display:flex;"><span>        Require all granted
+</span></span><span style="display:flex;"><span>&lt;/Directory&gt;
+</span></span><span style="display:flex;"><span>&lt;Directory /var/www/&gt;
+</span></span><span style="display:flex;"><span>        Options Indexes FollowSymLinks
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-       AllowOverride none
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+       AllowOverride All
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span>        Require all granted
+</span></span><span style="display:flex;"><span>&lt;/Directory&gt;
+</span></span></code></pre></div><ol start="3">
+<li>Activate the &lsquo;mod_rewrite&rsquo; in apache2 to enable .htaccess</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo a2enmod rewrite <span style="color:#f92672">&amp;&amp;</span> sudo service apache2 restart
+</span></span></code></pre></div><h3 id="安装-dokuwiki">安装 dokuwiki</h3>
+<p>从 dokuwiki <a href="https://download.dokuwiki.org/">官方下载页面</a> 下载最新版的安装包.</p>
+</article>
 
+<article class="list-view list-view--post">
+<header>
+<h2 class="title mt--s mb--xxs"><a href="/post/flutter/">Flutter</a></h2>
+<div class="submitted meta">
+<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
 
-    DokuWiki Installation
-    
+</div>
 
-
-安装 apache php
-apt-get install apache2
-apt-get install php7.1 libapache2-mod-php7.1 php7.1-xml
-配置 apache php
-
-修改文件 apache2/sites-available/000-default.conf
-配置 apache2 document root 为 dokuwiki 根目录
-
-- DocumentRoot /var/www/html
-+ DocumentRoot /var/www/wikihub
-
-修改文件 /etc/apache2/apache2.conf 配置 apache security
-
-<Directory />
-        Options FollowSymLinks
--       AllowOverride none
-+       AllowOverride All
-        Require all denied
-</Directory>
-<Directory /usr/share>
-        AllowOverride None
-        Require all granted
-</Directory>
-<Directory /var/www/>
-        Options Indexes FollowSymLinks
--       AllowOverride none
-+       AllowOverride All
-        Require all granted
-</Directory>
-
-Activate the &lsquo;mod_rewrite&rsquo; in apache2 to enable .htaccess
-
-sudo a2enmod rewrite && sudo service apache2 restart
-安装 dokuwiki
-从 dokuwiki 
-
-    官方下载页面
-    
- 下载最新版的安装包."></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/dokuwiki/ itemprop=url class=post-title-link>dokuwiki</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
-</span><span class=post-meta-item-text>发表于：</span>
-<time title="发表于：1970-01-01 00:00:00 +0800 CST" itemprop="dateCreated datePublished" datetime="1970-01-01 00:00:00 +0800 CST">1970-01-01</time>
-</span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
-</span><span class=post-meta-item-text>分类于：</span>
-<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%B7%A5%E5%85%B7 itemprop=url rel=index><span itemprop=name>工具</span></a></span></span><div class=post-meta-items><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
-</span><span class=post-meta-item-text>浏览：
-</span><span id=busuanzi_value_page_pv class=waline-pageview-count data-path=/post/dokuwiki/><i class="fa fa-sync fa-spin"></i>
-</span></span><span class=post-meta-item title=评论><span class=post-meta-item-icon><i class="far fa-comments"></i>
-</span><span class=post-meta-item-text>评论：
-</span><span class=waline-comment-count data-path=/post/dokuwiki/><i class="fa fa-sync fa-spin"></i></span></span></div></div></div></header><div class="post-body autonumber" itemprop=articleBody><p>关于 Dokuwiki 详细信息, 请访问
-<a href=https://www.dokuwiki.org/ title=官网 rel="noopener external nofollow noreferrer" target=_blank class=exturl>官网
-<i class="fa fa-external-link-alt"></i>
-</a>.</p><h2 id=安装配置>安装配置</h2><blockquote><p>本教程基于 ubuntu 17.10 x64</p></blockquote><h3 id=参考>参考</h3><ul><li><a href=https://www.dokuwiki.org/zh:install title="DokuWiki Installation" rel="noopener external nofollow noreferrer" target=_blank class=exturl>DokuWiki Installation
-<i class="fa fa-external-link-alt"></i></a></li></ul><h3 id=安装-apache-php>安装 apache php</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>apt-get install apache2
-</span></span><span style=display:flex><span>apt-get install php7.1 libapache2-mod-php7.1 php7.1-xml
-</span></span></code></pre></div><h3 id=配置-apache-php>配置 apache php</h3><ol><li>修改文件 <code>apache2/sites-available/000-default.conf</code>
-配置 <code>apache2 document root</code> 为 dokuwiki 根目录</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-diff data-lang=diff><span style=display:flex><span><span style=color:#f92672>- DocumentRoot /var/www/html
-</span></span></span><span style=display:flex><span><span style=color:#f92672></span><span style=color:#a6e22e>+ DocumentRoot /var/www/wikihub
-</span></span></span></code></pre></div><ol start=2><li>修改文件 <code>/etc/apache2/apache2.conf</code> 配置 apache security</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-diff data-lang=diff><span style=display:flex><span>&lt;Directory /&gt;
-</span></span><span style=display:flex><span>        Options FollowSymLinks
-</span></span><span style=display:flex><span><span style=color:#f92672>-       AllowOverride none
-</span></span></span><span style=display:flex><span><span style=color:#f92672></span><span style=color:#a6e22e>+       AllowOverride All
-</span></span></span><span style=display:flex><span><span style=color:#a6e22e></span>        Require all denied
-</span></span><span style=display:flex><span>&lt;/Directory&gt;
-</span></span><span style=display:flex><span>&lt;Directory /usr/share&gt;
-</span></span><span style=display:flex><span>        AllowOverride None
-</span></span><span style=display:flex><span>        Require all granted
-</span></span><span style=display:flex><span>&lt;/Directory&gt;
-</span></span><span style=display:flex><span>&lt;Directory /var/www/&gt;
-</span></span><span style=display:flex><span>        Options Indexes FollowSymLinks
-</span></span><span style=display:flex><span><span style=color:#f92672>-       AllowOverride none
-</span></span></span><span style=display:flex><span><span style=color:#f92672></span><span style=color:#a6e22e>+       AllowOverride All
-</span></span></span><span style=display:flex><span><span style=color:#a6e22e></span>        Require all granted
-</span></span><span style=display:flex><span>&lt;/Directory&gt;
-</span></span></code></pre></div><ol start=3><li>Activate the &lsquo;mod_rewrite&rsquo; in apache2 to enable .htaccess</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>sudo a2enmod rewrite <span style=color:#f92672>&amp;&amp;</span> sudo service apache2 restart
-</span></span></code></pre></div><h3 id=安装-dokuwiki>安装 dokuwiki</h3><p>从 dokuwiki
-<a href=https://download.dokuwiki.org/ title=官方下载页面 rel="noopener external nofollow noreferrer" target=_blank class=exturl>官方下载页面
-<i class="fa fa-external-link-alt"></i>
-</a>下载最新版的安装包.</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/dokuwiki/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/flutter/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=name content="Luyang"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Luyang"><meta itemprop=description content></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="Flutter"><meta itemprop=description content="Flutter 学习笔记
-Windows Flutter SDK 安装
-Download the Flutter archive from your mirror site. In your preferred browser, go to Flutter SDK archive.
-
-
-    https://docs.flutter.cn/release/archive?tab=windows
-    
-
-20240726 当前最新版本：
+</header>
+<h1 id="flutter-学习笔记">Flutter 学习笔记</h1>
+<h2 id="windows-flutter-sdk-安装">Windows Flutter SDK 安装</h2>
+<p>Download the Flutter archive from your mirror site. In your preferred browser, go to Flutter SDK archive.
+<a href="https://docs.flutter.cn/release/archive?tab=windows">https://docs.flutter.cn/release/archive?tab=windows</a></p>
+<p>20240726 当前最新版本：
 Flutter 版本： 3.22.3
 Dart 版本：3.4.4
+<a href="https://storage.flutter-io.cn/flutter_infra_release/releases/stable/windows/flutter_windows_3.22.3-stable.zip">https://storage.flutter-io.cn/flutter_infra_release/releases/stable/windows/flutter_windows_3.22.3-stable.zip</a></p>
+<p>将 flutter_windows_3.22.3-stable.zip sdk 解压到任意位置(根据个人喜好放置)</p>
+<p><code>&lt;path-to-flutter_windows_3.22.3-stable&gt;\flutter</code></p>
+<p>添加环境变量：</p>
+<p><code>&lt;path-to-flutter_windows_3.22.3-stable&gt;\flutter\bin</code> 添加到环境变量 PATH</p>
+<h3 id="验证安装是否成功">验证安装是否成功</h3>
+<p>重新打开一个新的 Powershell 终端执行：<code>flutter doctor</code>
+出现如下界面，说明SDK 安装成功</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\m</span>ax_h&gt; flutter doctor
+</span></span><span style="display:flex;"><span>Doctor summary <span style="color:#f92672">(</span>to see all details, run flutter doctor -v<span style="color:#f92672">)</span>:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>√<span style="color:#f92672">]</span> Flutter <span style="color:#f92672">(</span>Channel stable, 3.22.3, on Microsoft Windows <span style="color:#f92672">[</span>版本 10.0.22631.3880<span style="color:#f92672">]</span>, locale zh-CN<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>√<span style="color:#f92672">]</span> Windows Version <span style="color:#f92672">(</span>Installed version of Windows is version <span style="color:#ae81ff">10</span> or higher<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>√<span style="color:#f92672">]</span> Android toolchain - develop <span style="color:#66d9ef">for</span> Android devices <span style="color:#f92672">(</span>Android SDK version 34.0.0<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>√<span style="color:#f92672">]</span> Chrome - develop <span style="color:#66d9ef">for</span> the web
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>√<span style="color:#f92672">]</span> Visual Studio - develop Windows apps <span style="color:#f92672">(</span>Visual Studio Community <span style="color:#ae81ff">2022</span> 17.9.6<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>√<span style="color:#f92672">]</span> Android Studio <span style="color:#f92672">(</span>version 2024.1<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>√<span style="color:#f92672">]</span> VS Code <span style="color:#f92672">(</span>version 1.87.2<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>√<span style="color:#f92672">]</span> Connected device <span style="color:#f92672">(</span><span style="color:#ae81ff">3</span> available<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>√<span style="color:#f92672">]</span> Network resources
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>• No issues found!
+</span></span></code></pre></div><h3 id="配置国内镜像源">配置国内镜像源</h3>
+<p>Tsinghua University TUNA Association maintains the mirrors.tuna.tsinghua.edu.cn mirror. It includes the Flutter SDK and pub packages.</p>
+</article>
+
+<article class="list-view list-view--post">
+<header>
+<h2 class="title mt--s mb--xxs"><a href="/post/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/">git clone 包含 submodule 的仓库</a></h2>
+<div class="submitted meta">
+<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
+
+</div>
+
+</header>
+<ol>
+<li>使用 git clone 命令来克隆主仓库：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone &lt;主仓库 URL&gt;
+</span></span></code></pre></div><ol start="2">
+<li>进入主仓库所在的根目录，并使用 <code>git submodule init</code> 命令来初始化 submodule：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd &lt;主仓库目录&gt;
+</span></span><span style="display:flex;"><span>git submodule init
+</span></span></code></pre></div><ol start="3">
+<li>使用 <code>git submodule update</code> 命令来更新 submodule 中的内容：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git submodule update
+</span></span></code></pre></div><p>这个命令会从 submodule 的远程仓库中拉取代码，并将其合并到本地代码中。</p>
+</article>
+
+<nav class="pager">
+<a href="/post/page/3/" rel="prev" class="pager__item pager__item--prev"><span aria-hidden="true">« </span>Previous</a>
+<a href="/post/page/5/" rel="next" class="pager__item pager__item--next">Next<span aria-hidden="true"> »</span></a>
+</nav>
+
+</main>
 
 
-    https://storage.flutter-io.cn/flutter_infra_release/releases/stable/windows/flutter_windows_3.22.3-stable.zip
-    
+<aside class="sidebar layout__second-sidebar">
+<nav class="menu">
+<p class="title"><strong><a href="/post/" aria-current="page">Post</a></strong></p>
+<ul>
+<li><a href="/post/perror_func/">perror</a></li>
+<li><a href="/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/">Windows WSL ubuntu adb 配置</a></li>
+<li><a href="/post/ubuntu_2004_%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/">ubuntu 20.04 升级内核</a></li>
+<li><a href="/post/svn/">ubuntu 搭建 svn 服务器</a></li>
+<li><a href="/post/windows-terminal-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-oh-my-posh/">Windows terminal 安装配置 oh-my-posh</a></li>
+<li><a href="/post/openssl/">openssl 创建自签名证书,对 Windows Catalog 进行签名</a></li>
+<li><a href="/post/docker-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">docker 环境搭建</a></li>
+<li><a href="/post/gerrit/">gerrit 环境搭建</a></li>
+<li><a href="/post/vcpkg_windows/">windows vcpkg</a></li>
+<li><a href="/post/linux_date_cmd/">Linux date 命令用法</a></li>
+<li><a href="/post/windows10_wsl/">windows10 WSL setup</a></li>
+<li><a href="/post/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/">黑芝麻平台交叉编译 openssl</a></li>
+<li><a href="/post/i2c_cmd/">I2C command</a></li>
+<li><a href="/post/ddr-%E5%8E%8B%E6%B5%8B%E5%91%BD%E4%BB%A4/">DDR 压测命令</a></li>
+<li><a href="/post/e2fsprogs-1/">e2fsprogs-1.42.8 源码编译安装</a></li>
+<li><a href="/post/python2/">python2.7 环境及包管理</a></li>
+<li><a href="/post/vscode_remote-ssh_%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE/">vscode remote-ssh 免密登录配置</a></li>
+<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2/">交叉编译 glibc-2.35</a></li>
+<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-libxml2-2/">交叉编译 libxml2-2.9.10</a></li>
+<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2/">交叉编译 Python-2.7.16</a></li>
+<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-tcpdump-4/">交叉编译 tcpdump-4.99.1</a></li>
+<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-zlib-1/">交叉编译 zlib-1.2.12</a></li>
+<li><a href="/post/dmesg_support_iso_timestamp/">dmesg use CST timestamp</a></li>
+<li><a href="/post/gmsl2_csi2_clk/">GMSL2 CSI-2 clock</a></li>
+<li><a href="/post/hobotbuildenv/">Hobot 编译环境</a></li>
+<li><a href="/post/ros/">ROS</a></li>
+<li><a href="/post/%E8%80%81%E9%BB%91%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83/">老黑编译环境</a></li>
+<li><a href="/post/stock/">akshare 学习笔记</a></li>
+<li><a href="/post/adi_gmsl2_serdes_spi/">ADI GMSL2 SERDES SPI</a></li>
+<li><a href="/post/androidjava-/">Android Java 1.7 环境配置</a></li>
+<li><a href="/post/androidstudioenv/">Android Studio Env</a></li>
+<li><a href="/post/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/">Android 使用 am 命令启动一个活动组件</a></li>
+<li><a href="/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/">Android10编译开启ccache</a></li>
+<li><a href="/post/beyondcompare/">BeyondCompare</a></li>
+<li><a href="/post/cmake/">cmake</a></li>
+<li><a href="/post/crystal/">crystal</a></li>
+<li><a href="/post/debian4/">Debian 4.9 Config Static Ip.md</a></li>
+<li><a href="/post/dokuwiki/">dokuwiki</a></li>
+<li><a href="/post/flutter/">Flutter</a></li>
+<li><a href="/post/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/">git clone 包含 submodule 的仓库</a></li>
+<li><a href="/post/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/">git 使用指定的 ssh key</a></li>
+<li><a href="/post/gitbook/">gitbook</a></li>
+<li><a href="/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/">GMSL SERDES 笔记</a></li>
+<li><a href="/post/harmony-hpm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/">Harmony HPM 包管理器</a></li>
+<li><a href="/post/hugo/">hugo</a></li>
+<li><a href="/post/iperf-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD/">iperf 测试网络带宽</a></li>
+<li><a href="/post/linux_test_disk_i_o_with_dd/">Linux Test Disk with dd command</a></li>
+<li><a href="/post/manjaro/">manjaro</a></li>
+<li><a href="/post/opengrok/">opengrok</a></li>
+<li><a href="/post/openharmony-%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91/">OpenHarmony 代码下载编译</a></li>
+<li><a href="/post/repo/">repo</a></li>
+<li><a href="/post/samba/">samba</a></li>
+<li><a href="/post/sourceinsight/">Source Insight</a></li>
+<li><a href="/post/ubuntu_200406_install_tp_link_ac1300_usb_wifi_adaptor_driver/">ubuntu 20.04.6 install tp link a1300 usb wifi adaptor driver</a></li>
+<li><a href="/post/ubuntu_git_server_build_push_code/">Ubuntu git 仓库搭建及代码上传</a></li>
+<li><a href="/post/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/">Virtualbox Opensuse 无网络图标 无法上网</a></li>
+<li><a href="/post/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/">vscode 阅读 Linux 内核代码配置</a></li>
+<li><a href="/post/wifiadb/">Wifi Adb</a></li>
+<li><a href="/post/windows/">windows</a></li>
+<li><a href="/post/windows_remote_desktop/">Windows Remote Desktop</a></li>
+<li><a href="/post/windows_vcpkg_boost/">windows vcpkg boost 开发环境</a></li>
+<li><a href="/post/windowsvscodeplantuml%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Windows Vscode Plantuml 环境搭建</a></li>
+<li><a href="/post/windows_wsl_%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/">windows WSL 端口映射</a></li>
+<li><a href="/post/word/">word</a></li>
+<li><a href="/post/usbipd/">wsl 使用 usbipd 访问 USB 设备</a></li>
+<li><a href="/post/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/">一文搞懂应用开发所需 Linux 系统时间的相关知识点</a></li>
+<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE/">交叉编译工具链</a></li>
+<li><a href="/post/awr2243_adc/">关于雷达 AWR2243 ADC OVER CSI HSI</a></li>
+<li><a href="/post/how_to_handle_gpio_interrupt_like_handling_in_linux_userspace/">如何在 Linux 用户空间中进行类似 GPIO 中断的处理</a></li>
+<li><a href="/post/camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi/">摄像头图像数据格式从cmos到mipi</a></li>
+<li><a href="/post/about/">Lu Yang</a></li>
+</ul>
+</nav>
+<nav class="menu">
+<p class="title"><strong><a href="/archives/"></a></strong></p>
+<ul>
+</ul>
+</nav>
+</aside>
+<footer class="footer layout__footer mt--l">
+<p>Follow post: <a rel="alternate" type="application/rss&#43;xml" href="https://example.org/post/index.xml">rss</a> | <a rel="alternate" type="application/json" href="https://example.org/post/index.json">json</a></p>
+<p><span>© Hugo Zen theme</span></p>
 
-将 flutter_windows_3.22.3-stable.zip sdk 解压到任意位置(根据个人喜好放置)"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/flutter/ itemprop=url class=post-title-link>Flutter</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
-</span><span class=post-meta-item-text>发表于：</span>
-<time title="发表于：1970-01-01 00:00:00 +0800 CST" itemprop="dateCreated datePublished" datetime="1970-01-01 00:00:00 +0800 CST">1970-01-01</time>
-</span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
-</span><span class=post-meta-item-text>分类于：</span>
-<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/programming itemprop=url rel=index><span itemprop=name>programming</span></a></span></span><div class=post-meta-items><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
-</span><span class=post-meta-item-text>浏览：
-</span><span id=busuanzi_value_page_pv class=waline-pageview-count data-path=/post/flutter/><i class="fa fa-sync fa-spin"></i>
-</span></span><span class=post-meta-item title=评论><span class=post-meta-item-icon><i class="far fa-comments"></i>
-</span><span class=post-meta-item-text>评论：
-</span><span class=waline-comment-count data-path=/post/flutter/><i class="fa fa-sync fa-spin"></i></span></span></div></div></div></header><div class="post-body autonumber" itemprop=articleBody><h1 id=flutter-学习笔记>Flutter 学习笔记</h1><h2 id=windows-flutter-sdk-安装>Windows Flutter SDK 安装</h2><p>Download the Flutter archive from your mirror site. In your preferred browser, go to Flutter SDK archive.
-<a href="https://docs.flutter.cn/release/archive?tab=windows" title="https://docs.flutter.cn/release/archive?tab=windows" rel="noopener external nofollow noreferrer" target=_blank class=exturl>https://docs.flutter.cn/release/archive?tab=windows
-<i class="fa fa-external-link-alt"></i></a></p><p>20240726 当前最新版本：
-Flutter 版本： 3.22.3
-Dart 版本：3.4.4
-<a href=https://storage.flutter-io.cn/flutter_infra_release/releases/stable/windows/flutter_windows_3.22.3-stable.zip title=https://storage.flutter-io.cn/flutter_infra_release/releases/stable/windows/flutter_windows_3.22.3-stable.zip rel="noopener external nofollow noreferrer" target=_blank class=exturl>https://storage.flutter-io.cn/flutter_infra_release/releases/stable/windows/flutter_windows_3.22.3-stable.zip
-<i class="fa fa-external-link-alt"></i></a></p><p>将 flutter_windows_3.22.3-stable.zip sdk 解压到任意位置(根据个人喜好放置)</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/flutter/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=name content="Luyang"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Luyang"><meta itemprop=description content></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="git clone 包含 submodule 的仓库"><meta itemprop=description content="
-使用 git clone 命令来克隆主仓库：
+<p>Powered by <a href="https://gohugo.io/">Hugo</a> and the <a href="https://github.com/frjo/hugo-theme-zen">Zen theme</a>.</p>
 
-git clone <主仓库 URL>
+</footer>
 
-进入主仓库所在的根目录，并使用 git submodule init 命令来初始化 submodule：
-
-cd <主仓库目录>
-git submodule init
-
-使用 git submodule update 命令来更新 submodule 中的内容：
-
-git submodule update
-这个命令会从 submodule 的远程仓库中拉取代码，并将其合并到本地代码中。"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/ itemprop=url class=post-title-link>git clone 包含 submodule 的仓库</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
-</span><span class=post-meta-item-text>发表于：</span>
-<time title="发表于：1970-01-01 00:00:00 +0800 CST" itemprop="dateCreated datePublished" datetime="1970-01-01 00:00:00 +0800 CST">1970-01-01</time>
-</span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
-</span><span class=post-meta-item-text>分类于：</span>
-<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%B7%A5%E5%85%B7 itemprop=url rel=index><span itemprop=name>工具</span></a></span></span><div class=post-meta-items><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
-</span><span class=post-meta-item-text>浏览：
-</span><span id=busuanzi_value_page_pv class=waline-pageview-count data-path=/post/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/><i class="fa fa-sync fa-spin"></i>
-</span></span><span class=post-meta-item title=评论><span class=post-meta-item-icon><i class="far fa-comments"></i>
-</span><span class=post-meta-item-text>评论：
-</span><span class=waline-comment-count data-path=/post/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/><i class="fa fa-sync fa-spin"></i></span></span></div></div></div></header><div class="post-body autonumber" itemprop=articleBody><ol><li>使用 git clone 命令来克隆主仓库：</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>git clone &lt;主仓库 URL&gt;
-</span></span></code></pre></div><ol start=2><li>进入主仓库所在的根目录，并使用 <code>git submodule init</code> 命令来初始化 submodule：</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>cd &lt;主仓库目录&gt;
-</span></span><span style=display:flex><span>git submodule init
-</span></span></code></pre></div><ol start=3><li>使用 <code>git submodule update</code> 命令来更新 submodule 中的内容：</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>git submodule update
-</span></span></code></pre></div><p>这个命令会从 submodule 的远程仓库中拉取代码，并将其合并到本地代码中。</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=name content="Luyang"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Luyang"><meta itemprop=description content></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="git 使用指定的 ssh key"><meta itemprop=description content="Git 提供了以下两种方式来指定使用哪个 SSH Key 进行认证：
-使用 Git Config 命令
-使用 git config 命令来配置 Git 的全局或本地参数。在这个命令中，可以使用 core.sshCommand 参数来指定使用哪个 SSH Key 进行认证。"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/ itemprop=url class=post-title-link>git 使用指定的 ssh key</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
-</span><span class=post-meta-item-text>发表于：</span>
-<time title="发表于：1970-01-01 00:00:00 +0800 CST" itemprop="dateCreated datePublished" datetime="1970-01-01 00:00:00 +0800 CST">1970-01-01</time>
-</span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
-</span><span class=post-meta-item-text>分类于：</span>
-<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%B7%A5%E5%85%B7 itemprop=url rel=index><span itemprop=name>工具</span></a></span></span><div class=post-meta-items><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
-</span><span class=post-meta-item-text>浏览：
-</span><span id=busuanzi_value_page_pv class=waline-pageview-count data-path=/post/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/><i class="fa fa-sync fa-spin"></i>
-</span></span><span class=post-meta-item title=评论><span class=post-meta-item-icon><i class="far fa-comments"></i>
-</span><span class=post-meta-item-text>评论：
-</span><span class=waline-comment-count data-path=/post/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/><i class="fa fa-sync fa-spin"></i></span></span></div></div></div></header><div class="post-body autonumber" itemprop=articleBody><p>Git 提供了以下两种方式来指定使用哪个 SSH Key 进行认证：</p><h2 id=使用-git-config-命令>使用 Git Config 命令</h2><p>使用 <code>git config</code> 命令来配置 Git 的全局或本地参数。在这个命令中，可以使用 <code>core.sshCommand</code> 参数来指定使用哪个 SSH Key 进行认证。</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/gitbook/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=name content="Luyang"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Luyang"><meta itemprop=description content></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="gitbook"><meta itemprop=description content="nvm node npm
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
-source ~/.zshrc
-nvm install node
-npm config set registry https://registry.npm.taobao.org
-gitbook
-npm install gitbook-cli -g
-gitbook 常见命令
-List installed versions:
-gitbook ls
-List available versions on NPM:
-gitbook ls-remote
-Install a specific version:
-gitbook fetch 2.1.0
-# or a pre-release
-gitbook fetch beta
-Update to the latest version
-gitbook update
-Uninstall a specific version
-gitbook uninstall 2.0.1
-使用
-gitbook init
-gitbook serve (该命令首先会执行 gitbook build 编译书籍, 完成以后会打开一个 web 服务器, 监听在本地的 4000 端口)
-plugin
-安装方法
-在 git book 项目的根目录下执行"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/gitbook/ itemprop=url class=post-title-link>gitbook</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
-</span><span class=post-meta-item-text>发表于：</span>
-<time title="发表于：1970-01-01 00:00:00 +0800 CST" itemprop="dateCreated datePublished" datetime="1970-01-01 00:00:00 +0800 CST">1970-01-01</time>
-</span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
-</span><span class=post-meta-item-text>分类于：</span>
-<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%B7%A5%E5%85%B7 itemprop=url rel=index><span itemprop=name>工具</span></a></span></span><div class=post-meta-items><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
-</span><span class=post-meta-item-text>浏览：
-</span><span id=busuanzi_value_page_pv class=waline-pageview-count data-path=/post/gitbook/><i class="fa fa-sync fa-spin"></i>
-</span></span><span class=post-meta-item title=评论><span class=post-meta-item-icon><i class="far fa-comments"></i>
-</span><span class=post-meta-item-text>评论：
-</span><span class=waline-comment-count data-path=/post/gitbook/><i class="fa fa-sync fa-spin"></i></span></span></div></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=nvm-node-npm>nvm node npm</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
-</span></span><span style=display:flex><span>source ~/.zshrc
-</span></span><span style=display:flex><span>nvm install node
-</span></span><span style=display:flex><span>npm config set registry https://registry.npm.taobao.org
-</span></span></code></pre></div><h2 id=gitbook>gitbook</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>npm install gitbook-cli -g
-</span></span></code></pre></div><h2 id=gitbook-常见命令>gitbook 常见命令</h2><p>List installed versions:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>gitbook ls
-</span></span></code></pre></div><p>List available versions on NPM:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>gitbook ls-remote
-</span></span></code></pre></div><p>Install a specific version:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>gitbook fetch 2.1.0
-</span></span><span style=display:flex><span><span style=color:#75715e># or a pre-release</span>
-</span></span><span style=display:flex><span>gitbook fetch beta
-</span></span></code></pre></div><p>Update to the latest version</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>gitbook update
-</span></span></code></pre></div><p>Uninstall a specific version</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>gitbook uninstall 2.0.1
-</span></span></code></pre></div><h2 id=使用>使用</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>gitbook init
-</span></span><span style=display:flex><span>gitbook serve <span style=color:#f92672>(</span>该命令首先会执行 gitbook build 编译书籍, 完成以后会打开一个 web 服务器, 监听在本地的 <span style=color:#ae81ff>4000</span> 端口<span style=color:#f92672>)</span>
-</span></span></code></pre></div><h2 id=plugin>plugin</h2><h3 id=安装方法>安装方法</h3><p>在 git book 项目的根目录下执行</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/gitbook/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><nav class=pagination><a class="extend prev" rel=prev href=/post/page/3/><i class="fa fa-angle-left"></i>
-</a><a class=page-number href=/post/>1</a>
-<a class=page-number href=/post/page/2/>2</a>
-<a class=page-number href=/post/page/3/>3</a>
-<span class="page-number current">4</span>
-<a class=page-number href=/post/page/5/>5</a>
-<a class=page-number href=/post/page/6/>6</a>
-<a class=page-number href=/post/page/7/>7</a>
-<a class="extend next" rel=next href=/post/page/5/><i class="fa fa-angle-right"></i></a></nav></div></main><footer class=footer><div class=footer-inner><div id=gtranslate class=google-translate><i class="fa fa-language"></i><div id=google_translate_element></div></div><div class=copyright>&copy;
-<span itemprop=copyrightYear>2010 - 2025
-</span><span class=with-love><i class="fa fa-heart"></i>
-</span><span class=author itemprop=copyrightHolder>Luyang</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.143.1 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.4.1 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div><div class=beian><a href=https://beian.miit.gov.cn target=_blank>粤ICP备 18047355-1 号</a>
-<img src=/imgs/gongan.png alt=沪公网安备>
-<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402009770" target=_blank>沪公网安备 31011402009770 号</a></div><div class=vendors-list><a target=_blank href=https://vercel.com title=Vercel><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/vercel.svg alt=Vercel>
-</a><a target=_blank href=https://upyun.com title=又拍云><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/upyun.png alt=又拍云>
-</a><a target=_blank href=https://webify.cloudbase.net title=Webify>Webify
-</a><span>提供CDN/云资源支持</span></div></div></footer><script type=text/javascript src=https://cdn.staticfile.org/animejs/3.2.1/anime.min.js defer></script><script type=text/javascript src=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.js defer></script><script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#222","enable":true,"save":"manual"},"busuanzi":{"pageview":true},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"General","categoryid":"DIC_kwDOJzMFzM4CXbDz","emit":false,"inputposition":"top","mapping":"pathname","reactions":true,"repo":"luyoungcn/luyoungcn.giscus","repoid":"R_kgDOJzMFzA","theme":"dark"},"js":"https://giscus.app/client.js"},"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"statis":{"enable":true,"plugin":"busuanzi"},"vendor":{"plugins":"qiniu","router":"https://cdn.staticfile.org"},"version":"4.4.1","waline":{"cfg":{"comment":true,"emoji":false,"imguploader":false,"pageview":true,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.13.0"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.13.0"}}}</script><script type=text/javascript src=/js/main.min.37028fbafbd97fd89808b4c7b5a3a81f01ed0ab24001d273d774f9546a0e9170.js defer></script></body></html>
+</div>
+</body>
+</html>

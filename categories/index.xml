@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Hugo Zen theme</title>
+    <link>https://example.org/categories/</link>
+    <description>Recent content in Categories on Hugo Zen theme</description>
+    <generator>Hugo</generator>
+    <language>en-GB</language>
+    <lastBuildDate>Mon, 01 Jan 2024 20:19:08 +0800</lastBuildDate>
+      <atom:link href="https://example.org/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Coding</title>
+      <link>https://example.org/categories/coding/</link>
+      <pubDate>Mon, 01 Jan 2024 20:19:08 +0800</pubDate>
+      <guid>https://example.org/categories/coding/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>工具</title>
+      <link>https://example.org/categories/%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate>
+      <guid>https://example.org/categories/%E5%B7%A5%E5%85%B7/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>环境</title>
+      <link>https://example.org/categories/%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Mon, 26 Jun 2023 03:00:00 +0800</pubDate>
+      <guid>https://example.org/categories/%E7%8E%AF%E5%A2%83/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Android</title>
+      <link>https://example.org/categories/android/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      <guid>https://example.org/categories/android/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Build</title>
+      <link>https://example.org/categories/build/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      <guid>https://example.org/categories/build/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dev</title>
+      <link>https://example.org/categories/dev/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      <guid>https://example.org/categories/dev/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hardware</title>
+      <link>https://example.org/categories/hardware/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      <guid>https://example.org/categories/hardware/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://example.org/categories/linux/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      <guid>https://example.org/categories/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OpenSource</title>
+      <link>https://example.org/categories/opensource/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      <guid>https://example.org/categories/opensource/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Programming</title>
+      <link>https://example.org/categories/programming/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      <guid>https://example.org/categories/programming/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Radar</title>
+      <link>https://example.org/categories/radar/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      <guid>https://example.org/categories/radar/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SERDES</title>
+      <link>https://example.org/categories/serdes/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      <guid>https://example.org/categories/serdes/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

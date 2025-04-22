@@ -1,491 +1,660 @@
-<!doctype html><html lang=zh-CN data-theme=dark><head><meta charset=UTF-8><meta name=viewport content="width=device-width"><meta name=theme-color content="#222" media="(prefers-color-scheme: dark)"><meta name=generator content="Hugo 0.143.1"><link rel="shortcut icon" type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=/imgs/icons/favicon_16x16_next.png><link rel=icon type=image/png sizes=32x32 href=/imgs/icons/favicon_32_32_next.png><link rel=apple-touch-icon sizes=180x180 href=/imgs/icons/apple_touch_icon_next.png><meta itemprop=name content="LuyangのBlog"><meta itemprop=description content><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=keywords content="Hugo,NexT,主题,简单,强大"><meta property="og:type" content="website"><meta property="og:title" content="LuyangのBlog"><meta property="og:description" content><meta property="og:image" content="/imgs/luyang_avatar.png"><meta property="og:image:width" content="312"><meta property="og:image:height" content="312"><meta property="og:image:type" content="image/jpeg/png/svg/jpg"><meta property="og:url" content="/"><meta property="og:site_name" content="LuyangのBlog"><meta property="og:locale" content="zh-CN"><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/font-awesome/6.1.2/css/all.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.css><link rel=stylesheet href=/css/main.min.f472ecba1160e6845c7e411ace211fe16545c60bed8e67710ff4251070fc7e55.css><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return void 0;const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),void 0):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script class=next-config data-name=page type=application/json>{"comments":true,"isHome":true,"isPage":false,"path":"/","permalink":"/","title":"LuyangのBlog","waline":{"js":[{"alias":"waline","alias_name":"@waline/client","file":"dist/pageview.js","name":"pageview","version":"2.13.0"},{"alias":"waline","alias_name":"@waline/client","file":"dist/comment.js","name":"comment","version":"2.13.0"}]}}</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>LuyangのBlog</title><noscript><link rel=stylesheet href=/css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label=切换导航栏 role=button><span class=toggle-line></span>
-<span class=toggle-line></span>
-<span class=toggle-line></span></div></div><div class=site-meta><a href=/ class=brand rel=start><i class=logo-line></i><h1 class=site-title>LuyangのBlog</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description></p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=/ class="hvr-icon-pulse menu-item-active" rel=section><i class="fa fa-home hvr-icon"></i>首页</a></li><li class="menu-item menu-item-about"><a href=/ class=hvr-icon-pulse rel=section><i class="fa fa-user hvr-icon"></i>关于</a></li><li class="menu-item menu-item-flinks"><a href=/flinks.html class=hvr-icon-pulse rel=section><i class="fa fa-thumbs-up hvr-icon"></i>站点示例</a></li><li class="menu-item menu-item-archives"><a href=/archives/ class=hvr-icon-pulse rel=section><i class="fa fa-archive hvr-icon"></i>归档
-<span class=badge>69</span></a></li><li class="menu-item menu-item-commonweal"><a href=/404.html class=hvr-icon-pulse rel=section><i class="fa fa-heartbeat hvr-icon"></i>公益 404</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
-<span class=toggle-line></span>
-<span class=toggle-line></span></div><aside class=sidebar><div class="sidebar-inner sidebar-overview-active"><ul class=sidebar-nav><li class=sidebar-nav-toc>文章目录</li><li class=sidebar-nav-overview>站点概览</li></ul><div class=sidebar-panel-container><div class="post-toc-wrap sidebar-panel"><div class="post-toc animated"><nav id=TableOfContents></nav></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author site-overview-item animated" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image alt=Luyang src=/imgs/img-lazy-loading.gif data-src=/imgs/luyang_avatar.png><p class=site-author-name itemprop=name>Luyang</p><div class=site-description itemprop=description></div></div><div class="site-state-wrap site-overview-item animated"><nav class=site-state><div class="site-state-item site-state-posts"><a href=/archives/><span class=site-state-item-count>69</span>
-<span class=site-state-item-name>日志</span></a></div><div class="site-state-item site-state-categories"><a href=/categories/><span class=site-state-item-count>12</span>
-<span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href=/tags/><span class=site-state-item-count>113</span>
-<span class=site-state-item-name>标签</span></a></div></nav></div><div class="links-of-social site-overview-item animated"><span class=links-of-social-item><a href=https://github.com/luyoungcn title="Github → https://github.com/luyoungcn" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-github fa-fw hvr-icon"></i>Github</a></span></div><div class="cc-license animated" itemprop=license><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh class=cc-opacity rel=noopener target=_blank title=共享知识><img src=/imgs/img-lazy-loading.gif data-src=/imgs/cc/big/by_nc_sa.svg alt=共享知识></a></div><div class="links-of-blogroll site-overview-item animated"><div class=links-of-blogroll-title><i class="fa fa-globe fa-fw"></i>友情链接</div><ul class=links-of-blogroll-list><li class=links-of-blogroll-item><a href=https://home.cnblogs.com/u/liuqiongcn/ title=https://home.cnblogs.com/u/liuqiongcn/ target=_blank>一条名叫西西的狗</a></li><li class=links-of-blogroll-item><a href=https://lisenhui.cn title=https://lisenhui.cn target=_blank>凡梦星尘空间站</a></li><li class=links-of-blogroll-item><a href=https://gitee.com/hugo-next/hugo-theme-next title=https://gitee.com/hugo-next/hugo-theme-next target=_blank>Hugo-NexT</a></li></ul></div></div></div></div><div id=siteinfo-card-widget class=sidebar-card-widget><div class=item-headline><i class="fas fa-chart-line"></i>
-<span>网站资讯</span></div><div class=siteinfo><div class=siteinfo-item><div class=item-name><i class="fa-solid fa-calendar-check"></i>已运行：</div><div class=item-count id=runTimes data-publishdate=0001-01-01T00:00:00+00:00></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-user"></i>总访客数：</div><div class=item-count id=busuanzi_value_site_uv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-eye"></i>页面浏览：</div><div class=item-count id=busuanzi_value_site_pv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-font"></i>总字数：</div><div class=item-count id=wordsCount data-count=51508></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-mug-hot"></i>阅读约：</div><div class=item-count id=readTimes data-times=141></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-clock-rotate-left"></i>最后更新于：</div><div class=item-count id=last-push-date data-lastpushdate=2024-01-01T20:19:08+08:00></div></div></div></div></aside><div class=sidebar-dimmer></div></header><div class=tool-buttons><div id=goto-comments class="button goto-comments" title=直达评论><i class="fas fa-comments"></i></div><div id=goto-gtranslate class=button title=多语言翻译><i class="fas fa-globe"></i></div><div id=toggle-theme class=button title=深浅模式切换><i class="fas fa-adjust"></i></div><div class=back-to-top role=button title=返回顶部><i class="fa fa-arrow-up"></i>
-<span>0%</span></div></div><div class=reading-progress-bar></div><a role=button class="book-mark-link book-mark-link-fixed"></a><a href=https://github.com/hugo-next rel="noopener external nofollow noreferrer" target=_blank title="Follow me on GitHub" class="exturl github-corner"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0 0 115 115h15l12 27L250 250V0z"/><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentcolor" style="transform-origin:130px 106px" class="octo-arm"/><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4l13.9-13.8C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8z" fill="currentcolor" class="octo-body"/></svg>
-</a><script type=text/javascript src=//sidecar.gitter.im/dist/sidecar.v1.js async></script><script type=text/javascript>((window.gitter={}).chat={}).options={room:"hugo-next/community"}</script><noscript><div class=noscript-warning>Theme NexT works best with JavaScript enabled</div></noscript><div class="main-inner index posts-expand"><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/windows10_wsl/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=name content="Luyang"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Luyang"><meta itemprop=description content></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="windows10 WSL setup"><meta itemprop=description content="win10 安装 wsl2
+<!DOCTYPE html>
+<html class="nojs" lang="en-GB" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Hugo Zen theme</title>
+<link rel="alternate" type="application/rss+xml" title="rss" href="https://example.org/index.xml">
+<link rel="alternate" type="application/json" title="json" href="https://example.org/index.json">
+<meta name="description" content="The zen theme for Hugo example site.">
+<meta name="created" content="2024-01-01T20:19:08+0800">
+<meta name="modified" content="2024-01-01T20:19:08+0800">
+<meta name="author" content="Your Name">
+<meta name="contact" content="info@example.org">
+<meta property="og:site_name" content="Hugo Zen theme">
+<meta property="og:title" content="Hugo Zen theme">
+<meta property="og:url" content="https://example.org/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://example.org/apple-touch-icon.png">
+<meta name="generator" content="Hugo 0.146.6">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
 
 
-    安装 WSL | Microsoft Docs
-    
+<link rel="canonical" href="https://example.org/">
 
-必须运行 Windows 10 版本 2004 及更高版本（内部版本 19041 及更高版本）或 Windows 11。
-→ 我的电脑win10已经更新到最新，应该没问题。"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/windows10_wsl/ itemprop=url class=post-title-link>windows10 WSL setup</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
-</span><span class=post-meta-item-text>发表于：</span>
-<time title="发表于：2023-02-09 00:00:00 +0800 CST" itemprop="dateCreated datePublished" datetime="2023-02-09 00:00:00 +0800 CST">2023-02-09</time>
-</span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
-</span><span class=post-meta-item-text>分类于：</span>
-<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%B7%A5%E5%85%B7 itemprop=url rel=index><span itemprop=name>工具</span></a></span></span><div class=post-meta-items><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
-</span><span class=post-meta-item-text>浏览：
-</span><span id=busuanzi_value_page_pv class=waline-pageview-count data-path=/post/windows10_wsl/><i class="fa fa-sync fa-spin"></i></span></span></div></div></div></header><div class="post-body autonumber" itemprop=articleBody><h1 id=win10-安装-wsl2>win10 安装 wsl2</h1><p><a href=https://docs.microsoft.com/zh-cn/windows/wsl/install title="安装 WSL | Microsoft Docs" rel="noopener external nofollow noreferrer" target=_blank class=exturl>安装 WSL | Microsoft Docs
-<i class="fa fa-external-link-alt"></i></a></p><p>必须运行 Windows 10 版本 2004 及更高版本（内部版本 19041 及更高版本）或 Windows 11。</p><p>→ 我的电脑win10已经更新到最新，应该没问题。</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/windows10_wsl/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=name content="Luyang"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Luyang"><meta itemprop=description content></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="黑芝麻平台交叉编译 openssl"><meta itemprop=description content="黑芝麻平台交叉编译 openssl
-前置条件
-编译环境：黑芝麻 Linux23 Docker 开发环境，已经默认配置了交叉编译环境。
-源码下载
-wget https://www.openssl.org/source/openssl-1.1.1k.tar.gz
-tar -xzvf openssl-1.1.1k.tar.gz
-cd openssl-1.1.1k
-配置
-准备目标文件安装目录：
-mkdir _INSTALL
-查看帮助手册：
-root@028337952dd7:/home/misc/openssl-1.1.1k# ./Configure
-Usage: Configure [no-<cipher> ...] [enable-<cipher> ...] [-Dxxx] [-lxxx] [-Lxxx] [-fxxx] [-Kxxx] [no-hw-xxx|no-hw] [[no-]threads] [[no-]shared] [[no-]zlib|zlib-dynamic] [no-asm] [no-egd] [sctp] [386] [--prefix=DIR] [--openssldir=OPENSSLDIR] [--with-xxx[=vvv]] [--config=FILE] os/compiler[:flags]
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-pick os/compiler from:
-BS2000-OSD BSD-generic32 BSD-generic64 BSD-ia64 BSD-sparc64 BSD-sparcv8
-BSD-x86 BSD-x86-elf BSD-x86_64 Cygwin Cygwin-i386 Cygwin-i486 Cygwin-i586
-Cygwin-i686 Cygwin-x86 Cygwin-x86_64 DJGPP MPE/iX-gcc UEFI UWIN VC-CE VC-WIN32
-VC-WIN32-ARM VC-WIN32-ONECORE VC-WIN64-ARM VC-WIN64A VC-WIN64A-ONECORE
-VC-WIN64A-masm VC-WIN64I aix-cc aix-gcc aix64-cc aix64-gcc android-arm
-android-arm64 android-armeabi android-mips android-mips64 android-x86
-android-x86_64 android64 android64-aarch64 android64-mips64 android64-x86_64
-bsdi-elf-gcc cc darwin-i386-cc darwin-ppc-cc darwin64-arm64-cc darwin64-ppc-cc
-darwin64-x86_64-cc gcc haiku-x86 haiku-x86_64 hpux-ia64-cc hpux-ia64-gcc
-hpux-parisc-cc hpux-parisc-gcc hpux-parisc1_1-cc hpux-parisc1_1-gcc
-hpux64-ia64-cc hpux64-ia64-gcc hpux64-parisc2-cc hpux64-parisc2-gcc hurd-x86
-ios-cross ios-xcrun ios64-cross ios64-xcrun iossimulator-xcrun iphoneos-cross
-irix-mips3-cc irix-mips3-gcc irix64-mips4-cc irix64-mips4-gcc linux-aarch64
-linux-alpha-gcc linux-aout linux-arm64ilp32 linux-armv4 linux-c64xplus
-linux-elf linux-generic32 linux-generic64 linux-ia64 linux-mips32 linux-mips64
-linux-ppc linux-ppc64 linux-ppc64le linux-sparcv8 linux-sparcv9 linux-x32
-linux-x86 linux-x86-clang linux-x86_64 linux-x86_64-clang linux32-s390x
-linux64-mips64 linux64-s390x linux64-sparcv9 mingw mingw64 nextstep
-nextstep3.3 sco5-cc sco5-gcc solaris-sparcv7-cc solaris-sparcv7-gcc
-solaris-sparcv8-cc solaris-sparcv8-gcc solaris-sparcv9-cc solaris-sparcv9-gcc
-solaris-x86-gcc solaris64-sparcv9-cc solaris64-sparcv9-gcc solaris64-x86_64-cc
-solaris64-x86_64-gcc tru64-alpha-cc tru64-alpha-gcc uClinux-dist
-uClinux-dist64 unixware-2.0 unixware-2.1 unixware-7 unixware-7-gcc vms-alpha
-vms-alpha-p32 vms-alpha-p64 vms-ia64 vms-ia64-p32 vms-ia64-p64 vos-gcc
-vxworks-mips vxworks-ppc405 vxworks-ppc60x vxworks-ppc750 vxworks-ppc750-debug
-vxworks-ppc860 vxworks-ppcgen vxworks-simlinux
+<link rel="stylesheet" href="/css/styles.2fa1df15b347581e582e5e8899cf40bdf7908f76e104ed06eeba4c6443012e8c.css">
+<link rel="stylesheet" href="/css/mobilemenu.dbbf7de443967fe1d83dce47fb19895d79710b23ccd02b84f54d4d39c37e3d2d.css" media="screen">
+<link rel="stylesheet" href="/css/print.1912ba13950e7434fb50dd14d3951bc7f57bb0c16b4f204158b72f0b3844f7a1.css" media="print">
 
-NOTE: If in doubt, on Unix-ish systems use './config'.
-上面提示如果编译 Unix-ish x86 平台目标文件，直接使用 ./config"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/ itemprop=url class=post-title-link>黑芝麻平台交叉编译 openssl</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
-</span><span class=post-meta-item-text>发表于：</span>
-<time title="发表于：2023-02-09 00:00:00 +0800 CST" itemprop="dateCreated datePublished" datetime="2023-02-09 00:00:00 +0800 CST">2023-02-09</time>
-</span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
-</span><span class=post-meta-item-text>分类于：</span>
-<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%B7%A5%E5%85%B7 itemprop=url rel=index><span itemprop=name>工具</span></a></span></span><div class=post-meta-items><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
-</span><span class=post-meta-item-text>浏览：
-</span><span id=busuanzi_value_page_pv class=waline-pageview-count data-path=/post/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/><i class="fa fa-sync fa-spin"></i></span></span></div></div></div></header><div class="post-body autonumber" itemprop=articleBody><h1 id=黑芝麻平台交叉编译-openssl>黑芝麻平台交叉编译 openssl</h1><h2 id=前置条件>前置条件</h2><p>编译环境：黑芝麻 Linux23 Docker 开发环境，已经默认配置了交叉编译环境。</p><h2 id=源码下载>源码下载</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>wget https://www.openssl.org/source/openssl-1.1.1k.tar.gz
-</span></span><span style=display:flex><span>tar -xzvf openssl-1.1.1k.tar.gz
-</span></span><span style=display:flex><span>cd openssl-1.1.1k
-</span></span></code></pre></div><h2 id=配置>配置</h2><p>准备目标文件安装目录：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>mkdir _INSTALL
-</span></span></code></pre></div><p>查看帮助手册：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>root@028337952dd7:/home/misc/openssl-1.1.1k# ./Configure
-</span></span><span style=display:flex><span>Usage: Configure <span style=color:#f92672>[</span>no-&lt;cipher&gt; ...<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>enable-&lt;cipher&gt; ...<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-Dxxx<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-lxxx<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-Lxxx<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-fxxx<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-Kxxx<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>no-hw-xxx|no-hw<span style=color:#f92672>]</span> <span style=color:#f92672>[[</span>no-<span style=color:#f92672>]</span>threads<span style=color:#f92672>]</span> <span style=color:#f92672>[[</span>no-<span style=color:#f92672>]</span>shared<span style=color:#f92672>]</span> <span style=color:#f92672>[[</span>no-<span style=color:#f92672>]</span>zlib|zlib-dynamic<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>no-asm<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>no-egd<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>sctp<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>386<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>--prefix<span style=color:#f92672>=</span>DIR<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>--openssldir<span style=color:#f92672>=</span>OPENSSLDIR<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>--with-xxx<span style=color:#f92672>[=</span>vvv<span style=color:#f92672>]]</span> <span style=color:#f92672>[</span>--config<span style=color:#f92672>=</span>FILE<span style=color:#f92672>]</span> os/compiler<span style=color:#f92672>[</span>:flags<span style=color:#f92672>]</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>pick os/compiler from:
-</span></span><span style=display:flex><span>BS2000-OSD BSD-generic32 BSD-generic64 BSD-ia64 BSD-sparc64 BSD-sparcv8
-</span></span><span style=display:flex><span>BSD-x86 BSD-x86-elf BSD-x86_64 Cygwin Cygwin-i386 Cygwin-i486 Cygwin-i586
-</span></span><span style=display:flex><span>Cygwin-i686 Cygwin-x86 Cygwin-x86_64 DJGPP MPE/iX-gcc UEFI UWIN VC-CE VC-WIN32
-</span></span><span style=display:flex><span>VC-WIN32-ARM VC-WIN32-ONECORE VC-WIN64-ARM VC-WIN64A VC-WIN64A-ONECORE
-</span></span><span style=display:flex><span>VC-WIN64A-masm VC-WIN64I aix-cc aix-gcc aix64-cc aix64-gcc android-arm
-</span></span><span style=display:flex><span>android-arm64 android-armeabi android-mips android-mips64 android-x86
-</span></span><span style=display:flex><span>android-x86_64 android64 android64-aarch64 android64-mips64 android64-x86_64
-</span></span><span style=display:flex><span>bsdi-elf-gcc cc darwin-i386-cc darwin-ppc-cc darwin64-arm64-cc darwin64-ppc-cc
-</span></span><span style=display:flex><span>darwin64-x86_64-cc gcc haiku-x86 haiku-x86_64 hpux-ia64-cc hpux-ia64-gcc
-</span></span><span style=display:flex><span>hpux-parisc-cc hpux-parisc-gcc hpux-parisc1_1-cc hpux-parisc1_1-gcc
-</span></span><span style=display:flex><span>hpux64-ia64-cc hpux64-ia64-gcc hpux64-parisc2-cc hpux64-parisc2-gcc hurd-x86
-</span></span><span style=display:flex><span>ios-cross ios-xcrun ios64-cross ios64-xcrun iossimulator-xcrun iphoneos-cross
-</span></span><span style=display:flex><span>irix-mips3-cc irix-mips3-gcc irix64-mips4-cc irix64-mips4-gcc linux-aarch64
-</span></span><span style=display:flex><span>linux-alpha-gcc linux-aout linux-arm64ilp32 linux-armv4 linux-c64xplus
-</span></span><span style=display:flex><span>linux-elf linux-generic32 linux-generic64 linux-ia64 linux-mips32 linux-mips64
-</span></span><span style=display:flex><span>linux-ppc linux-ppc64 linux-ppc64le linux-sparcv8 linux-sparcv9 linux-x32
-</span></span><span style=display:flex><span>linux-x86 linux-x86-clang linux-x86_64 linux-x86_64-clang linux32-s390x
-</span></span><span style=display:flex><span>linux64-mips64 linux64-s390x linux64-sparcv9 mingw mingw64 nextstep
-</span></span><span style=display:flex><span>nextstep3.3 sco5-cc sco5-gcc solaris-sparcv7-cc solaris-sparcv7-gcc
-</span></span><span style=display:flex><span>solaris-sparcv8-cc solaris-sparcv8-gcc solaris-sparcv9-cc solaris-sparcv9-gcc
-</span></span><span style=display:flex><span>solaris-x86-gcc solaris64-sparcv9-cc solaris64-sparcv9-gcc solaris64-x86_64-cc
-</span></span><span style=display:flex><span>solaris64-x86_64-gcc tru64-alpha-cc tru64-alpha-gcc uClinux-dist
-</span></span><span style=display:flex><span>uClinux-dist64 unixware-2.0 unixware-2.1 unixware-7 unixware-7-gcc vms-alpha
-</span></span><span style=display:flex><span>vms-alpha-p32 vms-alpha-p64 vms-ia64 vms-ia64-p32 vms-ia64-p64 vos-gcc
-</span></span><span style=display:flex><span>vxworks-mips vxworks-ppc405 vxworks-ppc60x vxworks-ppc750 vxworks-ppc750-debug
-</span></span><span style=display:flex><span>vxworks-ppc860 vxworks-ppcgen vxworks-simlinux
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>NOTE: If in doubt, on Unix-ish systems use <span style=color:#e6db74>&#39;./config&#39;</span>.
-</span></span></code></pre></div><p>上面提示如果编译 Unix-ish x86 平台目标文件，直接使用 <code>./config</code></p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/i2c_cmd/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=name content="Luyang"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Luyang"><meta itemprop=description content></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="I2C command"><meta itemprop=description content="I2C 寄存器读写命令
-探测设备
-i2cdetect
-HELLO@WORLD:~# i2cdetect
-Error: No i2c-bus specified!
-Usage: i2cdetect [-y] [-a] [-q|-r] I2CBUS [FIRST LAST]
-       i2cdetect -F I2CBUS
-       i2cdetect -l
-  I2CBUS is an integer or an I2C bus name
-  If provided, FIRST and LAST limit the probing range.
-# I2CBUS: 0 1 2 ...
-# Notice: -r 参数很重要，不带 -r 参数有些设备探测不到
-i2cdetect -y -r <I2CBUS>
-对于8bit的reg, value 可以使用 i2cget / i2cset
-i2cget
-HELLO@WORLD:~# i2cget
-Usage: i2cget [-f] [-y] I2CBUS CHIP-ADDRESS [DATA-ADDRESS [MODE]]
-  I2CBUS is an integer or an I2C bus name
-  ADDRESS is an integer (0x03 - 0x77)
-  MODE is one of:
-    b (read byte data, default)
-    w (read word data)
-    c (write byte/read byte)
-    Append p for SMBus PEC
-# SLAVE_ADDRESS: 使用i2cdetect 出来的结果
-i2cget -y -f <I2CBUS> <SLAVE_ADDRESS> <REG>
-i2cset
-HELLO@WORLD:~# i2cset
-Usage: i2cset [-f] [-y] [-m MASK] [-r] I2CBUS CHIP-ADDRESS DATA-ADDRESS [VALUE] ... [MODE]
-  I2CBUS is an integer or an I2C bus name
-  ADDRESS is an integer (0x03 - 0x77)
-  MODE is one of:
-    c (byte, no value)
-    b (byte data, default)
-    w (word data)
-    i (I2C block data)
-    s (SMBus block data)
-    Append p for SMBus PEC
-i2cset -y -f <I2CBUS> <SLAVE_ADDRESS> <REG> <VALUE>
-对于16bit+的reg, value 需要使用 i2ctransfer
-i2ctransfer
-root@J3Pilot-B:~# i2ctransfer
-Usage: i2ctransfer [-f] [-y] [-v] [-V] I2CBUS DESC [DATA] [DESC [DATA]]...
-  I2CBUS is an integer or an I2C bus name
-  DESC describes the transfer in the form: {r|w}LENGTH[@address]
-    1) read/write-flag 2) LENGTH (range 0-65535) 3) I2C address (use last one if omitted)
-  DATA are LENGTH bytes for a write message. They can be shortened by a suffix:
-    = (keep value constant until LENGTH)
-    + (increase value by 1 until LENGTH)
-    - (decrease value by 1 until LENGTH)
-    p (use pseudo random generator until LENGTH with value as seed)
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "url" : "https://example.org/",
+    "name": "Hugo Zen theme",
+    "description": "The zen theme for Hugo example site.",
+    "image" : "https://example.org/apple-touch-icon.png",
+    "author": {
+      "@type": "Person",
+      "name": "Your Name"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://example.org/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Hugo Zen theme",
+      "logo" : {
+        "@type": "ImageObject",
+        "url": "https://example.org/apple-touch-icon.png"
+      },
+      "url": "https://example.org/"
+    }
+  }
+</script>
 
-Example (bus 0, read 8 byte at offset 0x64 from EEPROM at 0x50):
-  # i2ctransfer 0 w1@0x50 0x64 r8
-Example (same EEPROM, at offset 0x42 write 0xff 0xfe ... 0xf0):
-  # i2ctransfer 0 w17@0x50 0x42 0xff-
-# W3 写三个参数 16bit 寄存器 （2 Bytes）+ value（1 Byte）
-# i2c bus 0
-# slave address 0x36
-i2ctransfer -y -f 0 w3@0x33 0x3B 0x9D 0x01
-# w2 （16bit寄存器）写两个参数 0x4F 0x0C 寄存器（0x4F0C）到 0x36 slave address
-# i2c bus 总线 0
-# 读取 i2c 总线 0 的 slave address 为 0x36 的设备的寄存器 0x4F0C, 读一个 char
-# 0x36 是 ovx3c 的 slave address （7bit i2c address）
-i2ctransfer -y -f 0 w2@0x36 0x4F 0x0C r1
-dump 寄存器 00~FF
-i2cdump
-HELLO@WORLD:~# i2cdump 
-Error: No i2c-bus specified!
-Usage: i2cdump [-f] [-y] [-r first-last] I2CBUS ADDRESS [MODE [BANK [BANKREG]]]
-  I2CBUS is an integer or an I2C bus name
-  ADDRESS is an integer (0x03 - 0x77)
-  MODE is one of:
-    b (byte, default)
-    w (word)
-    W (word on even register addresses)
-    s (SMBus block)
-    i (I2C block)
-    c (consecutive byte)
-    Append p for SMBus PEC
-i2cdump -f -y <I2CBUS> <SLAVE_ADDRESS>
-"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/i2c_cmd/ itemprop=url class=post-title-link>I2C command</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
-</span><span class=post-meta-item-text>发表于：</span>
-<time title="发表于：2023-02-07 00:00:00 +0800 CST" itemprop="dateCreated datePublished" datetime="2023-02-07 00:00:00 +0800 CST">2023-02-07</time>
-</span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
-</span><span class=post-meta-item-text>分类于：</span>
-<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%B7%A5%E5%85%B7 itemprop=url rel=index><span itemprop=name>工具</span></a></span></span><div class=post-meta-items><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
-</span><span class=post-meta-item-text>浏览：
-</span><span id=busuanzi_value_page_pv class=waline-pageview-count data-path=/post/i2c_cmd/><i class="fa fa-sync fa-spin"></i></span></span></div></div></div></header><div class="post-body autonumber" itemprop=articleBody><h1 id=i2c-寄存器读写命令>I2C 寄存器读写命令</h1><h2 id=探测设备>探测设备</h2><h3 id=i2cdetect>i2cdetect</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>HELLO@WORLD:~# i2cdetect
-</span></span><span style=display:flex><span>Error: No i2c-bus specified!
-</span></span><span style=display:flex><span>Usage: i2cdetect <span style=color:#f92672>[</span>-y<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-a<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-q|-r<span style=color:#f92672>]</span> I2CBUS <span style=color:#f92672>[</span>FIRST LAST<span style=color:#f92672>]</span>
-</span></span><span style=display:flex><span>       i2cdetect -F I2CBUS
-</span></span><span style=display:flex><span>       i2cdetect -l
-</span></span><span style=display:flex><span>  I2CBUS is an integer or an I2C bus name
-</span></span><span style=display:flex><span>  If provided, FIRST and LAST limit the probing range.
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># I2CBUS: 0 1 2 ...</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Notice: -r 参数很重要，不带 -r 参数有些设备探测不到</span>
-</span></span><span style=display:flex><span>i2cdetect -y -r &lt;I2CBUS&gt;
-</span></span></code></pre></div><h2 id=对于8bit的reg-value-可以使用-i2cget--i2cset>对于8bit的reg, value 可以使用 <code>i2cget / i2cset</code></h2><h3 id=i2cget>i2cget</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>HELLO@WORLD:~# i2cget
-</span></span><span style=display:flex><span>Usage: i2cget <span style=color:#f92672>[</span>-f<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-y<span style=color:#f92672>]</span> I2CBUS CHIP-ADDRESS <span style=color:#f92672>[</span>DATA-ADDRESS <span style=color:#f92672>[</span>MODE<span style=color:#f92672>]]</span>
-</span></span><span style=display:flex><span>  I2CBUS is an integer or an I2C bus name
-</span></span><span style=display:flex><span>  ADDRESS is an integer <span style=color:#f92672>(</span>0x03 - 0x77<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>  MODE is one of:
-</span></span><span style=display:flex><span>    b <span style=color:#f92672>(</span>read byte data, default<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>    w <span style=color:#f92672>(</span>read word data<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>    c <span style=color:#f92672>(</span>write byte/read byte<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>    Append p <span style=color:#66d9ef>for</span> SMBus PEC
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># SLAVE_ADDRESS: 使用i2cdetect 出来的结果</span>
-</span></span><span style=display:flex><span>i2cget -y -f &lt;I2CBUS&gt; &lt;SLAVE_ADDRESS&gt; &lt;REG&gt;
-</span></span></code></pre></div><h3 id=i2cset>i2cset</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>HELLO@WORLD:~# i2cset
-</span></span><span style=display:flex><span>Usage: i2cset <span style=color:#f92672>[</span>-f<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-y<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-m MASK<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-r<span style=color:#f92672>]</span> I2CBUS CHIP-ADDRESS DATA-ADDRESS <span style=color:#f92672>[</span>VALUE<span style=color:#f92672>]</span> ... <span style=color:#f92672>[</span>MODE<span style=color:#f92672>]</span>
-</span></span><span style=display:flex><span>  I2CBUS is an integer or an I2C bus name
-</span></span><span style=display:flex><span>  ADDRESS is an integer <span style=color:#f92672>(</span>0x03 - 0x77<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>  MODE is one of:
-</span></span><span style=display:flex><span>    c <span style=color:#f92672>(</span>byte, no value<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>    b <span style=color:#f92672>(</span>byte data, default<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>    w <span style=color:#f92672>(</span>word data<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>    i <span style=color:#f92672>(</span>I2C block data<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>    s <span style=color:#f92672>(</span>SMBus block data<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>    Append p <span style=color:#66d9ef>for</span> SMBus PEC
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>i2cset -y -f &lt;I2CBUS&gt; &lt;SLAVE_ADDRESS&gt; &lt;REG&gt; &lt;VALUE&gt;
-</span></span></code></pre></div><h2 id=对于16bit的reg-value-需要使用-i2ctransfer>对于16bit+的reg, value 需要使用 <code>i2ctransfer</code></h2><h3 id=i2ctransfer>i2ctransfer</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>root@J3Pilot-B:~# i2ctransfer
-</span></span><span style=display:flex><span>Usage: i2ctransfer <span style=color:#f92672>[</span>-f<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-y<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-v<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-V<span style=color:#f92672>]</span> I2CBUS DESC <span style=color:#f92672>[</span>DATA<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>DESC <span style=color:#f92672>[</span>DATA<span style=color:#f92672>]]</span>...
-</span></span><span style=display:flex><span>  I2CBUS is an integer or an I2C bus name
-</span></span><span style=display:flex><span>  DESC describes the transfer in the form: <span style=color:#f92672>{</span>r|w<span style=color:#f92672>}</span>LENGTH<span style=color:#f92672>[</span>@address<span style=color:#f92672>]</span>
-</span></span><span style=display:flex><span>    1<span style=color:#f92672>)</span> read/write-flag 2<span style=color:#f92672>)</span> LENGTH <span style=color:#f92672>(</span>range 0-65535<span style=color:#f92672>)</span> 3<span style=color:#f92672>)</span> I2C address <span style=color:#f92672>(</span>use last one <span style=color:#66d9ef>if</span> omitted<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>  DATA are LENGTH bytes <span style=color:#66d9ef>for</span> a write message. They can be shortened by a suffix:
-</span></span><span style=display:flex><span>    <span style=color:#f92672>=</span> <span style=color:#f92672>(</span>keep value constant <span style=color:#66d9ef>until</span> LENGTH<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>    + <span style=color:#f92672>(</span>increase value by <span style=color:#ae81ff>1</span> <span style=color:#66d9ef>until</span> LENGTH<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>    - <span style=color:#f92672>(</span>decrease value by <span style=color:#ae81ff>1</span> <span style=color:#66d9ef>until</span> LENGTH<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>    p <span style=color:#f92672>(</span>use pseudo random generator <span style=color:#66d9ef>until</span> LENGTH with value as seed<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>Example <span style=color:#f92672>(</span>bus 0, read <span style=color:#ae81ff>8</span> byte at offset 0x64 from EEPROM at 0x50<span style=color:#f92672>)</span>:
-</span></span><span style=display:flex><span>  <span style=color:#75715e># i2ctransfer 0 w1@0x50 0x64 r8</span>
-</span></span><span style=display:flex><span>Example <span style=color:#f92672>(</span>same EEPROM, at offset 0x42 write 0xff 0xfe ... 0xf0<span style=color:#f92672>)</span>:
-</span></span><span style=display:flex><span>  <span style=color:#75715e># i2ctransfer 0 w17@0x50 0x42 0xff-</span>
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># W3 写三个参数 16bit 寄存器 （2 Bytes）+ value（1 Byte）</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># i2c bus 0</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># slave address 0x36</span>
-</span></span><span style=display:flex><span>i2ctransfer -y -f <span style=color:#ae81ff>0</span> w3@0x33 0x3B 0x9D 0x01
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># w2 （16bit寄存器）写两个参数 0x4F 0x0C 寄存器（0x4F0C）到 0x36 slave address</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># i2c bus 总线 0</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 读取 i2c 总线 0 的 slave address 为 0x36 的设备的寄存器 0x4F0C, 读一个 char</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 0x36 是 ovx3c 的 slave address （7bit i2c address）</span>
-</span></span><span style=display:flex><span>i2ctransfer -y -f <span style=color:#ae81ff>0</span> w2@0x36 0x4F 0x0C r1
-</span></span></code></pre></div><h2 id=dump-寄存器-00ff>dump 寄存器 00~FF</h2><h3 id=i2cdump>i2cdump</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>HELLO@WORLD:~# i2cdump 
-</span></span><span style=display:flex><span>Error: No i2c-bus specified!
-</span></span><span style=display:flex><span>Usage: i2cdump <span style=color:#f92672>[</span>-f<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-y<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-r first-last<span style=color:#f92672>]</span> I2CBUS ADDRESS <span style=color:#f92672>[</span>MODE <span style=color:#f92672>[</span>BANK <span style=color:#f92672>[</span>BANKREG<span style=color:#f92672>]]]</span>
-</span></span><span style=display:flex><span>  I2CBUS is an integer or an I2C bus name
-</span></span><span style=display:flex><span>  ADDRESS is an integer <span style=color:#f92672>(</span>0x03 - 0x77<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>  MODE is one of:
-</span></span><span style=display:flex><span>    b <span style=color:#f92672>(</span>byte, default<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>    w <span style=color:#f92672>(</span>word<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>    W <span style=color:#f92672>(</span>word on even register addresses<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>    s <span style=color:#f92672>(</span>SMBus block<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>    i <span style=color:#f92672>(</span>I2C block<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>    c <span style=color:#f92672>(</span>consecutive byte<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>    Append p <span style=color:#66d9ef>for</span> SMBus PEC
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>i2cdump -f -y &lt;I2CBUS&gt; &lt;SLAVE_ADDRESS&gt;
-</span></span></code></pre></div></div><footer class=post-footer><div class=post-button><a class=btn href=/post/i2c_cmd/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/ddr-%E5%8E%8B%E6%B5%8B%E5%91%BD%E4%BB%A4/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=name content="Luyang"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Luyang"><meta itemprop=description content></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="DDR 压测命令"><meta itemprop=description content="DDR 压测命令
-测试之前可以使用 free -m 查看内存使用情况。
-» free
-              total        used        free      shared  buff/cache   available
-Mem:       16193884     1268028    13921020        6528     1004836    14587148
-Swap:       4194304           0     4194304
+<script src="/js/script-early.2d6255816e36e34bd1948dc5c26ede35687a256c4e2e516e0cd75f383a510c6a.js"></script>
 
-» free -m
-              total        used        free      shared  buff/cache   available
-Mem:          15814        1231       13598           6         984       14252
-根据 available 至设置 DDR 压测内存大小。
-stressapptest
-安装 stressapptest
-stressapptest - stress test application for simulating high load situations"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/ddr-%E5%8E%8B%E6%B5%8B%E5%91%BD%E4%BB%A4/ itemprop=url class=post-title-link>DDR 压测命令</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
-</span><span class=post-meta-item-text>发表于：</span>
-<time title="发表于：2023-02-03 12:00:00 +0800 CST" itemprop="dateCreated datePublished" datetime="2023-02-03 12:00:00 +0800 CST">2023-02-03</time>
-</span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
-</span><span class=post-meta-item-text>分类于：</span>
-<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%B7%A5%E5%85%B7 itemprop=url rel=index><span itemprop=name>工具</span></a></span></span><div class=post-meta-items><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
-</span><span class=post-meta-item-text>浏览：
-</span><span id=busuanzi_value_page_pv class=waline-pageview-count data-path=/post/ddr-%E5%8E%8B%E6%B5%8B%E5%91%BD%E4%BB%A4/><i class="fa fa-sync fa-spin"></i></span></span></div></div></div></header><div class="post-body autonumber" itemprop=articleBody><h1 id=ddr-压测命令>DDR 压测命令</h1><p>测试之前可以使用 <code>free -m</code> 查看内存使用情况。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>» free
-</span></span><span style=display:flex><span>              total        used        free      shared  buff/cache   available
-</span></span><span style=display:flex><span>Mem:       <span style=color:#ae81ff>16193884</span>     <span style=color:#ae81ff>1268028</span>    <span style=color:#ae81ff>13921020</span>        <span style=color:#ae81ff>6528</span>     <span style=color:#ae81ff>1004836</span>    <span style=color:#ae81ff>14587148</span>
-</span></span><span style=display:flex><span>Swap:       <span style=color:#ae81ff>4194304</span>           <span style=color:#ae81ff>0</span>     <span style=color:#ae81ff>4194304</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>» free -m
-</span></span><span style=display:flex><span>              total        used        free      shared  buff/cache   available
-</span></span><span style=display:flex><span>Mem:          <span style=color:#ae81ff>15814</span>        <span style=color:#ae81ff>1231</span>       <span style=color:#ae81ff>13598</span>           <span style=color:#ae81ff>6</span>         <span style=color:#ae81ff>984</span>       <span style=color:#ae81ff>14252</span>
-</span></span></code></pre></div><p>根据 available 至设置 DDR 压测内存大小。</p><h2 id=stressapptest>stressapptest</h2><h3 id=安装-stressapptest>安装 stressapptest</h3><p>stressapptest - stress test application for simulating high load situations</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/ddr-%E5%8E%8B%E6%B5%8B%E5%91%BD%E4%BB%A4/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/e2fsprogs-1.42.8%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=name content="Luyang"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Luyang"><meta itemprop=description content></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="e2fsprogs-1.42.8 源码编译安装"><meta itemprop=description content="tar xvf e2fsprogs-1.42.8.tar.gz
-cd e2fsprogs-1.42.8
-mkdir build
-cd build/
-../configure
-make
-sudo make install
-问题：
-ubuntu20.04 编译报错 undefined reference to 'makedev'
-解决方法:
-vim <path-to-e2fsprogs-1.42.8>/lib/blkid/devname.c
-添加头文件 #include <sys/sysmacros.h"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/e2fsprogs-1.42.8%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/ itemprop=url class=post-title-link>e2fsprogs-1.42.8 源码编译安装</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
-</span><span class=post-meta-item-text>发表于：</span>
-<time title="发表于：2023-02-03 12:00:00 +0800 CST" itemprop="dateCreated datePublished" datetime="2023-02-03 12:00:00 +0800 CST">2023-02-03</time>
-</span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
-</span><span class=post-meta-item-text>分类于：</span>
-<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%B7%A5%E5%85%B7 itemprop=url rel=index><span itemprop=name>工具</span></a></span></span><div class=post-meta-items><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
-</span><span class=post-meta-item-text>浏览：
-</span><span id=busuanzi_value_page_pv class=waline-pageview-count data-path=/post/e2fsprogs-1.42.8%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/><i class="fa fa-sync fa-spin"></i></span></span></div></div></div></header><div class="post-body autonumber" itemprop=articleBody><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>tar xvf e2fsprogs-1.42.8.tar.gz
-</span></span><span style=display:flex><span>cd e2fsprogs-1.42.8
-</span></span><span style=display:flex><span>mkdir build
-</span></span><span style=display:flex><span>cd build/
-</span></span><span style=display:flex><span>../configure
-</span></span><span style=display:flex><span>make
-</span></span><span style=display:flex><span>sudo make install
-</span></span></code></pre></div><p>问题：</p><p>ubuntu20.04 编译报错 <code>undefined reference to 'makedev'</code></p><p>解决方法:
-<code>vim &lt;path-to-e2fsprogs-1.42.8>/lib/blkid/devname.c</code>
-添加头文件 <code>#include &lt;sys/sysmacros.h</code></p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/e2fsprogs-1.42.8%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/python2.7-%E7%8E%AF%E5%A2%83%E5%8F%8A%E5%8C%85%E7%AE%A1%E7%90%86/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=name content="Luyang"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Luyang"><meta itemprop=description content></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="python2.7 环境及包管理"><meta itemprop=description content="python2.7 环境及包管理
-sudo apt install python2.7
-curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
-sudo python2.7 get-pip.py
-pip2 install simplejson
-"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/python2.7-%E7%8E%AF%E5%A2%83%E5%8F%8A%E5%8C%85%E7%AE%A1%E7%90%86/ itemprop=url class=post-title-link>python2.7 环境及包管理</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
-</span><span class=post-meta-item-text>发表于：</span>
-<time title="发表于：2023-02-03 12:00:00 +0800 CST" itemprop="dateCreated datePublished" datetime="2023-02-03 12:00:00 +0800 CST">2023-02-03</time>
-</span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
-</span><span class=post-meta-item-text>分类于：</span>
-<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%B7%A5%E5%85%B7 itemprop=url rel=index><span itemprop=name>工具</span></a></span></span><div class=post-meta-items><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
-</span><span class=post-meta-item-text>浏览：
-</span><span id=busuanzi_value_page_pv class=waline-pageview-count data-path=/post/python2.7-%E7%8E%AF%E5%A2%83%E5%8F%8A%E5%8C%85%E7%AE%A1%E7%90%86/><i class="fa fa-sync fa-spin"></i></span></span></div></div></div></header><div class="post-body autonumber" itemprop=articleBody><h1 id=python27-环境及包管理>python2.7 环境及包管理</h1><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>sudo apt install python2.7
-</span></span><span style=display:flex><span>curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
-</span></span><span style=display:flex><span>sudo python2.7 get-pip.py
-</span></span><span style=display:flex><span>pip2 install simplejson
-</span></span></code></pre></div></div><footer class=post-footer><div class=post-button><a class=btn href=/post/python2.7-%E7%8E%AF%E5%A2%83%E5%8F%8A%E5%8C%85%E7%AE%A1%E7%90%86/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/vscode_remote-ssh_%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=name content="Luyang"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Luyang"><meta itemprop=description content></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="vscode remote-ssh 免密登录配置"><meta itemprop=description content="vscode remote-ssh 免密登录
-环境声明
-win10 vscode + remote-ssh + virtualbox (ubuntu 20.04)
-windows 配置
-
-安装 vscode，remote-ssh 插件
-生成 ssh key：ssh-keygen.exe -t rsa 然后一路回车
-用户目录下会生成 id_rsa id_rsa.pub 两个文件
-
-服务器 ubuntu 配置
+<script defer src="/js/mobilemenu.7ce1f75fd1d49cd683a008352ad9001f800349629be01d531a19c02b5a84817b.js"></script>
+<script defer src="/js/script.f2979a93a325fecf9605263bd141398a311c8e23388ed7dcff74f92f7e632866.js"></script>
 
 
-安装 ssh server: sudo apt install openssh-server"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/vscode_remote-ssh_%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE/ itemprop=url class=post-title-link>vscode remote-ssh 免密登录配置</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
-</span><span class=post-meta-item-text>发表于：</span>
-<time title="发表于：2023-02-03 12:00:00 +0800 CST" itemprop="dateCreated datePublished" datetime="2023-02-03 12:00:00 +0800 CST">2023-02-03</time>
-</span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
-</span><span class=post-meta-item-text>分类于：</span>
-<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%B7%A5%E5%85%B7 itemprop=url rel=index><span itemprop=name>工具</span></a></span></span><div class=post-meta-items><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
-</span><span class=post-meta-item-text>浏览：
-</span><span id=busuanzi_value_page_pv class=waline-pageview-count data-path=/post/vscode_remote-ssh_%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE/><i class="fa fa-sync fa-spin"></i></span></span></div></div></div></header><div class="post-body autonumber" itemprop=articleBody><h1 id=vscode-remote-ssh-免密登录>vscode remote-ssh 免密登录</h1><h2 id=环境声明>环境声明</h2><p>win10 vscode + remote-ssh + virtualbox (ubuntu 20.04)</p><h2 id=windows-配置>windows 配置</h2><ol><li>安装 vscode，remote-ssh 插件</li><li>生成 ssh key：<code>ssh-keygen.exe -t rsa</code> 然后一路回车</li><li>用户目录下会生成 id_rsa id_rsa.pub 两个文件</li></ol><h2 id=服务器-ubuntu-配置>服务器 ubuntu 配置</h2><ol><li><p>安装 ssh server: <code>sudo apt install openssh-server</code></p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/vscode_remote-ssh_%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2.35/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=name content="Luyang"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Luyang"><meta itemprop=description content></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="交叉编译 glibc-2.35"><meta itemprop=description content='//localhost:1313/
-交叉编译 glibc-2.35
-glibc-2.35 更新需要同步用新版本的交叉编译器，这里直接在 Linaro 官网
 
-    下载
-    
-了最新的 gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf
-export PATH="/code/gcc-linaro-7.5.0-2019.12-x86_64_armlinux-gnueabihf/bin":$PATH
-export CROSS_COMPILE=arm-linux-gnueabihf-
-mkdir build_out; cd build_out
 
-../configure --prefix=/code/glibc-2.35/build_out \
---host=arm-linux-gnueabihf
 
-make
-make install
-'></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2.35/ itemprop=url class=post-title-link>交叉编译 glibc-2.35</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
-</span><span class=post-meta-item-text>发表于：</span>
-<time title="发表于：2023-02-03 12:00:00 +0800 CST" itemprop="dateCreated datePublished" datetime="2023-02-03 12:00:00 +0800 CST">2023-02-03</time>
-</span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
-</span><span class=post-meta-item-text>分类于：</span>
-<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%B7%A5%E5%85%B7 itemprop=url rel=index><span itemprop=name>工具</span></a></span></span><div class=post-meta-items><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
-</span><span class=post-meta-item-text>浏览：
-</span><span id=busuanzi_value_page_pv class=waline-pageview-count data-path=/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2.35/><i class="fa fa-sync fa-spin"></i></span></span></div></div></div></header><div class="post-body autonumber" itemprop=articleBody><p>//localhost:1313/</p><h1 id=交叉编译-glibc-235>交叉编译 glibc-2.35</h1><p>glibc-2.35 更新需要同步用新版本的交叉编译器，这里直接在 Linaro 官网
-<a href=https://releases.linaro.org/components/toolchain/binaries/ title=下载 rel="noopener external nofollow noreferrer" target=_blank class=exturl>下载
-<i class="fa fa-external-link-alt"></i>
-</a>了最新的 <code>gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>export PATH<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/code/gcc-linaro-7.5.0-2019.12-x86_64_armlinux-gnueabihf/bin&#34;</span>:$PATH
-</span></span><span style=display:flex><span>export CROSS_COMPILE<span style=color:#f92672>=</span>arm-linux-gnueabihf-
-</span></span><span style=display:flex><span>mkdir build_out; cd build_out
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>../configure --prefix<span style=color:#f92672>=</span>/code/glibc-2.35/build_out <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--host<span style=color:#f92672>=</span>arm-linux-gnueabihf
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>make
-</span></span><span style=display:flex><span>make install
-</span></span></code></pre></div></div><footer class=post-footer><div class=post-button><a class=btn href=/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2.35/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-libxml2-2.9.10/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=name content="Luyang"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Luyang"><meta itemprop=description content></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="交叉编译 libxml2-2.9.10"><meta itemprop=description content='交叉编译 libxml2-2.9.10
-依赖 zlib 源码编译出来的目标文件，请先参考如何交叉编译 zlib 完成之后再来编译。
-export PATH="<path-to-gcc-linaro-5.3-2016.02-x86_64_arm-linuxgnueabihf>/bin":$PATH
-export CROSS_COMPILE=arm-linux-gnueabihf
-mkdir build_out
 
-./configure --prefix=/code/libxml2-2.9.10/build_out \
---disable-static \
---with-python=no \
---host=arm-linux-gnueabihf \
---with-zlib=/code/zlib-1.2.12/build_out
+</head>
 
-make
-make install
-'></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-libxml2-2.9.10/ itemprop=url class=post-title-link>交叉编译 libxml2-2.9.10</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
-</span><span class=post-meta-item-text>发表于：</span>
-<time title="发表于：2023-02-03 12:00:00 +0800 CST" itemprop="dateCreated datePublished" datetime="2023-02-03 12:00:00 +0800 CST">2023-02-03</time>
-</span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
-</span><span class=post-meta-item-text>分类于：</span>
-<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%B7%A5%E5%85%B7 itemprop=url rel=index><span itemprop=name>工具</span></a></span></span><div class=post-meta-items><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
-</span><span class=post-meta-item-text>浏览：
-</span><span id=busuanzi_value_page_pv class=waline-pageview-count data-path=/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-libxml2-2.9.10/><i class="fa fa-sync fa-spin"></i></span></span></div></div></div></header><div class="post-body autonumber" itemprop=articleBody><h1 id=交叉编译-libxml2-2910>交叉编译 libxml2-2.9.10</h1><p>依赖 zlib 源码编译出来的目标文件，请先参考如何交叉编译 zlib 完成之后再来编译。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>export PATH<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&lt;path-to-gcc-linaro-5.3-2016.02-x86_64_arm-linuxgnueabihf&gt;/bin&#34;</span>:$PATH
-</span></span><span style=display:flex><span>export CROSS_COMPILE<span style=color:#f92672>=</span>arm-linux-gnueabihf
-</span></span><span style=display:flex><span>mkdir build_out
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>./configure --prefix<span style=color:#f92672>=</span>/code/libxml2-2.9.10/build_out <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--disable-static <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--with-python<span style=color:#f92672>=</span>no <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--host<span style=color:#f92672>=</span>arm-linux-gnueabihf <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--with-zlib<span style=color:#f92672>=</span>/code/zlib-1.2.12/build_out
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>make
-</span></span><span style=display:flex><span>make install
-</span></span></code></pre></div></div><footer class=post-footer><div class=post-button><a class=btn href=/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-libxml2-2.9.10/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2.7.16/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/luyang_avatar.png"><meta itemprop=name content="Luyang"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Luyang"><meta itemprop=description content></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="交叉编译 Python-2.7.16"><meta itemprop=description content='交叉编译 Python-2.7.16
-需要在代码的根路径新建一个 config.sit，内容参考如下：
---enable-shared﻿ 生成动态链接库
-export PATH="<path-to-gcc-linaro-5.3-2016.02-x86_64_arm-linuxgnueabihf>/bin":$PATH
-export CROSS_COMPILE=arm-linux-gnueabihf
-export CONFIG_SITE=./config.site
+<body class="list-page front">
+<div class="page layout__page layout__sidebar-second">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo">
+<img src="/images/logo.png" width="64" alt="Home" class="header__logo-image">
+</a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>Hugo Zen theme</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
 
-# config.site 文件内容如下：
-cat config.site
-ac_cv_file__dev_ptmx=no
-ac_cv_file__dev_ptc=no
+<nav class="main-menu mx--xs layout__navigation" aria-label="Main menu">
+<ul class="flex-inline mx--0">
+<li><a href="/" aria-current="page"><span>Home</span></a></li>
+<li><a href="/"><span>Documentation</span></a></li>
+<li><a href="/"><span>About</span></a></li>
+<li><a href="/"><span>Contact</span></a></li>
+<li><a href="/"><span>Search</span></a></li>
+</ul>
+</nav>
+<div class="mobile-nav" dir="ltr" hidden>
+  <div class="mobile-nav__cover"></div>
+  <button class="mobile-nav__toggle" aria-expanded="false" aria-controls="sheet">
+    Menu
+    <svg class="mobile-nav__hamburger" viewBox="0 0 100 100" focusable="false" aria-hidden="true">
+      <rect width="80" height="12" x="10" y="20" rx="5"></rect>
+      <rect width="80" height="12" x="10" y="45" rx="5"></rect>
+      <rect width="80" height="12" x="10" y="70" rx="5"></rect>
+    </svg>
+  </button>
+  <div class="mobile-nav__sheet link-inverted link-nav" id="sheet" aria-hidden="true">
+    <div class="mobile-nav__region"></div>
+    <nav class="mobile-nav__main-menu" aria-label="Main menu">
+    <ul class="mobile-nav__navbar">
+    <li><a href="/" aria-current="page"><span>Home</span></a></li>
+    <li><a href="/"><span>Documentation</span></a></li>
+    <li><a href="/"><span>About</span></a></li>
+    <li><a href="/"><span>Contact</span></a></li>
+    <li><a href="/"><span>Search</span></a></li>
+    </ul>
+    </nav>
+  </div>
+</div>
+<main class="main layout__main">
 
-./configure --prefix=/code/Python-2.7.16/build_out \
---host=arm-linux-gnueabihf \
---build=x86_64 \
---disable-ipv6 \
---enable-shared
 
-make
-make install
-'></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2.7.16/ itemprop=url class=post-title-link>交叉编译 Python-2.7.16</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
-</span><span class=post-meta-item-text>发表于：</span>
-<time title="发表于：2023-02-03 12:00:00 +0800 CST" itemprop="dateCreated datePublished" datetime="2023-02-03 12:00:00 +0800 CST">2023-02-03</time>
-</span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
-</span><span class=post-meta-item-text>分类于：</span>
-<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%B7%A5%E5%85%B7 itemprop=url rel=index><span itemprop=name>工具</span></a></span></span><div class=post-meta-items><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
-</span><span class=post-meta-item-text>浏览：
-</span><span id=busuanzi_value_page_pv class=waline-pageview-count data-path=/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2.7.16/><i class="fa fa-sync fa-spin"></i></span></span></div></div></div></header><div class="post-body autonumber" itemprop=articleBody><h1 id=交叉编译-python-2716>交叉编译 Python-2.7.16</h1><p>需要在代码的根路径新建一个 <code>config.sit</code>，内容参考如下：
-<code>--enable-shared﻿</code> 生成动态链接库</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>export PATH<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&lt;path-to-gcc-linaro-5.3-2016.02-x86_64_arm-linuxgnueabihf&gt;/bin&#34;</span>:$PATH
-</span></span><span style=display:flex><span>export CROSS_COMPILE<span style=color:#f92672>=</span>arm-linux-gnueabihf
-</span></span><span style=display:flex><span>export CONFIG_SITE<span style=color:#f92672>=</span>./config.site
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># config.site 文件内容如下：</span>
-</span></span><span style=display:flex><span>cat config.site
-</span></span><span style=display:flex><span>ac_cv_file__dev_ptmx<span style=color:#f92672>=</span>no
-</span></span><span style=display:flex><span>ac_cv_file__dev_ptc<span style=color:#f92672>=</span>no
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>./configure --prefix<span style=color:#f92672>=</span>/code/Python-2.7.16/build_out <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--host<span style=color:#f92672>=</span>arm-linux-gnueabihf <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--build<span style=color:#f92672>=</span>x86_64 <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--disable-ipv6 <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--enable-shared
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>make
-</span></span><span style=display:flex><span>make install
-</span></span></code></pre></div></div><footer class=post-footer><div class=post-button><a class=btn href=/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2.7.16/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><nav class=pagination><a class="extend prev" rel=prev href=/><i class="fa fa-angle-left"></i>
-</a><a class=page-number href=/>1</a>
-<span class="page-number current">2</span>
-<a class=page-number href=/page/3/>3</a>
-<a class=page-number href=/page/4/>4</a>
-<a class=page-number href=/page/5/>5</a>
-<a class=page-number href=/page/6/>6</a>
-<a class=page-number href=/page/7/>7</a>
-<a class="extend next" rel=next href=/page/3/><i class="fa fa-angle-right"></i></a></nav></div></main><footer class=footer><div class=footer-inner><div id=gtranslate class=google-translate><i class="fa fa-language"></i><div id=google_translate_element></div></div><div class=copyright>&copy;
-<span itemprop=copyrightYear>2010 - 2025
-</span><span class=with-love><i class="fa fa-heart"></i>
-</span><span class=author itemprop=copyrightHolder>Luyang</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.143.1 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.4.1 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div><div class=beian><a href=https://beian.miit.gov.cn target=_blank>粤ICP备 18047355-1 号</a>
-<img src=/imgs/gongan.png alt=沪公网安备>
-<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402009770" target=_blank>沪公网安备 31011402009770 号</a></div><div class=vendors-list><a target=_blank href=https://vercel.com title=Vercel><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/vercel.svg alt=Vercel>
-</a><a target=_blank href=https://upyun.com title=又拍云><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/upyun.png alt=又拍云>
-</a><a target=_blank href=https://webify.cloudbase.net title=Webify>Webify
-</a><span>提供CDN/云资源支持</span></div></div></footer><script type=text/javascript src=https://cdn.staticfile.org/animejs/3.2.1/anime.min.js defer></script><script type=text/javascript src=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.js defer></script><script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#222","enable":true,"save":"manual"},"busuanzi":{"pageview":true},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"General","categoryid":"DIC_kwDOJzMFzM4CXbDz","emit":false,"inputposition":"top","mapping":"pathname","reactions":true,"repo":"luyoungcn/luyoungcn.giscus","repoid":"R_kgDOJzMFzA","theme":"dark"},"js":"https://giscus.app/client.js"},"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"statis":{"enable":true,"plugin":"busuanzi"},"vendor":{"plugins":"qiniu","router":"https://cdn.staticfile.org"},"version":"4.4.1","waline":{"cfg":{"comment":true,"emoji":false,"imguploader":false,"pageview":true,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.13.0"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.13.0"}}}</script><script type=text/javascript src=/js/main.min.37028fbafbd97fd89808b4c7b5a3a81f01ed0ab24001d273d774f9546a0e9170.js defer></script></body></html>
+<article class="list-view list-view--post">
+<header>
+<h2 class="title mt--s mb--xxs"><a href="/post/windows10_wsl/">windows10 WSL setup</a></h2>
+<div class="submitted meta">
+<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-09T00:00:00&#43;08:00">9 February, 2023</time>
+
+</div>
+
+</header>
+<h1 id="win10-安装-wsl2">win10 安装 wsl2</h1>
+<p><a href="https://docs.microsoft.com/zh-cn/windows/wsl/install">安装 WSL | Microsoft Docs</a></p>
+<p>必须运行 Windows 10 版本 2004 及更高版本（内部版本 19041 及更高版本）或 Windows 11。</p>
+<p>→ 我的电脑win10已经更新到最新，应该没问题。</p>
+<p>设置→系统→关于</p>
+<p><img src="windows10_wsl_setup_Untitled_0.png" alt="Untitled"></p>
+<p>以管理员身份运行 powershell</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl —install
+</span></span></code></pre></div><p>如果没有安装wsl，则会进入安装过程，如果已经安装会打印帮助信息</p>
+<p>要在安装新的 Linux 发行版时将默认版本设置为 WSL 1 或 WSL 2，请使用命令 <code>wsl --set-default-version &lt;Version#&gt;</code>，将 <code>&lt;Version#&gt;</code>替换为 1 或 2。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl --set-default-version <span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><h1 id="wsl2-安装ubuntu-distro">wsl2 安装ubuntu distro</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl --list --online
+</span></span></code></pre></div><p>以下是可安装的有效分发的列表。
+请使用“wsl &ndash;install -d &lt;分发&gt;”安装。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>NAME            FRIENDLY NAME
+</span></span><span style="display:flex;"><span>Ubuntu          Ubuntu
+</span></span><span style="display:flex;"><span>Debian          Debian GNU/Linux
+</span></span><span style="display:flex;"><span>kali-linux      Kali Linux Rolling
+</span></span><span style="display:flex;"><span>openSUSE-42     openSUSE Leap <span style="color:#ae81ff">42</span>
+</span></span><span style="display:flex;"><span>SLES-12         SUSE Linux Enterprise Server v12
+</span></span><span style="display:flex;"><span>Ubuntu-16.04    Ubuntu 16.04 LTS
+</span></span><span style="display:flex;"><span>Ubuntu-18.04    Ubuntu 18.04 LTS
+</span></span><span style="display:flex;"><span>Ubuntu-20.04    Ubuntu 20.04 LTS
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl --install -d Ubuntu-20.04
+</span></span></code></pre></div><h1 id="卸载-wsl2-distro">卸载 wsl2 distro</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl -l -v
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl --unregister Debian
+</span></span></code></pre></div><p>限制vmmem进程内存占用过高</p>
+</article>
+
+<article class="list-view list-view--post">
+<header>
+<h2 class="title mt--s mb--xxs"><a href="/post/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/">黑芝麻平台交叉编译 openssl</a></h2>
+<div class="submitted meta">
+<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-09T00:00:00&#43;08:00">9 February, 2023</time>
+
+</div>
+
+</header>
+<h1 id="黑芝麻平台交叉编译-openssl">黑芝麻平台交叉编译 openssl</h1>
+<h2 id="前置条件">前置条件</h2>
+<p>编译环境：黑芝麻 Linux23 Docker 开发环境，已经默认配置了交叉编译环境。</p>
+<h2 id="源码下载">源码下载</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://www.openssl.org/source/openssl-1.1.1k.tar.gz
+</span></span><span style="display:flex;"><span>tar -xzvf openssl-1.1.1k.tar.gz
+</span></span><span style="display:flex;"><span>cd openssl-1.1.1k
+</span></span></code></pre></div><h2 id="配置">配置</h2>
+<p>准备目标文件安装目录：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir _INSTALL
+</span></span></code></pre></div><p>查看帮助手册：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@028337952dd7:/home/misc/openssl-1.1.1k# ./Configure
+</span></span><span style="display:flex;"><span>Usage: Configure <span style="color:#f92672">[</span>no-&lt;cipher&gt; ...<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>enable-&lt;cipher&gt; ...<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-Dxxx<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-lxxx<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-Lxxx<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-fxxx<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-Kxxx<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>no-hw-xxx|no-hw<span style="color:#f92672">]</span> <span style="color:#f92672">[[</span>no-<span style="color:#f92672">]</span>threads<span style="color:#f92672">]</span> <span style="color:#f92672">[[</span>no-<span style="color:#f92672">]</span>shared<span style="color:#f92672">]</span> <span style="color:#f92672">[[</span>no-<span style="color:#f92672">]</span>zlib|zlib-dynamic<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>no-asm<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>no-egd<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>sctp<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>386<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--prefix<span style="color:#f92672">=</span>DIR<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--openssldir<span style="color:#f92672">=</span>OPENSSLDIR<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--with-xxx<span style="color:#f92672">[=</span>vvv<span style="color:#f92672">]]</span> <span style="color:#f92672">[</span>--config<span style="color:#f92672">=</span>FILE<span style="color:#f92672">]</span> os/compiler<span style="color:#f92672">[</span>:flags<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pick os/compiler from:
+</span></span><span style="display:flex;"><span>BS2000-OSD BSD-generic32 BSD-generic64 BSD-ia64 BSD-sparc64 BSD-sparcv8
+</span></span><span style="display:flex;"><span>BSD-x86 BSD-x86-elf BSD-x86_64 Cygwin Cygwin-i386 Cygwin-i486 Cygwin-i586
+</span></span><span style="display:flex;"><span>Cygwin-i686 Cygwin-x86 Cygwin-x86_64 DJGPP MPE/iX-gcc UEFI UWIN VC-CE VC-WIN32
+</span></span><span style="display:flex;"><span>VC-WIN32-ARM VC-WIN32-ONECORE VC-WIN64-ARM VC-WIN64A VC-WIN64A-ONECORE
+</span></span><span style="display:flex;"><span>VC-WIN64A-masm VC-WIN64I aix-cc aix-gcc aix64-cc aix64-gcc android-arm
+</span></span><span style="display:flex;"><span>android-arm64 android-armeabi android-mips android-mips64 android-x86
+</span></span><span style="display:flex;"><span>android-x86_64 android64 android64-aarch64 android64-mips64 android64-x86_64
+</span></span><span style="display:flex;"><span>bsdi-elf-gcc cc darwin-i386-cc darwin-ppc-cc darwin64-arm64-cc darwin64-ppc-cc
+</span></span><span style="display:flex;"><span>darwin64-x86_64-cc gcc haiku-x86 haiku-x86_64 hpux-ia64-cc hpux-ia64-gcc
+</span></span><span style="display:flex;"><span>hpux-parisc-cc hpux-parisc-gcc hpux-parisc1_1-cc hpux-parisc1_1-gcc
+</span></span><span style="display:flex;"><span>hpux64-ia64-cc hpux64-ia64-gcc hpux64-parisc2-cc hpux64-parisc2-gcc hurd-x86
+</span></span><span style="display:flex;"><span>ios-cross ios-xcrun ios64-cross ios64-xcrun iossimulator-xcrun iphoneos-cross
+</span></span><span style="display:flex;"><span>irix-mips3-cc irix-mips3-gcc irix64-mips4-cc irix64-mips4-gcc linux-aarch64
+</span></span><span style="display:flex;"><span>linux-alpha-gcc linux-aout linux-arm64ilp32 linux-armv4 linux-c64xplus
+</span></span><span style="display:flex;"><span>linux-elf linux-generic32 linux-generic64 linux-ia64 linux-mips32 linux-mips64
+</span></span><span style="display:flex;"><span>linux-ppc linux-ppc64 linux-ppc64le linux-sparcv8 linux-sparcv9 linux-x32
+</span></span><span style="display:flex;"><span>linux-x86 linux-x86-clang linux-x86_64 linux-x86_64-clang linux32-s390x
+</span></span><span style="display:flex;"><span>linux64-mips64 linux64-s390x linux64-sparcv9 mingw mingw64 nextstep
+</span></span><span style="display:flex;"><span>nextstep3.3 sco5-cc sco5-gcc solaris-sparcv7-cc solaris-sparcv7-gcc
+</span></span><span style="display:flex;"><span>solaris-sparcv8-cc solaris-sparcv8-gcc solaris-sparcv9-cc solaris-sparcv9-gcc
+</span></span><span style="display:flex;"><span>solaris-x86-gcc solaris64-sparcv9-cc solaris64-sparcv9-gcc solaris64-x86_64-cc
+</span></span><span style="display:flex;"><span>solaris64-x86_64-gcc tru64-alpha-cc tru64-alpha-gcc uClinux-dist
+</span></span><span style="display:flex;"><span>uClinux-dist64 unixware-2.0 unixware-2.1 unixware-7 unixware-7-gcc vms-alpha
+</span></span><span style="display:flex;"><span>vms-alpha-p32 vms-alpha-p64 vms-ia64 vms-ia64-p32 vms-ia64-p64 vos-gcc
+</span></span><span style="display:flex;"><span>vxworks-mips vxworks-ppc405 vxworks-ppc60x vxworks-ppc750 vxworks-ppc750-debug
+</span></span><span style="display:flex;"><span>vxworks-ppc860 vxworks-ppcgen vxworks-simlinux
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NOTE: If in doubt, on Unix-ish systems use <span style="color:#e6db74">&#39;./config&#39;</span>.
+</span></span></code></pre></div><p>上面提示如果编译 Unix-ish x86 平台目标文件，直接使用 <code>./config</code></p>
+</article>
+
+<article class="list-view list-view--post">
+<header>
+<h2 class="title mt--s mb--xxs"><a href="/post/i2c_cmd/">I2C command</a></h2>
+<div class="submitted meta">
+<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-07T00:00:00&#43;08:00">7 February, 2023</time>
+
+</div>
+
+</header>
+<h1 id="i2c-寄存器读写命令">I2C 寄存器读写命令</h1>
+<h2 id="探测设备">探测设备</h2>
+<h3 id="i2cdetect">i2cdetect</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HELLO@WORLD:~# i2cdetect
+</span></span><span style="display:flex;"><span>Error: No i2c-bus specified!
+</span></span><span style="display:flex;"><span>Usage: i2cdetect <span style="color:#f92672">[</span>-y<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-a<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-q|-r<span style="color:#f92672">]</span> I2CBUS <span style="color:#f92672">[</span>FIRST LAST<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>       i2cdetect -F I2CBUS
+</span></span><span style="display:flex;"><span>       i2cdetect -l
+</span></span><span style="display:flex;"><span>  I2CBUS is an integer or an I2C bus name
+</span></span><span style="display:flex;"><span>  If provided, FIRST and LAST limit the probing range.
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># I2CBUS: 0 1 2 ...</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Notice: -r 参数很重要，不带 -r 参数有些设备探测不到</span>
+</span></span><span style="display:flex;"><span>i2cdetect -y -r &lt;I2CBUS&gt;
+</span></span></code></pre></div><h2 id="对于8bit的reg-value-可以使用-i2cget--i2cset">对于8bit的reg, value 可以使用 <code>i2cget / i2cset</code></h2>
+<h3 id="i2cget">i2cget</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HELLO@WORLD:~# i2cget
+</span></span><span style="display:flex;"><span>Usage: i2cget <span style="color:#f92672">[</span>-f<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-y<span style="color:#f92672">]</span> I2CBUS CHIP-ADDRESS <span style="color:#f92672">[</span>DATA-ADDRESS <span style="color:#f92672">[</span>MODE<span style="color:#f92672">]]</span>
+</span></span><span style="display:flex;"><span>  I2CBUS is an integer or an I2C bus name
+</span></span><span style="display:flex;"><span>  ADDRESS is an integer <span style="color:#f92672">(</span>0x03 - 0x77<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  MODE is one of:
+</span></span><span style="display:flex;"><span>    b <span style="color:#f92672">(</span>read byte data, default<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    w <span style="color:#f92672">(</span>read word data<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    c <span style="color:#f92672">(</span>write byte/read byte<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    Append p <span style="color:#66d9ef">for</span> SMBus PEC
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># SLAVE_ADDRESS: 使用i2cdetect 出来的结果</span>
+</span></span><span style="display:flex;"><span>i2cget -y -f &lt;I2CBUS&gt; &lt;SLAVE_ADDRESS&gt; &lt;REG&gt;
+</span></span></code></pre></div><h3 id="i2cset">i2cset</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HELLO@WORLD:~# i2cset
+</span></span><span style="display:flex;"><span>Usage: i2cset <span style="color:#f92672">[</span>-f<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-y<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-m MASK<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-r<span style="color:#f92672">]</span> I2CBUS CHIP-ADDRESS DATA-ADDRESS <span style="color:#f92672">[</span>VALUE<span style="color:#f92672">]</span> ... <span style="color:#f92672">[</span>MODE<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>  I2CBUS is an integer or an I2C bus name
+</span></span><span style="display:flex;"><span>  ADDRESS is an integer <span style="color:#f92672">(</span>0x03 - 0x77<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  MODE is one of:
+</span></span><span style="display:flex;"><span>    c <span style="color:#f92672">(</span>byte, no value<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    b <span style="color:#f92672">(</span>byte data, default<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    w <span style="color:#f92672">(</span>word data<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    i <span style="color:#f92672">(</span>I2C block data<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    s <span style="color:#f92672">(</span>SMBus block data<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    Append p <span style="color:#66d9ef">for</span> SMBus PEC
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>i2cset -y -f &lt;I2CBUS&gt; &lt;SLAVE_ADDRESS&gt; &lt;REG&gt; &lt;VALUE&gt;
+</span></span></code></pre></div><h2 id="对于16bit的reg-value-需要使用-i2ctransfer">对于16bit+的reg, value 需要使用 <code>i2ctransfer</code></h2>
+<h3 id="i2ctransfer">i2ctransfer</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>root@J3Pilot-B:~# i2ctransfer
+</span></span><span style="display:flex;"><span>Usage: i2ctransfer <span style="color:#f92672">[</span>-f<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-y<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-v<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-V<span style="color:#f92672">]</span> I2CBUS DESC <span style="color:#f92672">[</span>DATA<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>DESC <span style="color:#f92672">[</span>DATA<span style="color:#f92672">]]</span>...
+</span></span><span style="display:flex;"><span>  I2CBUS is an integer or an I2C bus name
+</span></span><span style="display:flex;"><span>  DESC describes the transfer in the form: <span style="color:#f92672">{</span>r|w<span style="color:#f92672">}</span>LENGTH<span style="color:#f92672">[</span>@address<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    1<span style="color:#f92672">)</span> read/write-flag 2<span style="color:#f92672">)</span> LENGTH <span style="color:#f92672">(</span>range 0-65535<span style="color:#f92672">)</span> 3<span style="color:#f92672">)</span> I2C address <span style="color:#f92672">(</span>use last one <span style="color:#66d9ef">if</span> omitted<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  DATA are LENGTH bytes <span style="color:#66d9ef">for</span> a write message. They can be shortened by a suffix:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>keep value constant <span style="color:#66d9ef">until</span> LENGTH<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    + <span style="color:#f92672">(</span>increase value by <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">until</span> LENGTH<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">(</span>decrease value by <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">until</span> LENGTH<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    p <span style="color:#f92672">(</span>use pseudo random generator <span style="color:#66d9ef">until</span> LENGTH with value as seed<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Example <span style="color:#f92672">(</span>bus 0, read <span style="color:#ae81ff">8</span> byte at offset 0x64 from EEPROM at 0x50<span style="color:#f92672">)</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># i2ctransfer 0 w1@0x50 0x64 r8</span>
+</span></span><span style="display:flex;"><span>Example <span style="color:#f92672">(</span>same EEPROM, at offset 0x42 write 0xff 0xfe ... 0xf0<span style="color:#f92672">)</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># i2ctransfer 0 w17@0x50 0x42 0xff-</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># W3 写三个参数 16bit 寄存器 （2 Bytes）+ value（1 Byte）</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># i2c bus 0</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># slave address 0x36</span>
+</span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x33 0x3B 0x9D 0x01
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># w2 （16bit寄存器）写两个参数 0x4F 0x0C 寄存器（0x4F0C）到 0x36 slave address</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># i2c bus 总线 0</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 读取 i2c 总线 0 的 slave address 为 0x36 的设备的寄存器 0x4F0C, 读一个 char</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 0x36 是 ovx3c 的 slave address （7bit i2c address）</span>
+</span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w2@0x36 0x4F 0x0C r1
+</span></span></code></pre></div><h2 id="dump-寄存器-00ff">dump 寄存器 00~FF</h2>
+<h3 id="i2cdump">i2cdump</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HELLO@WORLD:~# i2cdump 
+</span></span><span style="display:flex;"><span>Error: No i2c-bus specified!
+</span></span><span style="display:flex;"><span>Usage: i2cdump <span style="color:#f92672">[</span>-f<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-y<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-r first-last<span style="color:#f92672">]</span> I2CBUS ADDRESS <span style="color:#f92672">[</span>MODE <span style="color:#f92672">[</span>BANK <span style="color:#f92672">[</span>BANKREG<span style="color:#f92672">]]]</span>
+</span></span><span style="display:flex;"><span>  I2CBUS is an integer or an I2C bus name
+</span></span><span style="display:flex;"><span>  ADDRESS is an integer <span style="color:#f92672">(</span>0x03 - 0x77<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  MODE is one of:
+</span></span><span style="display:flex;"><span>    b <span style="color:#f92672">(</span>byte, default<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    w <span style="color:#f92672">(</span>word<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    W <span style="color:#f92672">(</span>word on even register addresses<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    s <span style="color:#f92672">(</span>SMBus block<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    i <span style="color:#f92672">(</span>I2C block<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    c <span style="color:#f92672">(</span>consecutive byte<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    Append p <span style="color:#66d9ef">for</span> SMBus PEC
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>i2cdump -f -y &lt;I2CBUS&gt; &lt;SLAVE_ADDRESS&gt;
+</span></span></code></pre></div>
+</article>
+
+<article class="list-view list-view--post">
+<header>
+<h2 class="title mt--s mb--xxs"><a href="/post/ddr-%E5%8E%8B%E6%B5%8B%E5%91%BD%E4%BB%A4/">DDR 压测命令</a></h2>
+<div class="submitted meta">
+<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-03T12:00:00&#43;08:00">3 February, 2023</time>
+
+</div>
+
+</header>
+<h1 id="ddr-压测命令">DDR 压测命令</h1>
+<p>测试之前可以使用 <code>free -m</code> 查看内存使用情况。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>» free
+</span></span><span style="display:flex;"><span>              total        used        free      shared  buff/cache   available
+</span></span><span style="display:flex;"><span>Mem:       <span style="color:#ae81ff">16193884</span>     <span style="color:#ae81ff">1268028</span>    <span style="color:#ae81ff">13921020</span>        <span style="color:#ae81ff">6528</span>     <span style="color:#ae81ff">1004836</span>    <span style="color:#ae81ff">14587148</span>
+</span></span><span style="display:flex;"><span>Swap:       <span style="color:#ae81ff">4194304</span>           <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">4194304</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>» free -m
+</span></span><span style="display:flex;"><span>              total        used        free      shared  buff/cache   available
+</span></span><span style="display:flex;"><span>Mem:          <span style="color:#ae81ff">15814</span>        <span style="color:#ae81ff">1231</span>       <span style="color:#ae81ff">13598</span>           <span style="color:#ae81ff">6</span>         <span style="color:#ae81ff">984</span>       <span style="color:#ae81ff">14252</span>
+</span></span></code></pre></div><p>根据 available 至设置 DDR 压测内存大小。</p>
+<h2 id="stressapptest">stressapptest</h2>
+<h3 id="安装-stressapptest">安装 stressapptest</h3>
+<p>stressapptest - stress test application for simulating high load situations</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install stressapptest
+</span></span></code></pre></div><h3 id="stressapptest-help">stressapptest help</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>» stressapptest -h
+</span></span><span style="display:flex;"><span>Stats: SAT revision 1.0.6_autoconf, <span style="color:#ae81ff">64</span> bit binary
+</span></span><span style="display:flex;"><span>Log: buildd @ lgw01-amd64-029 on Sun Mar <span style="color:#ae81ff">22</span> 18:14:26 UTC <span style="color:#ae81ff">2020</span> from open source release
+</span></span><span style="display:flex;"><span>Usage: ./sat<span style="color:#f92672">(</span>32|64<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span> -M mbytes        megabytes of ram to test
+</span></span><span style="display:flex;"><span> -H mbytes        minimum megabytes of hugepages to require
+</span></span><span style="display:flex;"><span> -s seconds       number of seconds to run
+</span></span><span style="display:flex;"><span> -m threads       number of memory copy threads to run
+</span></span><span style="display:flex;"><span> -i threads       number of memory invert threads to run
+</span></span><span style="display:flex;"><span> -C threads       number of memory CPU stress threads to run
+</span></span><span style="display:flex;"><span> --findfiles      find locations to <span style="color:#66d9ef">do</span> disk IO automatically
+</span></span><span style="display:flex;"><span> -d device        add a direct write disk thread with block device <span style="color:#f92672">(</span>or file<span style="color:#f92672">)</span> <span style="color:#e6db74">&#39;device&#39;</span>
+</span></span><span style="display:flex;"><span> -f filename      add a disk thread with tempfile <span style="color:#e6db74">&#39;filename&#39;</span>
+</span></span><span style="display:flex;"><span> -l logfile       log output to file <span style="color:#e6db74">&#39;logfile&#39;</span>
+</span></span><span style="display:flex;"><span> --max_errors n   exit early after finding <span style="color:#e6db74">&#39;n&#39;</span> errors
+</span></span><span style="display:flex;"><span> -v level         verbosity <span style="color:#f92672">(</span>0-20<span style="color:#f92672">)</span>, default is <span style="color:#ae81ff">8</span>
+</span></span><span style="display:flex;"><span> -W               Use more CPU-stressful memory copy
+</span></span><span style="display:flex;"><span> -A               run in degraded mode on incompatible systems
+</span></span><span style="display:flex;"><span> -p pagesize      size in bytes of memory chunks
+</span></span><span style="display:flex;"><span> --filesize size  size of disk IO tempfiles
+</span></span><span style="display:flex;"><span> -n ipaddr        add a network thread connecting to system at <span style="color:#e6db74">&#39;ipaddr&#39;</span>
+</span></span><span style="display:flex;"><span> --listen         run a thread to listen <span style="color:#66d9ef">for</span> and respond to network threads.
+</span></span><span style="display:flex;"><span> --no_errors      run without checking <span style="color:#66d9ef">for</span> ECC or other errors
+</span></span><span style="display:flex;"><span> --force_errors   inject false errors to test error handling
+</span></span><span style="display:flex;"><span> --force_errors_like_crazy   inject a lot of false errors to test error handling
+</span></span><span style="display:flex;"><span> -F               don<span style="color:#e6db74">&#39;t result check each transaction
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --stop_on_errors  Stop after finding the first error.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --read-block-size     size of block for reading (-d)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --write-block-size    size of block for writing (-d). If not defined, the size of block for writing will be defined as the size of block for reading
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --segment-size   size of segments to split disk into (-d)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --cache-size     size of disk cache (-d)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --blocks-per-segment  number of blocks to read/write per segment per iteration (-d)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --read-threshold      maximum time (in us) a block read should take (-d)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --write-threshold     maximum time (in us) a block write should take (-d)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --random-threads      number of random threads for each disk write thread (-d)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --destructive    write/wipe disk partition (-d)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --monitor_mode   only do ECC error polling, no stress load.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --cc_test        do the cache coherency testing
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --cc_inc_count   number of times to increment the cacheline&#39;</span>s member
+</span></span><span style="display:flex;"><span> --cc_line_count  number of cache line sized datastructures to allocate <span style="color:#66d9ef">for</span> the cache coherency threads to operate
+</span></span><span style="display:flex;"><span> --paddr_base     allocate memory starting from this address
+</span></span><span style="display:flex;"><span> --pause_delay    delay <span style="color:#f92672">(</span>in seconds<span style="color:#f92672">)</span> between power spikes
+</span></span><span style="display:flex;"><span> --pause_duration duration <span style="color:#f92672">(</span>in seconds<span style="color:#f92672">)</span> of each pause
+</span></span><span style="display:flex;"><span> --local_numa     choose memory regions associated with each CPU to be tested by that CPU
+</span></span><span style="display:flex;"><span> --remote_numa    choose memory regions not associated with each CPU to be tested by that CPU
+</span></span><span style="display:flex;"><span> --interleave_size bytes  size in bytes of each channel<span style="color:#960050;background-color:#1e0010">&#39;</span>s data as interleaved between memory channels
+</span></span><span style="display:flex;"><span> --channel_width bits     width in bits of each memory channel
+</span></span><span style="display:flex;"><span> --memory_channel u1,u2   defines a comma-separated list of names
+</span></span><span style="display:flex;"><span>                          <span style="color:#66d9ef">for</span> dram packages in a memory channel.
+</span></span><span style="display:flex;"><span>                          Use multiple times to define multiple channels.
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./stressapptest -M <span style="color:#ae81ff">14200</span> -s <span style="color:#ae81ff">36000</span> -m <span style="color:#ae81ff">8</span> -i <span style="color:#ae81ff">8</span> -C <span style="color:#ae81ff">8</span> -l /data/stressapptest.log
+</span></span></code></pre></div><h3 id="参数说明">参数说明</h3>
+<ul>
+<li><code>-M 14200</code>: 测试内存大小 14200M</li>
+<li><code>-s 36000</code>: 测试时常10h，压力测试建议不小于1h</li>
+<li><code>-m threads</code>：这个参数用于指定运行内存拷贝线程的数量。内存拷贝线程是执行内存数据复制操作的线程，增加线程数量可以增加内存操作的并发度，从而增加对系统的内存压力。</li>
+<li><code>-i threads</code>：这个参数用于指定运行内存反转（invert）线程的数量。内存反转线程通常是指执行内存数据位反转操作的线程，这也是一种压力测试，可以用于测试内存的写入和读取性能。</li>
+<li><code>-C threads</code>：表示启动的 CPU 压力测试线程的数量。增加这个数字可以增加 CPU 的负载，从而测试 CPU 在高压力下的性能表现。</li>
+</ul>
+<p>若测试通过，则终端会打印：<code>Status: PASS – please verify no corrected errors。</code></p>
+</article>
+
+<article class="list-view list-view--post">
+<header>
+<h2 class="title mt--s mb--xxs"><a href="/post/e2fsprogs-1/">e2fsprogs-1.42.8 源码编译安装</a></h2>
+<div class="submitted meta">
+<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-03T12:00:00&#43;08:00">3 February, 2023</time>
+
+</div>
+
+</header>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>tar xvf e2fsprogs-1.42.8.tar.gz
+</span></span><span style="display:flex;"><span>cd e2fsprogs-1.42.8
+</span></span><span style="display:flex;"><span>mkdir build
+</span></span><span style="display:flex;"><span>cd build/
+</span></span><span style="display:flex;"><span>../configure
+</span></span><span style="display:flex;"><span>make
+</span></span><span style="display:flex;"><span>sudo make install
+</span></span></code></pre></div><p>问题：</p>
+<p>ubuntu20.04 编译报错 <code>undefined reference to 'makedev'</code></p>
+<p>解决方法:
+<code>vim &lt;path-to-e2fsprogs-1.42.8&gt;/lib/blkid/devname.c</code>
+添加头文件 <code>#include &lt;sys/sysmacros.h</code></p>
+</article>
+
+<article class="list-view list-view--post">
+<header>
+<h2 class="title mt--s mb--xxs"><a href="/post/python2/">python2.7 环境及包管理</a></h2>
+<div class="submitted meta">
+<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-03T12:00:00&#43;08:00">3 February, 2023</time>
+
+</div>
+
+</header>
+<h1 id="python27-环境及包管理">python2.7 环境及包管理</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt install python2.7
+</span></span><span style="display:flex;"><span>curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
+</span></span><span style="display:flex;"><span>sudo python2.7 get-pip.py
+</span></span><span style="display:flex;"><span>pip2 install simplejson
+</span></span></code></pre></div>
+</article>
+
+<article class="list-view list-view--post">
+<header>
+<h2 class="title mt--s mb--xxs"><a href="/post/vscode_remote-ssh_%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE/">vscode remote-ssh 免密登录配置</a></h2>
+<div class="submitted meta">
+<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-03T12:00:00&#43;08:00">3 February, 2023</time>
+
+</div>
+
+</header>
+<h1 id="vscode-remote-ssh-免密登录">vscode remote-ssh 免密登录</h1>
+<h2 id="环境声明">环境声明</h2>
+<p>win10 vscode + remote-ssh + virtualbox (ubuntu 20.04)</p>
+<h2 id="windows-配置">windows 配置</h2>
+<ol>
+<li>安装 vscode，remote-ssh 插件</li>
+<li>生成 ssh key：<code>ssh-keygen.exe -t rsa</code> 然后一路回车</li>
+<li>用户目录下会生成 id_rsa id_rsa.pub 两个文件</li>
+</ol>
+<h2 id="服务器-ubuntu-配置">服务器 ubuntu 配置</h2>
+<ol>
+<li>
+<p>安装 ssh server: <code>sudo apt install openssh-server</code></p>
+</li>
+<li>
+<p>启动 ssh: <code>sudo service sshd start</code></p>
+</li>
+<li>
+<p>此时 windows 就可以通过终端工具 ssh 登录服务器</p>
+</li>
+<li>
+<p>生成 ssh key：<code>ssh-keygen.exe -t rsa</code> 然后一路回车</p>
+</li>
+<li>
+<p><code>sudo vim /etc/ssh/sshd_config</code> 取消注释 <code>PubkeyAuthentication yes</code></p>
+</li>
+<li>
+<p>将 windows 生成的 id_rsa.pub 文件的内容加入服务器 <code>~/.ssh/authorized_keys</code> 文件中，如果该文件不存在就创建一个</p>
+</li>
+<li>
+<p><code>sudo service sshd restart</code></p>
+</article>
+
+<article class="list-view list-view--post">
+<header>
+<h2 class="title mt--s mb--xxs"><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2/">交叉编译 glibc-2.35</a></h2>
+<div class="submitted meta">
+<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-03T12:00:00&#43;08:00">3 February, 2023</time>
+
+</div>
+
+</header>
+<p>//localhost:1313/</p>
+<h1 id="交叉编译-glibc-235">交叉编译 glibc-2.35</h1>
+<p>glibc-2.35 更新需要同步用新版本的交叉编译器，这里直接在 Linaro 官网<a href="https://releases.linaro.org/components/toolchain/binaries/">下载</a>了最新的 <code>gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/code/gcc-linaro-7.5.0-2019.12-x86_64_armlinux-gnueabihf/bin&#34;</span>:$PATH
+</span></span><span style="display:flex;"><span>export CROSS_COMPILE<span style="color:#f92672">=</span>arm-linux-gnueabihf-
+</span></span><span style="display:flex;"><span>mkdir build_out; cd build_out
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>../configure --prefix<span style="color:#f92672">=</span>/code/glibc-2.35/build_out <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--host<span style="color:#f92672">=</span>arm-linux-gnueabihf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>make
+</span></span><span style="display:flex;"><span>make install
+</span></span></code></pre></div>
+</article>
+
+<article class="list-view list-view--post">
+<header>
+<h2 class="title mt--s mb--xxs"><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-libxml2-2/">交叉编译 libxml2-2.9.10</a></h2>
+<div class="submitted meta">
+<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-03T12:00:00&#43;08:00">3 February, 2023</time>
+
+</div>
+
+</header>
+<h1 id="交叉编译-libxml2-2910">交叉编译 libxml2-2.9.10</h1>
+<p>依赖 zlib 源码编译出来的目标文件，请先参考如何交叉编译 zlib 完成之后再来编译。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;path-to-gcc-linaro-5.3-2016.02-x86_64_arm-linuxgnueabihf&gt;/bin&#34;</span>:$PATH
+</span></span><span style="display:flex;"><span>export CROSS_COMPILE<span style="color:#f92672">=</span>arm-linux-gnueabihf
+</span></span><span style="display:flex;"><span>mkdir build_out
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>./configure --prefix<span style="color:#f92672">=</span>/code/libxml2-2.9.10/build_out <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--disable-static <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--with-python<span style="color:#f92672">=</span>no <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--host<span style="color:#f92672">=</span>arm-linux-gnueabihf <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--with-zlib<span style="color:#f92672">=</span>/code/zlib-1.2.12/build_out
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>make
+</span></span><span style="display:flex;"><span>make install
+</span></span></code></pre></div>
+</article>
+
+<article class="list-view list-view--post">
+<header>
+<h2 class="title mt--s mb--xxs"><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2/">交叉编译 Python-2.7.16</a></h2>
+<div class="submitted meta">
+<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-03T12:00:00&#43;08:00">3 February, 2023</time>
+
+</div>
+
+</header>
+<h1 id="交叉编译-python-2716">交叉编译 Python-2.7.16</h1>
+<p>需要在代码的根路径新建一个 <code>config.sit</code>，内容参考如下：
+<code>--enable-shared﻿</code> 生成动态链接库</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;path-to-gcc-linaro-5.3-2016.02-x86_64_arm-linuxgnueabihf&gt;/bin&#34;</span>:$PATH
+</span></span><span style="display:flex;"><span>export CROSS_COMPILE<span style="color:#f92672">=</span>arm-linux-gnueabihf
+</span></span><span style="display:flex;"><span>export CONFIG_SITE<span style="color:#f92672">=</span>./config.site
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># config.site 文件内容如下：</span>
+</span></span><span style="display:flex;"><span>cat config.site
+</span></span><span style="display:flex;"><span>ac_cv_file__dev_ptmx<span style="color:#f92672">=</span>no
+</span></span><span style="display:flex;"><span>ac_cv_file__dev_ptc<span style="color:#f92672">=</span>no
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>./configure --prefix<span style="color:#f92672">=</span>/code/Python-2.7.16/build_out <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--host<span style="color:#f92672">=</span>arm-linux-gnueabihf <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--build<span style="color:#f92672">=</span>x86_64 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--disable-ipv6 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--enable-shared
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>make
+</span></span><span style="display:flex;"><span>make install
+</span></span></code></pre></div>
+</article>
+
+<nav class="pager">
+<a href="/" rel="prev" class="pager__item pager__item--prev"><span aria-hidden="true">« </span>Previous</a>
+<a href="/page/3/" rel="next" class="pager__item pager__item--next">Next<span aria-hidden="true"> »</span></a>
+</nav>
+
+</main>
+
+
+<aside class="sidebar layout__second-sidebar">
+<nav class="menu">
+<p class="title"><strong><a href="/post/">Post</a></strong></p>
+<ul>
+<li><a href="/post/perror_func/">perror</a></li>
+<li><a href="/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/">Windows WSL ubuntu adb 配置</a></li>
+<li><a href="/post/ubuntu_2004_%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/">ubuntu 20.04 升级内核</a></li>
+<li><a href="/post/svn/">ubuntu 搭建 svn 服务器</a></li>
+<li><a href="/post/windows-terminal-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-oh-my-posh/">Windows terminal 安装配置 oh-my-posh</a></li>
+<li><a href="/post/openssl/">openssl 创建自签名证书,对 Windows Catalog 进行签名</a></li>
+<li><a href="/post/docker-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">docker 环境搭建</a></li>
+<li><a href="/post/gerrit/">gerrit 环境搭建</a></li>
+<li><a href="/post/vcpkg_windows/">windows vcpkg</a></li>
+<li><a href="/post/linux_date_cmd/">Linux date 命令用法</a></li>
+<li><a href="/post/windows10_wsl/">windows10 WSL setup</a></li>
+<li><a href="/post/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/">黑芝麻平台交叉编译 openssl</a></li>
+<li><a href="/post/i2c_cmd/">I2C command</a></li>
+<li><a href="/post/ddr-%E5%8E%8B%E6%B5%8B%E5%91%BD%E4%BB%A4/">DDR 压测命令</a></li>
+<li><a href="/post/e2fsprogs-1/">e2fsprogs-1.42.8 源码编译安装</a></li>
+<li><a href="/post/python2/">python2.7 环境及包管理</a></li>
+<li><a href="/post/vscode_remote-ssh_%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE/">vscode remote-ssh 免密登录配置</a></li>
+<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2/">交叉编译 glibc-2.35</a></li>
+<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-libxml2-2/">交叉编译 libxml2-2.9.10</a></li>
+<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2/">交叉编译 Python-2.7.16</a></li>
+<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-tcpdump-4/">交叉编译 tcpdump-4.99.1</a></li>
+<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-zlib-1/">交叉编译 zlib-1.2.12</a></li>
+<li><a href="/post/dmesg_support_iso_timestamp/">dmesg use CST timestamp</a></li>
+<li><a href="/post/gmsl2_csi2_clk/">GMSL2 CSI-2 clock</a></li>
+<li><a href="/post/hobotbuildenv/">Hobot 编译环境</a></li>
+<li><a href="/post/ros/">ROS</a></li>
+<li><a href="/post/%E8%80%81%E9%BB%91%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83/">老黑编译环境</a></li>
+<li><a href="/post/stock/">akshare 学习笔记</a></li>
+<li><a href="/post/adi_gmsl2_serdes_spi/">ADI GMSL2 SERDES SPI</a></li>
+<li><a href="/post/androidjava-/">Android Java 1.7 环境配置</a></li>
+<li><a href="/post/androidstudioenv/">Android Studio Env</a></li>
+<li><a href="/post/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/">Android 使用 am 命令启动一个活动组件</a></li>
+<li><a href="/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/">Android10编译开启ccache</a></li>
+<li><a href="/post/beyondcompare/">BeyondCompare</a></li>
+<li><a href="/post/cmake/">cmake</a></li>
+<li><a href="/post/crystal/">crystal</a></li>
+<li><a href="/post/debian4/">Debian 4.9 Config Static Ip.md</a></li>
+<li><a href="/post/dokuwiki/">dokuwiki</a></li>
+<li><a href="/post/flutter/">Flutter</a></li>
+<li><a href="/post/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/">git clone 包含 submodule 的仓库</a></li>
+<li><a href="/post/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/">git 使用指定的 ssh key</a></li>
+<li><a href="/post/gitbook/">gitbook</a></li>
+<li><a href="/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/">GMSL SERDES 笔记</a></li>
+<li><a href="/post/harmony-hpm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/">Harmony HPM 包管理器</a></li>
+<li><a href="/post/hugo/">hugo</a></li>
+<li><a href="/post/iperf-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD/">iperf 测试网络带宽</a></li>
+<li><a href="/post/linux_test_disk_i_o_with_dd/">Linux Test Disk with dd command</a></li>
+<li><a href="/post/manjaro/">manjaro</a></li>
+<li><a href="/post/opengrok/">opengrok</a></li>
+<li><a href="/post/openharmony-%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91/">OpenHarmony 代码下载编译</a></li>
+<li><a href="/post/repo/">repo</a></li>
+<li><a href="/post/samba/">samba</a></li>
+<li><a href="/post/sourceinsight/">Source Insight</a></li>
+<li><a href="/post/ubuntu_200406_install_tp_link_ac1300_usb_wifi_adaptor_driver/">ubuntu 20.04.6 install tp link a1300 usb wifi adaptor driver</a></li>
+<li><a href="/post/ubuntu_git_server_build_push_code/">Ubuntu git 仓库搭建及代码上传</a></li>
+<li><a href="/post/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/">Virtualbox Opensuse 无网络图标 无法上网</a></li>
+<li><a href="/post/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/">vscode 阅读 Linux 内核代码配置</a></li>
+<li><a href="/post/wifiadb/">Wifi Adb</a></li>
+<li><a href="/post/windows/">windows</a></li>
+<li><a href="/post/windows_remote_desktop/">Windows Remote Desktop</a></li>
+<li><a href="/post/windows_vcpkg_boost/">windows vcpkg boost 开发环境</a></li>
+<li><a href="/post/windowsvscodeplantuml%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Windows Vscode Plantuml 环境搭建</a></li>
+<li><a href="/post/windows_wsl_%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/">windows WSL 端口映射</a></li>
+<li><a href="/post/word/">word</a></li>
+<li><a href="/post/usbipd/">wsl 使用 usbipd 访问 USB 设备</a></li>
+<li><a href="/post/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/">一文搞懂应用开发所需 Linux 系统时间的相关知识点</a></li>
+<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE/">交叉编译工具链</a></li>
+<li><a href="/post/awr2243_adc/">关于雷达 AWR2243 ADC OVER CSI HSI</a></li>
+<li><a href="/post/how_to_handle_gpio_interrupt_like_handling_in_linux_userspace/">如何在 Linux 用户空间中进行类似 GPIO 中断的处理</a></li>
+<li><a href="/post/camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi/">摄像头图像数据格式从cmos到mipi</a></li>
+<li><a href="/post/about/">Lu Yang</a></li>
+</ul>
+</nav>
+<nav class="menu">
+<p class="title"><strong><a href="/archives/"></a></strong></p>
+<ul>
+</ul>
+</nav>
+</aside>
+<footer class="footer layout__footer mt--l">
+<p>Follow: <a rel="alternate" type="application/rss&#43;xml" href="https://example.org/index.xml">rss</a> | <a rel="alternate" type="application/json" href="https://example.org/index.json">json</a></p>
+<p><span>© Hugo Zen theme</span></p>
+
+<p>Powered by <a href="https://gohugo.io/">Hugo</a> and the <a href="https://github.com/frjo/hugo-theme-zen">Zen theme</a>.</p>
+
+</footer>
+
+</div>
+</body>
+</html>

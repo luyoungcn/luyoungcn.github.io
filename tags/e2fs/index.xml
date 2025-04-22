@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>E2fs on Hugo Zen theme</title>
+    <link>https://example.org/tags/e2fs/</link>
+    <description>Recent content in E2fs on Hugo Zen theme</description>
+    <generator>Hugo</generator>
+    <language>en-GB</language>
+    <lastBuildDate>Fri, 03 Feb 2023 12:00:00 +0800</lastBuildDate>
+      <atom:link href="https://example.org/tags/e2fs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>e2fsprogs-1.42.8 源码编译安装</title>
+      <link>https://example.org/post/e2fsprogs-1/</link>
+      <pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate>
+      <guid>https://example.org/post/e2fsprogs-1/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tar xvf e2fsprogs-1.42.8.tar.gz&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd e2fsprogs-1.42.8&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir build&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd build/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;../configure&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;make&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo make install&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;问题：&lt;/p&gt;&#xA;&lt;p&gt;ubuntu20.04 编译报错 &lt;code&gt;undefined reference to &#39;makedev&#39;&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;解决方法:&#xA;&lt;code&gt;vim &amp;lt;path-to-e2fsprogs-1.42.8&amp;gt;/lib/blkid/devname.c&lt;/code&gt;&#xA;添加头文件 &lt;code&gt;#include &amp;lt;sys/sysmacros.h&lt;/code&gt;&lt;/p&gt;&#xA;</description>
+    </item>
+  </channel>
+</rss>

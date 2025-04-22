@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Time on LuyangのBlog</title><link>/tags/time/</link><description>Recent content in Time on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="/tags/time/rss.xml" rel="self" type="application/rss+xml"/><item><title>一文搞懂应用开发所需 Linux 系统时间的相关知识点</title><link>/post/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/</guid><description>&lt;h2 id="秒级精度">秒级精度&lt;/h2>
-&lt;p>&lt;code>time_t&lt;/code> 保存自 UTC 1970 年 1 月 1 日 00:00 以来的秒数（不包括闰秒），对应于
-&lt;a href="https://en.wikipedia.org/wiki/Unix_time" title="POSIX time" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
- POSIX time
- &lt;i class="fa fa-external-link-alt">&lt;/i>
-&lt;/a>
-Unix 和 POSIX 兼容系统将 &lt;code>time_t&lt;/code> 类型作为带符号整数（通常为 32 或 64 位宽）来实现，它表示自 Unix 时间开始以来的秒数&lt;/p></description></item></channel></rss>

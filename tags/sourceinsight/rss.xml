@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SourceInsight on LuyangのBlog</title><link>/tags/sourceinsight/</link><description>Recent content in SourceInsight on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="/tags/sourceinsight/rss.xml" rel="self" type="application/rss+xml"/><item><title>Source Insight</title><link>/post/sourceinsight/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/sourceinsight/</guid><description>&lt;h2 id="注释字体设置">注释字体设置&lt;/h2>
-&lt;ol>
-&lt;li>&lt;code>Options&lt;/code>-&amp;gt;&lt;code>Style Properties&lt;/code>&lt;/li>
-&lt;li>左边&lt;code>Style Name&lt;/code>下找到&lt;code>Comment、Comment Multi Line、Comment Right、Comment Single Line&lt;/code> 在右边对应的Font属性框下的&lt;code>Font Name&lt;/code>中选&lt;code>“Pick...”&lt;/code> 设置自己喜欢的字体然后确定，退回Style Properties界面，&lt;code>Size&lt;/code>设为&lt;code>12&lt;/code>。&lt;/li>
-&lt;li>&lt;code>Options&lt;/code>-&amp;gt;&lt;code>Save Configuration&lt;/code>&lt;/li>
-&lt;/ol>
-&lt;h2 id="背景护眼颜色">背景护眼颜色&lt;/h2>
-&lt;p>在顶部菜单栏依次选择 &lt;code>Option&lt;/code>→&lt;code>Preferences&lt;/code>，中文版的选择 &lt;code>选项&lt;/code>&amp;ndash;&amp;gt;&lt;code>参数选择&lt;/code>，选择上面的&lt;code>colors&lt;/code>（颜色）选项，箭头移至第二项&lt;code>Window Background&lt;/code>( 窗口背景)左键单击选中，再点击右边的&lt;code>Color&lt;/code>选项在右边的RGB框输入如下参数：&lt;/p></description></item></channel></rss>

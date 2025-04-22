@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>远程控制 on Hugo Zen theme</title>
+    <link>https://example.org/tags/%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6/</link>
+    <description>Recent content in 远程控制 on Hugo Zen theme</description>
+    <generator>Hugo</generator>
+    <language>en-GB</language>
+    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
+      <atom:link href="https://example.org/tags/%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows Remote Desktop</title>
+      <link>https://example.org/post/windows_remote_desktop/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      <guid>https://example.org/post/windows_remote_desktop/</guid>
+      <description>&lt;h1 id=&#34;远程电脑启用远程桌面&#34;&gt;远程电脑启用远程桌面&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://support.microsoft.com/zh-cn/windows/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2-5fe128d5-8fb1-7a23-3b8a-41e636865e8c&#34;&gt;如何使用远程桌面 - Microsoft 支持&lt;/a&gt;&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;设置你想要连接以使其允许远程连接的电脑：&#xA;&lt;ul&gt;&#xA;&lt;li&gt;确保你拥有 Windows 11 专业版。 若要检查这一点，请选择“&lt;strong&gt;开始&lt;/strong&gt;”，然后打开“&lt;strong&gt;设置&lt;/strong&gt;”。 然后，在“&lt;strong&gt;系统&lt;/strong&gt;”下，选择“&lt;strong&gt;关于&lt;/strong&gt;”，并在“&lt;strong&gt;Windows 规范&lt;/strong&gt;”下，查找“&lt;strong&gt;版本&lt;/strong&gt;”。 有关如何获取 Windows 11 专业版的详细信息，请转到&lt;a href=&#34;https://support.microsoft.com/help/12384/&#34;&gt;“将 Windows 家庭版升级为 Windows 专业版”。&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;准备就绪后，选择“&lt;strong&gt;开始&lt;/strong&gt;”，然后打开“&lt;strong&gt;设置&lt;/strong&gt;”。 然后，在“&lt;strong&gt;系统&lt;/strong&gt;”下，选择“&lt;strong&gt;远程桌面&lt;/strong&gt;”，将“&lt;strong&gt;远程桌面&lt;/strong&gt;”设置为“&lt;strong&gt;打开&lt;/strong&gt;”，然后选择“&lt;strong&gt;确认&lt;/strong&gt;”。&lt;/li&gt;&#xA;&lt;li&gt;记下“&lt;strong&gt;电脑名称&lt;/strong&gt;”下的这台电脑的名称。 稍后将需要使用此名称。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;注意事项：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;如果远程电脑账户为无密码登陆，则本地电脑使用 远程桌面 工具连接远程电脑时空密码会连接失败，解决方案参考: &lt;code&gt;远程主机允许无密码远程桌面连接&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;远程电脑命令行 ipconfig /all 查看网络 IP， 本地电脑既可以通过远程电脑的网络 IP 也可以通过远程电脑的名称进行远程连接&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;远程主机允许无密码远程桌面连接&#34;&gt;远程主机允许无密码远程桌面连接&lt;/h2&gt;&#xA;&lt;p&gt;win+r, 输入secpol.msc命令&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;安全设置 → 本地策略 → 安全选项&#xA;&lt;ul&gt;&#xA;&lt;li&gt;找到： 账户:使用空密码的本地账户只允许进行控制台登陆 已启用 改为 已禁用&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://img-blog.csdnimg.cn/20210428232613443.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01zc0d1bw==,size_16,color_FFFFFF,t_70&#34; alt=&#34;https://img-blog.csdnimg.cn/20210428232613443.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01zc0d1bw==,size_16,color_FFFFFF,t_70&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;将该项使用空密码的本地账户只允许进行本地计算机密码键盘登录 禁用 掉，这样远程桌面就能在无密码登录了。&lt;/p&gt;&#xA;</description>
+    </item>
+  </channel>
+</rss>

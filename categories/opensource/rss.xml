@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OpenSource on LuyangのBlog</title><link>/categories/opensource/</link><description>Recent content in OpenSource on LuyangのBlog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="/categories/opensource/rss.xml" rel="self" type="application/rss+xml"/><item><title>Harmony HPM 包管理器</title><link>/post/harmony-hpm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/harmony-hpm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</guid><description>&lt;h1 id="hpm">HPM&lt;/h1>
-&lt;p>OpenHarmony HPM 指的是 “Harmony Package Manager”&lt;/p>
-&lt;h1 id="hpm-part">HPM Part&lt;/h1>
-&lt;p>Module level HPM Part：用于实现模块或 Part 的复用。分发的内容可以是源码或二进制文件。通常，这样的 HPM Part 对应着一个代码仓库，是代码仓库的一个版本。&lt;/p></description></item><item><title>OpenHarmony 代码下载编译</title><link>/post/openharmony-%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91/</link><pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate><guid>/post/openharmony-%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91/</guid><description>&lt;h2 id="代码下载">代码下载&lt;/h2>
-&lt;p>OpenHarmony源代码以 [[HPM]] 部分的形式提供，可以通过以下任意方式获取：&lt;/p>
-&lt;ol>
-&lt;li>
-&lt;p>从Gitee代码库获取源码。您可以使用repo或git工具从代码仓库下载最新的代码。&lt;/p></description></item></channel></rss>
