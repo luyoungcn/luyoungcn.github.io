@@ -1,643 +1,335 @@
 <!DOCTYPE html>
-<html class="nojs" lang="en-GB" dir="ltr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<title>Post – Hugo Zen theme</title>
-<link rel="alternate" type="application/rss+xml" title="rss" href="https://example.org/post/index.xml">
-<link rel="alternate" type="application/json" title="json" href="https://example.org/post/index.json">
+<html lang="en" dir="auto">
 
-<meta name="created" content="2024-01-01T20:19:08+0800">
-<meta name="modified" content="2024-01-01T20:19:08+0800">
-<meta name="author" content="Your Name">
-<meta name="contact" content="info@example.org">
-<meta property="og:site_name" content="Hugo Zen theme">
-<meta property="og:title" content="Post">
-<meta property="og:url" content="https://example.org/post/">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://example.org/apple-touch-icon.png">
-<meta name="generator" content="Hugo 0.146.6">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="theme-color" content="#ffffff">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Posts | LuyangのBlog</title>
+<meta name="keywords" content="">
+<meta name="description" content="Posts - LuyangのBlog">
+<meta name="author" content="Theme PaperMod">
+<link rel="canonical" href="https://adityatelange.github.io/hugo-PaperMod/post/">
+<link crossorigin="anonymous" href="/hugo-PaperMod/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://adityatelange.github.io/hugo-PaperMod/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://adityatelange.github.io/hugo-PaperMod/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://adityatelange.github.io/hugo-PaperMod/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://adityatelange.github.io/hugo-PaperMod/apple-touch-icon.png">
+<link rel="mask-icon" href="https://adityatelange.github.io/hugo-PaperMod/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://adityatelange.github.io/hugo-PaperMod/post/index.xml">
+<link rel="alternate" hreflang="en" href="https://adityatelange.github.io/hugo-PaperMod/post/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
-<link rel="canonical" href="https://example.org/post/">
+            .list {
+                background: var(--theme);
+            }
 
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-<link rel="stylesheet" href="/css/styles.2fa1df15b347581e582e5e8899cf40bdf7908f76e104ed06eeba4c6443012e8c.css">
-<link rel="stylesheet" href="/css/mobilemenu.dbbf7de443967fe1d83dce47fb19895d79710b23ccd02b84f54d4d39c37e3d2d.css" media="screen">
-<link rel="stylesheet" href="/css/print.1912ba13950e7434fb50dd14d3951bc7f57bb0c16b4f204158b72f0b3844f7a1.css" media="print">
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://adityatelange.github.io/hugo-PaperMod/post/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="Posts">
+  <meta property="og:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png">
+<meta name="twitter:title" content="Posts">
+<meta name="twitter:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
+
 
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "url" : "https://example.org/post/",
-    "name": "Post",
-    "description": "The zen theme for Hugo example site.",
-    "image" : "https://example.org/apple-touch-icon.png",
-    "author": {
-      "@type": "Person",
-      "name": "Your Name"
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://example.org/"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Hugo Zen theme",
-      "logo" : {
-        "@type": "ImageObject",
-        "url": "https://example.org/apple-touch-icon.png"
-      },
-      "url": "https://example.org/"
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://adityatelange.github.io/hugo-PaperMod/post/"
     }
-  }
+  ]
+}
 </script>
-
-<script src="/js/script-early.2d6255816e36e34bd1948dc5c26ede35687a256c4e2e516e0cd75f383a510c6a.js"></script>
-
-<script defer src="/js/mobilemenu.7ce1f75fd1d49cd683a008352ad9001f800349629be01d531a19c02b5a84817b.js"></script>
-<script defer src="/js/script.f2979a93a325fecf9605263bd141398a311c8e23388ed7dcff74f92f7e632866.js"></script>
-
-
-
-
-
-
 </head>
 
-<body class="list-page">
-<div class="page layout__page layout__sidebar-second">
-<header class="header layout__header">
-<a href="/" title="Home" rel="home" class="header__logo">
-<img src="/images/logo.png" width="64" alt="Home" class="header__logo-image">
-</a>
-<h1 class="header__site-name">
-<a href="/" title="Home" class="header__site-link" rel="home"><span>Hugo Zen theme</span></a>
-</h1>
-<div class="region header__region">
-</div>
-</header>
-
-<nav class="main-menu mx--xs layout__navigation" aria-label="Main menu">
-<ul class="flex-inline mx--0">
-<li><a href="/"><span>Home</span></a></li>
-<li><a href="/"><span>Documentation</span></a></li>
-<li><a href="/"><span>About</span></a></li>
-<li><a href="/"><span>Contact</span></a></li>
-<li><a href="/"><span>Search</span></a></li>
-</ul>
-</nav>
-<div class="mobile-nav" dir="ltr" hidden>
-  <div class="mobile-nav__cover"></div>
-  <button class="mobile-nav__toggle" aria-expanded="false" aria-controls="sheet">
-    Menu
-    <svg class="mobile-nav__hamburger" viewBox="0 0 100 100" focusable="false" aria-hidden="true">
-      <rect width="80" height="12" x="10" y="20" rx="5"></rect>
-      <rect width="80" height="12" x="10" y="45" rx="5"></rect>
-      <rect width="80" height="12" x="10" y="70" rx="5"></rect>
-    </svg>
-  </button>
-  <div class="mobile-nav__sheet link-inverted link-nav" id="sheet" aria-hidden="true">
-    <div class="mobile-nav__region"></div>
-    <nav class="mobile-nav__main-menu" aria-label="Main menu">
-    <ul class="mobile-nav__navbar">
-    <li><a href="/"><span>Home</span></a></li>
-    <li><a href="/"><span>Documentation</span></a></li>
-    <li><a href="/"><span>About</span></a></li>
-    <li><a href="/"><span>Contact</span></a></li>
-    <li><a href="/"><span>Search</span></a></li>
-    </ul>
-    </nav>
-  </div>
-</div>
-<main class="main layout__main">
-<header>
-<h1 class="title">Post</h1>
-</header>
-
-
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/androidstudioenv/">Android Studio Env</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<h2 id="工具">工具</h2>
-<ul>
-<li><a href="https://developer.android.google.cn/studio">AndroidStudio</a></li>
-</ul>
-<h2 id="信息">信息</h2>
-<p>Android Studio 默认设置</p>
-<ul>
-<li>SDK Folder:
-<ul>
-<li>&ldquo;%APPDATA%\Local\Android\Sdk&rdquo;</li>
-</ul>
-</li>
-<li>JDK Folder:
-<ul>
-<li>&ldquo;C:\Program Files\Android\Android Studio\jre&rdquo;</li>
-</ul>
-</li>
-</ul>
-<h2 id="问题解决">问题解决</h2>
-<h3 id="安装完android-studio首次启动报错">安装完Android Studio首次启动报错</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Unable to access Android SDK add-on list
-</span></span></code></pre></div><p>选择cancel</p>
-<h3 id="gradle-下载环境配置">gradle 下载环境配置</h3>
-<p>For Windows</p>
-<p><code>C:\Users\luyang\.gradle\init.gradle</code> 如果没有该文件就自己新建一个，内容如下</p>
-<p>
-$$
-allprojects{
-  repositories {
-    def ALIYUN_REPOSITORY_URL = &#39;https://maven.aliyun.com/repository/public/&#39;
-    def ALIYUN_JCENTER_URL = &#39;https://maven.aliyun.com/repository/jcenter/&#39;
-    def ALIYUN_GOOGLE_URL = &#39;https://maven.aliyun.com/repository/google/&#39;
-    def ALIYUN_GRADLE_PLUGIN_URL = &#39;https://maven.aliyun.com/repository/gradle-plugin/&#39;
-    all { ArtifactRepository repo -&gt;
-      if(repo instanceof MavenArtifactRepository){
-        def url = repo.url.toString()
-        if (url.startsWith(&#39;https://repo1.maven.org/maven2/&#39;)) {
-          project.logger.lifecycle &#34;Repository ${repo.url} replaced by $ALIYUN_REPOSITORY_URL.&#34;
-          remove repo
-        }
-        if (url.startsWith(&#39;https://jcenter.bintray.com/&#39;)) {
-          project.logger.lifecycle &#34;Repository ${repo.url} replaced by $ALIYUN_JCENTER_URL.&#34;
-          remove repo
-        }
-        if (url.startsWith(&#39;https://dl.google.com/dl/android/maven2/&#39;)) {
-          project.logger.lifecycle &#34;Repository ${repo.url} replaced by $ALIYUN_GOOGLE_URL.&#34;
-          remove repo
-        }
-        if (url.startsWith(&#39;https://plugins.gradle.org/m2/&#39;)) {
-          project.logger.lifecycle &#34;Repository ${repo.url} replaced by $ALIYUN_GRADLE_PLUGIN_URL.&#34;
-          remove repo
-        }
-      }
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
     }
-    maven { url ALIYUN_REPOSITORY_URL }
-    maven { url ALIYUN_JCENTER_URL }
-    maven { url ALIYUN_GOOGLE_URL }
-    maven { url ALIYUN_GRADLE_PLUGIN_URL }
-  }
-}
-$$
-</p>
-</article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/">Android 使用 am 命令启动一个活动组件</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
+</script>
 
-</div>
-
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://adityatelange.github.io/hugo-PaperMod/" accesskey="h" title="LuyangのBlog (Alt + H)">LuyangのBlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://adityatelange.github.io/hugo-PaperMod/fr/" title="French"
+                            aria-label=":fr:">🇫🇷</a>
+                    </li>
+                    <li>
+                        <a href="https://adityatelange.github.io/hugo-PaperMod/fa/" title="Fa"
+                            aria-label="Fa">Fa</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/search/" title="Search">
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/adityatelange/hugo-PaperMod/wiki/" title="WiKi">
+                    <span>WiKi</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </header>
-<h2 id="am-命令说明">am 命令说明</h2>
-<p><code>am start -n</code> 命令是 Android 调试桥（ADB）工具的一部分，用于在 Android 设备上启动一个活动。以下是该命令及其组成部分的详细解释：</p>
-<ul>
-<li><strong><code>am</code></strong>: 代表 <strong>Activity Manager（活动管理器）</strong>。它是一个命令行工具，可以用于在 Android 设备上执行各种与活动、服务和广播相关的操作。</li>
-<li><strong><code>start</code></strong>: 这个子命令用于启动一个活动。活动表示一个带有用户界面的单个屏幕，启动活动意味着打开一个特定的应用程序界面。</li>
-<li><strong><code>-n</code></strong>: 该选项指定你想要启动的活动的组件名称。组件名称由两部分组成：
-<ul>
-<li>应用程序的 <strong>包名</strong>（例如 <code>com.android.gallery3d</code>）。</li>
-<li>你想要启动的活动的 <strong>完整类名</strong>（例如 <code>.app.GalleryActivity</code>）。</li>
-</ul>
-</li>
-</ul>
-<p>组件名称的格式为 <code>package_name/.ActivityName</code>。</p>
-<h3 id="使用示例">使用示例</h3>
-<p>启动图库应用的主活动：</p>
-<p>
-$$
-adb shell am start -n com.android.gallery3d/.app.GalleryActivity
-$$
-</p>
-<ul>
-<li><strong><code>adb shell</code></strong>: 在设备上打开一个命令行界面。</li>
-<li><strong><code>am start -n</code></strong>: 启动指定的活动。</li>
-<li><strong><code>com.android.gallery3d/.app.GalleryActivity</code></strong>: 指定要启动的包名和活动。</li>
-</ul>
-<h3 id="其他选项">其他选项</h3>
-<ul>
-<li><strong><code>--display &lt;display_id&gt;</code></strong>: 如果设备有多个显示屏，可以指定使用哪个显示屏。</li>
-<li><strong><code>-d &lt;data_uri&gt;</code></strong>: 指定一个数据 URI（例如文件路径或网页链接），活动在启动时可以使用这个 URI。</li>
-<li><strong><code>-a &lt;action&gt;</code></strong>: 指定要执行的操作，例如 <code>android.intent.action.VIEW</code>。</li>
-</ul>
-<h3 id="实际示例">实际示例</h3>
-<p>如果你想在显示屏 3 上打开图库应用中的特定图片：</p>
-<p>
-$$
-adb shell am start -n com.android.gallery3d/.app.GalleryActivity --display 3
-$$
-</p>
-</article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/">Android10编译开启ccache</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://adityatelange.github.io/hugo-PaperMod/">Home</a></div>
+  <h1>
+    Posts
+    <a href="/hugo-PaperMod/post/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
 </header>
-<p>Android10的基线代码google已经将prebuilt的ccache移除,但是保留了相关功能选项</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843
-</span></span><span style="display:flex;"><span>Author: Dan Willemsen &lt;dwillemsen@google.com&gt;
-</span></span><span style="display:flex;"><span>Date:   Thu Apr 5 15:48:16 2018 -0700
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    Remove our binary of ccache
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    This version is rather old, and has many known bugs. The build system is
-</span></span><span style="display:flex;"><span>    no longer providing ccache, but preserving the option to use your own at
-</span></span><span style="display:flex;"><span>    your own risk.
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    Bug: 32748498
-</span></span><span style="display:flex;"><span>    Test: cs/ccache
-</span></span><span style="display:flex;"><span>    Change-Id: I894a11445127bf8cb3a7ac5a119c500f2c572fb9
-</span></span></code></pre></div><p>安卓10之前配置</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export USE_CCACHE<span style="color:#f92672">=</span>true
-</span></span><span style="display:flex;"><span>export CCACHE_DIR<span style="color:#f92672">=</span>$HOME/.cache
-</span></span><span style="display:flex;"><span>prebuilts/misc/linux-x86/ccache/ccache -M 10G
-</span></span></code></pre></div><p>安卓10+通过使用的HOST操作系统安装对应的ccache软件包</p>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">python2.7 环境及包管理
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>python2.7 环境及包管理 sudo apt install python2.7 curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py sudo python2.7 get-pip.py pip2 install simplejson </p>
+  </div>
+  <footer class="entry-footer"><span title='2023-02-03 12:00:00 +0800 CST'>February 3, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to python2.7 环境及包管理" href="https://adityatelange.github.io/hugo-PaperMod/post/python2/"></a>
 </article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/beyondcompare/">BeyondCompare</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<h2 id="window10-beyond-compare--bcompare-42422795-key">Window10 Beyond Compare  BCompare-4.2.4.22795 key</h2>
-<p>key</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>H1bJTd2SauPv5Garuaq0Ig43uqq5NJOEw94wxdZTpU-pFB9GmyPk677gJ
-</span></span><span style="display:flex;"><span>vC1Ro6sbAvKR4pVwtxdCfuoZDb6hJ5bVQKqlfihJfSYZt-xVrVU27+0Ja
-</span></span><span style="display:flex;"><span>hFbqTmYskatMTgPyjvv99CF2Te8ec+Ys2SPxyZAF0YwOCNOWmsyqN5y9t
-</span></span><span style="display:flex;"><span>q2Kw2pjoiDs5gIH-uw5U49JzOB6otS7kThBJE-H9A76u4uUvR8DKb+VcB
-</span></span><span style="display:flex;"><span>rWu5qSJGEnbsXNfJdq5L2D8QgRdV-sXHp2A-7j1X2n4WIISvU1V9koIyS
-</span></span><span style="display:flex;"><span>NisHFBTcWJS0sC5BTFwrtfLEE9lEwz2bxHQpWJiu12ZeKpi+7oUSqebX+
-</span></span></code></pre></div><p>如果运行Beyond Compare报错</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>This license key has been revoked
-</span></span><span style="display:flex;"><span>.....
-</span></span></code></pre></div><p><code>C:\Users\&lt;username&gt;\AppData\Roaming\Scooter Software\</code> 目录下的内容全部删除重新启动BeyondCompare即可。</p>
-<h2 id="fix-windows-右键菜单中没有beyond-compare选项">fix windows 右键菜单中没有beyond compare选项</h2>
-<p><a href="https://www.scootersoftware.com/support.php?zz=kb_shellex">Explorer Shell Extension</a></p>
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">vscode remote-ssh 免密登录配置
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>vscode remote-ssh 免密登录 环境声明 win10 vscode &#43; remote-ssh &#43; virtualbox (ubuntu 20.04)
+windows 配置 安装 vscode，remote-ssh 插件 生成 ssh key：ssh-keygen.exe -t rsa 然后一路回车 用户目录下会生成 id_rsa id_rsa.pub 两个文件 服务器 ubuntu 配置 安装 ssh server: sudo apt install openssh-server
+启动 ssh: sudo service sshd start
+此时 windows 就可以通过终端工具 ssh 登录服务器
+生成 ssh key：ssh-keygen.exe -t rsa 然后一路回车
+sudo vim /etc/ssh/sshd_config 取消注释 PubkeyAuthentication yes
+将 windows 生成的 id_rsa.pub 文件的内容加入服务器 ~/.ssh/authorized_keys 文件中，如果该文件不存在就创建一个
+sudo service sshd restart
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-02-03 12:00:00 +0800 CST'>February 3, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to vscode remote-ssh 免密登录配置" href="https://adityatelange.github.io/hugo-PaperMod/post/vscode_remote-ssh_%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE/"></a>
 </article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/cmake/">cmake</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<h2 id="子目录代码中如何关联-cmake-宏定义">子目录代码中如何关联 cmake 宏定义</h2>
-<p>CMakeLists.txt 增加如下内容：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>OPTION(<span style="color:#e6db74">MOCK_DATA</span> <span style="color:#e6db74">&#34;Hello World&#34;</span> <span style="color:#e6db74">OFF</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if (<span style="color:#e6db74">MOCK_DATA</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    add_definitions(<span style="color:#e6db74">-DMOCK_DATA_MICRO</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><p>同理子目录道理一样，通过判断 cmake 变量，来决定是否定义源码中的宏定义。</p>
-<p>此时在 cpp 源代码中可以通过如下形式使用宏定义：<code>MOCK_DATA_MICRO</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#ifdef MOCK_DATA_MICRO
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	hello_world();
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
-</span></span></span></code></pre></div><p>如果想使能 <code>MOCK_DATA_MICRO</code> 宏定义则需要在 cmake 编译是指定参数:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cmake -DMOCK_DATA<span style="color:#f92672">=</span>ON ../; make -j8
-</span></span></code></pre></div><h2 id="cmake-中-ifnot-xxx-和-ifnot-defined-xxx-的区别">cmake 中 if(NOT XXX) 和 if(NOT DEFINED XXX) 的区别</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>OPTION(<span style="color:#e6db74">MOCK_DATA</span> <span style="color:#e6db74">&#34;Hello World&#34;</span> <span style="color:#e6db74">OFF</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if (<span style="color:#e6db74">MOCK_DATA</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    add_definitions(<span style="color:#e6db74">-DMOCK_DATA_MICRO</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if(<span style="color:#e6db74">NOT</span> <span style="color:#e6db74">DEFINED</span> <span style="color:#e6db74">MOCK_DATA</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>	message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;MOCK_DATA ---&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">else
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>	message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;MOCK_DATA +++&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">endif
-</span></span></span></code></pre></div><p>尽管我编译时 cmake 命令行没有指定 -DMOCK_DATA=ON 选项，仍然打印的是 <code>MOCK_DATA +++</code></p>
-<p>总结：虽然命令行没有指定对应选项，但是 CMakeLists.txt 文件中声明了 <code>OPTION(MOCK_DATA &quot;Hello World&quot; OFF)</code> 则 MOCK_DATA 就是 DEFINED 只不过值为 OFF。</p>
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">交叉编译 glibc-2.35
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>//localhost:1313/
+交叉编译 glibc-2.35 glibc-2.35 更新需要同步用新版本的交叉编译器，这里直接在 Linaro 官网下载了最新的 gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf
+export PATH=&#34;/code/gcc-linaro-7.5.0-2019.12-x86_64_armlinux-gnueabihf/bin&#34;:$PATH export CROSS_COMPILE=arm-linux-gnueabihf- mkdir build_out; cd build_out ../configure --prefix=/code/glibc-2.35/build_out \ --host=arm-linux-gnueabihf make make install </p>
+  </div>
+  <footer class="entry-footer"><span title='2023-02-03 12:00:00 +0800 CST'>February 3, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to 交叉编译 glibc-2.35" href="https://adityatelange.github.io/hugo-PaperMod/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2/"></a>
 </article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/crystal/">crystal</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<p>Crystal Oscillator 晶体振荡器</p>
-<h1 id="无源晶振">无源晶振</h1>
-<ul>
-<li>晶振本身并不能起振，需要借助外部振荡电路。因此在实际电路中需要IC上电正常后晶振才能起振。
-此时才能测量出晶振波形。</li>
-</ul>
-<h2 id="常见晶振频率">常见晶振频率</h2>
-<p>晶振常用的频率为 4MHz ~ 50MHz</p>
-<ul>
-<li>网络PHY常见 25MHz</li>
-<li>GMSL SERDES常见 25MHz</li>
-<li>电子钟表常见 32.768MHz</li>
-</ul>
-<h2 id="常见无源晶振pin脚定义">常见无源晶振pin脚定义</h2>
-<p>无源晶振的频率pin脚不分正负极</p>
-<ul>
-<li>两pin脚无源晶振：一个pin脚为频率输出pin脚，另外一个pin脚是频率输入pin脚。即使反过来，晶振依旧正常工作。</li>
-<li>三pin脚晶振：两侧引脚为频率输出pin脚与频率输入pin脚，中间引脚接地。除了注意让这个接地pin脚去接地(GND)，两侧引脚的用法与两脚晶振无异。</li>
-<li>四脚贴片无源晶振：pin 1和pin 3为频率输入引脚及频率输出引脚，其余两个pin脚均为接地引脚，即使把它旋转180度，也只是pin 1和pin 3互换位置，即输入pin脚变成了输出pin脚，而输出pin脚则变成输入pin脚，晶振依旧可以正常工作，不会导致任何性能及功能差异。</li>
-</ul>
-<h2 id="无源晶振两边加谐振电容">无源晶振两边加谐振电容</h2>
-<p>无源晶振的标称频率指在测试时有一个“负载电容”的条件—在晶振工作时满足这个条件，
-振荡频率才可能与频率标称值一致（只有在合适的外接电容值满足无源晶振的起振要求时，晶振才能正常工作）。</p>
-<p>无源晶振的实际输出频率并不是完全固定的，而是可以在一定范围内微调，起微调作用的就是这两个外接电容。</p>
-<p><strong>切记: 谐振电容一定要按照芯片参考设计来，搞错了不起振，爱因斯坦可不负责, 高尔基血的教训</strong></p>
-<h2 id="awr2243-40mhz-晶振起振后波形">AWR2243 40MHz 晶振起振后波形</h2>
-<p><img src="AWR2243ABIGABLQ1_crystal_circuit.png" alt=""></p>
-<p><img src="AWR2243ABIGABLQ1_crystal_%E7%A4%BA%E6%B3%A2%E5%99%A8%E6%B3%A2%E5%BD%A2.jpg" alt=""></p>
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">交叉编译 libxml2-2.9.10
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>交叉编译 libxml2-2.9.10 依赖 zlib 源码编译出来的目标文件，请先参考如何交叉编译 zlib 完成之后再来编译。
+export PATH=&#34;&lt;path-to-gcc-linaro-5.3-2016.02-x86_64_arm-linuxgnueabihf&gt;/bin&#34;:$PATH export CROSS_COMPILE=arm-linux-gnueabihf mkdir build_out ./configure --prefix=/code/libxml2-2.9.10/build_out \ --disable-static \ --with-python=no \ --host=arm-linux-gnueabihf \ --with-zlib=/code/zlib-1.2.12/build_out make make install </p>
+  </div>
+  <footer class="entry-footer"><span title='2023-02-03 12:00:00 +0800 CST'>February 3, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to 交叉编译 libxml2-2.9.10" href="https://adityatelange.github.io/hugo-PaperMod/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-libxml2-2/"></a>
 </article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/debian4/">Debian 4.9 Config Static Ip.md</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<blockquote>
-<p>Linux debian 4.9.0-6-amd64 #1 SMP Debian 4.9.82-1+deb9u3 (2018-03-02) x86_64</p></blockquote>
-<p>kk@debian:~$ <code>cat /etc/network/interfaces</code></p>
-<p>
-$$
-# This file describes the network interfaces available on your system
-# and how to activate them. For more information, see interfaces(5).
-
-source /etc/network/interfaces.d/*
-
-# The loopback network interface
-auto lo
-iface lo inet loopback
-$$
-</p>
-<p>修改后</p>
-<p>
-$$
-# This file describes the network interfaces available on your system
-# and how to activate them. For more information, see interfaces(5).
-
-source /etc/network/interfaces.d/*
-
-# The loopback network interface
-auto lo enp0s3
-iface lo inet loopback
-
-iface enp0s3 inet static
-        address 192.168.20.103
-        netmask 255.255.255.0
-        gateway 192.168.20.1
-dns-nameservers 114.114.114.114
-$$
-</p>
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">交叉编译 Python-2.7.16
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>交叉编译 Python-2.7.16 需要在代码的根路径新建一个 config.sit，内容参考如下： --enable-shared﻿ 生成动态链接库
+export PATH=&#34;&lt;path-to-gcc-linaro-5.3-2016.02-x86_64_arm-linuxgnueabihf&gt;/bin&#34;:$PATH export CROSS_COMPILE=arm-linux-gnueabihf export CONFIG_SITE=./config.site # config.site 文件内容如下： cat config.site ac_cv_file__dev_ptmx=no ac_cv_file__dev_ptc=no ./configure --prefix=/code/Python-2.7.16/build_out \ --host=arm-linux-gnueabihf \ --build=x86_64 \ --disable-ipv6 \ --enable-shared make make install </p>
+  </div>
+  <footer class="entry-footer"><span title='2023-02-03 12:00:00 +0800 CST'>February 3, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to 交叉编译 Python-2.7.16" href="https://adityatelange.github.io/hugo-PaperMod/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2/"></a>
 </article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/dokuwiki/">dokuwiki</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<p>关于 Dokuwiki 详细信息, 请访问<a href="https://www.dokuwiki.org/">官网</a>.</p>
-<h2 id="安装配置">安装配置</h2>
-<blockquote>
-<p>本教程基于 ubuntu 17.10 x64</p></blockquote>
-<h3 id="参考">参考</h3>
-<ul>
-<li><a href="https://www.dokuwiki.org/zh:install">DokuWiki Installation</a></li>
-</ul>
-<h3 id="安装-apache-php">安装 apache php</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt-get install apache2
-</span></span><span style="display:flex;"><span>apt-get install php7.1 libapache2-mod-php7.1 php7.1-xml
-</span></span></code></pre></div><h3 id="配置-apache-php">配置 apache php</h3>
-<ol>
-<li>修改文件 <code>apache2/sites-available/000-default.conf</code>
-配置 <code>apache2 document root</code> 为 dokuwiki 根目录</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span><span style="color:#f92672">- DocumentRoot /var/www/html
-</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+ DocumentRoot /var/www/wikihub
-</span></span></span></code></pre></div><ol start="2">
-<li>修改文件 <code>/etc/apache2/apache2.conf</code> 配置 apache security</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>&lt;Directory /&gt;
-</span></span><span style="display:flex;"><span>        Options FollowSymLinks
-</span></span><span style="display:flex;"><span><span style="color:#f92672">-       AllowOverride none
-</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+       AllowOverride All
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span>        Require all denied
-</span></span><span style="display:flex;"><span>&lt;/Directory&gt;
-</span></span><span style="display:flex;"><span>&lt;Directory /usr/share&gt;
-</span></span><span style="display:flex;"><span>        AllowOverride None
-</span></span><span style="display:flex;"><span>        Require all granted
-</span></span><span style="display:flex;"><span>&lt;/Directory&gt;
-</span></span><span style="display:flex;"><span>&lt;Directory /var/www/&gt;
-</span></span><span style="display:flex;"><span>        Options Indexes FollowSymLinks
-</span></span><span style="display:flex;"><span><span style="color:#f92672">-       AllowOverride none
-</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+       AllowOverride All
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span>        Require all granted
-</span></span><span style="display:flex;"><span>&lt;/Directory&gt;
-</span></span></code></pre></div><ol start="3">
-<li>Activate the &lsquo;mod_rewrite&rsquo; in apache2 to enable .htaccess</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo a2enmod rewrite <span style="color:#f92672">&amp;&amp;</span> sudo service apache2 restart
-</span></span></code></pre></div><h3 id="安装-dokuwiki">安装 dokuwiki</h3>
-<p>从 dokuwiki <a href="https://download.dokuwiki.org/">官方下载页面</a> 下载最新版的安装包.</p>
-</article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/flutter/">Flutter</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<h1 id="flutter-学习笔记">Flutter 学习笔记</h1>
-<h2 id="windows-flutter-sdk-安装">Windows Flutter SDK 安装</h2>
-<p>Download the Flutter archive from your mirror site. In your preferred browser, go to Flutter SDK archive.
-<a href="https://docs.flutter.cn/release/archive?tab=windows">https://docs.flutter.cn/release/archive?tab=windows</a></p>
-<p>20240726 当前最新版本：
-Flutter 版本： 3.22.3
-Dart 版本：3.4.4
-<a href="https://storage.flutter-io.cn/flutter_infra_release/releases/stable/windows/flutter_windows_3.22.3-stable.zip">https://storage.flutter-io.cn/flutter_infra_release/releases/stable/windows/flutter_windows_3.22.3-stable.zip</a></p>
-<p>将 flutter_windows_3.22.3-stable.zip sdk 解压到任意位置(根据个人喜好放置)</p>
-<p><code>&lt;path-to-flutter_windows_3.22.3-stable&gt;\flutter</code></p>
-<p>添加环境变量：</p>
-<p><code>&lt;path-to-flutter_windows_3.22.3-stable&gt;\flutter\bin</code> 添加到环境变量 PATH</p>
-<h3 id="验证安装是否成功">验证安装是否成功</h3>
-<p>重新打开一个新的 Powershell 终端执行：<code>flutter doctor</code>
-出现如下界面，说明SDK 安装成功</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\m</span>ax_h&gt; flutter doctor
-</span></span><span style="display:flex;"><span>Doctor summary <span style="color:#f92672">(</span>to see all details, run flutter doctor -v<span style="color:#f92672">)</span>:
-</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>√<span style="color:#f92672">]</span> Flutter <span style="color:#f92672">(</span>Channel stable, 3.22.3, on Microsoft Windows <span style="color:#f92672">[</span>版本 10.0.22631.3880<span style="color:#f92672">]</span>, locale zh-CN<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>√<span style="color:#f92672">]</span> Windows Version <span style="color:#f92672">(</span>Installed version of Windows is version <span style="color:#ae81ff">10</span> or higher<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>√<span style="color:#f92672">]</span> Android toolchain - develop <span style="color:#66d9ef">for</span> Android devices <span style="color:#f92672">(</span>Android SDK version 34.0.0<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>√<span style="color:#f92672">]</span> Chrome - develop <span style="color:#66d9ef">for</span> the web
-</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>√<span style="color:#f92672">]</span> Visual Studio - develop Windows apps <span style="color:#f92672">(</span>Visual Studio Community <span style="color:#ae81ff">2022</span> 17.9.6<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>√<span style="color:#f92672">]</span> Android Studio <span style="color:#f92672">(</span>version 2024.1<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>√<span style="color:#f92672">]</span> VS Code <span style="color:#f92672">(</span>version 1.87.2<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>√<span style="color:#f92672">]</span> Connected device <span style="color:#f92672">(</span><span style="color:#ae81ff">3</span> available<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>√<span style="color:#f92672">]</span> Network resources
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>• No issues found!
-</span></span></code></pre></div><h3 id="配置国内镜像源">配置国内镜像源</h3>
-<p>Tsinghua University TUNA Association maintains the mirrors.tuna.tsinghua.edu.cn mirror. It includes the Flutter SDK and pub packages.</p>
-</article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/">git clone 包含 submodule 的仓库</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<ol>
-<li>使用 git clone 命令来克隆主仓库：</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone &lt;主仓库 URL&gt;
-</span></span></code></pre></div><ol start="2">
-<li>进入主仓库所在的根目录，并使用 <code>git submodule init</code> 命令来初始化 submodule：</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd &lt;主仓库目录&gt;
-</span></span><span style="display:flex;"><span>git submodule init
-</span></span></code></pre></div><ol start="3">
-<li>使用 <code>git submodule update</code> 命令来更新 submodule 中的内容：</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git submodule update
-</span></span></code></pre></div><p>这个命令会从 submodule 的远程仓库中拉取代码，并将其合并到本地代码中。</p>
-</article>
-
-<nav class="pager">
-<a href="/post/page/3/" rel="prev" class="pager__item pager__item--prev"><span aria-hidden="true">« </span>Previous</a>
-<a href="/post/page/5/" rel="next" class="pager__item pager__item--next">Next<span aria-hidden="true"> »</span></a>
-</nav>
-
-</main>
-
-
-<aside class="sidebar layout__second-sidebar">
-<nav class="menu">
-<p class="title"><strong><a href="/post/" aria-current="page">Post</a></strong></p>
-<ul>
-<li><a href="/post/perror_func/">perror</a></li>
-<li><a href="/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/">Windows WSL ubuntu adb 配置</a></li>
-<li><a href="/post/ubuntu_2004_%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/">ubuntu 20.04 升级内核</a></li>
-<li><a href="/post/svn/">ubuntu 搭建 svn 服务器</a></li>
-<li><a href="/post/windows-terminal-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-oh-my-posh/">Windows terminal 安装配置 oh-my-posh</a></li>
-<li><a href="/post/openssl/">openssl 创建自签名证书,对 Windows Catalog 进行签名</a></li>
-<li><a href="/post/docker-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">docker 环境搭建</a></li>
-<li><a href="/post/gerrit/">gerrit 环境搭建</a></li>
-<li><a href="/post/vcpkg_windows/">windows vcpkg</a></li>
-<li><a href="/post/linux_date_cmd/">Linux date 命令用法</a></li>
-<li><a href="/post/windows10_wsl/">windows10 WSL setup</a></li>
-<li><a href="/post/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/">黑芝麻平台交叉编译 openssl</a></li>
-<li><a href="/post/i2c_cmd/">I2C command</a></li>
-<li><a href="/post/ddr-%E5%8E%8B%E6%B5%8B%E5%91%BD%E4%BB%A4/">DDR 压测命令</a></li>
-<li><a href="/post/e2fsprogs-1/">e2fsprogs-1.42.8 源码编译安装</a></li>
-<li><a href="/post/python2/">python2.7 环境及包管理</a></li>
-<li><a href="/post/vscode_remote-ssh_%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE/">vscode remote-ssh 免密登录配置</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2/">交叉编译 glibc-2.35</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-libxml2-2/">交叉编译 libxml2-2.9.10</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2/">交叉编译 Python-2.7.16</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-tcpdump-4/">交叉编译 tcpdump-4.99.1</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-zlib-1/">交叉编译 zlib-1.2.12</a></li>
-<li><a href="/post/dmesg_support_iso_timestamp/">dmesg use CST timestamp</a></li>
-<li><a href="/post/gmsl2_csi2_clk/">GMSL2 CSI-2 clock</a></li>
-<li><a href="/post/hobotbuildenv/">Hobot 编译环境</a></li>
-<li><a href="/post/ros/">ROS</a></li>
-<li><a href="/post/%E8%80%81%E9%BB%91%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83/">老黑编译环境</a></li>
-<li><a href="/post/stock/">akshare 学习笔记</a></li>
-<li><a href="/post/adi_gmsl2_serdes_spi/">ADI GMSL2 SERDES SPI</a></li>
-<li><a href="/post/androidjava-/">Android Java 1.7 环境配置</a></li>
-<li><a href="/post/androidstudioenv/">Android Studio Env</a></li>
-<li><a href="/post/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/">Android 使用 am 命令启动一个活动组件</a></li>
-<li><a href="/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/">Android10编译开启ccache</a></li>
-<li><a href="/post/beyondcompare/">BeyondCompare</a></li>
-<li><a href="/post/cmake/">cmake</a></li>
-<li><a href="/post/crystal/">crystal</a></li>
-<li><a href="/post/debian4/">Debian 4.9 Config Static Ip.md</a></li>
-<li><a href="/post/dokuwiki/">dokuwiki</a></li>
-<li><a href="/post/flutter/">Flutter</a></li>
-<li><a href="/post/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/">git clone 包含 submodule 的仓库</a></li>
-<li><a href="/post/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/">git 使用指定的 ssh key</a></li>
-<li><a href="/post/gitbook/">gitbook</a></li>
-<li><a href="/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/">GMSL SERDES 笔记</a></li>
-<li><a href="/post/harmony-hpm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/">Harmony HPM 包管理器</a></li>
-<li><a href="/post/hugo/">hugo</a></li>
-<li><a href="/post/iperf-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD/">iperf 测试网络带宽</a></li>
-<li><a href="/post/linux_test_disk_i_o_with_dd/">Linux Test Disk with dd command</a></li>
-<li><a href="/post/manjaro/">manjaro</a></li>
-<li><a href="/post/opengrok/">opengrok</a></li>
-<li><a href="/post/openharmony-%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91/">OpenHarmony 代码下载编译</a></li>
-<li><a href="/post/repo/">repo</a></li>
-<li><a href="/post/samba/">samba</a></li>
-<li><a href="/post/sourceinsight/">Source Insight</a></li>
-<li><a href="/post/ubuntu_200406_install_tp_link_ac1300_usb_wifi_adaptor_driver/">ubuntu 20.04.6 install tp link a1300 usb wifi adaptor driver</a></li>
-<li><a href="/post/ubuntu_git_server_build_push_code/">Ubuntu git 仓库搭建及代码上传</a></li>
-<li><a href="/post/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/">Virtualbox Opensuse 无网络图标 无法上网</a></li>
-<li><a href="/post/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/">vscode 阅读 Linux 内核代码配置</a></li>
-<li><a href="/post/wifiadb/">Wifi Adb</a></li>
-<li><a href="/post/windows/">windows</a></li>
-<li><a href="/post/windows_remote_desktop/">Windows Remote Desktop</a></li>
-<li><a href="/post/windows_vcpkg_boost/">windows vcpkg boost 开发环境</a></li>
-<li><a href="/post/windowsvscodeplantuml%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Windows Vscode Plantuml 环境搭建</a></li>
-<li><a href="/post/windows_wsl_%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/">windows WSL 端口映射</a></li>
-<li><a href="/post/word/">word</a></li>
-<li><a href="/post/usbipd/">wsl 使用 usbipd 访问 USB 设备</a></li>
-<li><a href="/post/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/">一文搞懂应用开发所需 Linux 系统时间的相关知识点</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE/">交叉编译工具链</a></li>
-<li><a href="/post/awr2243_adc/">关于雷达 AWR2243 ADC OVER CSI HSI</a></li>
-<li><a href="/post/how_to_handle_gpio_interrupt_like_handling_in_linux_userspace/">如何在 Linux 用户空间中进行类似 GPIO 中断的处理</a></li>
-<li><a href="/post/camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi/">摄像头图像数据格式从cmos到mipi</a></li>
-<li><a href="/post/about/">Lu Yang</a></li>
-</ul>
-</nav>
-<nav class="menu">
-<p class="title"><strong><a href="/archives/"></a></strong></p>
-<ul>
-</ul>
-</nav>
-</aside>
-<footer class="footer layout__footer mt--l">
-<p>Follow post: <a rel="alternate" type="application/rss&#43;xml" href="https://example.org/post/index.xml">rss</a> | <a rel="alternate" type="application/json" href="https://example.org/post/index.json">json</a></p>
-<p><span>© Hugo Zen theme</span></p>
-
-<p>Powered by <a href="https://gohugo.io/">Hugo</a> and the <a href="https://github.com/frjo/hugo-theme-zen">Zen theme</a>.</p>
-
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://adityatelange.github.io/hugo-PaperMod/post/page/3/">
+      «&nbsp;Prev&nbsp;3/15
+    </a>
+    <a class="next" href="https://adityatelange.github.io/hugo-PaperMod/post/page/5/">Next&nbsp;5/15&nbsp;»
+    </a>
+  </nav>
 </footer>
+    </main>
+    
+<footer class="footer">
+        <span>© <a href="https://github.com/adityatelange/hugo-PaperMod/graphs/contributors">PaperMod Contributors</a></span> · 
 
-</div>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
 </body>
+
 </html>

@@ -1,581 +1,346 @@
 <!DOCTYPE html>
-<html class="nojs" lang="en-GB" dir="ltr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<title>Post – Hugo Zen theme</title>
-<link rel="alternate" type="application/rss+xml" title="rss" href="https://example.org/post/index.xml">
-<link rel="alternate" type="application/json" title="json" href="https://example.org/post/index.json">
+<html lang="en" dir="auto">
 
-<meta name="created" content="2024-01-01T20:19:08+0800">
-<meta name="modified" content="2024-01-01T20:19:08+0800">
-<meta name="author" content="Your Name">
-<meta name="contact" content="info@example.org">
-<meta property="og:site_name" content="Hugo Zen theme">
-<meta property="og:title" content="Post">
-<meta property="og:url" content="https://example.org/post/">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://example.org/apple-touch-icon.png">
-<meta name="generator" content="Hugo 0.146.6">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="theme-color" content="#ffffff">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Posts | LuyangのBlog</title>
+<meta name="keywords" content="">
+<meta name="description" content="Posts - LuyangのBlog">
+<meta name="author" content="Theme PaperMod">
+<link rel="canonical" href="https://adityatelange.github.io/hugo-PaperMod/post/">
+<link crossorigin="anonymous" href="/hugo-PaperMod/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://adityatelange.github.io/hugo-PaperMod/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://adityatelange.github.io/hugo-PaperMod/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://adityatelange.github.io/hugo-PaperMod/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://adityatelange.github.io/hugo-PaperMod/apple-touch-icon.png">
+<link rel="mask-icon" href="https://adityatelange.github.io/hugo-PaperMod/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://adityatelange.github.io/hugo-PaperMod/post/index.xml">
+<link rel="alternate" hreflang="en" href="https://adityatelange.github.io/hugo-PaperMod/post/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
-<link rel="canonical" href="https://example.org/post/">
+            .list {
+                background: var(--theme);
+            }
 
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-<link rel="stylesheet" href="/css/styles.2fa1df15b347581e582e5e8899cf40bdf7908f76e104ed06eeba4c6443012e8c.css">
-<link rel="stylesheet" href="/css/mobilemenu.dbbf7de443967fe1d83dce47fb19895d79710b23ccd02b84f54d4d39c37e3d2d.css" media="screen">
-<link rel="stylesheet" href="/css/print.1912ba13950e7434fb50dd14d3951bc7f57bb0c16b4f204158b72f0b3844f7a1.css" media="print">
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://adityatelange.github.io/hugo-PaperMod/post/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="Posts">
+  <meta property="og:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png">
+<meta name="twitter:title" content="Posts">
+<meta name="twitter:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
+
 
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "url" : "https://example.org/post/",
-    "name": "Post",
-    "description": "The zen theme for Hugo example site.",
-    "image" : "https://example.org/apple-touch-icon.png",
-    "author": {
-      "@type": "Person",
-      "name": "Your Name"
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://example.org/"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Hugo Zen theme",
-      "logo" : {
-        "@type": "ImageObject",
-        "url": "https://example.org/apple-touch-icon.png"
-      },
-      "url": "https://example.org/"
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://adityatelange.github.io/hugo-PaperMod/post/"
     }
-  }
+  ]
+}
 </script>
-
-<script src="/js/script-early.2d6255816e36e34bd1948dc5c26ede35687a256c4e2e516e0cd75f383a510c6a.js"></script>
-
-<script defer src="/js/mobilemenu.7ce1f75fd1d49cd683a008352ad9001f800349629be01d531a19c02b5a84817b.js"></script>
-<script defer src="/js/script.f2979a93a325fecf9605263bd141398a311c8e23388ed7dcff74f92f7e632866.js"></script>
-
-
-
-
-
-
 </head>
 
-<body class="list-page">
-<div class="page layout__page layout__sidebar-second">
-<header class="header layout__header">
-<a href="/" title="Home" rel="home" class="header__logo">
-<img src="/images/logo.png" width="64" alt="Home" class="header__logo-image">
-</a>
-<h1 class="header__site-name">
-<a href="/" title="Home" class="header__site-link" rel="home"><span>Hugo Zen theme</span></a>
-</h1>
-<div class="region header__region">
-</div>
-</header>
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
-<nav class="main-menu mx--xs layout__navigation" aria-label="Main menu">
-<ul class="flex-inline mx--0">
-<li><a href="/"><span>Home</span></a></li>
-<li><a href="/"><span>Documentation</span></a></li>
-<li><a href="/"><span>About</span></a></li>
-<li><a href="/"><span>Contact</span></a></li>
-<li><a href="/"><span>Search</span></a></li>
-</ul>
-</nav>
-<div class="mobile-nav" dir="ltr" hidden>
-  <div class="mobile-nav__cover"></div>
-  <button class="mobile-nav__toggle" aria-expanded="false" aria-controls="sheet">
-    Menu
-    <svg class="mobile-nav__hamburger" viewBox="0 0 100 100" focusable="false" aria-hidden="true">
-      <rect width="80" height="12" x="10" y="20" rx="5"></rect>
-      <rect width="80" height="12" x="10" y="45" rx="5"></rect>
-      <rect width="80" height="12" x="10" y="70" rx="5"></rect>
-    </svg>
-  </button>
-  <div class="mobile-nav__sheet link-inverted link-nav" id="sheet" aria-hidden="true">
-    <div class="mobile-nav__region"></div>
-    <nav class="mobile-nav__main-menu" aria-label="Main menu">
-    <ul class="mobile-nav__navbar">
-    <li><a href="/"><span>Home</span></a></li>
-    <li><a href="/"><span>Documentation</span></a></li>
-    <li><a href="/"><span>About</span></a></li>
-    <li><a href="/"><span>Contact</span></a></li>
-    <li><a href="/"><span>Search</span></a></li>
-    </ul>
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://adityatelange.github.io/hugo-PaperMod/" accesskey="h" title="LuyangのBlog (Alt + H)">LuyangのBlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://adityatelange.github.io/hugo-PaperMod/fr/" title="French"
+                            aria-label=":fr:">🇫🇷</a>
+                    </li>
+                    <li>
+                        <a href="https://adityatelange.github.io/hugo-PaperMod/fa/" title="Fa"
+                            aria-label="Fa">Fa</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/search/" title="Search">
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/adityatelange/hugo-PaperMod/wiki/" title="WiKi">
+                    <span>WiKi</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
     </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://adityatelange.github.io/hugo-PaperMod/">Home</a></div>
+  <h1>
+    Posts
+    <a href="/hugo-PaperMod/post/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Android Studio Env
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>工具 AndroidStudio 信息 Android Studio 默认设置
+SDK Folder: “%APPDATA%\Local\Android\Sdk” JDK Folder: “C:\Program Files\Android\Android Studio\jre” 问题解决 安装完Android Studio首次启动报错 Unable to access Android SDK add-on list 选择cancel
+gradle 下载环境配置 For Windows
+C:\Users\luyang\.gradle\init.gradle 如果没有该文件就自己新建一个，内容如下
+allprojects{ repositories { def ALIYUN_REPOSITORY_URL = &#39;https://maven.aliyun.com/repository/public/&#39; def ALIYUN_JCENTER_URL = &#39;https://maven.aliyun.com/repository/jcenter/&#39; def ALIYUN_GOOGLE_URL = &#39;https://maven.aliyun.com/repository/google/&#39; def ALIYUN_GRADLE_PLUGIN_URL = &#39;https://maven.aliyun.com/repository/gradle-plugin/&#39; all { ArtifactRepository repo -&gt; if(repo instanceof MavenArtifactRepository){ def url = repo.url.toString() if (url.startsWith(&#39;https://repo1.maven.org/maven2/&#39;)) { project.logger.lifecycle &#34;Repository ${repo.url} replaced by $ALIYUN_REPOSITORY_URL.&#34; remove repo } if (url.startsWith(&#39;https://jcenter.bintray.com/&#39;)) { project.logger.lifecycle &#34;Repository ${repo.url} replaced by $ALIYUN_JCENTER_URL.&#34; remove repo } if (url.startsWith(&#39;https://dl.google.com/dl/android/maven2/&#39;)) { project.logger.lifecycle &#34;Repository ${repo.url} replaced by $ALIYUN_GOOGLE_URL.&#34; remove repo } if (url.startsWith(&#39;https://plugins.gradle.org/m2/&#39;)) { project.logger.lifecycle &#34;Repository ${repo.url} replaced by $ALIYUN_GRADLE_PLUGIN_URL.&#34; remove repo } } } maven { url ALIYUN_REPOSITORY_URL } maven { url ALIYUN_JCENTER_URL } maven { url ALIYUN_GOOGLE_URL } maven { url ALIYUN_GRADLE_PLUGIN_URL } } } ubuntu android studio system entry Android Studio -&gt; Tools -&gt; Create Desktop Entry
+...</p>
   </div>
-</div>
-<main class="main layout__main">
-<header>
-<h1 class="title">Post</h1>
-</header>
-
-
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/windows_vcpkg_boost/">windows vcpkg boost 开发环境</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<h2 id="前置条件">前置条件</h2>
-<ol>
-<li>install vcpkg</li>
-<li>vcpkg install boost-system:x64-windows boost-filesystem:x64-windows</li>
-</ol>
-<h2 id="cmake-boost-配置">cmake boost 配置</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">if</span> <span style="color:#960050;background-color:#1e0010">(WIN32)</span>  
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查找 Boost 库  
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">find_package(Boost</span> <span style="color:#960050;background-color:#1e0010">COMPONENTS</span> <span style="color:#960050;background-color:#1e0010">filesystem</span> <span style="color:#960050;background-color:#1e0010">system</span> <span style="color:#960050;background-color:#1e0010">REQUIRED)</span>  
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">if</span> <span style="color:#960050;background-color:#1e0010">(Boost_FOUND)</span>  
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">include_directories(${Boost_INCLUDE_DIRS})</span>  
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">link_directories(${Boost_LIBRARY_DIRS})</span>  
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">endif</span> <span style="color:#960050;background-color:#1e0010">()</span>  
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">endif</span> <span style="color:#960050;background-color:#1e0010">(WIN32)</span>
-</span></span></code></pre></div><p>编译报错</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">====================[</span> Build | radar_data_local_storage | Release-Visual Studio <span style="color:#f92672">]====</span>
-</span></span><span style="display:flex;"><span>......
-</span></span><span style="display:flex;"><span>CMake Error at C:/Program Files/JetBrains/CLion 2023.1.4/bin/cmake/win/x64/share/cmake-3.25/Modules/FindPackageHandleStandardArgs.cmake:230 <span style="color:#f92672">(</span>message<span style="color:#f92672">)</span>:
-</span></span><span style="display:flex;"><span>  Could NOT find Boost <span style="color:#f92672">(</span>missing: Boost_INCLUDE_DIR filesystem system<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>Call Stack <span style="color:#f92672">(</span>most recent call first<span style="color:#f92672">)</span>:
-</span></span><span style="display:flex;"><span>  C:/Program Files/JetBrains/CLion 2023.1.4/bin/cmake/win/x64/share/cmake-3.25/Modules/FindPackageHandleStandardArgs.cmake:600 <span style="color:#f92672">(</span>_FPHSA_FAILURE_MESSAGE<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>  C:/Program Files/JetBrains/CLion 2023.1.4/bin/cmake/win/x64/share/cmake-3.25/Modules/FindBoost.cmake:2377 <span style="color:#f92672">(</span>find_package_handle_standard_args<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>  C:/Users/luyang/.clion-vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake:855 <span style="color:#f92672">(</span>_find_package<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>  TestDemo/CMakeLists.txt:8 <span style="color:#f92672">(</span>find_package<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>CMake Configure step failed.  Build files cannot be regenerated correctly.
-</span></span><span style="display:flex;"><span>-- Configuring incomplete, errors occurred!
-</span></span><span style="display:flex;"><span>See also <span style="color:#e6db74">&#34;C:/Users/luyang/Documents/TestDemo/cmake-build-release-visual-studio/CMakeFiles/CMakeOutput.log&#34;</span>.
-</span></span></code></pre></div><p>增加 ：<code>set(Boost_INCLUDE_DIR ${_VCPKG_INSTALLED_DIR}/x64-windows/include)</code></p>
+  <footer class="entry-footer"><span title='1970-01-01 00:00:00 +0800 CST'>January 1, 1970</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to Android Studio Env" href="https://adityatelange.github.io/hugo-PaperMod/post/androidstudioenv/"></a>
 </article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/windowsvscodeplantuml%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Windows Vscode Plantuml 环境搭建</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<ul>
-<li>
-<p><a href="https://code.visualstudio.com/">下载</a>安装vscode</p>
-</li>
-<li>
-<p><a href="https://www.java.com/zh_CN/download/windows_offline.jsp">下载</a>安装java，不然无法预览plantuml</p>
-<ul>
-<li>下载安装该java安装包后没有设置相关java环境变量就可以预览plantuml了。</li>
-</ul>
-</li>
-<li>
-<p><a href="https://www2.graphviz.org/Packages/stable/windows/10/msbuild/Release/Win32/">下载</a>安装graphivz，不然预览类图报错如下：</p>
-</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Dot Executable:null
-</span></span><span style="display:flex;"><span>No dot executable found
-</span></span><span style="display:flex;"><span>Cannot find Graphivz. You should try
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>@startuml
-</span></span><span style="display:flex;"><span>testdot
-</span></span><span style="display:flex;"><span>@enduml
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>or
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>java -jar plantuml.jar -testdot
-</span></span></code></pre></div><ul>
-<li>vscode插件列表（plantuml相关）
-<ul>
-<li>Graphviz Preview by EFanZh</li>
-<li>PlantUML by jebbs</li>
-</ul>
-</li>
-</ul>
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Android 使用 am 命令启动一个活动组件
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>am 命令说明 am start -n 命令是 Android 调试桥（ADB）工具的一部分，用于在 Android 设备上启动一个活动。以下是该命令及其组成部分的详细解释：
+am: 代表 Activity Manager（活动管理器）。它是一个命令行工具，可以用于在 Android 设备上执行各种与活动、服务和广播相关的操作。 start: 这个子命令用于启动一个活动。活动表示一个带有用户界面的单个屏幕，启动活动意味着打开一个特定的应用程序界面。 -n: 该选项指定你想要启动的活动的组件名称。组件名称由两部分组成： 应用程序的 包名（例如 com.android.gallery3d）。 你想要启动的活动的 完整类名（例如 .app.GalleryActivity）。 组件名称的格式为 package_name/.ActivityName。
+使用示例 启动图库应用的主活动：
+adb shell am start -n com.android.gallery3d/.app.GalleryActivity adb shell: 在设备上打开一个命令行界面。 am start -n: 启动指定的活动。 com.android.gallery3d/.app.GalleryActivity: 指定要启动的包名和活动。 其他选项 --display &lt;display_id&gt;: 如果设备有多个显示屏，可以指定使用哪个显示屏。 -d &lt;data_uri&gt;: 指定一个数据 URI（例如文件路径或网页链接），活动在启动时可以使用这个 URI。 -a &lt;action&gt;: 指定要执行的操作，例如 android.intent.action.VIEW。 实际示例 如果你想在显示屏 3 上打开图库应用中的特定图片：
+adb shell am start -n com.android.gallery3d/.app.GalleryActivity --display 3 这个命令将在显示屏 3 上打开图库应用的 GalleryActivity。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='1970-01-01 00:00:00 +0800 CST'>January 1, 1970</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to Android 使用 am 命令启动一个活动组件" href="https://adityatelange.github.io/hugo-PaperMod/post/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/"></a>
 </article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/windows_wsl_%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/">windows WSL 端口映射</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<p>实际应用中需要将嵌入式开发板的数据通过网络发送出去，如果 WSL 中运行的 client 要与嵌入式开发板进行通讯，则需要将 windows 的端口转发到 WSL 中，反之，如果配置了 windows 端口转发到 WSL 中，则 windows client 无法正常接收开发板的数据，这一点需要注意，需要取消端口转发 windows 端才可以正常接收数据。</p>
-<hr>
-<p>From: <a href="https://learn.microsoft.com/en-us/windows/wsl/networking">https://learn.microsoft.com/en-us/windows/wsl/networking</a></p>
-<p>Here&rsquo;s an example of using the <a href="https://learn.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-interface-portproxy">Netsh interface portproxy</a> Windows command to add a port proxy that listens on your host port and connects that port proxy to the IP address for the WSL 2 VM.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>netsh interface portproxy add v4tov4 listenport=&lt;yourPortToForward&gt; listenaddress=<span style="color:#ae81ff">0.0</span>.0.0 connectport=&lt;yourPortToConnectToInWSL&gt; connectaddress=(wsl hostname -I)
-</span></span></code></pre></div><p>In this example, you will need to update <code>&lt;yourPortToForward&gt;</code> to a port number, for example <code>listenport=4000</code>. <code>listenaddress=0.0.0.0</code> means that incoming requests will be accepted from ANY IP address. The Listen Address specifies the IPv4 address for which to listen and can be changed to values that include: IP address, computer NetBIOS name, or computer DNS name. If an address isn&rsquo;t specified, the default is the local computer. You need to update the <code>&lt;yourPortToConnectToInWSL&gt;</code> value to a port number where you want WSL to connect, for example <code>connectport=4000</code>. Lastly, the <code>connectaddress</code> value needs to be the IP address of your Linux distribution installed via WSL 2 (the WSL 2 VM address), which can be found by entering the command: <code>wsl.exe hostname -I</code>.</p>
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Android10编译开启ccache
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Android10的基线代码google已经将prebuilt的ccache移除,但是保留了相关功能选项
+commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843 Author: Dan Willemsen &lt;dwillemsen@google.com&gt; Date: Thu Apr 5 15:48:16 2018 -0700 Remove our binary of ccache This version is rather old, and has many known bugs. The build system is no longer providing ccache, but preserving the option to use your own at your own risk. Bug: 32748498 Test: cs/ccache Change-Id: I894a11445127bf8cb3a7ac5a119c500f2c572fb9 安卓10之前配置
+export USE_CCACHE=true export CCACHE_DIR=$HOME/.cache prebuilts/misc/linux-x86/ccache/ccache -M 10G 安卓10&#43;通过使用的HOST操作系统安装对应的ccache软件包
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='1970-01-01 00:00:00 +0800 CST'>January 1, 1970</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to Android10编译开启ccache" href="https://adityatelange.github.io/hugo-PaperMod/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/"></a>
 </article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/word/">word</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<h2 id="基于-office-2016如何隐藏-word-行尾的换行标记">基于 office 2016如何隐藏 word 行尾的换行标记</h2>
-<ol>
-<li>文件-选项,弹出 Word 选项对话框</li>
-<li>选择 显示</li>
-<li>取消勾选 段落标记(M)</li>
-</ol>
-<h2 id="删除隐藏的数据和个人信息">删除隐藏的数据和个人信息</h2>
-<ol>
-<li>打开要删除个人信息的文件</li>
-<li>文件-信息</li>
-<li>检查问题-检查文档</li>
-<li>点击检查</li>
-<li>点击需要删除信息部分的 全部删除</li>
-</ol>
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">BeyondCompare
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Window10 Beyond Compare BCompare-4.2.4.22795 key key
+H1bJTd2SauPv5Garuaq0Ig43uqq5NJOEw94wxdZTpU-pFB9GmyPk677gJ vC1Ro6sbAvKR4pVwtxdCfuoZDb6hJ5bVQKqlfihJfSYZt-xVrVU27&#43;0Ja hFbqTmYskatMTgPyjvv99CF2Te8ec&#43;Ys2SPxyZAF0YwOCNOWmsyqN5y9t q2Kw2pjoiDs5gIH-uw5U49JzOB6otS7kThBJE-H9A76u4uUvR8DKb&#43;VcB rWu5qSJGEnbsXNfJdq5L2D8QgRdV-sXHp2A-7j1X2n4WIISvU1V9koIyS NisHFBTcWJS0sC5BTFwrtfLEE9lEwz2bxHQpWJiu12ZeKpi&#43;7oUSqebX&#43; 如果运行Beyond Compare报错
+This license key has been revoked ..... C:\Users\&lt;username&gt;\AppData\Roaming\Scooter Software\ 目录下的内容全部删除重新启动BeyondCompare即可。
+fix windows 右键菜单中没有beyond compare选项 Explorer Shell Extension
+</p>
+  </div>
+  <footer class="entry-footer"><span title='1970-01-01 00:00:00 +0800 CST'>January 1, 1970</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to BeyondCompare" href="https://adityatelange.github.io/hugo-PaperMod/post/beyondcompare/"></a>
 </article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/usbipd/">wsl 使用 usbipd 访问 USB 设备</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<blockquote>
-<p>注意：如下 usbipd 命令需要在 <code>以管理员身份运行</code> 的 powershell 中执行</p></blockquote>
-<p>usbipd: USB/IP open-source project</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\W</span>INDOWS<span style="color:#ae81ff">\s</span>ystem32&gt; usbipd wsl attach --busid 4-4
-</span></span><span style="display:flex;"><span>usbipd: error: The service is currently not running; a reboot should fix that.
-</span></span></code></pre></div><p><a href="https://github.com/dorssel/usbipd-win/issues/122">https://github.com/dorssel/usbipd-win/issues/122</a></p>
-<p>参考了上述链接，也做了重启，仍然报错，于是决定升级 <code>usbipd</code></p>
-<p>如下步骤也可以作为如何安装 usbipd，wsl 通过 usbipd 访问 USB 设备</p>
-<h2 id="usbipd-安装使用">usbipd 安装使用</h2>
-<p><a href="https://github.com/dorssel/usbipd-win/releases/tag/v4.0.0">https://github.com/dorssel/usbipd-win/releases/tag/v4.0.0</a></p>
-<p>下载 <a href="https://github.com/dorssel/usbipd-win/releases/download/v4.0.0/usbipd-win_4.0.0.msi">usbipd-win_4.0.0.msi</a> 并安装</p>
-<p>需要注意的是，安装了这个版本发现 usbipd 命令的使用方式变了</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\W</span>INDOWS<span style="color:#ae81ff">\s</span>ystem32&gt; usbipd.exe wsl list
-</span></span><span style="display:flex;"><span>usbipd: error: The <span style="color:#e6db74">&#39;wsl&#39;</span> subcommand has been removed. Learn about the new syntax at https://learn.microsoft.com/windows/wsl/connect-usb#attach-a-usb-device.
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\W</span>INDOWS<span style="color:#ae81ff">\s</span>ystem32&gt; usbipd attach --busid 4-4
-</span></span><span style="display:flex;"><span>Option <span style="color:#e6db74">&#39;--wsl&#39;</span> is required.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>usbipd-win 4.0.0
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Description:
-</span></span><span style="display:flex;"><span>  Attaches a USB device to a client.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  Currently, only WSL is supported. Other clients need to perform an attach using client-side tooling.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  Exactly one of the options <span style="color:#e6db74">&#39;--busid&#39;</span> or <span style="color:#e6db74">&#39;--hardware-id&#39;</span> is required.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Usage:
-</span></span><span style="display:flex;"><span>  usbipd attach <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Options:
-</span></span><span style="display:flex;"><span>  -a, --auto-attach                      Automatically re-attach when the device is detached or unplugged
-</span></span><span style="display:flex;"><span>  -b, --busid &lt;BUSID&gt;                    Attach device having &lt;BUSID&gt;
-</span></span><span style="display:flex;"><span>  -i, --hardware-id &lt;VID:PID&gt;            Attach device having &lt;VID&gt;:&lt;PID&gt;
-</span></span><span style="display:flex;"><span>  -w, --wsl &lt;<span style="color:#f92672">[</span>DISTRIBUTION<span style="color:#f92672">]</span>&gt; <span style="color:#f92672">(</span>REQUIRED<span style="color:#f92672">)</span>  Attach to WSL, optionally specifying the distribution to use
-</span></span><span style="display:flex;"><span>  -?, -h, --help                         Show help and usage information
-</span></span></code></pre></div><p><a href="https://github.com/MicrosoftDocs/WSL/issues/1868">https://github.com/MicrosoftDocs/WSL/issues/1868</a></p>
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">cmake
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>子目录代码中如何关联 cmake 宏定义 CMakeLists.txt 增加如下内容：
+OPTION(MOCK_DATA &#34;Hello World&#34; OFF) if (MOCK_DATA) add_definitions(-DMOCK_DATA_MICRO) endif() 同理子目录道理一样，通过判断 cmake 变量，来决定是否定义源码中的宏定义。
+此时在 cpp 源代码中可以通过如下形式使用宏定义：MOCK_DATA_MICRO
+#ifdef MOCK_DATA_MICRO hello_world(); #endif 如果想使能 MOCK_DATA_MICRO 宏定义则需要在 cmake 编译是指定参数:
+cmake -DMOCK_DATA=ON ../; make -j8 cmake 中 if(NOT XXX) 和 if(NOT DEFINED XXX) 的区别 OPTION(MOCK_DATA &#34;Hello World&#34; OFF) if (MOCK_DATA) add_definitions(-DMOCK_DATA_MICRO) endif() if(NOT DEFINED MOCK_DATA) message(STATUS &#34;MOCK_DATA ---&#34;) else message(STATUS &#34;MOCK_DATA &#43;&#43;&#43;&#34;) endif 尽管我编译时 cmake 命令行没有指定 -DMOCK_DATA=ON 选项，仍然打印的是 MOCK_DATA &#43;&#43;&#43;
+总结：虽然命令行没有指定对应选项，但是 CMakeLists.txt 文件中声明了 OPTION(MOCK_DATA &#34;Hello World&#34; OFF) 则 MOCK_DATA 就是 DEFINED 只不过值为 OFF。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='1970-01-01 00:00:00 +0800 CST'>January 1, 1970</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to cmake" href="https://adityatelange.github.io/hugo-PaperMod/post/cmake/"></a>
 </article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/">一文搞懂应用开发所需 Linux 系统时间的相关知识点</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<h2 id="秒级精度">秒级精度</h2>
-<p><code>time_t</code> 保存自 UTC 1970 年 1 月 1 日 00:00 以来的秒数（不包括闰秒），对应于<a href="https://en.wikipedia.org/wiki/Unix_time">POSIX time</a>
-Unix 和 POSIX 兼容系统将 <code>time_t</code> 类型作为带符号整数（通常为 32 或 64 位宽）来实现，它表示自 Unix 时间开始以来的秒数</p>
-<p>time_t 和 struct tm 之间的转换接口</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> tm <span style="color:#f92672">*</span><span style="color:#a6e22e">localtime</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">time_t</span> <span style="color:#f92672">*</span>timep);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> tm <span style="color:#f92672">*</span><span style="color:#a6e22e">localtime_r</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">time_t</span> <span style="color:#f92672">*</span>timep, <span style="color:#66d9ef">struct</span> tm <span style="color:#f92672">*</span>result);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">time_t</span> <span style="color:#a6e22e">mktime</span>(<span style="color:#66d9ef">struct</span> tm <span style="color:#f92672">*</span>tm);
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> tm {
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> tm_sec;    <span style="color:#75715e">/* Seconds (0-60) */</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> tm_min;    <span style="color:#75715e">/* Minutes (0-59) */</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> tm_hour;   <span style="color:#75715e">/* Hours (0-23) */</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> tm_mday;   <span style="color:#75715e">/* Day of the month (1-31) */</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> tm_mon;    <span style="color:#75715e">/* Month (0-11) */</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> tm_year;   <span style="color:#75715e">/* Year - 1900 */</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> tm_wday;   <span style="color:#75715e">/* Day of the week (0-6, Sunday = 0) */</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> tm_yday;   <span style="color:#75715e">/* Day in the year (0-365, 1 Jan = 0) */</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> tm_isdst;  <span style="color:#75715e">/* Daylight saving time */</span>
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><p>获取当前时间的 time_t</p>
-</article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE/">交叉编译工具链</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<p>交叉编译工具链是一个由编译器、连接器和解释器组成的综合开发环境，交叉编译工具链主要由binutils、gcc和glibc三个部分组成。</p>
-<p>有时出于减小 libc 库大小的考虑，也可以用别的 c 库来代替 glibc，例如 uClibc、dietlibc 和 newlib。</p>
-<p>从授权上，分为免费授权版和付费授权版。</p>
-<ul>
-<li>
-<p>免费版目前有三大主流工具商提供</p>
-<ul>
-<li>第一是GNU（提供源码，自行编译制作）</li>
-<li>第二是 Codesourcery</li>
-<li>第三是Linora</li>
-</ul>
-</li>
-<li>
-<p>收费版</p>
-<ul>
-<li>ARM原厂提供的armcc</li>
-<li>IAR提供的编译器</li>
-<li>等等</li>
-</ul>
-</li>
-<li>
-<p><code>arm-none-linux-gnueabi-gcc</code>：是 <code>Codesourcery</code> 公司（目前已经被Mentor收购）基于GCC推出的的ARM交叉编译工具。可用于交叉编译ARM（32位）系统中所有环节的代码，包括裸机程序、u-boot、Linux kernel、filesystem和App应用程序。</p>
-</li>
-<li>
-<p><code>arm-linux-gnueabihf-gcc</code>：是由 <code>Linaro</code> 公司基于GCC推出的的ARM交叉编译工具。可用于交叉编译ARM（32位）系统中所有环节的代码，包括裸机程序、u-boot、Linux kernel、filesystem和App应用程序。</p>
-</li>
-<li>
-<p><code>aarch64-linux-gnu-gcc</code>：是由 <code>Linaro</code> 公司基于GCC推出的的ARM交叉编译工具。可用于交叉编译ARMv8 64位目标中的裸机程序、u-boot、Linux kernel、filesystem和App应用程序。</p>
-</li>
-<li>
-<p><code>arm-none-elf-gcc</code>：是 <code>Codesourcery</code> 公司（目前已经被Mentor收购）基于GCC推出的的ARM交叉编译工具。可用于交叉编译ARM MCU（32位）芯片，如ARM7、ARM9、Cortex-M/R芯片程序。</p>
-</li>
-<li>
-<p><code>arm-none-eabi-gcc</code>：是 GNU 推出的的ARM交叉编译工具。可用于交叉编译ARM MCU（32位）芯片，如ARM7、ARM9、Cortex-M/R芯片程序。</p>
-</li>
-</ul>
-<p>交叉编译工具链的命名规则为：<code>arch [-vendor] [-os] [-(gnu)eabi]</code></p>
-<ul>
-<li>arch – 体系架构，如ARM，MIPS（通过交叉编译工具生成的可执行文件或系统镜像的运行平台或环境）</li>
-<li>vendor – 工具链提供商</li>
-<li>os – 目标操作系统（host主要操作平台，也就是编译时的系统）</li>
-<li>eabi – 嵌入式应用二进制接口（Embedded Application Binary Interface）根据对操作系统的支持与否，</li>
-</ul>
-<p>根据对操作系统的支持与否，ARM GCC可分为支持和不支持操作系统</p>
-<ul>
-<li>arm-none-eabi：这个是没有操作系统的，自然不可能支持那些跟操作系统关系密切的函数，比如fork(2)。他使用的是newlib这个专用于嵌入式系统的C库。</li>
-<li>arm-none-linux-eabi：用于Linux的，使用Glibc</li>
-</ul>
-<p>实例</p>
-<p>1、arm-none-eabi-gcc（ARM architecture，no vendor，not target an operating system，complies with the ARM EABI）
-用于编译 ARM 架构的裸机系统（包括 ARM Linux 的 boot、kernel，不适用编译 Linux 应用 Application），一般适合 ARM7、Cortex-M 和 Cortex-R 内核的芯片使用，所以不支持那些跟操作系统关系密切的函数，比如fork(2)，他使用的是 newlib 这个专用于嵌入式系统的C库。</p>
-</article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/awr2243_adc/">关于雷达 AWR2243 ADC OVER CSI HSI</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<h1 id="关于雷达-awr2243-adc-over-csi-hsi">关于雷达 AWR2243 ADC OVER CSI HSI</h1>
-<p>AWR2243 的 CSI2 支持最高数据位速率（Data bit rate）为 600Mbps，DDR 时钟最高为 300Mhz。外部处理器 CSI2 支持的最高时钟至少要等于 AWR2243 配置的 CSI2 输出时钟。</p>
-<h2 id="awr2243-data-sources">AWR2243 Data Sources</h2>
-<h3 id="input-sources">Input Sources</h3>
-<ul>
-<li>DFE(digital front-end) &mdash; 设备实时数据</li>
-<li>HIL(hardware in the loop) &mdash; 数据回放</li>
-</ul>
-<h3 id="interleaved-and-non-interleaved-modes">Interleaved and Non-Interleaved Modes</h3>
-<p>在 AWR12xx, AWR22xx, 和 XWR14xx 器件变体上，建议使用<strong>交织存储模式</strong>，因为它还有助于通过相应通道轻松映射和传输每个 RX 通道数据。</p>
-<p>AWR2243 的 ADC 存储器对于数据存储可以配置为交织模式或者是非交织模式。</p>
-<p>在交织模式下，ADC 数据是以<strong>采样点为间隔</strong>在不同接收通道下交织输出。对于非交织模式，ADC 数据按照接收通道把一个接收通道的完整的一个 chirp 数据输出后再输出另一个接收通道的数据。对于不同的模式，外部处理器在获取数据后，需要使用 EDMA 或者其他处理代码，正确重组数据，进行处理。在 <code>mmwave_mcuplus_sdk_04_02_00_02</code> 的例程里，DDMA 的例程使用了交织模式，TDMA 的例程使用了非交织模式。</p>
-<p>下面是不同模式数据数据输出的一个例子，Rx0、Rx1、Rx2、 Rx3 表示不同的接收通道。接收通道后面的数字表示采样点个数。N+1为每个 chirp 的采样点数。</p>
-<h4 id="交织模式">交织模式</h4>
-<p>Rx00 Rx10 Rx20 Rx30 Rx01 Rx11 Rx21 Rx31&hellip;&hellip;.Rx3N</p>
-</article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/how_to_handle_gpio_interrupt_like_handling_in_linux_userspace/">如何在 Linux 用户空间中进行类似 GPIO 中断的处理</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<h1 id="how-to-handle-gpio-interrupt-like-handling-in-linux-userspace">How to handle GPIO interrupt-like handling in Linux userspace</h1>
-<h2 id="文件节点">文件节点</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/sys/class/gpio/gpio666# ls
-</span></span><span style="display:flex;"><span>active_low  device  direction  edge  subsystem  uevent  value
-</span></span></code></pre></div><p>只用对应 GPIO 有 irq 功能时才会有 edge 文件。</p>
-<ul>
-<li>/sys/class/gpio/export：是一个只写文件，用于导出需要使用的 GPIO 引脚</li>
-<li>/sys/class/gpio/gpiox/: 是一个文件夹，在引脚导出后自动在 / sys/class/gpio / 目录下生成的</li>
-<li>/sys/class/gpio/gpiox/active_low：是一个文件，用来控制电平的极性（写 1 是高电平还是写 0 是高电平），默认写 1 是高电平，这个文件不用去管它</li>
-<li>/sys/class/gpio/gpiox/direction：是一个文件，用来控制 GPIO 是输入还是输出，往direction写 out 就是输出引脚，往direction写 in 就是输入引脚</li>
-<li>/sys/class/gpio/gpiox/edge：是一个文件，在输入模式下，写 edge 文件，配置 gpio 为外部中断引脚</li>
-<li>非中断引脚： none</li>
-<li>上升沿触发： rising</li>
-<li>下降沿触发： falling</li>
-<li>边沿触发： both</li>
-<li>/sys/class/gpio/gpiox/value: 是一个文件，在输出模式下，写该文件表示 gpio 输出；在输入模式下读该文件表示输入</li>
-</ul>
-<p><a href="https://www.kernel.org/doc/Documentation/gpio/sysfs.txt">sysfs.txt</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>&#34;value&#34; ... reads as either 0 (low) or 1 (high). If the GPIO
-</span></span><span style="display:flex;"><span>  is configured as an output, this value may be written;
-</span></span><span style="display:flex;"><span>  any nonzero value is treated as high.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  If the pin can be configured as interrupt-generating interrupt
-</span></span><span style="display:flex;"><span>  and if it has been configured to generate interrupts (see the
-</span></span><span style="display:flex;"><span>  description of &#34;edge&#34;), you can poll(2) on that file and
-</span></span><span style="display:flex;"><span>  poll(2) will return whenever the interrupt was triggered. If
-</span></span><span style="display:flex;"><span>  you use poll(2), set the events POLLPRI and POLLERR. If you
-</span></span><span style="display:flex;"><span>  use select(2), set the file descriptor in exceptfds. After
-</span></span><span style="display:flex;"><span>  poll(2) returns, either lseek(2) to the beginning of the sysfs
-</span></span><span style="display:flex;"><span>  file and read the new value or close the file and re-open it
-</span></span><span style="display:flex;"><span>  to read the value.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&#34;edge&#34; ... reads as either &#34;none&#34;, &#34;rising&#34;, &#34;falling&#34;, or
-</span></span><span style="display:flex;"><span>  &#34;both&#34;. Write these strings to select the signal edge(s)
-</span></span><span style="display:flex;"><span>  that will make poll(2) on the &#34;value&#34; file return.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  This file exists only if the pin can be configured as an
-</span></span><span style="display:flex;"><span>  interrupt generating input pin.
-</span></span></code></pre></div><h2 id="demo">demo</h2>
-<p>一坨屎样代码</p>
-</article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi/">摄像头图像数据格式从cmos到mipi</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<p><img src="camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi.png" alt=""></p>
-</article>
-
-<nav class="pager">
-<a href="/post/page/6/" rel="prev" class="pager__item pager__item--prev"><span aria-hidden="true">« </span>Previous</a>
-<a href="/post/page/8/" rel="next" class="pager__item pager__item--next">Next<span aria-hidden="true"> »</span></a>
-</nav>
-
-</main>
-
-
-<aside class="sidebar layout__second-sidebar">
-<nav class="menu">
-<p class="title"><strong><a href="/post/" aria-current="page">Post</a></strong></p>
-<ul>
-<li><a href="/post/perror_func/">perror</a></li>
-<li><a href="/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/">Windows WSL ubuntu adb 配置</a></li>
-<li><a href="/post/ubuntu_2004_%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/">ubuntu 20.04 升级内核</a></li>
-<li><a href="/post/svn/">ubuntu 搭建 svn 服务器</a></li>
-<li><a href="/post/windows-terminal-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-oh-my-posh/">Windows terminal 安装配置 oh-my-posh</a></li>
-<li><a href="/post/openssl/">openssl 创建自签名证书,对 Windows Catalog 进行签名</a></li>
-<li><a href="/post/docker-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">docker 环境搭建</a></li>
-<li><a href="/post/gerrit/">gerrit 环境搭建</a></li>
-<li><a href="/post/vcpkg_windows/">windows vcpkg</a></li>
-<li><a href="/post/linux_date_cmd/">Linux date 命令用法</a></li>
-<li><a href="/post/windows10_wsl/">windows10 WSL setup</a></li>
-<li><a href="/post/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/">黑芝麻平台交叉编译 openssl</a></li>
-<li><a href="/post/i2c_cmd/">I2C command</a></li>
-<li><a href="/post/ddr-%E5%8E%8B%E6%B5%8B%E5%91%BD%E4%BB%A4/">DDR 压测命令</a></li>
-<li><a href="/post/e2fsprogs-1/">e2fsprogs-1.42.8 源码编译安装</a></li>
-<li><a href="/post/python2/">python2.7 环境及包管理</a></li>
-<li><a href="/post/vscode_remote-ssh_%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE/">vscode remote-ssh 免密登录配置</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2/">交叉编译 glibc-2.35</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-libxml2-2/">交叉编译 libxml2-2.9.10</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2/">交叉编译 Python-2.7.16</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-tcpdump-4/">交叉编译 tcpdump-4.99.1</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-zlib-1/">交叉编译 zlib-1.2.12</a></li>
-<li><a href="/post/dmesg_support_iso_timestamp/">dmesg use CST timestamp</a></li>
-<li><a href="/post/gmsl2_csi2_clk/">GMSL2 CSI-2 clock</a></li>
-<li><a href="/post/hobotbuildenv/">Hobot 编译环境</a></li>
-<li><a href="/post/ros/">ROS</a></li>
-<li><a href="/post/%E8%80%81%E9%BB%91%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83/">老黑编译环境</a></li>
-<li><a href="/post/stock/">akshare 学习笔记</a></li>
-<li><a href="/post/adi_gmsl2_serdes_spi/">ADI GMSL2 SERDES SPI</a></li>
-<li><a href="/post/androidjava-/">Android Java 1.7 环境配置</a></li>
-<li><a href="/post/androidstudioenv/">Android Studio Env</a></li>
-<li><a href="/post/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/">Android 使用 am 命令启动一个活动组件</a></li>
-<li><a href="/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/">Android10编译开启ccache</a></li>
-<li><a href="/post/beyondcompare/">BeyondCompare</a></li>
-<li><a href="/post/cmake/">cmake</a></li>
-<li><a href="/post/crystal/">crystal</a></li>
-<li><a href="/post/debian4/">Debian 4.9 Config Static Ip.md</a></li>
-<li><a href="/post/dokuwiki/">dokuwiki</a></li>
-<li><a href="/post/flutter/">Flutter</a></li>
-<li><a href="/post/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/">git clone 包含 submodule 的仓库</a></li>
-<li><a href="/post/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/">git 使用指定的 ssh key</a></li>
-<li><a href="/post/gitbook/">gitbook</a></li>
-<li><a href="/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/">GMSL SERDES 笔记</a></li>
-<li><a href="/post/harmony-hpm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/">Harmony HPM 包管理器</a></li>
-<li><a href="/post/hugo/">hugo</a></li>
-<li><a href="/post/iperf-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD/">iperf 测试网络带宽</a></li>
-<li><a href="/post/linux_test_disk_i_o_with_dd/">Linux Test Disk with dd command</a></li>
-<li><a href="/post/manjaro/">manjaro</a></li>
-<li><a href="/post/opengrok/">opengrok</a></li>
-<li><a href="/post/openharmony-%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91/">OpenHarmony 代码下载编译</a></li>
-<li><a href="/post/repo/">repo</a></li>
-<li><a href="/post/samba/">samba</a></li>
-<li><a href="/post/sourceinsight/">Source Insight</a></li>
-<li><a href="/post/ubuntu_200406_install_tp_link_ac1300_usb_wifi_adaptor_driver/">ubuntu 20.04.6 install tp link a1300 usb wifi adaptor driver</a></li>
-<li><a href="/post/ubuntu_git_server_build_push_code/">Ubuntu git 仓库搭建及代码上传</a></li>
-<li><a href="/post/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/">Virtualbox Opensuse 无网络图标 无法上网</a></li>
-<li><a href="/post/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/">vscode 阅读 Linux 内核代码配置</a></li>
-<li><a href="/post/wifiadb/">Wifi Adb</a></li>
-<li><a href="/post/windows/">windows</a></li>
-<li><a href="/post/windows_remote_desktop/">Windows Remote Desktop</a></li>
-<li><a href="/post/windows_vcpkg_boost/">windows vcpkg boost 开发环境</a></li>
-<li><a href="/post/windowsvscodeplantuml%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Windows Vscode Plantuml 环境搭建</a></li>
-<li><a href="/post/windows_wsl_%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/">windows WSL 端口映射</a></li>
-<li><a href="/post/word/">word</a></li>
-<li><a href="/post/usbipd/">wsl 使用 usbipd 访问 USB 设备</a></li>
-<li><a href="/post/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/">一文搞懂应用开发所需 Linux 系统时间的相关知识点</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE/">交叉编译工具链</a></li>
-<li><a href="/post/awr2243_adc/">关于雷达 AWR2243 ADC OVER CSI HSI</a></li>
-<li><a href="/post/how_to_handle_gpio_interrupt_like_handling_in_linux_userspace/">如何在 Linux 用户空间中进行类似 GPIO 中断的处理</a></li>
-<li><a href="/post/camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi/">摄像头图像数据格式从cmos到mipi</a></li>
-<li><a href="/post/about/">Lu Yang</a></li>
-</ul>
-</nav>
-<nav class="menu">
-<p class="title"><strong><a href="/archives/"></a></strong></p>
-<ul>
-</ul>
-</nav>
-</aside>
-<footer class="footer layout__footer mt--l">
-<p>Follow post: <a rel="alternate" type="application/rss&#43;xml" href="https://example.org/post/index.xml">rss</a> | <a rel="alternate" type="application/json" href="https://example.org/post/index.json">json</a></p>
-<p><span>© Hugo Zen theme</span></p>
-
-<p>Powered by <a href="https://gohugo.io/">Hugo</a> and the <a href="https://github.com/frjo/hugo-theme-zen">Zen theme</a>.</p>
-
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://adityatelange.github.io/hugo-PaperMod/post/page/6/">
+      «&nbsp;Prev&nbsp;6/15
+    </a>
+    <a class="next" href="https://adityatelange.github.io/hugo-PaperMod/post/page/8/">Next&nbsp;8/15&nbsp;»
+    </a>
+  </nav>
 </footer>
+    </main>
+    
+<footer class="footer">
+        <span>© <a href="https://github.com/adityatelange/hugo-PaperMod/graphs/contributors">PaperMod Contributors</a></span> · 
 
-</div>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
 </body>
+
 </html>

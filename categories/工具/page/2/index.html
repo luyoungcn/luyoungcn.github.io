@@ -1,632 +1,327 @@
 <!DOCTYPE html>
-<html class="nojs" lang="en-GB" dir="ltr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<title>工具 – Hugo Zen theme</title>
-<link rel="alternate" type="application/rss+xml" title="rss" href="https://example.org/categories/%E5%B7%A5%E5%85%B7/index.xml">
+<html lang="en" dir="auto">
 
-<meta name="created" content="2023-10-26T00:00:00+0800">
-<meta name="modified" content="2023-10-26T00:00:00+0800">
-<meta name="author" content="Your Name">
-<meta name="contact" content="info@example.org">
-<meta property="og:site_name" content="Hugo Zen theme">
-<meta property="og:title" content="工具">
-<meta property="og:url" content="https://example.org/categories/%E5%B7%A5%E5%85%B7/">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://example.org/apple-touch-icon.png">
-<meta name="generator" content="Hugo 0.146.6">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="theme-color" content="#ffffff">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>工具 | LuyangのBlog</title>
+<meta name="keywords" content="">
+<meta name="description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
+<meta name="author" content="Theme PaperMod">
+<link rel="canonical" href="https://adityatelange.github.io/hugo-PaperMod/categories/%E5%B7%A5%E5%85%B7/">
+<link crossorigin="anonymous" href="/hugo-PaperMod/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://adityatelange.github.io/hugo-PaperMod/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://adityatelange.github.io/hugo-PaperMod/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://adityatelange.github.io/hugo-PaperMod/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://adityatelange.github.io/hugo-PaperMod/apple-touch-icon.png">
+<link rel="mask-icon" href="https://adityatelange.github.io/hugo-PaperMod/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://adityatelange.github.io/hugo-PaperMod/categories/%E5%B7%A5%E5%85%B7/index.xml">
+<link rel="alternate" hreflang="en" href="https://adityatelange.github.io/hugo-PaperMod/categories/%E5%B7%A5%E5%85%B7/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
-<link rel="canonical" href="https://example.org/categories/%E5%B7%A5%E5%85%B7/">
+            .list {
+                background: var(--theme);
+            }
 
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-<link rel="stylesheet" href="/css/styles.2fa1df15b347581e582e5e8899cf40bdf7908f76e104ed06eeba4c6443012e8c.css">
-<link rel="stylesheet" href="/css/mobilemenu.dbbf7de443967fe1d83dce47fb19895d79710b23ccd02b84f54d4d39c37e3d2d.css" media="screen">
-<link rel="stylesheet" href="/css/print.1912ba13950e7434fb50dd14d3951bc7f57bb0c16b4f204158b72f0b3844f7a1.css" media="print">
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
 
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "url" : "https://example.org/categories/%E5%B7%A5%E5%85%B7/",
-    "name": "工具",
-    "description": "The zen theme for Hugo example site.",
-    "image" : "https://example.org/apple-touch-icon.png",
-    "author": {
-      "@type": "Person",
-      "name": "Your Name"
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://example.org/"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Hugo Zen theme",
-      "logo" : {
-        "@type": "ImageObject",
-        "url": "https://example.org/apple-touch-icon.png"
-      },
-      "url": "https://example.org/"
-    }
-  }
-</script>
-
-<script src="/js/script-early.2d6255816e36e34bd1948dc5c26ede35687a256c4e2e516e0cd75f383a510c6a.js"></script>
-
-<script defer src="/js/mobilemenu.7ce1f75fd1d49cd683a008352ad9001f800349629be01d531a19c02b5a84817b.js"></script>
-<script defer src="/js/script.f2979a93a325fecf9605263bd141398a311c8e23388ed7dcff74f92f7e632866.js"></script>
-
-
-
-
-
+    </style>
+</noscript><meta property="og:url" content="https://adityatelange.github.io/hugo-PaperMod/categories/%E5%B7%A5%E5%85%B7/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="工具">
+  <meta property="og:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png">
+<meta name="twitter:title" content="工具">
+<meta name="twitter:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
 
 </head>
 
-<body class="list-page">
-<div class="page layout__page layout__sidebar-second">
-<header class="header layout__header">
-<a href="/" title="Home" rel="home" class="header__logo">
-<img src="/images/logo.png" width="64" alt="Home" class="header__logo-image">
-</a>
-<h1 class="header__site-name">
-<a href="/" title="Home" class="header__site-link" rel="home"><span>Hugo Zen theme</span></a>
-</h1>
-<div class="region header__region">
-</div>
-</header>
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
-<nav class="main-menu mx--xs layout__navigation" aria-label="Main menu">
-<ul class="flex-inline mx--0">
-<li><a href="/"><span>Home</span></a></li>
-<li><a href="/"><span>Documentation</span></a></li>
-<li><a href="/"><span>About</span></a></li>
-<li><a href="/"><span>Contact</span></a></li>
-<li><a href="/"><span>Search</span></a></li>
-</ul>
-</nav>
-<div class="mobile-nav" dir="ltr" hidden>
-  <div class="mobile-nav__cover"></div>
-  <button class="mobile-nav__toggle" aria-expanded="false" aria-controls="sheet">
-    Menu
-    <svg class="mobile-nav__hamburger" viewBox="0 0 100 100" focusable="false" aria-hidden="true">
-      <rect width="80" height="12" x="10" y="20" rx="5"></rect>
-      <rect width="80" height="12" x="10" y="45" rx="5"></rect>
-      <rect width="80" height="12" x="10" y="70" rx="5"></rect>
-    </svg>
-  </button>
-  <div class="mobile-nav__sheet link-inverted link-nav" id="sheet" aria-hidden="true">
-    <div class="mobile-nav__region"></div>
-    <nav class="mobile-nav__main-menu" aria-label="Main menu">
-    <ul class="mobile-nav__navbar">
-    <li><a href="/"><span>Home</span></a></li>
-    <li><a href="/"><span>Documentation</span></a></li>
-    <li><a href="/"><span>About</span></a></li>
-    <li><a href="/"><span>Contact</span></a></li>
-    <li><a href="/"><span>Search</span></a></li>
-    </ul>
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://adityatelange.github.io/hugo-PaperMod/" accesskey="h" title="LuyangのBlog (Alt + H)">LuyangのBlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://adityatelange.github.io/hugo-PaperMod/fr/" title="French"
+                            aria-label=":fr:">🇫🇷</a>
+                    </li>
+                    <li>
+                        <a href="https://adityatelange.github.io/hugo-PaperMod/fa/" title="Fa"
+                            aria-label="Fa">Fa</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/search/" title="Search">
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/adityatelange/hugo-PaperMod/wiki/" title="WiKi">
+                    <span>WiKi</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
     </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://adityatelange.github.io/hugo-PaperMod/">Home</a>&nbsp;»&nbsp;<a href="https://adityatelange.github.io/hugo-PaperMod/categories/">Categories</a></div>
+  <h1>
+    工具
+    <a href="/hugo-PaperMod/categories/%E5%B7%A5%E5%85%B7/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">gerrit 环境搭建
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>R1 - Gerrit 环境搭建 环境说明 ubuntu 20.04 Gerrit 3.8.0 openjdk version “11.0.19” 2023-04-18 安装依赖软件包 sudo apt install openjdk-11-jdk openjdk-11-jdk-headless openjdk-11-jre openjdk-11-jre-headless 创建 Gerrit 用户 sudo adduser gerrit sudo usermod -a -G sudo gerrit sudo su gerrit mkdir ~/gerrit java -jar gerrit-3.8.0.war init -d ~/gerrit 安装 Gerrit $ java -jar gerrit-3.8.0.war init -d ~/gerrit Using secure store: com.google.gerrit.server.securestore.DefaultSecureStore [2023-06-03 12:19:03,027] [main] INFO com.google.gerrit.server.config.GerritServerConfigProvider : No /home/gerrit/gerrit/etc/gerrit.config; assuming defaults *** Gerrit Code Review 3.8.0 *** Create &#39;/home/gerrit/gerrit&#39; [Y/n]? Y *** Git Repositories *** Location of Git repositories [git]: *** JGit Configuration *** Auto-configured &#34;receive.autogc = false&#34; to disable auto-gc after git-receive-pack. *** Index *** Type [lucene]: *** User Authentication *** Authentication method [openid/?]: ? Supported options are: openid openid_sso http http_ldap client_ssl_cert_ldap ldap ldap_bind custom_extension development_become_any_account oauth Authentication method [openid/?]: http Get username from custom HTTP header [y/N]? y Username HTTP header [SM_USER]: SSO logout URL : Enable signed push support [y/N]? y Use case insensitive usernames [Y/n]? Y *** Review Labels *** Install Verified label [y/N]? N *** Email Delivery *** SMTP server hostname [localhost]: SMTP server port [(default)]: SMTP encryption [none/?]: SMTP username : *** Container Process *** Run as [gerrit]: Java runtime [/usr/lib/jvm/java-11-openjdk-amd64]: Copy gerrit-3.8.0.war to /home/gerrit/gerrit/bin/gerrit.war [Y/n]? Y Copying gerrit-3.8.0.war to /home/gerrit/gerrit/bin/gerrit.war *** SSH Daemon *** Listen on address [*]: Listen on port [29418]: Generating SSH host key ... rsa... ed25519... ecdsa 256... ecdsa 384... ecdsa 521... done *** HTTP Daemon *** Behind reverse proxy [y/N]? y Proxy uses SSL (https://) [y/N]? N Subdirectory on proxy server [/]: Listen on address [*]: Listen on port [8081]: Canonical URL [http://luyang-VirtualBox/]: *** Cache *** *** Plugins *** Installing plugins. Install plugin codemirror-editor version v3.8.0 [y/N]? y Installed codemirror-editor v3.8.0 Install plugin commit-message-length-validator version v3.8.0 [y/N]? y Installed commit-message-length-validator v3.8.0 Install plugin delete-project version v3.8.0 [y/N]? y Installed delete-project v3.8.0 Install plugin download-commands version v3.8.0 [y/N]? y Installed download-commands v3.8.0 Install plugin gitiles version v3.8.0 [y/N]? y Installed gitiles v3.8.0 Install plugin hooks version v3.8.0 [y/N]? y Installed hooks v3.8.0 Install plugin plugin-manager version v3.8.0 [y/N]? y Installed plugin-manager v3.8.0 Install plugin replication version v3.8.0 [y/N]? y Installed replication v3.8.0 Install plugin reviewnotes version v3.8.0 [y/N]? y Installed reviewnotes v3.8.0 Install plugin singleusergroup version v3.8.0 [y/N]? y Installed singleusergroup v3.8.0 Install plugin webhooks version v3.8.0 [y/N]? y Installed webhooks v3.8.0 Initializing plugins. ============================================================================ Welcome to the Gerrit community Find more information on the homepage: https://www.gerritcodereview.com Discuss Gerrit on the mailing list: https://groups.google.com/g/repo-discuss ============================================================================ Initialized /home/gerrit/gerrit Init complete, reindexing accounts,changes,groups,projects with: reindex --site-path /home/gerrit/gerrit --threads 1 --index accounts --index changes --index groups --index projectsReindexed 0 documents in accounts index in 0.0s (0.0/s) Index accounts in version 12 is ready Reindexing groups: 100% (2/2) Reindexed 2 documents in groups index in 0.2s (9.9/s) Index groups in version 9 is ready Reindexing changes: Slicing projects: 100% (2/2), done Reindexed 0 documents in changes index in 0.0s (0.0/s) Index changes in version 82 is ready Reindexing projects: 100% (2/2) Reindexed 2 documents in projects index in 0.1s (25.0/s) Index projects in version 5 is ready Executing /home/gerrit/gerrit/bin/gerrit.sh start Starting Gerrit Code Review: WARNING: Could not adjust Gerrit&#39;s process for the kernel&#39;s out-of-memory killer. This may be caused by /home/gerrit/gerrit/bin/gerrit.sh not being run as root. Consider changing the OOM score adjustment manually for Gerrit&#39;s PID=4510 with e.g.: echo &#39;-1000&#39; | sudo tee /proc/4510/oom_score_adj OK Waiting for server on luyang-VirtualBox:80 ... OK Please open the following URL in the browser: http://luyang-VirtualBox/#/admin/projects/ 配置 Gerrit etc/gerrit.config
+...</p>
   </div>
-</div>
-<main class="main layout__main">
-<header>
-<h1 class="title">工具</h1>
-</header>
-
-
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/i2c_cmd/">I2C command</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-07T00:00:00&#43;08:00">7 February, 2023</time>
-
-</div>
-
-</header>
-<h1 id="i2c-寄存器读写命令">I2C 寄存器读写命令</h1>
-<h2 id="探测设备">探测设备</h2>
-<h3 id="i2cdetect">i2cdetect</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HELLO@WORLD:~# i2cdetect
-</span></span><span style="display:flex;"><span>Error: No i2c-bus specified!
-</span></span><span style="display:flex;"><span>Usage: i2cdetect <span style="color:#f92672">[</span>-y<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-a<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-q|-r<span style="color:#f92672">]</span> I2CBUS <span style="color:#f92672">[</span>FIRST LAST<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>       i2cdetect -F I2CBUS
-</span></span><span style="display:flex;"><span>       i2cdetect -l
-</span></span><span style="display:flex;"><span>  I2CBUS is an integer or an I2C bus name
-</span></span><span style="display:flex;"><span>  If provided, FIRST and LAST limit the probing range.
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># I2CBUS: 0 1 2 ...</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Notice: -r 参数很重要，不带 -r 参数有些设备探测不到</span>
-</span></span><span style="display:flex;"><span>i2cdetect -y -r &lt;I2CBUS&gt;
-</span></span></code></pre></div><h2 id="对于8bit的reg-value-可以使用-i2cget--i2cset">对于8bit的reg, value 可以使用 <code>i2cget / i2cset</code></h2>
-<h3 id="i2cget">i2cget</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HELLO@WORLD:~# i2cget
-</span></span><span style="display:flex;"><span>Usage: i2cget <span style="color:#f92672">[</span>-f<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-y<span style="color:#f92672">]</span> I2CBUS CHIP-ADDRESS <span style="color:#f92672">[</span>DATA-ADDRESS <span style="color:#f92672">[</span>MODE<span style="color:#f92672">]]</span>
-</span></span><span style="display:flex;"><span>  I2CBUS is an integer or an I2C bus name
-</span></span><span style="display:flex;"><span>  ADDRESS is an integer <span style="color:#f92672">(</span>0x03 - 0x77<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>  MODE is one of:
-</span></span><span style="display:flex;"><span>    b <span style="color:#f92672">(</span>read byte data, default<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    w <span style="color:#f92672">(</span>read word data<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    c <span style="color:#f92672">(</span>write byte/read byte<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    Append p <span style="color:#66d9ef">for</span> SMBus PEC
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># SLAVE_ADDRESS: 使用i2cdetect 出来的结果</span>
-</span></span><span style="display:flex;"><span>i2cget -y -f &lt;I2CBUS&gt; &lt;SLAVE_ADDRESS&gt; &lt;REG&gt;
-</span></span></code></pre></div><h3 id="i2cset">i2cset</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HELLO@WORLD:~# i2cset
-</span></span><span style="display:flex;"><span>Usage: i2cset <span style="color:#f92672">[</span>-f<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-y<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-m MASK<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-r<span style="color:#f92672">]</span> I2CBUS CHIP-ADDRESS DATA-ADDRESS <span style="color:#f92672">[</span>VALUE<span style="color:#f92672">]</span> ... <span style="color:#f92672">[</span>MODE<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>  I2CBUS is an integer or an I2C bus name
-</span></span><span style="display:flex;"><span>  ADDRESS is an integer <span style="color:#f92672">(</span>0x03 - 0x77<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>  MODE is one of:
-</span></span><span style="display:flex;"><span>    c <span style="color:#f92672">(</span>byte, no value<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    b <span style="color:#f92672">(</span>byte data, default<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    w <span style="color:#f92672">(</span>word data<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    i <span style="color:#f92672">(</span>I2C block data<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    s <span style="color:#f92672">(</span>SMBus block data<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    Append p <span style="color:#66d9ef">for</span> SMBus PEC
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>i2cset -y -f &lt;I2CBUS&gt; &lt;SLAVE_ADDRESS&gt; &lt;REG&gt; &lt;VALUE&gt;
-</span></span></code></pre></div><h2 id="对于16bit的reg-value-需要使用-i2ctransfer">对于16bit+的reg, value 需要使用 <code>i2ctransfer</code></h2>
-<h3 id="i2ctransfer">i2ctransfer</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>root@J3Pilot-B:~# i2ctransfer
-</span></span><span style="display:flex;"><span>Usage: i2ctransfer <span style="color:#f92672">[</span>-f<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-y<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-v<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-V<span style="color:#f92672">]</span> I2CBUS DESC <span style="color:#f92672">[</span>DATA<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>DESC <span style="color:#f92672">[</span>DATA<span style="color:#f92672">]]</span>...
-</span></span><span style="display:flex;"><span>  I2CBUS is an integer or an I2C bus name
-</span></span><span style="display:flex;"><span>  DESC describes the transfer in the form: <span style="color:#f92672">{</span>r|w<span style="color:#f92672">}</span>LENGTH<span style="color:#f92672">[</span>@address<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>    1<span style="color:#f92672">)</span> read/write-flag 2<span style="color:#f92672">)</span> LENGTH <span style="color:#f92672">(</span>range 0-65535<span style="color:#f92672">)</span> 3<span style="color:#f92672">)</span> I2C address <span style="color:#f92672">(</span>use last one <span style="color:#66d9ef">if</span> omitted<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>  DATA are LENGTH bytes <span style="color:#66d9ef">for</span> a write message. They can be shortened by a suffix:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>keep value constant <span style="color:#66d9ef">until</span> LENGTH<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    + <span style="color:#f92672">(</span>increase value by <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">until</span> LENGTH<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">(</span>decrease value by <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">until</span> LENGTH<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    p <span style="color:#f92672">(</span>use pseudo random generator <span style="color:#66d9ef">until</span> LENGTH with value as seed<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Example <span style="color:#f92672">(</span>bus 0, read <span style="color:#ae81ff">8</span> byte at offset 0x64 from EEPROM at 0x50<span style="color:#f92672">)</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># i2ctransfer 0 w1@0x50 0x64 r8</span>
-</span></span><span style="display:flex;"><span>Example <span style="color:#f92672">(</span>same EEPROM, at offset 0x42 write 0xff 0xfe ... 0xf0<span style="color:#f92672">)</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># i2ctransfer 0 w17@0x50 0x42 0xff-</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># W3 写三个参数 16bit 寄存器 （2 Bytes）+ value（1 Byte）</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># i2c bus 0</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># slave address 0x36</span>
-</span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x33 0x3B 0x9D 0x01
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># w2 （16bit寄存器）写两个参数 0x4F 0x0C 寄存器（0x4F0C）到 0x36 slave address</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># i2c bus 总线 0</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 读取 i2c 总线 0 的 slave address 为 0x36 的设备的寄存器 0x4F0C, 读一个 char</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 0x36 是 ovx3c 的 slave address （7bit i2c address）</span>
-</span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w2@0x36 0x4F 0x0C r1
-</span></span></code></pre></div><h2 id="dump-寄存器-00ff">dump 寄存器 00~FF</h2>
-<h3 id="i2cdump">i2cdump</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HELLO@WORLD:~# i2cdump 
-</span></span><span style="display:flex;"><span>Error: No i2c-bus specified!
-</span></span><span style="display:flex;"><span>Usage: i2cdump <span style="color:#f92672">[</span>-f<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-y<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-r first-last<span style="color:#f92672">]</span> I2CBUS ADDRESS <span style="color:#f92672">[</span>MODE <span style="color:#f92672">[</span>BANK <span style="color:#f92672">[</span>BANKREG<span style="color:#f92672">]]]</span>
-</span></span><span style="display:flex;"><span>  I2CBUS is an integer or an I2C bus name
-</span></span><span style="display:flex;"><span>  ADDRESS is an integer <span style="color:#f92672">(</span>0x03 - 0x77<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>  MODE is one of:
-</span></span><span style="display:flex;"><span>    b <span style="color:#f92672">(</span>byte, default<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    w <span style="color:#f92672">(</span>word<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    W <span style="color:#f92672">(</span>word on even register addresses<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    s <span style="color:#f92672">(</span>SMBus block<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    i <span style="color:#f92672">(</span>I2C block<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    c <span style="color:#f92672">(</span>consecutive byte<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>    Append p <span style="color:#66d9ef">for</span> SMBus PEC
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>i2cdump -f -y &lt;I2CBUS&gt; &lt;SLAVE_ADDRESS&gt;
-</span></span></code></pre></div>
+  <footer class="entry-footer"><span title='2023-06-01 00:00:00 +0800 CST'>June 1, 2023</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to gerrit 环境搭建" href="https://adityatelange.github.io/hugo-PaperMod/post/gerrit/"></a>
 </article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/ddr-%E5%8E%8B%E6%B5%8B%E5%91%BD%E4%BB%A4/">DDR 压测命令</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-03T12:00:00&#43;08:00">3 February, 2023</time>
-
-</div>
-
-</header>
-<h1 id="ddr-压测命令">DDR 压测命令</h1>
-<p>测试之前可以使用 <code>free -m</code> 查看内存使用情况。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>» free
-</span></span><span style="display:flex;"><span>              total        used        free      shared  buff/cache   available
-</span></span><span style="display:flex;"><span>Mem:       <span style="color:#ae81ff">16193884</span>     <span style="color:#ae81ff">1268028</span>    <span style="color:#ae81ff">13921020</span>        <span style="color:#ae81ff">6528</span>     <span style="color:#ae81ff">1004836</span>    <span style="color:#ae81ff">14587148</span>
-</span></span><span style="display:flex;"><span>Swap:       <span style="color:#ae81ff">4194304</span>           <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">4194304</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>» free -m
-</span></span><span style="display:flex;"><span>              total        used        free      shared  buff/cache   available
-</span></span><span style="display:flex;"><span>Mem:          <span style="color:#ae81ff">15814</span>        <span style="color:#ae81ff">1231</span>       <span style="color:#ae81ff">13598</span>           <span style="color:#ae81ff">6</span>         <span style="color:#ae81ff">984</span>       <span style="color:#ae81ff">14252</span>
-</span></span></code></pre></div><p>根据 available 至设置 DDR 压测内存大小。</p>
-<h2 id="stressapptest">stressapptest</h2>
-<h3 id="安装-stressapptest">安装 stressapptest</h3>
-<p>stressapptest - stress test application for simulating high load situations</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install stressapptest
-</span></span></code></pre></div><h3 id="stressapptest-help">stressapptest help</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>» stressapptest -h
-</span></span><span style="display:flex;"><span>Stats: SAT revision 1.0.6_autoconf, <span style="color:#ae81ff">64</span> bit binary
-</span></span><span style="display:flex;"><span>Log: buildd @ lgw01-amd64-029 on Sun Mar <span style="color:#ae81ff">22</span> 18:14:26 UTC <span style="color:#ae81ff">2020</span> from open source release
-</span></span><span style="display:flex;"><span>Usage: ./sat<span style="color:#f92672">(</span>32|64<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span> -M mbytes        megabytes of ram to test
-</span></span><span style="display:flex;"><span> -H mbytes        minimum megabytes of hugepages to require
-</span></span><span style="display:flex;"><span> -s seconds       number of seconds to run
-</span></span><span style="display:flex;"><span> -m threads       number of memory copy threads to run
-</span></span><span style="display:flex;"><span> -i threads       number of memory invert threads to run
-</span></span><span style="display:flex;"><span> -C threads       number of memory CPU stress threads to run
-</span></span><span style="display:flex;"><span> --findfiles      find locations to <span style="color:#66d9ef">do</span> disk IO automatically
-</span></span><span style="display:flex;"><span> -d device        add a direct write disk thread with block device <span style="color:#f92672">(</span>or file<span style="color:#f92672">)</span> <span style="color:#e6db74">&#39;device&#39;</span>
-</span></span><span style="display:flex;"><span> -f filename      add a disk thread with tempfile <span style="color:#e6db74">&#39;filename&#39;</span>
-</span></span><span style="display:flex;"><span> -l logfile       log output to file <span style="color:#e6db74">&#39;logfile&#39;</span>
-</span></span><span style="display:flex;"><span> --max_errors n   exit early after finding <span style="color:#e6db74">&#39;n&#39;</span> errors
-</span></span><span style="display:flex;"><span> -v level         verbosity <span style="color:#f92672">(</span>0-20<span style="color:#f92672">)</span>, default is <span style="color:#ae81ff">8</span>
-</span></span><span style="display:flex;"><span> -W               Use more CPU-stressful memory copy
-</span></span><span style="display:flex;"><span> -A               run in degraded mode on incompatible systems
-</span></span><span style="display:flex;"><span> -p pagesize      size in bytes of memory chunks
-</span></span><span style="display:flex;"><span> --filesize size  size of disk IO tempfiles
-</span></span><span style="display:flex;"><span> -n ipaddr        add a network thread connecting to system at <span style="color:#e6db74">&#39;ipaddr&#39;</span>
-</span></span><span style="display:flex;"><span> --listen         run a thread to listen <span style="color:#66d9ef">for</span> and respond to network threads.
-</span></span><span style="display:flex;"><span> --no_errors      run without checking <span style="color:#66d9ef">for</span> ECC or other errors
-</span></span><span style="display:flex;"><span> --force_errors   inject false errors to test error handling
-</span></span><span style="display:flex;"><span> --force_errors_like_crazy   inject a lot of false errors to test error handling
-</span></span><span style="display:flex;"><span> -F               don<span style="color:#e6db74">&#39;t result check each transaction
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --stop_on_errors  Stop after finding the first error.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --read-block-size     size of block for reading (-d)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --write-block-size    size of block for writing (-d). If not defined, the size of block for writing will be defined as the size of block for reading
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --segment-size   size of segments to split disk into (-d)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --cache-size     size of disk cache (-d)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --blocks-per-segment  number of blocks to read/write per segment per iteration (-d)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --read-threshold      maximum time (in us) a block read should take (-d)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --write-threshold     maximum time (in us) a block write should take (-d)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --random-threads      number of random threads for each disk write thread (-d)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --destructive    write/wipe disk partition (-d)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --monitor_mode   only do ECC error polling, no stress load.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --cc_test        do the cache coherency testing
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --cc_inc_count   number of times to increment the cacheline&#39;</span>s member
-</span></span><span style="display:flex;"><span> --cc_line_count  number of cache line sized datastructures to allocate <span style="color:#66d9ef">for</span> the cache coherency threads to operate
-</span></span><span style="display:flex;"><span> --paddr_base     allocate memory starting from this address
-</span></span><span style="display:flex;"><span> --pause_delay    delay <span style="color:#f92672">(</span>in seconds<span style="color:#f92672">)</span> between power spikes
-</span></span><span style="display:flex;"><span> --pause_duration duration <span style="color:#f92672">(</span>in seconds<span style="color:#f92672">)</span> of each pause
-</span></span><span style="display:flex;"><span> --local_numa     choose memory regions associated with each CPU to be tested by that CPU
-</span></span><span style="display:flex;"><span> --remote_numa    choose memory regions not associated with each CPU to be tested by that CPU
-</span></span><span style="display:flex;"><span> --interleave_size bytes  size in bytes of each channel<span style="color:#960050;background-color:#1e0010">&#39;</span>s data as interleaved between memory channels
-</span></span><span style="display:flex;"><span> --channel_width bits     width in bits of each memory channel
-</span></span><span style="display:flex;"><span> --memory_channel u1,u2   defines a comma-separated list of names
-</span></span><span style="display:flex;"><span>                          <span style="color:#66d9ef">for</span> dram packages in a memory channel.
-</span></span><span style="display:flex;"><span>                          Use multiple times to define multiple channels.
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./stressapptest -M <span style="color:#ae81ff">14200</span> -s <span style="color:#ae81ff">36000</span> -m <span style="color:#ae81ff">8</span> -i <span style="color:#ae81ff">8</span> -C <span style="color:#ae81ff">8</span> -l /data/stressapptest.log
-</span></span></code></pre></div><h3 id="参数说明">参数说明</h3>
-<ul>
-<li><code>-M 14200</code>: 测试内存大小 14200M</li>
-<li><code>-s 36000</code>: 测试时常10h，压力测试建议不小于1h</li>
-<li><code>-m threads</code>：这个参数用于指定运行内存拷贝线程的数量。内存拷贝线程是执行内存数据复制操作的线程，增加线程数量可以增加内存操作的并发度，从而增加对系统的内存压力。</li>
-<li><code>-i threads</code>：这个参数用于指定运行内存反转（invert）线程的数量。内存反转线程通常是指执行内存数据位反转操作的线程，这也是一种压力测试，可以用于测试内存的写入和读取性能。</li>
-<li><code>-C threads</code>：表示启动的 CPU 压力测试线程的数量。增加这个数字可以增加 CPU 的负载，从而测试 CPU 在高压力下的性能表现。</li>
-</ul>
-<p>若测试通过，则终端会打印：<code>Status: PASS – please verify no corrected errors。</code></p>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">windows vcpkg
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Install vcpkg https://github.com/microsoft/vcpkg#quick-start-windows
+powershell 终端执行如下命令：
+git clone https://github.com/microsoft/vcpkg .\vcpkg\bootstrap-vcpkg.bat Install Package # To install the libraries for your project, run: # This will install x86 libraries by default. .\vcpkg\vcpkg install [packages to install] # To install x64, run: .\vcpkg\vcpkg install [package name]:x64-windows Tab-Completion/Auto-Completion https://github.com/microsoft/vcpkg#tab-completionauto-completion
+vcpkg supports auto-completion of commands, package names, and options in both powershell and bash. To enable tab-completion in the shell of your choice, run:
+&gt; .\vcpkg integrate powershell VS/MSBuild 项目 (用户范围的集成) https://learn.microsoft.com/zh-cn/vcpkg/examples/installing-and-using-packages#msbuild
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-05-16 20:19:08 +0800 CST'>May 16, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to windows vcpkg" href="https://adityatelange.github.io/hugo-PaperMod/post/vcpkg_windows/"></a>
 </article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/e2fsprogs-1/">e2fsprogs-1.42.8 源码编译安装</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-03T12:00:00&#43;08:00">3 February, 2023</time>
-
-</div>
-
-</header>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>tar xvf e2fsprogs-1.42.8.tar.gz
-</span></span><span style="display:flex;"><span>cd e2fsprogs-1.42.8
-</span></span><span style="display:flex;"><span>mkdir build
-</span></span><span style="display:flex;"><span>cd build/
-</span></span><span style="display:flex;"><span>../configure
-</span></span><span style="display:flex;"><span>make
-</span></span><span style="display:flex;"><span>sudo make install
-</span></span></code></pre></div><p>问题：</p>
-<p>ubuntu20.04 编译报错 <code>undefined reference to 'makedev'</code></p>
-<p>解决方法:
-<code>vim &lt;path-to-e2fsprogs-1.42.8&gt;/lib/blkid/devname.c</code>
-添加头文件 <code>#include &lt;sys/sysmacros.h</code></p>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Linux date 命令用法
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>基本用法 date $ date 2023年 02月 09日 星期四 16:22:29 CST 精确到 ms $ date &#43;&#39;%d/%m/%Y %H:%M:%S:%3N&#39; 09/02/2023 16:23:20:252 精确到 ns $ date &#43;&#39;%d/%m/%Y %H:%M:%S:%N&#39; 09/02/2023 16:23:24:918036405 </p>
+  </div>
+  <footer class="entry-footer"><span title='2023-02-09 00:00:00 +0800 CST'>February 9, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to Linux date 命令用法" href="https://adityatelange.github.io/hugo-PaperMod/post/linux_date_cmd/"></a>
 </article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/python2/">python2.7 环境及包管理</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-03T12:00:00&#43;08:00">3 February, 2023</time>
-
-</div>
-
-</header>
-<h1 id="python27-环境及包管理">python2.7 环境及包管理</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt install python2.7
-</span></span><span style="display:flex;"><span>curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
-</span></span><span style="display:flex;"><span>sudo python2.7 get-pip.py
-</span></span><span style="display:flex;"><span>pip2 install simplejson
-</span></span></code></pre></div>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">windows10 WSL setup
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>win10 安装 wsl2 安装 WSL | Microsoft Docs
+必须运行 Windows 10 版本 2004 及更高版本（内部版本 19041 及更高版本）或 Windows 11。
+→ 我的电脑win10已经更新到最新，应该没问题。
+设置→系统→关于
+以管理员身份运行 powershell
+wsl —install 如果没有安装wsl，则会进入安装过程，如果已经安装会打印帮助信息
+要在安装新的 Linux 发行版时将默认版本设置为 WSL 1 或 WSL 2，请使用命令 wsl --set-default-version &lt;Version#&gt;，将 &lt;Version#&gt;替换为 1 或 2。
+wsl --set-default-version 2 wsl2 安装ubuntu distro wsl --list --online 以下是可安装的有效分发的列表。 请使用“wsl –install -d &lt;分发&gt;”安装。
+NAME FRIENDLY NAME Ubuntu Ubuntu Debian Debian GNU/Linux kali-linux Kali Linux Rolling openSUSE-42 openSUSE Leap 42 SLES-12 SUSE Linux Enterprise Server v12 Ubuntu-16.04 Ubuntu 16.04 LTS Ubuntu-18.04 Ubuntu 18.04 LTS Ubuntu-20.04 Ubuntu 20.04 LTS wsl --install -d Ubuntu-20.04 卸载 wsl2 distro wsl -l -v wsl --unregister Debian 限制vmmem进程内存占用过高
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-02-09 00:00:00 +0800 CST'>February 9, 2023</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to windows10 WSL setup" href="https://adityatelange.github.io/hugo-PaperMod/post/windows10_wsl/"></a>
 </article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/vscode_remote-ssh_%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE/">vscode remote-ssh 免密登录配置</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-03T12:00:00&#43;08:00">3 February, 2023</time>
-
-</div>
-
-</header>
-<h1 id="vscode-remote-ssh-免密登录">vscode remote-ssh 免密登录</h1>
-<h2 id="环境声明">环境声明</h2>
-<p>win10 vscode + remote-ssh + virtualbox (ubuntu 20.04)</p>
-<h2 id="windows-配置">windows 配置</h2>
-<ol>
-<li>安装 vscode，remote-ssh 插件</li>
-<li>生成 ssh key：<code>ssh-keygen.exe -t rsa</code> 然后一路回车</li>
-<li>用户目录下会生成 id_rsa id_rsa.pub 两个文件</li>
-</ol>
-<h2 id="服务器-ubuntu-配置">服务器 ubuntu 配置</h2>
-<ol>
-<li>
-<p>安装 ssh server: <code>sudo apt install openssh-server</code></p>
-</li>
-<li>
-<p>启动 ssh: <code>sudo service sshd start</code></p>
-</li>
-<li>
-<p>此时 windows 就可以通过终端工具 ssh 登录服务器</p>
-</li>
-<li>
-<p>生成 ssh key：<code>ssh-keygen.exe -t rsa</code> 然后一路回车</p>
-</li>
-<li>
-<p><code>sudo vim /etc/ssh/sshd_config</code> 取消注释 <code>PubkeyAuthentication yes</code></p>
-</li>
-<li>
-<p>将 windows 生成的 id_rsa.pub 文件的内容加入服务器 <code>~/.ssh/authorized_keys</code> 文件中，如果该文件不存在就创建一个</p>
-</li>
-<li>
-<p><code>sudo service sshd restart</code></p>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">黑芝麻平台交叉编译 openssl
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>黑芝麻平台交叉编译 openssl 前置条件 编译环境：黑芝麻 Linux23 Docker 开发环境，已经默认配置了交叉编译环境。
+源码下载 wget https://www.openssl.org/source/openssl-1.1.1k.tar.gz tar -xzvf openssl-1.1.1k.tar.gz cd openssl-1.1.1k 配置 准备目标文件安装目录：
+mkdir _INSTALL 查看帮助手册：
+root@028337952dd7:/home/misc/openssl-1.1.1k# ./Configure Usage: Configure [no-&lt;cipher&gt; ...] [enable-&lt;cipher&gt; ...] [-Dxxx] [-lxxx] [-Lxxx] [-fxxx] [-Kxxx] [no-hw-xxx|no-hw] [[no-]threads] [[no-]shared] [[no-]zlib|zlib-dynamic] [no-asm] [no-egd] [sctp] [386] [--prefix=DIR] [--openssldir=OPENSSLDIR] [--with-xxx[=vvv]] [--config=FILE] os/compiler[:flags] pick os/compiler from: BS2000-OSD BSD-generic32 BSD-generic64 BSD-ia64 BSD-sparc64 BSD-sparcv8 BSD-x86 BSD-x86-elf BSD-x86_64 Cygwin Cygwin-i386 Cygwin-i486 Cygwin-i586 Cygwin-i686 Cygwin-x86 Cygwin-x86_64 DJGPP MPE/iX-gcc UEFI UWIN VC-CE VC-WIN32 VC-WIN32-ARM VC-WIN32-ONECORE VC-WIN64-ARM VC-WIN64A VC-WIN64A-ONECORE VC-WIN64A-masm VC-WIN64I aix-cc aix-gcc aix64-cc aix64-gcc android-arm android-arm64 android-armeabi android-mips android-mips64 android-x86 android-x86_64 android64 android64-aarch64 android64-mips64 android64-x86_64 bsdi-elf-gcc cc darwin-i386-cc darwin-ppc-cc darwin64-arm64-cc darwin64-ppc-cc darwin64-x86_64-cc gcc haiku-x86 haiku-x86_64 hpux-ia64-cc hpux-ia64-gcc hpux-parisc-cc hpux-parisc-gcc hpux-parisc1_1-cc hpux-parisc1_1-gcc hpux64-ia64-cc hpux64-ia64-gcc hpux64-parisc2-cc hpux64-parisc2-gcc hurd-x86 ios-cross ios-xcrun ios64-cross ios64-xcrun iossimulator-xcrun iphoneos-cross irix-mips3-cc irix-mips3-gcc irix64-mips4-cc irix64-mips4-gcc linux-aarch64 linux-alpha-gcc linux-aout linux-arm64ilp32 linux-armv4 linux-c64xplus linux-elf linux-generic32 linux-generic64 linux-ia64 linux-mips32 linux-mips64 linux-ppc linux-ppc64 linux-ppc64le linux-sparcv8 linux-sparcv9 linux-x32 linux-x86 linux-x86-clang linux-x86_64 linux-x86_64-clang linux32-s390x linux64-mips64 linux64-s390x linux64-sparcv9 mingw mingw64 nextstep nextstep3.3 sco5-cc sco5-gcc solaris-sparcv7-cc solaris-sparcv7-gcc solaris-sparcv8-cc solaris-sparcv8-gcc solaris-sparcv9-cc solaris-sparcv9-gcc solaris-x86-gcc solaris64-sparcv9-cc solaris64-sparcv9-gcc solaris64-x86_64-cc solaris64-x86_64-gcc tru64-alpha-cc tru64-alpha-gcc uClinux-dist uClinux-dist64 unixware-2.0 unixware-2.1 unixware-7 unixware-7-gcc vms-alpha vms-alpha-p32 vms-alpha-p64 vms-ia64 vms-ia64-p32 vms-ia64-p64 vos-gcc vxworks-mips vxworks-ppc405 vxworks-ppc60x vxworks-ppc750 vxworks-ppc750-debug vxworks-ppc860 vxworks-ppcgen vxworks-simlinux NOTE: If in doubt, on Unix-ish systems use &#39;./config&#39;. 上面提示如果编译 Unix-ish x86 平台目标文件，直接使用 ./config
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-02-09 00:00:00 +0800 CST'>February 9, 2023</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to 黑芝麻平台交叉编译 openssl" href="https://adityatelange.github.io/hugo-PaperMod/post/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/"></a>
 </article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2/">交叉编译 glibc-2.35</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-03T12:00:00&#43;08:00">3 February, 2023</time>
-
-</div>
-
-</header>
-<p>//localhost:1313/</p>
-<h1 id="交叉编译-glibc-235">交叉编译 glibc-2.35</h1>
-<p>glibc-2.35 更新需要同步用新版本的交叉编译器，这里直接在 Linaro 官网<a href="https://releases.linaro.org/components/toolchain/binaries/">下载</a>了最新的 <code>gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/code/gcc-linaro-7.5.0-2019.12-x86_64_armlinux-gnueabihf/bin&#34;</span>:$PATH
-</span></span><span style="display:flex;"><span>export CROSS_COMPILE<span style="color:#f92672">=</span>arm-linux-gnueabihf-
-</span></span><span style="display:flex;"><span>mkdir build_out; cd build_out
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>../configure --prefix<span style="color:#f92672">=</span>/code/glibc-2.35/build_out <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--host<span style="color:#f92672">=</span>arm-linux-gnueabihf
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>make
-</span></span><span style="display:flex;"><span>make install
-</span></span></code></pre></div>
-</article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-libxml2-2/">交叉编译 libxml2-2.9.10</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-03T12:00:00&#43;08:00">3 February, 2023</time>
-
-</div>
-
-</header>
-<h1 id="交叉编译-libxml2-2910">交叉编译 libxml2-2.9.10</h1>
-<p>依赖 zlib 源码编译出来的目标文件，请先参考如何交叉编译 zlib 完成之后再来编译。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;path-to-gcc-linaro-5.3-2016.02-x86_64_arm-linuxgnueabihf&gt;/bin&#34;</span>:$PATH
-</span></span><span style="display:flex;"><span>export CROSS_COMPILE<span style="color:#f92672">=</span>arm-linux-gnueabihf
-</span></span><span style="display:flex;"><span>mkdir build_out
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>./configure --prefix<span style="color:#f92672">=</span>/code/libxml2-2.9.10/build_out <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--disable-static <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--with-python<span style="color:#f92672">=</span>no <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--host<span style="color:#f92672">=</span>arm-linux-gnueabihf <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--with-zlib<span style="color:#f92672">=</span>/code/zlib-1.2.12/build_out
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>make
-</span></span><span style="display:flex;"><span>make install
-</span></span></code></pre></div>
-</article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2/">交叉编译 Python-2.7.16</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-03T12:00:00&#43;08:00">3 February, 2023</time>
-
-</div>
-
-</header>
-<h1 id="交叉编译-python-2716">交叉编译 Python-2.7.16</h1>
-<p>需要在代码的根路径新建一个 <code>config.sit</code>，内容参考如下：
-<code>--enable-shared﻿</code> 生成动态链接库</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;path-to-gcc-linaro-5.3-2016.02-x86_64_arm-linuxgnueabihf&gt;/bin&#34;</span>:$PATH
-</span></span><span style="display:flex;"><span>export CROSS_COMPILE<span style="color:#f92672">=</span>arm-linux-gnueabihf
-</span></span><span style="display:flex;"><span>export CONFIG_SITE<span style="color:#f92672">=</span>./config.site
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># config.site 文件内容如下：</span>
-</span></span><span style="display:flex;"><span>cat config.site
-</span></span><span style="display:flex;"><span>ac_cv_file__dev_ptmx<span style="color:#f92672">=</span>no
-</span></span><span style="display:flex;"><span>ac_cv_file__dev_ptc<span style="color:#f92672">=</span>no
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>./configure --prefix<span style="color:#f92672">=</span>/code/Python-2.7.16/build_out <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--host<span style="color:#f92672">=</span>arm-linux-gnueabihf <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--build<span style="color:#f92672">=</span>x86_64 <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--disable-ipv6 <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--enable-shared
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>make
-</span></span><span style="display:flex;"><span>make install
-</span></span></code></pre></div>
-</article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-tcpdump-4/">交叉编译 tcpdump-4.99.1</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-03T12:00:00&#43;08:00">3 February, 2023</time>
-
-</div>
-
-</header>
-<h1 id="交叉编译-tcpdump-4991">交叉编译 tcpdump-4.99.1</h1>
-<ul>
-<li>tcp dump <a href="https://www.tcpdump.org/">主页</a>
-<ul>
-<li><a href="https://www.tcpdump.org/release/tcpdump-4.99.1.tar.gz">tcpdump-4.99.1.tar.gz</a></li>
-<li><a href="https://www.tcpdump.org/release/libpcap-1.10.1.tar.gz">libpcap-1.10.1.tar.gz</a></li>
-</ul>
-</li>
-<li>参考：https://blog.csdn.net/onlyshi/article/details/81081707</li>
-<li>tcpdump 依赖 libpcap，需要先编译 libcap。</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>export LIBCAP<span style="color:#f92672">=</span>/code/libpcap-1.10.1
-</span></span><span style="display:flex;"><span>export TCPDUMP<span style="color:#f92672">=</span>/code/tcpdump-4.99.1
-</span></span><span style="display:flex;"><span>export CROSS_COMPILETOOL<span style="color:#f92672">=</span>aarch64-bst-linux
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>cd $LIBCAP
-</span></span><span style="display:flex;"><span>mkdir -p install
-</span></span><span style="display:flex;"><span>./configure --prefix<span style="color:#f92672">=</span>./install --host<span style="color:#f92672">=</span>arm-linux-gnueabihf --with-pcap<span style="color:#f92672">=</span>linux
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>make
-</span></span><span style="display:flex;"><span>make install
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>cd $TCPDUMP
-</span></span><span style="display:flex;"><span>mkdir -p install
-</span></span><span style="display:flex;"><span>./configure --prefix<span style="color:#f92672">=</span>./install --host<span style="color:#f92672">=</span>arm-linux-gnueabihf
-</span></span><span style="display:flex;"><span>make
-</span></span><span style="display:flex;"><span>make install
-</span></span></code></pre></div>
-</article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-zlib-1/">交叉编译 zlib-1.2.12</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-03T12:00:00&#43;08:00">3 February, 2023</time>
-
-</div>
-
-</header>
-<h1 id="交叉编译-zlib-1212">交叉编译 zlib-1.2.12</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;path-to-gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf&gt;/bin&#34;</span>:$PATH
-</span></span><span style="display:flex;"><span>export CROSS_COMPILE<span style="color:#f92672">=</span>arm-linux-gnueabihf
-</span></span><span style="display:flex;"><span>export HOST<span style="color:#f92672">=</span>arm-linux-gnueabihf
-</span></span><span style="display:flex;"><span>mkdir build_out
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>./configure --prefix<span style="color:#f92672">=</span>/code/zlib-1.2.12/build_out
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>make
-</span></span><span style="display:flex;"><span>make install
-</span></span></code></pre></div>
-</article>
-
-<nav class="pager">
-<a href="/categories/%E5%B7%A5%E5%85%B7/" rel="prev" class="pager__item pager__item--prev"><span aria-hidden="true">« </span>Previous</a>
-<a href="/categories/%E5%B7%A5%E5%85%B7/page/3/" rel="next" class="pager__item pager__item--next">Next<span aria-hidden="true"> »</span></a>
-</nav>
-
-</main>
-
-
-<aside class="sidebar layout__second-sidebar">
-<nav class="menu">
-<p class="title"><strong><a href="/post/">Post</a></strong></p>
-<ul>
-<li><a href="/post/perror_func/">perror</a></li>
-<li><a href="/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/">Windows WSL ubuntu adb 配置</a></li>
-<li><a href="/post/ubuntu_2004_%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/">ubuntu 20.04 升级内核</a></li>
-<li><a href="/post/svn/">ubuntu 搭建 svn 服务器</a></li>
-<li><a href="/post/windows-terminal-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-oh-my-posh/">Windows terminal 安装配置 oh-my-posh</a></li>
-<li><a href="/post/openssl/">openssl 创建自签名证书,对 Windows Catalog 进行签名</a></li>
-<li><a href="/post/docker-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">docker 环境搭建</a></li>
-<li><a href="/post/gerrit/">gerrit 环境搭建</a></li>
-<li><a href="/post/vcpkg_windows/">windows vcpkg</a></li>
-<li><a href="/post/linux_date_cmd/">Linux date 命令用法</a></li>
-<li><a href="/post/windows10_wsl/">windows10 WSL setup</a></li>
-<li><a href="/post/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/">黑芝麻平台交叉编译 openssl</a></li>
-<li><a href="/post/i2c_cmd/">I2C command</a></li>
-<li><a href="/post/ddr-%E5%8E%8B%E6%B5%8B%E5%91%BD%E4%BB%A4/">DDR 压测命令</a></li>
-<li><a href="/post/e2fsprogs-1/">e2fsprogs-1.42.8 源码编译安装</a></li>
-<li><a href="/post/python2/">python2.7 环境及包管理</a></li>
-<li><a href="/post/vscode_remote-ssh_%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE/">vscode remote-ssh 免密登录配置</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2/">交叉编译 glibc-2.35</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-libxml2-2/">交叉编译 libxml2-2.9.10</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2/">交叉编译 Python-2.7.16</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-tcpdump-4/">交叉编译 tcpdump-4.99.1</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-zlib-1/">交叉编译 zlib-1.2.12</a></li>
-<li><a href="/post/dmesg_support_iso_timestamp/">dmesg use CST timestamp</a></li>
-<li><a href="/post/gmsl2_csi2_clk/">GMSL2 CSI-2 clock</a></li>
-<li><a href="/post/hobotbuildenv/">Hobot 编译环境</a></li>
-<li><a href="/post/ros/">ROS</a></li>
-<li><a href="/post/%E8%80%81%E9%BB%91%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83/">老黑编译环境</a></li>
-<li><a href="/post/stock/">akshare 学习笔记</a></li>
-<li><a href="/post/adi_gmsl2_serdes_spi/">ADI GMSL2 SERDES SPI</a></li>
-<li><a href="/post/androidjava-/">Android Java 1.7 环境配置</a></li>
-<li><a href="/post/androidstudioenv/">Android Studio Env</a></li>
-<li><a href="/post/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/">Android 使用 am 命令启动一个活动组件</a></li>
-<li><a href="/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/">Android10编译开启ccache</a></li>
-<li><a href="/post/beyondcompare/">BeyondCompare</a></li>
-<li><a href="/post/cmake/">cmake</a></li>
-<li><a href="/post/crystal/">crystal</a></li>
-<li><a href="/post/debian4/">Debian 4.9 Config Static Ip.md</a></li>
-<li><a href="/post/dokuwiki/">dokuwiki</a></li>
-<li><a href="/post/flutter/">Flutter</a></li>
-<li><a href="/post/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/">git clone 包含 submodule 的仓库</a></li>
-<li><a href="/post/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/">git 使用指定的 ssh key</a></li>
-<li><a href="/post/gitbook/">gitbook</a></li>
-<li><a href="/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/">GMSL SERDES 笔记</a></li>
-<li><a href="/post/harmony-hpm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/">Harmony HPM 包管理器</a></li>
-<li><a href="/post/hugo/">hugo</a></li>
-<li><a href="/post/iperf-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD/">iperf 测试网络带宽</a></li>
-<li><a href="/post/linux_test_disk_i_o_with_dd/">Linux Test Disk with dd command</a></li>
-<li><a href="/post/manjaro/">manjaro</a></li>
-<li><a href="/post/opengrok/">opengrok</a></li>
-<li><a href="/post/openharmony-%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91/">OpenHarmony 代码下载编译</a></li>
-<li><a href="/post/repo/">repo</a></li>
-<li><a href="/post/samba/">samba</a></li>
-<li><a href="/post/sourceinsight/">Source Insight</a></li>
-<li><a href="/post/ubuntu_200406_install_tp_link_ac1300_usb_wifi_adaptor_driver/">ubuntu 20.04.6 install tp link a1300 usb wifi adaptor driver</a></li>
-<li><a href="/post/ubuntu_git_server_build_push_code/">Ubuntu git 仓库搭建及代码上传</a></li>
-<li><a href="/post/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/">Virtualbox Opensuse 无网络图标 无法上网</a></li>
-<li><a href="/post/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/">vscode 阅读 Linux 内核代码配置</a></li>
-<li><a href="/post/wifiadb/">Wifi Adb</a></li>
-<li><a href="/post/windows/">windows</a></li>
-<li><a href="/post/windows_remote_desktop/">Windows Remote Desktop</a></li>
-<li><a href="/post/windows_vcpkg_boost/">windows vcpkg boost 开发环境</a></li>
-<li><a href="/post/windowsvscodeplantuml%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Windows Vscode Plantuml 环境搭建</a></li>
-<li><a href="/post/windows_wsl_%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/">windows WSL 端口映射</a></li>
-<li><a href="/post/word/">word</a></li>
-<li><a href="/post/usbipd/">wsl 使用 usbipd 访问 USB 设备</a></li>
-<li><a href="/post/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/">一文搞懂应用开发所需 Linux 系统时间的相关知识点</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE/">交叉编译工具链</a></li>
-<li><a href="/post/awr2243_adc/">关于雷达 AWR2243 ADC OVER CSI HSI</a></li>
-<li><a href="/post/how_to_handle_gpio_interrupt_like_handling_in_linux_userspace/">如何在 Linux 用户空间中进行类似 GPIO 中断的处理</a></li>
-<li><a href="/post/camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi/">摄像头图像数据格式从cmos到mipi</a></li>
-<li><a href="/post/about/">Lu Yang</a></li>
-</ul>
-</nav>
-<nav class="menu">
-<p class="title"><strong><a href="/archives/"></a></strong></p>
-<ul>
-</ul>
-</nav>
-</aside>
-<footer class="footer layout__footer mt--l">
-<p>Follow categories: <a rel="alternate" type="application/rss&#43;xml" href="https://example.org/categories/%E5%B7%A5%E5%85%B7/index.xml">rss</a></p>
-<p><span>© Hugo Zen theme</span></p>
-
-<p>Powered by <a href="https://gohugo.io/">Hugo</a> and the <a href="https://github.com/frjo/hugo-theme-zen">Zen theme</a>.</p>
-
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://adityatelange.github.io/hugo-PaperMod/categories/%E5%B7%A5%E5%85%B7/">
+      «&nbsp;Prev&nbsp;1/11
+    </a>
+    <a class="next" href="https://adityatelange.github.io/hugo-PaperMod/categories/%E5%B7%A5%E5%85%B7/page/3/">Next&nbsp;3/11&nbsp;»
+    </a>
+  </nav>
 </footer>
+    </main>
+    
+<footer class="footer">
+        <span>© <a href="https://github.com/adityatelange/hugo-PaperMod/graphs/contributors">PaperMod Contributors</a></span> · 
 
-</div>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
 </body>
+
 </html>

@@ -1,759 +1,345 @@
 <!DOCTYPE html>
-<html class="nojs" lang="en-GB" dir="ltr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<title>Post – Hugo Zen theme</title>
-<link rel="alternate" type="application/rss+xml" title="rss" href="https://example.org/post/index.xml">
-<link rel="alternate" type="application/json" title="json" href="https://example.org/post/index.json">
+<html lang="en" dir="auto">
 
-<meta name="created" content="2024-01-01T20:19:08+0800">
-<meta name="modified" content="2024-01-01T20:19:08+0800">
-<meta name="author" content="Your Name">
-<meta name="contact" content="info@example.org">
-<meta property="og:site_name" content="Hugo Zen theme">
-<meta property="og:title" content="Post">
-<meta property="og:url" content="https://example.org/post/">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://example.org/apple-touch-icon.png">
-<meta name="generator" content="Hugo 0.146.6">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="theme-color" content="#ffffff">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Posts | LuyangのBlog</title>
+<meta name="keywords" content="">
+<meta name="description" content="Posts - LuyangのBlog">
+<meta name="author" content="Theme PaperMod">
+<link rel="canonical" href="https://adityatelange.github.io/hugo-PaperMod/post/">
+<link crossorigin="anonymous" href="/hugo-PaperMod/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://adityatelange.github.io/hugo-PaperMod/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://adityatelange.github.io/hugo-PaperMod/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://adityatelange.github.io/hugo-PaperMod/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://adityatelange.github.io/hugo-PaperMod/apple-touch-icon.png">
+<link rel="mask-icon" href="https://adityatelange.github.io/hugo-PaperMod/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://adityatelange.github.io/hugo-PaperMod/post/index.xml">
+<link rel="alternate" hreflang="en" href="https://adityatelange.github.io/hugo-PaperMod/post/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
-<link rel="canonical" href="https://example.org/post/">
+            .list {
+                background: var(--theme);
+            }
 
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-<link rel="stylesheet" href="/css/styles.2fa1df15b347581e582e5e8899cf40bdf7908f76e104ed06eeba4c6443012e8c.css">
-<link rel="stylesheet" href="/css/mobilemenu.dbbf7de443967fe1d83dce47fb19895d79710b23ccd02b84f54d4d39c37e3d2d.css" media="screen">
-<link rel="stylesheet" href="/css/print.1912ba13950e7434fb50dd14d3951bc7f57bb0c16b4f204158b72f0b3844f7a1.css" media="print">
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://adityatelange.github.io/hugo-PaperMod/post/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="Posts">
+  <meta property="og:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png">
+<meta name="twitter:title" content="Posts">
+<meta name="twitter:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
+
 
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "url" : "https://example.org/post/",
-    "name": "Post",
-    "description": "The zen theme for Hugo example site.",
-    "image" : "https://example.org/apple-touch-icon.png",
-    "author": {
-      "@type": "Person",
-      "name": "Your Name"
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://example.org/"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Hugo Zen theme",
-      "logo" : {
-        "@type": "ImageObject",
-        "url": "https://example.org/apple-touch-icon.png"
-      },
-      "url": "https://example.org/"
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://adityatelange.github.io/hugo-PaperMod/post/"
     }
-  }
+  ]
+}
 </script>
-
-<script src="/js/script-early.2d6255816e36e34bd1948dc5c26ede35687a256c4e2e516e0cd75f383a510c6a.js"></script>
-
-<script defer src="/js/mobilemenu.7ce1f75fd1d49cd683a008352ad9001f800349629be01d531a19c02b5a84817b.js"></script>
-<script defer src="/js/script.f2979a93a325fecf9605263bd141398a311c8e23388ed7dcff74f92f7e632866.js"></script>
-
-
-
-
-
-
 </head>
 
-<body class="list-page">
-<div class="page layout__page layout__sidebar-second">
-<header class="header layout__header">
-<a href="/" title="Home" rel="home" class="header__logo">
-<img src="/images/logo.png" width="64" alt="Home" class="header__logo-image">
-</a>
-<h1 class="header__site-name">
-<a href="/" title="Home" class="header__site-link" rel="home"><span>Hugo Zen theme</span></a>
-</h1>
-<div class="region header__region">
-</div>
-</header>
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
-<nav class="main-menu mx--xs layout__navigation" aria-label="Main menu">
-<ul class="flex-inline mx--0">
-<li><a href="/"><span>Home</span></a></li>
-<li><a href="/"><span>Documentation</span></a></li>
-<li><a href="/"><span>About</span></a></li>
-<li><a href="/"><span>Contact</span></a></li>
-<li><a href="/"><span>Search</span></a></li>
-</ul>
-</nav>
-<div class="mobile-nav" dir="ltr" hidden>
-  <div class="mobile-nav__cover"></div>
-  <button class="mobile-nav__toggle" aria-expanded="false" aria-controls="sheet">
-    Menu
-    <svg class="mobile-nav__hamburger" viewBox="0 0 100 100" focusable="false" aria-hidden="true">
-      <rect width="80" height="12" x="10" y="20" rx="5"></rect>
-      <rect width="80" height="12" x="10" y="45" rx="5"></rect>
-      <rect width="80" height="12" x="10" y="70" rx="5"></rect>
-    </svg>
-  </button>
-  <div class="mobile-nav__sheet link-inverted link-nav" id="sheet" aria-hidden="true">
-    <div class="mobile-nav__region"></div>
-    <nav class="mobile-nav__main-menu" aria-label="Main menu">
-    <ul class="mobile-nav__navbar">
-    <li><a href="/"><span>Home</span></a></li>
-    <li><a href="/"><span>Documentation</span></a></li>
-    <li><a href="/"><span>About</span></a></li>
-    <li><a href="/"><span>Contact</span></a></li>
-    <li><a href="/"><span>Search</span></a></li>
-    </ul>
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://adityatelange.github.io/hugo-PaperMod/" accesskey="h" title="LuyangのBlog (Alt + H)">LuyangのBlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://adityatelange.github.io/hugo-PaperMod/fr/" title="French"
+                            aria-label=":fr:">🇫🇷</a>
+                    </li>
+                    <li>
+                        <a href="https://adityatelange.github.io/hugo-PaperMod/fa/" title="Fa"
+                            aria-label="Fa">Fa</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/search/" title="Search">
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/adityatelange/hugo-PaperMod/wiki/" title="WiKi">
+                    <span>WiKi</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
     </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://adityatelange.github.io/hugo-PaperMod/">Home</a></div>
+  <h1>
+    Posts
+    <a href="/hugo-PaperMod/post/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">perror
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>重点学习 errnum 转 str 的实现方法
+妙 妙 妙 perror stdio-common/perror.c
+perror (const char *s) static void perror_internal (FILE *fp, const char *s, int errnum) __strerror_r string/_strerror.c
+/* Return a string describing the errno code in ERRNUM. */ char * __strerror_r (int errnum, char *buf, size_t buflen) { char *err = (char *) __get_errlist (errnum); if (__glibc_unlikely (err == NULL)) { __snprintf (buf, buflen, &#34;%s%d&#34;, _(&#34;Unknown error &#34;), errnum); return buf; } return _(err); } __get_errlist stdio-common/errlist.c
+const char * __get_errlist (int errnum) { int mapped = ERR_MAP (errnum); if (mapped &gt;= 0 &amp;&amp; mapped &lt; _sys_errlist_internal_len) return _sys_errlist_internal[mapped]; return NULL; } _sys_errlist_internal stdio-common/errlist-data-gen.c
+const char *const _sys_errlist_internal[] = { #define _S(n, str) [ERR_MAP(n)] = str, #include &lt;errlist.h&gt; #undef _S }; const size_t _sys_errlist_internal_len = array_length (_sys_errlist_internal); _S sysdeps/gnu/errlist.h
+...</p>
   </div>
-</div>
-<main class="main layout__main">
-<header>
-<h1 class="title">Post</h1>
-</header>
-
-
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/perror_func/">perror</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2024-01-01T20:19:08&#43;08:00">1 January, 2024</time>
-
-</div>
-
-</header>
-<p>重点学习 errnum 转 str 的实现方法</p>
-<ul>
-<li>妙
-<ul>
-<li>妙
-<ul>
-<li>妙</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="perror">perror</h1>
-<p><code>stdio-common/perror.c</code></p>
-<ul>
-<li><code>perror (const char *s)</code>
-<ul>
-<li><code>static void perror_internal (FILE *fp, const char *s, int errnum)</code></li>
-</ul>
-</li>
-</ul>
-<h1 id="__strerror_r">__strerror_r</h1>
-<p><code>string/_strerror.c</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* Return a string describing the errno code in ERRNUM.  */</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">__strerror_r</span> (<span style="color:#66d9ef">int</span> errnum, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>buf, <span style="color:#66d9ef">size_t</span> buflen)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>err <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>) <span style="color:#a6e22e">__get_errlist</span> (errnum);
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">__glibc_unlikely</span> (err <span style="color:#f92672">==</span> NULL))
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">__snprintf</span> (buf, buflen, <span style="color:#e6db74">&#34;%s%d&#34;</span>, <span style="color:#a6e22e">_</span>(<span style="color:#e6db74">&#34;Unknown error &#34;</span>), errnum);
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> buf;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">_</span>(err);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h1 id="__get_errlist">__get_errlist</h1>
-<p><code>stdio-common/errlist.c</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">__get_errlist</span> (<span style="color:#66d9ef">int</span> errnum)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> mapped <span style="color:#f92672">=</span> <span style="color:#a6e22e">ERR_MAP</span> (errnum);
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (mapped <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> mapped <span style="color:#f92672">&lt;</span> _sys_errlist_internal_len)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> _sys_errlist_internal[mapped];
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> NULL;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h1 id="_sys_errlist_internal"><code>_sys_errlist_internal</code></h1>
-<p><code>stdio-common/errlist-data-gen.c</code></p>
+  <footer class="entry-footer"><span title='2024-01-01 20:19:08 +0800 CST'>January 1, 2024</span>&nbsp;·&nbsp;20 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to perror" href="https://adityatelange.github.io/hugo-PaperMod/post/perror_func/"></a>
 </article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/">Windows WSL ubuntu adb 配置</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-10-26T00:00:00&#43;08:00">26 October, 2023</time>
-
-</div>
-
-</header>
-<h2 id="配置前的状态">配置前的状态</h2>
-<ul>
-<li>windows 11 + wsl + ubuntu 18.04</li>
-</ul>
-<p>windows 可以识别 adb devices</p>
-<p>
-$$
-C:\Users&gt;adb devices
-List of devices attached
-fada-018b4209f24d0001   device
-$$
-</p>
-<p>wsl 识别不到 adb devices</p>
-<p>
-$$
-luyang@LUYANG:~$ adb devices
-* daemon not running; starting now at tcp:5037
-* daemon started successfully
-List of devices attached
-$$
-</p>
-<h2 id="windows-安装工具包">Windows 安装工具包</h2>
-<p>windows 安装 <a href="https://github.com/dorssel/usbipd-win/releases">usbipd-win</a></p>
-<h2 id="wsl-安装工具包">WSL 安装工具包</h2>
-<p>WSL ubuntu 安装 adb 工具</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install android-tools-adb
-</span></span></code></pre></div><p>在WSL中，安装 USB/IP 的用户空间工具和 USB 硬件标识符的数据库。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install linux-tools-5.15.0-87-generic hwdata
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 注意 linux-tools 相应的要改成你实际安装的版本</span>
-</span></span><span style="display:flex;"><span>sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/5.15.0-87-generic/usbip <span style="color:#ae81ff">20</span>
-</span></span></code></pre></div><h3 id="关于-linux-tools">关于 linux-tools</h3>
-<p>查看当前 ubuntu 系统版本支持的 linux-tools generic版本</p>
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Windows WSL ubuntu adb 配置
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>配置前的状态 windows 11 &#43; wsl &#43; ubuntu 18.04 windows 可以识别 adb devices
+C:\Users&gt;adb devices List of devices attached fada-018b4209f24d0001 device wsl 识别不到 adb devices
+luyang@LUYANG:~$ adb devices * daemon not running; starting now at tcp:5037 * daemon started successfully List of devices attached Windows 安装工具包 windows 安装 usbipd-win
+WSL 安装工具包 WSL ubuntu 安装 adb 工具
+sudo apt install android-tools-adb 在WSL中，安装 USB/IP 的用户空间工具和 USB 硬件标识符的数据库。
+sudo apt install linux-tools-5.15.0-87-generic hwdata # 注意 linux-tools 相应的要改成你实际安装的版本 sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/5.15.0-87-generic/usbip 20 关于 linux-tools 查看当前 ubuntu 系统版本支持的 linux-tools generic版本
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-10-26 00:00:00 +0800 CST'>October 26, 2023</span>&nbsp;·&nbsp;32 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to Windows WSL ubuntu adb 配置" href="https://adityatelange.github.io/hugo-PaperMod/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/"></a>
 </article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/ubuntu_2004_%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/">ubuntu 20.04 升级内核</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-06-26T03:00:00&#43;08:00">26 June, 2023</time>
-
-</div>
-
-</header>
-<h1 id="系统信息">系统信息</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ lsb_release -a
-</span></span><span style="display:flex;"><span>No LSB modules are available.
-</span></span><span style="display:flex;"><span>Distributor ID: Ubuntu
-</span></span><span style="display:flex;"><span>Description:    Ubuntu 20.04.6 LTS
-</span></span><span style="display:flex;"><span>Release:        20.04
-</span></span><span style="display:flex;"><span>Codename:       focal
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ uname -a
-</span></span><span style="display:flex;"><span>Linux kang-HP-ProBook-440-14-inch-G10-Notebook-PC 5.15.0-67-generic <span style="color:#75715e">#74~20.04.1-Ubuntu SMP Wed Feb 22 14:52:34 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux</span>
-</span></span></code></pre></div><h1 id="安装依赖">安装依赖</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update <span style="color:#f92672">&amp;&amp;</span> sudo apt upgrade
-</span></span><span style="display:flex;"><span>sudo apt install binutils build-essential gcc make perl net-tools libncurses-dev <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>				openssh-server git fakeroot libssl-dev bc flex libelf-dev bison <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>				dwarves zstd
-</span></span></code></pre></div><h1 id="linux-源码下载">Linux 源码下载</h1>
-<ul>
-<li>官网：<a href="https://www.kernel.org/pub/">https://www.kernel.org/pub/</a></li>
-<li>Git：<a href="https://git.kernel.org/">https://git.kernel.org/</a></li>
-<li>ftp：<a href="http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/">http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/</a></li>
-</ul>
-<h1 id="拷贝-config-配置文件">拷贝 .config 配置文件</h1>
-<p>解压源代码并进入源码根目录，然后执行</p>
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">ubuntu 20.04 升级内核
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>系统信息 $ lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Description: Ubuntu 20.04.6 LTS Release: 20.04 Codename: focal $ uname -a Linux kang-HP-ProBook-440-14-inch-G10-Notebook-PC 5.15.0-67-generic #74~20.04.1-Ubuntu SMP Wed Feb 22 14:52:34 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux 安装依赖 sudo apt update &amp;&amp; sudo apt upgrade sudo apt install binutils build-essential gcc make perl net-tools libncurses-dev \ openssh-server git fakeroot libssl-dev bc flex libelf-dev bison \ dwarves zstd Linux 源码下载 官网：https://www.kernel.org/pub/ Git：https://git.kernel.org/ ftp：http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/ 拷贝 .config 配置文件 解压源代码并进入源码根目录，然后执行
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-06-26 03:00:00 +0800 CST'>June 26, 2023</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to ubuntu 20.04 升级内核" href="https://adityatelange.github.io/hugo-PaperMod/post/ubuntu_2004_%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/"></a>
 </article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/svn/">ubuntu 搭建 svn 服务器</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-06-26T03:00:00&#43;08:00">26 June, 2023</time>
-
-</div>
-
-</header>
-<h2 id="安装-subversion">安装 subversion</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get remove --purge subversion
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>sudo apt-get update
-</span></span><span style="display:flex;"><span>sudo apt-get install subversion
-</span></span></code></pre></div><h2 id="创建-svn-用户">创建 SVN 用户</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo adduser svn
-</span></span><span style="display:flex;"><span>sudo adduser svn sudo
-</span></span><span style="display:flex;"><span>sudo su svn
-</span></span></code></pre></div><h2 id="创建仓库目录">创建仓库目录</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mkdir /svn
-</span></span><span style="display:flex;"><span>sudo mkdir /svn/repos
-</span></span><span style="display:flex;"><span>sudo mkdir /svn/repos/public
-</span></span><span style="display:flex;"><span>sudo chmod <span style="color:#ae81ff">777</span> -R /svn/repos/public
-</span></span><span style="display:flex;"><span>sudo chown svn:svn -R /svn
-</span></span></code></pre></div><h2 id="创建版本库">创建版本库</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo svnadmin create /svn/repos/public
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>$ ls -lah /svn/repos/public
-</span></span><span style="display:flex;"><span>total 32K
-</span></span><span style="display:flex;"><span>drwxrwxrwx <span style="color:#ae81ff">6</span> svn  svn  4.0K 6月  <span style="color:#ae81ff">19</span> 14:15 .
-</span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">3</span> svn  svn  4.0K 6月  <span style="color:#ae81ff">19</span> 14:15 ..
-</span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">2</span> root root 4.0K 6月  <span style="color:#ae81ff">19</span> 14:15 conf
-</span></span><span style="display:flex;"><span>drwxr-sr-x <span style="color:#ae81ff">6</span> root root 4.0K 6月  <span style="color:#ae81ff">19</span> 14:15 db
-</span></span><span style="display:flex;"><span>-r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">2</span> 6月  <span style="color:#ae81ff">19</span> 14:15 format
-</span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">2</span> root root 4.0K 6月  <span style="color:#ae81ff">19</span> 14:15 hooks
-</span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">2</span> root root 4.0K 6月  <span style="color:#ae81ff">19</span> 14:15 locks
-</span></span><span style="display:flex;"><span>-rw-r--r-- <span style="color:#ae81ff">1</span> root root  <span style="color:#ae81ff">246</span> 6月  <span style="color:#ae81ff">19</span> 14:15 README.txt
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /svn/repos/public
-</span></span><span style="display:flex;"><span>sudo chmod -R <span style="color:#ae81ff">777</span> db
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd conf
-</span></span><span style="display:flex;"><span>sudo cp svnserve.conf svnserve.conf.bak
-</span></span><span style="display:flex;"><span>sudo vim svnserve.conf
-</span></span></code></pre></div><p>取消注释：</p>
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">ubuntu 搭建 svn 服务器
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>安装 subversion sudo apt-get remove --purge subversion sudo apt-get update sudo apt-get install subversion 创建 SVN 用户 sudo adduser svn sudo adduser svn sudo sudo su svn 创建仓库目录 sudo mkdir /svn sudo mkdir /svn/repos sudo mkdir /svn/repos/public sudo chmod 777 -R /svn/repos/public sudo chown svn:svn -R /svn 创建版本库 sudo svnadmin create /svn/repos/public $ ls -lah /svn/repos/public total 32K drwxrwxrwx 6 svn svn 4.0K 6月 19 14:15 . drwxr-xr-x 3 svn svn 4.0K 6月 19 14:15 .. drwxr-xr-x 2 root root 4.0K 6月 19 14:15 conf drwxr-sr-x 6 root root 4.0K 6月 19 14:15 db -r--r--r-- 1 root root 2 6月 19 14:15 format drwxr-xr-x 2 root root 4.0K 6月 19 14:15 hooks drwxr-xr-x 2 root root 4.0K 6月 19 14:15 locks -rw-r--r-- 1 root root 246 6月 19 14:15 README.txt cd /svn/repos/public sudo chmod -R 777 db cd conf sudo cp svnserve.conf svnserve.conf.bak sudo vim svnserve.conf 取消注释：
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-06-26 03:00:00 +0800 CST'>June 26, 2023</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to ubuntu 搭建 svn 服务器" href="https://adityatelange.github.io/hugo-PaperMod/post/svn/"></a>
 </article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/windows-terminal-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-oh-my-posh/">Windows terminal 安装配置 oh-my-posh</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-06-26T03:00:00&#43;08:00">26 June, 2023</time>
-
-</div>
-
-</header>
-<p>适用于 Windows terminal + powershell</p>
-<h2 id="安装-oh-my-posh">安装 oh-my-posh</h2>
-<p>Microsoft Store 中搜索并安装：<code>oh-my-posh</code> by <code>jandedobbeleer</code></p>
-<h2 id="使用图标字体">使用图标字体</h2>
-<p><a href="https://www.nerdfonts.com/font-downloads">Nerd Fonts - Iconic font aggregator, glyphs/icons collection, &amp; fonts patcher</a></p>
-<p>去这里下载一个自己喜欢的字体，并配置 windows terminal power shell profile 使用该字体。</p>
-<h2 id="配置-profile">配置 profile</h2>
-<p>判断当前的 shell 类型：<code>oh-my-posh get shell</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\l</span>uyang<span style="color:#ae81ff">\D</span>esktop&gt; oh-my-posh get shell
-</span></span><span style="display:flex;"><span>powershell
-</span></span></code></pre></div><p>修改配置文件：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>notepad $PROFILE
-</span></span></code></pre></div><p>添加如下内容：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oh-my-posh init pwsh | Invoke-Expression
-</span></span></code></pre></div><p>如果 <code>notepad $PROFILE</code> 报错，说配置文件不存在需要自己创建一个：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>New-Item -Path $PROFILE -Type File -Force
-</span></span></code></pre></div><p>加载配置：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>. $PROFILE
-</span></span></code></pre></div><h2 id="qa">Q&amp;A</h2>
-<p>运行报错：</p>
-<p>
-$$
-Windows PowerShell
-版权所有（C） Microsoft Corporation。保留所有权利。
-
-安装最新的 PowerShell，了解新功能和改进！https://aka.ms/PSWindows
-
-. : 无法加载文件 C:\Users\luyang\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1，因为在此系统上禁止运行脚
-本。有关详细信息，请参阅 https:/go.microsoft.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。
-所在位置 行:1 字符: 3
-&#43; . &#39;C:\Users\luyang\Documents\WindowsPowerShell\Microsoft.PowerShell_pr ...
-&#43;   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    &#43; CategoryInfo          : SecurityError: (:) []，PSSecurityException
-    &#43; FullyQualifiedErrorId : UnauthorizedAccess
-$$
-</p>
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Windows terminal 安装配置 oh-my-posh
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>适用于 Windows terminal &#43; powershell
+安装 oh-my-posh Microsoft Store 中搜索并安装：oh-my-posh by jandedobbeleer
+使用图标字体 Nerd Fonts - Iconic font aggregator, glyphs/icons collection, &amp; fonts patcher
+去这里下载一个自己喜欢的字体，并配置 windows terminal power shell profile 使用该字体。
+配置 profile 判断当前的 shell 类型：oh-my-posh get shell
+PS C:\Users\luyang\Desktop&gt; oh-my-posh get shell powershell 修改配置文件：
+notepad $PROFILE 添加如下内容：
+oh-my-posh init pwsh | Invoke-Expression 如果 notepad $PROFILE 报错，说配置文件不存在需要自己创建一个：
+New-Item -Path $PROFILE -Type File -Force 加载配置：
+. $PROFILE Q&amp;A 运行报错：
+Windows PowerShell 版权所有（C） Microsoft Corporation。保留所有权利。 安装最新的 PowerShell，了解新功能和改进！https://aka.ms/PSWindows . : 无法加载文件 C:\Users\luyang\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1，因为在此系统上禁止运行脚 本。有关详细信息，请参阅 https:/go.microsoft.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。 所在位置 行:1 字符: 3 &#43; . &#39;C:\Users\luyang\Documents\WindowsPowerShell\Microsoft.PowerShell_pr ... &#43; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ &#43; CategoryInfo : SecurityError: (:) []，PSSecurityException &#43; FullyQualifiedErrorId : UnauthorizedAccess 原因：PowerShell 默认禁止运行脚本，PowerShell 默认禁止运行脚本;
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-06-26 03:00:00 +0800 CST'>June 26, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to Windows terminal 安装配置 oh-my-posh" href="https://adityatelange.github.io/hugo-PaperMod/post/windows-terminal-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-oh-my-posh/"></a>
 </article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/openssl/">openssl 创建自签名证书,对 Windows Catalog 进行签名</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-06-01T09:30:01&#43;08:00">1 June, 2023</time>
-
-</div>
-
-</header>
-<p>NI-VISA Driver Wizard 生成了一个 .INF 文件。右键该文件安装的过程中提示错误：第三方 INF 不包含数字签名信息。</p>
-<p>Driver Wizard 生成的 INF 文件，必须为其创建 Windows Catalog (.cat)文件并进行数字签名，然后才能在Windows 10(或更高版本)机器上安装INF文件。</p>
-<p>打开 Windows Terminal 在 .INF 文件所在目录下执行如下命令，生成 Windows Catalog 文件：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Inf2Cat /driver:. /os:10_X64
-</span></span></code></pre></div><h2 id="windows-平台依赖环境安装">Windows 平台依赖环境安装</h2>
-<ul>
-<li>visual studio 2022</li>
-<li><a href="https://learn.microsoft.com/zh-cn/windows-hardware/drivers/download-the-wdk">WDK Windows Driver Kit</a></li>
-<li><a href="https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/">Windows SDK</a></li>
-</ul>
-<h2 id="linux-平台依赖环境安装">Linux 平台依赖环境安装</h2>
-<p>
-$$
-sudo apt install openssl
-$$
-</p>
-<h2 id="准备证书">准备证书</h2>
-<p>目的：Linux 平台使用OpenSSL生成带有基本约束扩展的证书</p>
-<ol>
-<li>创建文件 openssl.cnf，内容如下</li>
-</ol>
-<pre tabindex="0"><code class="language-config" data-lang="config">[req]
-req_extensions = v3_req
-distinguished_name = req_distinguished_name
-
-[v3_req]
-basicConstraints = CA:FALSE
-
-[req_distinguished_name]
-countryName            = US
-stateOrProvinceName    = California
-organizationName       = DeadBeef 
-commonName             = DeadBeef.com
-</code></pre><ol start="2">
-<li>请求签发 CSR</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openssl req -new -x509 -key private.key -out certificate.crt -days <span style="color:#ae81ff">36500</span> -config openssl.cnf
-</span></span></code></pre></div><ol start="3">
-<li>生成自签名证书</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openssl pkcs12 -export -in certificate.crt -inkey private.key -out yourfile.pfx
-</span></span></code></pre></div><h2 id="windows-catalog-签名">Windows Catalog 签名</h2>
-<p>将上前面生成的证书相关的文件，全部拷贝到 Windows 目录，跟 .INF .cat 文件放在一起。</p>
-</article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/docker-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">docker 环境搭建</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-06-01T00:00:00&#43;08:00">1 June, 2023</time>
-
-</div>
-
-</header>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> pkg in docker.io docker-doc docker-compose podman-docker containerd runc; <span style="color:#66d9ef">do</span> sudo apt-get remove $pkg; <span style="color:#66d9ef">done</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>sudo apt-get update
-</span></span><span style="display:flex;"><span>sudo apt-get install ca-certificates curl gnupg
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>sudo install -m <span style="color:#ae81ff">0755</span> -d /etc/apt/keyrings
-</span></span><span style="display:flex;"><span>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-</span></span><span style="display:flex;"><span>sudo chmod a+r /etc/apt/keyrings/docker.gpg
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  <span style="color:#e6db74">&#34;deb [arch=&#34;</span><span style="color:#66d9ef">$(</span>dpkg --print-architecture<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34; signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;</span><span style="color:#66d9ef">$(</span>. /etc/os-release <span style="color:#f92672">&amp;&amp;</span> echo <span style="color:#e6db74">&#34;</span>$VERSION_CODENAME<span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34; stable&#34;</span> | <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>sudo apt-get update
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-</span></span></code></pre></div>
-</article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/gerrit/">gerrit 环境搭建</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-06-01T00:00:00&#43;08:00">1 June, 2023</time>
-
-</div>
-
-</header>
-<h1 id="r1---gerrit-环境搭建">R1 - Gerrit 环境搭建</h1>
-<h1 id="环境说明">环境说明</h1>
-<ul>
-<li>ubuntu 20.04</li>
-<li>Gerrit 3.8.0</li>
-<li>openjdk version &ldquo;11.0.19&rdquo; 2023-04-18</li>
-</ul>
-<h1 id="安装依赖软件包">安装依赖软件包</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install openjdk-11-jdk openjdk-11-jdk-headless openjdk-11-jre openjdk-11-jre-headless
-</span></span></code></pre></div><h1 id="创建-gerrit-用户">创建 Gerrit 用户</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo adduser gerrit
-</span></span><span style="display:flex;"><span>sudo usermod -a -G sudo gerrit
-</span></span><span style="display:flex;"><span>sudo su gerrit
-</span></span><span style="display:flex;"><span>mkdir ~/gerrit
-</span></span><span style="display:flex;"><span>java -jar gerrit-3.8.0.war init -d ~/gerrit
-</span></span></code></pre></div><h1 id="安装-gerrit">安装 Gerrit</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ java -jar gerrit-3.8.0.war init -d ~/gerrit
-</span></span><span style="display:flex;"><span>Using secure store: com.google.gerrit.server.securestore.DefaultSecureStore
-</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>2023-06-03 12:19:03,027<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> INFO  com.google.gerrit.server.config.GerritServerConfigProvider : No /home/gerrit/gerrit/etc/gerrit.config; assuming defaults
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>*** Gerrit Code Review 3.8.0
-</span></span><span style="display:flex;"><span>*** 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Create <span style="color:#e6db74">&#39;/home/gerrit/gerrit&#39;</span>   <span style="color:#f92672">[</span>Y/n<span style="color:#f92672">]</span>? Y
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>*** Git Repositories
-</span></span><span style="display:flex;"><span>*** 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Location of Git repositories   <span style="color:#f92672">[</span>git<span style="color:#f92672">]</span>: 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>*** JGit Configuration
-</span></span><span style="display:flex;"><span>*** 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Auto-configured <span style="color:#e6db74">&#34;receive.autogc = false&#34;</span> to disable auto-gc after git-receive-pack.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>*** Index
-</span></span><span style="display:flex;"><span>*** 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Type                           <span style="color:#f92672">[</span>lucene<span style="color:#f92672">]</span>: 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>*** User Authentication
-</span></span><span style="display:flex;"><span>*** 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Authentication method          <span style="color:#f92672">[</span>openid/?<span style="color:#f92672">]</span>: ?
-</span></span><span style="display:flex;"><span>       Supported options are:
-</span></span><span style="display:flex;"><span>         openid
-</span></span><span style="display:flex;"><span>         openid_sso
-</span></span><span style="display:flex;"><span>         http
-</span></span><span style="display:flex;"><span>         http_ldap
-</span></span><span style="display:flex;"><span>         client_ssl_cert_ldap
-</span></span><span style="display:flex;"><span>         ldap
-</span></span><span style="display:flex;"><span>         ldap_bind
-</span></span><span style="display:flex;"><span>         custom_extension
-</span></span><span style="display:flex;"><span>         development_become_any_account
-</span></span><span style="display:flex;"><span>         oauth
-</span></span><span style="display:flex;"><span>Authentication method          <span style="color:#f92672">[</span>openid/?<span style="color:#f92672">]</span>: http
-</span></span><span style="display:flex;"><span>Get username from custom HTTP header <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
-</span></span><span style="display:flex;"><span>Username HTTP header           <span style="color:#f92672">[</span>SM_USER<span style="color:#f92672">]</span>: 
-</span></span><span style="display:flex;"><span>SSO logout URL                 : 
-</span></span><span style="display:flex;"><span>Enable signed push support     <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
-</span></span><span style="display:flex;"><span>Use <span style="color:#66d9ef">case</span> insensitive usernames <span style="color:#f92672">[</span>Y/n<span style="color:#f92672">]</span>? Y
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>*** Review Labels
-</span></span><span style="display:flex;"><span>*** 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Install Verified label         <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? N
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>*** Email Delivery
-</span></span><span style="display:flex;"><span>*** 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>SMTP server hostname           <span style="color:#f92672">[</span>localhost<span style="color:#f92672">]</span>: 
-</span></span><span style="display:flex;"><span>SMTP server port               <span style="color:#f92672">[(</span>default<span style="color:#f92672">)]</span>: 
-</span></span><span style="display:flex;"><span>SMTP encryption                <span style="color:#f92672">[</span>none/?<span style="color:#f92672">]</span>: 
-</span></span><span style="display:flex;"><span>SMTP username                  : 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>*** Container Process
-</span></span><span style="display:flex;"><span>*** 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Run as                         <span style="color:#f92672">[</span>gerrit<span style="color:#f92672">]</span>: 
-</span></span><span style="display:flex;"><span>Java runtime                   <span style="color:#f92672">[</span>/usr/lib/jvm/java-11-openjdk-amd64<span style="color:#f92672">]</span>: 
-</span></span><span style="display:flex;"><span>Copy gerrit-3.8.0.war to /home/gerrit/gerrit/bin/gerrit.war <span style="color:#f92672">[</span>Y/n<span style="color:#f92672">]</span>? Y
-</span></span><span style="display:flex;"><span>Copying gerrit-3.8.0.war to /home/gerrit/gerrit/bin/gerrit.war
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>*** SSH Daemon
-</span></span><span style="display:flex;"><span>*** 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Listen on address              <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span>: 
-</span></span><span style="display:flex;"><span>Listen on port                 <span style="color:#f92672">[</span>29418<span style="color:#f92672">]</span>: 
-</span></span><span style="display:flex;"><span>Generating SSH host key ... rsa... ed25519... ecdsa 256... ecdsa 384... ecdsa 521... <span style="color:#66d9ef">done</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>*** HTTP Daemon
-</span></span><span style="display:flex;"><span>*** 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Behind reverse proxy           <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
-</span></span><span style="display:flex;"><span>Proxy uses SSL <span style="color:#f92672">(</span>https://<span style="color:#f92672">)</span>      <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? N
-</span></span><span style="display:flex;"><span>Subdirectory on proxy server   <span style="color:#f92672">[</span>/<span style="color:#f92672">]</span>: 
-</span></span><span style="display:flex;"><span>Listen on address              <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span>: 
-</span></span><span style="display:flex;"><span>Listen on port                 <span style="color:#f92672">[</span>8081<span style="color:#f92672">]</span>: 
-</span></span><span style="display:flex;"><span>Canonical URL                  <span style="color:#f92672">[</span>http://luyang-VirtualBox/<span style="color:#f92672">]</span>: 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>*** Cache
-</span></span><span style="display:flex;"><span>*** 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>*** Plugins
-</span></span><span style="display:flex;"><span>*** 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Installing plugins.
-</span></span><span style="display:flex;"><span>Install plugin codemirror-editor version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
-</span></span><span style="display:flex;"><span>Installed codemirror-editor v3.8.0
-</span></span><span style="display:flex;"><span>Install plugin commit-message-length-validator version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
-</span></span><span style="display:flex;"><span>Installed commit-message-length-validator v3.8.0
-</span></span><span style="display:flex;"><span>Install plugin delete-project version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
-</span></span><span style="display:flex;"><span>Installed delete-project v3.8.0
-</span></span><span style="display:flex;"><span>Install plugin download-commands version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
-</span></span><span style="display:flex;"><span>Installed download-commands v3.8.0
-</span></span><span style="display:flex;"><span>Install plugin gitiles version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
-</span></span><span style="display:flex;"><span>Installed gitiles v3.8.0
-</span></span><span style="display:flex;"><span>Install plugin hooks version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
-</span></span><span style="display:flex;"><span>Installed hooks v3.8.0
-</span></span><span style="display:flex;"><span>Install plugin plugin-manager version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
-</span></span><span style="display:flex;"><span>Installed plugin-manager v3.8.0
-</span></span><span style="display:flex;"><span>Install plugin replication version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
-</span></span><span style="display:flex;"><span>Installed replication v3.8.0
-</span></span><span style="display:flex;"><span>Install plugin reviewnotes version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
-</span></span><span style="display:flex;"><span>Installed reviewnotes v3.8.0
-</span></span><span style="display:flex;"><span>Install plugin singleusergroup version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
-</span></span><span style="display:flex;"><span>Installed singleusergroup v3.8.0
-</span></span><span style="display:flex;"><span>Install plugin webhooks version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
-</span></span><span style="display:flex;"><span>Installed webhooks v3.8.0
-</span></span><span style="display:flex;"><span>Initializing plugins.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================================================</span>
-</span></span><span style="display:flex;"><span>Welcome to the Gerrit community
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Find more information on the homepage: https://www.gerritcodereview.com
-</span></span><span style="display:flex;"><span>Discuss Gerrit on the mailing list: https://groups.google.com/g/repo-discuss
-</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================================================</span>
-</span></span><span style="display:flex;"><span>Initialized /home/gerrit/gerrit
-</span></span><span style="display:flex;"><span>Init complete, reindexing accounts,changes,groups,projects with: reindex --site-path /home/gerrit/gerrit --threads <span style="color:#ae81ff">1</span> --index accounts --index changes --index groups --index projectsReindexed <span style="color:#ae81ff">0</span> documents in accounts index in 0.0s <span style="color:#f92672">(</span>0.0/s<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>Index accounts in version <span style="color:#ae81ff">12</span> is ready
-</span></span><span style="display:flex;"><span>Reindexing groups:      100% <span style="color:#f92672">(</span>2/2<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>Reindexed <span style="color:#ae81ff">2</span> documents in groups index in 0.2s <span style="color:#f92672">(</span>9.9/s<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>Index groups in version <span style="color:#ae81ff">9</span> is ready
-</span></span><span style="display:flex;"><span>Reindexing changes: Slicing projects: 100% <span style="color:#f92672">(</span>2/2<span style="color:#f92672">)</span>, <span style="color:#66d9ef">done</span>    
-</span></span><span style="display:flex;"><span>Reindexed <span style="color:#ae81ff">0</span> documents in changes index in 0.0s <span style="color:#f92672">(</span>0.0/s<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>Index changes in version <span style="color:#ae81ff">82</span> is ready
-</span></span><span style="display:flex;"><span>Reindexing projects:    100% <span style="color:#f92672">(</span>2/2<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>Reindexed <span style="color:#ae81ff">2</span> documents in projects index in 0.1s <span style="color:#f92672">(</span>25.0/s<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>Index projects in version <span style="color:#ae81ff">5</span> is ready
-</span></span><span style="display:flex;"><span>Executing /home/gerrit/gerrit/bin/gerrit.sh start
-</span></span><span style="display:flex;"><span>Starting Gerrit Code Review: WARNING: Could not adjust Gerrit<span style="color:#e6db74">&#39;s process for the kernel&#39;</span>s out-of-memory killer.
-</span></span><span style="display:flex;"><span>         This may be caused by /home/gerrit/gerrit/bin/gerrit.sh not being run as root.
-</span></span><span style="display:flex;"><span>         Consider changing the OOM score adjustment manually <span style="color:#66d9ef">for</span> Gerrit<span style="color:#e6db74">&#39;s PID=4510 with e.g.:
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">         echo &#39;</span>-1000<span style="color:#960050;background-color:#1e0010">&#39;</span> | sudo tee /proc/4510/oom_score_adj
-</span></span><span style="display:flex;"><span>OK
-</span></span><span style="display:flex;"><span>Waiting <span style="color:#66d9ef">for</span> server on luyang-VirtualBox:80 ... OK
-</span></span><span style="display:flex;"><span>Please open the following URL in the browser: http://luyang-VirtualBox/#/admin/projects/
-</span></span></code></pre></div><h1 id="配置-gerrit">配置 Gerrit</h1>
-<p><code>etc/gerrit.config</code></p>
-</article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/vcpkg_windows/">windows vcpkg</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-05-16T20:19:08&#43;08:00">16 May, 2023</time>
-
-</div>
-
-</header>
-<h1 id="install-vcpkg">Install vcpkg</h1>
-<p><a href="https://github.com/microsoft/vcpkg#quick-start-windows">https://github.com/microsoft/vcpkg#quick-start-windows</a></p>
-<p>powershell 终端执行如下命令：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/microsoft/vcpkg
-</span></span><span style="display:flex;"><span>.<span style="color:#ae81ff">\v</span>cpkg<span style="color:#ae81ff">\b</span>ootstrap-vcpkg.bat
-</span></span></code></pre></div><h1 id="install-package">Install Package</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># To install the libraries for your project, run:</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># This will install x86 libraries by default.</span>
-</span></span><span style="display:flex;"><span>.<span style="color:#ae81ff">\v</span>cpkg<span style="color:#ae81ff">\v</span>cpkg install <span style="color:#f92672">[</span>packages to install<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#75715e"># To install x64, run:</span>
-</span></span><span style="display:flex;"><span> .<span style="color:#ae81ff">\v</span>cpkg<span style="color:#ae81ff">\v</span>cpkg install <span style="color:#f92672">[</span>package name<span style="color:#f92672">]</span>:x64-windows
-</span></span></code></pre></div><h1 id="tab-completionauto-completion">Tab-Completion/Auto-Completion</h1>
-<p><a href="https://github.com/microsoft/vcpkg#tab-completionauto-completion">https://github.com/microsoft/vcpkg#tab-completionauto-completion</a></p>
-<p><code>vcpkg</code> supports auto-completion of commands, package names, and options in both powershell and bash. To enable tab-completion in the shell of your choice, run:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>&gt; .\vcpkg integrate powershell
-</span></span></code></pre></div><h1 id="vsmsbuild-项目-用户范围的集成">VS/MSBuild 项目 (用户范围的集成)</h1>
-<p><a href="https://learn.microsoft.com/zh-cn/vcpkg/examples/installing-and-using-packages#msbuild">https://learn.microsoft.com/zh-cn/vcpkg/examples/installing-and-using-packages#msbuild</a></p>
-</article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/linux_date_cmd/">Linux date 命令用法</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="2023-02-09T00:00:00&#43;08:00">9 February, 2023</time>
-
-</div>
-
-</header>
-<h2 id="基本用法-date">基本用法 date</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ date
-</span></span><span style="display:flex;"><span>2023年 02月 09日 星期四 16:22:29 CST
-</span></span></code></pre></div><h2 id="精确到-ms">精确到 ms</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ date +<span style="color:#e6db74">&#39;%d/%m/%Y %H:%M:%S:%3N&#39;</span>
-</span></span><span style="display:flex;"><span>09/02/2023 16:23:20:252
-</span></span></code></pre></div><h2 id="精确到-ns">精确到 ns</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ date +<span style="color:#e6db74">&#39;%d/%m/%Y %H:%M:%S:%N&#39;</span>
-</span></span><span style="display:flex;"><span>09/02/2023 16:23:24:918036405
-</span></span></code></pre></div>
-</article>
-
-<nav class="pager">
-<a href="/post/page/2/" rel="next" class="pager__item pager__item--next">Next<span aria-hidden="true"> »</span></a>
-</nav>
-
-</main>
-
-
-<aside class="sidebar layout__second-sidebar">
-<nav class="menu">
-<p class="title"><strong><a href="/post/" aria-current="page">Post</a></strong></p>
-<ul>
-<li><a href="/post/perror_func/">perror</a></li>
-<li><a href="/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/">Windows WSL ubuntu adb 配置</a></li>
-<li><a href="/post/ubuntu_2004_%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/">ubuntu 20.04 升级内核</a></li>
-<li><a href="/post/svn/">ubuntu 搭建 svn 服务器</a></li>
-<li><a href="/post/windows-terminal-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-oh-my-posh/">Windows terminal 安装配置 oh-my-posh</a></li>
-<li><a href="/post/openssl/">openssl 创建自签名证书,对 Windows Catalog 进行签名</a></li>
-<li><a href="/post/docker-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">docker 环境搭建</a></li>
-<li><a href="/post/gerrit/">gerrit 环境搭建</a></li>
-<li><a href="/post/vcpkg_windows/">windows vcpkg</a></li>
-<li><a href="/post/linux_date_cmd/">Linux date 命令用法</a></li>
-<li><a href="/post/windows10_wsl/">windows10 WSL setup</a></li>
-<li><a href="/post/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/">黑芝麻平台交叉编译 openssl</a></li>
-<li><a href="/post/i2c_cmd/">I2C command</a></li>
-<li><a href="/post/ddr-%E5%8E%8B%E6%B5%8B%E5%91%BD%E4%BB%A4/">DDR 压测命令</a></li>
-<li><a href="/post/e2fsprogs-1/">e2fsprogs-1.42.8 源码编译安装</a></li>
-<li><a href="/post/python2/">python2.7 环境及包管理</a></li>
-<li><a href="/post/vscode_remote-ssh_%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE/">vscode remote-ssh 免密登录配置</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2/">交叉编译 glibc-2.35</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-libxml2-2/">交叉编译 libxml2-2.9.10</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2/">交叉编译 Python-2.7.16</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-tcpdump-4/">交叉编译 tcpdump-4.99.1</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-zlib-1/">交叉编译 zlib-1.2.12</a></li>
-<li><a href="/post/dmesg_support_iso_timestamp/">dmesg use CST timestamp</a></li>
-<li><a href="/post/gmsl2_csi2_clk/">GMSL2 CSI-2 clock</a></li>
-<li><a href="/post/hobotbuildenv/">Hobot 编译环境</a></li>
-<li><a href="/post/ros/">ROS</a></li>
-<li><a href="/post/%E8%80%81%E9%BB%91%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83/">老黑编译环境</a></li>
-<li><a href="/post/stock/">akshare 学习笔记</a></li>
-<li><a href="/post/adi_gmsl2_serdes_spi/">ADI GMSL2 SERDES SPI</a></li>
-<li><a href="/post/androidjava-/">Android Java 1.7 环境配置</a></li>
-<li><a href="/post/androidstudioenv/">Android Studio Env</a></li>
-<li><a href="/post/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/">Android 使用 am 命令启动一个活动组件</a></li>
-<li><a href="/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/">Android10编译开启ccache</a></li>
-<li><a href="/post/beyondcompare/">BeyondCompare</a></li>
-<li><a href="/post/cmake/">cmake</a></li>
-<li><a href="/post/crystal/">crystal</a></li>
-<li><a href="/post/debian4/">Debian 4.9 Config Static Ip.md</a></li>
-<li><a href="/post/dokuwiki/">dokuwiki</a></li>
-<li><a href="/post/flutter/">Flutter</a></li>
-<li><a href="/post/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/">git clone 包含 submodule 的仓库</a></li>
-<li><a href="/post/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/">git 使用指定的 ssh key</a></li>
-<li><a href="/post/gitbook/">gitbook</a></li>
-<li><a href="/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/">GMSL SERDES 笔记</a></li>
-<li><a href="/post/harmony-hpm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/">Harmony HPM 包管理器</a></li>
-<li><a href="/post/hugo/">hugo</a></li>
-<li><a href="/post/iperf-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD/">iperf 测试网络带宽</a></li>
-<li><a href="/post/linux_test_disk_i_o_with_dd/">Linux Test Disk with dd command</a></li>
-<li><a href="/post/manjaro/">manjaro</a></li>
-<li><a href="/post/opengrok/">opengrok</a></li>
-<li><a href="/post/openharmony-%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91/">OpenHarmony 代码下载编译</a></li>
-<li><a href="/post/repo/">repo</a></li>
-<li><a href="/post/samba/">samba</a></li>
-<li><a href="/post/sourceinsight/">Source Insight</a></li>
-<li><a href="/post/ubuntu_200406_install_tp_link_ac1300_usb_wifi_adaptor_driver/">ubuntu 20.04.6 install tp link a1300 usb wifi adaptor driver</a></li>
-<li><a href="/post/ubuntu_git_server_build_push_code/">Ubuntu git 仓库搭建及代码上传</a></li>
-<li><a href="/post/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/">Virtualbox Opensuse 无网络图标 无法上网</a></li>
-<li><a href="/post/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/">vscode 阅读 Linux 内核代码配置</a></li>
-<li><a href="/post/wifiadb/">Wifi Adb</a></li>
-<li><a href="/post/windows/">windows</a></li>
-<li><a href="/post/windows_remote_desktop/">Windows Remote Desktop</a></li>
-<li><a href="/post/windows_vcpkg_boost/">windows vcpkg boost 开发环境</a></li>
-<li><a href="/post/windowsvscodeplantuml%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Windows Vscode Plantuml 环境搭建</a></li>
-<li><a href="/post/windows_wsl_%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/">windows WSL 端口映射</a></li>
-<li><a href="/post/word/">word</a></li>
-<li><a href="/post/usbipd/">wsl 使用 usbipd 访问 USB 设备</a></li>
-<li><a href="/post/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/">一文搞懂应用开发所需 Linux 系统时间的相关知识点</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE/">交叉编译工具链</a></li>
-<li><a href="/post/awr2243_adc/">关于雷达 AWR2243 ADC OVER CSI HSI</a></li>
-<li><a href="/post/how_to_handle_gpio_interrupt_like_handling_in_linux_userspace/">如何在 Linux 用户空间中进行类似 GPIO 中断的处理</a></li>
-<li><a href="/post/camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi/">摄像头图像数据格式从cmos到mipi</a></li>
-<li><a href="/post/about/">Lu Yang</a></li>
-</ul>
-</nav>
-<nav class="menu">
-<p class="title"><strong><a href="/archives/"></a></strong></p>
-<ul>
-</ul>
-</nav>
-</aside>
-<footer class="footer layout__footer mt--l">
-<p>Follow post: <a rel="alternate" type="application/rss&#43;xml" href="https://example.org/post/index.xml">rss</a> | <a rel="alternate" type="application/json" href="https://example.org/post/index.json">json</a></p>
-<p><span>© Hugo Zen theme</span></p>
-
-<p>Powered by <a href="https://gohugo.io/">Hugo</a> and the <a href="https://github.com/frjo/hugo-theme-zen">Zen theme</a>.</p>
-
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://adityatelange.github.io/hugo-PaperMod/post/page/2/">Next&nbsp;2/15&nbsp;»
+    </a>
+  </nav>
 </footer>
+    </main>
+    
+<footer class="footer">
+        <span>© <a href="https://github.com/adityatelange/hugo-PaperMod/graphs/contributors">PaperMod Contributors</a></span> · 
 
-</div>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
 </body>
+
 </html>

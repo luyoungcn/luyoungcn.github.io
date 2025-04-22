@@ -1,19 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Dev on Hugo Zen theme</title>
-    <link>https://example.org/categories/dev/</link>
-    <description>Recent content in Dev on Hugo Zen theme</description>
-    <generator>Hugo</generator>
-    <language>en-GB</language>
+    <title>Dev on LuyangのBlog</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/categories/dev/</link>
+    <description>Recent content in Dev on LuyangのBlog</description>
+    <image>
+      <title>LuyangのBlog</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.146.6</generator>
+    <language>en</language>
+    <copyright>PaperMod Contributors</copyright>
     <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
-      <atom:link href="https://example.org/categories/dev/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/categories/dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>摄像头图像数据格式从cmos到mipi</title>
-      <link>https://example.org/post/camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/post/camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://example.org/post/camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;</description>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/post/camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi/</guid>
+      <description>&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://adityatelange.github.io/hugo-PaperMod/post/camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi/camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi.png&#34;&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

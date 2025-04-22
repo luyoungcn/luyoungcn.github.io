@@ -1,650 +1,334 @@
 <!DOCTYPE html>
-<html class="nojs" lang="en-GB" dir="ltr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<title>Post – Hugo Zen theme</title>
-<link rel="alternate" type="application/rss+xml" title="rss" href="https://example.org/post/index.xml">
-<link rel="alternate" type="application/json" title="json" href="https://example.org/post/index.json">
+<html lang="en" dir="auto">
 
-<meta name="created" content="2024-01-01T20:19:08+0800">
-<meta name="modified" content="2024-01-01T20:19:08+0800">
-<meta name="author" content="Your Name">
-<meta name="contact" content="info@example.org">
-<meta property="og:site_name" content="Hugo Zen theme">
-<meta property="og:title" content="Post">
-<meta property="og:url" content="https://example.org/post/">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://example.org/apple-touch-icon.png">
-<meta name="generator" content="Hugo 0.146.6">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="theme-color" content="#ffffff">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Posts | LuyangのBlog</title>
+<meta name="keywords" content="">
+<meta name="description" content="Posts - LuyangのBlog">
+<meta name="author" content="Theme PaperMod">
+<link rel="canonical" href="https://adityatelange.github.io/hugo-PaperMod/post/">
+<link crossorigin="anonymous" href="/hugo-PaperMod/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://adityatelange.github.io/hugo-PaperMod/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://adityatelange.github.io/hugo-PaperMod/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://adityatelange.github.io/hugo-PaperMod/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://adityatelange.github.io/hugo-PaperMod/apple-touch-icon.png">
+<link rel="mask-icon" href="https://adityatelange.github.io/hugo-PaperMod/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://adityatelange.github.io/hugo-PaperMod/post/index.xml">
+<link rel="alternate" hreflang="en" href="https://adityatelange.github.io/hugo-PaperMod/post/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
-<link rel="canonical" href="https://example.org/post/">
+            .list {
+                background: var(--theme);
+            }
 
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-<link rel="stylesheet" href="/css/styles.2fa1df15b347581e582e5e8899cf40bdf7908f76e104ed06eeba4c6443012e8c.css">
-<link rel="stylesheet" href="/css/mobilemenu.dbbf7de443967fe1d83dce47fb19895d79710b23ccd02b84f54d4d39c37e3d2d.css" media="screen">
-<link rel="stylesheet" href="/css/print.1912ba13950e7434fb50dd14d3951bc7f57bb0c16b4f204158b72f0b3844f7a1.css" media="print">
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://adityatelange.github.io/hugo-PaperMod/post/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="Posts">
+  <meta property="og:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png">
+<meta name="twitter:title" content="Posts">
+<meta name="twitter:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
+
 
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "url" : "https://example.org/post/",
-    "name": "Post",
-    "description": "The zen theme for Hugo example site.",
-    "image" : "https://example.org/apple-touch-icon.png",
-    "author": {
-      "@type": "Person",
-      "name": "Your Name"
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://example.org/"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Hugo Zen theme",
-      "logo" : {
-        "@type": "ImageObject",
-        "url": "https://example.org/apple-touch-icon.png"
-      },
-      "url": "https://example.org/"
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://adityatelange.github.io/hugo-PaperMod/post/"
     }
-  }
+  ]
+}
 </script>
-
-<script src="/js/script-early.2d6255816e36e34bd1948dc5c26ede35687a256c4e2e516e0cd75f383a510c6a.js"></script>
-
-<script defer src="/js/mobilemenu.7ce1f75fd1d49cd683a008352ad9001f800349629be01d531a19c02b5a84817b.js"></script>
-<script defer src="/js/script.f2979a93a325fecf9605263bd141398a311c8e23388ed7dcff74f92f7e632866.js"></script>
-
-
-
-
-
-
 </head>
 
-<body class="list-page">
-<div class="page layout__page layout__sidebar-second">
-<header class="header layout__header">
-<a href="/" title="Home" rel="home" class="header__logo">
-<img src="/images/logo.png" width="64" alt="Home" class="header__logo-image">
-</a>
-<h1 class="header__site-name">
-<a href="/" title="Home" class="header__site-link" rel="home"><span>Hugo Zen theme</span></a>
-</h1>
-<div class="region header__region">
-</div>
-</header>
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
-<nav class="main-menu mx--xs layout__navigation" aria-label="Main menu">
-<ul class="flex-inline mx--0">
-<li><a href="/"><span>Home</span></a></li>
-<li><a href="/"><span>Documentation</span></a></li>
-<li><a href="/"><span>About</span></a></li>
-<li><a href="/"><span>Contact</span></a></li>
-<li><a href="/"><span>Search</span></a></li>
-</ul>
-</nav>
-<div class="mobile-nav" dir="ltr" hidden>
-  <div class="mobile-nav__cover"></div>
-  <button class="mobile-nav__toggle" aria-expanded="false" aria-controls="sheet">
-    Menu
-    <svg class="mobile-nav__hamburger" viewBox="0 0 100 100" focusable="false" aria-hidden="true">
-      <rect width="80" height="12" x="10" y="20" rx="5"></rect>
-      <rect width="80" height="12" x="10" y="45" rx="5"></rect>
-      <rect width="80" height="12" x="10" y="70" rx="5"></rect>
-    </svg>
-  </button>
-  <div class="mobile-nav__sheet link-inverted link-nav" id="sheet" aria-hidden="true">
-    <div class="mobile-nav__region"></div>
-    <nav class="mobile-nav__main-menu" aria-label="Main menu">
-    <ul class="mobile-nav__navbar">
-    <li><a href="/"><span>Home</span></a></li>
-    <li><a href="/"><span>Documentation</span></a></li>
-    <li><a href="/"><span>About</span></a></li>
-    <li><a href="/"><span>Contact</span></a></li>
-    <li><a href="/"><span>Search</span></a></li>
-    </ul>
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://adityatelange.github.io/hugo-PaperMod/" accesskey="h" title="LuyangのBlog (Alt + H)">LuyangのBlog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://adityatelange.github.io/hugo-PaperMod/fr/" title="French"
+                            aria-label=":fr:">🇫🇷</a>
+                    </li>
+                    <li>
+                        <a href="https://adityatelange.github.io/hugo-PaperMod/fa/" title="Fa"
+                            aria-label="Fa">Fa</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/search/" title="Search">
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/adityatelange/hugo-PaperMod/wiki/" title="WiKi">
+                    <span>WiKi</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
     </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://adityatelange.github.io/hugo-PaperMod/">Home</a></div>
+  <h1>
+    Posts
+    <a href="/hugo-PaperMod/post/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">交叉编译 tcpdump-4.99.1
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>交叉编译 tcpdump-4.99.1 tcp dump 主页 tcpdump-4.99.1.tar.gz libpcap-1.10.1.tar.gz 参考：https://blog.csdn.net/onlyshi/article/details/81081707 tcpdump 依赖 libpcap，需要先编译 libcap。 #!/bin/bash export LIBCAP=/code/libpcap-1.10.1 export TCPDUMP=/code/tcpdump-4.99.1 export CROSS_COMPILETOOL=aarch64-bst-linux cd $LIBCAP mkdir -p install ./configure --prefix=./install --host=arm-linux-gnueabihf --with-pcap=linux make make install cd $TCPDUMP mkdir -p install ./configure --prefix=./install --host=arm-linux-gnueabihf make make install </p>
   </div>
-</div>
-<main class="main layout__main">
-<header>
-<h1 class="title">Post</h1>
-</header>
-
-
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/">git 使用指定的 ssh key</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<p>Git 提供了以下两种方式来指定使用哪个 SSH Key 进行认证：</p>
-<h2 id="使用-git-config-命令">使用 Git Config 命令</h2>
-<p>使用 <code>git config</code> 命令来配置 Git 的全局或本地参数。在这个命令中，可以使用 <code>core.sshCommand</code> 参数来指定使用哪个 SSH Key 进行认证。</p>
-<p>例如：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 全局范围内使用 SSH Key</span>
-</span></span><span style="display:flex;"><span>$ git config --global core.sshCommand <span style="color:#e6db74">&#34;ssh -i ~/.ssh/my_private_key&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 仅对当前仓库使用 SSH Key</span>
-</span></span><span style="display:flex;"><span>$ git config core.sshCommand <span style="color:#e6db74">&#34;ssh -i ~/.ssh/my_private_key&#34;</span>
-</span></span></code></pre></div><p>上面的命令会告诉 Git，使用 <code>~/.ssh/my_private_key</code> 文件作为 SSH 私钥进行认证。</p>
-<h2 id="使用-git-clone-命令">使用 Git Clone 命令</h2>
-<p>在使用 git clone 命令克隆项目时，可以通过 <code>-c</code> 或 <code>--config</code> 参数来指定使用哪个 SSH Key 进行认证。示例如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git clone -c core.sshCommand<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ssh -i ~/.ssh/my_private_key&#34;</span> git@github.com:user/repo.git
-</span></span></code></pre></div><p>上面的命令将会使用 <code>-i ~/.ssh/my_private_key</code> 指定的 SSH Key 进行认证。</p>
+  <footer class="entry-footer"><span title='2023-02-03 12:00:00 +0800 CST'>February 3, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to 交叉编译 tcpdump-4.99.1" href="https://adityatelange.github.io/hugo-PaperMod/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-tcpdump-4/"></a>
 </article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/gitbook/">gitbook</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<h2 id="nvm-node-npm">nvm node npm</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
-</span></span><span style="display:flex;"><span>source ~/.zshrc
-</span></span><span style="display:flex;"><span>nvm install node
-</span></span><span style="display:flex;"><span>npm config set registry https://registry.npm.taobao.org
-</span></span></code></pre></div><h2 id="gitbook">gitbook</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install gitbook-cli -g
-</span></span></code></pre></div><h2 id="gitbook-常见命令">gitbook 常见命令</h2>
-<p>List installed versions:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gitbook ls
-</span></span></code></pre></div><p>List available versions on NPM:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gitbook ls-remote
-</span></span></code></pre></div><p>Install a specific version:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gitbook fetch 2.1.0
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># or a pre-release</span>
-</span></span><span style="display:flex;"><span>gitbook fetch beta
-</span></span></code></pre></div><p>Update to the latest version</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gitbook update
-</span></span></code></pre></div><p>Uninstall a specific version</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gitbook uninstall 2.0.1
-</span></span></code></pre></div><h2 id="使用">使用</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gitbook init
-</span></span><span style="display:flex;"><span>gitbook serve <span style="color:#f92672">(</span>该命令首先会执行 gitbook build 编译书籍, 完成以后会打开一个 web 服务器, 监听在本地的 <span style="color:#ae81ff">4000</span> 端口<span style="color:#f92672">)</span>
-</span></span></code></pre></div><h2 id="plugin">plugin</h2>
-<h3 id="安装方法">安装方法</h3>
-<p>在 git book 项目的根目录下执行</p>
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">交叉编译 zlib-1.2.12
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>交叉编译 zlib-1.2.12 export PATH=&#34;&lt;path-to-gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf&gt;/bin&#34;:$PATH export CROSS_COMPILE=arm-linux-gnueabihf export HOST=arm-linux-gnueabihf mkdir build_out ./configure --prefix=/code/zlib-1.2.12/build_out make make install </p>
+  </div>
+  <footer class="entry-footer"><span title='2023-02-03 12:00:00 +0800 CST'>February 3, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to 交叉编译 zlib-1.2.12" href="https://adityatelange.github.io/hugo-PaperMod/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-zlib-1/"></a>
 </article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/">GMSL SERDES 笔记</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<h1 id="max96724">MAX96724</h1>
-<h1 id="max96724-相关资源">MAX96724 相关资源</h1>
-<ul>
-<li><a href="https://www.analog.com/cn/products/max96724.html#product-overview">product overview</a></li>
-<li><a href="https://www.analog.com/media/en/technical-documentation/data-sheets/max96724.pdf">MAX96724/F/R 英文数据手册 Rev.4</a></li>
-<li><a href="https://www.analog.com/media/en/technical-documentation/user-guides/max96724fr-user-guide.pdf">MAX96724/F/R Users Guide</a></li>
-<li><a href="https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-channel-specification-user-guide.pdf">GMSL2 Channel Specification User Guide Rev 1</a></li>
-<li><a href="https://www.analog.com/media/en/technical-documentation/data-sheets/max96717f.pdf" title="Open Data Sheet in PDF">MAX96717F: CSI-2 to GMSL2 Serializer Data Sheet (Rev. 5)</a></li>
-</ul>
-<h2 id="max96724-max9295d-pipes-and-csi2">MAX96724 MAX9295D pipes and csi2</h2>
-<script src="https://gist.github.com/luyoungcn/7b0f38d4f4ed39299afb48a3ac34295a.js"></script>
-
-<h2 id="gmsl2-forward-link-and-reverse-link">GMSL2 forward link and reverse link</h2>
-<p>In GMSL2, the [[forward link]] transmits data from the serializer (e.g., a camera) to the deserializer (e.g., a display or processor), while the [[[reverse link]]] transmits data in the opposite direction, from the deserializer to the serializer.</p>
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">dmesg use CST timestamp
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>痛点说明 当前板子集成的是 busybox dmesg，打印内核日志不支持 CST 时间戳格式，无法与应用层日志时间对齐
+root@qualcomm:~# busybox dmesg --help BusyBox v1.29.2 (2021-07-28 06:25:45 UTC) multi-call binary. Usage: dmesg [-c] [-n LEVEL] [-s SIZE] Print or control the kernel ring buffer -c Clear ring buffer after printing -n LEVEL Set console logging level -s SIZE Buffer size -r Print raw message buffer 时间戳格式
+[ 74.247018] overflow FE mux_index 4 [ 74.269371] overflow FE mux_index 4 [ 74.294086] overflow FE mux_index 4 交叉编译 dmesg@util-linux git clone https://github.com/util-linux/util-linux.git sudo apt install autopoint autoconf automake libtool mkdir build ./tools/config-gen all # --prefix 必须是绝对路径 export PATH=$PATH:&lt;path-to-cross-compile&gt; ./configure --host=aarch64-linux-gnu --prefix=/home/luyang/code/tt/util-linux/build make dmesg -j8 $ file dmesg dmesg: ELF 64-bit LSB executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, for GNU/Linux 3.14.0, BuildID[sha1]=64098e1379e47231f4f3b1578fa842bc3d1d1251, with debug_info, not strippedfile dmesg 编译报错及解决方案
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-02-01 00:00:00 +0800 CST'>February 1, 2023</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to dmesg use CST timestamp" href="https://adityatelange.github.io/hugo-PaperMod/post/dmesg_support_iso_timestamp/"></a>
 </article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/harmony-hpm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/">Harmony HPM 包管理器</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<h1 id="hpm">HPM</h1>
-<p>OpenHarmony HPM 指的是 “Harmony Package Manager”</p>
-<h1 id="hpm-part">HPM Part</h1>
-<p>Module level HPM Part：用于实现模块或 Part 的复用。分发的内容可以是源码或二进制文件。通常，这样的 HPM Part 对应着一个代码仓库，是代码仓库的一个版本。</p>
-<p>Distribution-level HPM Part：用于描述操作系统发行版。它由一系列依赖部件和用于构建发行版的脚本组成。该发行版包含完整操作系统的各种组件（如驱动程序、内核、框架和应用程序）。构建后生成的镜像可用于烧录。</p>
-<p>HPM Part 由两种类型的文件组成：描述文件和内容文件。</p>
-<p><img src="https://gitee.com/openharmony/docs/raw/master/en/device-dev/hpm-part/figures/en-us_image_0000001195369804.png" alt="">
-图 1 部件/模块级 HPM 部件与分布级 HPM 部件之间的关系</p>
-<p>OpenHarmony Package Manager （HPM） 是一个连接 consumers 和 providers 的开放式协作平台。HPM 部件是由 HPM 管理的对象。</p>
-<p>通过 HPM 平台，提供商可以发布 HPM Parts，消费者可以下载和使用 HPM Parts。</p>
-<ul>
-<li>Providers 声明 HPM 部件的属性并将其发布到平台。</li>
-<li>Consumer 在指定版本的 HPM Part 中声明依赖，获取所需的资源。</li>
-</ul>
-<p><img src="https://gitee.com/openharmony/docs/raw/master/en/device-dev/hpm-part/figures/en-us_image_0000001240409717.png" alt=""></p>
-<h1 id="hpm-包括以下内容">HPM 包括以下内容</h1>
-<h2 id="hpm-cliohoshpm-cli-发布的跨平台命令行工具">hpm-cli：@ohos/hpm-cli 发布的跨平台命令行工具</h2>
-<p>hpm-cli 工具提供了一系列用于创建、构建、安装、打包、运行和发布 HPM 部件的命令。您可以使用这些命令来管理 HPM 部件的生命周期。</p>
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">GMSL2 CSI-2 clock
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>关于 MIPI CSI-2 clock 模式 MIPI_CSI-2_Specification_v1
+7 Physical Layer 7 物理层
+The CSI-2 uses the MIPI Alliance Standard for D-PHY [2] physical layer.
+CSI - 2 使用 MIPI 联盟的 D - PHY [2] 物理层标准。
+The physical layer for a CSI-2 implementation is composed of between one and four unidirectional data Lanes and one clock Lane.
+CSI - 2 实现的物理层由一到四个单向数据通道和一个时钟通道组成。
+All CSI-2 transmitters and receivers shall support continuous clock behavior on the Clock Lane, and optionally may support non-continuous clock behavior.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-01-30 23:07:31 +0800 CST'>January 30, 2023</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to GMSL2 CSI-2 clock" href="https://adityatelange.github.io/hugo-PaperMod/post/gmsl2_csi2_clk/"></a>
 </article>
 
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/hugo/">hugo</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<p><a href="https://gohugo.io/">hugo</a></p>
-<p>theme: <a href="https://github.com/xtfly/hugo-theme-next">next</a></p>
-<ol>
-<li>install hugo</li>
-<li>create a new site <code>hugo new site &lt;sitename&gt;</code></li>
-<li>add theme
-<a href="https://github.com/xtfly/hugo-theme-next">Usage of next theme</a>
-<ul>
-<li>download theme file: git clone <code>https://github.com/xtfly/hugo-theme-next.git</code> next</li>
-<li>copy next directory to themes directory in your hugo site</li>
-<li>move config.toml to the root directory in your hugo site, and modify it to the actual information for your site.</li>
-<li>create some markdown files in directory(content/post), like <code>https://github.com/xtfly/xtfly.github.io/tree/hugo/content</code></li>
-<li>start hugo server in root directory: hugo server</li>
-<li>open browser: <code>http://localhost:1313/</code></li>
-</ul>
-</li>
-<li>start server <code>hugo server --bind 0.0.0.0 --baseURL http://10.0.0.7:1313</code></li>
-</ol>
-<h2 id="框架">框架</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>blog<span style="color:#f92672">]</span>$ ls
-</span></span><span style="display:flex;"><span>archetypes  config.toml  content  data  layouts  public  resources  static  themes
-</span></span></code></pre></div><h2 id="博客内容">博客内容</h2>
-<ol>
-<li>将你写的博客内容markdown文档所在目录链接到 content 目录，链接文件命名为 post</li>
-<li>将你的about目录链接到 content 目录，链接文件名为 about</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>blog<span style="color:#f92672">]</span>$ tree content/
-</span></span><span style="display:flex;"><span>content/
-</span></span><span style="display:flex;"><span>├── about -&gt; /home/lv/post/about
-</span></span><span style="display:flex;"><span>└── post -&gt; /home/lv/post
-</span></span></code></pre></div><h2 id="博客发布">博客发布</h2>
-<p>将博客发布内容路径链接为 hugo 的根目录， 链接文件命名为 public</p>
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hobot 编译环境
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>ubuntu 20.04
+sudo apt install gcc perl curl wget git vim build-essential make cmake bison flex android-sdk-ext4-utils mtd-utils zlib1g-dev lzop python2 curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py sudo python2 get-pip.py $ pip --version pip 20.3.4 from /home/luyang/.local/lib/python2.7/site-packages/pip (python 2.7) pip install networkx==1.8.1 pip install xlrd==0.9.3 pip install simplejson==3.17.6 pip install numpy==1.16.5 </p>
+  </div>
+  <footer class="entry-footer"><span title='2023-01-30 23:07:31 +0800 CST'>January 30, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to Hobot 编译环境" href="https://adityatelange.github.io/hugo-PaperMod/post/hobotbuildenv/"></a>
 </article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/iperf-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD/">iperf 测试网络带宽</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<p><code>100BASE-TX</code></p>
-<p><a href="https://iperf.fr/">iPerf</a>- The ultimate speed test tool for TCP, UDP and SCTP</p>
-<ul>
-<li>Test the limits of your network + Internet neutrality test</li>
-</ul>
-<h1 id="编译安装-iperf">编译安装 iperf</h1>
-<p>windows 端直接下载二进制文件</p>
-<ul>
-<li><a href="https://iperf.fr/download/windows/iperf-3.1.3-win64.zip">iPerf 3.1.3</a> (8 jun 2016 - 1.3 MiB for Windows Vista 64bits to Windows 10 64bits)</li>
-</ul>
-<p>嵌入式平台需要从源码[[交叉编译]]安装</p>
-<ul>
-<li>iPerf C++ source |<a href="https://iperf.fr/download/source/iperf-3.1.3-source.tar.gz">iPerf 3.1.3</a>|8 jun 2016|537 KiB|</li>
-</ul>
-<h2 id="交叉编译安装">交叉编译安装</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/code/gcc-linaro-7.5.0-2019.12-x86_64_armlinux-gnueabihf/bin&#34;</span>:$PATH
-</span></span><span style="display:flex;"><span>export CROSS_COMPILE<span style="color:#f92672">=</span>arm-linux-gnueabihf-
-</span></span><span style="display:flex;"><span>mkdir build_out; cd build_out
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>../configure --prefix<span style="color:#f92672">=</span>/code/glibc-2.35/build_out <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--host<span style="color:#f92672">=</span>arm-linux-gnueabihf
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>make
-</span></span><span style="display:flex;"><span>make install
-</span></span></code></pre></div><h1 id="测试">测试</h1>
-<h2 id="嵌入式客户端">嵌入式客户端</h2>
-<p>
-$$
-root@nxp:/# iperf3 -c 192.168.3.229 -i 10 -t 60 -u -b 1000M -A 2
-Connecting to host 192.168.3.229, port 5201
-[  4] local 192.168.3.250 port 42474 connected to 192.168.3.229 port 5201
-[ ID] Interval           Transfer     Bandwidth       Total Datagrams
-[  4]   0.00-10.00  sec  1.12 GBytes   958 Mbits/sec  146184
-[  4]  10.00-20.00  sec  1.12 GBytes   958 Mbits/sec  146232  
-[  4]  20.00-30.00  sec  1.12 GBytes   958 Mbits/sec  146205  
-[  4]  30.00-40.00  sec  1.12 GBytes   958 Mbits/sec  146232  
-[  4]  40.00-50.00  sec  1.12 GBytes   958 Mbits/sec  146232  
-[  4]  50.00-60.00  sec  1.12 GBytes   958 Mbits/sec  146235  
-- - - - - - - - - - - - - - - - - - - - - - - - -
-[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
-[  4]   0.00-60.00  sec  6.69 GBytes   958 Mbits/sec  637732049.574 ms  389951/389962 (1e&#43;02%)
-[  4] Sent 389962 datagrams
-
-iperf Done.
-$$
-</p>
-</article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/linux_test_disk_i_o_with_dd/">Linux Test Disk with dd command</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<h1 id="关键命令">关键命令</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 清空文件系统缓存, 测试读写命令之前需要执行该命令</span>
-</span></span><span style="display:flex;"><span>sudo sh -c <span style="color:#e6db74">&#34;sync &amp;&amp; echo 3 &gt; /proc/sys/vm/drop_caches&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># dd 写入速度测试</span>
-</span></span><span style="display:flex;"><span>dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/zero of<span style="color:#f92672">=</span>./test_write count<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span> bs<span style="color:#f92672">=</span>1024k
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># dd 读取速度测试</span>
-</span></span><span style="display:flex;"><span>dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>./test_write of<span style="color:#f92672">=</span>/dev/null bs<span style="color:#f92672">=</span>1024k
-</span></span></code></pre></div><h1 id="测试脚本">测试脚本</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 检查是否提供了足够的参数</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $# -lt <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Usage: </span>$0<span style="color:#e6db74"> test_count&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># ANSI颜色码</span>
-</span></span><span style="display:flex;"><span>green_color<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\e[32m&#34;</span>  <span style="color:#75715e"># 绿色</span>
-</span></span><span style="display:flex;"><span>red_color<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\e[31m&#34;</span>    <span style="color:#75715e"># 红色</span>
-</span></span><span style="display:flex;"><span>reset_color<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\e[0m&#34;</span>    <span style="color:#75715e"># 重置颜色</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>total_iterations<span style="color:#f92672">=</span>$1
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 初始化计数器</span>
-</span></span><span style="display:flex;"><span>write_success_count<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>write_failure_count<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>read_success_count<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>read_failure_count<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Total number of iterations: </span>$total_iterations<span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> <span style="color:#f92672">((</span>i<span style="color:#f92672">=</span>1; i&lt;<span style="color:#f92672">=</span>$total_iterations; i++<span style="color:#f92672">))</span>; <span style="color:#66d9ef">do</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 清空文件系统缓存</span>
-</span></span><span style="display:flex;"><span>	sudo sh -c <span style="color:#e6db74">&#34;sync &amp;&amp; echo 3 &gt; /proc/sys/vm/drop_caches&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 执行dd写入测试</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/zero of<span style="color:#f92672">=</span>./test_write count<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span> bs<span style="color:#f92672">=</span>1024k 2&gt;&amp;<span style="color:#ae81ff">1</span> | grep -q <span style="color:#e6db74">&#34;records in&#34;</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>	    write_speed<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>./test_write of<span style="color:#f92672">=</span>/dev/null bs<span style="color:#f92672">=</span>1024k 2&gt;&amp;<span style="color:#ae81ff">1</span> | awk <span style="color:#e6db74">&#39;/copied/ {print $(NF-1), $NF}&#39;</span><span style="color:#66d9ef">)</span>
-</span></span><span style="display:flex;"><span>	    echo <span style="color:#e6db74">&#34;write speed: </span>$write_speed<span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>	    <span style="color:#f92672">((</span>write_success_count++<span style="color:#f92672">))</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">else</span>
-</span></span><span style="display:flex;"><span>	    echo <span style="color:#e6db74">&#34;write failed&#34;</span>
-</span></span><span style="display:flex;"><span>	    <span style="color:#f92672">((</span>write_failure_count++<span style="color:#f92672">))</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 再次清空文件系统缓存</span>
-</span></span><span style="display:flex;"><span>	sudo sh -c <span style="color:#e6db74">&#34;sync &amp;&amp; echo 3 &gt; /proc/sys/vm/drop_caches&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 执行dd读取测试</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>./test_write of<span style="color:#f92672">=</span>/dev/null bs<span style="color:#f92672">=</span>1024k 2&gt;&amp;<span style="color:#ae81ff">1</span> | grep -q <span style="color:#e6db74">&#34;records in&#34;</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>	    read_speed<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>./test_write of<span style="color:#f92672">=</span>/dev/null bs<span style="color:#f92672">=</span>1024k 2&gt;&amp;<span style="color:#ae81ff">1</span> | awk <span style="color:#e6db74">&#39;/copied/ {print $(NF-1), $NF}&#39;</span><span style="color:#66d9ef">)</span>
-</span></span><span style="display:flex;"><span>	    echo <span style="color:#e6db74">&#34;read  speed: </span>$read_speed<span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>	    <span style="color:#f92672">((</span>read_success_count++<span style="color:#f92672">))</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">else</span>
-</span></span><span style="display:flex;"><span>	    echo <span style="color:#e6db74">&#34;read failed&#34;</span>
-</span></span><span style="display:flex;"><span>	    <span style="color:#f92672">((</span>read_failed_count++<span style="color:#f92672">))</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span>	echo <span style="color:#e6db74">&#34;----------------&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 输出总的测试次数、成功次数和失败次数</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Total number of tests: </span>$total_iterations<span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>green_color<span style="color:#e6db74">}</span><span style="color:#e6db74">Number of write successful tests: </span>$write_success_count<span style="color:#e6db74">${</span>reset_color<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>green_color<span style="color:#e6db74">}</span><span style="color:#e6db74">Number of read  successful tests: </span>$read_success_count<span style="color:#e6db74">${</span>reset_color<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>red_color<span style="color:#e6db74">}</span><span style="color:#e6db74">Number of write failed tests: </span>$write_failure_count<span style="color:#e6db74">${</span>reset_color<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>red_color<span style="color:#e6db74">}</span><span style="color:#e6db74">Number of read  failed tests: </span>$read_failure_count<span style="color:#e6db74">${</span>reset_color<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-</span></span></code></pre></div>
-</article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/manjaro/">manjaro</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<h2 id="系统基本信息">系统基本信息</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>[baihao@vstation ~]$ screenfetch
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> ██████████████████  ████████     baihao@vstation
-</span></span><span style="display:flex;"><span> ██████████████████  ████████     OS: Manjaro 20.2.1 Nibia
-</span></span><span style="display:flex;"><span> ██████████████████  ████████     Kernel: x86_64 Linux 5.9.16-1-MANJARO
-</span></span><span style="display:flex;"><span> ██████████████████  ████████     Uptime: 17m
-</span></span><span style="display:flex;"><span> ████████            ████████     Packages: 1220
-</span></span><span style="display:flex;"><span> ████████  ████████  ████████     Shell: bash 5.1.0
-</span></span><span style="display:flex;"><span> ████████  ████████  ████████     Resolution: 1920x951
-</span></span><span style="display:flex;"><span> ████████  ████████  ████████     DE: Xfce4
-</span></span><span style="display:flex;"><span> ████████  ████████  ████████     WM: Xfwm4
-</span></span><span style="display:flex;"><span> ████████  ████████  ████████     WM Theme: Matcha-sea
-</span></span><span style="display:flex;"><span> ████████  ████████  ████████     GTK Theme: Matcha-sea [GTK2]
-</span></span><span style="display:flex;"><span> ████████  ████████  ████████     Icon Theme: Papirus-Maia
-</span></span><span style="display:flex;"><span> ████████  ████████  ████████     Font: Noto Sans 10
-</span></span><span style="display:flex;"><span> ████████  ████████  ████████     Disk: 241G / 674G (37%)
-</span></span><span style="display:flex;"><span>                                  CPU: Intel Core i7-10510U @ 2x 2.304GHz
-</span></span><span style="display:flex;"><span>                                  GPU: llvmpipe (LLVM 11.0.0, 256 bits)
-</span></span><span style="display:flex;"><span>                                  RAM: 2134MiB / 3935MiB
-</span></span></code></pre></div><h2 id="wps--fcitx5-无法输入中文">wps + fcitx5 无法输入中文</h2>
-<p><strong>参考</strong></p>
-</article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/opengrok/">opengrok</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<h2 id="环境">环境</h2>
-<p>ubuntu 18.04 x64</p>
-<h2 id="依赖工具">依赖工具</h2>
-<ul>
-<li>jdk 1.8</li>
-<li>universal-ctags</li>
-<li>tomcat8</li>
-<li><a href="https://github.com/OpenGrok/OpenGrok/releases">opengrok</a></li>
-</ul>
-<h2 id="配置流程">配置流程</h2>
-<h3 id="jdk-安装">jdk 安装</h3>
-<p><code>sudo apt install openjdk-8-jdk openjdk-8-jdk-headless openjdk-8-jre openjdk-8-jre-dcevm openjdk-8-jre-headless</code></p>
-<p>通常android编译环境能够正常工作jdk环境已经ok.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ java -version
-</span></span><span style="display:flex;"><span>openjdk version <span style="color:#e6db74">&#34;1.8.0_252&#34;</span>
-</span></span><span style="display:flex;"><span>OpenJDK Runtime Environment <span style="color:#f92672">(</span>build 1.8.0_252-8u252-b09-1~18.04-b09<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>OpenJDK 64-Bit Server VM <span style="color:#f92672">(</span>build 25.252-b09, mixed mode<span style="color:#f92672">)</span>
-</span></span></code></pre></div><h3 id="universal-ctags">universal-ctags</h3>
-<p>ubuntu 自带包管理器安装的 <code>ctags</code> 是 <code>exuberant-ctags</code>, 如果已经安装请先通过如下命令卸载</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt purge exuberant-ctags
-</span></span></code></pre></div><p>通过源码安装 <code>universal-ctags</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://gitee.com/neo532/universal-ctags.git
-</span></span><span style="display:flex;"><span>cd universal-ctags
-</span></span><span style="display:flex;"><span>./autogen.sh
-</span></span><span style="display:flex;"><span>./configure
-</span></span><span style="display:flex;"><span>make
-</span></span><span style="display:flex;"><span>sudo make install
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ /usr/local/bin/ctags --version
-</span></span><span style="display:flex;"><span>Universal Ctags 0.0.0<span style="color:#f92672">(</span>054bee0<span style="color:#f92672">)</span>, Copyright <span style="color:#f92672">(</span>C<span style="color:#f92672">)</span> <span style="color:#ae81ff">2015</span> Universal Ctags Team
-</span></span><span style="display:flex;"><span>Universal Ctags is derived from Exuberant Ctags.
-</span></span><span style="display:flex;"><span>Exuberant Ctags 5.8, Copyright <span style="color:#f92672">(</span>C<span style="color:#f92672">)</span> 1996-2009 Darren Hiebert
-</span></span><span style="display:flex;"><span>  Compiled: May <span style="color:#ae81ff">10</span> 2020, 10:34:29
-</span></span><span style="display:flex;"><span>  URL: https://ctags.io/
-</span></span><span style="display:flex;"><span>  Optional compiled features: +wildcards, +regex, +iconv, +option-directory
-</span></span></code></pre></div><h3 id="tomcat8">tomcat8</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install tomcat8
-</span></span><span style="display:flex;"><span>sudo service tomcat8 start
-</span></span></code></pre></div><h3 id="opengrok">opengrok</h3>
-<blockquote>
-<p><a href="https://github.com/oracle/opengrok/wiki/How-to-setup-OpenGrok">How to setup OpenGrok</a></p>
-</article>
-
-<article class="list-view list-view--post">
-<header>
-<h2 class="title mt--s mb--xxs"><a href="/post/openharmony-%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91/">OpenHarmony 代码下载编译</a></h2>
-<div class="submitted meta">
-<span class="author" itemprop="author">Your Name</span> - <time class="created-date" datetime="1970-01-01T00:00:00&#43;08:00">1 January, 1970</time>
-
-</div>
-
-</header>
-<h2 id="代码下载">代码下载</h2>
-<p>OpenHarmony源代码以 [[HPM]] 部分的形式提供，可以通过以下任意方式获取：</p>
-<ol>
-<li>
-<p>从Gitee代码库获取源码。您可以使用repo或git工具从代码仓库下载最新的代码。</p>
-</li>
-<li>
-<p>从<a href="https://gitee.com/link?target=https%3A%2F%2Frepo.harmonyos.com%2F%23%2Fen%2Fhome">DevEco Marketplace</a>获取源代码。访问<a href="https://gitee.com/link?target=https%3A%2F%2Frepo.harmonyos.com%2F%23%2Fen%2Fhome">DevEco Marketplace</a> ，搜索您想要的开源发行版，并下载组件列表（或自定义组件并下载组件列表）。然后使用<strong>hpm-cli</strong>工具在本地PC上下载并安装组件和编译工具链。</p>
-</li>
-<li>
-<p>从镜像站点下载发行版的压缩文件。该方法下载速度较快，因此您也可以使用该方法获取早期版本的源代码。</p>
-</li>
-<li>
-<p>从GitHub镜像仓库获取源码。您可以使用<strong>repo</strong>或<strong>git</strong>工具从代码仓库下载最新的代码。</p>
-</li>
-</ol>
-<h3 id="gitee-获取源码">gitee 获取源码</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt -y install git git-lfs vim python3 python3-pip
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git config --global user.name &lt;&gt;
-</span></span><span style="display:flex;"><span>git config --global user.email &lt;&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /usr/bin
-</span></span><span style="display:flex;"><span>sudo ln -s pyhon3 python
-</span></span></code></pre></div><p>安装 repo 工具</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir ~/bin
-</span></span><span style="display:flex;"><span>curl https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 -o ~/bin/repo 
-</span></span><span style="display:flex;"><span>chmod a+x ~/bin/repo
-</span></span><span style="display:flex;"><span>pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
-</span></span></code></pre></div><p>将repo工具的路径添加到环境变量中</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim ~/.bashrc               <span style="color:#75715e"># Edit environment variables.</span>
-</span></span><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span>~/bin:$PATH     <span style="color:#75715e"># Add the path of the **repo** tool to the end of environment variables.</span>
-</span></span><span style="display:flex;"><span>source ~/.bashrc            <span style="color:#75715e"># Apply environment variables.</span>
-</span></span></code></pre></div><blockquote>
-<p>如果您想开发商业功能，请下载发布代码，该代码更稳定。如果您想快速访问适合您的开发的最新功能，请下载主代码。</p>
-</article>
-
-<nav class="pager">
-<a href="/post/page/4/" rel="prev" class="pager__item pager__item--prev"><span aria-hidden="true">« </span>Previous</a>
-<a href="/post/page/6/" rel="next" class="pager__item pager__item--next">Next<span aria-hidden="true"> »</span></a>
-</nav>
-
-</main>
-
-
-<aside class="sidebar layout__second-sidebar">
-<nav class="menu">
-<p class="title"><strong><a href="/post/" aria-current="page">Post</a></strong></p>
-<ul>
-<li><a href="/post/perror_func/">perror</a></li>
-<li><a href="/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/">Windows WSL ubuntu adb 配置</a></li>
-<li><a href="/post/ubuntu_2004_%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/">ubuntu 20.04 升级内核</a></li>
-<li><a href="/post/svn/">ubuntu 搭建 svn 服务器</a></li>
-<li><a href="/post/windows-terminal-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-oh-my-posh/">Windows terminal 安装配置 oh-my-posh</a></li>
-<li><a href="/post/openssl/">openssl 创建自签名证书,对 Windows Catalog 进行签名</a></li>
-<li><a href="/post/docker-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">docker 环境搭建</a></li>
-<li><a href="/post/gerrit/">gerrit 环境搭建</a></li>
-<li><a href="/post/vcpkg_windows/">windows vcpkg</a></li>
-<li><a href="/post/linux_date_cmd/">Linux date 命令用法</a></li>
-<li><a href="/post/windows10_wsl/">windows10 WSL setup</a></li>
-<li><a href="/post/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/">黑芝麻平台交叉编译 openssl</a></li>
-<li><a href="/post/i2c_cmd/">I2C command</a></li>
-<li><a href="/post/ddr-%E5%8E%8B%E6%B5%8B%E5%91%BD%E4%BB%A4/">DDR 压测命令</a></li>
-<li><a href="/post/e2fsprogs-1/">e2fsprogs-1.42.8 源码编译安装</a></li>
-<li><a href="/post/python2/">python2.7 环境及包管理</a></li>
-<li><a href="/post/vscode_remote-ssh_%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE/">vscode remote-ssh 免密登录配置</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2/">交叉编译 glibc-2.35</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-libxml2-2/">交叉编译 libxml2-2.9.10</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2/">交叉编译 Python-2.7.16</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-tcpdump-4/">交叉编译 tcpdump-4.99.1</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-zlib-1/">交叉编译 zlib-1.2.12</a></li>
-<li><a href="/post/dmesg_support_iso_timestamp/">dmesg use CST timestamp</a></li>
-<li><a href="/post/gmsl2_csi2_clk/">GMSL2 CSI-2 clock</a></li>
-<li><a href="/post/hobotbuildenv/">Hobot 编译环境</a></li>
-<li><a href="/post/ros/">ROS</a></li>
-<li><a href="/post/%E8%80%81%E9%BB%91%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83/">老黑编译环境</a></li>
-<li><a href="/post/stock/">akshare 学习笔记</a></li>
-<li><a href="/post/adi_gmsl2_serdes_spi/">ADI GMSL2 SERDES SPI</a></li>
-<li><a href="/post/androidjava-/">Android Java 1.7 环境配置</a></li>
-<li><a href="/post/androidstudioenv/">Android Studio Env</a></li>
-<li><a href="/post/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/">Android 使用 am 命令启动一个活动组件</a></li>
-<li><a href="/post/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/">Android10编译开启ccache</a></li>
-<li><a href="/post/beyondcompare/">BeyondCompare</a></li>
-<li><a href="/post/cmake/">cmake</a></li>
-<li><a href="/post/crystal/">crystal</a></li>
-<li><a href="/post/debian4/">Debian 4.9 Config Static Ip.md</a></li>
-<li><a href="/post/dokuwiki/">dokuwiki</a></li>
-<li><a href="/post/flutter/">Flutter</a></li>
-<li><a href="/post/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/">git clone 包含 submodule 的仓库</a></li>
-<li><a href="/post/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/">git 使用指定的 ssh key</a></li>
-<li><a href="/post/gitbook/">gitbook</a></li>
-<li><a href="/post/adi-maxim-%E7%BC%96%E8%A7%A3%E4%B8%B2/">GMSL SERDES 笔记</a></li>
-<li><a href="/post/harmony-hpm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/">Harmony HPM 包管理器</a></li>
-<li><a href="/post/hugo/">hugo</a></li>
-<li><a href="/post/iperf-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD/">iperf 测试网络带宽</a></li>
-<li><a href="/post/linux_test_disk_i_o_with_dd/">Linux Test Disk with dd command</a></li>
-<li><a href="/post/manjaro/">manjaro</a></li>
-<li><a href="/post/opengrok/">opengrok</a></li>
-<li><a href="/post/openharmony-%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91/">OpenHarmony 代码下载编译</a></li>
-<li><a href="/post/repo/">repo</a></li>
-<li><a href="/post/samba/">samba</a></li>
-<li><a href="/post/sourceinsight/">Source Insight</a></li>
-<li><a href="/post/ubuntu_200406_install_tp_link_ac1300_usb_wifi_adaptor_driver/">ubuntu 20.04.6 install tp link a1300 usb wifi adaptor driver</a></li>
-<li><a href="/post/ubuntu_git_server_build_push_code/">Ubuntu git 仓库搭建及代码上传</a></li>
-<li><a href="/post/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/">Virtualbox Opensuse 无网络图标 无法上网</a></li>
-<li><a href="/post/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/">vscode 阅读 Linux 内核代码配置</a></li>
-<li><a href="/post/wifiadb/">Wifi Adb</a></li>
-<li><a href="/post/windows/">windows</a></li>
-<li><a href="/post/windows_remote_desktop/">Windows Remote Desktop</a></li>
-<li><a href="/post/windows_vcpkg_boost/">windows vcpkg boost 开发环境</a></li>
-<li><a href="/post/windowsvscodeplantuml%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Windows Vscode Plantuml 环境搭建</a></li>
-<li><a href="/post/windows_wsl_%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/">windows WSL 端口映射</a></li>
-<li><a href="/post/word/">word</a></li>
-<li><a href="/post/usbipd/">wsl 使用 usbipd 访问 USB 设备</a></li>
-<li><a href="/post/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/">一文搞懂应用开发所需 Linux 系统时间的相关知识点</a></li>
-<li><a href="/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE/">交叉编译工具链</a></li>
-<li><a href="/post/awr2243_adc/">关于雷达 AWR2243 ADC OVER CSI HSI</a></li>
-<li><a href="/post/how_to_handle_gpio_interrupt_like_handling_in_linux_userspace/">如何在 Linux 用户空间中进行类似 GPIO 中断的处理</a></li>
-<li><a href="/post/camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi/">摄像头图像数据格式从cmos到mipi</a></li>
-<li><a href="/post/about/">Lu Yang</a></li>
-</ul>
-</nav>
-<nav class="menu">
-<p class="title"><strong><a href="/archives/"></a></strong></p>
-<ul>
-</ul>
-</nav>
-</aside>
-<footer class="footer layout__footer mt--l">
-<p>Follow post: <a rel="alternate" type="application/rss&#43;xml" href="https://example.org/post/index.xml">rss</a> | <a rel="alternate" type="application/json" href="https://example.org/post/index.json">json</a></p>
-<p><span>© Hugo Zen theme</span></p>
-
-<p>Powered by <a href="https://gohugo.io/">Hugo</a> and the <a href="https://github.com/frjo/hugo-theme-zen">Zen theme</a>.</p>
-
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://adityatelange.github.io/hugo-PaperMod/post/page/4/">
+      «&nbsp;Prev&nbsp;4/15
+    </a>
+    <a class="next" href="https://adityatelange.github.io/hugo-PaperMod/post/page/6/">Next&nbsp;6/15&nbsp;»
+    </a>
+  </nav>
 </footer>
+    </main>
+    
+<footer class="footer">
+        <span>© <a href="https://github.com/adityatelange/hugo-PaperMod/graphs/contributors">PaperMod Contributors</a></span> · 
 
-</div>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
 </body>
+
 </html>
