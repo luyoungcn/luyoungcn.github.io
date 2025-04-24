@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ubuntu on LuyangのBlog</title>
+    <link>https://luyoungcn.github.io/tags/ubuntu/</link>
+    <description>Recent content in Ubuntu on LuyangのBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 26 Jun 2023 03:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
