@@ -1,64 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Opengrok on LuyangのBlog</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/opengrok/</link>
-    <description>Recent content in Opengrok on LuyangのBlog</description>
-    <image>
-      <title>LuyangのBlog</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.146.6</generator>
+    <title>Opengrok on TeXify3</title>
+    <link>https://texify3.michaelneuper.com/tags/opengrok/</link>
+    <description>Recent content in Opengrok on TeXify3</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>PaperMod Contributors</copyright>
-    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
-    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/opengrok/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>opengrok</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/post/opengrok/</link>
-      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/post/opengrok/</guid>
-      <description>&lt;h2 id=&#34;环境&#34;&gt;环境&lt;/h2&gt;
-&lt;p&gt;ubuntu 18.04 x64&lt;/p&gt;
-&lt;h2 id=&#34;依赖工具&#34;&gt;依赖工具&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;jdk 1.8&lt;/li&gt;
-&lt;li&gt;universal-ctags&lt;/li&gt;
-&lt;li&gt;tomcat8&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/releases&#34;&gt;opengrok&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;配置流程&#34;&gt;配置流程&lt;/h2&gt;
-&lt;h3 id=&#34;jdk-安装&#34;&gt;jdk 安装&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;sudo apt install openjdk-8-jdk openjdk-8-jdk-headless openjdk-8-jre openjdk-8-jre-dcevm openjdk-8-jre-headless&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;通常android编译环境能够正常工作jdk环境已经ok.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ java -version
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;openjdk version &lt;span class=&#34;s2&#34;&gt;&amp;#34;1.8.0_252&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;OpenJDK Runtime Environment &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;build 1.8.0_252-8u252-b09-1~18.04-b09&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;OpenJDK 64-Bit Server VM &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;build 25.252-b09, mixed mode&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;universal-ctags&#34;&gt;universal-ctags&lt;/h3&gt;
-&lt;p&gt;ubuntu 自带包管理器安装的 &lt;code&gt;ctags&lt;/code&gt; 是 &lt;code&gt;exuberant-ctags&lt;/code&gt;, 如果已经安装请先通过如下命令卸载&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt purge exuberant-ctags
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;通过源码安装 &lt;code&gt;universal-ctags&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://gitee.com/neo532/universal-ctags.git
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; universal-ctags
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./autogen.sh
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./configure
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo make install
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ /usr/local/bin/ctags --version
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Universal Ctags 0.0.0&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;054bee0&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;, Copyright &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;C&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2015&lt;/span&gt; Universal Ctags Team
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Universal Ctags is derived from Exuberant Ctags.
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Exuberant Ctags 5.8, Copyright &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;C&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 1996-2009 Darren Hiebert
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Compiled: May &lt;span class=&#34;m&#34;&gt;10&lt;/span&gt; 2020, 10:34:29
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  URL: https://ctags.io/
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Optional compiled features: +wildcards, +regex, +iconv, +option-directory
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;tomcat8&#34;&gt;tomcat8&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install tomcat8
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo service tomcat8 start
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;opengrok&#34;&gt;opengrok&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/oracle/opengrok/wiki/How-to-setup-OpenGrok&#34;&gt;How to setup OpenGrok&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://texify3.michaelneuper.com/tags/opengrok/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

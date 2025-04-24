@@ -1,106 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>I2C on LuyangのBlog</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/i2c/</link>
-    <description>Recent content in I2C on LuyangのBlog</description>
-    <image>
-      <title>LuyangのBlog</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.146.6</generator>
+    <title>I2C on TeXify3</title>
+    <link>https://texify3.michaelneuper.com/tags/i2c/</link>
+    <description>Recent content in I2C on TeXify3</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>PaperMod Contributors</copyright>
-    <lastBuildDate>Tue, 07 Feb 2023 00:00:00 +0800</lastBuildDate>
-    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/i2c/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>I2C command</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/post/i2c_cmd/</link>
-      <pubDate>Tue, 07 Feb 2023 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/post/i2c_cmd/</guid>
-      <description>&lt;h1 id=&#34;i2c-寄存器读写命令&#34;&gt;I2C 寄存器读写命令&lt;/h1&gt;
-&lt;h2 id=&#34;探测设备&#34;&gt;探测设备&lt;/h2&gt;
-&lt;h3 id=&#34;i2cdetect&#34;&gt;i2cdetect&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;HELLO@WORLD:~# i2cdetect
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Error: No i2c-bus specified!
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Usage: i2cdetect &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-y&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-a&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-q&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;-r&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; I2CBUS &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;FIRST LAST&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       i2cdetect -F I2CBUS
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       i2cdetect -l
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  I2CBUS is an integer or an I2C bus name
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  If provided, FIRST and LAST limit the probing range.
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# I2CBUS: 0 1 2 ...&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Notice: -r 参数很重要，不带 -r 参数有些设备探测不到&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;i2cdetect -y -r &amp;lt;I2CBUS&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;对于8bit的reg-value-可以使用-i2cget--i2cset&#34;&gt;对于8bit的reg, value 可以使用 &lt;code&gt;i2cget / i2cset&lt;/code&gt;&lt;/h2&gt;
-&lt;h3 id=&#34;i2cget&#34;&gt;i2cget&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;HELLO@WORLD:~# i2cget
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Usage: i2cget &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-f&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-y&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; I2CBUS CHIP-ADDRESS &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;DATA-ADDRESS &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;MODE&lt;span class=&#34;o&#34;&gt;]]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  I2CBUS is an integer or an I2C bus name
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ADDRESS is an integer &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;0x03 - 0x77&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  MODE is one of:
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    b &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;read&lt;/span&gt; byte data, default&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    w &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;read&lt;/span&gt; word data&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    c &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;write byte/read byte&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    Append p &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; SMBus PEC
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# SLAVE_ADDRESS: 使用i2cdetect 出来的结果&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;i2cget -y -f &amp;lt;I2CBUS&amp;gt; &amp;lt;SLAVE_ADDRESS&amp;gt; &amp;lt;REG&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;i2cset&#34;&gt;i2cset&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;HELLO@WORLD:~# i2cset
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Usage: i2cset &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-f&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-y&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-m MASK&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-r&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; I2CBUS CHIP-ADDRESS DATA-ADDRESS &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;VALUE&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; ... &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;MODE&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  I2CBUS is an integer or an I2C bus name
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ADDRESS is an integer &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;0x03 - 0x77&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  MODE is one of:
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    c &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;byte, no value&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    b &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;byte data, default&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    w &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;word data&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    i &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;I2C block data&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    s &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;SMBus block data&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    Append p &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; SMBus PEC
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;i2cset -y -f &amp;lt;I2CBUS&amp;gt; &amp;lt;SLAVE_ADDRESS&amp;gt; &amp;lt;REG&amp;gt; &amp;lt;VALUE&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;对于16bit的reg-value-需要使用-i2ctransfer&#34;&gt;对于16bit+的reg, value 需要使用 &lt;code&gt;i2ctransfer&lt;/code&gt;&lt;/h2&gt;
-&lt;h3 id=&#34;i2ctransfer&#34;&gt;i2ctransfer&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;root@J3Pilot-B:~# i2ctransfer
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Usage: i2ctransfer &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-f&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-y&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-v&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-V&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; I2CBUS DESC &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;DATA&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;DESC &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;DATA&lt;span class=&#34;o&#34;&gt;]]&lt;/span&gt;...
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  I2CBUS is an integer or an I2C bus name
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  DESC describes the transfer in the form: &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;r&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;w&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;LENGTH&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;@address&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    1&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; read/write-flag 2&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; LENGTH &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;range 0-65535&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 3&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; I2C address &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;use last one &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; omitted&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  DATA are LENGTH bytes &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; a write message. They can be shortened by a suffix:
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;keep value constant &lt;span class=&#34;k&#34;&gt;until&lt;/span&gt; LENGTH&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    + &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;increase value by &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;until&lt;/span&gt; LENGTH&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    - &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;decrease value by &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;until&lt;/span&gt; LENGTH&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    p &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;use pseudo random generator &lt;span class=&#34;k&#34;&gt;until&lt;/span&gt; LENGTH with value as seed&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Example &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;bus 0, &lt;span class=&#34;nb&#34;&gt;read&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;8&lt;/span&gt; byte at offset 0x64 from EEPROM at 0x50&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;c1&#34;&gt;# i2ctransfer 0 w1@0x50 0x64 r8&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Example &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;same EEPROM, at offset 0x42 write 0xff 0xfe ... 0xf0&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;c1&#34;&gt;# i2ctransfer 0 w17@0x50 0x42 0xff-&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# W3 写三个参数 16bit 寄存器 （2 Bytes）+ value（1 Byte）&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# i2c bus 0&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# slave address 0x36&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;i2ctransfer -y -f &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; w3@0x33 0x3B 0x9D 0x01
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# w2 （16bit寄存器）写两个参数 0x4F 0x0C 寄存器（0x4F0C）到 0x36 slave address&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# i2c bus 总线 0&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 读取 i2c 总线 0 的 slave address 为 0x36 的设备的寄存器 0x4F0C, 读一个 char&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 0x36 是 ovx3c 的 slave address （7bit i2c address）&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;i2ctransfer -y -f &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; w2@0x36 0x4F 0x0C r1
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;dump-寄存器-00ff&#34;&gt;dump 寄存器 00~FF&lt;/h2&gt;
-&lt;h3 id=&#34;i2cdump&#34;&gt;i2cdump&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;HELLO@WORLD:~# i2cdump 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Error: No i2c-bus specified!
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Usage: i2cdump &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-f&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-y&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-r first-last&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; I2CBUS ADDRESS &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;MODE &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;BANK &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;BANKREG&lt;span class=&#34;o&#34;&gt;]]]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  I2CBUS is an integer or an I2C bus name
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ADDRESS is an integer &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;0x03 - 0x77&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  MODE is one of:
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    b &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;byte, default&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    w &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;word&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    W &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;word on even register addresses&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    s &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;SMBus block&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    i &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;I2C block&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    c &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;consecutive byte&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    Append p &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; SMBus PEC
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;i2cdump -f -y &amp;lt;I2CBUS&amp;gt; &amp;lt;SLAVE_ADDRESS&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-    </item>
+    <lastBuildDate>Tue, 07 Feb 2023 00:00:00 +0800</lastBuildDate><atom:link href="https://texify3.michaelneuper.com/tags/i2c/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

@@ -1,95 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Usbipd on LuyangのBlog</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/usbipd/</link>
-    <description>Recent content in Usbipd on LuyangのBlog</description>
-    <image>
-      <title>LuyangのBlog</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.146.6</generator>
+    <title>Usbipd on TeXify3</title>
+    <link>https://texify3.michaelneuper.com/tags/usbipd/</link>
+    <description>Recent content in Usbipd on TeXify3</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>PaperMod Contributors</copyright>
-    <lastBuildDate>Thu, 09 Feb 2023 00:00:00 +0800</lastBuildDate>
-    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/usbipd/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>windows10 WSL setup</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/post/windows10_wsl/</link>
-      <pubDate>Thu, 09 Feb 2023 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/post/windows10_wsl/</guid>
-      <description>&lt;h1 id=&#34;win10-安装-wsl2&#34;&gt;win10 安装 wsl2&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;https://docs.microsoft.com/zh-cn/windows/wsl/install&#34;&gt;安装 WSL | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;必须运行 Windows 10 版本 2004 及更高版本（内部版本 19041 及更高版本）或 Windows 11。&lt;/p&gt;
-&lt;p&gt;→ 我的电脑win10已经更新到最新，应该没问题。&lt;/p&gt;
-&lt;p&gt;设置→系统→关于&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Untitled&#34; loading=&#34;lazy&#34; src=&#34;https://adityatelange.github.io/hugo-PaperMod/post/windows10_wsl/windows10_wsl_setup_Untitled_0.png&#34;&gt;&lt;/p&gt;
-&lt;p&gt;以管理员身份运行 powershell&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wsl —install
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果没有安装wsl，则会进入安装过程，如果已经安装会打印帮助信息&lt;/p&gt;
-&lt;p&gt;要在安装新的 Linux 发行版时将默认版本设置为 WSL 1 或 WSL 2，请使用命令 &lt;code&gt;wsl --set-default-version &amp;lt;Version#&amp;gt;&lt;/code&gt;，将 &lt;code&gt;&amp;lt;Version#&amp;gt;&lt;/code&gt;替换为 1 或 2。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wsl --set-default-version &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;wsl2-安装ubuntu-distro&#34;&gt;wsl2 安装ubuntu distro&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wsl --list --online
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以下是可安装的有效分发的列表。
-请使用“wsl &amp;ndash;install -d &amp;lt;分发&amp;gt;”安装。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;NAME            FRIENDLY NAME
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Ubuntu          Ubuntu
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Debian          Debian GNU/Linux
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kali-linux      Kali Linux Rolling
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;openSUSE-42     openSUSE Leap &lt;span class=&#34;m&#34;&gt;42&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SLES-12         SUSE Linux Enterprise Server v12
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Ubuntu-16.04    Ubuntu 16.04 LTS
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Ubuntu-18.04    Ubuntu 18.04 LTS
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Ubuntu-20.04    Ubuntu 20.04 LTS
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wsl --install -d Ubuntu-20.04
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;卸载-wsl2-distro&#34;&gt;卸载 wsl2 distro&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wsl -l -v
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wsl --unregister Debian
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;限制vmmem进程内存占用过高&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>wsl 使用 usbipd 访问 USB 设备</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/post/usbipd/</link>
-      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/post/usbipd/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;注意：如下 usbipd 命令需要在 &lt;code&gt;以管理员身份运行&lt;/code&gt; 的 powershell 中执行&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;usbipd: USB/IP open-source project&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd wsl attach --busid 4-4
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: error: The service is currently not running&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; a reboot should fix that.
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/dorssel/usbipd-win/issues/122&#34;&gt;https://github.com/dorssel/usbipd-win/issues/122&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;参考了上述链接，也做了重启，仍然报错，于是决定升级 &lt;code&gt;usbipd&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;如下步骤也可以作为如何安装 usbipd，wsl 通过 usbipd 访问 USB 设备&lt;/p&gt;
-&lt;h2 id=&#34;usbipd-安装使用&#34;&gt;usbipd 安装使用&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/dorssel/usbipd-win/releases/tag/v4.0.0&#34;&gt;https://github.com/dorssel/usbipd-win/releases/tag/v4.0.0&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;下载 &lt;a href=&#34;https://github.com/dorssel/usbipd-win/releases/download/v4.0.0/usbipd-win_4.0.0.msi&#34;&gt;usbipd-win_4.0.0.msi&lt;/a&gt; 并安装&lt;/p&gt;
-&lt;p&gt;需要注意的是，安装了这个版本发现 usbipd 命令的使用方式变了&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd.exe wsl list
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: error: The &lt;span class=&#34;s1&#34;&gt;&amp;#39;wsl&amp;#39;&lt;/span&gt; subcommand has been removed. Learn about the new syntax at https://learn.microsoft.com/windows/wsl/connect-usb#attach-a-usb-device.
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd attach --busid 4-4
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Option &lt;span class=&#34;s1&#34;&gt;&amp;#39;--wsl&amp;#39;&lt;/span&gt; is required.
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd-win 4.0.0
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Description:
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Attaches a USB device to a client.
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Currently, only WSL is supported. Other clients need to perform an attach using client-side tooling.
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Exactly one of the options &lt;span class=&#34;s1&#34;&gt;&amp;#39;--busid&amp;#39;&lt;/span&gt; or &lt;span class=&#34;s1&#34;&gt;&amp;#39;--hardware-id&amp;#39;&lt;/span&gt; is required.
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Usage:
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  usbipd attach &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;options&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Options:
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -a, --auto-attach                      Automatically re-attach when the device is detached or unplugged
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -b, --busid &amp;lt;BUSID&amp;gt;                    Attach device having &amp;lt;BUSID&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -i, --hardware-id &amp;lt;VID:PID&amp;gt;            Attach device having &amp;lt;VID&amp;gt;:&amp;lt;PID&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -w, --wsl &amp;lt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;DISTRIBUTION&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&amp;gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;REQUIRED&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;  Attach to WSL, optionally specifying the distribution to use
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -?, -h, --help                         Show &lt;span class=&#34;nb&#34;&gt;help&lt;/span&gt; and usage information
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/MicrosoftDocs/WSL/issues/1868&#34;&gt;https://github.com/MicrosoftDocs/WSL/issues/1868&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate>Thu, 09 Feb 2023 00:00:00 +0800</lastBuildDate><atom:link href="https://texify3.michaelneuper.com/tags/usbipd/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

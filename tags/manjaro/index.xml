@@ -1,46 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Manjaro on LuyangのBlog</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/manjaro/</link>
-    <description>Recent content in Manjaro on LuyangのBlog</description>
-    <image>
-      <title>LuyangのBlog</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.146.6</generator>
+    <title>Manjaro on TeXify3</title>
+    <link>https://texify3.michaelneuper.com/tags/manjaro/</link>
+    <description>Recent content in Manjaro on TeXify3</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>PaperMod Contributors</copyright>
-    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
-    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/manjaro/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>manjaro</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/post/manjaro/</link>
-      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/post/manjaro/</guid>
-      <description>&lt;h2 id=&#34;系统基本信息&#34;&gt;系统基本信息&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[baihao@vstation ~]$ screenfetch
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; ██████████████████  ████████     baihao@vstation
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; ██████████████████  ████████     OS: Manjaro 20.2.1 Nibia
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; ██████████████████  ████████     Kernel: x86_64 Linux 5.9.16-1-MANJARO
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; ██████████████████  ████████     Uptime: 17m
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; ████████            ████████     Packages: 1220
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; ████████  ████████  ████████     Shell: bash 5.1.0
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; ████████  ████████  ████████     Resolution: 1920x951
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; ████████  ████████  ████████     DE: Xfce4
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; ████████  ████████  ████████     WM: Xfwm4
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; ████████  ████████  ████████     WM Theme: Matcha-sea
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; ████████  ████████  ████████     GTK Theme: Matcha-sea [GTK2]
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; ████████  ████████  ████████     Icon Theme: Papirus-Maia
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; ████████  ████████  ████████     Font: Noto Sans 10
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; ████████  ████████  ████████     Disk: 241G / 674G (37%)
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                  CPU: Intel Core i7-10510U @ 2x 2.304GHz
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                  GPU: llvmpipe (LLVM 11.0.0, 256 bits)
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                  RAM: 2134MiB / 3935MiB
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;wps--fcitx5-无法输入中文&#34;&gt;wps + fcitx5 无法输入中文&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;参考&lt;/strong&gt;&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://texify3.michaelneuper.com/tags/manjaro/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

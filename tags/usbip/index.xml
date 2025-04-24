@@ -1,49 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Usbip on LuyangのBlog</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/usbip/</link>
-    <description>Recent content in Usbip on LuyangのBlog</description>
-    <image>
-      <title>LuyangのBlog</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.146.6</generator>
+    <title>Usbip on TeXify3</title>
+    <link>https://texify3.michaelneuper.com/tags/usbip/</link>
+    <description>Recent content in Usbip on TeXify3</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>PaperMod Contributors</copyright>
-    <lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0800</lastBuildDate>
-    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/usbip/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Windows WSL ubuntu adb 配置</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</guid>
-      <description>&lt;h2 id=&#34;配置前的状态&#34;&gt;配置前的状态&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;windows 11 + wsl + ubuntu 18.04&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;windows 可以识别 adb devices&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;C:\Users&amp;gt;adb devices
-List of devices attached
-fada-018b4209f24d0001   device
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;wsl 识别不到 adb devices&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;luyang@LUYANG:~$ adb devices
-* daemon not running; starting now at tcp:5037
-* daemon started successfully
-List of devices attached
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;windows-安装工具包&#34;&gt;Windows 安装工具包&lt;/h2&gt;
-&lt;p&gt;windows 安装 &lt;a href=&#34;https://github.com/dorssel/usbipd-win/releases&#34;&gt;usbipd-win&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;wsl-安装工具包&#34;&gt;WSL 安装工具包&lt;/h2&gt;
-&lt;p&gt;WSL ubuntu 安装 adb 工具&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install android-tools-adb
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在WSL中，安装 USB/IP 的用户空间工具和 USB 硬件标识符的数据库。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install linux-tools-5.15.0-87-generic hwdata
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 注意 linux-tools 相应的要改成你实际安装的版本&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/5.15.0-87-generic/usbip &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;关于-linux-tools&#34;&gt;关于 linux-tools&lt;/h3&gt;
-&lt;p&gt;查看当前 ubuntu 系统版本支持的 linux-tools generic版本&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0800</lastBuildDate><atom:link href="https://texify3.michaelneuper.com/tags/usbip/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

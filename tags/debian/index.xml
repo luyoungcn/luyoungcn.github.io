@@ -1,51 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Debian on LuyangのBlog</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/debian/</link>
-    <description>Recent content in Debian on LuyangのBlog</description>
-    <image>
-      <title>LuyangのBlog</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.146.6</generator>
+    <title>Debian on TeXify3</title>
+    <link>https://texify3.michaelneuper.com/tags/debian/</link>
+    <description>Recent content in Debian on TeXify3</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>PaperMod Contributors</copyright>
-    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
-    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/debian/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Debian 4.9 Config Static Ip.md</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/post/debian4/</link>
-      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/post/debian4/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Linux debian 4.9.0-6-amd64 #1 SMP Debian 4.9.82-1+deb9u3 (2018-03-02) x86_64&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;kk@debian:~$ &lt;code&gt;cat /etc/network/interfaces&lt;/code&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# This file describes the network interfaces available on your system
-# and how to activate them. For more information, see interfaces(5).
-
-source /etc/network/interfaces.d/*
-
-# The loopback network interface
-auto lo
-iface lo inet loopback
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;修改后&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# This file describes the network interfaces available on your system
-# and how to activate them. For more information, see interfaces(5).
-
-source /etc/network/interfaces.d/*
-
-# The loopback network interface
-auto lo enp0s3
-iface lo inet loopback
-
-iface enp0s3 inet static
-        address 192.168.20.103
-        netmask 255.255.255.0
-        gateway 192.168.20.1
-dns-nameservers 114.114.114.114
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;kk@debian:~$ &lt;code&gt;/sbin/ifconfig&lt;/code&gt;&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://texify3.michaelneuper.com/tags/debian/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

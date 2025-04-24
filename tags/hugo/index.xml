@@ -1,56 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hugo on LuyangのBlog</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/hugo/</link>
-    <description>Recent content in Hugo on LuyangのBlog</description>
-    <image>
-      <title>LuyangのBlog</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.146.6</generator>
+    <title>Hugo on TeXify3</title>
+    <link>https://texify3.michaelneuper.com/tags/hugo/</link>
+    <description>Recent content in Hugo on TeXify3</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>PaperMod Contributors</copyright>
-    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
-    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>hugo</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/post/hugo/</link>
-      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/post/hugo/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://gohugo.io/&#34;&gt;hugo&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;theme: &lt;a href=&#34;https://github.com/xtfly/hugo-theme-next&#34;&gt;next&lt;/a&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;install hugo&lt;/li&gt;
-&lt;li&gt;create a new site &lt;code&gt;hugo new site &amp;lt;sitename&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;add theme
-&lt;a href=&#34;https://github.com/xtfly/hugo-theme-next&#34;&gt;Usage of next theme&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;download theme file: git clone &lt;code&gt;https://github.com/xtfly/hugo-theme-next.git&lt;/code&gt; next&lt;/li&gt;
-&lt;li&gt;copy next directory to themes directory in your hugo site&lt;/li&gt;
-&lt;li&gt;move config.toml to the root directory in your hugo site, and modify it to the actual information for your site.&lt;/li&gt;
-&lt;li&gt;create some markdown files in directory(content/post), like &lt;code&gt;https://github.com/xtfly/xtfly.github.io/tree/hugo/content&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;start hugo server in root directory: hugo server&lt;/li&gt;
-&lt;li&gt;open browser: &lt;code&gt;http://localhost:1313/&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;start server &lt;code&gt;hugo server --bind 0.0.0.0 --baseURL http://10.0.0.7:1313&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;框架&#34;&gt;框架&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;blog&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;$ ls
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;archetypes  config.toml  content  data  layouts  public  resources  static  themes
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;博客内容&#34;&gt;博客内容&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;将你写的博客内容markdown文档所在目录链接到 content 目录，链接文件命名为 post&lt;/li&gt;
-&lt;li&gt;将你的about目录链接到 content 目录，链接文件名为 about&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;blog&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;$ tree content/
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;content/
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── about -&amp;gt; /home/lv/post/about
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└── post -&amp;gt; /home/lv/post
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;博客发布&#34;&gt;博客发布&lt;/h2&gt;
-&lt;p&gt;将博客发布内容路径链接为 hugo 的根目录， 链接文件命名为 public&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://texify3.michaelneuper.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

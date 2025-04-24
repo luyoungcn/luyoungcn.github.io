@@ -1,42 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Visual_studio on LuyangのBlog</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/visual_studio/</link>
-    <description>Recent content in Visual_studio on LuyangのBlog</description>
-    <image>
-      <title>LuyangのBlog</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.146.6</generator>
+    <title>Visual_studio on TeXify3</title>
+    <link>https://texify3.michaelneuper.com/tags/visual_studio/</link>
+    <description>Recent content in Visual_studio on TeXify3</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>PaperMod Contributors</copyright>
-    <lastBuildDate>Tue, 16 May 2023 20:19:08 +0800</lastBuildDate>
-    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/visual_studio/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>windows vcpkg</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/post/vcpkg_windows/</link>
-      <pubDate>Tue, 16 May 2023 20:19:08 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/post/vcpkg_windows/</guid>
-      <description>&lt;h1 id=&#34;install-vcpkg&#34;&gt;Install vcpkg&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/microsoft/vcpkg#quick-start-windows&#34;&gt;https://github.com/microsoft/vcpkg#quick-start-windows&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;powershell 终端执行如下命令：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/microsoft/vcpkg
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.&lt;span class=&#34;se&#34;&gt;\v&lt;/span&gt;cpkg&lt;span class=&#34;se&#34;&gt;\b&lt;/span&gt;ootstrap-vcpkg.bat
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;install-package&#34;&gt;Install Package&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# To install the libraries for your project, run:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# This will install x86 libraries by default.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.&lt;span class=&#34;se&#34;&gt;\v&lt;/span&gt;cpkg&lt;span class=&#34;se&#34;&gt;\v&lt;/span&gt;cpkg install &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;packages to install&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;c1&#34;&gt;# To install x64, run:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; .&lt;span class=&#34;se&#34;&gt;\v&lt;/span&gt;cpkg&lt;span class=&#34;se&#34;&gt;\v&lt;/span&gt;cpkg install &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;package name&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;:x64-windows
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;tab-completionauto-completion&#34;&gt;Tab-Completion/Auto-Completion&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/microsoft/vcpkg#tab-completionauto-completion&#34;&gt;https://github.com/microsoft/vcpkg#tab-completionauto-completion&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;vcpkg&lt;/code&gt; supports auto-completion of commands, package names, and options in both powershell and bash. To enable tab-completion in the shell of your choice, run:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vcpkg&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;integrate&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;powershell&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;vsmsbuild-项目-用户范围的集成&#34;&gt;VS/MSBuild 项目 (用户范围的集成)&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;https://learn.microsoft.com/zh-cn/vcpkg/examples/installing-and-using-packages#msbuild&#34;&gt;https://learn.microsoft.com/zh-cn/vcpkg/examples/installing-and-using-packages#msbuild&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate>Tue, 16 May 2023 20:19:08 +0800</lastBuildDate><atom:link href="https://texify3.michaelneuper.com/tags/visual_studio/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

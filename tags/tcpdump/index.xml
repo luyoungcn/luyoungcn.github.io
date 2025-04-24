@@ -1,55 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tcpdump on LuyangのBlog</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/tcpdump/</link>
-    <description>Recent content in Tcpdump on LuyangのBlog</description>
-    <image>
-      <title>LuyangのBlog</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.146.6</generator>
+    <title>Tcpdump on TeXify3</title>
+    <link>https://texify3.michaelneuper.com/tags/tcpdump/</link>
+    <description>Recent content in Tcpdump on TeXify3</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>PaperMod Contributors</copyright>
-    <lastBuildDate>Fri, 03 Feb 2023 12:00:00 +0800</lastBuildDate>
-    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/tcpdump/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>交叉编译 tcpdump-4.99.1</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-tcpdump-4/</link>
-      <pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/post/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-tcpdump-4/</guid>
-      <description>&lt;h1 id=&#34;交叉编译-tcpdump-4991&#34;&gt;交叉编译 tcpdump-4.99.1&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;tcp dump &lt;a href=&#34;https://www.tcpdump.org/&#34;&gt;主页&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.tcpdump.org/release/tcpdump-4.99.1.tar.gz&#34;&gt;tcpdump-4.99.1.tar.gz&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.tcpdump.org/release/libpcap-1.10.1.tar.gz&#34;&gt;libpcap-1.10.1.tar.gz&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;参考：https://blog.csdn.net/onlyshi/article/details/81081707&lt;/li&gt;
-&lt;li&gt;tcpdump 依赖 libpcap，需要先编译 libcap。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/bash
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;LIBCAP&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/code/libpcap-1.10.1
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;TCPDUMP&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/code/tcpdump-4.99.1
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;CROSS_COMPILETOOL&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;aarch64-bst-linux
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$LIBCAP&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir -p install
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./configure --prefix&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;./install --host&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;arm-linux-gnueabihf --with-pcap&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;linux
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make install
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$TCPDUMP&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir -p install
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./configure --prefix&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;./install --host&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;arm-linux-gnueabihf
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make install
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-    </item>
+    <lastBuildDate>Fri, 03 Feb 2023 12:00:00 +0800</lastBuildDate><atom:link href="https://texify3.michaelneuper.com/tags/tcpdump/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

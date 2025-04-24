@@ -1,36 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>E2fs on LuyangのBlog</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/e2fs/</link>
-    <description>Recent content in E2fs on LuyangのBlog</description>
-    <image>
-      <title>LuyangのBlog</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.146.6</generator>
+    <title>E2fs on TeXify3</title>
+    <link>https://texify3.michaelneuper.com/tags/e2fs/</link>
+    <description>Recent content in E2fs on TeXify3</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>PaperMod Contributors</copyright>
-    <lastBuildDate>Fri, 03 Feb 2023 12:00:00 +0800</lastBuildDate>
-    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/e2fs/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>e2fsprogs-1.42.8 源码编译安装</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/post/e2fsprogs-1/</link>
-      <pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/post/e2fsprogs-1/</guid>
-      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tar xvf e2fsprogs-1.42.8.tar.gz
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; e2fsprogs-1.42.8
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir build
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; build/
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;../configure
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo make install
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;问题：&lt;/p&gt;
-&lt;p&gt;ubuntu20.04 编译报错 &lt;code&gt;undefined reference to &#39;makedev&#39;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;解决方法:
-&lt;code&gt;vim &amp;lt;path-to-e2fsprogs-1.42.8&amp;gt;/lib/blkid/devname.c&lt;/code&gt;
-添加头文件 &lt;code&gt;#include &amp;lt;sys/sysmacros.h&lt;/code&gt;&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate>Fri, 03 Feb 2023 12:00:00 +0800</lastBuildDate><atom:link href="https://texify3.michaelneuper.com/tags/e2fs/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

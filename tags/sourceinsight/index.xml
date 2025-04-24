@@ -1,38 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>SourceInsight on LuyangのBlog</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/sourceinsight/</link>
-    <description>Recent content in SourceInsight on LuyangのBlog</description>
-    <image>
-      <title>LuyangのBlog</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.146.6</generator>
+    <title>SourceInsight on TeXify3</title>
+    <link>https://texify3.michaelneuper.com/tags/sourceinsight/</link>
+    <description>Recent content in SourceInsight on TeXify3</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>PaperMod Contributors</copyright>
-    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
-    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/sourceinsight/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Source Insight</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/post/sourceinsight/</link>
-      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/post/sourceinsight/</guid>
-      <description>&lt;h2 id=&#34;注释字体设置&#34;&gt;注释字体设置&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;Options&lt;/code&gt;-&amp;gt;&lt;code&gt;Style Properties&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;左边&lt;code&gt;Style Name&lt;/code&gt;下找到&lt;code&gt;Comment、Comment Multi Line、Comment Right、Comment Single Line&lt;/code&gt; 在右边对应的Font属性框下的&lt;code&gt;Font Name&lt;/code&gt;中选&lt;code&gt;“Pick...”&lt;/code&gt; 设置自己喜欢的字体然后确定，退回Style Properties界面，&lt;code&gt;Size&lt;/code&gt;设为&lt;code&gt;12&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Options&lt;/code&gt;-&amp;gt;&lt;code&gt;Save Configuration&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;背景护眼颜色&#34;&gt;背景护眼颜色&lt;/h2&gt;
-&lt;p&gt;在顶部菜单栏依次选择 &lt;code&gt;Option&lt;/code&gt;→&lt;code&gt;Preferences&lt;/code&gt;，中文版的选择 &lt;code&gt;选项&lt;/code&gt;&amp;ndash;&amp;gt;&lt;code&gt;参数选择&lt;/code&gt;，选择上面的&lt;code&gt;colors&lt;/code&gt;（颜色）选项，箭头移至第二项&lt;code&gt;Window Background&lt;/code&gt;( 窗口背景)左键单击选中，再点击右边的&lt;code&gt;Color&lt;/code&gt;选项在右边的RGB框输入如下参数：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;R(红) 204&lt;/li&gt;
-&lt;li&gt;G(绿)232&lt;/li&gt;
-&lt;li&gt;B(蓝)207
-&lt;code&gt;添加到自定义颜色&lt;/code&gt;-&amp;gt;&lt;code&gt;确定&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
+    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://texify3.michaelneuper.com/tags/sourceinsight/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

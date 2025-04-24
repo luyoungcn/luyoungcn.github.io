@@ -1,64 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Poll on LuyangのBlog</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/poll/</link>
-    <description>Recent content in Poll on LuyangのBlog</description>
-    <image>
-      <title>LuyangのBlog</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.146.6</generator>
+    <title>Poll on TeXify3</title>
+    <link>https://texify3.michaelneuper.com/tags/poll/</link>
+    <description>Recent content in Poll on TeXify3</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>PaperMod Contributors</copyright>
-    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
-    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/poll/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>如何在 Linux 用户空间中进行类似 GPIO 中断的处理</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/post/how_to_handle_gpio_interrupt_like_handling_in_linux_userspace/</link>
-      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/post/how_to_handle_gpio_interrupt_like_handling_in_linux_userspace/</guid>
-      <description>&lt;h1 id=&#34;how-to-handle-gpio-interrupt-like-handling-in-linux-userspace&#34;&gt;How to handle GPIO interrupt-like handling in Linux userspace&lt;/h1&gt;
-&lt;h2 id=&#34;文件节点&#34;&gt;文件节点&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/sys/class/gpio/gpio666# ls
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;active_low  device  direction  edge  subsystem  uevent  value
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;只用对应 GPIO 有 irq 功能时才会有 edge 文件。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;/sys/class/gpio/export：是一个只写文件，用于导出需要使用的 GPIO 引脚&lt;/li&gt;
-&lt;li&gt;/sys/class/gpio/gpiox/: 是一个文件夹，在引脚导出后自动在 / sys/class/gpio / 目录下生成的&lt;/li&gt;
-&lt;li&gt;/sys/class/gpio/gpiox/active_low：是一个文件，用来控制电平的极性（写 1 是高电平还是写 0 是高电平），默认写 1 是高电平，这个文件不用去管它&lt;/li&gt;
-&lt;li&gt;/sys/class/gpio/gpiox/direction：是一个文件，用来控制 GPIO 是输入还是输出，往direction写 out 就是输出引脚，往direction写 in 就是输入引脚&lt;/li&gt;
-&lt;li&gt;/sys/class/gpio/gpiox/edge：是一个文件，在输入模式下，写 edge 文件，配置 gpio 为外部中断引脚&lt;/li&gt;
-&lt;li&gt;非中断引脚： none&lt;/li&gt;
-&lt;li&gt;上升沿触发： rising&lt;/li&gt;
-&lt;li&gt;下降沿触发： falling&lt;/li&gt;
-&lt;li&gt;边沿触发： both&lt;/li&gt;
-&lt;li&gt;/sys/class/gpio/gpiox/value: 是一个文件，在输出模式下，写该文件表示 gpio 输出；在输入模式下读该文件表示输入&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.kernel.org/doc/Documentation/gpio/sysfs.txt&#34;&gt;sysfs.txt&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;value&amp;#34; ... reads as either 0 (low) or 1 (high). If the GPIO
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  is configured as an output, this value may be written;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  any nonzero value is treated as high.
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  If the pin can be configured as interrupt-generating interrupt
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  and if it has been configured to generate interrupts (see the
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  description of &amp;#34;edge&amp;#34;), you can poll(2) on that file and
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  poll(2) will return whenever the interrupt was triggered. If
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  you use poll(2), set the events POLLPRI and POLLERR. If you
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  use select(2), set the file descriptor in exceptfds. After
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  poll(2) returns, either lseek(2) to the beginning of the sysfs
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  file and read the new value or close the file and re-open it
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  to read the value.
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;edge&amp;#34; ... reads as either &amp;#34;none&amp;#34;, &amp;#34;rising&amp;#34;, &amp;#34;falling&amp;#34;, or
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;#34;both&amp;#34;. Write these strings to select the signal edge(s)
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  that will make poll(2) on the &amp;#34;value&amp;#34; file return.
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  This file exists only if the pin can be configured as an
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  interrupt generating input pin.
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;demo&#34;&gt;demo&lt;/h2&gt;
-&lt;p&gt;一坨屎样代码&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://texify3.michaelneuper.com/tags/poll/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

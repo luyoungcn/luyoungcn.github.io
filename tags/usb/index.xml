@@ -1,91 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Usb on LuyangのBlog</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/usb/</link>
-    <description>Recent content in Usb on LuyangのBlog</description>
-    <image>
-      <title>LuyangのBlog</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.146.6</generator>
+    <title>Usb on TeXify3</title>
+    <link>https://texify3.michaelneuper.com/tags/usb/</link>
+    <description>Recent content in Usb on TeXify3</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>PaperMod Contributors</copyright>
-    <lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0800</lastBuildDate>
-    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/usb/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Windows WSL ubuntu adb 配置</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/post/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</guid>
-      <description>&lt;h2 id=&#34;配置前的状态&#34;&gt;配置前的状态&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;windows 11 + wsl + ubuntu 18.04&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;windows 可以识别 adb devices&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;C:\Users&amp;gt;adb devices
-List of devices attached
-fada-018b4209f24d0001   device
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;wsl 识别不到 adb devices&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;luyang@LUYANG:~$ adb devices
-* daemon not running; starting now at tcp:5037
-* daemon started successfully
-List of devices attached
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;windows-安装工具包&#34;&gt;Windows 安装工具包&lt;/h2&gt;
-&lt;p&gt;windows 安装 &lt;a href=&#34;https://github.com/dorssel/usbipd-win/releases&#34;&gt;usbipd-win&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;wsl-安装工具包&#34;&gt;WSL 安装工具包&lt;/h2&gt;
-&lt;p&gt;WSL ubuntu 安装 adb 工具&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install android-tools-adb
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在WSL中，安装 USB/IP 的用户空间工具和 USB 硬件标识符的数据库。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install linux-tools-5.15.0-87-generic hwdata
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 注意 linux-tools 相应的要改成你实际安装的版本&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/5.15.0-87-generic/usbip &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;关于-linux-tools&#34;&gt;关于 linux-tools&lt;/h3&gt;
-&lt;p&gt;查看当前 ubuntu 系统版本支持的 linux-tools generic版本&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>wsl 使用 usbipd 访问 USB 设备</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/post/usbipd/</link>
-      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/post/usbipd/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;注意：如下 usbipd 命令需要在 &lt;code&gt;以管理员身份运行&lt;/code&gt; 的 powershell 中执行&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;usbipd: USB/IP open-source project&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd wsl attach --busid 4-4
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: error: The service is currently not running&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; a reboot should fix that.
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/dorssel/usbipd-win/issues/122&#34;&gt;https://github.com/dorssel/usbipd-win/issues/122&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;参考了上述链接，也做了重启，仍然报错，于是决定升级 &lt;code&gt;usbipd&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;如下步骤也可以作为如何安装 usbipd，wsl 通过 usbipd 访问 USB 设备&lt;/p&gt;
-&lt;h2 id=&#34;usbipd-安装使用&#34;&gt;usbipd 安装使用&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/dorssel/usbipd-win/releases/tag/v4.0.0&#34;&gt;https://github.com/dorssel/usbipd-win/releases/tag/v4.0.0&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;下载 &lt;a href=&#34;https://github.com/dorssel/usbipd-win/releases/download/v4.0.0/usbipd-win_4.0.0.msi&#34;&gt;usbipd-win_4.0.0.msi&lt;/a&gt; 并安装&lt;/p&gt;
-&lt;p&gt;需要注意的是，安装了这个版本发现 usbipd 命令的使用方式变了&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd.exe wsl list
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: error: The &lt;span class=&#34;s1&#34;&gt;&amp;#39;wsl&amp;#39;&lt;/span&gt; subcommand has been removed. Learn about the new syntax at https://learn.microsoft.com/windows/wsl/connect-usb#attach-a-usb-device.
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd attach --busid 4-4
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Option &lt;span class=&#34;s1&#34;&gt;&amp;#39;--wsl&amp;#39;&lt;/span&gt; is required.
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd-win 4.0.0
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Description:
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Attaches a USB device to a client.
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Currently, only WSL is supported. Other clients need to perform an attach using client-side tooling.
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Exactly one of the options &lt;span class=&#34;s1&#34;&gt;&amp;#39;--busid&amp;#39;&lt;/span&gt; or &lt;span class=&#34;s1&#34;&gt;&amp;#39;--hardware-id&amp;#39;&lt;/span&gt; is required.
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Usage:
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  usbipd attach &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;options&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Options:
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -a, --auto-attach                      Automatically re-attach when the device is detached or unplugged
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -b, --busid &amp;lt;BUSID&amp;gt;                    Attach device having &amp;lt;BUSID&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -i, --hardware-id &amp;lt;VID:PID&amp;gt;            Attach device having &amp;lt;VID&amp;gt;:&amp;lt;PID&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -w, --wsl &amp;lt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;DISTRIBUTION&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&amp;gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;REQUIRED&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;  Attach to WSL, optionally specifying the distribution to use
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -?, -h, --help                         Show &lt;span class=&#34;nb&#34;&gt;help&lt;/span&gt; and usage information
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/MicrosoftDocs/WSL/issues/1868&#34;&gt;https://github.com/MicrosoftDocs/WSL/issues/1868&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0800</lastBuildDate><atom:link href="https://texify3.michaelneuper.com/tags/usb/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
