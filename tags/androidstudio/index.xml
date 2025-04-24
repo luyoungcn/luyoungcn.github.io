@@ -7,5 +7,74 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/androidstudio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android Studio Env</title>
+      <link>https://luyoungcn.github.io/posts/androidstudioenv/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      
+      <guid>https://luyoungcn.github.io/posts/androidstudioenv/</guid>
+      <description>&lt;h2 id=&#34;工具&#34;&gt;工具&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.android.google.cn/studio&#34;&gt;AndroidStudio&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;信息&#34;&gt;信息&lt;/h2&gt;
+&lt;p&gt;Android Studio 默认设置&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SDK Folder:
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;%APPDATA%\Local\Android\Sdk&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;JDK Folder:
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;C:\Program Files\Android\Android Studio\jre&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;问题解决&#34;&gt;问题解决&lt;/h2&gt;
+&lt;h3 id=&#34;安装完android-studio首次启动报错&#34;&gt;安装完Android Studio首次启动报错&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Unable to access Android SDK add-on list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;选择cancel&lt;/p&gt;
+&lt;h3 id=&#34;gradle-下载环境配置&#34;&gt;gradle 下载环境配置&lt;/h3&gt;
+&lt;p&gt;For Windows&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;C:\Users\luyang\.gradle\init.gradle&lt;/code&gt; 如果没有该文件就自己新建一个，内容如下&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;allprojects{
+  repositories {
+    def ALIYUN_REPOSITORY_URL = &amp;#39;https://maven.aliyun.com/repository/public/&amp;#39;
+    def ALIYUN_JCENTER_URL = &amp;#39;https://maven.aliyun.com/repository/jcenter/&amp;#39;
+    def ALIYUN_GOOGLE_URL = &amp;#39;https://maven.aliyun.com/repository/google/&amp;#39;
+    def ALIYUN_GRADLE_PLUGIN_URL = &amp;#39;https://maven.aliyun.com/repository/gradle-plugin/&amp;#39;
+    all { ArtifactRepository repo -&amp;gt;
+      if(repo instanceof MavenArtifactRepository){
+        def url = repo.url.toString()
+        if (url.startsWith(&amp;#39;https://repo1.maven.org/maven2/&amp;#39;)) {
+          project.logger.lifecycle &amp;#34;Repository ${repo.url} replaced by $ALIYUN_REPOSITORY_URL.&amp;#34;
+          remove repo
+        }
+        if (url.startsWith(&amp;#39;https://jcenter.bintray.com/&amp;#39;)) {
+          project.logger.lifecycle &amp;#34;Repository ${repo.url} replaced by $ALIYUN_JCENTER_URL.&amp;#34;
+          remove repo
+        }
+        if (url.startsWith(&amp;#39;https://dl.google.com/dl/android/maven2/&amp;#39;)) {
+          project.logger.lifecycle &amp;#34;Repository ${repo.url} replaced by $ALIYUN_GOOGLE_URL.&amp;#34;
+          remove repo
+        }
+        if (url.startsWith(&amp;#39;https://plugins.gradle.org/m2/&amp;#39;)) {
+          project.logger.lifecycle &amp;#34;Repository ${repo.url} replaced by $ALIYUN_GRADLE_PLUGIN_URL.&amp;#34;
+          remove repo
+        }
+      }
+    }
+    maven { url ALIYUN_REPOSITORY_URL }
+    maven { url ALIYUN_JCENTER_URL }
+    maven { url ALIYUN_GOOGLE_URL }
+    maven { url ALIYUN_GRADLE_PLUGIN_URL }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;ubuntu-android-studio-system-entry&#34;&gt;ubuntu android studio system entry&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;Android Studio -&amp;gt; Tools -&amp;gt; Create Desktop Entry&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>

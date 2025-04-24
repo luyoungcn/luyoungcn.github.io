@@ -7,5 +7,42 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/categories/hardware/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>crystal</title>
+      <link>https://luyoungcn.github.io/posts/crystal/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      
+      <guid>https://luyoungcn.github.io/posts/crystal/</guid>
+      <description>&lt;p&gt;Crystal Oscillator 晶体振荡器&lt;/p&gt;
+&lt;h1 id=&#34;无源晶振&#34;&gt;无源晶振&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;晶振本身并不能起振，需要借助外部振荡电路。因此在实际电路中需要IC上电正常后晶振才能起振。
+此时才能测量出晶振波形。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;常见晶振频率&#34;&gt;常见晶振频率&lt;/h2&gt;
+&lt;p&gt;晶振常用的频率为 4MHz ~ 50MHz&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;网络PHY常见 25MHz&lt;/li&gt;
+&lt;li&gt;GMSL SERDES常见 25MHz&lt;/li&gt;
+&lt;li&gt;电子钟表常见 32.768MHz&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;常见无源晶振pin脚定义&#34;&gt;常见无源晶振pin脚定义&lt;/h2&gt;
+&lt;p&gt;无源晶振的频率pin脚不分正负极&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;两pin脚无源晶振：一个pin脚为频率输出pin脚，另外一个pin脚是频率输入pin脚。即使反过来，晶振依旧正常工作。&lt;/li&gt;
+&lt;li&gt;三pin脚晶振：两侧引脚为频率输出pin脚与频率输入pin脚，中间引脚接地。除了注意让这个接地pin脚去接地(GND)，两侧引脚的用法与两脚晶振无异。&lt;/li&gt;
+&lt;li&gt;四脚贴片无源晶振：pin 1和pin 3为频率输入引脚及频率输出引脚，其余两个pin脚均为接地引脚，即使把它旋转180度，也只是pin 1和pin 3互换位置，即输入pin脚变成了输出pin脚，而输出pin脚则变成输入pin脚，晶振依旧可以正常工作，不会导致任何性能及功能差异。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;无源晶振两边加谐振电容&#34;&gt;无源晶振两边加谐振电容&lt;/h2&gt;
+&lt;p&gt;无源晶振的标称频率指在测试时有一个“负载电容”的条件—在晶振工作时满足这个条件，
+振荡频率才可能与频率标称值一致（只有在合适的外接电容值满足无源晶振的起振要求时，晶振才能正常工作）。&lt;/p&gt;
+&lt;p&gt;无源晶振的实际输出频率并不是完全固定的，而是可以在一定范围内微调，起微调作用的就是这两个外接电容。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;切记: 谐振电容一定要按照芯片参考设计来，搞错了不起振，爱因斯坦可不负责, 高尔基血的教训&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;awr2243-40mhz-晶振起振后波形&#34;&gt;AWR2243 40MHz 晶振起振后波形&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;AWR2243ABIGABLQ1_crystal_circuit.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;AWR2243ABIGABLQ1_crystal_%E7%A4%BA%E6%B3%A2%E5%99%A8%E6%B3%A2%E5%BD%A2.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>

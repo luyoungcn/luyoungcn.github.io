@@ -7,5 +7,62 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hugo</title>
+      <link>https://luyoungcn.github.io/posts/hugo/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      
+      <guid>https://luyoungcn.github.io/posts/hugo/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://gohugo.io/&#34;&gt;hugo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;theme: &lt;a href=&#34;https://github.com/xtfly/hugo-theme-next&#34;&gt;next&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;install hugo&lt;/li&gt;
+&lt;li&gt;create a new site &lt;code&gt;hugo new site &amp;lt;sitename&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;add theme
+&lt;a href=&#34;https://github.com/xtfly/hugo-theme-next&#34;&gt;Usage of next theme&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;download theme file: git clone &lt;code&gt;https://github.com/xtfly/hugo-theme-next.git&lt;/code&gt; next&lt;/li&gt;
+&lt;li&gt;copy next directory to themes directory in your hugo site&lt;/li&gt;
+&lt;li&gt;move config.toml to the root directory in your hugo site, and modify it to the actual information for your site.&lt;/li&gt;
+&lt;li&gt;create some markdown files in directory(content/post), like &lt;code&gt;https://github.com/xtfly/xtfly.github.io/tree/hugo/content&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;start hugo server in root directory: hugo server&lt;/li&gt;
+&lt;li&gt;open browser: &lt;code&gt;http://localhost:1313/&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;start server &lt;code&gt;hugo server --bind 0.0.0.0 --baseURL http://10.0.0.7:1313&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;框架&#34;&gt;框架&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;blog&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;archetypes  config.toml  content  data  layouts  public  resources  static  themes
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;博客内容&#34;&gt;博客内容&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;将你写的博客内容markdown文档所在目录链接到 content 目录，链接文件命名为 post&lt;/li&gt;
+&lt;li&gt;将你的about目录链接到 content 目录，链接文件名为 about&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;blog&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;$ tree content/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;content/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── about -&amp;gt; /home/lv/post/about
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└── post -&amp;gt; /home/lv/post
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;博客发布&#34;&gt;博客发布&lt;/h2&gt;
+&lt;p&gt;将博客发布内容路径链接为 hugo 的根目录， 链接文件命名为 public&lt;/p&gt;
+&lt;h2 id=&#34;hugo-markdown-插入图片&#34;&gt;hugo markdown 插入图片&lt;/h2&gt;
+&lt;p&gt;e.g.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;图片名字：nescafe.png&lt;/li&gt;
+&lt;li&gt;hugo 工程 content/post/hello.md&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;content/post/ 目录下创建 markdown 文档同名文件夹 hello&lt;/li&gt;
+&lt;li&gt;将图片 nescafe.png 放入 content/post/hello/ 目录下&lt;/li&gt;
+&lt;li&gt;markdown 文件 hello.md 中引用方法：&lt;code&gt;![](nescafe.png)&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;qa&#34;&gt;Q&amp;amp;A&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://discourse.gohugo.io/t/binding-server-to-local-ip-or-0-0-0-0-does-not-work/18999&#34;&gt;https://discourse.gohugo.io/t/binding-server-to-local-ip-or-0-0-0-0-does-not-work/18999&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wefox.me/docs/create_blog_on_github_by_hugo/&#34;&gt;https://wefox.me/docs/create_blog_on_github_by_hugo/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>
