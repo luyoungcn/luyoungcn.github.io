@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -66,19 +66,19 @@ sudo apt install android-tools-adb
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/">
@@ -301,12 +301,12 @@ List of devices attached
 <p>windows 安装 <a href="https://github.com/dorssel/usbipd-win/releases">usbipd-win</a></p>
 <h2 id="wsl-安装工具包">WSL 安装工具包</h2>
 <p>WSL ubuntu 安装 adb 工具</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install android-tools-adb
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install android-tools-adb
 </span></span></code></pre></div><p>在WSL中，安装 USB/IP 的用户空间工具和 USB 硬件标识符的数据库。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install linux-tools-5.15.0-87-generic hwdata
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 注意 linux-tools 相应的要改成你实际安装的版本</span>
-</span></span><span class="line"><span class="cl">sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/5.15.0-87-generic/usbip <span class="m">20</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install linux-tools-5.15.0-87-generic hwdata
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 注意 linux-tools 相应的要改成你实际安装的版本</span>
+</span></span><span style="display:flex;"><span>sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/5.15.0-87-generic/usbip <span style="color:#ae81ff">20</span>
 </span></span></code></pre></div><h3 id="关于-linux-tools">关于 linux-tools</h3>
 <p>查看当前 ubuntu 系统版本支持的 linux-tools generic版本</p>
 <div class="mermaid">~$ sudo apt-cache search linux-tools
@@ -940,99 +940,99 @@ linux-tools-5.15.0-87-lowlatency - Linux kernel version specific tools for versi
 <ul>
 <li><strong>Notice： usbipd.exe 命令需要在管理员身份运行的 powershell 中执行</strong></li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> usbipd.exe wsl -h
-</span></span><span class="line"><span class="cl">usbipd-win 3.2.0
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Description:
-</span></span><span class="line"><span class="cl">  Convenience commands <span class="k">for</span> attaching and detaching devices to Windows Subsystem <span class="k">for</span> Linux.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Usage:
-</span></span><span class="line"><span class="cl">  usbipd wsl <span class="o">[</span>command<span class="o">]</span> <span class="o">[</span>options<span class="o">]</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Options:
-</span></span><span class="line"><span class="cl">  -?, -h, --help  Show <span class="nb">help</span> and usage information
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Commands:
-</span></span><span class="line"><span class="cl">  attach  Attach a USB device to a WSL instance
-</span></span><span class="line"><span class="cl">  detach  Detach a USB device from a WSL instance
-</span></span><span class="line"><span class="cl">  list    List USB devices
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> usbipd.exe wsl attach -h
-</span></span><span class="line"><span class="cl">usbipd-win 3.2.0
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Description:
-</span></span><span class="line"><span class="cl">  Attaches a USB device to a WSL instance.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  The first <span class="nb">time</span> a device is attached this <span class="nb">command</span> will include a <span class="s1">&#39;bind&#39;</span>, <span class="k">for</span> which administrator privileges are
-</span></span><span class="line"><span class="cl">  required. Subsequent attaches can be <span class="k">done</span> with standard user privileges.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  Exactly one of the options <span class="s1">&#39;--busid&#39;</span> or <span class="s1">&#39;--hardware-id&#39;</span> is required.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Usage:
-</span></span><span class="line"><span class="cl">  usbipd wsl attach <span class="o">[</span>options<span class="o">]</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Options:
-</span></span><span class="line"><span class="cl">  -a, --auto-attach            Automatically re-attach when the device is detached or unplugged
-</span></span><span class="line"><span class="cl">  -b, --busid &lt;BUSID&gt;          Attach device having &lt;BUSID&gt;
-</span></span><span class="line"><span class="cl">  -d, --distribution &lt;NAME&gt;    Name of the WSL distribution to attach to
-</span></span><span class="line"><span class="cl">  -i, --hardware-id &lt;VID:PID&gt;  Attach device having &lt;VID&gt;:&lt;PID&gt;
-</span></span><span class="line"><span class="cl">  -?, -h, --help               Show <span class="nb">help</span> and usage information
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> usbipd wsl list
-</span></span><span class="line"><span class="cl">BUSID  VID:PID    DEVICE                                                        STATE
-</span></span><span class="line"><span class="cl">2-1    30c9:0096  HP 5MP Camera, HP IR Camera, Camera DFU Device                Not attached
-</span></span><span class="line"><span class="cl">2-10   8087:0033  英特尔<span class="o">(</span>R<span class="o">)</span> 无线 Bluetooth<span class="o">(</span>R<span class="o">)</span>                                   Not attached
-</span></span><span class="line"><span class="cl">4-2    18d1:4ee4  bst usb gadget <span class="k">function</span>                                       Not attached
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">usbipd: warning: USB filter <span class="s1">&#39;USBPcap&#39;</span> is known to be incompatible with this software<span class="p">;</span> <span class="s1">&#39;bind --force&#39;</span> will be required.
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">usbipd wsl attach -b &lt;busid&gt;
-</span></span><span class="line"><span class="cl">usbipd wsl attach -i &lt;VID:PID&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> usbipd.exe wsl attach -i 18d1:4ee4
-</span></span><span class="line"><span class="cl">usbipd: info: Device with hardware-id <span class="s1">&#39;18d1:4ee4&#39;</span> found at busid <span class="s1">&#39;2-3&#39;</span>.
-</span></span><span class="line"><span class="cl">usbipd: info: Using default WSL distribution <span class="s1">&#39;Ubuntu&#39;</span><span class="p">;</span> specify the <span class="s1">&#39;--distribution&#39;</span> option to <span class="k">select</span> a different one.
-</span></span><span class="line"><span class="cl">usbipd: warning: USB filter <span class="s1">&#39;USBPcap&#39;</span> is known to be incompatible with this software<span class="p">;</span> <span class="s1">&#39;bind --force&#39;</span> will be required.
-</span></span><span class="line"><span class="cl">usbip: error: Attach Request <span class="k">for</span> 2-3 failed - Device busy <span class="o">(</span>exported<span class="o">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">usbipd: error: Failed to attach device with busid <span class="s1">&#39;2-3&#39;</span>.
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> usbipd.exe <span class="nb">bind</span> -h
-</span></span><span class="line"><span class="cl">usbipd-win 3.2.0
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Description:
-</span></span><span class="line"><span class="cl">  Registers a single USB device <span class="k">for</span> sharing, so it can be attached to other machines. Unless the --force option is
-</span></span><span class="line"><span class="cl">  used, shared devices remain available to the host <span class="k">until</span> they are attached to another machine.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  Exactly one of the options <span class="s1">&#39;--busid&#39;</span> or <span class="s1">&#39;--hardware-id&#39;</span> is required.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Usage:
-</span></span><span class="line"><span class="cl">  usbipd <span class="nb">bind</span> <span class="o">[</span>options<span class="o">]</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Options:
-</span></span><span class="line"><span class="cl">  -b, --busid &lt;BUSID&gt;          Share device having &lt;BUSID&gt;
-</span></span><span class="line"><span class="cl">  -f, --force                  Force binding<span class="p">;</span> the host cannot use the device
-</span></span><span class="line"><span class="cl">  -i, --hardware-id &lt;VID:PID&gt;  Share device having &lt;VID&gt;:&lt;PID&gt;
-</span></span><span class="line"><span class="cl">  -?, -h, --help               Show <span class="nb">help</span> and usage information
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> usbipd.exe <span class="nb">bind</span> -i 18d1:4ee4 -f
-</span></span><span class="line"><span class="cl">usbipd: info: Device with hardware-id <span class="s1">&#39;18d1:4ee4&#39;</span> found at busid <span class="s1">&#39;2-3&#39;</span>.
-</span></span><span class="line"><span class="cl">usbipd: warning: A reboot may be required before the changes take effect.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> usbipd.exe wsl -h
+</span></span><span style="display:flex;"><span>usbipd-win 3.2.0
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Description:
+</span></span><span style="display:flex;"><span>  Convenience commands <span style="color:#66d9ef">for</span> attaching and detaching devices to Windows Subsystem <span style="color:#66d9ef">for</span> Linux.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Usage:
+</span></span><span style="display:flex;"><span>  usbipd wsl <span style="color:#f92672">[</span>command<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Options:
+</span></span><span style="display:flex;"><span>  -?, -h, --help  Show help and usage information
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Commands:
+</span></span><span style="display:flex;"><span>  attach  Attach a USB device to a WSL instance
+</span></span><span style="display:flex;"><span>  detach  Detach a USB device from a WSL instance
+</span></span><span style="display:flex;"><span>  list    List USB devices
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> usbipd.exe wsl attach -h
+</span></span><span style="display:flex;"><span>usbipd-win 3.2.0
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Description:
+</span></span><span style="display:flex;"><span>  Attaches a USB device to a WSL instance.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  The first time a device is attached this command will include a <span style="color:#e6db74">&#39;bind&#39;</span>, <span style="color:#66d9ef">for</span> which administrator privileges are
+</span></span><span style="display:flex;"><span>  required. Subsequent attaches can be <span style="color:#66d9ef">done</span> with standard user privileges.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Exactly one of the options <span style="color:#e6db74">&#39;--busid&#39;</span> or <span style="color:#e6db74">&#39;--hardware-id&#39;</span> is required.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Usage:
+</span></span><span style="display:flex;"><span>  usbipd wsl attach <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Options:
+</span></span><span style="display:flex;"><span>  -a, --auto-attach            Automatically re-attach when the device is detached or unplugged
+</span></span><span style="display:flex;"><span>  -b, --busid &lt;BUSID&gt;          Attach device having &lt;BUSID&gt;
+</span></span><span style="display:flex;"><span>  -d, --distribution &lt;NAME&gt;    Name of the WSL distribution to attach to
+</span></span><span style="display:flex;"><span>  -i, --hardware-id &lt;VID:PID&gt;  Attach device having &lt;VID&gt;:&lt;PID&gt;
+</span></span><span style="display:flex;"><span>  -?, -h, --help               Show help and usage information
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> usbipd wsl list
+</span></span><span style="display:flex;"><span>BUSID  VID:PID    DEVICE                                                        STATE
+</span></span><span style="display:flex;"><span>2-1    30c9:0096  HP 5MP Camera, HP IR Camera, Camera DFU Device                Not attached
+</span></span><span style="display:flex;"><span>2-10   8087:0033  英特尔<span style="color:#f92672">(</span>R<span style="color:#f92672">)</span> 无线 Bluetooth<span style="color:#f92672">(</span>R<span style="color:#f92672">)</span>                                   Not attached
+</span></span><span style="display:flex;"><span>4-2    18d1:4ee4  bst usb gadget <span style="color:#66d9ef">function</span>                                       Not attached
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>usbipd: warning: USB filter <span style="color:#e6db74">&#39;USBPcap&#39;</span> is known to be incompatible with this software; <span style="color:#e6db74">&#39;bind --force&#39;</span> will be required.
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>usbipd wsl attach -b &lt;busid&gt;
+</span></span><span style="display:flex;"><span>usbipd wsl attach -i &lt;VID:PID&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> usbipd.exe wsl attach -i 18d1:4ee4
+</span></span><span style="display:flex;"><span>usbipd: info: Device with hardware-id <span style="color:#e6db74">&#39;18d1:4ee4&#39;</span> found at busid <span style="color:#e6db74">&#39;2-3&#39;</span>.
+</span></span><span style="display:flex;"><span>usbipd: info: Using default WSL distribution <span style="color:#e6db74">&#39;Ubuntu&#39;</span>; specify the <span style="color:#e6db74">&#39;--distribution&#39;</span> option to <span style="color:#66d9ef">select</span> a different one.
+</span></span><span style="display:flex;"><span>usbipd: warning: USB filter <span style="color:#e6db74">&#39;USBPcap&#39;</span> is known to be incompatible with this software; <span style="color:#e6db74">&#39;bind --force&#39;</span> will be required.
+</span></span><span style="display:flex;"><span>usbip: error: Attach Request <span style="color:#66d9ef">for</span> 2-3 failed - Device busy <span style="color:#f92672">(</span>exported<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>usbipd: error: Failed to attach device with busid <span style="color:#e6db74">&#39;2-3&#39;</span>.
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> usbipd.exe bind -h
+</span></span><span style="display:flex;"><span>usbipd-win 3.2.0
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Description:
+</span></span><span style="display:flex;"><span>  Registers a single USB device <span style="color:#66d9ef">for</span> sharing, so it can be attached to other machines. Unless the --force option is
+</span></span><span style="display:flex;"><span>  used, shared devices remain available to the host <span style="color:#66d9ef">until</span> they are attached to another machine.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Exactly one of the options <span style="color:#e6db74">&#39;--busid&#39;</span> or <span style="color:#e6db74">&#39;--hardware-id&#39;</span> is required.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Usage:
+</span></span><span style="display:flex;"><span>  usbipd bind <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Options:
+</span></span><span style="display:flex;"><span>  -b, --busid &lt;BUSID&gt;          Share device having &lt;BUSID&gt;
+</span></span><span style="display:flex;"><span>  -f, --force                  Force binding; the host cannot use the device
+</span></span><span style="display:flex;"><span>  -i, --hardware-id &lt;VID:PID&gt;  Share device having &lt;VID&gt;:&lt;PID&gt;
+</span></span><span style="display:flex;"><span>  -?, -h, --help               Show help and usage information
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> usbipd.exe bind -i 18d1:4ee4 -f
+</span></span><span style="display:flex;"><span>usbipd: info: Device with hardware-id <span style="color:#e6db74">&#39;18d1:4ee4&#39;</span> found at busid <span style="color:#e6db74">&#39;2-3&#39;</span>.
+</span></span><span style="display:flex;"><span>usbipd: warning: A reboot may be required before the changes take effect.
 </span></span></code></pre></div><p>按照说明重启电脑之后：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> usbipd.exe <span class="nb">bind</span> -i 18d1:4ee4 -f
-</span></span><span class="line"><span class="cl">usbipd: info: Device with hardware-id <span class="s1">&#39;18d1:4ee4&#39;</span> found at busid <span class="s1">&#39;2-3&#39;</span>.
-</span></span><span class="line"><span class="cl">usbipd: info: Device with busid <span class="s1">&#39;2-3&#39;</span> was already shared.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> usbipd.exe bind -i 18d1:4ee4 -f
+</span></span><span style="display:flex;"><span>usbipd: info: Device with hardware-id <span style="color:#e6db74">&#39;18d1:4ee4&#39;</span> found at busid <span style="color:#e6db74">&#39;2-3&#39;</span>.
+</span></span><span style="display:flex;"><span>usbipd: info: Device with busid <span style="color:#e6db74">&#39;2-3&#39;</span> was already shared.
 </span></span></code></pre></div><p>此时管理员身份运行 powershell 执行如下命令：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> usbipd.exe wsl attach -i 18d1:4ee4 -a
-</span></span><span class="line"><span class="cl">usbipd: info: Device with hardware-id <span class="s1">&#39;18d1:4ee4&#39;</span> found at busid <span class="s1">&#39;2-3&#39;</span>.
-</span></span><span class="line"><span class="cl">usbipd: info: Using default WSL distribution <span class="s1">&#39;Ubuntu&#39;</span><span class="p">;</span> specify the <span class="s1">&#39;--distribution&#39;</span> option to <span class="k">select</span> a different one.
-</span></span><span class="line"><span class="cl">usbipd: info: Starting endless attach loop<span class="p">;</span> press Ctrl+C to quit.
-</span></span><span class="line"><span class="cl">Attached
-</span></span><span class="line"><span class="cl">Detached
-</span></span><span class="line"><span class="cl">usbip: error: Attach Request <span class="k">for</span> 2-3 failed - Device not found
-</span></span><span class="line"><span class="cl">Attached
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> usbipd.exe wsl attach -i 18d1:4ee4 -a
+</span></span><span style="display:flex;"><span>usbipd: info: Device with hardware-id <span style="color:#e6db74">&#39;18d1:4ee4&#39;</span> found at busid <span style="color:#e6db74">&#39;2-3&#39;</span>.
+</span></span><span style="display:flex;"><span>usbipd: info: Using default WSL distribution <span style="color:#e6db74">&#39;Ubuntu&#39;</span>; specify the <span style="color:#e6db74">&#39;--distribution&#39;</span> option to <span style="color:#66d9ef">select</span> a different one.
+</span></span><span style="display:flex;"><span>usbipd: info: Starting endless attach loop; press Ctrl+C to quit.
+</span></span><span style="display:flex;"><span>Attached
+</span></span><span style="display:flex;"><span>Detached
+</span></span><span style="display:flex;"><span>usbip: error: Attach Request <span style="color:#66d9ef">for</span> 2-3 failed - Device not found
+</span></span><span style="display:flex;"><span>Attached
 </span></span></code></pre></div><p>加上 <code>-a</code> 选项后 attach 命令不会退出，会持续监听 <code>-i</code> 指定的设备，插拔该 usb 设备会自动 attach。如上命令可以看出有一个插拔的过程。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">luyang@LUYANG:~$ adb devices
-</span></span><span class="line"><span class="cl">* daemon not running<span class="p">;</span> starting now at tcp:5037
-</span></span><span class="line"><span class="cl">* daemon started successfully
-</span></span><span class="line"><span class="cl">List of devices attached
-</span></span><span class="line"><span class="cl">fada-018b0e6b656d0002   device
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>luyang@LUYANG:~$ adb devices
+</span></span><span style="display:flex;"><span>* daemon not running; starting now at tcp:5037
+</span></span><span style="display:flex;"><span>* daemon started successfully
+</span></span><span style="display:flex;"><span>List of devices attached
+</span></span><span style="display:flex;"><span>fada-018b0e6b656d0002   device
 </span></span></code></pre></div><h2 id="参考链接">参考链接</h2>
 <p><a href="https://devblogs.microsoft.com/commandline/connecting-usb-devices-to-wsl/">https://devblogs.microsoft.com/commandline/connecting-usb-devices-to-wsl/</a></p>
 
@@ -1136,23 +1136,23 @@ linux-tools-5.15.0-87-lowlatency - Linux kernel version specific tools for versi
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   

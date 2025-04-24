@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -56,19 +56,19 @@ Answer
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/wifiadb/">
@@ -258,15 +258,15 @@ missing port in specification: tcp:10.100.2.5 Answer 使用命令 adb connect 10
     
     <h2 id="操作手顺">操作手顺</h2>
 <p>手机USB连接电脑</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">adb shell <span class="s2">&#34;setprop persist.adb.tcp.port 5555&#34;</span>
-</span></span><span class="line"><span class="cl">adb tcpip <span class="m">5555</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adb shell <span style="color:#e6db74">&#34;setprop persist.adb.tcp.port 5555&#34;</span>
+</span></span><span style="display:flex;"><span>adb tcpip <span style="color:#ae81ff">5555</span>
 </span></span></code></pre></div><p>手机连上wifi，确认ip地址
 此时可以断开手USB，然后通过wifiadb连接</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">adb connect 10.100.2.5
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adb connect 10.100.2.5
 </span></span></code></pre></div><h2 id="qa">Q&amp;A</h2>
 <h3 id="issue">Issue</h3>
 <p>执行命令 <code>adb connect 10.100.2.5</code> 报错</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">missing port in specification: tcp:10.100.2.5
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>missing port in specification: tcp:10.100.2.5
 </span></span></code></pre></div><h3 id="answer">Answer</h3>
 <p>使用命令 <code>adb connect 10.100.2.5:5555</code> 解决</p>
 
@@ -370,23 +370,23 @@ missing port in specification: tcp:10.100.2.5 Answer 使用命令 adb connect 10
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   

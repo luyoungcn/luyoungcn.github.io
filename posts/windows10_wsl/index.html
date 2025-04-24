@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -50,19 +50,19 @@
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/windows10_wsl/">
@@ -267,31 +267,31 @@
 <p>设置→系统→关于</p>
 <p><img src="windows10_wsl_setup_Untitled_0.png" alt="Untitled"></p>
 <p>以管理员身份运行 powershell</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wsl —install
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl —install
 </span></span></code></pre></div><p>如果没有安装wsl，则会进入安装过程，如果已经安装会打印帮助信息</p>
 <p>要在安装新的 Linux 发行版时将默认版本设置为 WSL 1 或 WSL 2，请使用命令 <code>wsl --set-default-version &lt;Version#&gt;</code>，将 <code>&lt;Version#&gt;</code>替换为 1 或 2。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wsl --set-default-version <span class="m">2</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl --set-default-version <span style="color:#ae81ff">2</span>
 </span></span></code></pre></div><h1 id="wsl2-安装ubuntu-distro">wsl2 安装ubuntu distro</h1>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wsl --list --online
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl --list --online
 </span></span></code></pre></div><p>以下是可安装的有效分发的列表。
 请使用“wsl &ndash;install -d &lt;分发&gt;”安装。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">NAME            FRIENDLY NAME
-</span></span><span class="line"><span class="cl">Ubuntu          Ubuntu
-</span></span><span class="line"><span class="cl">Debian          Debian GNU/Linux
-</span></span><span class="line"><span class="cl">kali-linux      Kali Linux Rolling
-</span></span><span class="line"><span class="cl">openSUSE-42     openSUSE Leap <span class="m">42</span>
-</span></span><span class="line"><span class="cl">SLES-12         SUSE Linux Enterprise Server v12
-</span></span><span class="line"><span class="cl">Ubuntu-16.04    Ubuntu 16.04 LTS
-</span></span><span class="line"><span class="cl">Ubuntu-18.04    Ubuntu 18.04 LTS
-</span></span><span class="line"><span class="cl">Ubuntu-20.04    Ubuntu 20.04 LTS
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wsl --install -d Ubuntu-20.04
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>NAME            FRIENDLY NAME
+</span></span><span style="display:flex;"><span>Ubuntu          Ubuntu
+</span></span><span style="display:flex;"><span>Debian          Debian GNU/Linux
+</span></span><span style="display:flex;"><span>kali-linux      Kali Linux Rolling
+</span></span><span style="display:flex;"><span>openSUSE-42     openSUSE Leap <span style="color:#ae81ff">42</span>
+</span></span><span style="display:flex;"><span>SLES-12         SUSE Linux Enterprise Server v12
+</span></span><span style="display:flex;"><span>Ubuntu-16.04    Ubuntu 16.04 LTS
+</span></span><span style="display:flex;"><span>Ubuntu-18.04    Ubuntu 18.04 LTS
+</span></span><span style="display:flex;"><span>Ubuntu-20.04    Ubuntu 20.04 LTS
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl --install -d Ubuntu-20.04
 </span></span></code></pre></div><h1 id="卸载-wsl2-distro">卸载 wsl2 distro</h1>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wsl -l -v
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wsl --unregister Debian
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl -l -v
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl --unregister Debian
 </span></span></code></pre></div><p>限制vmmem进程内存占用过高</p>
 <p>%UserProfile% 目录下新建 .wslconfig , 内容如下</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>wsl2<span class="o">]</span>
-</span></span><span class="line"><span class="cl"><span class="nv">memory</span><span class="o">=</span>2GB
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>wsl2<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>memory<span style="color:#f92672">=</span>2GB
 </span></span></code></pre></div><h1 id="access-wsl2ubuntu-drive-from-file-explorer">Access WSL2/Ubuntu Drive from File Explorer</h1>
 <ol>
 <li>Open File Explorer</li>
@@ -312,8 +312,8 @@
 <li><a href="https://github.com/dorssel/usbipd-win/wiki/WSL-support#usbip-client-tools">https://github.com/dorssel/usbipd-win/wiki/WSL-support#usbip-client-tools</a></li>
 <li><a href="https://docs.microsoft.com/zh-tw/windows/wsl/connect-usb">https://docs.microsoft.com/zh-tw/windows/wsl/connect-usb</a></li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install linux-tools-virtual hwdata
-</span></span><span class="line"><span class="cl">sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/*/usbip <span class="m">20</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install linux-tools-virtual hwdata
+</span></span><span style="display:flex;"><span>sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/*/usbip <span style="color:#ae81ff">20</span>
 </span></span></code></pre></div></li>
 <li>
 <p>OK</p>
@@ -329,21 +329,21 @@ connect a USB device</p>
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install linux-tools-5.4.0-77-generic hwdata
-</span></span><span class="line"><span class="cl">sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/5.4.0-77-generic/usbip <span class="m">20</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install linux-tools-5.4.0-77-generic hwdata
+</span></span><span style="display:flex;"><span>sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/5.4.0-77-generic/usbip <span style="color:#ae81ff">20</span>
 </span></span></code></pre></div><p>Running Linux kernel 5.10.60.1 or higher</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ uname -a
-</span></span><span class="line"><span class="cl">Linux DESKTOP-DM1TKNP 5.10.16.3-microsoft-standard-WSL2 <span class="c1">#1 SMP Fri Apr 2 22:23:49 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ uname -a
+</span></span><span style="display:flex;"><span>Linux DESKTOP-DM1TKNP 5.10.16.3-microsoft-standard-WSL2 <span style="color:#75715e">#1 SMP Fri Apr 2 22:23:49 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux</span>
 </span></span></code></pre></div><p>It has recently become <strong>simpler to update the WSL 2 Kernel: turn on &ldquo;Receive updates for other Microsoft products when you update Windows&rdquo;</strong> in the Advanced options for Windows update. The WSL2 kernel will get updated automatically.</p>
 <p>以管理员身份运行 powershell</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">PS C:<span class="se">\W</span>indows<span class="se">\s</span>ystem32&gt; wsl --update
-</span></span><span class="line"><span class="cl">正在检查更新...
-</span></span><span class="line"><span class="cl">正在下载更新...
-</span></span><span class="line"><span class="cl">正在安装更新...
-</span></span><span class="line"><span class="cl">此更改将在 WSL 下次完全重启时生效。若要强制重启，请运行“wsl --shutdown”。
-</span></span><span class="line"><span class="cl">内核版本： 5.10.102.1
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">luyang@DESKTOP-DM1TKNP:/mnt/c/Users/luyang$ uname -a
-</span></span><span class="line"><span class="cl">Linux DESKTOP-DM1TKNP 5.10.102.1-microsoft-standard-WSL2 <span class="c1">#1 SMP Wed Mar 2 00:30:59 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ystem32&gt; wsl --update
+</span></span><span style="display:flex;"><span>正在检查更新...
+</span></span><span style="display:flex;"><span>正在下载更新...
+</span></span><span style="display:flex;"><span>正在安装更新...
+</span></span><span style="display:flex;"><span>此更改将在 WSL 下次完全重启时生效。若要强制重启，请运行“wsl --shutdown”。
+</span></span><span style="display:flex;"><span>内核版本： 5.10.102.1
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>luyang@DESKTOP-DM1TKNP:/mnt/c/Users/luyang$ uname -a
+</span></span><span style="display:flex;"><span>Linux DESKTOP-DM1TKNP 5.10.102.1-microsoft-standard-WSL2 <span style="color:#75715e">#1 SMP Wed Mar 2 00:30:59 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux</span>
 </span></span></code></pre></div><p>identify the disk and partition to attach to WSL2</p>
 <ul>
 <li>
@@ -351,23 +351,23 @@ connect a USB device</p>
 </li>
 <li>
 <p>List all of the USB devices connected to Windows by opening PowerShell in <em>administrator</em>     mode and entering the command: <code>usbipd wsl list</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">PS C:<span class="se">\W</span>indows<span class="se">\s</span>ystem32&gt; usbipd wsl list
-</span></span><span class="line"><span class="cl">BUSID  DEVICE                                                        STATE
-</span></span><span class="line"><span class="cl">1-2    HP HD Camera                                                  Not attached
-</span></span><span class="line"><span class="cl">1-7    Synaptics FS7604 Touch Fingerprint Sensor with PurePrint<span class="o">(</span>TM<span class="o">)</span>  Not attached
-</span></span><span class="line"><span class="cl">1-10   英特尔<span class="o">(</span>R<span class="o">)</span> 无线 Bluetooth<span class="o">(</span>R<span class="o">)</span>                                   Not attached
-</span></span><span class="line"><span class="cl">1-13   USB Attached SCSI <span class="o">(</span>UAS<span class="o">)</span> 大容量存储设备                        Not attached
-</span></span><span class="line"><span class="cl">1-14   USB Attached SCSI <span class="o">(</span>UAS<span class="o">)</span> 大容量存储设备                        Not attached
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ystem32&gt; usbipd wsl list
+</span></span><span style="display:flex;"><span>BUSID  DEVICE                                                        STATE
+</span></span><span style="display:flex;"><span>1-2    HP HD Camera                                                  Not attached
+</span></span><span style="display:flex;"><span>1-7    Synaptics FS7604 Touch Fingerprint Sensor with PurePrint<span style="color:#f92672">(</span>TM<span style="color:#f92672">)</span>  Not attached
+</span></span><span style="display:flex;"><span>1-10   英特尔<span style="color:#f92672">(</span>R<span style="color:#f92672">)</span> 无线 Bluetooth<span style="color:#f92672">(</span>R<span style="color:#f92672">)</span>                                   Not attached
+</span></span><span style="display:flex;"><span>1-13   USB Attached SCSI <span style="color:#f92672">(</span>UAS<span style="color:#f92672">)</span> 大容量存储设备                        Not attached
+</span></span><span style="display:flex;"><span>1-14   USB Attached SCSI <span style="color:#f92672">(</span>UAS<span style="color:#f92672">)</span> 大容量存储设备                        Not attached
 </span></span></code></pre></div></li>
 </ul>
 <p>Select the bus ID of the device you’d like to attach to WSL and run this command. You’ll be prompted by WSL for a password to run a sudo command. The Linux distribution to be attached must be your default distribution. (See the <a href="https://docs.microsoft.com/en-us/windows/wsl/basic-commands#set-default-linux-distribution">Basic comands for WSL</a> doc to change your default distribution). <code>usbipd wsl attach --busid &lt;busid&gt;</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">PS C:<span class="se">\W</span>indows<span class="se">\s</span>ystem32&gt; usbipd wsl attach --busid 1-13
-</span></span><span class="line"><span class="cl">PS C:<span class="se">\W</span>indows<span class="se">\s</span>ystem32&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ystem32&gt; usbipd wsl attach --busid 1-13
+</span></span><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ystem32&gt;
 </span></span></code></pre></div><p>Open Ubuntu (or your preferred WSL command line) and list the attached USB devices using the command: <code>lsusb</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">luyang@DESKTOP-DM1TKNP:/mnt/c/Users/luyang$ lsusb
-</span></span><span class="line"><span class="cl">Bus <span class="m">002</span> Device 002: ID 1058:25f3 Western Digital Technologies, Inc. 
-</span></span><span class="line"><span class="cl">Bus <span class="m">002</span> Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub      
-</span></span><span class="line"><span class="cl">Bus <span class="m">001</span> Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>luyang@DESKTOP-DM1TKNP:/mnt/c/Users/luyang$ lsusb
+</span></span><span style="display:flex;"><span>Bus <span style="color:#ae81ff">002</span> Device 002: ID 1058:25f3 Western Digital Technologies, Inc. 
+</span></span><span style="display:flex;"><span>Bus <span style="color:#ae81ff">002</span> Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub      
+</span></span><span style="display:flex;"><span>Bus <span style="color:#ae81ff">001</span> Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 </span></span></code></pre></div><p>You should see the device you just attached and be able to interact with it using normal Linux tools. Depending on your application, you may need to configure udev rules to allow non-root users to access the device.</p>
 <p>Once you are done using the device in WSL, you can either physically disconnect the USB device or run this command from PowerShell in <em>administrator</em> mode: <code>usbipd wsl detach --busid &lt;busid&gt;</code></p>
 <p>mount</p>
@@ -381,41 +381,41 @@ connect a USB device</p>
 <li>下载<a href="https://docs.microsoft.com/en-us/windows/wsl/kernel-release-notes">源码</a></li>
 <li><code>sudo apt install build-essential flex bison libssl-dev libelf-dev libncurses-dev autoconf libudev-dev libtool</code></li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1
-</span></span><span class="line"><span class="cl">luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ cp /proc/config.gz config.gz
-</span></span><span class="line"><span class="cl">luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ gunzip config.gz
-</span></span><span class="line"><span class="cl">luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ cp config .config
-</span></span><span class="line"><span class="cl">luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ make menuconfig
-</span></span><span class="line"><span class="cl"><span class="c1"># Device Drivers -&gt; USB support -&gt; select USB Mass Storage support and Enter y -&gt; save and exit</span>
-</span></span><span class="line"><span class="cl">luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ make -j8
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 编译过程中报错, 根据报错直接vim .config 注释掉了 CONFIG_DEBUG_INFO_BTF 项，保存然后再次make -j8</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># CONFIG_DEBUG_INFO_BTF is not set</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ sudo make modules_install -j8
-</span></span><span class="line"><span class="cl">luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ sudo make install -j8
-</span></span><span class="line"><span class="cl">luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ cp vmlinux /mnt/c/Users/luyang/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1
+</span></span><span style="display:flex;"><span>luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ cp /proc/config.gz config.gz
+</span></span><span style="display:flex;"><span>luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ gunzip config.gz
+</span></span><span style="display:flex;"><span>luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ cp config .config
+</span></span><span style="display:flex;"><span>luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ make menuconfig
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Device Drivers -&gt; USB support -&gt; select USB Mass Storage support and Enter y -&gt; save and exit</span>
+</span></span><span style="display:flex;"><span>luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ make -j8
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 编译过程中报错, 根据报错直接vim .config 注释掉了 CONFIG_DEBUG_INFO_BTF 项，保存然后再次make -j8</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># CONFIG_DEBUG_INFO_BTF is not set</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ sudo make modules_install -j8
+</span></span><span style="display:flex;"><span>luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ sudo make install -j8
+</span></span><span style="display:flex;"><span>luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ cp vmlinux /mnt/c/Users/luyang/
 </span></span></code></pre></div><p>powershell terminal</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wsl --shutdown
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl --shutdown
 </span></span></code></pre></div><p>修改 Windows 下的 <code>c/User/&lt;username&gt;/.wslconfig</code>，没有该文件自己创建一个，内容如下：主要是kernel这一项</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>wsl2<span class="o">]</span>
-</span></span><span class="line"><span class="cl"><span class="nv">kernel</span><span class="o">=</span>C:<span class="se">\\</span>Users<span class="se">\\</span>luyang<span class="se">\\</span>vmlinux
-</span></span><span class="line"><span class="cl"><span class="nv">memory</span><span class="o">=</span>2GB
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>wsl2<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>kernel<span style="color:#f92672">=</span>C:<span style="color:#ae81ff">\\</span>Users<span style="color:#ae81ff">\\</span>luyang<span style="color:#ae81ff">\\</span>vmlinux
+</span></span><span style="display:flex;"><span>memory<span style="color:#f92672">=</span>2GB
 </span></span></code></pre></div><p>restart wsl, 然后按照前边attash usb的方式挂载之后</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ lsusb
-</span></span><span class="line"><span class="cl">Bus <span class="m">002</span> Device 002: ID 1058:25f3 Western Digital Technologies, Inc. 
-</span></span><span class="line"><span class="cl">Bus <span class="m">002</span> Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub      
-</span></span><span class="line"><span class="cl">Bus <span class="m">001</span> Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub      
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># sdc 就是我要挂载的移动硬盘</span>
-</span></span><span class="line"><span class="cl">luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ lsblk
-</span></span><span class="line"><span class="cl">NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-</span></span><span class="line"><span class="cl">sda      8:0    <span class="m">0</span>   256G  <span class="m">0</span> disk
-</span></span><span class="line"><span class="cl">sdb      8:16   <span class="m">0</span>   256G  <span class="m">0</span> disk /
-</span></span><span class="line"><span class="cl">sdc      8:32   <span class="m">0</span> 476.9G  <span class="m">0</span> disk
-</span></span><span class="line"><span class="cl">├─sdc1   8:33   <span class="m">0</span>   512M  <span class="m">0</span> part
-</span></span><span class="line"><span class="cl">├─sdc2   8:34   <span class="m">0</span>    50G  <span class="m">0</span> part
-</span></span><span class="line"><span class="cl">└─sdc3   8:35   <span class="m">0</span> 426.4G  <span class="m">0</span> part
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ lsusb
+</span></span><span style="display:flex;"><span>Bus <span style="color:#ae81ff">002</span> Device 002: ID 1058:25f3 Western Digital Technologies, Inc. 
+</span></span><span style="display:flex;"><span>Bus <span style="color:#ae81ff">002</span> Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub      
+</span></span><span style="display:flex;"><span>Bus <span style="color:#ae81ff">001</span> Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub      
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># sdc 就是我要挂载的移动硬盘</span>
+</span></span><span style="display:flex;"><span>luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ lsblk
+</span></span><span style="display:flex;"><span>NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+</span></span><span style="display:flex;"><span>sda      8:0    <span style="color:#ae81ff">0</span>   256G  <span style="color:#ae81ff">0</span> disk
+</span></span><span style="display:flex;"><span>sdb      8:16   <span style="color:#ae81ff">0</span>   256G  <span style="color:#ae81ff">0</span> disk /
+</span></span><span style="display:flex;"><span>sdc      8:32   <span style="color:#ae81ff">0</span> 476.9G  <span style="color:#ae81ff">0</span> disk
+</span></span><span style="display:flex;"><span>├─sdc1   8:33   <span style="color:#ae81ff">0</span>   512M  <span style="color:#ae81ff">0</span> part
+</span></span><span style="display:flex;"><span>├─sdc2   8:34   <span style="color:#ae81ff">0</span>    50G  <span style="color:#ae81ff">0</span> part
+</span></span><span style="display:flex;"><span>└─sdc3   8:35   <span style="color:#ae81ff">0</span> 426.4G  <span style="color:#ae81ff">0</span> part
 </span></span></code></pre></div><h1 id="扩展-wsl-2-虚拟硬盘的大小"><strong>扩展 WSL 2 虚拟硬盘的大小</strong></h1>
 <ul>
 <li><a href="https://docs.microsoft.com/zh-cn/windows/wsl/vhd-size">https://docs.microsoft.com/zh-cn/windows/wsl/vhd-size</a></li>
@@ -480,22 +480,22 @@ The filesystem on /dev/sdb is now 78643200 (4k) blocks long.
 
 <p><strong class=chinese>重要</strong></p>
 <p>建议不要使用 Windows 工具或编辑器来修改、移动或访问 AppData 文件夹中与 WSL 相关的文件。 这样做可能会导致 Linux 分发版损坏。 如果要从 Windows 访问 Linux 文件，可通过路径 <code>\\wsl$\&lt;distroName&gt;\</code> 进行访问。 打开 WSL 分发版，然后输入 <code>explorer.exe .</code> 来查看此文件夹。 若要了解详细信息，请查看博客文章：<strong><a href="https://devblogs.microsoft.com/commandline/whats-new-for-wsl-in-windows-10-version-1903/#accessing-linux-files-from-windows">从 Windows 访问 Linux 文件</a></strong>。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">DISKPART&gt; expand vdisk <span class="nv">maximum</span><span class="o">=</span><span class="m">512000</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">虚拟磁盘服务错误:
-</span></span><span class="line"><span class="cl">连接虚拟磁盘时，无法执行请求的操作。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>DISKPART&gt; expand vdisk maximum<span style="color:#f92672">=</span><span style="color:#ae81ff">512000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>虚拟磁盘服务错误:
+</span></span><span style="display:flex;"><span>连接虚拟磁盘时，无法执行请求的操作。
 </span></span></code></pre></div><p><img src="windows10_wsl_setup_Untitled_2.png" alt="Untitled"></p>
 <p>管理员权限运行 powershell</p>
 <p><img src="windows10_wsl_setup_Untitled_3.png" alt="Untitled"></p>
 <p><img src="windows10_wsl_setup_Untitled_4.png" alt="Untitled"></p>
 <h1 id="wsl2-error-0x80370114">WSL2 Error: 0x80370114</h1>
 <p><a href="https://blog.csdn.net/m0_57298796/article/details/128395860">WIN11按照官方文档安装WSL2时出现error 0x80370114_半路杀出来的小黑同学的博客-CSDN博客</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">PS C:<span class="se">\U</span>sers<span class="se">\l</span>uyang&gt; wsl --install -d Ubuntu-20.04
-</span></span><span class="line"><span class="cl">Ubuntu 20.04 LTS is already installed.
-</span></span><span class="line"><span class="cl">Launching Ubuntu 20.04 LTS...
-</span></span><span class="line"><span class="cl">Installing, this may take a few minutes...
-</span></span><span class="line"><span class="cl">WslRegisterDistribution failed with error: 0x80370114
-</span></span><span class="line"><span class="cl">Error: 0x80370114 The operation could not be started because a required feature is not installed.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\l</span>uyang&gt; wsl --install -d Ubuntu-20.04
+</span></span><span style="display:flex;"><span>Ubuntu 20.04 LTS is already installed.
+</span></span><span style="display:flex;"><span>Launching Ubuntu 20.04 LTS...
+</span></span><span style="display:flex;"><span>Installing, this may take a few minutes...
+</span></span><span style="display:flex;"><span>WslRegisterDistribution failed with error: 0x80370114
+</span></span><span style="display:flex;"><span>Error: 0x80370114 The operation could not be started because a required feature is not installed.
 </span></span></code></pre></div><p>Windows 11 上打开“设置”-&gt;“应用”-&gt;“可选功能”</p>
 <p>“更多windows功能”选项</p>
 <p>将“适用于Linux的Windows子系统”打勾后，重启即可。</p>
@@ -504,75 +504,75 @@ The filesystem on /dev/sdb is now 78643200 (4k) blocks long.
 <p><a href="https://learn.microsoft.com/zh-cn/windows/wsl/wsl2-mount-disk">关于在 WSL 2 中安装 Linux 磁盘的入门 | Microsoft Learn</a></p>
 <p><strong class=chinese>标识磁盘</strong></p>
 <p>要列出 Windows 中的可用磁盘，请运行：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">GET-CimInstance -query <span class="s2">&#34;SELECT * from Win32_DiskDrive&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET-CimInstance -query <span style="color:#e6db74">&#34;SELECT * from Win32_DiskDrive&#34;</span>
 </span></span></code></pre></div><p>磁盘路径位于“DeviceID”列下。 通常采用 \.\PHYSICALDRIVE* 格式。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">PS C:<span class="se">\U</span>sers<span class="se">\l</span>uyang&gt; GET-CimInstance -query <span class="s2">&#34;SELECT * from Win32_DiskDrive&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">DeviceID           Caption              Partitions Size          Model
-</span></span><span class="line"><span class="cl">--------           -------              ---------- ----          -----
-</span></span><span class="line"><span class="cl"><span class="se">\\</span>.<span class="se">\P</span>HYSICALDRIVE2 WD Green SN350 1TB   <span class="m">1</span>          <span class="m">1000202273280</span> WD Green SN350 1TB
-</span></span><span class="line"><span class="cl"><span class="se">\\</span>.<span class="se">\P</span>HYSICALDRIVE1 WDC WD40EJRX-89AKWY0 <span class="m">1</span>          <span class="m">4000784417280</span> WDC WD40EJRX-89AKWY0
-</span></span><span class="line"><span class="cl"><span class="se">\\</span>.<span class="se">\P</span>HYSICALDRIVE0 WDC WD10EZEX-08WN4A0 <span class="m">3</span>          <span class="m">1000202273280</span> WDC WD10EZEX-08WN4A0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\l</span>uyang&gt; GET-CimInstance -query <span style="color:#e6db74">&#34;SELECT * from Win32_DiskDrive&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DeviceID           Caption              Partitions Size          Model
+</span></span><span style="display:flex;"><span>--------           -------              ---------- ----          -----
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE2 WD Green SN350 1TB   <span style="color:#ae81ff">1</span>          <span style="color:#ae81ff">1000202273280</span> WD Green SN350 1TB
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE1 WDC WD40EJRX-89AKWY0 <span style="color:#ae81ff">1</span>          <span style="color:#ae81ff">4000784417280</span> WDC WD40EJRX-89AKWY0
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE0 WDC WD10EZEX-08WN4A0 <span style="color:#ae81ff">3</span>          <span style="color:#ae81ff">1000202273280</span> WDC WD10EZEX-08WN4A0
 </span></span></code></pre></div><p><strong class=chinese>装载磁盘</strong></p>
 <p>使用 PowerShell，可以使用上面发现的磁盘路径装载磁盘，请运行：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wsl --mount &lt;DiskPath&gt;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># --bare: </span>
-</span></span><span class="line"><span class="cl">wsl --mount &lt;DiskPath&gt; --bare
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wsl --help
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># mount 相关</span>
-</span></span><span class="line"><span class="cl">--mount &lt;Disk&gt;
-</span></span><span class="line"><span class="cl">	在所有 WSL <span class="m">2</span> 分发中附加并安装物理或虚拟磁盘。
-</span></span><span class="line"><span class="cl">	选项:
-</span></span><span class="line"><span class="cl">		--vhd
-</span></span><span class="line"><span class="cl">			指定 &lt;Disk&gt; 是指虚拟硬盘。
-</span></span><span class="line"><span class="cl">		--bare
-</span></span><span class="line"><span class="cl">			将磁盘附加到 WSL 2，但不进行安装。
-</span></span><span class="line"><span class="cl">		--name &lt;Name&gt;
-</span></span><span class="line"><span class="cl">			对安装点使用自定义名称安装磁盘。
-</span></span><span class="line"><span class="cl">		--type &lt;Type&gt;
-</span></span><span class="line"><span class="cl">			安装磁盘时要使用的文件系统，如果未指定，则默认为 ext4。
-</span></span><span class="line"><span class="cl">		--options &lt;Options&gt;
-</span></span><span class="line"><span class="cl">			其他安装选项。
-</span></span><span class="line"><span class="cl">		--partition &lt;Index&gt;
-</span></span><span class="line"><span class="cl">			要安装的分区索引，如果未指定，则默认为整个磁盘。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl --mount &lt;DiskPath&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># --bare: </span>
+</span></span><span style="display:flex;"><span>wsl --mount &lt;DiskPath&gt; --bare
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl --help
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># mount 相关</span>
+</span></span><span style="display:flex;"><span>--mount &lt;Disk&gt;
+</span></span><span style="display:flex;"><span>	在所有 WSL <span style="color:#ae81ff">2</span> 分发中附加并安装物理或虚拟磁盘。
+</span></span><span style="display:flex;"><span>	选项:
+</span></span><span style="display:flex;"><span>		--vhd
+</span></span><span style="display:flex;"><span>			指定 &lt;Disk&gt; 是指虚拟硬盘。
+</span></span><span style="display:flex;"><span>		--bare
+</span></span><span style="display:flex;"><span>			将磁盘附加到 WSL 2，但不进行安装。
+</span></span><span style="display:flex;"><span>		--name &lt;Name&gt;
+</span></span><span style="display:flex;"><span>			对安装点使用自定义名称安装磁盘。
+</span></span><span style="display:flex;"><span>		--type &lt;Type&gt;
+</span></span><span style="display:flex;"><span>			安装磁盘时要使用的文件系统，如果未指定，则默认为 ext4。
+</span></span><span style="display:flex;"><span>		--options &lt;Options&gt;
+</span></span><span style="display:flex;"><span>			其他安装选项。
+</span></span><span style="display:flex;"><span>		--partition &lt;Index&gt;
+</span></span><span style="display:flex;"><span>			要安装的分区索引，如果未指定，则默认为整个磁盘。
 </span></span></code></pre></div><p>实际挂载 LUSK 加密的 WD 移动硬盘 - 需要管理员权限启动终端</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">PS C:<span class="se">\W</span>indows<span class="se">\s</span>ystem32&gt; GET-CimInstance -query <span class="s2">&#34;SELECT * from Win32_DiskDrive&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">DeviceID           Caption                              Partitions Size          Model
-</span></span><span class="line"><span class="cl">--------           -------                              ---------- ----          -----
-</span></span><span class="line"><span class="cl"><span class="se">\\</span>.<span class="se">\P</span>HYSICALDRIVE2 WD Green SN350 1TB                   <span class="m">1</span>          <span class="m">1000202273280</span> WD Green SN350 1TB
-</span></span><span class="line"><span class="cl"><span class="se">\\</span>.<span class="se">\P</span>HYSICALDRIVE1 WDC WD40EJRX-89AKWY0                 <span class="m">1</span>          <span class="m">4000784417280</span> WDC WD40EJRX-89AKWY0
-</span></span><span class="line"><span class="cl"><span class="se">\\</span>.<span class="se">\P</span>HYSICALDRIVE0 WDC WD10EZEX-08WN4A0                 <span class="m">3</span>          <span class="m">1000202273280</span> WDC WD10EZEX-08WN4A0
-</span></span><span class="line"><span class="cl"><span class="se">\\</span>.<span class="se">\P</span>HYSICALDRIVE3 WD My Passport 25F3 SCSI Disk Device <span class="m">1</span>          <span class="m">512073031680</span>  WD My Passport 25F3 SCSI Disk Device
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">PS C:<span class="se">\W</span>indows<span class="se">\s</span>ystem32&gt; wsl --mount <span class="se">\\</span>.<span class="se">\P</span>HYSICALDRIVE3 --bare
-</span></span><span class="line"><span class="cl">操作成功完成。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ystem32&gt; GET-CimInstance -query <span style="color:#e6db74">&#34;SELECT * from Win32_DiskDrive&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DeviceID           Caption                              Partitions Size          Model
+</span></span><span style="display:flex;"><span>--------           -------                              ---------- ----          -----
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE2 WD Green SN350 1TB                   <span style="color:#ae81ff">1</span>          <span style="color:#ae81ff">1000202273280</span> WD Green SN350 1TB
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE1 WDC WD40EJRX-89AKWY0                 <span style="color:#ae81ff">1</span>          <span style="color:#ae81ff">4000784417280</span> WDC WD40EJRX-89AKWY0
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE0 WDC WD10EZEX-08WN4A0                 <span style="color:#ae81ff">3</span>          <span style="color:#ae81ff">1000202273280</span> WDC WD10EZEX-08WN4A0
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE3 WD My Passport 25F3 SCSI Disk Device <span style="color:#ae81ff">1</span>          <span style="color:#ae81ff">512073031680</span>  WD My Passport 25F3 SCSI Disk Device
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ystem32&gt; wsl --mount <span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE3 --bare
+</span></span><span style="display:flex;"><span>操作成功完成。
 </span></span></code></pre></div><p>之后通过 WSL ubuntu terminal 操作, 查看对应设备</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo fdisk -l
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Device     Boot Start        End    Sectors   Size Id Type
-</span></span><span class="line"><span class="cl">/dev/sdc1        <span class="m">2048</span> <span class="m">1000148991</span> <span class="m">1000146944</span> 476.9G <span class="m">83</span> Linux
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo cryptsetup luksOpen /dev/sdc1 wd
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">sudo mount /dev/mapper/wd ~/wd_udisk
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">sudo umount ~/wd_udisk
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">sudo cryptsetup luksClose wd
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo fdisk -l
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Device     Boot Start        End    Sectors   Size Id Type
+</span></span><span style="display:flex;"><span>/dev/sdc1        <span style="color:#ae81ff">2048</span> <span style="color:#ae81ff">1000148991</span> <span style="color:#ae81ff">1000146944</span> 476.9G <span style="color:#ae81ff">83</span> Linux
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo cryptsetup luksOpen /dev/sdc1 wd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo mount /dev/mapper/wd ~/wd_udisk
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo umount ~/wd_udisk
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo cryptsetup luksClose wd
 </span></span></code></pre></div><p>挂载机械硬盘</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># window terminal 管理员权限</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 1T</span>
-</span></span><span class="line"><span class="cl">wsl --mount <span class="se">\\</span>.<span class="se">\P</span>HYSICALDRIVE0 --bare
-</span></span><span class="line"><span class="cl"><span class="c1"># 4T</span>
-</span></span><span class="line"><span class="cl">wsl --mount <span class="se">\\</span>.<span class="se">\P</span>HYSICALDRIVE1 --bare
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># ubuntu terminal</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 4T</span>
-</span></span><span class="line"><span class="cl">sudo mount -t ext4 /dev/sdf1 ~/HD_4T
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># window terminal 管理员权限</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1T</span>
+</span></span><span style="display:flex;"><span>wsl --mount <span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE0 --bare
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 4T</span>
+</span></span><span style="display:flex;"><span>wsl --mount <span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE1 --bare
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ubuntu terminal</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 4T</span>
+</span></span><span style="display:flex;"><span>sudo mount -t ext4 /dev/sdf1 ~/HD_4T
 </span></span></code></pre></div>
     
   </article>
@@ -674,23 +674,23 @@ The filesystem on /dev/sdb is now 78643200 (4k) blocks long.
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   

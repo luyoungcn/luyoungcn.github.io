@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -58,19 +58,19 @@ Date:   Thu Apr 5 15:48:16 2018 -0700
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/">
@@ -239,28 +239,28 @@ commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843 Author: Dan Willemsen &lt;dwille
   <article class="content numbered-subtitles">
     
     <p>Android10的基线代码google已经将prebuilt的ccache移除,但是保留了相关功能选项</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl">commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843
-</span></span><span class="line"><span class="cl">Author: Dan Willemsen &lt;dwillemsen@google.com&gt;
-</span></span><span class="line"><span class="cl">Date:   Thu Apr 5 15:48:16 2018 -0700
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    Remove our binary of ccache
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    This version is rather old, and has many known bugs. The build system is
-</span></span><span class="line"><span class="cl">    no longer providing ccache, but preserving the option to use your own at
-</span></span><span class="line"><span class="cl">    your own risk.
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    Bug: 32748498
-</span></span><span class="line"><span class="cl">    Test: cs/ccache
-</span></span><span class="line"><span class="cl">    Change-Id: I894a11445127bf8cb3a7ac5a119c500f2c572fb9
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843
+</span></span><span style="display:flex;"><span>Author: Dan Willemsen &lt;dwillemsen@google.com&gt;
+</span></span><span style="display:flex;"><span>Date:   Thu Apr 5 15:48:16 2018 -0700
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Remove our binary of ccache
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    This version is rather old, and has many known bugs. The build system is
+</span></span><span style="display:flex;"><span>    no longer providing ccache, but preserving the option to use your own at
+</span></span><span style="display:flex;"><span>    your own risk.
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    Bug: 32748498
+</span></span><span style="display:flex;"><span>    Test: cs/ccache
+</span></span><span style="display:flex;"><span>    Change-Id: I894a11445127bf8cb3a7ac5a119c500f2c572fb9
 </span></span></code></pre></div><p>安卓10之前配置</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">USE_CCACHE</span><span class="o">=</span><span class="nb">true</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">CCACHE_DIR</span><span class="o">=</span><span class="nv">$HOME</span>/.cache
-</span></span><span class="line"><span class="cl">prebuilts/misc/linux-x86/ccache/ccache -M 10G
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export USE_CCACHE<span style="color:#f92672">=</span>true
+</span></span><span style="display:flex;"><span>export CCACHE_DIR<span style="color:#f92672">=</span>$HOME/.cache
+</span></span><span style="display:flex;"><span>prebuilts/misc/linux-x86/ccache/ccache -M 10G
 </span></span></code></pre></div><p>安卓10+通过使用的HOST操作系统安装对应的ccache软件包</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">USE_CCACHE</span><span class="o">=</span><span class="nb">true</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">CCACHE_EXEC</span><span class="o">=</span>/usr/bin/ccache
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">CCACHE_DIR</span><span class="o">=</span><span class="nv">$HOME</span>/.cache
-</span></span><span class="line"><span class="cl"><span class="si">${</span><span class="nv">CCACHE_EXEC</span><span class="si">}</span> -M 50G
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export USE_CCACHE<span style="color:#f92672">=</span>true
+</span></span><span style="display:flex;"><span>export CCACHE_EXEC<span style="color:#f92672">=</span>/usr/bin/ccache
+</span></span><span style="display:flex;"><span>export CCACHE_DIR<span style="color:#f92672">=</span>$HOME/.cache
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">${</span>CCACHE_EXEC<span style="color:#e6db74">}</span> -M 50G
 </span></span></code></pre></div><p>可以通过如下命令查询cache状态
 <code>ccache -s</code></p>
 
@@ -364,23 +364,23 @@ commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843 Author: Dan Willemsen &lt;dwille
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -46,19 +46,19 @@ Unix 和 POSIX 兼容系统将 time_t 类型作为带符号整数（通常为 32
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/">
@@ -265,52 +265,52 @@ Unix 和 POSIX 兼容系统将 time_t 类型作为带符号整数（通常为 32
 <p><code>time_t</code> 保存自 UTC 1970 年 1 月 1 日 00:00 以来的秒数（不包括闰秒），对应于<a href="https://en.wikipedia.org/wiki/Unix_time">POSIX time</a>
 Unix 和 POSIX 兼容系统将 <code>time_t</code> 类型作为带符号整数（通常为 32 或 64 位宽）来实现，它表示自 Unix 时间开始以来的秒数</p>
 <p>time_t 和 struct tm 之间的转换接口</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="nf">localtime</span><span class="p">(</span><span class="k">const</span> <span class="kt">time_t</span> <span class="o">*</span><span class="n">timep</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="nf">localtime_r</span><span class="p">(</span><span class="k">const</span> <span class="kt">time_t</span> <span class="o">*</span><span class="n">timep</span><span class="p">,</span> <span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="n">result</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">time_t</span> <span class="nf">mktime</span><span class="p">(</span><span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="n">tm</span><span class="p">);</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">tm</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">   <span class="kt">int</span> <span class="n">tm_sec</span><span class="p">;</span>    <span class="cm">/* Seconds (0-60) */</span>
-</span></span><span class="line"><span class="cl">   <span class="kt">int</span> <span class="n">tm_min</span><span class="p">;</span>    <span class="cm">/* Minutes (0-59) */</span>
-</span></span><span class="line"><span class="cl">   <span class="kt">int</span> <span class="n">tm_hour</span><span class="p">;</span>   <span class="cm">/* Hours (0-23) */</span>
-</span></span><span class="line"><span class="cl">   <span class="kt">int</span> <span class="n">tm_mday</span><span class="p">;</span>   <span class="cm">/* Day of the month (1-31) */</span>
-</span></span><span class="line"><span class="cl">   <span class="kt">int</span> <span class="n">tm_mon</span><span class="p">;</span>    <span class="cm">/* Month (0-11) */</span>
-</span></span><span class="line"><span class="cl">   <span class="kt">int</span> <span class="n">tm_year</span><span class="p">;</span>   <span class="cm">/* Year - 1900 */</span>
-</span></span><span class="line"><span class="cl">   <span class="kt">int</span> <span class="n">tm_wday</span><span class="p">;</span>   <span class="cm">/* Day of the week (0-6, Sunday = 0) */</span>
-</span></span><span class="line"><span class="cl">   <span class="kt">int</span> <span class="n">tm_yday</span><span class="p">;</span>   <span class="cm">/* Day in the year (0-365, 1 Jan = 0) */</span>
-</span></span><span class="line"><span class="cl">   <span class="kt">int</span> <span class="n">tm_isdst</span><span class="p">;</span>  <span class="cm">/* Daylight saving time */</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> tm <span style="color:#f92672">*</span><span style="color:#a6e22e">localtime</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">time_t</span> <span style="color:#f92672">*</span>timep);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> tm <span style="color:#f92672">*</span><span style="color:#a6e22e">localtime_r</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">time_t</span> <span style="color:#f92672">*</span>timep, <span style="color:#66d9ef">struct</span> tm <span style="color:#f92672">*</span>result);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">time_t</span> <span style="color:#a6e22e">mktime</span>(<span style="color:#66d9ef">struct</span> tm <span style="color:#f92672">*</span>tm);
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> tm {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> tm_sec;    <span style="color:#75715e">/* Seconds (0-60) */</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> tm_min;    <span style="color:#75715e">/* Minutes (0-59) */</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> tm_hour;   <span style="color:#75715e">/* Hours (0-23) */</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> tm_mday;   <span style="color:#75715e">/* Day of the month (1-31) */</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> tm_mon;    <span style="color:#75715e">/* Month (0-11) */</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> tm_year;   <span style="color:#75715e">/* Year - 1900 */</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> tm_wday;   <span style="color:#75715e">/* Day of the week (0-6, Sunday = 0) */</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> tm_yday;   <span style="color:#75715e">/* Day in the year (0-365, 1 Jan = 0) */</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> tm_isdst;  <span style="color:#75715e">/* Daylight saving time */</span>
+</span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><p>获取当前时间的 time_t</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;time.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="n">NAME</span>
-</span></span><span class="line"><span class="cl">       <span class="n">time</span> <span class="o">-</span> <span class="n">get</span> <span class="n">time</span> <span class="n">in</span> <span class="n">seconds</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">SYNOPSIS</span>
-</span></span><span class="line"><span class="cl">       <span class="cp">#include</span> <span class="cpf">&lt;time.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>       <span class="kt">time_t</span> <span class="nf">time</span><span class="p">(</span><span class="kt">time_t</span> <span class="o">*</span><span class="n">tloc</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">DESCRIPTION</span>
-</span></span><span class="line"><span class="cl">       <span class="nf">time</span><span class="p">()</span> <span class="n">returns</span> <span class="n">the</span> <span class="n">time</span> <span class="n">as</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">seconds</span> <span class="n">since</span> <span class="n">the</span> <span class="n">Epoch</span><span class="p">,</span> <span class="mi">1970</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">01</span> <span class="mo">00</span><span class="o">:</span><span class="mo">00</span><span class="o">:</span><span class="mo">00</span> <span class="o">+</span><span class="mo">0000</span> <span class="p">(</span><span class="n">UTC</span><span class="p">).</span>
-</span></span><span class="line"><span class="cl">       <span class="n">If</span> <span class="n">tloc</span> <span class="n">is</span> <span class="n">non</span><span class="o">-</span><span class="nb">NULL</span><span class="p">,</span> <span class="n">the</span> <span class="k">return</span> <span class="n">value</span> <span class="n">is</span> <span class="n">also</span> <span class="n">stored</span> <span class="n">in</span> <span class="n">the</span> <span class="n">memory</span> <span class="n">pointed</span> <span class="n">to</span> <span class="n">by</span> <span class="n">tloc</span><span class="p">.</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;time.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>NAME
+</span></span><span style="display:flex;"><span>       time <span style="color:#f92672">-</span> get time in seconds
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SYNOPSIS
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;time.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       <span style="color:#66d9ef">time_t</span> <span style="color:#a6e22e">time</span>(<span style="color:#66d9ef">time_t</span> <span style="color:#f92672">*</span>tloc);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DESCRIPTION
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">time</span>() returns the time as the number of seconds since the Epoch, <span style="color:#ae81ff">1970</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span> <span style="color:#ae81ff">00</span><span style="color:#f92672">:</span><span style="color:#ae81ff">00</span><span style="color:#f92672">:</span><span style="color:#ae81ff">00</span> <span style="color:#f92672">+</span><span style="color:#ae81ff">0000</span> (UTC).
+</span></span><span style="display:flex;"><span>       If tloc is non<span style="color:#f92672">-</span>NULL, the <span style="color:#66d9ef">return</span> value is also stored in the memory pointed to by tloc.
 </span></span></code></pre></div><p>当前时间转 <code>struct tm</code> 打印</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">tm</span><span class="o">*</span> <span class="n">local_time</span> <span class="o">=</span> <span class="nf">localtime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">current_time</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// Print the local time
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Current local time is: &#34;</span>
-</span></span><span class="line"><span class="cl">          <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">local_time</span><span class="o">-&gt;</span><span class="n">tm_year</span> <span class="o">+</span> <span class="mi">1900</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;-&#34;</span>
-</span></span><span class="line"><span class="cl">          <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">local_time</span><span class="o">-&gt;</span><span class="n">tm_mon</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;-&#34;</span>
-</span></span><span class="line"><span class="cl">          <span class="o">&lt;&lt;</span> <span class="n">local_time</span><span class="o">-&gt;</span><span class="n">tm_mday</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span>
-</span></span><span class="line"><span class="cl">          <span class="o">&lt;&lt;</span> <span class="n">local_time</span><span class="o">-&gt;</span><span class="n">tm_hour</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;:&#34;</span>
-</span></span><span class="line"><span class="cl">          <span class="o">&lt;&lt;</span> <span class="n">local_time</span><span class="o">-&gt;</span><span class="n">tm_min</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;:&#34;</span>
-</span></span><span class="line"><span class="cl">          <span class="o">&lt;&lt;</span> <span class="n">local_time</span><span class="o">-&gt;</span><span class="n">tm_sec</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>std<span style="color:#f92672">::</span>tm<span style="color:#f92672">*</span> local_time <span style="color:#f92672">=</span> <span style="color:#a6e22e">localtime</span>(<span style="color:#f92672">&amp;</span>current_time);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Print the local time
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Current local time is: &#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;&lt;</span> (local_time<span style="color:#f92672">-&gt;</span>tm_year <span style="color:#f92672">+</span> <span style="color:#ae81ff">1900</span>) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;-&#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;&lt;</span> (local_time<span style="color:#f92672">-&gt;</span>tm_mon <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;-&#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;&lt;</span> local_time<span style="color:#f92672">-&gt;</span>tm_mday <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;&lt;</span> local_time<span style="color:#f92672">-&gt;</span>tm_hour <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;:&#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;&lt;</span> local_time<span style="color:#f92672">-&gt;</span>tm_min <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;:&#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;&lt;</span> local_time<span style="color:#f92672">-&gt;</span>tm_sec <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span></code></pre></div><h2 id="纳秒精度-struct-timespec">纳秒精度 <code>struct timespec</code></h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">timespec</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">   <span class="kt">time_t</span>   <span class="n">tv_sec</span><span class="p">;</span>        <span class="cm">/* seconds */</span>
-</span></span><span class="line"><span class="cl">   <span class="kt">long</span>     <span class="n">tv_nsec</span><span class="p">;</span>       <span class="cm">/* nanoseconds */</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">clock_gettime</span><span class="p">(</span><span class="kt">clockid_t</span> <span class="n">clk_id</span><span class="p">,</span> <span class="k">struct</span> <span class="n">timespec</span> <span class="o">*</span><span class="n">tp</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">clock_settime</span><span class="p">(</span><span class="kt">clockid_t</span> <span class="n">clk_id</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">timespec</span> <span class="o">*</span><span class="n">tp</span><span class="p">);</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> timespec {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">time_t</span>   tv_sec;        <span style="color:#75715e">/* seconds */</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">long</span>     tv_nsec;       <span style="color:#75715e">/* nanoseconds */</span>
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">clock_gettime</span>(<span style="color:#66d9ef">clockid_t</span> clk_id, <span style="color:#66d9ef">struct</span> timespec <span style="color:#f92672">*</span>tp);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">clock_settime</span>(<span style="color:#66d9ef">clockid_t</span> clk_id, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> timespec <span style="color:#f92672">*</span>tp);
 </span></span></code></pre></div><h3 id="关于-clk_id">关于 clk_id</h3>
 <p>clk_id 参数是要对其采取行动的特定时钟的标识符。时钟可以是系统范围的，因此对所有进程都可见，或者如果它仅在单个进程内测量时间，则可以对每个进程都可见。</p>
 <p>所有实现都支持系统范围的实时时钟，该时钟由 CLOCK_REALTIME 标识。其时间表示自纪元以来的秒数和纳秒数。当其时间改变时，相对间隔的计时器不受影响，但绝对时间点的计时器会受到影响。</p>
@@ -334,37 +334,37 @@ Unix 和 POSIX 兼容系统将 <code>time_t</code> 类型作为带符号整数�
 <h3 id="clock_thread_cputime_id自-linux-2612-起">CLOCK_THREAD_CPUTIME_ID（自 Linux 2.6.12 起）</h3>
 <p>线程专用的 CPU 时间时钟。</p>
 <h2 id="根据时间戳设置系统时间">根据时间戳设置系统时间</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">// Your existing code to get the timestamp_us
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">uint64_t</span> <span class="n">timestamp_us</span> <span class="o">=</span> <span class="mi">1629374305000000</span><span class="p">;</span> <span class="c1">// Example timestamp in microseconds
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="c1">// Convert the timestamp to seconds and microseconds
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">struct</span> <span class="n">timespec</span> <span class="n">new_time</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">new_time</span><span class="p">.</span><span class="n">tv_sec</span> <span class="o">=</span> <span class="n">static_cast</span><span class="o">&lt;</span><span class="kt">time_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">timestamp_us</span> <span class="o">/</span> <span class="mi">1000000</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">new_time</span><span class="p">.</span><span class="n">tv_nsec</span> <span class="o">=</span> <span class="p">(</span><span class="n">timestamp_us</span> <span class="o">%</span> <span class="mi">1000000</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// CLOCK_REALTIME is the identifier for the system-wide realtime clock
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="nf">clock_settime</span><span class="p">(</span><span class="n">CLOCK_REALTIME</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new_time</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Failed to set system time: &#34;</span> <span class="o">&lt;&lt;</span> <span class="nf">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;System time updated to: &#34;</span>
-</span></span><span class="line"><span class="cl">          <span class="o">&lt;&lt;</span> <span class="n">new_time</span><span class="p">.</span><span class="n">tv_sec</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;s and &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">new_time</span><span class="p">.</span><span class="n">tv_nsec</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ns&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// Your existing code to get the timestamp_us
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">uint64_t</span> timestamp_us <span style="color:#f92672">=</span> <span style="color:#ae81ff">1629374305000000</span>; <span style="color:#75715e">// Example timestamp in microseconds
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Convert the timestamp to seconds and microseconds
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> timespec new_time;
+</span></span><span style="display:flex;"><span>new_time.tv_sec <span style="color:#f92672">=</span> static_cast<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">time_t</span><span style="color:#f92672">&gt;</span>(timestamp_us <span style="color:#f92672">/</span> <span style="color:#ae81ff">1000000</span>);
+</span></span><span style="display:flex;"><span>new_time.tv_nsec <span style="color:#f92672">=</span> (timestamp_us <span style="color:#f92672">%</span> <span style="color:#ae81ff">1000000</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">1000</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// CLOCK_REALTIME is the identifier for the system-wide realtime clock
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> <span style="color:#a6e22e">clock_settime</span>(CLOCK_REALTIME, <span style="color:#f92672">&amp;</span>new_time);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (result <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Failed to set system time: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#a6e22e">strerror</span>(errno) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;System time updated to: &#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;&lt;</span> new_time.tv_sec <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;s and &#34;</span> <span style="color:#f92672">&lt;&lt;</span> new_time.tv_nsec <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;ns&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span></code></pre></div><h2 id="微秒精度-struct-timeval">微秒精度 <code>struct timeval</code></h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">timeval</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">   <span class="kt">time_t</span>      <span class="n">tv_sec</span><span class="p">;</span>     <span class="cm">/* seconds */</span>
-</span></span><span class="line"><span class="cl">   <span class="kt">suseconds_t</span> <span class="n">tv_usec</span><span class="p">;</span>    <span class="cm">/* microseconds */</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">timezone</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">   <span class="kt">int</span> <span class="n">tz_minuteswest</span><span class="p">;</span>     <span class="cm">/* minutes west of Greenwich */</span>
-</span></span><span class="line"><span class="cl">   <span class="kt">int</span> <span class="n">tz_dsttime</span><span class="p">;</span>         <span class="cm">/* type of DST correction */</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/time.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">gettimeofday</span><span class="p">(</span><span class="k">struct</span> <span class="n">timeval</span> <span class="o">*</span><span class="n">tv</span><span class="p">,</span> <span class="k">struct</span> <span class="n">timezone</span> <span class="o">*</span><span class="n">tz</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">settimeofday</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">timeval</span> <span class="o">*</span><span class="n">tv</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">timezone</span> <span class="o">*</span><span class="n">tz</span><span class="p">);</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> timeval {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">time_t</span>      tv_sec;     <span style="color:#75715e">/* seconds */</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">suseconds_t</span> tv_usec;    <span style="color:#75715e">/* microseconds */</span>
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> timezone {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> tz_minuteswest;     <span style="color:#75715e">/* minutes west of Greenwich */</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> tz_dsttime;         <span style="color:#75715e">/* type of DST correction */</span>
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/time.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">gettimeofday</span>(<span style="color:#66d9ef">struct</span> timeval <span style="color:#f92672">*</span>tv, <span style="color:#66d9ef">struct</span> timezone <span style="color:#f92672">*</span>tz);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">settimeofday</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> timeval <span style="color:#f92672">*</span>tv, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> timezone <span style="color:#f92672">*</span>tz);
 </span></span></code></pre></div><p><code>struct timeval</code> 和 <code>struct timespec</code> 都是POSIX标准中定义的时间结构体，用于表示时间点或时间间隔。它们在很多系统调用中用于获取或设置时间。以下是这两个结构体的详细说明：</p>
 <h3 id="struct-timeval">struct timeval</h3>
 <p><code>struct timeval</code> 用于表示一个时间间隔，它包含两个字段：</p>
@@ -385,31 +385,31 @@ Unix 和 POSIX 兼容系统将 <code>time_t</code> 类型作为带符号整数�
 <li><code>struct timeval</code> 常用于设置或获取某个操作的超时时间，例如在使用 <code>select()</code>, <code>poll()</code> 或者 <code>gettimeofday()</code> 函数时。</li>
 <li><code>struct timespec</code> 常用于需要设定或查询具体时间点的场合，例如使用 <code>clock_gettime()</code> 或 <code>clock_settime()</code> 函数。</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;ctime&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/time.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// 使用struct timeval获取当前时间
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">struct</span> <span class="n">timeval</span> <span class="n">now_val</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nf">gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">now_val</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">perror</span><span class="p">(</span><span class="s">&#34;gettimeofday&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Current time (usec): &#34;</span>
-</span></span><span class="line"><span class="cl">              <span class="o">&lt;&lt;</span> <span class="n">now_val</span><span class="p">.</span><span class="n">tv_sec</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;s and &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">now_val</span><span class="p">.</span><span class="n">tv_usec</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;us since the epoch&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">// 使用struct timespec获取当前时间
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">struct</span> <span class="n">timespec</span> <span class="n">now_spec</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nf">clock_gettime</span><span class="p">(</span><span class="n">CLOCK_REALTIME</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">now_spec</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">perror</span><span class="p">(</span><span class="s">&#34;clock_gettime&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Current time (nsec): &#34;</span>
-</span></span><span class="line"><span class="cl">              <span class="o">&lt;&lt;</span> <span class="n">now_spec</span><span class="p">.</span><span class="n">tv_sec</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;s and &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">now_spec</span><span class="p">.</span><span class="n">tv_nsec</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ns since the epoch&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;ctime&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/time.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 使用struct timeval获取当前时间
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">struct</span> timeval now_val;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">gettimeofday</span>(<span style="color:#f92672">&amp;</span>now_val, NULL) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;gettimeofday&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Current time (usec): &#34;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&lt;&lt;</span> now_val.tv_sec <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;s and &#34;</span> <span style="color:#f92672">&lt;&lt;</span> now_val.tv_usec <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;us since the epoch&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 使用struct timespec获取当前时间
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">struct</span> timespec now_spec;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">clock_gettime</span>(CLOCK_REALTIME, <span style="color:#f92672">&amp;</span>now_spec) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;clock_gettime&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Current time (nsec): &#34;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&lt;&lt;</span> now_spec.tv_sec <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;s and &#34;</span> <span style="color:#f92672">&lt;&lt;</span> now_spec.tv_nsec <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;ns since the epoch&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
     
   </article>
@@ -511,23 +511,23 @@ Unix 和 POSIX 兼容系统将 <code>time_t</code> 类型作为带符号整数�
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   

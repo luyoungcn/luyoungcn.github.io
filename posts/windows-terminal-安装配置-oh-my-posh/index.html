@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -49,19 +49,19 @@ Nerd Fonts - Iconic font aggregator, glyphs/icons collection, &amp; fonts patche
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/windows-terminal-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-oh-my-posh/">
@@ -255,16 +255,16 @@ Nerd Fonts - Iconic font aggregator, glyphs/icons collection, &amp; fonts patche
 <p>去这里下载一个自己喜欢的字体，并配置 windows terminal power shell profile 使用该字体。</p>
 <h2 id="配置-profile">配置 profile</h2>
 <p>判断当前的 shell 类型：<code>oh-my-posh get shell</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">PS C:<span class="se">\U</span>sers<span class="se">\l</span>uyang<span class="se">\D</span>esktop&gt; oh-my-posh get shell
-</span></span><span class="line"><span class="cl">powershell
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\l</span>uyang<span style="color:#ae81ff">\D</span>esktop&gt; oh-my-posh get shell
+</span></span><span style="display:flex;"><span>powershell
 </span></span></code></pre></div><p>修改配置文件：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">notepad <span class="nv">$PROFILE</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>notepad $PROFILE
 </span></span></code></pre></div><p>添加如下内容：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oh-my-posh init pwsh <span class="p">|</span> Invoke-Expression
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oh-my-posh init pwsh | Invoke-Expression
 </span></span></code></pre></div><p>如果 <code>notepad $PROFILE</code> 报错，说配置文件不存在需要自己创建一个：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">New-Item -Path <span class="nv">$PROFILE</span> -Type File -Force
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>New-Item -Path $PROFILE -Type File -Force
 </span></span></code></pre></div><p>加载配置：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">. <span class="nv">$PROFILE</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>. $PROFILE
 </span></span></code></pre></div><h2 id="qa">Q&amp;A</h2>
 <p>运行报错：</p>
 <div class="mermaid">Windows PowerShell
@@ -283,18 +283,18 @@ Nerd Fonts - Iconic font aggregator, glyphs/icons collection, &amp; fonts patche
 
 <p>原因：PowerShell 默认禁止运行脚本，PowerShell 默认禁止运行脚本;</p>
 <p><code>Restricted</code> 表示在 PowerShell 中运行脚本是禁止的</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">PS C:<span class="se">\U</span>sers<span class="se">\l</span>uyang&gt; get-ExecutionPolicy
-</span></span><span class="line"><span class="cl">Restricted
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\l</span>uyang&gt; get-ExecutionPolicy
+</span></span><span style="display:flex;"><span>Restricted
 </span></span></code></pre></div><p>解决方案：</p>
 <p>以管理员身份运行 windows PowerShell，执行如下命令，并选择 <code>Y</code>, 之后再运行 PowerShell 即可恢复正常。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">set-ExecutionPolicy RemoteSigned
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">PS C:<span class="se">\W</span>INDOWS<span class="se">\s</span>ystem32&gt; set-ExecutionPolicy RemoteSigned
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">执行策略更改
-</span></span><span class="line"><span class="cl">执行策略可帮助你防止执行不信任的脚本。更改执行策略可能会产生安全风险，如 https:/go.microsoft.com/fwlink/?LinkID<span class="o">=</span><span class="m">135170</span>
-</span></span><span class="line"><span class="cl">中的 about_Execution_Policies 帮助主题所述。是否要更改执行策略?
-</span></span><span class="line"><span class="cl"><span class="o">[</span>Y<span class="o">]</span> 是<span class="o">(</span>Y<span class="o">)</span>  <span class="o">[</span>A<span class="o">]</span> 全是<span class="o">(</span>A<span class="o">)</span>  <span class="o">[</span>N<span class="o">]</span> 否<span class="o">(</span>N<span class="o">)</span>  <span class="o">[</span>L<span class="o">]</span> 全否<span class="o">(</span>L<span class="o">)</span>  <span class="o">[</span>S<span class="o">]</span> 暂停<span class="o">(</span>S<span class="o">)</span>  <span class="o">[</span>?<span class="o">]</span> 帮助 <span class="o">(</span>默认值为“N”<span class="o">)</span>: Y
-</span></span><span class="line"><span class="cl">PS C:<span class="se">\W</span>INDOWS<span class="se">\s</span>ystem32&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set-ExecutionPolicy RemoteSigned
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\W</span>INDOWS<span style="color:#ae81ff">\s</span>ystem32&gt; set-ExecutionPolicy RemoteSigned
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>执行策略更改
+</span></span><span style="display:flex;"><span>执行策略可帮助你防止执行不信任的脚本。更改执行策略可能会产生安全风险，如 https:/go.microsoft.com/fwlink/?LinkID<span style="color:#f92672">=</span><span style="color:#ae81ff">135170</span>
+</span></span><span style="display:flex;"><span>中的 about_Execution_Policies 帮助主题所述。是否要更改执行策略?
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Y<span style="color:#f92672">]</span> 是<span style="color:#f92672">(</span>Y<span style="color:#f92672">)</span>  <span style="color:#f92672">[</span>A<span style="color:#f92672">]</span> 全是<span style="color:#f92672">(</span>A<span style="color:#f92672">)</span>  <span style="color:#f92672">[</span>N<span style="color:#f92672">]</span> 否<span style="color:#f92672">(</span>N<span style="color:#f92672">)</span>  <span style="color:#f92672">[</span>L<span style="color:#f92672">]</span> 全否<span style="color:#f92672">(</span>L<span style="color:#f92672">)</span>  <span style="color:#f92672">[</span>S<span style="color:#f92672">]</span> 暂停<span style="color:#f92672">(</span>S<span style="color:#f92672">)</span>  <span style="color:#f92672">[</span>?<span style="color:#f92672">]</span> 帮助 <span style="color:#f92672">(</span>默认值为“N”<span style="color:#f92672">)</span>: Y
+</span></span><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\W</span>INDOWS<span style="color:#ae81ff">\s</span>ystem32&gt;
 </span></span></code></pre></div><h2 id="参考">参考</h2>
 <ul>
 <li><a href="https://ohmyposh.dev/docs/installation/windows">Windows | Oh My Posh</a></li>
@@ -402,23 +402,23 @@ Nerd Fonts - Iconic font aggregator, glyphs/icons collection, &amp; fonts patche
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   

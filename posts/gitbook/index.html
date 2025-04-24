@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -69,19 +69,19 @@ plugin
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/gitbook/">
@@ -265,15 +265,7 @@ gitbook uninstall 2.0.1 使用 gitbook init gitbook serve (该命令首先会执
     <li><a href="#plugin">plugin</a>
       <ul>
         <li><a href="#安装方法">安装方法</a></li>
-        <li><a href="#常用-plugins-列表">常用 plugins 列表</a>
-          <ul>
-            <li><a href="#gitbook-plugin-page-toc"><a href="https://www.npmjs.com/package/gitbook-plugin-page-toc">gitbook-plugin-page-toc</a></a></li>
-            <li><a href="#gitbook-plugin-todo"><a href="https://www.npmjs.com/package/gitbook-plugin-todo">gitbook-plugin-todo</a></a></li>
-            <li><a href="#gitbook-plugin-toggle-chapters"><a href="https://www.npmjs.com/package/gitbook-plugin-toggle-chapters">gitbook-plugin-toggle-chapters</a></a></li>
-            <li><a href="#gitbook-plugin-youtubex"><a href="https://github.com/ymcatar/gitbook-plugin-youtubex">gitbook-plugin-youtubex</a></a></li>
-            <li><a href="#jadugitbook-theme"><a href="https://github.com/~/gitbook-theme">jadu/gitbook-theme</a></a></li>
-          </ul>
-        </li>
+        <li><a href="#常用-plugins-列表">常用 plugins 列表</a></li>
       </ul>
     </li>
   </ul>
@@ -284,101 +276,101 @@ gitbook uninstall 2.0.1 使用 gitbook init gitbook serve (该命令首先会执
   <article class="content numbered-subtitles">
     
     <h2 id="nvm-node-npm">nvm node npm</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh <span class="p">|</span> bash
-</span></span><span class="line"><span class="cl"><span class="nb">source</span> ~/.zshrc
-</span></span><span class="line"><span class="cl">nvm install node
-</span></span><span class="line"><span class="cl">npm config <span class="nb">set</span> registry https://registry.npm.taobao.org
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
+</span></span><span style="display:flex;"><span>source ~/.zshrc
+</span></span><span style="display:flex;"><span>nvm install node
+</span></span><span style="display:flex;"><span>npm config set registry https://registry.npm.taobao.org
 </span></span></code></pre></div><h2 id="gitbook">gitbook</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm install gitbook-cli -g
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install gitbook-cli -g
 </span></span></code></pre></div><h2 id="gitbook-常见命令">gitbook 常见命令</h2>
 <p>List installed versions:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gitbook ls
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gitbook ls
 </span></span></code></pre></div><p>List available versions on NPM:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gitbook ls-remote
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gitbook ls-remote
 </span></span></code></pre></div><p>Install a specific version:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gitbook fetch 2.1.0
-</span></span><span class="line"><span class="cl"><span class="c1"># or a pre-release</span>
-</span></span><span class="line"><span class="cl">gitbook fetch beta
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gitbook fetch 2.1.0
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># or a pre-release</span>
+</span></span><span style="display:flex;"><span>gitbook fetch beta
 </span></span></code></pre></div><p>Update to the latest version</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gitbook update
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gitbook update
 </span></span></code></pre></div><p>Uninstall a specific version</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gitbook uninstall 2.0.1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gitbook uninstall 2.0.1
 </span></span></code></pre></div><h2 id="使用">使用</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gitbook init
-</span></span><span class="line"><span class="cl">gitbook serve <span class="o">(</span>该命令首先会执行 gitbook build 编译书籍, 完成以后会打开一个 web 服务器, 监听在本地的 <span class="m">4000</span> 端口<span class="o">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gitbook init
+</span></span><span style="display:flex;"><span>gitbook serve <span style="color:#f92672">(</span>该命令首先会执行 gitbook build 编译书籍, 完成以后会打开一个 web 服务器, 监听在本地的 <span style="color:#ae81ff">4000</span> 端口<span style="color:#f92672">)</span>
 </span></span></code></pre></div><h2 id="plugin">plugin</h2>
 <h3 id="安装方法">安装方法</h3>
 <p>在 git book 项目的根目录下执行</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm install &lt;plugin_name&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install &lt;plugin_name&gt;
 </span></span></code></pre></div><h3 id="常用-plugins-列表">常用 plugins 列表</h3>
 <h4 id="gitbook-plugin-page-toc"><a href="https://www.npmjs.com/package/gitbook-plugin-page-toc">gitbook-plugin-page-toc</a></h4>
 <ol>
 <li>install this plugin</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm install gitbook-plugin-page-toc
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install gitbook-plugin-page-toc
 </span></span></code></pre></div><ol start="2">
 <li>add below code to book.json under the root dir of your git book repo</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;plugins&#34;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&#34;page-toc&#34;</span> <span class="p">],</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;pluginsConfig&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;plugins&#34;</span>: [ <span style="color:#e6db74">&#34;page-toc&#34;</span> ],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;pluginsConfig&#34;</span>: {
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="gitbook-plugin-todo"><a href="https://www.npmjs.com/package/gitbook-plugin-todo">gitbook-plugin-todo</a></h4>
 <ol>
 <li>install this plugin</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm install --save gitbook-plugin-todo
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install --save gitbook-plugin-todo
 </span></span></code></pre></div><ol start="2">
 <li>add below code to book.json under the root dir of your git book repo</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;plugins&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;todo&#34;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;plugins&#34;</span>: [<span style="color:#e6db74">&#34;todo&#34;</span>]
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="gitbook-plugin-toggle-chapters"><a href="https://www.npmjs.com/package/gitbook-plugin-toggle-chapters">gitbook-plugin-toggle-chapters</a></h4>
 <ol>
 <li>install this plugin</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm install gitbook-plugin-toggle-chapters
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install gitbook-plugin-toggle-chapters
 </span></span></code></pre></div><ol start="2">
 <li>add below code to book.json under the root dir of your git book repo</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;plugins&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;toggle-chapters&#34;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;plugins&#34;</span>: [<span style="color:#e6db74">&#34;toggle-chapters&#34;</span>]
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="gitbook-plugin-youtubex"><a href="https://github.com/ymcatar/gitbook-plugin-youtubex">gitbook-plugin-youtubex</a></h4>
 <ol>
 <li>install this plugin</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/ymcatar/gitbook-plugin-youtubex node_modules/gitbook-plugin-youtubex
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/ymcatar/gitbook-plugin-youtubex node_modules/gitbook-plugin-youtubex
 </span></span></code></pre></div><ol start="2">
 <li>add below code to book.json under the root dir of your git book repo</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl">    <span class="s2">&#34;plugins&#34;</span><span class="err">:</span> <span class="p">[</span><span class="s2">&#34;youtubex&#34;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;pluginsConfig&#34;</span><span class="err">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;youtubex&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;embedDescription&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;en&#34;</span><span class="p">:</span> <span class="s2">&#34;Watch this video!&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;de&#34;</span><span class="p">:</span> <span class="s2">&#34;Eingebettetes video:&#34;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;plugins&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> [<span style="color:#e6db74">&#34;youtubex&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;pluginsConfig&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;youtubex&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;embedDescription&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;en&#34;</span>: <span style="color:#e6db74">&#34;Watch this video!&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;de&#34;</span>: <span style="color:#e6db74">&#34;Eingebettetes video:&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><h4 id="jadugitbook-theme"><a href="https://github.com/~/gitbook-theme">jadu/gitbook-theme</a></h4>
 <ol>
 <li>clone theme project</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/jadu/gitbook-theme.git
-</span></span><span class="line"><span class="cl">cp -r gitbook-theme/assets node_modules/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/jadu/gitbook-theme.git
+</span></span><span style="display:flex;"><span>cp -r gitbook-theme/assets node_modules/
 </span></span></code></pre></div><ol start="2">
 <li>add below code to book.json under the root dir of your git book repo</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl">    <span class="s2">&#34;styles&#34;</span><span class="err">:</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;website&#34;</span><span class="p">:</span> <span class="s2">&#34;assets/continuum/cxm.css&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;styles&#34;</span><span style="color:#960050;background-color:#1e0010">:</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;website&#34;</span>: <span style="color:#e6db74">&#34;assets/continuum/cxm.css&#34;</span>
+</span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><ol start="3">
 <li>执行命令</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gitbook install
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gitbook install
 </span></span></code></pre></div><ul>
 <li><input disabled="" type="checkbox"> 生成 pdf epub</li>
 <li><input disabled="" type="checkbox"> <a href="https://skyao.github.io/2015/06/15/gitbook-multiple-layer-menu/">在gitbook中实现多级导航栏的支持</a></li>
@@ -484,23 +476,23 @@ gitbook uninstall 2.0.1 使用 gitbook init gitbook serve (该命令首先会执
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   

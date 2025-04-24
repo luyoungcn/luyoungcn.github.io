@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -57,19 +57,19 @@ In GMSL2, the [[forward link]] transmits data from the serializer (e.g., a camer
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/adi_serdes/">
@@ -331,10 +331,10 @@ VID_TX Z 包含的寄存器就是关于 PIPE Z 的寄存器。</p>
 <li>如果 GMSL 已经为 6G 就只能优化 mipi 带宽或调整方案。</li>
 </ul>
 <p>e.g. MAX9295D 为例：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">i2ctransfer -y -f <span class="m">0</span> w2@&lt;slave address&gt; 0x01 0x02 r1
-</span></span><span class="line"><span class="cl">i2ctransfer -y -f <span class="m">0</span> w2@&lt;slave address&gt; 0x01 0x0A r1
-</span></span><span class="line"><span class="cl">i2ctransfer -y -f <span class="m">0</span> w2@&lt;slave address&gt; 0x01 0x12 r1
-</span></span><span class="line"><span class="cl">i2ctransfer -y -f <span class="m">0</span> w2@&lt;slave address&gt; 0x01 0x1A r1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w2@&lt;slave address&gt; 0x01 0x02 r1
+</span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w2@&lt;slave address&gt; 0x01 0x0A r1
+</span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w2@&lt;slave address&gt; 0x01 0x12 r1
+</span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w2@&lt;slave address&gt; 0x01 0x1A r1
 </span></span></code></pre></div><p>没数据返回结果：0x0A
 有数据返回结果：0x8A</p>
 <h1 id="关于解串器别名摄像头">关于解串器别名摄像头</h1>
@@ -372,45 +372,45 @@ VID_TX Z 包含的寄存器就是关于 PIPE Z 的寄存器。</p>
 <p><img src="max96717_0x43_i2c_alias.png" alt="Untitled"></p>
 <p><img src="max96717_0x44_i2c_alias.png" alt="Untitled"></p>
 <p><img src="max96717_0x45_i2c_alias.png" alt="Untitled"></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># i2ctransfer -y -f 0 w2@0x44 0x00 0x42 r1</span>
-</span></span><span class="line"><span class="cl"><span class="nv">0xa8</span> <span class="o">=</span> 0x54 <span class="s">&lt;&lt; 1
-</span></span></span><span class="line"><span class="cl"><span class="s"># i2ctransfer -y -f 0 w2@0x44 0x00 0x43 r1</span>
-</span></span><span class="line"><span class="cl"><span class="nv">0x52</span> <span class="o">=</span> 0x29 <span class="s">&lt;&lt; 1
-</span></span></span><span class="line"><span class="cl"><span class="s"># i2ctransfer -y -f 0 w2@0x44 0x00 0x44 r1</span>
-</span></span><span class="line"><span class="cl"><span class="nv">0xaa</span> <span class="o">=</span> 0x55 <span class="s">&lt;&lt; 1
-</span></span></span><span class="line"><span class="cl"><span class="s"># i2ctransfer -y -f 0 w2@0x44 0x00 0x45 r1</span>
-</span></span><span class="line"><span class="cl"><span class="nv">0x50</span> <span class="o">=</span> 0x28 &lt;&lt; <span class="m">1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># i2ctransfer -y -f 0 w2@0x44 0x00 0x42 r1</span>
+</span></span><span style="display:flex;"><span>0xa8 <span style="color:#f92672">=</span> 0x54 <span style="color:#e6db74">&lt;&lt; 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># i2ctransfer -y -f 0 w2@0x44 0x00 0x43 r1</span>
+</span></span><span style="display:flex;"><span>0x52 <span style="color:#f92672">=</span> 0x29 <span style="color:#e6db74">&lt;&lt; 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># i2ctransfer -y -f 0 w2@0x44 0x00 0x44 r1</span>
+</span></span><span style="display:flex;"><span>0xaa <span style="color:#f92672">=</span> 0x55 <span style="color:#e6db74">&lt;&lt; 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># i2ctransfer -y -f 0 w2@0x44 0x00 0x45 r1</span>
+</span></span><span style="display:flex;"><span>0x50 <span style="color:#f92672">=</span> 0x28 &lt;&lt; <span style="color:#ae81ff">1</span>
 </span></span></code></pre></div><h1 id="手动控制-ser-mfp-对外输出高低电平">手动控制 SER MFP 对外输出高低电平</h1>
 <p>MAX96717 MFP ctrl register</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">// MFP0 ~ MFP16
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">static</span> <span class="kt">uint16_t</span> <span class="n">max96717_mfp_ctrl_regs</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="mh">0x02BE</span><span class="p">,</span> <span class="mh">0x02C1</span><span class="p">,</span> <span class="mh">0x02C4</span><span class="p">,</span> <span class="mh">0x02C7</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="mh">0x02CA</span><span class="p">,</span> <span class="mh">0x02CD</span><span class="p">,</span> <span class="mh">0x02D0</span><span class="p">,</span> <span class="mh">0x02D3</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="mh">0x02D6</span><span class="p">,</span> <span class="mh">0x02D9</span><span class="p">,</span> <span class="mh">0x02DC</span><span class="p">,</span> <span class="mh">0x02DF</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="mh">0x02E2</span><span class="p">,</span> <span class="mh">0x02E5</span><span class="p">,</span> <span class="mh">0x02E8</span><span class="p">,</span> <span class="mh">0x02EB</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="mh">0x2EE</span><span class="p">};</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// MFP0 ~ MFP16
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">uint16_t</span> max96717_mfp_ctrl_regs[] <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">0x02BE</span>, <span style="color:#ae81ff">0x02C1</span>, <span style="color:#ae81ff">0x02C4</span>, <span style="color:#ae81ff">0x02C7</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">0x02CA</span>, <span style="color:#ae81ff">0x02CD</span>, <span style="color:#ae81ff">0x02D0</span>, <span style="color:#ae81ff">0x02D3</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">0x02D6</span>, <span style="color:#ae81ff">0x02D9</span>, <span style="color:#ae81ff">0x02DC</span>, <span style="color:#ae81ff">0x02DF</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">0x02E2</span>, <span style="color:#ae81ff">0x02E5</span>, <span style="color:#ae81ff">0x02E8</span>, <span style="color:#ae81ff">0x02EB</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">0x2EE</span>};
 </span></span></code></pre></div><p>输出低电平，value 设置为 0x80</p>
 <p>输出高电平，value 设置为 0x90</p>
 <p>serializer device i2c address （如果已经别名请使用alias i2c address）</p>
 <p>命令格式：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">i2ctransfer -y -f &lt;i2c_bus&gt; w3@&lt;i2c_addr&gt; &lt;reg_high_8bit&gt; &lt;reg_low_8bit&gt; &lt;value&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>i2ctransfer -y -f &lt;i2c_bus&gt; w3@&lt;i2c_addr&gt; &lt;reg_high_8bit&gt; &lt;reg_low_8bit&gt; &lt;value&gt;
 </span></span></code></pre></div><p>假设 i2c bus 0, i2c alias address 0x44，MFP6, MFP7 输出低电平</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">i2ctransfer -y -f <span class="m">0</span> w3@0x44 0x02 0xD0 0x80
-</span></span><span class="line"><span class="cl">i2ctransfer -y -f <span class="m">0</span> w3@0x44 0x02 0xD3 0x80
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x44 0x02 0xD0 0x80
+</span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x44 0x02 0xD3 0x80
 </span></span></code></pre></div><p>假设 i2c bus 0, i2c alias address 0x44，MFP6, MFP7 输出高电平</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">i2ctransfer -y -f <span class="m">0</span> w3@0x44 0x02 0xD0 0x90
-</span></span><span class="line"><span class="cl">i2ctransfer -y -f <span class="m">0</span> w3@0x44 0x02 0xD3 0x90
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x44 0x02 0xD0 0x90
+</span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x44 0x02 0xD3 0x90
 </span></span></code></pre></div><h1 id="max96724-max96717-i2c-速率配置">MAX96724 MAX96717 I2C 速率配置</h1>
 <p>Fast-mode Plus</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="c1"># DES</span>
-</span></span><span class="line"><span class="cl">i2ctransfer -y -f <span class="m">0</span> w3@0x05 0x06 0x40 0x06
-</span></span><span class="line"><span class="cl">i2ctransfer -y -f <span class="m">0</span> w3@0x05 0x06 0x41 0x76
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># SER</span>
-</span></span><span class="line"><span class="cl">i2ctransfer -y -f <span class="m">0</span> w3@0x44 0x00 0x40 0x06
-</span></span><span class="line"><span class="cl">i2ctransfer -y -f <span class="m">0</span> w3@0x44 0x00 0x41 0x76
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># DES</span>
+</span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x05 0x06 0x40 0x06
+</span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x05 0x06 0x41 0x76
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># SER</span>
+</span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x44 0x00 0x40 0x06
+</span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x44 0x00 0x41 0x76
 </span></span></code></pre></div><h2 id="max96724-1">MAX96724</h2>
 <p>![[Pasted image 20240827225310.png]]
 ![[Pasted image 20240827225321.png]]
@@ -619,23 +619,23 @@ VID_TX Z 包含的寄存器就是关于 PIPE Z 的寄存器。</p>
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   

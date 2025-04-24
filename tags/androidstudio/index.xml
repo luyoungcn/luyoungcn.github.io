@@ -33,7 +33,7 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;问题解决&#34;&gt;问题解决&lt;/h2&gt;
 &lt;h3 id=&#34;安装完android-studio首次启动报错&#34;&gt;安装完Android Studio首次启动报错&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Unable to access Android SDK add-on list
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Unable to access Android SDK add-on list
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;选择cancel&lt;/p&gt;
 &lt;h3 id=&#34;gradle-下载环境配置&#34;&gt;gradle 下载环境配置&lt;/h3&gt;
 &lt;p&gt;For Windows&lt;/p&gt;

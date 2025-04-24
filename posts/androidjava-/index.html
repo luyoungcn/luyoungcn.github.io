@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -62,19 +62,19 @@ export PATH=${JAVA_HOME}/bin:$PATH
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/androidjava-/">
@@ -269,12 +269,12 @@ switchjdk7.sh 文件内容如下，该文件放在代码顶层目录：
 <p>安装</p>
 <p><code>sudo mv jdk1.7.0_80 /usr/lib/</code></p>
 <p>switchjdk7.sh 文件内容如下，该文件放在代码顶层目录：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># add JDK7 cofig ----</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/lib/jdk1.7.0_80/
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">JRE_HOME</span><span class="o">=</span><span class="si">${</span><span class="nv">JAVA_HOME</span><span class="si">}</span>/jre
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o">=</span>.:<span class="si">${</span><span class="nv">JAVA_HOME</span><span class="si">}</span>/lib:<span class="si">${</span><span class="nv">JRE_HOME</span><span class="si">}</span>/lib
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">JAVA_HOME</span><span class="si">}</span>/bin:<span class="nv">$PATH</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># add JDK7 cofig ----</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># add JDK7 cofig ----</span>
+</span></span><span style="display:flex;"><span>export JAVA_HOME<span style="color:#f92672">=</span>/usr/lib/jdk1.7.0_80/
+</span></span><span style="display:flex;"><span>export JRE_HOME<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>JAVA_HOME<span style="color:#e6db74">}</span>/jre
+</span></span><span style="display:flex;"><span>export CLASSPATH<span style="color:#f92672">=</span>.:<span style="color:#e6db74">${</span>JAVA_HOME<span style="color:#e6db74">}</span>/lib:<span style="color:#e6db74">${</span>JRE_HOME<span style="color:#e6db74">}</span>/lib
+</span></span><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>JAVA_HOME<span style="color:#e6db74">}</span>/bin:$PATH
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># add JDK7 cofig ----</span>
 </span></span></code></pre></div><p>执行如下命令切换java 1.7，仅当前终端有效</p>
 <p><code>source switchjdk7.sh</code></p>
 <p><a href="https://repo.huaweicloud.com/java/jdk/6u45-b06/">https://repo.huaweicloud.com/java/jdk/6u45-b06/</a></p>
@@ -381,23 +381,23 @@ switchjdk7.sh 文件内容如下，该文件放在代码顶层目录：
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   

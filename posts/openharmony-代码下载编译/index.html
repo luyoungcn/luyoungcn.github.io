@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -48,19 +48,19 @@ OpenHarmony源代码以 [[HPM]] 部分的形式提供，可以通过以下任意
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/openharmony-%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91/">
@@ -255,38 +255,38 @@ OpenHarmony源代码以 [[HPM]] 部分的形式提供，可以通过以下任意
 </li>
 </ol>
 <h3 id="gitee-获取源码">gitee 获取源码</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt -y install git git-lfs vim python3 python3-pip
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git config --global user.name &lt;&gt;
-</span></span><span class="line"><span class="cl">git config --global user.email &lt;&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /usr/bin
-</span></span><span class="line"><span class="cl">sudo ln -s pyhon3 python
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt -y install git git-lfs vim python3 python3-pip
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git config --global user.name &lt;&gt;
+</span></span><span style="display:flex;"><span>git config --global user.email &lt;&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /usr/bin
+</span></span><span style="display:flex;"><span>sudo ln -s pyhon3 python
 </span></span></code></pre></div><p>安装 repo 工具</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir ~/bin
-</span></span><span class="line"><span class="cl">curl https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 -o ~/bin/repo 
-</span></span><span class="line"><span class="cl">chmod a+x ~/bin/repo
-</span></span><span class="line"><span class="cl">pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir ~/bin
+</span></span><span style="display:flex;"><span>curl https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 -o ~/bin/repo 
+</span></span><span style="display:flex;"><span>chmod a+x ~/bin/repo
+</span></span><span style="display:flex;"><span>pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
 </span></span></code></pre></div><p>将repo工具的路径添加到环境变量中</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vim ~/.bashrc               <span class="c1"># Edit environment variables.</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>~/bin:<span class="nv">$PATH</span>     <span class="c1"># Add the path of the **repo** tool to the end of environment variables.</span>
-</span></span><span class="line"><span class="cl"><span class="nb">source</span> ~/.bashrc            <span class="c1"># Apply environment variables.</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim ~/.bashrc               <span style="color:#75715e"># Edit environment variables.</span>
+</span></span><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span>~/bin:$PATH     <span style="color:#75715e"># Add the path of the **repo** tool to the end of environment variables.</span>
+</span></span><span style="display:flex;"><span>source ~/.bashrc            <span style="color:#75715e"># Apply environment variables.</span>
 </span></span></code></pre></div><blockquote>
 <p>如果您想开发商业功能，请下载发布代码，该代码更稳定。如果您想快速访问适合您的开发的最新功能，请下载主代码。</p></blockquote>
 <p>如何获取OpenHarmony版本源码，请参见<a href="https://gitee.com/openharmony/docs/blob/master/en/release-notes/Readme.md">版本说明</a>。</p>
 <p>方法一（推荐）：使用<strong>repo</strong>工具通过SSH下载源码。 （您必须注册SSH公钥才能访问Gitee。）</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">repo init -u git@gitee.com:openharmony/manifest.git -b master --no-repo-verify
-</span></span><span class="line"><span class="cl">repo sync -c
-</span></span><span class="line"><span class="cl">repo forall -c <span class="s1">&#39;git lfs pull&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>repo init -u git@gitee.com:openharmony/manifest.git -b master --no-repo-verify
+</span></span><span style="display:flex;"><span>repo sync -c
+</span></span><span style="display:flex;"><span>repo forall -c <span style="color:#e6db74">&#39;git lfs pull&#39;</span>
 </span></span></code></pre></div><p>方法二：使用<strong>repo</strong>工具通过HTTPS下载源码。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">repo init -u https://gitee.com/openharmony/manifest.git -b master --no-repo-verify
-</span></span><span class="line"><span class="cl">repo sync -c
-</span></span><span class="line"><span class="cl">repo forall -c <span class="s1">&#39;git lfs pull&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>repo init -u https://gitee.com/openharmony/manifest.git -b master --no-repo-verify
+</span></span><span style="display:flex;"><span>repo sync -c
+</span></span><span style="display:flex;"><span>repo forall -c <span style="color:#e6db74">&#39;git lfs pull&#39;</span>
 </span></span></code></pre></div><h2 id="编译">编译</h2>
 <p>自行安装 Docker 环境 <a href="https://luyoungcn.github.io/post/docker-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/?highlight=docker">docker 环境搭建</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir ~/OpenHarmony
-</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ~/OpenHarmony
-</span></span><span class="line"><span class="cl">docker run --rm -ti -e <span class="nv">HARDWARE</span><span class="o">=</span>ipcamera_hi3516dv300 -v <span class="si">${</span><span class="nv">PWD</span><span class="si">}</span>/out:/OpenHarmony/out ystyle/open-harmony bash
-</span></span><span class="line"><span class="cl">repo sync -c
-</span></span><span class="line"><span class="cl">python build.py <span class="si">${</span><span class="nv">HARDWARE</span><span class="si">}</span> -b debug
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir ~/OpenHarmony
+</span></span><span style="display:flex;"><span>cd ~/OpenHarmony
+</span></span><span style="display:flex;"><span>docker run --rm -ti -e HARDWARE<span style="color:#f92672">=</span>ipcamera_hi3516dv300 -v <span style="color:#e6db74">${</span>PWD<span style="color:#e6db74">}</span>/out:/OpenHarmony/out ystyle/open-harmony bash
+</span></span><span style="display:flex;"><span>repo sync -c
+</span></span><span style="display:flex;"><span>python build.py <span style="color:#e6db74">${</span>HARDWARE<span style="color:#e6db74">}</span> -b debug
 </span></span></code></pre></div>
     
   </article>
@@ -388,23 +388,23 @@ OpenHarmony源代码以 [[HPM]] 部分的形式提供，可以通过以下任意
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   

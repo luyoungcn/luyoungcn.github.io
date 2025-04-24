@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -58,19 +58,19 @@ make install
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-libxml2-2/">
@@ -234,18 +234,18 @@ export PATH=&#34;&lt;path-to-gcc-linaro-5.3-2016.02-x86_64_arm-linuxgnueabihf&gt
     
     <h1 id="交叉编译-libxml2-2910">交叉编译 libxml2-2.9.10</h1>
 <p>依赖 zlib 源码编译出来的目标文件，请先参考如何交叉编译 zlib 完成之后再来编译。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;&lt;path-to-gcc-linaro-5.3-2016.02-x86_64_arm-linuxgnueabihf&gt;/bin&#34;</span>:<span class="nv">$PATH</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf
-</span></span><span class="line"><span class="cl">mkdir build_out
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">./configure --prefix<span class="o">=</span>/code/libxml2-2.9.10/build_out <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>--disable-static <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>--with-python<span class="o">=</span>no <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>--host<span class="o">=</span>arm-linux-gnueabihf <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>--with-zlib<span class="o">=</span>/code/zlib-1.2.12/build_out
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">make
-</span></span><span class="line"><span class="cl">make install
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;path-to-gcc-linaro-5.3-2016.02-x86_64_arm-linuxgnueabihf&gt;/bin&#34;</span>:$PATH
+</span></span><span style="display:flex;"><span>export CROSS_COMPILE<span style="color:#f92672">=</span>arm-linux-gnueabihf
+</span></span><span style="display:flex;"><span>mkdir build_out
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>./configure --prefix<span style="color:#f92672">=</span>/code/libxml2-2.9.10/build_out <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--disable-static <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--with-python<span style="color:#f92672">=</span>no <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--host<span style="color:#f92672">=</span>arm-linux-gnueabihf <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--with-zlib<span style="color:#f92672">=</span>/code/zlib-1.2.12/build_out
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>make
+</span></span><span style="display:flex;"><span>make install
 </span></span></code></pre></div>
     
   </article>
@@ -347,23 +347,23 @@ export PATH=&#34;&lt;path-to-gcc-linaro-5.3-2016.02-x86_64_arm-linuxgnueabihf&gt
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   

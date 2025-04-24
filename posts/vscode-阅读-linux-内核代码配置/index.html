@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -69,19 +69,19 @@ defines 添加 “KERNEL” 为了解决 uapi 相关头文件中会根据该宏�
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/">
@@ -257,33 +257,33 @@ compilerPath 需要指定编译器bin文件的路径，而不是编译器所在�
     
     <p>内核源码根目录下创建 .vscode 目录</p>
 <p>.vscode 目录下创建 c_cpp_properties.json 文件，内容如下：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;configurations&#34;</span><span class="p">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">        <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Linux&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&#34;includePath&#34;</span><span class="p">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">                <span class="s2">&#34;${workspaceFolder}/**&#34;</span>
-</span></span><span class="line"><span class="cl">            <span class="p">],</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&#34;defines&#34;</span><span class="p">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">                <span class="s2">&#34;__KERNEL__&#34;</span>
-</span></span><span class="line"><span class="cl">            <span class="p">],</span>
-</span></span><span class="line"><span class="cl">            <span class="err">[</span><span class="nt">&#34;compilerPath&#34;</span><span class="p">:</span> <span class="s2">&#34;/opt/bstos/2.3.0.4/sysroots/x86_64-bstsdk-linux/usr/bin/aarch64-bst-linux/aarch64-bst-linux-gcc&#34;</span><span class="p">,</span><span class="err">](&lt;https:</span><span class="c1">//www.notion.so/Docker-22f588b5e85d492895231b70d4b5c4a0?pvs=21&gt;)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nt">&#34;cStandard&#34;</span><span class="p">:</span> <span class="s2">&#34;c11&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&#34;cppStandard&#34;</span><span class="p">:</span> <span class="s2">&#34;c++17&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&#34;intelliSenseMode&#34;</span><span class="p">:</span> <span class="s2">&#34;gcc-x64&#34;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">],</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="mi">4</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;configurations&#34;</span>: [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Linux&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;includePath&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;${workspaceFolder}/**&#34;</span>
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;defines&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;__KERNEL__&#34;</span>
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">[</span><span style="color:#f92672">&#34;compilerPath&#34;</span>: <span style="color:#e6db74">&#34;/opt/bstos/2.3.0.4/sysroots/x86_64-bstsdk-linux/usr/bin/aarch64-bst-linux/aarch64-bst-linux-gcc&#34;</span>,<span style="color:#960050;background-color:#1e0010">](&lt;https:</span><span style="color:#75715e">//www.notion.so/Docker-22f588b5e85d492895231b70d4b5c4a0?pvs=21&gt;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#f92672">&#34;cStandard&#34;</span>: <span style="color:#e6db74">&#34;c11&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;cppStandard&#34;</span>: <span style="color:#e6db74">&#34;c++17&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;intelliSenseMode&#34;</span>: <span style="color:#e6db74">&#34;gcc-x64&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>说明：</p>
 <ol>
 <li>compilerPath 需要指定编译器bin文件的路径，而不是编译器所在目录</li>
 <li>defines 添加 “<strong>KERNEL</strong>” 为了解决 uapi 相关头文件中会根据该宏控区分应用层和内核层，如果不定义可能出现头文件不存在问题</li>
 </ol>
 <p>例如 <code>include/uapi/linux/videodev2.h</code> 中</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">#ifndef</span> <span class="err">__KERNEL__</span>
-</span></span><span class="line"><span class="cl"><span class="err">#include</span> <span class="err">&lt;sys/time.h&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="err">#endif</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#ifndef</span> <span style="color:#960050;background-color:#1e0010">__KERNEL__</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#include</span> <span style="color:#960050;background-color:#1e0010">&lt;sys/time.h&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#endif</span>
 </span></span></code></pre></div>
     
   </article>
@@ -385,23 +385,23 @@ compilerPath 需要指定编译器bin文件的路径，而不是编译器所在�
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   

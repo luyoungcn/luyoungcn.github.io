@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -45,19 +45,19 @@ Driver Wizard 生成的 INF 文件，必须为其创建 Windows Catalog (.cat)�
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/openssl/">
@@ -248,7 +248,7 @@ Driver Wizard 生成的 INF 文件，必须为其创建 Windows Catalog (.cat)�
     <p>NI-VISA Driver Wizard 生成了一个 .INF 文件。右键该文件安装的过程中提示错误：第三方 INF 不包含数字签名信息。</p>
 <p>Driver Wizard 生成的 INF 文件，必须为其创建 Windows Catalog (.cat)文件并进行数字签名，然后才能在Windows 10(或更高版本)机器上安装INF文件。</p>
 <p>打开 Windows Terminal 在 .INF 文件所在目录下执行如下命令，生成 Windows Catalog 文件：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Inf2Cat /driver:. /os:10_X64
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Inf2Cat /driver:. /os:10_X64
 </span></span></code></pre></div><h2 id="windows-平台依赖环境安装">Windows 平台依赖环境安装</h2>
 <ul>
 <li>visual studio 2022</li>
@@ -279,14 +279,14 @@ commonName             = DeadBeef.com
 </code></pre><ol start="2">
 <li>请求签发 CSR</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">openssl req -new -x509 -key private.key -out certificate.crt -days <span class="m">36500</span> -config openssl.cnf
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openssl req -new -x509 -key private.key -out certificate.crt -days <span style="color:#ae81ff">36500</span> -config openssl.cnf
 </span></span></code></pre></div><ol start="3">
 <li>生成自签名证书</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">openssl pkcs12 -export -in certificate.crt -inkey private.key -out yourfile.pfx
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openssl pkcs12 -export -in certificate.crt -inkey private.key -out yourfile.pfx
 </span></span></code></pre></div><h2 id="windows-catalog-签名">Windows Catalog 签名</h2>
 <p>将上前面生成的证书相关的文件，全部拷贝到 Windows 目录，跟 .INF .cat 文件放在一起。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">signtool.exe sign /fdws /f yourfile.pfx /p <span class="m">123456</span> prefix.cat
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>signtool.exe sign /fdws /f yourfile.pfx /p <span style="color:#ae81ff">123456</span> prefix.cat
 </span></span></code></pre></div><h2 id="安装证书">安装证书</h2>
 <p>右键 openssl 生成的 <code>certificate.crt</code> 文件进行 <code>安装证书</code>，如何安装 cert 自行百度</p>
 <ul>
@@ -406,23 +406,23 @@ commonName             = DeadBeef.com
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   

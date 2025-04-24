@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -113,19 +113,19 @@ echo -e &#34;${red_color}Number of read  failed tests: $read_failure_count${rese
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/linux_test_disk_i_o_with_dd/">
@@ -294,74 +294,74 @@ echo -e &#34;${red_color}Number of read  failed tests: $read_failure_count${rese
   <article class="content numbered-subtitles">
     
     <h1 id="关键命令">关键命令</h1>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 清空文件系统缓存, 测试读写命令之前需要执行该命令</span>
-</span></span><span class="line"><span class="cl">sudo sh -c <span class="s2">&#34;sync &amp;&amp; echo 3 &gt; /proc/sys/vm/drop_caches&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># dd 写入速度测试</span>
-</span></span><span class="line"><span class="cl">dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>./test_write <span class="nv">count</span><span class="o">=</span><span class="m">200</span> <span class="nv">bs</span><span class="o">=</span>1024k
-</span></span><span class="line"><span class="cl"><span class="c1"># dd 读取速度测试</span>
-</span></span><span class="line"><span class="cl">dd <span class="k">if</span><span class="o">=</span>./test_write <span class="nv">of</span><span class="o">=</span>/dev/null <span class="nv">bs</span><span class="o">=</span>1024k
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 清空文件系统缓存, 测试读写命令之前需要执行该命令</span>
+</span></span><span style="display:flex;"><span>sudo sh -c <span style="color:#e6db74">&#34;sync &amp;&amp; echo 3 &gt; /proc/sys/vm/drop_caches&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># dd 写入速度测试</span>
+</span></span><span style="display:flex;"><span>dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/zero of<span style="color:#f92672">=</span>./test_write count<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span> bs<span style="color:#f92672">=</span>1024k
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># dd 读取速度测试</span>
+</span></span><span style="display:flex;"><span>dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>./test_write of<span style="color:#f92672">=</span>/dev/null bs<span style="color:#f92672">=</span>1024k
 </span></span></code></pre></div><h1 id="测试脚本">测试脚本</h1>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 检查是否提供了足够的参数</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> -lt <span class="m">1</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;Usage: </span><span class="nv">$0</span><span class="s2"> test_count&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
-</span></span><span class="line"><span class="cl"><span class="k">fi</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># ANSI颜色码</span>
-</span></span><span class="line"><span class="cl"><span class="nv">green_color</span><span class="o">=</span><span class="s2">&#34;\e[32m&#34;</span>  <span class="c1"># 绿色</span>
-</span></span><span class="line"><span class="cl"><span class="nv">red_color</span><span class="o">=</span><span class="s2">&#34;\e[31m&#34;</span>    <span class="c1"># 红色</span>
-</span></span><span class="line"><span class="cl"><span class="nv">reset_color</span><span class="o">=</span><span class="s2">&#34;\e[0m&#34;</span>    <span class="c1"># 重置颜色</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nv">total_iterations</span><span class="o">=</span><span class="nv">$1</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 初始化计数器</span>
-</span></span><span class="line"><span class="cl"><span class="nv">write_success_count</span><span class="o">=</span><span class="m">0</span>
-</span></span><span class="line"><span class="cl"><span class="nv">write_failure_count</span><span class="o">=</span><span class="m">0</span>
-</span></span><span class="line"><span class="cl"><span class="nv">read_success_count</span><span class="o">=</span><span class="m">0</span>
-</span></span><span class="line"><span class="cl"><span class="nv">read_failure_count</span><span class="o">=</span><span class="m">0</span>
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Total number of iterations: </span><span class="nv">$total_iterations</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="o">((</span><span class="nv">i</span><span class="o">=</span>1<span class="p">;</span> i&lt;<span class="o">=</span><span class="nv">$total_iterations</span><span class="p">;</span> i++<span class="o">))</span><span class="p">;</span> <span class="k">do</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1"># 清空文件系统缓存</span>
-</span></span><span class="line"><span class="cl">	sudo sh -c <span class="s2">&#34;sync &amp;&amp; echo 3 &gt; /proc/sys/vm/drop_caches&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1"># 执行dd写入测试</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>./test_write <span class="nv">count</span><span class="o">=</span><span class="m">200</span> <span class="nv">bs</span><span class="o">=</span>1024k 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep -q <span class="s2">&#34;records in&#34;</span><span class="p">;</span> <span class="k">then</span>
-</span></span><span class="line"><span class="cl">	    <span class="nv">write_speed</span><span class="o">=</span><span class="k">$(</span>dd <span class="k">if</span><span class="o">=</span>./test_write <span class="nv">of</span><span class="o">=</span>/dev/null <span class="nv">bs</span><span class="o">=</span>1024k 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> awk <span class="s1">&#39;/copied/ {print $(NF-1), $NF}&#39;</span><span class="k">)</span>
-</span></span><span class="line"><span class="cl">	    <span class="nb">echo</span> <span class="s2">&#34;write speed: </span><span class="nv">$write_speed</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl">	    <span class="o">((</span>write_success_count++<span class="o">))</span>
-</span></span><span class="line"><span class="cl">	<span class="k">else</span>
-</span></span><span class="line"><span class="cl">	    <span class="nb">echo</span> <span class="s2">&#34;write failed&#34;</span>
-</span></span><span class="line"><span class="cl">	    <span class="o">((</span>write_failure_count++<span class="o">))</span>
-</span></span><span class="line"><span class="cl">	<span class="k">fi</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1"># 再次清空文件系统缓存</span>
-</span></span><span class="line"><span class="cl">	sudo sh -c <span class="s2">&#34;sync &amp;&amp; echo 3 &gt; /proc/sys/vm/drop_caches&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1"># 执行dd读取测试</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> dd <span class="k">if</span><span class="o">=</span>./test_write <span class="nv">of</span><span class="o">=</span>/dev/null <span class="nv">bs</span><span class="o">=</span>1024k 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep -q <span class="s2">&#34;records in&#34;</span><span class="p">;</span> <span class="k">then</span>
-</span></span><span class="line"><span class="cl">	    <span class="nv">read_speed</span><span class="o">=</span><span class="k">$(</span>dd <span class="k">if</span><span class="o">=</span>./test_write <span class="nv">of</span><span class="o">=</span>/dev/null <span class="nv">bs</span><span class="o">=</span>1024k 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> awk <span class="s1">&#39;/copied/ {print $(NF-1), $NF}&#39;</span><span class="k">)</span>
-</span></span><span class="line"><span class="cl">	    <span class="nb">echo</span> <span class="s2">&#34;read  speed: </span><span class="nv">$read_speed</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl">	    <span class="o">((</span>read_success_count++<span class="o">))</span>
-</span></span><span class="line"><span class="cl">	<span class="k">else</span>
-</span></span><span class="line"><span class="cl">	    <span class="nb">echo</span> <span class="s2">&#34;read failed&#34;</span>
-</span></span><span class="line"><span class="cl">	    <span class="o">((</span>read_failed_count++<span class="o">))</span>
-</span></span><span class="line"><span class="cl">	<span class="k">fi</span>
-</span></span><span class="line"><span class="cl">	<span class="nb">echo</span> <span class="s2">&#34;----------------&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">done</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 输出总的测试次数、成功次数和失败次数</span>
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Total number of tests: </span><span class="nv">$total_iterations</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;</span><span class="si">${</span><span class="nv">green_color</span><span class="si">}</span><span class="s2">Number of write successful tests: </span><span class="nv">$write_success_count</span><span class="si">${</span><span class="nv">reset_color</span><span class="si">}</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;</span><span class="si">${</span><span class="nv">green_color</span><span class="si">}</span><span class="s2">Number of read  successful tests: </span><span class="nv">$read_success_count</span><span class="si">${</span><span class="nv">reset_color</span><span class="si">}</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;</span><span class="si">${</span><span class="nv">red_color</span><span class="si">}</span><span class="s2">Number of write failed tests: </span><span class="nv">$write_failure_count</span><span class="si">${</span><span class="nv">reset_color</span><span class="si">}</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;</span><span class="si">${</span><span class="nv">red_color</span><span class="si">}</span><span class="s2">Number of read  failed tests: </span><span class="nv">$read_failure_count</span><span class="si">${</span><span class="nv">reset_color</span><span class="si">}</span><span class="s2">&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 检查是否提供了足够的参数</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $# -lt <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Usage: </span>$0<span style="color:#e6db74"> test_count&#34;</span>
+</span></span><span style="display:flex;"><span>    exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ANSI颜色码</span>
+</span></span><span style="display:flex;"><span>green_color<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\e[32m&#34;</span>  <span style="color:#75715e"># 绿色</span>
+</span></span><span style="display:flex;"><span>red_color<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\e[31m&#34;</span>    <span style="color:#75715e"># 红色</span>
+</span></span><span style="display:flex;"><span>reset_color<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\e[0m&#34;</span>    <span style="color:#75715e"># 重置颜色</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>total_iterations<span style="color:#f92672">=</span>$1
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 初始化计数器</span>
+</span></span><span style="display:flex;"><span>write_success_count<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>write_failure_count<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>read_success_count<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>read_failure_count<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Total number of iterations: </span>$total_iterations<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> <span style="color:#f92672">((</span>i<span style="color:#f92672">=</span>1; i&lt;<span style="color:#f92672">=</span>$total_iterations; i++<span style="color:#f92672">))</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 清空文件系统缓存</span>
+</span></span><span style="display:flex;"><span>	sudo sh -c <span style="color:#e6db74">&#34;sync &amp;&amp; echo 3 &gt; /proc/sys/vm/drop_caches&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 执行dd写入测试</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/zero of<span style="color:#f92672">=</span>./test_write count<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span> bs<span style="color:#f92672">=</span>1024k 2&gt;&amp;<span style="color:#ae81ff">1</span> | grep -q <span style="color:#e6db74">&#34;records in&#34;</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>	    write_speed<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>./test_write of<span style="color:#f92672">=</span>/dev/null bs<span style="color:#f92672">=</span>1024k 2&gt;&amp;<span style="color:#ae81ff">1</span> | awk <span style="color:#e6db74">&#39;/copied/ {print $(NF-1), $NF}&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>	    echo <span style="color:#e6db74">&#34;write speed: </span>$write_speed<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>	    <span style="color:#f92672">((</span>write_success_count++<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>	    echo <span style="color:#e6db74">&#34;write failed&#34;</span>
+</span></span><span style="display:flex;"><span>	    <span style="color:#f92672">((</span>write_failure_count++<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 再次清空文件系统缓存</span>
+</span></span><span style="display:flex;"><span>	sudo sh -c <span style="color:#e6db74">&#34;sync &amp;&amp; echo 3 &gt; /proc/sys/vm/drop_caches&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 执行dd读取测试</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>./test_write of<span style="color:#f92672">=</span>/dev/null bs<span style="color:#f92672">=</span>1024k 2&gt;&amp;<span style="color:#ae81ff">1</span> | grep -q <span style="color:#e6db74">&#34;records in&#34;</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>	    read_speed<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>./test_write of<span style="color:#f92672">=</span>/dev/null bs<span style="color:#f92672">=</span>1024k 2&gt;&amp;<span style="color:#ae81ff">1</span> | awk <span style="color:#e6db74">&#39;/copied/ {print $(NF-1), $NF}&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>	    echo <span style="color:#e6db74">&#34;read  speed: </span>$read_speed<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>	    <span style="color:#f92672">((</span>read_success_count++<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>	    echo <span style="color:#e6db74">&#34;read failed&#34;</span>
+</span></span><span style="display:flex;"><span>	    <span style="color:#f92672">((</span>read_failed_count++<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>	echo <span style="color:#e6db74">&#34;----------------&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 输出总的测试次数、成功次数和失败次数</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Total number of tests: </span>$total_iterations<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>green_color<span style="color:#e6db74">}</span><span style="color:#e6db74">Number of write successful tests: </span>$write_success_count<span style="color:#e6db74">${</span>reset_color<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>green_color<span style="color:#e6db74">}</span><span style="color:#e6db74">Number of read  successful tests: </span>$read_success_count<span style="color:#e6db74">${</span>reset_color<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>red_color<span style="color:#e6db74">}</span><span style="color:#e6db74">Number of write failed tests: </span>$write_failure_count<span style="color:#e6db74">${</span>reset_color<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>red_color<span style="color:#e6db74">}</span><span style="color:#e6db74">Number of read  failed tests: </span>$read_failure_count<span style="color:#e6db74">${</span>reset_color<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 </span></span></code></pre></div>
     
   </article>
@@ -463,23 +463,23 @@ echo -e &#34;${red_color}Number of read  failed tests: $read_failure_count${rese
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   

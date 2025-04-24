@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -62,19 +62,19 @@ ubuntu 自带包管理器安装的 ctags 是 exuberant-ctags, 如果已经安装
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/opengrok/">
@@ -252,14 +252,7 @@ $ java -version openjdk version &#34;1.8.0_252&#34; OpenJDK Runtime Environment 
         <li><a href="#jdk-安装">jdk 安装</a></li>
         <li><a href="#universal-ctags">universal-ctags</a></li>
         <li><a href="#tomcat8">tomcat8</a></li>
-        <li><a href="#opengrok">opengrok</a>
-          <ul>
-            <li><a href="#安装工具包">安装工具包</a></li>
-            <li><a href="#install-management-tools-optional">Install management tools (optional)</a></li>
-            <li><a href="#deploy-the-web-application">Deploy the web application</a></li>
-            <li><a href="#indexing">Indexing</a></li>
-          </ul>
-        </li>
+        <li><a href="#opengrok">opengrok</a></li>
       </ul>
     </li>
     <li><a href="#rtfsc">RTFSC</a></li>
@@ -283,30 +276,30 @@ $ java -version openjdk version &#34;1.8.0_252&#34; OpenJDK Runtime Environment 
 <h3 id="jdk-安装">jdk 安装</h3>
 <p><code>sudo apt install openjdk-8-jdk openjdk-8-jdk-headless openjdk-8-jre openjdk-8-jre-dcevm openjdk-8-jre-headless</code></p>
 <p>通常android编译环境能够正常工作jdk环境已经ok.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ java -version
-</span></span><span class="line"><span class="cl">openjdk version <span class="s2">&#34;1.8.0_252&#34;</span>
-</span></span><span class="line"><span class="cl">OpenJDK Runtime Environment <span class="o">(</span>build 1.8.0_252-8u252-b09-1~18.04-b09<span class="o">)</span>
-</span></span><span class="line"><span class="cl">OpenJDK 64-Bit Server VM <span class="o">(</span>build 25.252-b09, mixed mode<span class="o">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ java -version
+</span></span><span style="display:flex;"><span>openjdk version <span style="color:#e6db74">&#34;1.8.0_252&#34;</span>
+</span></span><span style="display:flex;"><span>OpenJDK Runtime Environment <span style="color:#f92672">(</span>build 1.8.0_252-8u252-b09-1~18.04-b09<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>OpenJDK 64-Bit Server VM <span style="color:#f92672">(</span>build 25.252-b09, mixed mode<span style="color:#f92672">)</span>
 </span></span></code></pre></div><h3 id="universal-ctags">universal-ctags</h3>
 <p>ubuntu 自带包管理器安装的 <code>ctags</code> 是 <code>exuberant-ctags</code>, 如果已经安装请先通过如下命令卸载</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt purge exuberant-ctags
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt purge exuberant-ctags
 </span></span></code></pre></div><p>通过源码安装 <code>universal-ctags</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://gitee.com/neo532/universal-ctags.git
-</span></span><span class="line"><span class="cl"><span class="nb">cd</span> universal-ctags
-</span></span><span class="line"><span class="cl">./autogen.sh
-</span></span><span class="line"><span class="cl">./configure
-</span></span><span class="line"><span class="cl">make
-</span></span><span class="line"><span class="cl">sudo make install
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ /usr/local/bin/ctags --version
-</span></span><span class="line"><span class="cl">Universal Ctags 0.0.0<span class="o">(</span>054bee0<span class="o">)</span>, Copyright <span class="o">(</span>C<span class="o">)</span> <span class="m">2015</span> Universal Ctags Team
-</span></span><span class="line"><span class="cl">Universal Ctags is derived from Exuberant Ctags.
-</span></span><span class="line"><span class="cl">Exuberant Ctags 5.8, Copyright <span class="o">(</span>C<span class="o">)</span> 1996-2009 Darren Hiebert
-</span></span><span class="line"><span class="cl">  Compiled: May <span class="m">10</span> 2020, 10:34:29
-</span></span><span class="line"><span class="cl">  URL: https://ctags.io/
-</span></span><span class="line"><span class="cl">  Optional compiled features: +wildcards, +regex, +iconv, +option-directory
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://gitee.com/neo532/universal-ctags.git
+</span></span><span style="display:flex;"><span>cd universal-ctags
+</span></span><span style="display:flex;"><span>./autogen.sh
+</span></span><span style="display:flex;"><span>./configure
+</span></span><span style="display:flex;"><span>make
+</span></span><span style="display:flex;"><span>sudo make install
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ /usr/local/bin/ctags --version
+</span></span><span style="display:flex;"><span>Universal Ctags 0.0.0<span style="color:#f92672">(</span>054bee0<span style="color:#f92672">)</span>, Copyright <span style="color:#f92672">(</span>C<span style="color:#f92672">)</span> <span style="color:#ae81ff">2015</span> Universal Ctags Team
+</span></span><span style="display:flex;"><span>Universal Ctags is derived from Exuberant Ctags.
+</span></span><span style="display:flex;"><span>Exuberant Ctags 5.8, Copyright <span style="color:#f92672">(</span>C<span style="color:#f92672">)</span> 1996-2009 Darren Hiebert
+</span></span><span style="display:flex;"><span>  Compiled: May <span style="color:#ae81ff">10</span> 2020, 10:34:29
+</span></span><span style="display:flex;"><span>  URL: https://ctags.io/
+</span></span><span style="display:flex;"><span>  Optional compiled features: +wildcards, +regex, +iconv, +option-directory
 </span></span></code></pre></div><h3 id="tomcat8">tomcat8</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install tomcat8
-</span></span><span class="line"><span class="cl">sudo service tomcat8 start
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install tomcat8
+</span></span><span style="display:flex;"><span>sudo service tomcat8 start
 </span></span></code></pre></div><h3 id="opengrok">opengrok</h3>
 <blockquote>
 <p><a href="https://github.com/oracle/opengrok/wiki/How-to-setup-OpenGrok">How to setup OpenGrok</a></p></blockquote>
@@ -315,19 +308,19 @@ $ java -version openjdk version &#34;1.8.0_252&#34; OpenJDK Runtime Environment 
 <p>搭建 opengrok 目录结构 <code>sudo mkdir /opengrok/{src,data,dist,etc,log}</code></p>
 <p>解压opengrok到指定路径 <code>tar -C /opengrok/dist --strip-components=1 -xzf opengrok-X.Y.Z.tar.gz</code></p>
 <h4 id="install-management-tools-optional">Install management tools (optional)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /opengrok/dist/tools
-</span></span><span class="line"><span class="cl">python3 -m pip install opengrok-tools.tar.gz
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /opengrok/dist/tools
+</span></span><span style="display:flex;"><span>python3 -m pip install opengrok-tools.tar.gz
 </span></span></code></pre></div><h4 id="deploy-the-web-application">Deploy the web application</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cp /opengrok/dist/lib/source.war /var/lib/tomcat8/webapps/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp /opengrok/dist/lib/source.war /var/lib/tomcat8/webapps/
 </span></span></code></pre></div><h4 id="indexing">Indexing</h4>
 <p>通过修改如下 <code>-s</code> 选项来配置修改源码路径.</p>
 <p>假设我的android源码路径为 <code>/opengrok/src/A64_android</code> ，则使用如下参数：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">java <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -Djava.util.logging.config.file<span class="o">=</span>/opengrok/etc/logging.properties <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -jar /opengrok/dist/lib/opengrok.jar <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -c /usr/local/bin/ctags <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -s /opengrok/src -d /opengrok/data -H -P -S -G <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -W /opengrok/etc/configuration.xml -U http://localhost:8080/source
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -Djava.util.logging.config.file<span style="color:#f92672">=</span>/opengrok/etc/logging.properties <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -jar /opengrok/dist/lib/opengrok.jar <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -c /usr/local/bin/ctags <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -s /opengrok/src -d /opengrok/data -H -P -S -G <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -W /opengrok/etc/configuration.xml -U http://localhost:8080/source
 </span></span></code></pre></div><h2 id="rtfsc">RTFSC</h2>
 <p>访问网址： <code>http://localhost:8080/source/</code></p>
 
@@ -431,23 +424,23 @@ $ java -version openjdk version &#34;1.8.0_252&#34; OpenJDK Runtime Environment 
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   

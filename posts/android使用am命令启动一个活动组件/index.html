@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -56,19 +56,19 @@ start: 这个子命令用于启动一个活动。活动表示一个带有用户�
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/">
@@ -297,41 +297,41 @@ am: 代表 Activity Manager（活动管理器）。它是一个命令行工具�
 <p>这个命令将在显示屏 3 上打开图库应用的 <code>GalleryActivity</code>。</p>
 <h2 id="如何获取-package_name-以及-activity_name">如何获取 package_name 以及 activity_name</h2>
 <p><code>pm list packages</code> 命令获取当前系统中的所有 package。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">130<span class="p">|</span>console:/ <span class="c1"># pm list packages</span>
-</span></span><span class="line"><span class="cl">......
-</span></span><span class="line"><span class="cl">package:com.android.internal.systemui.navbar.gestural
-</span></span><span class="line"><span class="cl">package:com.android.gallery3d
-</span></span><span class="line"><span class="cl">package:com.android.providers.userdictionary
-</span></span><span class="line"><span class="cl">......
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>130|console:/ <span style="color:#75715e"># pm list packages</span>
+</span></span><span style="display:flex;"><span>......
+</span></span><span style="display:flex;"><span>package:com.android.internal.systemui.navbar.gestural
+</span></span><span style="display:flex;"><span>package:com.android.gallery3d
+</span></span><span style="display:flex;"><span>package:com.android.providers.userdictionary
+</span></span><span style="display:flex;"><span>......
 </span></span></code></pre></div><p>以 gallery3d <code>com.android.gallery3d</code> 为例：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">console:/ <span class="c1"># dumpsys package com.android.gallery3d | grep -A 1 &#39;MAIN&#39;</span>
-</span></span><span class="line"><span class="cl">      android.intent.action.MAIN:<span class="o">[</span> 1080.400705<span class="o">]</span> servicemanager: Since <span class="s1">&#39;artd&#39;</span> could not be found, trying to start it as a lazy AIDL service. <span class="o">(</span><span class="k">if</span> it<span class="s1">&#39;s not configured to be a lazy service, it may be stuck starting or still starting).
-</span></span></span><span class="line"><span class="cl"><span class="s1">
-</span></span></span><span class="line"><span class="cl"><span class="s1">        c99ebe com.android.gallery3d/.app.GalleryActivity filter 92aab1f
-</span></span></span><span class="line"><span class="cl"><span class="s1">          Action: &#34;android.intent.action.MAIN&#34;
-</span></span></span><span class="line"><span class="cl"><span class="s1">          Category: &#34;android.intent.category.DEFAULT&#34;
-</span></span></span><span class="line"><span class="cl"><span class="s1">--
-</span></span></span><span class="line"><span class="cl"><span class="s1">          Action: &#34;android.intent.action.MAIN&#34;
-</span></span></span><span class="line"><span class="cl"><span class="s1">        be96ced com.andro[ 1080.418995] init: starting service &#39;</span>artd<span class="s1">&#39;...
-</span></span></span><span class="line"><span class="cl"><span class="s1">id.gallery3d/.app.Gallery filter de1c722
-</span></span></span><span class="line"><span class="cl"><span class="s1">          Action: &#34;android.intent.action.MAIN&#34;
-</span></span></span><span class="line"><span class="cl"><span class="s1">          Category: &#34;android.intent.category.DEFAULT&#34;
-</span></span></span><span class="line"><span class="cl"><span class="s1">--
-</span></span></span><span class="line"><span class="cl"><span class="s1">          Action: &#34;android.intent.action.MAIN&#34;
-</span></span></span><span class="line"><span class="cl"><span class="s1">          Category: &#34;android.intent.category.DEFAULT&#34;
-</span></span></span><span class="line"><span class="cl"><span class="s1">--
-</span></span></span><span class="line"><span class="cl"><span class="s1">[ 1080.446599] init: ... started service &#39;</span>artd<span class="s1">&#39; has pid 2312
-</span></span></span><span class="line"><span class="cl"><span class="s1">[ 1080.458298] BpBinder: onLastStrongRef automatically unlinking death recipients: 
-</span></span></span><span class="line"><span class="cl"><span class="s1">    privateFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION PRIVATE_FLAG_REQUEST_LEGACY_EXTERNAL_STORAGE HAS_DOMAIN_URLS PRODUCT PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
-</span></span></span><span class="line"><span class="cl"><span class="s1">    forceQueryable=false
-</span></span></span><span class="line"><span class="cl"><span class="s1">--
-</span></span></span><span class="line"><span class="cl"><span class="s1">    privatePkgFlags=[ PRI[ 1080.472553] init: Control message: Processed ctl.interface_start for &#39;</span>aidl/artd<span class="err">&#39;</span> from pid: <span class="m">248</span> <span class="o">(</span>/system/bin/servicemanager<span class="o">)</span>
-</span></span><span class="line"><span class="cl">VATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION PRIVATE_FLAG_REQUEST_LEGACY_EXTERNAL_STORAGE HAS_DOMAIN_URLS PRODUCT PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING <span class="o">]</span>
-</span></span><span class="line"><span class="cl">    <span class="nv">apexModuleName</span><span class="o">=</span>null
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>console:/ <span style="color:#75715e"># dumpsys package com.android.gallery3d | grep -A 1 &#39;MAIN&#39;</span>
+</span></span><span style="display:flex;"><span>      android.intent.action.MAIN:<span style="color:#f92672">[</span> 1080.400705<span style="color:#f92672">]</span> servicemanager: Since <span style="color:#e6db74">&#39;artd&#39;</span> could not be found, trying to start it as a lazy AIDL service. <span style="color:#f92672">(</span><span style="color:#66d9ef">if</span> it<span style="color:#e6db74">&#39;s not configured to be a lazy service, it may be stuck starting or still starting).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        c99ebe com.android.gallery3d/.app.GalleryActivity filter 92aab1f
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Action: &#34;android.intent.action.MAIN&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Category: &#34;android.intent.category.DEFAULT&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">--
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Action: &#34;android.intent.action.MAIN&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        be96ced com.andro[ 1080.418995] init: starting service &#39;</span>artd<span style="color:#e6db74">&#39;...
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">id.gallery3d/.app.Gallery filter de1c722
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Action: &#34;android.intent.action.MAIN&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Category: &#34;android.intent.category.DEFAULT&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">--
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Action: &#34;android.intent.action.MAIN&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          Category: &#34;android.intent.category.DEFAULT&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">--
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[ 1080.446599] init: ... started service &#39;</span>artd<span style="color:#e6db74">&#39; has pid 2312
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[ 1080.458298] BpBinder: onLastStrongRef automatically unlinking death recipients: 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    privateFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION PRIVATE_FLAG_REQUEST_LEGACY_EXTERNAL_STORAGE HAS_DOMAIN_URLS PRODUCT PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    forceQueryable=false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">--
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    privatePkgFlags=[ PRI[ 1080.472553] init: Control message: Processed ctl.interface_start for &#39;</span>aidl/artd<span style="color:#960050;background-color:#1e0010">&#39;</span> from pid: <span style="color:#ae81ff">248</span> <span style="color:#f92672">(</span>/system/bin/servicemanager<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>VATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION PRIVATE_FLAG_REQUEST_LEGACY_EXTERNAL_STORAGE HAS_DOMAIN_URLS PRODUCT PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    apexModuleName<span style="color:#f92672">=</span>null
 </span></span></code></pre></div><p>关键信息：<code>c99ebe com.android.gallery3d/.app.GalleryActivity filter 92aab1f</code></p>
 <p>对应的 package and activity name 组合：<code>com.android.gallery3d/.app.GalleryActivity</code></p>
 <p>套用到 am 命令中就是：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">am start -n com.android.gallery3d/.app.GalleryActivity --display <span class="m">3</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>am start -n com.android.gallery3d/.app.GalleryActivity --display <span style="color:#ae81ff">3</span>
 </span></span></code></pre></div>
     
   </article>
@@ -433,23 +433,23 @@ am: 代表 Activity Manager（活动管理器）。它是一个命令行工具�
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   

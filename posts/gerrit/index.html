@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -202,19 +202,19 @@ etc/gerrit.config">
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/gerrit/">
@@ -390,191 +390,191 @@ etc/gerrit.config">
 <li>openjdk version &ldquo;11.0.19&rdquo; 2023-04-18</li>
 </ul>
 <h1 id="安装依赖软件包">安装依赖软件包</h1>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install openjdk-11-jdk openjdk-11-jdk-headless openjdk-11-jre openjdk-11-jre-headless
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install openjdk-11-jdk openjdk-11-jdk-headless openjdk-11-jre openjdk-11-jre-headless
 </span></span></code></pre></div><h1 id="创建-gerrit-用户">创建 Gerrit 用户</h1>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo adduser gerrit
-</span></span><span class="line"><span class="cl">sudo usermod -a -G sudo gerrit
-</span></span><span class="line"><span class="cl">sudo su gerrit
-</span></span><span class="line"><span class="cl">mkdir ~/gerrit
-</span></span><span class="line"><span class="cl">java -jar gerrit-3.8.0.war init -d ~/gerrit
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo adduser gerrit
+</span></span><span style="display:flex;"><span>sudo usermod -a -G sudo gerrit
+</span></span><span style="display:flex;"><span>sudo su gerrit
+</span></span><span style="display:flex;"><span>mkdir ~/gerrit
+</span></span><span style="display:flex;"><span>java -jar gerrit-3.8.0.war init -d ~/gerrit
 </span></span></code></pre></div><h1 id="安装-gerrit">安装 Gerrit</h1>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ java -jar gerrit-3.8.0.war init -d ~/gerrit
-</span></span><span class="line"><span class="cl">Using secure store: com.google.gerrit.server.securestore.DefaultSecureStore
-</span></span><span class="line"><span class="cl"><span class="o">[</span>2023-06-03 12:19:03,027<span class="o">]</span> <span class="o">[</span>main<span class="o">]</span> INFO  com.google.gerrit.server.config.GerritServerConfigProvider : No /home/gerrit/gerrit/etc/gerrit.config<span class="p">;</span> assuming defaults
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">*** Gerrit Code Review 3.8.0
-</span></span><span class="line"><span class="cl">*** 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Create <span class="s1">&#39;/home/gerrit/gerrit&#39;</span>   <span class="o">[</span>Y/n<span class="o">]</span>? Y
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">*** Git Repositories
-</span></span><span class="line"><span class="cl">*** 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Location of Git repositories   <span class="o">[</span>git<span class="o">]</span>: 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">*** JGit Configuration
-</span></span><span class="line"><span class="cl">*** 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Auto-configured <span class="s2">&#34;receive.autogc = false&#34;</span> to disable auto-gc after git-receive-pack.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">*** Index
-</span></span><span class="line"><span class="cl">*** 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Type                           <span class="o">[</span>lucene<span class="o">]</span>: 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">*** User Authentication
-</span></span><span class="line"><span class="cl">*** 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Authentication method          <span class="o">[</span>openid/?<span class="o">]</span>: ?
-</span></span><span class="line"><span class="cl">       Supported options are:
-</span></span><span class="line"><span class="cl">         openid
-</span></span><span class="line"><span class="cl">         openid_sso
-</span></span><span class="line"><span class="cl">         http
-</span></span><span class="line"><span class="cl">         http_ldap
-</span></span><span class="line"><span class="cl">         client_ssl_cert_ldap
-</span></span><span class="line"><span class="cl">         ldap
-</span></span><span class="line"><span class="cl">         ldap_bind
-</span></span><span class="line"><span class="cl">         custom_extension
-</span></span><span class="line"><span class="cl">         development_become_any_account
-</span></span><span class="line"><span class="cl">         oauth
-</span></span><span class="line"><span class="cl">Authentication method          <span class="o">[</span>openid/?<span class="o">]</span>: http
-</span></span><span class="line"><span class="cl">Get username from custom HTTP header <span class="o">[</span>y/N<span class="o">]</span>? y
-</span></span><span class="line"><span class="cl">Username HTTP header           <span class="o">[</span>SM_USER<span class="o">]</span>: 
-</span></span><span class="line"><span class="cl">SSO <span class="nb">logout</span> URL                 : 
-</span></span><span class="line"><span class="cl">Enable signed push support     <span class="o">[</span>y/N<span class="o">]</span>? y
-</span></span><span class="line"><span class="cl">Use <span class="k">case</span> insensitive usernames <span class="o">[</span>Y/n<span class="o">]</span>? Y
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">*** Review Labels
-</span></span><span class="line"><span class="cl">*** 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Install Verified label         <span class="o">[</span>y/N<span class="o">]</span>? N
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">*** Email Delivery
-</span></span><span class="line"><span class="cl">*** 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">SMTP server hostname           <span class="o">[</span>localhost<span class="o">]</span>: 
-</span></span><span class="line"><span class="cl">SMTP server port               <span class="o">[(</span>default<span class="o">)]</span>: 
-</span></span><span class="line"><span class="cl">SMTP encryption                <span class="o">[</span>none/?<span class="o">]</span>: 
-</span></span><span class="line"><span class="cl">SMTP username                  : 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">*** Container Process
-</span></span><span class="line"><span class="cl">*** 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Run as                         <span class="o">[</span>gerrit<span class="o">]</span>: 
-</span></span><span class="line"><span class="cl">Java runtime                   <span class="o">[</span>/usr/lib/jvm/java-11-openjdk-amd64<span class="o">]</span>: 
-</span></span><span class="line"><span class="cl">Copy gerrit-3.8.0.war to /home/gerrit/gerrit/bin/gerrit.war <span class="o">[</span>Y/n<span class="o">]</span>? Y
-</span></span><span class="line"><span class="cl">Copying gerrit-3.8.0.war to /home/gerrit/gerrit/bin/gerrit.war
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">*** SSH Daemon
-</span></span><span class="line"><span class="cl">*** 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Listen on address              <span class="o">[</span>*<span class="o">]</span>: 
-</span></span><span class="line"><span class="cl">Listen on port                 <span class="o">[</span>29418<span class="o">]</span>: 
-</span></span><span class="line"><span class="cl">Generating SSH host key ... rsa... ed25519... ecdsa 256... ecdsa 384... ecdsa 521... <span class="k">done</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">*** HTTP Daemon
-</span></span><span class="line"><span class="cl">*** 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Behind reverse proxy           <span class="o">[</span>y/N<span class="o">]</span>? y
-</span></span><span class="line"><span class="cl">Proxy uses SSL <span class="o">(</span>https://<span class="o">)</span>      <span class="o">[</span>y/N<span class="o">]</span>? N
-</span></span><span class="line"><span class="cl">Subdirectory on proxy server   <span class="o">[</span>/<span class="o">]</span>: 
-</span></span><span class="line"><span class="cl">Listen on address              <span class="o">[</span>*<span class="o">]</span>: 
-</span></span><span class="line"><span class="cl">Listen on port                 <span class="o">[</span>8081<span class="o">]</span>: 
-</span></span><span class="line"><span class="cl">Canonical URL                  <span class="o">[</span>http://luyang-VirtualBox/<span class="o">]</span>: 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">*** Cache
-</span></span><span class="line"><span class="cl">*** 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">*** Plugins
-</span></span><span class="line"><span class="cl">*** 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Installing plugins.
-</span></span><span class="line"><span class="cl">Install plugin codemirror-editor version v3.8.0 <span class="o">[</span>y/N<span class="o">]</span>? y
-</span></span><span class="line"><span class="cl">Installed codemirror-editor v3.8.0
-</span></span><span class="line"><span class="cl">Install plugin commit-message-length-validator version v3.8.0 <span class="o">[</span>y/N<span class="o">]</span>? y
-</span></span><span class="line"><span class="cl">Installed commit-message-length-validator v3.8.0
-</span></span><span class="line"><span class="cl">Install plugin delete-project version v3.8.0 <span class="o">[</span>y/N<span class="o">]</span>? y
-</span></span><span class="line"><span class="cl">Installed delete-project v3.8.0
-</span></span><span class="line"><span class="cl">Install plugin download-commands version v3.8.0 <span class="o">[</span>y/N<span class="o">]</span>? y
-</span></span><span class="line"><span class="cl">Installed download-commands v3.8.0
-</span></span><span class="line"><span class="cl">Install plugin gitiles version v3.8.0 <span class="o">[</span>y/N<span class="o">]</span>? y
-</span></span><span class="line"><span class="cl">Installed gitiles v3.8.0
-</span></span><span class="line"><span class="cl">Install plugin hooks version v3.8.0 <span class="o">[</span>y/N<span class="o">]</span>? y
-</span></span><span class="line"><span class="cl">Installed hooks v3.8.0
-</span></span><span class="line"><span class="cl">Install plugin plugin-manager version v3.8.0 <span class="o">[</span>y/N<span class="o">]</span>? y
-</span></span><span class="line"><span class="cl">Installed plugin-manager v3.8.0
-</span></span><span class="line"><span class="cl">Install plugin replication version v3.8.0 <span class="o">[</span>y/N<span class="o">]</span>? y
-</span></span><span class="line"><span class="cl">Installed replication v3.8.0
-</span></span><span class="line"><span class="cl">Install plugin reviewnotes version v3.8.0 <span class="o">[</span>y/N<span class="o">]</span>? y
-</span></span><span class="line"><span class="cl">Installed reviewnotes v3.8.0
-</span></span><span class="line"><span class="cl">Install plugin singleusergroup version v3.8.0 <span class="o">[</span>y/N<span class="o">]</span>? y
-</span></span><span class="line"><span class="cl">Installed singleusergroup v3.8.0
-</span></span><span class="line"><span class="cl">Install plugin webhooks version v3.8.0 <span class="o">[</span>y/N<span class="o">]</span>? y
-</span></span><span class="line"><span class="cl">Installed webhooks v3.8.0
-</span></span><span class="line"><span class="cl">Initializing plugins.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">============================================================================</span>
-</span></span><span class="line"><span class="cl">Welcome to the Gerrit community
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Find more information on the homepage: https://www.gerritcodereview.com
-</span></span><span class="line"><span class="cl">Discuss Gerrit on the mailing list: https://groups.google.com/g/repo-discuss
-</span></span><span class="line"><span class="cl"><span class="o">============================================================================</span>
-</span></span><span class="line"><span class="cl">Initialized /home/gerrit/gerrit
-</span></span><span class="line"><span class="cl">Init complete, reindexing accounts,changes,groups,projects with: reindex --site-path /home/gerrit/gerrit --threads <span class="m">1</span> --index accounts --index changes --index groups --index projectsReindexed <span class="m">0</span> documents in accounts index in 0.0s <span class="o">(</span>0.0/s<span class="o">)</span>
-</span></span><span class="line"><span class="cl">Index accounts in version <span class="m">12</span> is ready
-</span></span><span class="line"><span class="cl">Reindexing groups:      100% <span class="o">(</span>2/2<span class="o">)</span>
-</span></span><span class="line"><span class="cl">Reindexed <span class="m">2</span> documents in groups index in 0.2s <span class="o">(</span>9.9/s<span class="o">)</span>
-</span></span><span class="line"><span class="cl">Index groups in version <span class="m">9</span> is ready
-</span></span><span class="line"><span class="cl">Reindexing changes: Slicing projects: 100% <span class="o">(</span>2/2<span class="o">)</span>, <span class="k">done</span>    
-</span></span><span class="line"><span class="cl">Reindexed <span class="m">0</span> documents in changes index in 0.0s <span class="o">(</span>0.0/s<span class="o">)</span>
-</span></span><span class="line"><span class="cl">Index changes in version <span class="m">82</span> is ready
-</span></span><span class="line"><span class="cl">Reindexing projects:    100% <span class="o">(</span>2/2<span class="o">)</span>
-</span></span><span class="line"><span class="cl">Reindexed <span class="m">2</span> documents in projects index in 0.1s <span class="o">(</span>25.0/s<span class="o">)</span>
-</span></span><span class="line"><span class="cl">Index projects in version <span class="m">5</span> is ready
-</span></span><span class="line"><span class="cl">Executing /home/gerrit/gerrit/bin/gerrit.sh start
-</span></span><span class="line"><span class="cl">Starting Gerrit Code Review: WARNING: Could not adjust Gerrit<span class="s1">&#39;s process for the kernel&#39;</span>s out-of-memory killer.
-</span></span><span class="line"><span class="cl">         This may be caused by /home/gerrit/gerrit/bin/gerrit.sh not being run as root.
-</span></span><span class="line"><span class="cl">         Consider changing the OOM score adjustment manually <span class="k">for</span> Gerrit<span class="s1">&#39;s PID=4510 with e.g.:
-</span></span></span><span class="line"><span class="cl"><span class="s1">         echo &#39;</span>-1000<span class="err">&#39;</span> <span class="p">|</span> sudo tee /proc/4510/oom_score_adj
-</span></span><span class="line"><span class="cl">OK
-</span></span><span class="line"><span class="cl">Waiting <span class="k">for</span> server on luyang-VirtualBox:80 ... OK
-</span></span><span class="line"><span class="cl">Please open the following URL in the browser: http://luyang-VirtualBox/#/admin/projects/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ java -jar gerrit-3.8.0.war init -d ~/gerrit
+</span></span><span style="display:flex;"><span>Using secure store: com.google.gerrit.server.securestore.DefaultSecureStore
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>2023-06-03 12:19:03,027<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> INFO  com.google.gerrit.server.config.GerritServerConfigProvider : No /home/gerrit/gerrit/etc/gerrit.config; assuming defaults
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>*** Gerrit Code Review 3.8.0
+</span></span><span style="display:flex;"><span>*** 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Create <span style="color:#e6db74">&#39;/home/gerrit/gerrit&#39;</span>   <span style="color:#f92672">[</span>Y/n<span style="color:#f92672">]</span>? Y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>*** Git Repositories
+</span></span><span style="display:flex;"><span>*** 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Location of Git repositories   <span style="color:#f92672">[</span>git<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>*** JGit Configuration
+</span></span><span style="display:flex;"><span>*** 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Auto-configured <span style="color:#e6db74">&#34;receive.autogc = false&#34;</span> to disable auto-gc after git-receive-pack.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>*** Index
+</span></span><span style="display:flex;"><span>*** 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Type                           <span style="color:#f92672">[</span>lucene<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>*** User Authentication
+</span></span><span style="display:flex;"><span>*** 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Authentication method          <span style="color:#f92672">[</span>openid/?<span style="color:#f92672">]</span>: ?
+</span></span><span style="display:flex;"><span>       Supported options are:
+</span></span><span style="display:flex;"><span>         openid
+</span></span><span style="display:flex;"><span>         openid_sso
+</span></span><span style="display:flex;"><span>         http
+</span></span><span style="display:flex;"><span>         http_ldap
+</span></span><span style="display:flex;"><span>         client_ssl_cert_ldap
+</span></span><span style="display:flex;"><span>         ldap
+</span></span><span style="display:flex;"><span>         ldap_bind
+</span></span><span style="display:flex;"><span>         custom_extension
+</span></span><span style="display:flex;"><span>         development_become_any_account
+</span></span><span style="display:flex;"><span>         oauth
+</span></span><span style="display:flex;"><span>Authentication method          <span style="color:#f92672">[</span>openid/?<span style="color:#f92672">]</span>: http
+</span></span><span style="display:flex;"><span>Get username from custom HTTP header <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
+</span></span><span style="display:flex;"><span>Username HTTP header           <span style="color:#f92672">[</span>SM_USER<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>SSO logout URL                 : 
+</span></span><span style="display:flex;"><span>Enable signed push support     <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
+</span></span><span style="display:flex;"><span>Use <span style="color:#66d9ef">case</span> insensitive usernames <span style="color:#f92672">[</span>Y/n<span style="color:#f92672">]</span>? Y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>*** Review Labels
+</span></span><span style="display:flex;"><span>*** 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Install Verified label         <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? N
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>*** Email Delivery
+</span></span><span style="display:flex;"><span>*** 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SMTP server hostname           <span style="color:#f92672">[</span>localhost<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>SMTP server port               <span style="color:#f92672">[(</span>default<span style="color:#f92672">)]</span>: 
+</span></span><span style="display:flex;"><span>SMTP encryption                <span style="color:#f92672">[</span>none/?<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>SMTP username                  : 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>*** Container Process
+</span></span><span style="display:flex;"><span>*** 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Run as                         <span style="color:#f92672">[</span>gerrit<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>Java runtime                   <span style="color:#f92672">[</span>/usr/lib/jvm/java-11-openjdk-amd64<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>Copy gerrit-3.8.0.war to /home/gerrit/gerrit/bin/gerrit.war <span style="color:#f92672">[</span>Y/n<span style="color:#f92672">]</span>? Y
+</span></span><span style="display:flex;"><span>Copying gerrit-3.8.0.war to /home/gerrit/gerrit/bin/gerrit.war
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>*** SSH Daemon
+</span></span><span style="display:flex;"><span>*** 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Listen on address              <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>Listen on port                 <span style="color:#f92672">[</span>29418<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>Generating SSH host key ... rsa... ed25519... ecdsa 256... ecdsa 384... ecdsa 521... <span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>*** HTTP Daemon
+</span></span><span style="display:flex;"><span>*** 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Behind reverse proxy           <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
+</span></span><span style="display:flex;"><span>Proxy uses SSL <span style="color:#f92672">(</span>https://<span style="color:#f92672">)</span>      <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? N
+</span></span><span style="display:flex;"><span>Subdirectory on proxy server   <span style="color:#f92672">[</span>/<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>Listen on address              <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>Listen on port                 <span style="color:#f92672">[</span>8081<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>Canonical URL                  <span style="color:#f92672">[</span>http://luyang-VirtualBox/<span style="color:#f92672">]</span>: 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>*** Cache
+</span></span><span style="display:flex;"><span>*** 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>*** Plugins
+</span></span><span style="display:flex;"><span>*** 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Installing plugins.
+</span></span><span style="display:flex;"><span>Install plugin codemirror-editor version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
+</span></span><span style="display:flex;"><span>Installed codemirror-editor v3.8.0
+</span></span><span style="display:flex;"><span>Install plugin commit-message-length-validator version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
+</span></span><span style="display:flex;"><span>Installed commit-message-length-validator v3.8.0
+</span></span><span style="display:flex;"><span>Install plugin delete-project version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
+</span></span><span style="display:flex;"><span>Installed delete-project v3.8.0
+</span></span><span style="display:flex;"><span>Install plugin download-commands version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
+</span></span><span style="display:flex;"><span>Installed download-commands v3.8.0
+</span></span><span style="display:flex;"><span>Install plugin gitiles version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
+</span></span><span style="display:flex;"><span>Installed gitiles v3.8.0
+</span></span><span style="display:flex;"><span>Install plugin hooks version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
+</span></span><span style="display:flex;"><span>Installed hooks v3.8.0
+</span></span><span style="display:flex;"><span>Install plugin plugin-manager version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
+</span></span><span style="display:flex;"><span>Installed plugin-manager v3.8.0
+</span></span><span style="display:flex;"><span>Install plugin replication version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
+</span></span><span style="display:flex;"><span>Installed replication v3.8.0
+</span></span><span style="display:flex;"><span>Install plugin reviewnotes version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
+</span></span><span style="display:flex;"><span>Installed reviewnotes v3.8.0
+</span></span><span style="display:flex;"><span>Install plugin singleusergroup version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
+</span></span><span style="display:flex;"><span>Installed singleusergroup v3.8.0
+</span></span><span style="display:flex;"><span>Install plugin webhooks version v3.8.0 <span style="color:#f92672">[</span>y/N<span style="color:#f92672">]</span>? y
+</span></span><span style="display:flex;"><span>Installed webhooks v3.8.0
+</span></span><span style="display:flex;"><span>Initializing plugins.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================================================</span>
+</span></span><span style="display:flex;"><span>Welcome to the Gerrit community
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Find more information on the homepage: https://www.gerritcodereview.com
+</span></span><span style="display:flex;"><span>Discuss Gerrit on the mailing list: https://groups.google.com/g/repo-discuss
+</span></span><span style="display:flex;"><span><span style="color:#f92672">============================================================================</span>
+</span></span><span style="display:flex;"><span>Initialized /home/gerrit/gerrit
+</span></span><span style="display:flex;"><span>Init complete, reindexing accounts,changes,groups,projects with: reindex --site-path /home/gerrit/gerrit --threads <span style="color:#ae81ff">1</span> --index accounts --index changes --index groups --index projectsReindexed <span style="color:#ae81ff">0</span> documents in accounts index in 0.0s <span style="color:#f92672">(</span>0.0/s<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Index accounts in version <span style="color:#ae81ff">12</span> is ready
+</span></span><span style="display:flex;"><span>Reindexing groups:      100% <span style="color:#f92672">(</span>2/2<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Reindexed <span style="color:#ae81ff">2</span> documents in groups index in 0.2s <span style="color:#f92672">(</span>9.9/s<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Index groups in version <span style="color:#ae81ff">9</span> is ready
+</span></span><span style="display:flex;"><span>Reindexing changes: Slicing projects: 100% <span style="color:#f92672">(</span>2/2<span style="color:#f92672">)</span>, <span style="color:#66d9ef">done</span>    
+</span></span><span style="display:flex;"><span>Reindexed <span style="color:#ae81ff">0</span> documents in changes index in 0.0s <span style="color:#f92672">(</span>0.0/s<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Index changes in version <span style="color:#ae81ff">82</span> is ready
+</span></span><span style="display:flex;"><span>Reindexing projects:    100% <span style="color:#f92672">(</span>2/2<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Reindexed <span style="color:#ae81ff">2</span> documents in projects index in 0.1s <span style="color:#f92672">(</span>25.0/s<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Index projects in version <span style="color:#ae81ff">5</span> is ready
+</span></span><span style="display:flex;"><span>Executing /home/gerrit/gerrit/bin/gerrit.sh start
+</span></span><span style="display:flex;"><span>Starting Gerrit Code Review: WARNING: Could not adjust Gerrit<span style="color:#e6db74">&#39;s process for the kernel&#39;</span>s out-of-memory killer.
+</span></span><span style="display:flex;"><span>         This may be caused by /home/gerrit/gerrit/bin/gerrit.sh not being run as root.
+</span></span><span style="display:flex;"><span>         Consider changing the OOM score adjustment manually <span style="color:#66d9ef">for</span> Gerrit<span style="color:#e6db74">&#39;s PID=4510 with e.g.:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">         echo &#39;</span>-1000<span style="color:#960050;background-color:#1e0010">&#39;</span> | sudo tee /proc/4510/oom_score_adj
+</span></span><span style="display:flex;"><span>OK
+</span></span><span style="display:flex;"><span>Waiting <span style="color:#66d9ef">for</span> server on luyang-VirtualBox:80 ... OK
+</span></span><span style="display:flex;"><span>Please open the following URL in the browser: http://luyang-VirtualBox/#/admin/projects/
 </span></span></code></pre></div><h1 id="配置-gerrit">配置 Gerrit</h1>
 <p><code>etc/gerrit.config</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>gerrit<span class="o">]</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">basePath</span> <span class="o">=</span> git
-</span></span><span class="line"><span class="cl">        <span class="nv">canonicalWebUrl</span> <span class="o">=</span> http://192.168.56.104:8080
-</span></span><span class="line"><span class="cl">        <span class="nv">serverId</span> <span class="o">=</span> d00cca90-af13-4298-9273-72d50cce94ce
-</span></span><span class="line"><span class="cl"><span class="o">[</span>container<span class="o">]</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">javaOptions</span> <span class="o">=</span> <span class="s2">&#34;-Dflogger.backend_factory=com.google.common.flogger.backend.log4j.Log4jBackendFactory#getInstance&#34;</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">javaOptions</span> <span class="o">=</span> <span class="s2">&#34;-Dflogger.logging_context=com.google.gerrit.server.logging.LoggingContext#getInstance&#34;</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">user</span> <span class="o">=</span> gerrit
-</span></span><span class="line"><span class="cl">        <span class="nv">javaHome</span> <span class="o">=</span> /usr/lib/jvm/java-11-openjdk-amd64
-</span></span><span class="line"><span class="cl"><span class="o">[</span>index<span class="o">]</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">type</span> <span class="o">=</span> lucene
-</span></span><span class="line"><span class="cl"><span class="o">[</span>auth<span class="o">]</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">type</span> <span class="o">=</span> HTTP
-</span></span><span class="line"><span class="cl">        <span class="nv">httpHeader</span> <span class="o">=</span> SM_USER
-</span></span><span class="line"><span class="cl">        <span class="nv">userNameCaseInsensitive</span> <span class="o">=</span> <span class="nb">true</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>receive<span class="o">]</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">enableSignedPush</span> <span class="o">=</span> <span class="nb">true</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>sendemail<span class="o">]</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">enable</span> <span class="o">=</span> <span class="nb">true</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">smtpServer</span> <span class="o">=</span> smtp.qq.com
-</span></span><span class="line"><span class="cl">        <span class="nv">smtpServerPort</span> <span class="o">=</span> <span class="m">465</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">smtpEncryption</span> <span class="o">=</span> SSL
-</span></span><span class="line"><span class="cl">        <span class="nv">sslVerify</span> <span class="o">=</span> <span class="nb">true</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">smtpUser</span> <span class="o">=</span> 193944320@qq.com
-</span></span><span class="line"><span class="cl">        <span class="nv">smtpPass</span> <span class="o">=</span> fjas<span class="p">;</span>jfa<span class="p">;</span>sdjfalk
-</span></span><span class="line"><span class="cl">        <span class="nv">from</span> <span class="o">=</span> <span class="o">[</span>SCM<span class="o">]</span>&lt;193944320@qq.com&gt;
-</span></span><span class="line"><span class="cl"><span class="o">[</span>sshd<span class="o">]</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">listenAddress</span> <span class="o">=</span> *:29418
-</span></span><span class="line"><span class="cl"><span class="o">[</span>httpd<span class="o">]</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">listenUrl</span> <span class="o">=</span> proxy-http://*:8081/
-</span></span><span class="line"><span class="cl"><span class="o">[</span>cache<span class="o">]</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">directory</span> <span class="o">=</span> cache
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>gerrit<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        basePath <span style="color:#f92672">=</span> git
+</span></span><span style="display:flex;"><span>        canonicalWebUrl <span style="color:#f92672">=</span> http://192.168.56.104:8080
+</span></span><span style="display:flex;"><span>        serverId <span style="color:#f92672">=</span> d00cca90-af13-4298-9273-72d50cce94ce
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>container<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        javaOptions <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;-Dflogger.backend_factory=com.google.common.flogger.backend.log4j.Log4jBackendFactory#getInstance&#34;</span>
+</span></span><span style="display:flex;"><span>        javaOptions <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;-Dflogger.logging_context=com.google.gerrit.server.logging.LoggingContext#getInstance&#34;</span>
+</span></span><span style="display:flex;"><span>        user <span style="color:#f92672">=</span> gerrit
+</span></span><span style="display:flex;"><span>        javaHome <span style="color:#f92672">=</span> /usr/lib/jvm/java-11-openjdk-amd64
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>index<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        type <span style="color:#f92672">=</span> lucene
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>auth<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        type <span style="color:#f92672">=</span> HTTP
+</span></span><span style="display:flex;"><span>        httpHeader <span style="color:#f92672">=</span> SM_USER
+</span></span><span style="display:flex;"><span>        userNameCaseInsensitive <span style="color:#f92672">=</span> true
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>receive<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        enableSignedPush <span style="color:#f92672">=</span> true
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>sendemail<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        enable <span style="color:#f92672">=</span> true
+</span></span><span style="display:flex;"><span>        smtpServer <span style="color:#f92672">=</span> smtp.qq.com
+</span></span><span style="display:flex;"><span>        smtpServerPort <span style="color:#f92672">=</span> <span style="color:#ae81ff">465</span>
+</span></span><span style="display:flex;"><span>        smtpEncryption <span style="color:#f92672">=</span> SSL
+</span></span><span style="display:flex;"><span>        sslVerify <span style="color:#f92672">=</span> true
+</span></span><span style="display:flex;"><span>        smtpUser <span style="color:#f92672">=</span> 193944320@qq.com
+</span></span><span style="display:flex;"><span>        smtpPass <span style="color:#f92672">=</span> fjas;jfa;sdjfalk
+</span></span><span style="display:flex;"><span>        from <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>SCM<span style="color:#f92672">]</span>&lt;193944320@qq.com&gt;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>sshd<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        listenAddress <span style="color:#f92672">=</span> *:29418
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>httpd<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        listenUrl <span style="color:#f92672">=</span> proxy-http://*:8081/
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>cache<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        directory <span style="color:#f92672">=</span> cache
 </span></span></code></pre></div><h1 id="安装配置-nginx">安装配置 Nginx</h1>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install nginx
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install nginx
 </span></span></code></pre></div><p><code>/etc/nginx/conf.d/gerrit.conf</code></p>
 <pre tabindex="0"><code class="language-conf" data-lang="conf">server {
 
@@ -695,23 +695,23 @@ location / {
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   

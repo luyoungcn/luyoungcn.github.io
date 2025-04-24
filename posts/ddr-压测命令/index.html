@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -57,19 +57,19 @@ stressapptest - stress test application for simulating high load situations">
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/ddr-%E5%8E%8B%E6%B5%8B%E5%91%BD%E4%BB%A4/">
@@ -256,71 +256,71 @@ stressapptest 安装 stressapptest stressapptest - stress test application for s
     
     <h1 id="ddr-压测命令">DDR 压测命令</h1>
 <p>测试之前可以使用 <code>free -m</code> 查看内存使用情况。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">» free
-</span></span><span class="line"><span class="cl">              total        used        free      shared  buff/cache   available
-</span></span><span class="line"><span class="cl">Mem:       <span class="m">16193884</span>     <span class="m">1268028</span>    <span class="m">13921020</span>        <span class="m">6528</span>     <span class="m">1004836</span>    <span class="m">14587148</span>
-</span></span><span class="line"><span class="cl">Swap:       <span class="m">4194304</span>           <span class="m">0</span>     <span class="m">4194304</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">» free -m
-</span></span><span class="line"><span class="cl">              total        used        free      shared  buff/cache   available
-</span></span><span class="line"><span class="cl">Mem:          <span class="m">15814</span>        <span class="m">1231</span>       <span class="m">13598</span>           <span class="m">6</span>         <span class="m">984</span>       <span class="m">14252</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>» free
+</span></span><span style="display:flex;"><span>              total        used        free      shared  buff/cache   available
+</span></span><span style="display:flex;"><span>Mem:       <span style="color:#ae81ff">16193884</span>     <span style="color:#ae81ff">1268028</span>    <span style="color:#ae81ff">13921020</span>        <span style="color:#ae81ff">6528</span>     <span style="color:#ae81ff">1004836</span>    <span style="color:#ae81ff">14587148</span>
+</span></span><span style="display:flex;"><span>Swap:       <span style="color:#ae81ff">4194304</span>           <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">4194304</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>» free -m
+</span></span><span style="display:flex;"><span>              total        used        free      shared  buff/cache   available
+</span></span><span style="display:flex;"><span>Mem:          <span style="color:#ae81ff">15814</span>        <span style="color:#ae81ff">1231</span>       <span style="color:#ae81ff">13598</span>           <span style="color:#ae81ff">6</span>         <span style="color:#ae81ff">984</span>       <span style="color:#ae81ff">14252</span>
 </span></span></code></pre></div><p>根据 available 至设置 DDR 压测内存大小。</p>
 <h2 id="stressapptest">stressapptest</h2>
 <h3 id="安装-stressapptest">安装 stressapptest</h3>
 <p>stressapptest - stress test application for simulating high load situations</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install stressapptest
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install stressapptest
 </span></span></code></pre></div><h3 id="stressapptest-help">stressapptest help</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">» stressapptest -h
-</span></span><span class="line"><span class="cl">Stats: SAT revision 1.0.6_autoconf, <span class="m">64</span> bit binary
-</span></span><span class="line"><span class="cl">Log: buildd @ lgw01-amd64-029 on Sun Mar <span class="m">22</span> 18:14:26 UTC <span class="m">2020</span> from open <span class="nb">source</span> release
-</span></span><span class="line"><span class="cl">Usage: ./sat<span class="o">(</span>32<span class="p">|</span>64<span class="o">)</span> <span class="o">[</span>options<span class="o">]</span>
-</span></span><span class="line"><span class="cl"> -M mbytes        megabytes of ram to <span class="nb">test</span>
-</span></span><span class="line"><span class="cl"> -H mbytes        minimum megabytes of hugepages to require
-</span></span><span class="line"><span class="cl"> -s seconds       number of seconds to run
-</span></span><span class="line"><span class="cl"> -m threads       number of memory copy threads to run
-</span></span><span class="line"><span class="cl"> -i threads       number of memory invert threads to run
-</span></span><span class="line"><span class="cl"> -C threads       number of memory CPU stress threads to run
-</span></span><span class="line"><span class="cl"> --findfiles      find locations to <span class="k">do</span> disk IO automatically
-</span></span><span class="line"><span class="cl"> -d device        add a direct write disk thread with block device <span class="o">(</span>or file<span class="o">)</span> <span class="s1">&#39;device&#39;</span>
-</span></span><span class="line"><span class="cl"> -f filename      add a disk thread with tempfile <span class="s1">&#39;filename&#39;</span>
-</span></span><span class="line"><span class="cl"> -l logfile       log output to file <span class="s1">&#39;logfile&#39;</span>
-</span></span><span class="line"><span class="cl"> --max_errors n   <span class="nb">exit</span> early after finding <span class="s1">&#39;n&#39;</span> errors
-</span></span><span class="line"><span class="cl"> -v level         verbosity <span class="o">(</span>0-20<span class="o">)</span>, default is <span class="m">8</span>
-</span></span><span class="line"><span class="cl"> -W               Use more CPU-stressful memory copy
-</span></span><span class="line"><span class="cl"> -A               run in degraded mode on incompatible systems
-</span></span><span class="line"><span class="cl"> -p pagesize      size in bytes of memory chunks
-</span></span><span class="line"><span class="cl"> --filesize size  size of disk IO tempfiles
-</span></span><span class="line"><span class="cl"> -n ipaddr        add a network thread connecting to system at <span class="s1">&#39;ipaddr&#39;</span>
-</span></span><span class="line"><span class="cl"> --listen         run a thread to listen <span class="k">for</span> and respond to network threads.
-</span></span><span class="line"><span class="cl"> --no_errors      run without checking <span class="k">for</span> ECC or other errors
-</span></span><span class="line"><span class="cl"> --force_errors   inject <span class="nb">false</span> errors to <span class="nb">test</span> error handling
-</span></span><span class="line"><span class="cl"> --force_errors_like_crazy   inject a lot of <span class="nb">false</span> errors to <span class="nb">test</span> error handling
-</span></span><span class="line"><span class="cl"> -F               don<span class="s1">&#39;t result check each transaction
-</span></span></span><span class="line"><span class="cl"><span class="s1"> --stop_on_errors  Stop after finding the first error.
-</span></span></span><span class="line"><span class="cl"><span class="s1"> --read-block-size     size of block for reading (-d)
-</span></span></span><span class="line"><span class="cl"><span class="s1"> --write-block-size    size of block for writing (-d). If not defined, the size of block for writing will be defined as the size of block for reading
-</span></span></span><span class="line"><span class="cl"><span class="s1"> --segment-size   size of segments to split disk into (-d)
-</span></span></span><span class="line"><span class="cl"><span class="s1"> --cache-size     size of disk cache (-d)
-</span></span></span><span class="line"><span class="cl"><span class="s1"> --blocks-per-segment  number of blocks to read/write per segment per iteration (-d)
-</span></span></span><span class="line"><span class="cl"><span class="s1"> --read-threshold      maximum time (in us) a block read should take (-d)
-</span></span></span><span class="line"><span class="cl"><span class="s1"> --write-threshold     maximum time (in us) a block write should take (-d)
-</span></span></span><span class="line"><span class="cl"><span class="s1"> --random-threads      number of random threads for each disk write thread (-d)
-</span></span></span><span class="line"><span class="cl"><span class="s1"> --destructive    write/wipe disk partition (-d)
-</span></span></span><span class="line"><span class="cl"><span class="s1"> --monitor_mode   only do ECC error polling, no stress load.
-</span></span></span><span class="line"><span class="cl"><span class="s1"> --cc_test        do the cache coherency testing
-</span></span></span><span class="line"><span class="cl"><span class="s1"> --cc_inc_count   number of times to increment the cacheline&#39;</span>s member
-</span></span><span class="line"><span class="cl"> --cc_line_count  number of cache line sized datastructures to allocate <span class="k">for</span> the cache coherency threads to operate
-</span></span><span class="line"><span class="cl"> --paddr_base     allocate memory starting from this address
-</span></span><span class="line"><span class="cl"> --pause_delay    delay <span class="o">(</span>in seconds<span class="o">)</span> between power spikes
-</span></span><span class="line"><span class="cl"> --pause_duration duration <span class="o">(</span>in seconds<span class="o">)</span> of each pause
-</span></span><span class="line"><span class="cl"> --local_numa     choose memory regions associated with each CPU to be tested by that CPU
-</span></span><span class="line"><span class="cl"> --remote_numa    choose memory regions not associated with each CPU to be tested by that CPU
-</span></span><span class="line"><span class="cl"> --interleave_size bytes  size in bytes of each channel<span class="err">&#39;</span>s data as interleaved between memory channels
-</span></span><span class="line"><span class="cl"> --channel_width bits     width in bits of each memory channel
-</span></span><span class="line"><span class="cl"> --memory_channel u1,u2   defines a comma-separated list of names
-</span></span><span class="line"><span class="cl">                          <span class="k">for</span> dram packages in a memory channel.
-</span></span><span class="line"><span class="cl">                          Use multiple <span class="nb">times</span> to define multiple channels.
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./stressapptest -M <span class="m">14200</span> -s <span class="m">36000</span> -m <span class="m">8</span> -i <span class="m">8</span> -C <span class="m">8</span> -l /data/stressapptest.log
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>» stressapptest -h
+</span></span><span style="display:flex;"><span>Stats: SAT revision 1.0.6_autoconf, <span style="color:#ae81ff">64</span> bit binary
+</span></span><span style="display:flex;"><span>Log: buildd @ lgw01-amd64-029 on Sun Mar <span style="color:#ae81ff">22</span> 18:14:26 UTC <span style="color:#ae81ff">2020</span> from open source release
+</span></span><span style="display:flex;"><span>Usage: ./sat<span style="color:#f92672">(</span>32|64<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span> -M mbytes        megabytes of ram to test
+</span></span><span style="display:flex;"><span> -H mbytes        minimum megabytes of hugepages to require
+</span></span><span style="display:flex;"><span> -s seconds       number of seconds to run
+</span></span><span style="display:flex;"><span> -m threads       number of memory copy threads to run
+</span></span><span style="display:flex;"><span> -i threads       number of memory invert threads to run
+</span></span><span style="display:flex;"><span> -C threads       number of memory CPU stress threads to run
+</span></span><span style="display:flex;"><span> --findfiles      find locations to <span style="color:#66d9ef">do</span> disk IO automatically
+</span></span><span style="display:flex;"><span> -d device        add a direct write disk thread with block device <span style="color:#f92672">(</span>or file<span style="color:#f92672">)</span> <span style="color:#e6db74">&#39;device&#39;</span>
+</span></span><span style="display:flex;"><span> -f filename      add a disk thread with tempfile <span style="color:#e6db74">&#39;filename&#39;</span>
+</span></span><span style="display:flex;"><span> -l logfile       log output to file <span style="color:#e6db74">&#39;logfile&#39;</span>
+</span></span><span style="display:flex;"><span> --max_errors n   exit early after finding <span style="color:#e6db74">&#39;n&#39;</span> errors
+</span></span><span style="display:flex;"><span> -v level         verbosity <span style="color:#f92672">(</span>0-20<span style="color:#f92672">)</span>, default is <span style="color:#ae81ff">8</span>
+</span></span><span style="display:flex;"><span> -W               Use more CPU-stressful memory copy
+</span></span><span style="display:flex;"><span> -A               run in degraded mode on incompatible systems
+</span></span><span style="display:flex;"><span> -p pagesize      size in bytes of memory chunks
+</span></span><span style="display:flex;"><span> --filesize size  size of disk IO tempfiles
+</span></span><span style="display:flex;"><span> -n ipaddr        add a network thread connecting to system at <span style="color:#e6db74">&#39;ipaddr&#39;</span>
+</span></span><span style="display:flex;"><span> --listen         run a thread to listen <span style="color:#66d9ef">for</span> and respond to network threads.
+</span></span><span style="display:flex;"><span> --no_errors      run without checking <span style="color:#66d9ef">for</span> ECC or other errors
+</span></span><span style="display:flex;"><span> --force_errors   inject false errors to test error handling
+</span></span><span style="display:flex;"><span> --force_errors_like_crazy   inject a lot of false errors to test error handling
+</span></span><span style="display:flex;"><span> -F               don<span style="color:#e6db74">&#39;t result check each transaction
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --stop_on_errors  Stop after finding the first error.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --read-block-size     size of block for reading (-d)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --write-block-size    size of block for writing (-d). If not defined, the size of block for writing will be defined as the size of block for reading
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --segment-size   size of segments to split disk into (-d)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --cache-size     size of disk cache (-d)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --blocks-per-segment  number of blocks to read/write per segment per iteration (-d)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --read-threshold      maximum time (in us) a block read should take (-d)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --write-threshold     maximum time (in us) a block write should take (-d)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --random-threads      number of random threads for each disk write thread (-d)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --destructive    write/wipe disk partition (-d)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --monitor_mode   only do ECC error polling, no stress load.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --cc_test        do the cache coherency testing
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> --cc_inc_count   number of times to increment the cacheline&#39;</span>s member
+</span></span><span style="display:flex;"><span> --cc_line_count  number of cache line sized datastructures to allocate <span style="color:#66d9ef">for</span> the cache coherency threads to operate
+</span></span><span style="display:flex;"><span> --paddr_base     allocate memory starting from this address
+</span></span><span style="display:flex;"><span> --pause_delay    delay <span style="color:#f92672">(</span>in seconds<span style="color:#f92672">)</span> between power spikes
+</span></span><span style="display:flex;"><span> --pause_duration duration <span style="color:#f92672">(</span>in seconds<span style="color:#f92672">)</span> of each pause
+</span></span><span style="display:flex;"><span> --local_numa     choose memory regions associated with each CPU to be tested by that CPU
+</span></span><span style="display:flex;"><span> --remote_numa    choose memory regions not associated with each CPU to be tested by that CPU
+</span></span><span style="display:flex;"><span> --interleave_size bytes  size in bytes of each channel<span style="color:#960050;background-color:#1e0010">&#39;</span>s data as interleaved between memory channels
+</span></span><span style="display:flex;"><span> --channel_width bits     width in bits of each memory channel
+</span></span><span style="display:flex;"><span> --memory_channel u1,u2   defines a comma-separated list of names
+</span></span><span style="display:flex;"><span>                          <span style="color:#66d9ef">for</span> dram packages in a memory channel.
+</span></span><span style="display:flex;"><span>                          Use multiple times to define multiple channels.
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./stressapptest -M <span style="color:#ae81ff">14200</span> -s <span style="color:#ae81ff">36000</span> -m <span style="color:#ae81ff">8</span> -i <span style="color:#ae81ff">8</span> -C <span style="color:#ae81ff">8</span> -l /data/stressapptest.log
 </span></span></code></pre></div><h3 id="参数说明">参数说明</h3>
 <ul>
 <li><code>-M 14200</code>: 测试内存大小 14200M</li>
@@ -331,7 +331,7 @@ stressapptest 安装 stressapptest stressapptest - stress test application for s
 </ul>
 <p>若测试通过，则终端会打印：<code>Status: PASS – please verify no corrected errors。</code></p>
 <h1 id="bw_mem">bw_mem</h1>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./bw_mem 128M rdwr
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./bw_mem 128M rdwr
 </span></span></code></pre></div>
     
   </article>
@@ -433,23 +433,23 @@ stressapptest 安装 stressapptest stressapptest - stress test application for s
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   

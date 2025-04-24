@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -51,19 +51,19 @@ endif()
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/cmake/">
@@ -242,41 +242,41 @@ OPTION(MOCK_DATA &#34;Hello World&#34; OFF) if (MOCK_DATA) add_definitions(-DMOC
     
     <h2 id="子目录代码中如何关联-cmake-宏定义">子目录代码中如何关联 cmake 宏定义</h2>
 <p>CMakeLists.txt 增加如下内容：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmake" data-lang="cmake"><span class="line"><span class="cl"><span class="nb">OPTION</span><span class="p">(</span><span class="s">MOCK_DATA</span> <span class="s2">&#34;Hello World&#34;</span> <span class="s">OFF</span><span class="p">)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">if</span> <span class="p">(</span><span class="s">MOCK_DATA</span><span class="p">)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="nb">add_definitions</span><span class="p">(</span><span class="s">-DMOCK_DATA_MICRO</span><span class="p">)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">endif</span><span class="p">()</span><span class="err">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>OPTION(<span style="color:#e6db74">MOCK_DATA</span> <span style="color:#e6db74">&#34;Hello World&#34;</span> <span style="color:#e6db74">OFF</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if (<span style="color:#e6db74">MOCK_DATA</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    add_definitions(<span style="color:#e6db74">-DMOCK_DATA_MICRO</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p>同理子目录道理一样，通过判断 cmake 变量，来决定是否定义源码中的宏定义。</p>
 <p>此时在 cpp 源代码中可以通过如下形式使用宏定义：<code>MOCK_DATA_MICRO</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#ifdef MOCK_DATA_MICRO
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>	<span class="n">hello_world</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="cp">#endif
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#ifdef MOCK_DATA_MICRO
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	hello_world();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
 </span></span></span></code></pre></div><p>如果想使能 <code>MOCK_DATA_MICRO</code> 宏定义则需要在 cmake 编译是指定参数:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cmake -DMOCK_DATA<span class="o">=</span>ON ../<span class="p">;</span> make -j8
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cmake -DMOCK_DATA<span style="color:#f92672">=</span>ON ../; make -j8
 </span></span></code></pre></div><h2 id="cmake-中-ifnot-xxx-和-ifnot-defined-xxx-的区别">cmake 中 if(NOT XXX) 和 if(NOT DEFINED XXX) 的区别</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmake" data-lang="cmake"><span class="line"><span class="cl"><span class="nb">OPTION</span><span class="p">(</span><span class="s">MOCK_DATA</span> <span class="s2">&#34;Hello World&#34;</span> <span class="s">OFF</span><span class="p">)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">if</span> <span class="p">(</span><span class="s">MOCK_DATA</span><span class="p">)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="nb">add_definitions</span><span class="p">(</span><span class="s">-DMOCK_DATA_MICRO</span><span class="p">)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">endif</span><span class="p">()</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">if</span><span class="p">(</span><span class="s">NOT</span> <span class="s">DEFINED</span> <span class="s">MOCK_DATA</span><span class="p">)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span>	<span class="nb">message</span><span class="p">(</span><span class="s">STATUS</span> <span class="s2">&#34;MOCK_DATA ---&#34;</span><span class="p">)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">else
-</span></span></span><span class="line"><span class="cl"><span class="err"></span>	<span class="nb">message</span><span class="p">(</span><span class="s">STATUS</span> <span class="s2">&#34;MOCK_DATA +++&#34;</span><span class="p">)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">endif
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>OPTION(<span style="color:#e6db74">MOCK_DATA</span> <span style="color:#e6db74">&#34;Hello World&#34;</span> <span style="color:#e6db74">OFF</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if (<span style="color:#e6db74">MOCK_DATA</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    add_definitions(<span style="color:#e6db74">-DMOCK_DATA_MICRO</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if(<span style="color:#e6db74">NOT</span> <span style="color:#e6db74">DEFINED</span> <span style="color:#e6db74">MOCK_DATA</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>	message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;MOCK_DATA ---&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">else
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>	message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;MOCK_DATA +++&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">endif
 </span></span></span></code></pre></div><p>尽管我编译时 cmake 命令行没有指定 -DMOCK_DATA=ON 选项，仍然打印的是 <code>MOCK_DATA +++</code></p>
 <p>总结：虽然命令行没有指定对应选项，但是 CMakeLists.txt 文件中声明了 <code>OPTION(MOCK_DATA &quot;Hello World&quot; OFF)</code> 则 MOCK_DATA 就是 DEFINED 只不过值为 OFF。</p>
 <p>因此需要修改代码为：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmake" data-lang="cmake"><span class="line"><span class="cl"><span class="nb">OPTION</span><span class="p">(</span><span class="s">MOCK_DATA</span> <span class="s2">&#34;Hello World&#34;</span> <span class="s">OFF</span><span class="p">)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">if</span> <span class="p">(</span><span class="s">MOCK_DATA</span><span class="p">)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="nb">add_definitions</span><span class="p">(</span><span class="s">-DMOCK_DATA_MICRO</span><span class="p">)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">endif</span><span class="p">()</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">if</span><span class="p">(</span><span class="s">NOT</span> <span class="s">MOCK_DATA</span><span class="p">)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span>	<span class="nb">message</span><span class="p">(</span><span class="s">STATUS</span> <span class="s2">&#34;MOCK_DATA ---&#34;</span><span class="p">)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">else
-</span></span></span><span class="line"><span class="cl"><span class="err"></span>	<span class="nb">message</span><span class="p">(</span><span class="s">STATUS</span> <span class="s2">&#34;MOCK_DATA +++&#34;</span><span class="p">)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">endif
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>OPTION(<span style="color:#e6db74">MOCK_DATA</span> <span style="color:#e6db74">&#34;Hello World&#34;</span> <span style="color:#e6db74">OFF</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if (<span style="color:#e6db74">MOCK_DATA</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    add_definitions(<span style="color:#e6db74">-DMOCK_DATA_MICRO</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if(<span style="color:#e6db74">NOT</span> <span style="color:#e6db74">MOCK_DATA</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>	message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;MOCK_DATA ---&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">else
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>	message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;MOCK_DATA +++&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">endif
 </span></span></span></code></pre></div>
     
   </article>
@@ -378,23 +378,23 @@ OPTION(MOCK_DATA &#34;Hello World&#34; OFF) if (MOCK_DATA) add_definitions(-DMOC
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   

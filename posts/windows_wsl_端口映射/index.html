@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -44,19 +44,19 @@
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/windows_wsl_%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/">
@@ -236,10 +236,10 @@
 <hr>
 <p>From: <a href="https://learn.microsoft.com/en-us/windows/wsl/networking">https://learn.microsoft.com/en-us/windows/wsl/networking</a></p>
 <p>Here&rsquo;s an example of using the <a href="https://learn.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-interface-portproxy">Netsh interface portproxy</a> Windows command to add a port proxy that listens on your host port and connects that port proxy to the IP address for the WSL 2 VM.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">netsh</span> <span class="n">interface</span> <span class="n">portproxy</span> <span class="n">add</span> <span class="n">v4tov4</span> <span class="n">listenport</span><span class="p">=&lt;</span><span class="n">yourPortToForward</span><span class="p">&gt;</span> <span class="n">listenaddress</span><span class="p">=</span><span class="mf">0.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">0</span> <span class="n">connectport</span><span class="p">=&lt;</span><span class="n">yourPortToConnectToInWSL</span><span class="p">&gt;</span> <span class="n">connectaddress</span><span class="p">=(</span><span class="n">wsl</span> <span class="n">hostname</span> <span class="n">-I</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>netsh interface portproxy add v4tov4 listenport=&lt;yourPortToForward&gt; listenaddress=<span style="color:#ae81ff">0.0</span>.0.0 connectport=&lt;yourPortToConnectToInWSL&gt; connectaddress=(wsl hostname -I)
 </span></span></code></pre></div><p>In this example, you will need to update <code>&lt;yourPortToForward&gt;</code> to a port number, for example <code>listenport=4000</code>. <code>listenaddress=0.0.0.0</code> means that incoming requests will be accepted from ANY IP address. The Listen Address specifies the IPv4 address for which to listen and can be changed to values that include: IP address, computer NetBIOS name, or computer DNS name. If an address isn&rsquo;t specified, the default is the local computer. You need to update the <code>&lt;yourPortToConnectToInWSL&gt;</code> value to a port number where you want WSL to connect, for example <code>connectport=4000</code>. Lastly, the <code>connectaddress</code> value needs to be the IP address of your Linux distribution installed via WSL 2 (the WSL 2 VM address), which can be found by entering the command: <code>wsl.exe hostname -I</code>.</p>
 <p>So this command may look something like:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">netsh</span> <span class="n">interface</span> <span class="n">portproxy</span> <span class="n">add</span> <span class="n">v4tov4</span> <span class="n">listenport</span><span class="p">=</span><span class="mf">4000</span> <span class="n">listenaddress</span><span class="p">=</span><span class="mf">0.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">0</span> <span class="n">connectport</span><span class="p">=</span><span class="mf">4000</span> <span class="n">connectaddress</span><span class="p">=</span><span class="mf">192.168</span><span class="p">.</span><span class="py">101</span><span class="p">.</span><span class="py">100</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>netsh interface portproxy add v4tov4 listenport=<span style="color:#ae81ff">4000</span> listenaddress=<span style="color:#ae81ff">0.0</span>.0.0 connectport=<span style="color:#ae81ff">4000</span> connectaddress=<span style="color:#ae81ff">192.168</span>.101.100
 </span></span></code></pre></div><p>To obtain the IP address, use:</p>
 <ul>
 <li><code>wsl hostname -I</code> for the IP address of your Linux distribution installed via WSL 2 (the WSL 2 VM address)</li>
@@ -251,85 +251,85 @@
 <h2 id="查询当前已经转发的端口">查询当前已经转发的端口</h2>
 <p>如何查看当前 windows -&gt; WSL 配置了哪些端口转发？
 以管理员身份运行 PowerShell:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">WINDOWS</span><span class="p">\</span><span class="n">system32</span><span class="p">&gt;</span> <span class="n">netsh</span> <span class="n">interface</span> <span class="n">portproxy</span> <span class="n">show</span> <span class="n">all</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">侦听</span> <span class="n">ipv4</span><span class="err">:</span>                 <span class="n">连接到</span> <span class="n">ipv4</span><span class="err">:</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">地址</span>            <span class="n">端口</span>        <span class="n">地址</span>            <span class="n">端口</span>
-</span></span><span class="line"><span class="cl"><span class="p">---------------</span> <span class="p">----------</span>  <span class="p">---------------</span> <span class="p">----------</span>
-</span></span><span class="line"><span class="cl"><span class="mf">0.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">0</span>         <span class="mf">8080</span>        <span class="mf">172.18</span><span class="p">.</span><span class="py">150</span><span class="p">.</span><span class="py">174</span>  <span class="mf">80</span>
-</span></span><span class="line"><span class="cl"><span class="mf">0.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">0</span>         <span class="mf">9999</span>        <span class="mf">172.25</span><span class="p">.</span><span class="py">198</span><span class="p">.</span><span class="py">88</span>   <span class="mf">9999</span>
-</span></span><span class="line"><span class="cl"><span class="mf">127.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">1</span>       <span class="mf">562</span>         <span class="mf">172.25</span><span class="p">.</span><span class="py">198</span><span class="p">.</span><span class="py">88</span>   <span class="mf">562</span>
-</span></span><span class="line"><span class="cl"><span class="mf">0.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">0</span>         <span class="mf">562</span>         <span class="mf">172.25</span><span class="p">.</span><span class="py">198</span><span class="p">.</span><span class="py">88</span>   <span class="mf">562</span>
-</span></span><span class="line"><span class="cl"><span class="mf">0.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">0</span>         <span class="mf">4865</span>        <span class="mf">172.25</span><span class="p">.</span><span class="py">198</span><span class="p">.</span><span class="py">88</span>   <span class="mf">4865</span>
-</span></span><span class="line"><span class="cl"><span class="mf">0.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">0</span>         <span class="mf">6666</span>        <span class="mf">172.25</span><span class="p">.</span><span class="py">198</span><span class="p">.</span><span class="py">88</span>   <span class="mf">6666</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS C:\WINDOWS\system32&gt; netsh interface portproxy show all
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>侦听 ipv4<span style="color:#960050;background-color:#1e0010">:</span>                 连接到 ipv4<span style="color:#960050;background-color:#1e0010">:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>地址            端口        地址            端口
+</span></span><span style="display:flex;"><span>--------------- ----------  --------------- ----------
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">8080</span>        <span style="color:#ae81ff">172.18</span>.150.174  <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">9999</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">9999</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">127.0</span>.0.1       <span style="color:#ae81ff">562</span>         <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">562</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">562</span>         <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">562</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">4865</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">4865</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">6666</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">6666</span>
 </span></span></code></pre></div><h2 id="确认-wsl-ip-地址">确认 WSL IP 地址</h2>
 <p>WSL 终端运行:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ifconfig
-</span></span><span class="line"><span class="cl">docker0: <span class="nv">flags</span><span class="o">=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span class="m">1500</span>
-</span></span><span class="line"><span class="cl">        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
-</span></span><span class="line"><span class="cl">        inet6 fe80::42:d3ff:fe45:67a4  prefixlen <span class="m">64</span>  scopeid 0x20&lt;link&gt;
-</span></span><span class="line"><span class="cl">        ether 02:42:d3:45:67:a4  txqueuelen <span class="m">0</span>  <span class="o">(</span>Ethernet<span class="o">)</span>
-</span></span><span class="line"><span class="cl">        RX packets <span class="m">12553</span>  bytes <span class="m">108393702</span> <span class="o">(</span>108.3 MB<span class="o">)</span>
-</span></span><span class="line"><span class="cl">        RX errors <span class="m">0</span>  dropped <span class="m">0</span>  overruns <span class="m">0</span>  frame <span class="m">0</span>
-</span></span><span class="line"><span class="cl">        TX packets <span class="m">15258</span>  bytes <span class="m">1786658</span> <span class="o">(</span>1.7 MB<span class="o">)</span>
-</span></span><span class="line"><span class="cl">        TX errors <span class="m">0</span>  dropped <span class="m">0</span> overruns <span class="m">0</span>  carrier <span class="m">0</span>  collisions <span class="m">0</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">eth0: <span class="nv">flags</span><span class="o">=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span class="m">1500</span>
-</span></span><span class="line"><span class="cl">        inet 172.25.198.88  netmask 255.255.240.0  broadcast 172.25.207.255
-</span></span><span class="line"><span class="cl">        inet6 fe80::215:5dff:feec:a420  prefixlen <span class="m">64</span>  scopeid 0x20&lt;link&gt;
-</span></span><span class="line"><span class="cl">        ether 00:15:5d:ec:a4:20  txqueuelen <span class="m">1000</span>  <span class="o">(</span>Ethernet<span class="o">)</span>
-</span></span><span class="line"><span class="cl">        RX packets <span class="m">201105667</span>  bytes <span class="m">290122284896</span> <span class="o">(</span>290.1 GB<span class="o">)</span>
-</span></span><span class="line"><span class="cl">        RX errors <span class="m">0</span>  dropped <span class="m">0</span>  overruns <span class="m">0</span>  frame <span class="m">0</span>
-</span></span><span class="line"><span class="cl">        TX packets <span class="m">55298591</span>  bytes <span class="m">3209600213</span> <span class="o">(</span>3.2 GB<span class="o">)</span>
-</span></span><span class="line"><span class="cl">        TX errors <span class="m">0</span>  dropped <span class="m">0</span> overruns <span class="m">0</span>  carrier <span class="m">0</span>  collisions <span class="m">0</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">lo: <span class="nv">flags</span><span class="o">=</span>73&lt;UP,LOOPBACK,RUNNING&gt;  mtu <span class="m">65536</span>
-</span></span><span class="line"><span class="cl">        inet 127.0.0.1  netmask 255.0.0.0
-</span></span><span class="line"><span class="cl">        inet6 ::1  prefixlen <span class="m">128</span>  scopeid 0x10&lt;host&gt;
-</span></span><span class="line"><span class="cl">        loop  txqueuelen <span class="m">1000</span>  <span class="o">(</span>Local Loopback<span class="o">)</span>
-</span></span><span class="line"><span class="cl">        RX packets <span class="m">217290</span>  bytes <span class="m">624612200</span> <span class="o">(</span>624.6 MB<span class="o">)</span>
-</span></span><span class="line"><span class="cl">        RX errors <span class="m">0</span>  dropped <span class="m">0</span>  overruns <span class="m">0</span>  frame <span class="m">0</span>
-</span></span><span class="line"><span class="cl">        TX packets <span class="m">217290</span>  bytes <span class="m">624612200</span> <span class="o">(</span>624.6 MB<span class="o">)</span>
-</span></span><span class="line"><span class="cl">        TX errors <span class="m">0</span>  dropped <span class="m">0</span> overruns <span class="m">0</span>  carrier <span class="m">0</span>  collisions <span class="m">0</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">veth11e7cb7: <span class="nv">flags</span><span class="o">=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span class="m">1500</span>
-</span></span><span class="line"><span class="cl">        inet6 fe80::fcfb:17ff:fe7d:ad3  prefixlen <span class="m">64</span>  scopeid 0x20&lt;link&gt;
-</span></span><span class="line"><span class="cl">        ether fe:fb:17:7d:0a:d3  txqueuelen <span class="m">0</span>  <span class="o">(</span>Ethernet<span class="o">)</span>
-</span></span><span class="line"><span class="cl">        RX packets <span class="m">12553</span>  bytes <span class="m">108569444</span> <span class="o">(</span>108.5 MB<span class="o">)</span>
-</span></span><span class="line"><span class="cl">        RX errors <span class="m">0</span>  dropped <span class="m">0</span>  overruns <span class="m">0</span>  frame <span class="m">0</span>
-</span></span><span class="line"><span class="cl">        TX packets <span class="m">15279</span>  bytes <span class="m">1788224</span> <span class="o">(</span>1.7 MB<span class="o">)</span>
-</span></span><span class="line"><span class="cl">        TX errors <span class="m">0</span>  dropped <span class="m">0</span> overruns <span class="m">0</span>  carrier <span class="m">0</span>  collisions <span class="m">0</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ifconfig
+</span></span><span style="display:flex;"><span>docker0: flags<span style="color:#f92672">=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span style="color:#ae81ff">1500</span>
+</span></span><span style="display:flex;"><span>        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+</span></span><span style="display:flex;"><span>        inet6 fe80::42:d3ff:fe45:67a4  prefixlen <span style="color:#ae81ff">64</span>  scopeid 0x20&lt;link&gt;
+</span></span><span style="display:flex;"><span>        ether 02:42:d3:45:67:a4  txqueuelen <span style="color:#ae81ff">0</span>  <span style="color:#f92672">(</span>Ethernet<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        RX packets <span style="color:#ae81ff">12553</span>  bytes <span style="color:#ae81ff">108393702</span> <span style="color:#f92672">(</span>108.3 MB<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        RX errors <span style="color:#ae81ff">0</span>  dropped <span style="color:#ae81ff">0</span>  overruns <span style="color:#ae81ff">0</span>  frame <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        TX packets <span style="color:#ae81ff">15258</span>  bytes <span style="color:#ae81ff">1786658</span> <span style="color:#f92672">(</span>1.7 MB<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        TX errors <span style="color:#ae81ff">0</span>  dropped <span style="color:#ae81ff">0</span> overruns <span style="color:#ae81ff">0</span>  carrier <span style="color:#ae81ff">0</span>  collisions <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>eth0: flags<span style="color:#f92672">=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span style="color:#ae81ff">1500</span>
+</span></span><span style="display:flex;"><span>        inet 172.25.198.88  netmask 255.255.240.0  broadcast 172.25.207.255
+</span></span><span style="display:flex;"><span>        inet6 fe80::215:5dff:feec:a420  prefixlen <span style="color:#ae81ff">64</span>  scopeid 0x20&lt;link&gt;
+</span></span><span style="display:flex;"><span>        ether 00:15:5d:ec:a4:20  txqueuelen <span style="color:#ae81ff">1000</span>  <span style="color:#f92672">(</span>Ethernet<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        RX packets <span style="color:#ae81ff">201105667</span>  bytes <span style="color:#ae81ff">290122284896</span> <span style="color:#f92672">(</span>290.1 GB<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        RX errors <span style="color:#ae81ff">0</span>  dropped <span style="color:#ae81ff">0</span>  overruns <span style="color:#ae81ff">0</span>  frame <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        TX packets <span style="color:#ae81ff">55298591</span>  bytes <span style="color:#ae81ff">3209600213</span> <span style="color:#f92672">(</span>3.2 GB<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        TX errors <span style="color:#ae81ff">0</span>  dropped <span style="color:#ae81ff">0</span> overruns <span style="color:#ae81ff">0</span>  carrier <span style="color:#ae81ff">0</span>  collisions <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>lo: flags<span style="color:#f92672">=</span>73&lt;UP,LOOPBACK,RUNNING&gt;  mtu <span style="color:#ae81ff">65536</span>
+</span></span><span style="display:flex;"><span>        inet 127.0.0.1  netmask 255.0.0.0
+</span></span><span style="display:flex;"><span>        inet6 ::1  prefixlen <span style="color:#ae81ff">128</span>  scopeid 0x10&lt;host&gt;
+</span></span><span style="display:flex;"><span>        loop  txqueuelen <span style="color:#ae81ff">1000</span>  <span style="color:#f92672">(</span>Local Loopback<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        RX packets <span style="color:#ae81ff">217290</span>  bytes <span style="color:#ae81ff">624612200</span> <span style="color:#f92672">(</span>624.6 MB<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        RX errors <span style="color:#ae81ff">0</span>  dropped <span style="color:#ae81ff">0</span>  overruns <span style="color:#ae81ff">0</span>  frame <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        TX packets <span style="color:#ae81ff">217290</span>  bytes <span style="color:#ae81ff">624612200</span> <span style="color:#f92672">(</span>624.6 MB<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        TX errors <span style="color:#ae81ff">0</span>  dropped <span style="color:#ae81ff">0</span> overruns <span style="color:#ae81ff">0</span>  carrier <span style="color:#ae81ff">0</span>  collisions <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>veth11e7cb7: flags<span style="color:#f92672">=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span style="color:#ae81ff">1500</span>
+</span></span><span style="display:flex;"><span>        inet6 fe80::fcfb:17ff:fe7d:ad3  prefixlen <span style="color:#ae81ff">64</span>  scopeid 0x20&lt;link&gt;
+</span></span><span style="display:flex;"><span>        ether fe:fb:17:7d:0a:d3  txqueuelen <span style="color:#ae81ff">0</span>  <span style="color:#f92672">(</span>Ethernet<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        RX packets <span style="color:#ae81ff">12553</span>  bytes <span style="color:#ae81ff">108569444</span> <span style="color:#f92672">(</span>108.5 MB<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        RX errors <span style="color:#ae81ff">0</span>  dropped <span style="color:#ae81ff">0</span>  overruns <span style="color:#ae81ff">0</span>  frame <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        TX packets <span style="color:#ae81ff">15279</span>  bytes <span style="color:#ae81ff">1788224</span> <span style="color:#f92672">(</span>1.7 MB<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        TX errors <span style="color:#ae81ff">0</span>  dropped <span style="color:#ae81ff">0</span> overruns <span style="color:#ae81ff">0</span>  carrier <span style="color:#ae81ff">0</span>  collisions <span style="color:#ae81ff">0</span>
 </span></span></code></pre></div><p>如上: <code>eth0</code> <code>172.25.198.88</code></p>
 <h2 id="增加端口4864映射">增加端口<code>4864</code>映射</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">netsh</span> <span class="n">interface</span> <span class="n">portproxy</span> <span class="n">add</span> <span class="n">v4tov4</span> <span class="n">listenaddress</span><span class="p">=</span><span class="mf">0.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">0</span> <span class="n">listenport</span><span class="p">=</span><span class="mf">4864</span> <span class="n">connectaddress</span><span class="p">=</span><span class="mf">172.25</span><span class="p">.</span><span class="py">198</span><span class="p">.</span><span class="py">88</span> <span class="mf">4864</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">WINDOWS</span><span class="p">\</span><span class="n">system32</span><span class="p">&gt;</span> <span class="n">netsh</span> <span class="n">interface</span> <span class="n">portproxy</span> <span class="n">show</span> <span class="n">all</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">侦听</span> <span class="n">ipv4</span><span class="err">:</span>                 <span class="n">连接到</span> <span class="n">ipv4</span><span class="err">:</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">地址</span>            <span class="n">端口</span>        <span class="n">地址</span>            <span class="n">端口</span>
-</span></span><span class="line"><span class="cl"><span class="p">---------------</span> <span class="p">----------</span>  <span class="p">---------------</span> <span class="p">----------</span>
-</span></span><span class="line"><span class="cl"><span class="mf">0.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">0</span>         <span class="mf">8080</span>        <span class="mf">172.18</span><span class="p">.</span><span class="py">150</span><span class="p">.</span><span class="py">174</span>  <span class="mf">80</span>
-</span></span><span class="line"><span class="cl"><span class="mf">0.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">0</span>         <span class="mf">9999</span>        <span class="mf">172.25</span><span class="p">.</span><span class="py">198</span><span class="p">.</span><span class="py">88</span>   <span class="mf">9999</span>
-</span></span><span class="line"><span class="cl"><span class="mf">127.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">1</span>       <span class="mf">562</span>         <span class="mf">172.25</span><span class="p">.</span><span class="py">198</span><span class="p">.</span><span class="py">88</span>   <span class="mf">562</span>
-</span></span><span class="line"><span class="cl"><span class="mf">0.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">0</span>         <span class="mf">562</span>         <span class="mf">172.25</span><span class="p">.</span><span class="py">198</span><span class="p">.</span><span class="py">88</span>   <span class="mf">562</span>
-</span></span><span class="line"><span class="cl"><span class="mf">0.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">0</span>         <span class="mf">4865</span>        <span class="mf">172.25</span><span class="p">.</span><span class="py">198</span><span class="p">.</span><span class="py">88</span>   <span class="mf">4865</span>
-</span></span><span class="line"><span class="cl"><span class="mf">0.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">0</span>         <span class="mf">6666</span>        <span class="mf">172.25</span><span class="p">.</span><span class="py">198</span><span class="p">.</span><span class="py">88</span>   <span class="mf">6666</span>
-</span></span><span class="line"><span class="cl"><span class="mf">0.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">0</span>         <span class="mf">4864</span>        <span class="mf">172.25</span><span class="p">.</span><span class="py">198</span><span class="p">.</span><span class="py">88</span>   <span class="mf">4864</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>netsh interface portproxy add v4tov4 listenaddress=<span style="color:#ae81ff">0.0</span>.0.0 listenport=<span style="color:#ae81ff">4864</span> connectaddress=<span style="color:#ae81ff">172.25</span>.198.88 <span style="color:#ae81ff">4864</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS C:\WINDOWS\system32&gt; netsh interface portproxy show all
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>侦听 ipv4<span style="color:#960050;background-color:#1e0010">:</span>                 连接到 ipv4<span style="color:#960050;background-color:#1e0010">:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>地址            端口        地址            端口
+</span></span><span style="display:flex;"><span>--------------- ----------  --------------- ----------
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">8080</span>        <span style="color:#ae81ff">172.18</span>.150.174  <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">9999</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">9999</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">127.0</span>.0.1       <span style="color:#ae81ff">562</span>         <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">562</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">562</span>         <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">562</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">4865</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">4865</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">6666</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">6666</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">4864</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">4864</span>
 </span></span></code></pre></div><h2 id="删除端口4864映射">删除端口<code>4864</code>映射</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">netsh</span> <span class="n">interface</span> <span class="n">portproxy</span> <span class="n">delete</span> <span class="n">v4tov4</span> <span class="n">listenport</span><span class="p">=</span><span class="mf">4864</span> <span class="n">listenaddress</span><span class="p">=</span><span class="mf">0.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">0</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">WINDOWS</span><span class="p">\</span><span class="n">system32</span><span class="p">&gt;</span> <span class="n">netsh</span> <span class="n">interface</span> <span class="n">portproxy</span> <span class="n">show</span> <span class="n">all</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">侦听</span> <span class="n">ipv4</span><span class="err">:</span>                 <span class="n">连接到</span> <span class="n">ipv4</span><span class="err">:</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">地址</span>            <span class="n">端口</span>        <span class="n">地址</span>            <span class="n">端口</span>
-</span></span><span class="line"><span class="cl"><span class="p">---------------</span> <span class="p">----------</span>  <span class="p">---------------</span> <span class="p">----------</span>
-</span></span><span class="line"><span class="cl"><span class="mf">0.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">0</span>         <span class="mf">8080</span>        <span class="mf">172.18</span><span class="p">.</span><span class="py">150</span><span class="p">.</span><span class="py">174</span>  <span class="mf">80</span>
-</span></span><span class="line"><span class="cl"><span class="mf">0.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">0</span>         <span class="mf">9999</span>        <span class="mf">172.25</span><span class="p">.</span><span class="py">198</span><span class="p">.</span><span class="py">88</span>   <span class="mf">9999</span>
-</span></span><span class="line"><span class="cl"><span class="mf">127.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">1</span>       <span class="mf">562</span>         <span class="mf">172.25</span><span class="p">.</span><span class="py">198</span><span class="p">.</span><span class="py">88</span>   <span class="mf">562</span>
-</span></span><span class="line"><span class="cl"><span class="mf">0.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">0</span>         <span class="mf">562</span>         <span class="mf">172.25</span><span class="p">.</span><span class="py">198</span><span class="p">.</span><span class="py">88</span>   <span class="mf">562</span>
-</span></span><span class="line"><span class="cl"><span class="mf">0.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">0</span>         <span class="mf">4865</span>        <span class="mf">172.25</span><span class="p">.</span><span class="py">198</span><span class="p">.</span><span class="py">88</span>   <span class="mf">4865</span>
-</span></span><span class="line"><span class="cl"><span class="mf">0.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">0</span>         <span class="mf">6666</span>        <span class="mf">172.25</span><span class="p">.</span><span class="py">198</span><span class="p">.</span><span class="py">88</span>   <span class="mf">6666</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>netsh interface portproxy delete v4tov4 listenport=<span style="color:#ae81ff">4864</span> listenaddress=<span style="color:#ae81ff">0.0</span>.0.0
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS C:\WINDOWS\system32&gt; netsh interface portproxy show all
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>侦听 ipv4<span style="color:#960050;background-color:#1e0010">:</span>                 连接到 ipv4<span style="color:#960050;background-color:#1e0010">:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>地址            端口        地址            端口
+</span></span><span style="display:flex;"><span>--------------- ----------  --------------- ----------
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">8080</span>        <span style="color:#ae81ff">172.18</span>.150.174  <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">9999</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">9999</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">127.0</span>.0.1       <span style="color:#ae81ff">562</span>         <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">562</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">562</span>         <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">562</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">4865</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">4865</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">6666</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">6666</span>
 </span></span></code></pre></div>
     
   </article>
@@ -431,23 +431,23 @@
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   

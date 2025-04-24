@@ -20,31 +20,31 @@
 &lt;p&gt;设置→系统→关于&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;windows10_wsl_setup_Untitled_0.png&#34; alt=&#34;Untitled&#34;&gt;&lt;/p&gt;
 &lt;p&gt;以管理员身份运行 powershell&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wsl —install
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wsl —install
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果没有安装wsl，则会进入安装过程，如果已经安装会打印帮助信息&lt;/p&gt;
 &lt;p&gt;要在安装新的 Linux 发行版时将默认版本设置为 WSL 1 或 WSL 2，请使用命令 &lt;code&gt;wsl --set-default-version &amp;lt;Version#&amp;gt;&lt;/code&gt;，将 &lt;code&gt;&amp;lt;Version#&amp;gt;&lt;/code&gt;替换为 1 或 2。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wsl --set-default-version &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wsl --set-default-version &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;wsl2-安装ubuntu-distro&#34;&gt;wsl2 安装ubuntu distro&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wsl --list --online
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wsl --list --online
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以下是可安装的有效分发的列表。
 请使用“wsl &amp;ndash;install -d &amp;lt;分发&amp;gt;”安装。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;NAME            FRIENDLY NAME
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Ubuntu          Ubuntu
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Debian          Debian GNU/Linux
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kali-linux      Kali Linux Rolling
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;openSUSE-42     openSUSE Leap &lt;span class=&#34;m&#34;&gt;42&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SLES-12         SUSE Linux Enterprise Server v12
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Ubuntu-16.04    Ubuntu 16.04 LTS
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Ubuntu-18.04    Ubuntu 18.04 LTS
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Ubuntu-20.04    Ubuntu 20.04 LTS
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wsl --install -d Ubuntu-20.04
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;NAME            FRIENDLY NAME
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Ubuntu          Ubuntu
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Debian          Debian GNU/Linux
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kali-linux      Kali Linux Rolling
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openSUSE-42     openSUSE Leap &lt;span style=&#34;color:#ae81ff&#34;&gt;42&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SLES-12         SUSE Linux Enterprise Server v12
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Ubuntu-16.04    Ubuntu 16.04 LTS
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Ubuntu-18.04    Ubuntu 18.04 LTS
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Ubuntu-20.04    Ubuntu 20.04 LTS
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wsl --install -d Ubuntu-20.04
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;卸载-wsl2-distro&#34;&gt;卸载 wsl2 distro&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wsl -l -v
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wsl --unregister Debian
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wsl -l -v
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wsl --unregister Debian
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;限制vmmem进程内存占用过高&lt;/p&gt;
 &lt;p&gt;%UserProfile% 目录下新建 .wslconfig , 内容如下&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;wsl2&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;memory&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;2GB
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;wsl2&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;memory&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;2GB
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;access-wsl2ubuntu-drive-from-file-explorer&#34;&gt;Access WSL2/Ubuntu Drive from File Explorer&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;Open File Explorer&lt;/li&gt;
@@ -65,8 +65,8 @@
 &lt;li&gt;&lt;a href=&#34;https://github.com/dorssel/usbipd-win/wiki/WSL-support#usbip-client-tools&#34;&gt;https://github.com/dorssel/usbipd-win/wiki/WSL-support#usbip-client-tools&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.microsoft.com/zh-tw/windows/wsl/connect-usb&#34;&gt;https://docs.microsoft.com/zh-tw/windows/wsl/connect-usb&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install linux-tools-virtual hwdata
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/*/usbip &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install linux-tools-virtual hwdata
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/*/usbip &lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;OK&lt;/p&gt;
@@ -82,21 +82,21 @@ connect a USB device&lt;/p&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install linux-tools-5.4.0-77-generic hwdata
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/5.4.0-77-generic/usbip &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install linux-tools-5.4.0-77-generic hwdata
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/5.4.0-77-generic/usbip &lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Running Linux kernel 5.10.60.1 or higher&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ uname -a
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Linux DESKTOP-DM1TKNP 5.10.16.3-microsoft-standard-WSL2 &lt;span class=&#34;c1&#34;&gt;#1 SMP Fri Apr 2 22:23:49 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ uname -a
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Linux DESKTOP-DM1TKNP 5.10.16.3-microsoft-standard-WSL2 &lt;span style=&#34;color:#75715e&#34;&gt;#1 SMP Fri Apr 2 22:23:49 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;It has recently become &lt;strong&gt;simpler to update the WSL 2 Kernel: turn on &amp;ldquo;Receive updates for other Microsoft products when you update Windows&amp;rdquo;&lt;/strong&gt; in the Advanced options for Windows update. The WSL2 kernel will get updated automatically.&lt;/p&gt;
 &lt;p&gt;以管理员身份运行 powershell&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;indows&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; wsl --update
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;正在检查更新...
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;正在下载更新...
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;正在安装更新...
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;此更改将在 WSL 下次完全重启时生效。若要强制重启，请运行“wsl --shutdown”。
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;内核版本： 5.10.102.1
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;luyang@DESKTOP-DM1TKNP:/mnt/c/Users/luyang$ uname -a
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Linux DESKTOP-DM1TKNP 5.10.102.1-microsoft-standard-WSL2 &lt;span class=&#34;c1&#34;&gt;#1 SMP Wed Mar 2 00:30:59 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\W&lt;/span&gt;indows&lt;span style=&#34;color:#ae81ff&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; wsl --update
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;正在检查更新...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;正在下载更新...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;正在安装更新...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;此更改将在 WSL 下次完全重启时生效。若要强制重启，请运行“wsl --shutdown”。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;内核版本： 5.10.102.1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;luyang@DESKTOP-DM1TKNP:/mnt/c/Users/luyang$ uname -a
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Linux DESKTOP-DM1TKNP 5.10.102.1-microsoft-standard-WSL2 &lt;span style=&#34;color:#75715e&#34;&gt;#1 SMP Wed Mar 2 00:30:59 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;identify the disk and partition to attach to WSL2&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -104,23 +104,23 @@ connect a USB device&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;List all of the USB devices connected to Windows by opening PowerShell in &lt;em&gt;administrator&lt;/em&gt;     mode and entering the command: &lt;code&gt;usbipd wsl list&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;indows&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd wsl list
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;BUSID  DEVICE                                                        STATE
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1-2    HP HD Camera                                                  Not attached
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1-7    Synaptics FS7604 Touch Fingerprint Sensor with PurePrint&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;TM&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;  Not attached
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1-10   英特尔&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;R&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 无线 Bluetooth&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;R&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;                                   Not attached
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1-13   USB Attached SCSI &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;UAS&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 大容量存储设备                        Not attached
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1-14   USB Attached SCSI &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;UAS&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 大容量存储设备                        Not attached
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\W&lt;/span&gt;indows&lt;span style=&#34;color:#ae81ff&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd wsl list
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;BUSID  DEVICE                                                        STATE
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1-2    HP HD Camera                                                  Not attached
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1-7    Synaptics FS7604 Touch Fingerprint Sensor with PurePrint&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;TM&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;  Not attached
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1-10   英特尔&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;R&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; 无线 Bluetooth&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;R&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;                                   Not attached
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1-13   USB Attached SCSI &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;UAS&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; 大容量存储设备                        Not attached
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1-14   USB Attached SCSI &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;UAS&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; 大容量存储设备                        Not attached
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Select the bus ID of the device you’d like to attach to WSL and run this command. You’ll be prompted by WSL for a password to run a sudo command. The Linux distribution to be attached must be your default distribution. (See the &lt;a href=&#34;https://docs.microsoft.com/en-us/windows/wsl/basic-commands#set-default-linux-distribution&#34;&gt;Basic comands for WSL&lt;/a&gt; doc to change your default distribution). &lt;code&gt;usbipd wsl attach --busid &amp;lt;busid&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;indows&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd wsl attach --busid 1-13
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;indows&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\W&lt;/span&gt;indows&lt;span style=&#34;color:#ae81ff&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd wsl attach --busid 1-13
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\W&lt;/span&gt;indows&lt;span style=&#34;color:#ae81ff&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Open Ubuntu (or your preferred WSL command line) and list the attached USB devices using the command: &lt;code&gt;lsusb&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;luyang@DESKTOP-DM1TKNP:/mnt/c/Users/luyang$ lsusb
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Bus &lt;span class=&#34;m&#34;&gt;002&lt;/span&gt; Device 002: ID 1058:25f3 Western Digital Technologies, Inc. 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Bus &lt;span class=&#34;m&#34;&gt;002&lt;/span&gt; Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub      
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Bus &lt;span class=&#34;m&#34;&gt;001&lt;/span&gt; Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;luyang@DESKTOP-DM1TKNP:/mnt/c/Users/luyang$ lsusb
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Bus &lt;span style=&#34;color:#ae81ff&#34;&gt;002&lt;/span&gt; Device 002: ID 1058:25f3 Western Digital Technologies, Inc. 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Bus &lt;span style=&#34;color:#ae81ff&#34;&gt;002&lt;/span&gt; Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub      
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Bus &lt;span style=&#34;color:#ae81ff&#34;&gt;001&lt;/span&gt; Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should see the device you just attached and be able to interact with it using normal Linux tools. Depending on your application, you may need to configure udev rules to allow non-root users to access the device.&lt;/p&gt;
 &lt;p&gt;Once you are done using the device in WSL, you can either physically disconnect the USB device or run this command from PowerShell in &lt;em&gt;administrator&lt;/em&gt; mode: &lt;code&gt;usbipd wsl detach --busid &amp;lt;busid&amp;gt;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;mount&lt;/p&gt;
@@ -134,41 +134,41 @@ connect a USB device&lt;/p&gt;
 &lt;li&gt;下载&lt;a href=&#34;https://docs.microsoft.com/en-us/windows/wsl/kernel-release-notes&#34;&gt;源码&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;sudo apt install build-essential flex bison libssl-dev libelf-dev libncurses-dev autoconf libudev-dev libtool&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ cp /proc/config.gz config.gz
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ gunzip config.gz
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ cp config .config
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ make menuconfig
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Device Drivers -&amp;gt; USB support -&amp;gt; select USB Mass Storage support and Enter y -&amp;gt; save and exit&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ make -j8
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 编译过程中报错, 根据报错直接vim .config 注释掉了 CONFIG_DEBUG_INFO_BTF 项，保存然后再次make -j8&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# CONFIG_DEBUG_INFO_BTF is not set&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ sudo make modules_install -j8
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ sudo make install -j8
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ cp vmlinux /mnt/c/Users/luyang/
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ cp /proc/config.gz config.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ gunzip config.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ cp config .config
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ make menuconfig
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Device Drivers -&amp;gt; USB support -&amp;gt; select USB Mass Storage support and Enter y -&amp;gt; save and exit&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ make -j8
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 编译过程中报错, 根据报错直接vim .config 注释掉了 CONFIG_DEBUG_INFO_BTF 项，保存然后再次make -j8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# CONFIG_DEBUG_INFO_BTF is not set&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ sudo make modules_install -j8
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ sudo make install -j8
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ cp vmlinux /mnt/c/Users/luyang/
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;powershell terminal&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wsl --shutdown
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wsl --shutdown
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改 Windows 下的 &lt;code&gt;c/User/&amp;lt;username&amp;gt;/.wslconfig&lt;/code&gt;，没有该文件自己创建一个，内容如下：主要是kernel这一项&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;wsl2&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;kernel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;C:&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;Users&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;luyang&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;vmlinux
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;memory&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;2GB
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;wsl2&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kernel&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\\&lt;/span&gt;Users&lt;span style=&#34;color:#ae81ff&#34;&gt;\\&lt;/span&gt;luyang&lt;span style=&#34;color:#ae81ff&#34;&gt;\\&lt;/span&gt;vmlinux
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;memory&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;2GB
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;restart wsl, 然后按照前边attash usb的方式挂载之后&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ lsusb
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Bus &lt;span class=&#34;m&#34;&gt;002&lt;/span&gt; Device 002: ID 1058:25f3 Western Digital Technologies, Inc. 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Bus &lt;span class=&#34;m&#34;&gt;002&lt;/span&gt; Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub      
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Bus &lt;span class=&#34;m&#34;&gt;001&lt;/span&gt; Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub      
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# sdc 就是我要挂载的移动硬盘&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ lsblk
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sda      8:0    &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;   256G  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; disk
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sdb      8:16   &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;   256G  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; disk /
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sdc      8:32   &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; 476.9G  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; disk
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├─sdc1   8:33   &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;   512M  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; part
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├─sdc2   8:34   &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;    50G  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; part
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└─sdc3   8:35   &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; 426.4G  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; part
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ lsusb
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Bus &lt;span style=&#34;color:#ae81ff&#34;&gt;002&lt;/span&gt; Device 002: ID 1058:25f3 Western Digital Technologies, Inc. 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Bus &lt;span style=&#34;color:#ae81ff&#34;&gt;002&lt;/span&gt; Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub      
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Bus &lt;span style=&#34;color:#ae81ff&#34;&gt;001&lt;/span&gt; Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub      
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# sdc 就是我要挂载的移动硬盘&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;luyang@DESKTOP-DM1TKNP:~/WSL2-Linux-Kernel-linux-msft-wsl-5.10.102.1$ lsblk
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sda      8:0    &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;   256G  &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; disk
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sdb      8:16   &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;   256G  &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; disk /
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sdc      8:32   &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; 476.9G  &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; disk
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├─sdc1   8:33   &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;   512M  &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; part
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├─sdc2   8:34   &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;    50G  &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; part
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─sdc3   8:35   &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; 426.4G  &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; part
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;扩展-wsl-2-虚拟硬盘的大小&#34;&gt;&lt;strong&gt;扩展 WSL 2 虚拟硬盘的大小&lt;/strong&gt;&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.microsoft.com/zh-cn/windows/wsl/vhd-size&#34;&gt;https://docs.microsoft.com/zh-cn/windows/wsl/vhd-size&lt;/a&gt;&lt;/li&gt;
@@ -217,22 +217,22 @@ old_desc_blocks = 32, new_desc_blocks = 38
 The filesystem on /dev/sdb is now 78643200 (4k) blocks long.
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;重要&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;建议不要使用 Windows 工具或编辑器来修改、移动或访问 AppData 文件夹中与 WSL 相关的文件。 这样做可能会导致 Linux 分发版损坏。 如果要从 Windows 访问 Linux 文件，可通过路径 &lt;code&gt;\\wsl$\&amp;lt;distroName&amp;gt;\&lt;/code&gt; 进行访问。 打开 WSL 分发版，然后输入 &lt;code&gt;explorer.exe .&lt;/code&gt; 来查看此文件夹。 若要了解详细信息，请查看博客文章：&lt;strong&gt;&lt;a href=&#34;https://devblogs.microsoft.com/commandline/whats-new-for-wsl-in-windows-10-version-1903/#accessing-linux-files-from-windows&#34;&gt;从 Windows 访问 Linux 文件&lt;/a&gt;&lt;/strong&gt;。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;DISKPART&amp;gt; expand vdisk &lt;span class=&#34;nv&#34;&gt;maximum&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;512000&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;虚拟磁盘服务错误:
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;连接虚拟磁盘时，无法执行请求的操作。
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;DISKPART&amp;gt; expand vdisk maximum&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;512000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;虚拟磁盘服务错误:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;连接虚拟磁盘时，无法执行请求的操作。
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;windows10_wsl_setup_Untitled_2.png&#34; alt=&#34;Untitled&#34;&gt;&lt;/p&gt;
 &lt;p&gt;管理员权限运行 powershell&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;windows10_wsl_setup_Untitled_3.png&#34; alt=&#34;Untitled&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;windows10_wsl_setup_Untitled_4.png&#34; alt=&#34;Untitled&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;wsl2-error-0x80370114&#34;&gt;WSL2 Error: 0x80370114&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/m0_57298796/article/details/128395860&#34;&gt;WIN11按照官方文档安装WSL2时出现error 0x80370114_半路杀出来的小黑同学的博客-CSDN博客&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\U&lt;/span&gt;sers&lt;span class=&#34;se&#34;&gt;\l&lt;/span&gt;uyang&amp;gt; wsl --install -d Ubuntu-20.04
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Ubuntu 20.04 LTS is already installed.
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Launching Ubuntu 20.04 LTS...
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Installing, this may take a few minutes...
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;WslRegisterDistribution failed with error: 0x80370114
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Error: 0x80370114 The operation could not be started because a required feature is not installed.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\U&lt;/span&gt;sers&lt;span style=&#34;color:#ae81ff&#34;&gt;\l&lt;/span&gt;uyang&amp;gt; wsl --install -d Ubuntu-20.04
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Ubuntu 20.04 LTS is already installed.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Launching Ubuntu 20.04 LTS...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Installing, this may take a few minutes...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;WslRegisterDistribution failed with error: 0x80370114
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Error: 0x80370114 The operation could not be started because a required feature is not installed.
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Windows 11 上打开“设置”-&amp;gt;“应用”-&amp;gt;“可选功能”&lt;/p&gt;
 &lt;p&gt;“更多windows功能”选项&lt;/p&gt;
 &lt;p&gt;将“适用于Linux的Windows子系统”打勾后，重启即可。&lt;/p&gt;
@@ -241,75 +241,75 @@ The filesystem on /dev/sdb is now 78643200 (4k) blocks long.
 &lt;p&gt;&lt;a href=&#34;https://learn.microsoft.com/zh-cn/windows/wsl/wsl2-mount-disk&#34;&gt;关于在 WSL 2 中安装 Linux 磁盘的入门 | Microsoft Learn&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;标识磁盘&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;要列出 Windows 中的可用磁盘，请运行：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;GET-CimInstance -query &lt;span class=&#34;s2&#34;&gt;&amp;#34;SELECT * from Win32_DiskDrive&amp;#34;&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;GET-CimInstance -query &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;SELECT * from Win32_DiskDrive&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;磁盘路径位于“DeviceID”列下。 通常采用 \.\PHYSICALDRIVE* 格式。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\U&lt;/span&gt;sers&lt;span class=&#34;se&#34;&gt;\l&lt;/span&gt;uyang&amp;gt; GET-CimInstance -query &lt;span class=&#34;s2&#34;&gt;&amp;#34;SELECT * from Win32_DiskDrive&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;DeviceID           Caption              Partitions Size          Model
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--------           -------              ---------- ----          -----
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\P&lt;/span&gt;HYSICALDRIVE2 WD Green SN350 1TB   &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;          &lt;span class=&#34;m&#34;&gt;1000202273280&lt;/span&gt; WD Green SN350 1TB
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\P&lt;/span&gt;HYSICALDRIVE1 WDC WD40EJRX-89AKWY0 &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;          &lt;span class=&#34;m&#34;&gt;4000784417280&lt;/span&gt; WDC WD40EJRX-89AKWY0
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\P&lt;/span&gt;HYSICALDRIVE0 WDC WD10EZEX-08WN4A0 &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;          &lt;span class=&#34;m&#34;&gt;1000202273280&lt;/span&gt; WDC WD10EZEX-08WN4A0
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\U&lt;/span&gt;sers&lt;span style=&#34;color:#ae81ff&#34;&gt;\l&lt;/span&gt;uyang&amp;gt; GET-CimInstance -query &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;SELECT * from Win32_DiskDrive&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;DeviceID           Caption              Partitions Size          Model
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;--------           -------              ---------- ----          -----
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\\&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;\P&lt;/span&gt;HYSICALDRIVE2 WD Green SN350 1TB   &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;          &lt;span style=&#34;color:#ae81ff&#34;&gt;1000202273280&lt;/span&gt; WD Green SN350 1TB
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\\&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;\P&lt;/span&gt;HYSICALDRIVE1 WDC WD40EJRX-89AKWY0 &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;          &lt;span style=&#34;color:#ae81ff&#34;&gt;4000784417280&lt;/span&gt; WDC WD40EJRX-89AKWY0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\\&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;\P&lt;/span&gt;HYSICALDRIVE0 WDC WD10EZEX-08WN4A0 &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;          &lt;span style=&#34;color:#ae81ff&#34;&gt;1000202273280&lt;/span&gt; WDC WD10EZEX-08WN4A0
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;装载磁盘&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;使用 PowerShell，可以使用上面发现的磁盘路径装载磁盘，请运行：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wsl --mount &amp;lt;DiskPath&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# --bare: &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wsl --mount &amp;lt;DiskPath&amp;gt; --bare
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wsl --help
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# mount 相关&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--mount &amp;lt;Disk&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	在所有 WSL &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; 分发中附加并安装物理或虚拟磁盘。
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	选项:
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		--vhd
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			指定 &amp;lt;Disk&amp;gt; 是指虚拟硬盘。
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		--bare
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			将磁盘附加到 WSL 2，但不进行安装。
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		--name &amp;lt;Name&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			对安装点使用自定义名称安装磁盘。
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		--type &amp;lt;Type&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			安装磁盘时要使用的文件系统，如果未指定，则默认为 ext4。
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		--options &amp;lt;Options&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			其他安装选项。
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		--partition &amp;lt;Index&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			要安装的分区索引，如果未指定，则默认为整个磁盘。
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wsl --mount &amp;lt;DiskPath&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# --bare: &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wsl --mount &amp;lt;DiskPath&amp;gt; --bare
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wsl --help
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# mount 相关&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;--mount &amp;lt;Disk&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	在所有 WSL &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; 分发中附加并安装物理或虚拟磁盘。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	选项:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		--vhd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			指定 &amp;lt;Disk&amp;gt; 是指虚拟硬盘。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		--bare
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			将磁盘附加到 WSL 2，但不进行安装。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		--name &amp;lt;Name&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			对安装点使用自定义名称安装磁盘。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		--type &amp;lt;Type&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			安装磁盘时要使用的文件系统，如果未指定，则默认为 ext4。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		--options &amp;lt;Options&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			其他安装选项。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		--partition &amp;lt;Index&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			要安装的分区索引，如果未指定，则默认为整个磁盘。
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;实际挂载 LUSK 加密的 WD 移动硬盘 - 需要管理员权限启动终端&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;indows&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; GET-CimInstance -query &lt;span class=&#34;s2&#34;&gt;&amp;#34;SELECT * from Win32_DiskDrive&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;DeviceID           Caption                              Partitions Size          Model
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--------           -------                              ---------- ----          -----
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\P&lt;/span&gt;HYSICALDRIVE2 WD Green SN350 1TB                   &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;          &lt;span class=&#34;m&#34;&gt;1000202273280&lt;/span&gt; WD Green SN350 1TB
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\P&lt;/span&gt;HYSICALDRIVE1 WDC WD40EJRX-89AKWY0                 &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;          &lt;span class=&#34;m&#34;&gt;4000784417280&lt;/span&gt; WDC WD40EJRX-89AKWY0
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\P&lt;/span&gt;HYSICALDRIVE0 WDC WD10EZEX-08WN4A0                 &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;          &lt;span class=&#34;m&#34;&gt;1000202273280&lt;/span&gt; WDC WD10EZEX-08WN4A0
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\P&lt;/span&gt;HYSICALDRIVE3 WD My Passport 25F3 SCSI Disk Device &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;          &lt;span class=&#34;m&#34;&gt;512073031680&lt;/span&gt;  WD My Passport 25F3 SCSI Disk Device
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;indows&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; wsl --mount &lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\P&lt;/span&gt;HYSICALDRIVE3 --bare
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;操作成功完成。
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\W&lt;/span&gt;indows&lt;span style=&#34;color:#ae81ff&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; GET-CimInstance -query &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;SELECT * from Win32_DiskDrive&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;DeviceID           Caption                              Partitions Size          Model
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;--------           -------                              ---------- ----          -----
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\\&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;\P&lt;/span&gt;HYSICALDRIVE2 WD Green SN350 1TB                   &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;          &lt;span style=&#34;color:#ae81ff&#34;&gt;1000202273280&lt;/span&gt; WD Green SN350 1TB
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\\&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;\P&lt;/span&gt;HYSICALDRIVE1 WDC WD40EJRX-89AKWY0                 &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;          &lt;span style=&#34;color:#ae81ff&#34;&gt;4000784417280&lt;/span&gt; WDC WD40EJRX-89AKWY0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\\&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;\P&lt;/span&gt;HYSICALDRIVE0 WDC WD10EZEX-08WN4A0                 &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;          &lt;span style=&#34;color:#ae81ff&#34;&gt;1000202273280&lt;/span&gt; WDC WD10EZEX-08WN4A0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\\&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;\P&lt;/span&gt;HYSICALDRIVE3 WD My Passport 25F3 SCSI Disk Device &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;          &lt;span style=&#34;color:#ae81ff&#34;&gt;512073031680&lt;/span&gt;  WD My Passport 25F3 SCSI Disk Device
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\W&lt;/span&gt;indows&lt;span style=&#34;color:#ae81ff&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; wsl --mount &lt;span style=&#34;color:#ae81ff&#34;&gt;\\&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;\P&lt;/span&gt;HYSICALDRIVE3 --bare
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;操作成功完成。
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;之后通过 WSL ubuntu terminal 操作, 查看对应设备&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo fdisk -l
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Device     Boot Start        End    Sectors   Size Id Type
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/dev/sdc1        &lt;span class=&#34;m&#34;&gt;2048&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1000148991&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1000146944&lt;/span&gt; 476.9G &lt;span class=&#34;m&#34;&gt;83&lt;/span&gt; Linux
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo cryptsetup luksOpen /dev/sdc1 wd
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo mount /dev/mapper/wd ~/wd_udisk
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo umount ~/wd_udisk
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo cryptsetup luksClose wd
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo fdisk -l
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Device     Boot Start        End    Sectors   Size Id Type
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/dev/sdc1        &lt;span style=&#34;color:#ae81ff&#34;&gt;2048&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1000148991&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1000146944&lt;/span&gt; 476.9G &lt;span style=&#34;color:#ae81ff&#34;&gt;83&lt;/span&gt; Linux
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo cryptsetup luksOpen /dev/sdc1 wd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo mount /dev/mapper/wd ~/wd_udisk
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo umount ~/wd_udisk
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo cryptsetup luksClose wd
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;挂载机械硬盘&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# window terminal 管理员权限&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 1T&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wsl --mount &lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\P&lt;/span&gt;HYSICALDRIVE0 --bare
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 4T&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wsl --mount &lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;.&lt;span class=&#34;se&#34;&gt;\P&lt;/span&gt;HYSICALDRIVE1 --bare
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# ubuntu terminal&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 4T&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo mount -t ext4 /dev/sdf1 ~/HD_4T
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# window terminal 管理员权限&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 1T&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wsl --mount &lt;span style=&#34;color:#ae81ff&#34;&gt;\\&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;\P&lt;/span&gt;HYSICALDRIVE0 --bare
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 4T&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wsl --mount &lt;span style=&#34;color:#ae81ff&#34;&gt;\\&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;\P&lt;/span&gt;HYSICALDRIVE1 --bare
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# ubuntu terminal&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 4T&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo mount -t ext4 /dev/sdf1 ~/HD_4T
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     

@@ -16,7 +16,7 @@
       <description>&lt;p&gt;NI-VISA Driver Wizard 生成了一个 .INF 文件。右键该文件安装的过程中提示错误：第三方 INF 不包含数字签名信息。&lt;/p&gt;
 &lt;p&gt;Driver Wizard 生成的 INF 文件，必须为其创建 Windows Catalog (.cat)文件并进行数字签名，然后才能在Windows 10(或更高版本)机器上安装INF文件。&lt;/p&gt;
 &lt;p&gt;打开 Windows Terminal 在 .INF 文件所在目录下执行如下命令，生成 Windows Catalog 文件：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Inf2Cat /driver:. /os:10_X64
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Inf2Cat /driver:. /os:10_X64
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;windows-平台依赖环境安装&#34;&gt;Windows 平台依赖环境安装&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;visual studio 2022&lt;/li&gt;
@@ -45,14 +45,14 @@ commonName             = DeadBeef.com
 &lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;请求签发 CSR&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;openssl req -new -x509 -key private.key -out certificate.crt -days &lt;span class=&#34;m&#34;&gt;36500&lt;/span&gt; -config openssl.cnf
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openssl req -new -x509 -key private.key -out certificate.crt -days &lt;span style=&#34;color:#ae81ff&#34;&gt;36500&lt;/span&gt; -config openssl.cnf
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
 &lt;li&gt;生成自签名证书&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;openssl pkcs12 -export -in certificate.crt -inkey private.key -out yourfile.pfx
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openssl pkcs12 -export -in certificate.crt -inkey private.key -out yourfile.pfx
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;windows-catalog-签名&#34;&gt;Windows Catalog 签名&lt;/h2&gt;
 &lt;p&gt;将上前面生成的证书相关的文件，全部拷贝到 Windows 目录，跟 .INF .cat 文件放在一起。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;signtool.exe sign /fdws /f yourfile.pfx /p &lt;span class=&#34;m&#34;&gt;123456&lt;/span&gt; prefix.cat
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;signtool.exe sign /fdws /f yourfile.pfx /p &lt;span style=&#34;color:#ae81ff&#34;&gt;123456&lt;/span&gt; prefix.cat
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;安装证书&#34;&gt;安装证书&lt;/h2&gt;
 &lt;p&gt;右键 openssl 生成的 &lt;code&gt;certificate.crt&lt;/code&gt; 文件进行 &lt;code&gt;安装证书&lt;/code&gt;，如何安装 cert 自行百度&lt;/p&gt;
 &lt;ul&gt;

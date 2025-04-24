@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 100%">
+<html lang="en" style="font-size: 105%">
 
 <head>
   <meta charset="UTF-8">
@@ -87,19 +87,19 @@ NOTE: If in doubt, on Unix-ish systems use &#39;./config&#39;.
   
 
   
-  <script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="michaelneuper" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-
+    <script async data-name="BMC-Widget" 
+        data-cfasync="true" 
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+        data-id="michaelneuper" 
+        data-description="Like what I do? Buy me a coffee!" 
+        data-message="" 
+        data-color="#d79921" 
+        data-position="Right" 
+        data-x_margin="18" 
+        data-y_margin="18"
+        crossorigin="anonymous">
+  </script>
+  
 
   
   <meta property="og:url" content="https://luyoungcn.github.io/posts/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/">
@@ -292,223 +292,223 @@ root@028337952dd7:/home/misc/openssl-1.1.1k# ./Configure Usage: Configure [no-&l
 <h2 id="前置条件">前置条件</h2>
 <p>编译环境：黑芝麻 Linux23 Docker 开发环境，已经默认配置了交叉编译环境。</p>
 <h2 id="源码下载">源码下载</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget https://www.openssl.org/source/openssl-1.1.1k.tar.gz
-</span></span><span class="line"><span class="cl">tar -xzvf openssl-1.1.1k.tar.gz
-</span></span><span class="line"><span class="cl"><span class="nb">cd</span> openssl-1.1.1k
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://www.openssl.org/source/openssl-1.1.1k.tar.gz
+</span></span><span style="display:flex;"><span>tar -xzvf openssl-1.1.1k.tar.gz
+</span></span><span style="display:flex;"><span>cd openssl-1.1.1k
 </span></span></code></pre></div><h2 id="配置">配置</h2>
 <p>准备目标文件安装目录：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir _INSTALL
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir _INSTALL
 </span></span></code></pre></div><p>查看帮助手册：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@028337952dd7:/home/misc/openssl-1.1.1k# ./Configure
-</span></span><span class="line"><span class="cl">Usage: Configure <span class="o">[</span>no-&lt;cipher&gt; ...<span class="o">]</span> <span class="o">[</span>enable-&lt;cipher&gt; ...<span class="o">]</span> <span class="o">[</span>-Dxxx<span class="o">]</span> <span class="o">[</span>-lxxx<span class="o">]</span> <span class="o">[</span>-Lxxx<span class="o">]</span> <span class="o">[</span>-fxxx<span class="o">]</span> <span class="o">[</span>-Kxxx<span class="o">]</span> <span class="o">[</span>no-hw-xxx<span class="p">|</span>no-hw<span class="o">]</span> <span class="o">[[</span>no-<span class="o">]</span>threads<span class="o">]</span> <span class="o">[[</span>no-<span class="o">]</span>shared<span class="o">]</span> <span class="o">[[</span>no-<span class="o">]</span>zlib<span class="p">|</span>zlib-dynamic<span class="o">]</span> <span class="o">[</span>no-asm<span class="o">]</span> <span class="o">[</span>no-egd<span class="o">]</span> <span class="o">[</span>sctp<span class="o">]</span> <span class="o">[</span>386<span class="o">]</span> <span class="o">[</span>--prefix<span class="o">=</span>DIR<span class="o">]</span> <span class="o">[</span>--openssldir<span class="o">=</span>OPENSSLDIR<span class="o">]</span> <span class="o">[</span>--with-xxx<span class="o">[=</span>vvv<span class="o">]]</span> <span class="o">[</span>--config<span class="o">=</span>FILE<span class="o">]</span> os/compiler<span class="o">[</span>:flags<span class="o">]</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">pick os/compiler from:
-</span></span><span class="line"><span class="cl">BS2000-OSD BSD-generic32 BSD-generic64 BSD-ia64 BSD-sparc64 BSD-sparcv8
-</span></span><span class="line"><span class="cl">BSD-x86 BSD-x86-elf BSD-x86_64 Cygwin Cygwin-i386 Cygwin-i486 Cygwin-i586
-</span></span><span class="line"><span class="cl">Cygwin-i686 Cygwin-x86 Cygwin-x86_64 DJGPP MPE/iX-gcc UEFI UWIN VC-CE VC-WIN32
-</span></span><span class="line"><span class="cl">VC-WIN32-ARM VC-WIN32-ONECORE VC-WIN64-ARM VC-WIN64A VC-WIN64A-ONECORE
-</span></span><span class="line"><span class="cl">VC-WIN64A-masm VC-WIN64I aix-cc aix-gcc aix64-cc aix64-gcc android-arm
-</span></span><span class="line"><span class="cl">android-arm64 android-armeabi android-mips android-mips64 android-x86
-</span></span><span class="line"><span class="cl">android-x86_64 android64 android64-aarch64 android64-mips64 android64-x86_64
-</span></span><span class="line"><span class="cl">bsdi-elf-gcc cc darwin-i386-cc darwin-ppc-cc darwin64-arm64-cc darwin64-ppc-cc
-</span></span><span class="line"><span class="cl">darwin64-x86_64-cc gcc haiku-x86 haiku-x86_64 hpux-ia64-cc hpux-ia64-gcc
-</span></span><span class="line"><span class="cl">hpux-parisc-cc hpux-parisc-gcc hpux-parisc1_1-cc hpux-parisc1_1-gcc
-</span></span><span class="line"><span class="cl">hpux64-ia64-cc hpux64-ia64-gcc hpux64-parisc2-cc hpux64-parisc2-gcc hurd-x86
-</span></span><span class="line"><span class="cl">ios-cross ios-xcrun ios64-cross ios64-xcrun iossimulator-xcrun iphoneos-cross
-</span></span><span class="line"><span class="cl">irix-mips3-cc irix-mips3-gcc irix64-mips4-cc irix64-mips4-gcc linux-aarch64
-</span></span><span class="line"><span class="cl">linux-alpha-gcc linux-aout linux-arm64ilp32 linux-armv4 linux-c64xplus
-</span></span><span class="line"><span class="cl">linux-elf linux-generic32 linux-generic64 linux-ia64 linux-mips32 linux-mips64
-</span></span><span class="line"><span class="cl">linux-ppc linux-ppc64 linux-ppc64le linux-sparcv8 linux-sparcv9 linux-x32
-</span></span><span class="line"><span class="cl">linux-x86 linux-x86-clang linux-x86_64 linux-x86_64-clang linux32-s390x
-</span></span><span class="line"><span class="cl">linux64-mips64 linux64-s390x linux64-sparcv9 mingw mingw64 nextstep
-</span></span><span class="line"><span class="cl">nextstep3.3 sco5-cc sco5-gcc solaris-sparcv7-cc solaris-sparcv7-gcc
-</span></span><span class="line"><span class="cl">solaris-sparcv8-cc solaris-sparcv8-gcc solaris-sparcv9-cc solaris-sparcv9-gcc
-</span></span><span class="line"><span class="cl">solaris-x86-gcc solaris64-sparcv9-cc solaris64-sparcv9-gcc solaris64-x86_64-cc
-</span></span><span class="line"><span class="cl">solaris64-x86_64-gcc tru64-alpha-cc tru64-alpha-gcc uClinux-dist
-</span></span><span class="line"><span class="cl">uClinux-dist64 unixware-2.0 unixware-2.1 unixware-7 unixware-7-gcc vms-alpha
-</span></span><span class="line"><span class="cl">vms-alpha-p32 vms-alpha-p64 vms-ia64 vms-ia64-p32 vms-ia64-p64 vos-gcc
-</span></span><span class="line"><span class="cl">vxworks-mips vxworks-ppc405 vxworks-ppc60x vxworks-ppc750 vxworks-ppc750-debug
-</span></span><span class="line"><span class="cl">vxworks-ppc860 vxworks-ppcgen vxworks-simlinux
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">NOTE: If in doubt, on Unix-ish systems use <span class="s1">&#39;./config&#39;</span>.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@028337952dd7:/home/misc/openssl-1.1.1k# ./Configure
+</span></span><span style="display:flex;"><span>Usage: Configure <span style="color:#f92672">[</span>no-&lt;cipher&gt; ...<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>enable-&lt;cipher&gt; ...<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-Dxxx<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-lxxx<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-Lxxx<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-fxxx<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-Kxxx<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>no-hw-xxx|no-hw<span style="color:#f92672">]</span> <span style="color:#f92672">[[</span>no-<span style="color:#f92672">]</span>threads<span style="color:#f92672">]</span> <span style="color:#f92672">[[</span>no-<span style="color:#f92672">]</span>shared<span style="color:#f92672">]</span> <span style="color:#f92672">[[</span>no-<span style="color:#f92672">]</span>zlib|zlib-dynamic<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>no-asm<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>no-egd<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>sctp<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>386<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--prefix<span style="color:#f92672">=</span>DIR<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--openssldir<span style="color:#f92672">=</span>OPENSSLDIR<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--with-xxx<span style="color:#f92672">[=</span>vvv<span style="color:#f92672">]]</span> <span style="color:#f92672">[</span>--config<span style="color:#f92672">=</span>FILE<span style="color:#f92672">]</span> os/compiler<span style="color:#f92672">[</span>:flags<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pick os/compiler from:
+</span></span><span style="display:flex;"><span>BS2000-OSD BSD-generic32 BSD-generic64 BSD-ia64 BSD-sparc64 BSD-sparcv8
+</span></span><span style="display:flex;"><span>BSD-x86 BSD-x86-elf BSD-x86_64 Cygwin Cygwin-i386 Cygwin-i486 Cygwin-i586
+</span></span><span style="display:flex;"><span>Cygwin-i686 Cygwin-x86 Cygwin-x86_64 DJGPP MPE/iX-gcc UEFI UWIN VC-CE VC-WIN32
+</span></span><span style="display:flex;"><span>VC-WIN32-ARM VC-WIN32-ONECORE VC-WIN64-ARM VC-WIN64A VC-WIN64A-ONECORE
+</span></span><span style="display:flex;"><span>VC-WIN64A-masm VC-WIN64I aix-cc aix-gcc aix64-cc aix64-gcc android-arm
+</span></span><span style="display:flex;"><span>android-arm64 android-armeabi android-mips android-mips64 android-x86
+</span></span><span style="display:flex;"><span>android-x86_64 android64 android64-aarch64 android64-mips64 android64-x86_64
+</span></span><span style="display:flex;"><span>bsdi-elf-gcc cc darwin-i386-cc darwin-ppc-cc darwin64-arm64-cc darwin64-ppc-cc
+</span></span><span style="display:flex;"><span>darwin64-x86_64-cc gcc haiku-x86 haiku-x86_64 hpux-ia64-cc hpux-ia64-gcc
+</span></span><span style="display:flex;"><span>hpux-parisc-cc hpux-parisc-gcc hpux-parisc1_1-cc hpux-parisc1_1-gcc
+</span></span><span style="display:flex;"><span>hpux64-ia64-cc hpux64-ia64-gcc hpux64-parisc2-cc hpux64-parisc2-gcc hurd-x86
+</span></span><span style="display:flex;"><span>ios-cross ios-xcrun ios64-cross ios64-xcrun iossimulator-xcrun iphoneos-cross
+</span></span><span style="display:flex;"><span>irix-mips3-cc irix-mips3-gcc irix64-mips4-cc irix64-mips4-gcc linux-aarch64
+</span></span><span style="display:flex;"><span>linux-alpha-gcc linux-aout linux-arm64ilp32 linux-armv4 linux-c64xplus
+</span></span><span style="display:flex;"><span>linux-elf linux-generic32 linux-generic64 linux-ia64 linux-mips32 linux-mips64
+</span></span><span style="display:flex;"><span>linux-ppc linux-ppc64 linux-ppc64le linux-sparcv8 linux-sparcv9 linux-x32
+</span></span><span style="display:flex;"><span>linux-x86 linux-x86-clang linux-x86_64 linux-x86_64-clang linux32-s390x
+</span></span><span style="display:flex;"><span>linux64-mips64 linux64-s390x linux64-sparcv9 mingw mingw64 nextstep
+</span></span><span style="display:flex;"><span>nextstep3.3 sco5-cc sco5-gcc solaris-sparcv7-cc solaris-sparcv7-gcc
+</span></span><span style="display:flex;"><span>solaris-sparcv8-cc solaris-sparcv8-gcc solaris-sparcv9-cc solaris-sparcv9-gcc
+</span></span><span style="display:flex;"><span>solaris-x86-gcc solaris64-sparcv9-cc solaris64-sparcv9-gcc solaris64-x86_64-cc
+</span></span><span style="display:flex;"><span>solaris64-x86_64-gcc tru64-alpha-cc tru64-alpha-gcc uClinux-dist
+</span></span><span style="display:flex;"><span>uClinux-dist64 unixware-2.0 unixware-2.1 unixware-7 unixware-7-gcc vms-alpha
+</span></span><span style="display:flex;"><span>vms-alpha-p32 vms-alpha-p64 vms-ia64 vms-ia64-p32 vms-ia64-p64 vos-gcc
+</span></span><span style="display:flex;"><span>vxworks-mips vxworks-ppc405 vxworks-ppc60x vxworks-ppc750 vxworks-ppc750-debug
+</span></span><span style="display:flex;"><span>vxworks-ppc860 vxworks-ppcgen vxworks-simlinux
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NOTE: If in doubt, on Unix-ish systems use <span style="color:#e6db74">&#39;./config&#39;</span>.
 </span></span></code></pre></div><p>上面提示如果编译 Unix-ish x86 平台目标文件，直接使用 <code>./config</code></p>
 <p>更多详细说明参考：INSTALL 文件。</p>
 <p>我们的需求是：编译黑芝麻嵌入式平台 aarh64 目标文件，安装到当前目录下的 <code>_INSTALL</code> 目录</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@028337952dd7:/home/misc/openssl-1.1.1k# ./Configure linux-aarch64 --prefix<span class="o">=</span>/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build
-</span></span><span class="line"><span class="cl">Configuring OpenSSL version 1.1.1k <span class="o">(</span>0x101010bfL<span class="o">)</span> <span class="k">for</span> linux-aarch64
-</span></span><span class="line"><span class="cl">Using os-specific seed configuration
-</span></span><span class="line"><span class="cl">Creating configdata.pm
-</span></span><span class="line"><span class="cl">Creating Makefile
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">**********************************************************************
-</span></span><span class="line"><span class="cl">***                                                                ***
-</span></span><span class="line"><span class="cl">***   OpenSSL has been successfully configured                     ***
-</span></span><span class="line"><span class="cl">***                                                                ***
-</span></span><span class="line"><span class="cl">***   If you encounter a problem <span class="k">while</span> building, please open an    ***
-</span></span><span class="line"><span class="cl">***   issue on GitHub &lt;https://github.com/openssl/openssl/issues&gt;  ***
-</span></span><span class="line"><span class="cl">***   and include the output from the following command:           ***
-</span></span><span class="line"><span class="cl">***                                                                ***
-</span></span><span class="line"><span class="cl">***       perl configdata.pm --dump                                ***
-</span></span><span class="line"><span class="cl">***                                                                ***
-</span></span><span class="line"><span class="cl">***   <span class="o">(</span>If you are new to OpenSSL, you might want to consult the    ***
-</span></span><span class="line"><span class="cl">***   <span class="s1">&#39;Troubleshooting&#39;</span> section in the INSTALL file first<span class="o">)</span>         ***
-</span></span><span class="line"><span class="cl">***                                                                ***
-</span></span><span class="line"><span class="cl">**********************************************************************
-</span></span><span class="line"><span class="cl">root@028337952dd7:/home/misc/openssl-1.1.1k#
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@028337952dd7:/home/misc/openssl-1.1.1k# ./Configure linux-aarch64 --prefix<span style="color:#f92672">=</span>/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build
+</span></span><span style="display:flex;"><span>Configuring OpenSSL version 1.1.1k <span style="color:#f92672">(</span>0x101010bfL<span style="color:#f92672">)</span> <span style="color:#66d9ef">for</span> linux-aarch64
+</span></span><span style="display:flex;"><span>Using os-specific seed configuration
+</span></span><span style="display:flex;"><span>Creating configdata.pm
+</span></span><span style="display:flex;"><span>Creating Makefile
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>**********************************************************************
+</span></span><span style="display:flex;"><span>***                                                                ***
+</span></span><span style="display:flex;"><span>***   OpenSSL has been successfully configured                     ***
+</span></span><span style="display:flex;"><span>***                                                                ***
+</span></span><span style="display:flex;"><span>***   If you encounter a problem <span style="color:#66d9ef">while</span> building, please open an    ***
+</span></span><span style="display:flex;"><span>***   issue on GitHub &lt;https://github.com/openssl/openssl/issues&gt;  ***
+</span></span><span style="display:flex;"><span>***   and include the output from the following command:           ***
+</span></span><span style="display:flex;"><span>***                                                                ***
+</span></span><span style="display:flex;"><span>***       perl configdata.pm --dump                                ***
+</span></span><span style="display:flex;"><span>***                                                                ***
+</span></span><span style="display:flex;"><span>***   <span style="color:#f92672">(</span>If you are new to OpenSSL, you might want to consult the    ***
+</span></span><span style="display:flex;"><span>***   <span style="color:#e6db74">&#39;Troubleshooting&#39;</span> section in the INSTALL file first<span style="color:#f92672">)</span>         ***
+</span></span><span style="display:flex;"><span>***                                                                ***
+</span></span><span style="display:flex;"><span>**********************************************************************
+</span></span><span style="display:flex;"><span>root@028337952dd7:/home/misc/openssl-1.1.1k#
 </span></span></code></pre></div><p>注意如上语句中：<code>Configuring OpenSSL version 1.1.1k (0x101010bfL) for linux-aarch64</code>
 目标平台很重要，如果指定错误可能导致编译失败。</p>
 <h2 id="踩坑记录-1---编译器指定异常">踩坑记录 1 - 编译器指定异常</h2>
 <p>按照上述配置完成之后，编译失败：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@028337952dd7:/home/misc/openssl-1.1.1k# make -j
-</span></span><span class="line"><span class="cl">/opt/bstos/linux-23/sysroots/x86_64-bstsdk-linux/usr/bin/perl.real <span class="s2">&#34;-I.&#34;</span> -Mconfigdata <span class="s2">&#34;util/dofile.pl&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="s2">&#34;-oMakefile&#34;</span> include/crypto/bn_conf.h.in &gt; include/crypto/bn_conf.h
-</span></span><span class="line"><span class="cl">/opt/bstos/linux-23/sysroots/x86_64-bstsdk-linux/usr/bin/perl.real <span class="s2">&#34;-I.&#34;</span> -Mconfigdata <span class="s2">&#34;util/dofile.pl&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="s2">&#34;-oMakefile&#34;</span> include/crypto/dso_conf.h.in &gt; include/crypto/dso_conf.h
-</span></span><span class="line"><span class="cl">/opt/bstos/linux-23/sysroots/x86_64-bstsdk-linux/usr/bin/perl.real <span class="s2">&#34;-I.&#34;</span> -Mconfigdata <span class="s2">&#34;util/dofile.pl&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="s2">&#34;-oMakefile&#34;</span> include/openssl/opensslconf.h.in &gt; include/openssl/opensslconf.h
-</span></span><span class="line"><span class="cl">make depend <span class="o">&amp;&amp;</span> make _all
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: Entering directory <span class="s1">&#39;/home/misc/openssl-1.1.1k&#39;</span>
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: Leaving directory <span class="s1">&#39;/home/misc/openssl-1.1.1k&#39;</span>
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: Entering directory <span class="s1">&#39;/home/misc/openssl-1.1.1k&#39;</span>
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-aarch64-bst-linux-gcc  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DVPAES_ASM -DECP_NISTZ256_ASM -DPOLY1305_ASM -DOPENSSLDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/app_rand.o apps/app_rand.c
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-aarch64-bst-linux-gcc  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DVPAES_ASM -DECP_NISTZ256_ASM -DPOLY1305_ASM -DOPENSSLDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/apps.o apps/apps.c
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-aarch64-bst-linux-gcc  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DVPAES_ASM -DECP_NISTZ256_ASM -DPOLY1305_ASM -DOPENSSLDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/bf_prefix.o apps/bf_prefix.c
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-aarch64-bst-linux-gcc  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DVPAES_ASM -DECP_NISTZ256_ASM -DPOLY1305_ASM -DOPENSSLDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/opt.o apps/opt.c
-</span></span><span class="line"><span class="cl">/bin/sh: 1: aarch64-bst-linux-aarch64-bst-linux-gcc: not found
-</span></span><span class="line"><span class="cl">/bin/sh: 1: Makefile:700: recipe <span class="k">for</span> target <span class="s1">&#39;apps/app_rand.o&#39;</span> failed
-</span></span><span class="line"><span class="cl">/bin/sh: 1: aarch64-bst-linux-aarch64-bst-linux-gcc: not foundaarch64-bst-linux-aarch64-bst-linux-gcc: not foundmake<span class="o">[</span>1<span class="o">]</span>: *** <span class="o">[</span>apps/app_rand.o<span class="o">]</span> Error <span class="m">127</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** Waiting <span class="k">for</span> unfinished jobs....
-</span></span><span class="line"><span class="cl">Makefile:704: recipe <span class="k">for</span> target <span class="s1">&#39;apps/bf_prefix.o&#39;</span> failed
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** <span class="o">[</span>apps/bf_prefix.o<span class="o">]</span> Error <span class="m">127</span>
-</span></span><span class="line"><span class="cl">/bin/sh: 1: aarch64-bst-linux-aarch64-bst-linux-gcc: not found
-</span></span><span class="line"><span class="cl">Makefile:702: recipe <span class="k">for</span> target <span class="s1">&#39;apps/apps.o&#39;</span> failed
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** <span class="o">[</span>apps/apps.o<span class="o">]</span> Error <span class="m">127</span>
-</span></span><span class="line"><span class="cl">Makefile:706: recipe <span class="k">for</span> target <span class="s1">&#39;apps/opt.o&#39;</span> failed
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** <span class="o">[</span>apps/opt.o<span class="o">]</span> Error <span class="m">127</span>
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: Leaving directory <span class="s1">&#39;/home/misc/openssl-1.1.1k&#39;</span>
-</span></span><span class="line"><span class="cl">Makefile:172: recipe <span class="k">for</span> target <span class="s1">&#39;all&#39;</span> failed
-</span></span><span class="line"><span class="cl">make: *** <span class="o">[</span>all<span class="o">]</span> Error <span class="m">2</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@028337952dd7:/home/misc/openssl-1.1.1k# make -j
+</span></span><span style="display:flex;"><span>/opt/bstos/linux-23/sysroots/x86_64-bstsdk-linux/usr/bin/perl.real <span style="color:#e6db74">&#34;-I.&#34;</span> -Mconfigdata <span style="color:#e6db74">&#34;util/dofile.pl&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#34;-oMakefile&#34;</span> include/crypto/bn_conf.h.in &gt; include/crypto/bn_conf.h
+</span></span><span style="display:flex;"><span>/opt/bstos/linux-23/sysroots/x86_64-bstsdk-linux/usr/bin/perl.real <span style="color:#e6db74">&#34;-I.&#34;</span> -Mconfigdata <span style="color:#e6db74">&#34;util/dofile.pl&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#34;-oMakefile&#34;</span> include/crypto/dso_conf.h.in &gt; include/crypto/dso_conf.h
+</span></span><span style="display:flex;"><span>/opt/bstos/linux-23/sysroots/x86_64-bstsdk-linux/usr/bin/perl.real <span style="color:#e6db74">&#34;-I.&#34;</span> -Mconfigdata <span style="color:#e6db74">&#34;util/dofile.pl&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#34;-oMakefile&#34;</span> include/openssl/opensslconf.h.in &gt; include/openssl/opensslconf.h
+</span></span><span style="display:flex;"><span>make depend <span style="color:#f92672">&amp;&amp;</span> make _all
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: Entering directory <span style="color:#e6db74">&#39;/home/misc/openssl-1.1.1k&#39;</span>
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: Leaving directory <span style="color:#e6db74">&#39;/home/misc/openssl-1.1.1k&#39;</span>
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: Entering directory <span style="color:#e6db74">&#39;/home/misc/openssl-1.1.1k&#39;</span>
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-aarch64-bst-linux-gcc  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DVPAES_ASM -DECP_NISTZ256_ASM -DPOLY1305_ASM -DOPENSSLDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/app_rand.o apps/app_rand.c
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-aarch64-bst-linux-gcc  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DVPAES_ASM -DECP_NISTZ256_ASM -DPOLY1305_ASM -DOPENSSLDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/apps.o apps/apps.c
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-aarch64-bst-linux-gcc  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DVPAES_ASM -DECP_NISTZ256_ASM -DPOLY1305_ASM -DOPENSSLDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/bf_prefix.o apps/bf_prefix.c
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-aarch64-bst-linux-gcc  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DVPAES_ASM -DECP_NISTZ256_ASM -DPOLY1305_ASM -DOPENSSLDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/opt.o apps/opt.c
+</span></span><span style="display:flex;"><span>/bin/sh: 1: aarch64-bst-linux-aarch64-bst-linux-gcc: not found
+</span></span><span style="display:flex;"><span>/bin/sh: 1: Makefile:700: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;apps/app_rand.o&#39;</span> failed
+</span></span><span style="display:flex;"><span>/bin/sh: 1: aarch64-bst-linux-aarch64-bst-linux-gcc: not foundaarch64-bst-linux-aarch64-bst-linux-gcc: not foundmake<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** <span style="color:#f92672">[</span>apps/app_rand.o<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">127</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** Waiting <span style="color:#66d9ef">for</span> unfinished jobs....
+</span></span><span style="display:flex;"><span>Makefile:704: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;apps/bf_prefix.o&#39;</span> failed
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** <span style="color:#f92672">[</span>apps/bf_prefix.o<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">127</span>
+</span></span><span style="display:flex;"><span>/bin/sh: 1: aarch64-bst-linux-aarch64-bst-linux-gcc: not found
+</span></span><span style="display:flex;"><span>Makefile:702: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;apps/apps.o&#39;</span> failed
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** <span style="color:#f92672">[</span>apps/apps.o<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">127</span>
+</span></span><span style="display:flex;"><span>Makefile:706: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;apps/opt.o&#39;</span> failed
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** <span style="color:#f92672">[</span>apps/opt.o<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">127</span>
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: Leaving directory <span style="color:#e6db74">&#39;/home/misc/openssl-1.1.1k&#39;</span>
+</span></span><span style="display:flex;"><span>Makefile:172: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;all&#39;</span> failed
+</span></span><span style="display:flex;"><span>make: *** <span style="color:#f92672">[</span>all<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">2</span>
 </span></span></code></pre></div><p>关键错误信息：
 <code>not foundaarch64-bst-linux-aarch64-bst-linux-gcc</code></p>
 <p>查看 Makefile 有如下内容：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">CROSS_COMPILE</span><span class="o">=</span>aarch64-bst-linux-
-</span></span><span class="line"><span class="cl"><span class="nv">CC</span><span class="o">=</span><span class="k">$(</span>CROSS_COMPILE<span class="k">)</span>aarch64-bst-linux-gcc  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux
-</span></span><span class="line"><span class="cl"><span class="nv">CXX</span><span class="o">=</span><span class="k">$(</span>CROSS_COMPILE<span class="k">)</span>aarch64-bst-linux-g++  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>CROSS_COMPILE<span style="color:#f92672">=</span>aarch64-bst-linux-
+</span></span><span style="display:flex;"><span>CC<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>CROSS_COMPILE<span style="color:#66d9ef">)</span>aarch64-bst-linux-gcc  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux
+</span></span><span style="display:flex;"><span>CXX<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>CROSS_COMPILE<span style="color:#66d9ef">)</span>aarch64-bst-linux-g++  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux
 </span></span></code></pre></div><p>所以看出问题所在了，这里手动修改 Makefile 直接将 CROSS_COMPILE 不要赋值即可 <code>CROSS_COMPILE=</code></p>
 <p>重新编译通过。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">make -j
-</span></span><span class="line"><span class="cl">make install
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>make -j
+</span></span><span style="display:flex;"><span>make install
 </span></span></code></pre></div><h2 id="踩坑记录-2---平台配置失败">踩坑记录 2 - 平台配置失败</h2>
 <p>举一个失败的例子，使用 config 命令配置 <code>linux-x86_64</code>：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@028337952dd7:/home/misc/openssl-1.1.1k# ./config --prefix<span class="o">=</span>/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build
-</span></span><span class="line"><span class="cl">Operating system: x86_64-whatever-linux2
-</span></span><span class="line"><span class="cl">Configuring OpenSSL version 1.1.1k <span class="o">(</span>0x101010bfL<span class="o">)</span> <span class="k">for</span> linux-x86_64
-</span></span><span class="line"><span class="cl">Using os-specific seed configuration
-</span></span><span class="line"><span class="cl">Creating configdata.pm
-</span></span><span class="line"><span class="cl">Creating Makefile
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">**********************************************************************
-</span></span><span class="line"><span class="cl">***                                                                ***
-</span></span><span class="line"><span class="cl">***   OpenSSL has been successfully configured                     ***
-</span></span><span class="line"><span class="cl">***                                                                ***
-</span></span><span class="line"><span class="cl">***   If you encounter a problem <span class="k">while</span> building, please open an    ***
-</span></span><span class="line"><span class="cl">***   issue on GitHub &lt;https://github.com/openssl/openssl/issues&gt;  ***
-</span></span><span class="line"><span class="cl">***   and include the output from the following command:           ***
-</span></span><span class="line"><span class="cl">***                                                                ***
-</span></span><span class="line"><span class="cl">***       perl configdata.pm --dump                                ***
-</span></span><span class="line"><span class="cl">***                                                                ***
-</span></span><span class="line"><span class="cl">***   <span class="o">(</span>If you are new to OpenSSL, you might want to consult the    ***
-</span></span><span class="line"><span class="cl">***   <span class="s1">&#39;Troubleshooting&#39;</span> section in the INSTALL file first<span class="o">)</span>         ***
-</span></span><span class="line"><span class="cl">***                                                                ***
-</span></span><span class="line"><span class="cl">**********************************************************************
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@028337952dd7:/home/misc/openssl-1.1.1k# ./config --prefix<span style="color:#f92672">=</span>/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build
+</span></span><span style="display:flex;"><span>Operating system: x86_64-whatever-linux2
+</span></span><span style="display:flex;"><span>Configuring OpenSSL version 1.1.1k <span style="color:#f92672">(</span>0x101010bfL<span style="color:#f92672">)</span> <span style="color:#66d9ef">for</span> linux-x86_64
+</span></span><span style="display:flex;"><span>Using os-specific seed configuration
+</span></span><span style="display:flex;"><span>Creating configdata.pm
+</span></span><span style="display:flex;"><span>Creating Makefile
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>**********************************************************************
+</span></span><span style="display:flex;"><span>***                                                                ***
+</span></span><span style="display:flex;"><span>***   OpenSSL has been successfully configured                     ***
+</span></span><span style="display:flex;"><span>***                                                                ***
+</span></span><span style="display:flex;"><span>***   If you encounter a problem <span style="color:#66d9ef">while</span> building, please open an    ***
+</span></span><span style="display:flex;"><span>***   issue on GitHub &lt;https://github.com/openssl/openssl/issues&gt;  ***
+</span></span><span style="display:flex;"><span>***   and include the output from the following command:           ***
+</span></span><span style="display:flex;"><span>***                                                                ***
+</span></span><span style="display:flex;"><span>***       perl configdata.pm --dump                                ***
+</span></span><span style="display:flex;"><span>***                                                                ***
+</span></span><span style="display:flex;"><span>***   <span style="color:#f92672">(</span>If you are new to OpenSSL, you might want to consult the    ***
+</span></span><span style="display:flex;"><span>***   <span style="color:#e6db74">&#39;Troubleshooting&#39;</span> section in the INSTALL file first<span style="color:#f92672">)</span>         ***
+</span></span><span style="display:flex;"><span>***                                                                ***
+</span></span><span style="display:flex;"><span>**********************************************************************
 </span></span></code></pre></div><p>由于配置的平台是 x86_64 增加了 -m64 编译选项，但是交叉编译器不支持导致编译失败：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@028337952dd7:/home/misc/openssl-1.1.1k# make -j
-</span></span><span class="line"><span class="cl">/opt/bstos/linux-23/sysroots/x86_64-bstsdk-linux/usr/bin/perl.real <span class="s2">&#34;-I.&#34;</span> -Mconfigdata <span class="s2">&#34;util/dofile.pl&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="s2">&#34;-oMakefile&#34;</span> include/crypto/bn_conf.h.in &gt; include/crypto/bn_conf.h
-</span></span><span class="line"><span class="cl">/opt/bstos/linux-23/sysroots/x86_64-bstsdk-linux/usr/bin/perl.real <span class="s2">&#34;-I.&#34;</span> -Mconfigdata <span class="s2">&#34;util/dofile.pl&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="s2">&#34;-oMakefile&#34;</span> include/crypto/dso_conf.h.in &gt; include/crypto/dso_conf.h
-</span></span><span class="line"><span class="cl">/opt/bstos/linux-23/sysroots/x86_64-bstsdk-linux/usr/bin/perl.real <span class="s2">&#34;-I.&#34;</span> -Mconfigdata <span class="s2">&#34;util/dofile.pl&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="s2">&#34;-oMakefile&#34;</span> include/openssl/opensslconf.h.in &gt; include/openssl/opensslconf.h
-</span></span><span class="line"><span class="cl">make depend <span class="o">&amp;&amp;</span> make _all
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: Entering directory <span class="s1">&#39;/home/misc/openssl-1.1.1k&#39;</span>
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: Leaving directory <span class="s1">&#39;/home/misc/openssl-1.1.1k&#39;</span>
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: Entering directory <span class="s1">&#39;/home/misc/openssl-1.1.1k&#39;</span>
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-aarch64-bst-linux-gcc  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/app_rand.o apps/app_rand.c
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-aarch64-bst-linux-gcc  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/apps.o apps/apps.c
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-aarch64-bst-linux-gcc  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/bf_prefix.o apps/bf_prefix.c
-</span></span><span class="line"><span class="cl">/bin/sh: 1: aarch64-bst-linux-aarch64-bst-linux-gcc: not found
-</span></span><span class="line"><span class="cl">Makefile:700: recipe <span class="k">for</span> target <span class="s1">&#39;apps/app_rand.o&#39;</span> failed
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** <span class="o">[</span>apps/app_rand.o<span class="o">]</span> Error <span class="m">127</span>
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** Waiting <span class="k">for</span> unfinished jobs....
-</span></span><span class="line"><span class="cl">/bin/sh: 1: aarch64-bst-linux-aarch64-bst-linux-gcc: not found
-</span></span><span class="line"><span class="cl">Makefile:702: recipe <span class="k">for</span> target <span class="s1">&#39;apps/apps.o&#39;</span> failed
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** <span class="o">[</span>apps/apps.o<span class="o">]</span> Error <span class="m">127</span>
-</span></span><span class="line"><span class="cl">/bin/sh: 1: aarch64-bst-linux-aarch64-bst-linux-gcc: not found
-</span></span><span class="line"><span class="cl">Makefile:704: recipe <span class="k">for</span> target <span class="s1">&#39;apps/bf_prefix.o&#39;</span> failed
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** <span class="o">[</span>apps/bf_prefix.o<span class="o">]</span> Error <span class="m">127</span>
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: Leaving directory <span class="s1">&#39;/home/misc/openssl-1.1.1k&#39;</span>
-</span></span><span class="line"><span class="cl">Makefile:172: recipe <span class="k">for</span> target <span class="s1">&#39;all&#39;</span> failed
-</span></span><span class="line"><span class="cl">make: *** <span class="o">[</span>all<span class="o">]</span> Error <span class="m">2</span>
-</span></span><span class="line"><span class="cl">root@028337952dd7:/home/misc/openssl-1.1.1k# vim Makefile
-</span></span><span class="line"><span class="cl">root@028337952dd7:/home/misc/openssl-1.1.1k# make -j
-</span></span><span class="line"><span class="cl">make depend <span class="o">&amp;&amp;</span> make _all
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: Entering directory <span class="s1">&#39;/home/misc/openssl-1.1.1k&#39;</span>
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: Leaving directory <span class="s1">&#39;/home/misc/openssl-1.1.1k&#39;</span>
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: Entering directory <span class="s1">&#39;/home/misc/openssl-1.1.1k&#39;</span>
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/app_rand.o apps/app_rand.c
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/apps.o apps/apps.c
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/bf_prefix.o apps/bf_prefix.c
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/opt.o apps/opt.c
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/s_cb.o apps/s_cb.c
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/s_socket.o apps/s_socket.c
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o crypto/aes/aes_cbc.o crypto/aes/aes_cbc.c
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o crypto/aes/aes_cfb.o crypto/aes/aes_cfb.c
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o crypto/aes/aes_core.o crypto/aes/aes_core.c
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o crypto/aes/aes_ecb.o crypto/aes/aes_ecb.c
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o crypto/aes/aes_ige.o crypto/aes/aes_ige.c
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc: error: unrecognized <span class="nb">command</span> line option <span class="s1">&#39;-m64&#39;</span>
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc: error: unrecognized <span class="nb">command</span> line option <span class="s1">&#39;-m64&#39;</span>
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc: error: unrecognized <span class="nb">command</span> line option <span class="s1">&#39;-m64&#39;</span>
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc  --sysroot<span class="o">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span class="o">=</span><span class="s2">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o crypto/aes/aes_misc.o crypto/aes/aes_misc.c
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc: error: unrecognized <span class="nb">command</span> line option <span class="s1">&#39;-m64&#39;</span>
-</span></span><span class="line"><span class="cl">Makefile:700: recipe <span class="k">for</span> target <span class="s1">&#39;apps/app_rand.o&#39;</span> failed
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** <span class="o">[</span>apps/app_rand.o<span class="o">]</span> Error <span class="m">1</span>
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** Waiting <span class="k">for</span> unfinished jobs....
-</span></span><span class="line"><span class="cl">Makefile:702: recipe <span class="k">for</span> target <span class="s1">&#39;apps/apps.o&#39;</span> failed
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** <span class="o">[</span>apps/apps.o<span class="o">]</span> Error <span class="m">1</span>
-</span></span><span class="line"><span class="cl">Makefile:704: recipe <span class="k">for</span> target <span class="s1">&#39;apps/bf_prefix.o&#39;</span> failed
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** <span class="o">[</span>apps/bf_prefix.o<span class="o">]</span> Error <span class="m">1</span>
-</span></span><span class="line"><span class="cl">Makefile:706: recipe <span class="k">for</span> target <span class="s1">&#39;apps/opt.o&#39;</span> failed
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** <span class="o">[</span>apps/opt.o<span class="o">]</span> Error <span class="m">1</span>
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc: error: unrecognized <span class="nb">command</span> line option <span class="s1">&#39;-m64&#39;</span>
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc: error: unrecognized <span class="nb">command</span> line option <span class="s1">&#39;-m64&#39;</span>
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc: error: unrecognized <span class="nb">command</span> line option <span class="s1">&#39;-m64&#39;</span>
-</span></span><span class="line"><span class="cl">Makefile:708: recipe <span class="k">for</span> target <span class="s1">&#39;apps/s_cb.o&#39;</span> failed
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** <span class="o">[</span>apps/s_cb.o<span class="o">]</span> Error <span class="m">1</span>
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc: error: unrecognized <span class="nb">command</span> line option <span class="s1">&#39;-m64&#39;</span>
-</span></span><span class="line"><span class="cl">Makefile:724: recipe <span class="k">for</span> target <span class="s1">&#39;crypto/aes/aes_cfb.o&#39;</span> failed
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** <span class="o">[</span>crypto/aes/aes_cfb.o<span class="o">]</span> Error <span class="m">1</span>
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc: error: unrecognized <span class="nb">command</span> line option <span class="s1">&#39;-m64&#39;</span>
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc: error: unrecognized <span class="nb">command</span> line option <span class="s1">&#39;-m64&#39;</span>
-</span></span><span class="line"><span class="cl">Makefile:710: recipe <span class="k">for</span> target <span class="s1">&#39;apps/s_socket.o&#39;</span> failed
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc: error: unrecognized <span class="nb">command</span> line option <span class="s1">&#39;-m64&#39;</span>
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** <span class="o">[</span>apps/s_socket.o<span class="o">]</span> Error <span class="m">1</span>
-</span></span><span class="line"><span class="cl">Makefile:722: recipe <span class="k">for</span> target <span class="s1">&#39;crypto/aes/aes_cbc.o&#39;</span> failed
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** <span class="o">[</span>crypto/aes/aes_cbc.o<span class="o">]</span> Error <span class="m">1</span>
-</span></span><span class="line"><span class="cl">Makefile:726: recipe <span class="k">for</span> target <span class="s1">&#39;crypto/aes/aes_core.o&#39;</span> failed
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** <span class="o">[</span>crypto/aes/aes_core.o<span class="o">]</span> Error <span class="m">1</span>
-</span></span><span class="line"><span class="cl">Makefile:730: recipe <span class="k">for</span> target <span class="s1">&#39;crypto/aes/aes_ige.o&#39;</span> failed
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** <span class="o">[</span>crypto/aes/aes_ige.o<span class="o">]</span> Error <span class="m">1</span>
-</span></span><span class="line"><span class="cl">Makefile:728: recipe <span class="k">for</span> target <span class="s1">&#39;crypto/aes/aes_ecb.o&#39;</span> failed
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** <span class="o">[</span>crypto/aes/aes_ecb.o<span class="o">]</span> Error <span class="m">1</span>
-</span></span><span class="line"><span class="cl">aarch64-bst-linux-gcc: error: unrecognized <span class="nb">command</span> line option <span class="s1">&#39;-m64&#39;</span>
-</span></span><span class="line"><span class="cl">Makefile:732: recipe <span class="k">for</span> target <span class="s1">&#39;crypto/aes/aes_misc.o&#39;</span> failed
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** <span class="o">[</span>crypto/aes/aes_misc.o<span class="o">]</span> Error <span class="m">1</span>
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: Leaving directory <span class="s1">&#39;/home/misc/openssl-1.1.1k&#39;</span>
-</span></span><span class="line"><span class="cl">Makefile:172: recipe <span class="k">for</span> target <span class="s1">&#39;all&#39;</span> failed
-</span></span><span class="line"><span class="cl">make: *** <span class="o">[</span>all<span class="o">]</span> Error <span class="m">2</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@028337952dd7:/home/misc/openssl-1.1.1k# make -j
+</span></span><span style="display:flex;"><span>/opt/bstos/linux-23/sysroots/x86_64-bstsdk-linux/usr/bin/perl.real <span style="color:#e6db74">&#34;-I.&#34;</span> -Mconfigdata <span style="color:#e6db74">&#34;util/dofile.pl&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#34;-oMakefile&#34;</span> include/crypto/bn_conf.h.in &gt; include/crypto/bn_conf.h
+</span></span><span style="display:flex;"><span>/opt/bstos/linux-23/sysroots/x86_64-bstsdk-linux/usr/bin/perl.real <span style="color:#e6db74">&#34;-I.&#34;</span> -Mconfigdata <span style="color:#e6db74">&#34;util/dofile.pl&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#34;-oMakefile&#34;</span> include/crypto/dso_conf.h.in &gt; include/crypto/dso_conf.h
+</span></span><span style="display:flex;"><span>/opt/bstos/linux-23/sysroots/x86_64-bstsdk-linux/usr/bin/perl.real <span style="color:#e6db74">&#34;-I.&#34;</span> -Mconfigdata <span style="color:#e6db74">&#34;util/dofile.pl&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#34;-oMakefile&#34;</span> include/openssl/opensslconf.h.in &gt; include/openssl/opensslconf.h
+</span></span><span style="display:flex;"><span>make depend <span style="color:#f92672">&amp;&amp;</span> make _all
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: Entering directory <span style="color:#e6db74">&#39;/home/misc/openssl-1.1.1k&#39;</span>
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: Leaving directory <span style="color:#e6db74">&#39;/home/misc/openssl-1.1.1k&#39;</span>
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: Entering directory <span style="color:#e6db74">&#39;/home/misc/openssl-1.1.1k&#39;</span>
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-aarch64-bst-linux-gcc  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/app_rand.o apps/app_rand.c
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-aarch64-bst-linux-gcc  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/apps.o apps/apps.c
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-aarch64-bst-linux-gcc  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/bf_prefix.o apps/bf_prefix.c
+</span></span><span style="display:flex;"><span>/bin/sh: 1: aarch64-bst-linux-aarch64-bst-linux-gcc: not found
+</span></span><span style="display:flex;"><span>Makefile:700: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;apps/app_rand.o&#39;</span> failed
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** <span style="color:#f92672">[</span>apps/app_rand.o<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">127</span>
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** Waiting <span style="color:#66d9ef">for</span> unfinished jobs....
+</span></span><span style="display:flex;"><span>/bin/sh: 1: aarch64-bst-linux-aarch64-bst-linux-gcc: not found
+</span></span><span style="display:flex;"><span>Makefile:702: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;apps/apps.o&#39;</span> failed
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** <span style="color:#f92672">[</span>apps/apps.o<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">127</span>
+</span></span><span style="display:flex;"><span>/bin/sh: 1: aarch64-bst-linux-aarch64-bst-linux-gcc: not found
+</span></span><span style="display:flex;"><span>Makefile:704: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;apps/bf_prefix.o&#39;</span> failed
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** <span style="color:#f92672">[</span>apps/bf_prefix.o<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">127</span>
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: Leaving directory <span style="color:#e6db74">&#39;/home/misc/openssl-1.1.1k&#39;</span>
+</span></span><span style="display:flex;"><span>Makefile:172: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;all&#39;</span> failed
+</span></span><span style="display:flex;"><span>make: *** <span style="color:#f92672">[</span>all<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>root@028337952dd7:/home/misc/openssl-1.1.1k# vim Makefile
+</span></span><span style="display:flex;"><span>root@028337952dd7:/home/misc/openssl-1.1.1k# make -j
+</span></span><span style="display:flex;"><span>make depend <span style="color:#f92672">&amp;&amp;</span> make _all
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: Entering directory <span style="color:#e6db74">&#39;/home/misc/openssl-1.1.1k&#39;</span>
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: Leaving directory <span style="color:#e6db74">&#39;/home/misc/openssl-1.1.1k&#39;</span>
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: Entering directory <span style="color:#e6db74">&#39;/home/misc/openssl-1.1.1k&#39;</span>
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/app_rand.o apps/app_rand.c
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/apps.o apps/apps.c
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/bf_prefix.o apps/bf_prefix.c
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/opt.o apps/opt.c
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/s_cb.o apps/s_cb.c
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o apps/s_socket.o apps/s_socket.c
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o crypto/aes/aes_cbc.o crypto/aes/aes_cbc.c
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o crypto/aes/aes_cfb.o crypto/aes/aes_cfb.c
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o crypto/aes/aes_core.o crypto/aes/aes_core.c
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o crypto/aes/aes_ecb.o crypto/aes/aes_ecb.c
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o crypto/aes/aes_ige.o crypto/aes/aes_ige.c
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc: error: unrecognized command line option <span style="color:#e6db74">&#39;-m64&#39;</span>
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc: error: unrecognized command line option <span style="color:#e6db74">&#39;-m64&#39;</span>
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc: error: unrecognized command line option <span style="color:#e6db74">&#39;-m64&#39;</span>
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc  --sysroot<span style="color:#f92672">=</span>/opt/bstos/linux-23/sysroots/aarch64-bst-linux  -I. -Iinclude -fPIC -pthread -m64 -O2 -pipe -g -feliminate-unused-debug-types  -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_CPUID_OBJ -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DKECCAK1600_ASM -DRC4_ASM -DMD5_ASM -DAESNI_ASM -DVPAES_ASM -DGHASH_ASM -DECP_NISTZ256_ASM -DX25519_ASM -DPOLY1305_ASM -DOPENSSLDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/ssl\&#34;&#34;</span> -DENGINESDIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\&#34;/home/misc/openssl-1.1.1k_bst/openssl-1.1.1k/build/lib/engines-1.1\&#34;&#34;</span> -DNDEBUG   -c -o crypto/aes/aes_misc.o crypto/aes/aes_misc.c
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc: error: unrecognized command line option <span style="color:#e6db74">&#39;-m64&#39;</span>
+</span></span><span style="display:flex;"><span>Makefile:700: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;apps/app_rand.o&#39;</span> failed
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** <span style="color:#f92672">[</span>apps/app_rand.o<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** Waiting <span style="color:#66d9ef">for</span> unfinished jobs....
+</span></span><span style="display:flex;"><span>Makefile:702: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;apps/apps.o&#39;</span> failed
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** <span style="color:#f92672">[</span>apps/apps.o<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>Makefile:704: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;apps/bf_prefix.o&#39;</span> failed
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** <span style="color:#f92672">[</span>apps/bf_prefix.o<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>Makefile:706: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;apps/opt.o&#39;</span> failed
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** <span style="color:#f92672">[</span>apps/opt.o<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc: error: unrecognized command line option <span style="color:#e6db74">&#39;-m64&#39;</span>
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc: error: unrecognized command line option <span style="color:#e6db74">&#39;-m64&#39;</span>
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc: error: unrecognized command line option <span style="color:#e6db74">&#39;-m64&#39;</span>
+</span></span><span style="display:flex;"><span>Makefile:708: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;apps/s_cb.o&#39;</span> failed
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** <span style="color:#f92672">[</span>apps/s_cb.o<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc: error: unrecognized command line option <span style="color:#e6db74">&#39;-m64&#39;</span>
+</span></span><span style="display:flex;"><span>Makefile:724: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;crypto/aes/aes_cfb.o&#39;</span> failed
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** <span style="color:#f92672">[</span>crypto/aes/aes_cfb.o<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc: error: unrecognized command line option <span style="color:#e6db74">&#39;-m64&#39;</span>
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc: error: unrecognized command line option <span style="color:#e6db74">&#39;-m64&#39;</span>
+</span></span><span style="display:flex;"><span>Makefile:710: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;apps/s_socket.o&#39;</span> failed
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc: error: unrecognized command line option <span style="color:#e6db74">&#39;-m64&#39;</span>
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** <span style="color:#f92672">[</span>apps/s_socket.o<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>Makefile:722: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;crypto/aes/aes_cbc.o&#39;</span> failed
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** <span style="color:#f92672">[</span>crypto/aes/aes_cbc.o<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>Makefile:726: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;crypto/aes/aes_core.o&#39;</span> failed
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** <span style="color:#f92672">[</span>crypto/aes/aes_core.o<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>Makefile:730: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;crypto/aes/aes_ige.o&#39;</span> failed
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** <span style="color:#f92672">[</span>crypto/aes/aes_ige.o<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>Makefile:728: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;crypto/aes/aes_ecb.o&#39;</span> failed
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** <span style="color:#f92672">[</span>crypto/aes/aes_ecb.o<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>aarch64-bst-linux-gcc: error: unrecognized command line option <span style="color:#e6db74">&#39;-m64&#39;</span>
+</span></span><span style="display:flex;"><span>Makefile:732: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;crypto/aes/aes_misc.o&#39;</span> failed
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** <span style="color:#f92672">[</span>crypto/aes/aes_misc.o<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: Leaving directory <span style="color:#e6db74">&#39;/home/misc/openssl-1.1.1k&#39;</span>
+</span></span><span style="display:flex;"><span>Makefile:172: recipe <span style="color:#66d9ef">for</span> target <span style="color:#e6db74">&#39;all&#39;</span> failed
+</span></span><span style="display:flex;"><span>make: *** <span style="color:#f92672">[</span>all<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">2</span>
 </span></span></code></pre></div>
     
   </article>
@@ -610,23 +610,23 @@ root@028337952dd7:/home/misc/openssl-1.1.1k# ./Configure Usage: Configure [no-&l
     
     
     
-    <script src="https://giscus.app/client.js"
-    data-repo="michaelneuper/website"
-    data-repo-id="R_kgDOIjPNaQ"
-    data-category="General"
-    data-category-id="DIC_kwDOIjPNac4CaklA"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="gruvbox"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
-
+      <script src="https://giscus.app/client.js"
+        data-repo="michaelneuper/website"
+        data-repo-id="R_kgDOIjPNaQ"
+        data-category="General"
+        data-category-id="DIC_kwDOIjPNac4CaklA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+  
   </div>
   
   
