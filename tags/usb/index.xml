@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Usb on LuyangのBlog</title>
+    <link>https://luyoungcn.github.io/tags/usb/</link>
+    <description>Recent content in Usb on LuyangのBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/usb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows WSL ubuntu adb 配置</title>
+      <link>https://luyoungcn.github.io/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate>
+      
+      <guid>https://luyoungcn.github.io/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</guid>
+      <description>&lt;h2 id=&#34;配置前的状态&#34;&gt;配置前的状态&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;windows 11 + wsl + ubuntu 18.04&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;windows 可以识别 adb devices&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;C:\Users&amp;gt;adb devices
+List of devices attached
+fada-018b4209f24d0001   device
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;wsl 识别不到 adb devices&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;luyang@LUYANG:~$ adb devices
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+List of devices attached
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;windows-安装工具包&#34;&gt;Windows 安装工具包&lt;/h2&gt;
+&lt;p&gt;windows 安装 &lt;a href=&#34;https://github.com/dorssel/usbipd-win/releases&#34;&gt;usbipd-win&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;wsl-安装工具包&#34;&gt;WSL 安装工具包&lt;/h2&gt;
+&lt;p&gt;WSL ubuntu 安装 adb 工具&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install android-tools-adb
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在WSL中，安装 USB/IP 的用户空间工具和 USB 硬件标识符的数据库。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install linux-tools-5.15.0-87-generic hwdata
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 注意 linux-tools 相应的要改成你实际安装的版本&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/5.15.0-87-generic/usbip &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;关于-linux-tools&#34;&gt;关于 linux-tools&lt;/h3&gt;
+&lt;p&gt;查看当前 ubuntu 系统版本支持的 linux-tools generic版本&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;~$ sudo apt-cache search linux-tools
+linux-aws-tools-5.15.0-1004 - Linux kernel version specific tools for version 5.15.0-1004
+linux-azure-tools-5.15.0-1003 - Linux kernel version specific tools for version 5.15.0-1003
+linux-gcp-tools-5.15.0-1003 - Linux kernel version specific tools for version 5.15.0-1003
+linux-gke-tools-5.15.0-1002 - Linux kernel version specific tools for version 5.15.0-1002
+linux-ibm-tools-5.15.0-1002 - Linux kernel version specific tools for version 5.15.0-1002
+linux-intel-iotg-tools-5.15.0-1004 - Linux kernel version specific tools for version 5.15.0-1004
+linux-kvm-tools-5.15.0-1004 - Linux kernel version specific tools for version 5.15.0-1004
+linux-lowlatency-tools-5.15.0-24 - Linux kernel version specific tools for version 5.15.0-24
+linux-oem-5.17-tools-5.17.0-1003 - Linux kernel version specific tools for version 5.17.0-1003
+linux-oracle-tools-5.15.0-1002 - Oracle Linux kernel version specific tools for version 5.15.0-1002
+linux-tools-5.15.0-1002-gke - Linux kernel version specific tools for version 5.15.0-1002
+linux-tools-5.15.0-1002-ibm - Linux kernel version specific tools for version 5.15.0-1002
+linux-tools-5.15.0-1002-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1002
+linux-tools-5.15.0-1003-azure - Linux kernel version specific tools for version 5.15.0-1003
+linux-tools-5.15.0-1003-gcp - Linux kernel version specific tools for version 5.15.0-1003
+linux-tools-5.15.0-1004-aws - Linux kernel version specific tools for version 5.15.0-1004
+linux-tools-5.15.0-1004-intel-iotg - Linux kernel version specific tools for version 5.15.0-1004
+linux-tools-5.15.0-1004-kvm - Linux kernel version specific tools for version 5.15.0-1004
+linux-tools-5.15.0-24-lowlatency - Linux kernel version specific tools for version 5.15.0-24
+linux-tools-5.15.0-25 - Linux kernel version specific tools for version 5.15.0-25
+linux-tools-5.15.0-25-generic - Linux kernel version specific tools for version 5.15.0-25
+linux-tools-5.17.0-1003-oem - Linux kernel version specific tools for version 5.17.0-1003
+linux-tools-aws - Linux kernel versioned tools for Amazon Web Services (AWS) systems.
+linux-tools-azure - Linux kernel versioned tools for Azure systems.
+linux-tools-common - Linux kernel version specific tools for version 5.15.0
+linux-tools-gcp - Google Cloud Platform (GCP) Linux kernel tools
+linux-tools-generic - Generic Linux kernel tools
+linux-tools-generic-hwe-20.04 - Generic Linux kernel tools (dummy transitional package)
+linux-tools-generic-hwe-20.04-edge - Generic Linux kernel tools (dummy transitional package)
+linux-tools-generic-hwe-22.04 - Generic Linux kernel tools
+linux-tools-generic-hwe-22.04-edge - Generic Linux kernel tools
+linux-tools-gke - Linux kernel versioned tools for gke systems.
+linux-tools-gke-5.15 - Linux kernel versioned tools for gke systems.
+linux-tools-host - Linux kernel VM host tools
+linux-tools-ibm - IBM Cloud Platform (ibm) Linux kernel tools
+linux-tools-intel-iotg - Intel-Iotg Linux kernel tools
+linux-tools-kvm - Linux kernel versioned tools for virtual systems.
+linux-tools-lowlatency - lowlatency Linux kernel tools
+linux-tools-lowlatency-hwe-20.04 - lowlatency Linux kernel tools (dummy transitional package)
+linux-tools-lowlatency-hwe-20.04-edge - lowlatency Linux kernel tools (dummy transitional package)
+linux-tools-lowlatency-hwe-22.04 - lowlatency Linux kernel tools
+linux-tools-lowlatency-hwe-22.04-edge - lowlatency Linux kernel tools
+linux-tools-oem-20.04 - OEM Linux kernel tools (dummy transitional package)
+linux-tools-oem-22.04 - OEM Linux kernel tools
+linux-tools-oracle - Linux kernel versioned tools for Oracle systems.
+linux-tools-virtual - Virtual Linux kernel tools
+linux-tools-virtual-hwe-20.04 - Virtual Linux kernel tools (dummy transitional package)
+linux-tools-virtual-hwe-20.04-edge - Virtual Linux kernel tools (dummy transitional package)
+linux-tools-virtual-hwe-22.04 - Virtual Linux kernel tools
+linux-tools-virtual-hwe-22.04-edge - Virtual Linux kernel tools
+linux-aws-5.19-tools-5.19.0-1024 - Linux kernel version specific tools for version 5.19.0-1024
+linux-aws-5.19-tools-5.19.0-1025 - Linux kernel version specific tools for version 5.19.0-1025
+linux-aws-5.19-tools-5.19.0-1026 - Linux kernel version specific tools for version 5.19.0-1026
+linux-aws-5.19-tools-5.19.0-1027 - Linux kernel version specific tools for version 5.19.0-1027
+linux-aws-5.19-tools-5.19.0-1028 - Linux kernel version specific tools for version 5.19.0-1028
+linux-aws-5.19-tools-5.19.0-1029 - Linux kernel version specific tools for version 5.19.0-1029
+linux-aws-6.2-tools-6.2.0-1005 - Linux kernel version specific tools for version 6.2.0-1005
+linux-aws-6.2-tools-6.2.0-1006 - Linux kernel version specific tools for version 6.2.0-1006
+linux-aws-6.2-tools-6.2.0-1007 - Linux kernel version specific tools for version 6.2.0-1007
+linux-aws-6.2-tools-6.2.0-1008 - Linux kernel version specific tools for version 6.2.0-1008
+linux-aws-6.2-tools-6.2.0-1009 - Linux kernel version specific tools for version 6.2.0-1009
+linux-aws-6.2-tools-6.2.0-1010 - Linux kernel version specific tools for version 6.2.0-1010
+linux-aws-6.2-tools-6.2.0-1011 - Linux kernel version specific tools for version 6.2.0-1011
+linux-aws-6.2-tools-6.2.0-1012 - Linux kernel version specific tools for version 6.2.0-1012
+linux-aws-6.2-tools-6.2.0-1013 - Linux kernel version specific tools for version 6.2.0-1013
+linux-aws-6.2-tools-6.2.0-1014 - Linux kernel version specific tools for version 6.2.0-1014
+linux-aws-tools-5.15.0-1035 - Linux kernel version specific tools for version 5.15.0-1035
+linux-aws-tools-5.15.0-1036 - Linux kernel version specific tools for version 5.15.0-1036
+linux-aws-tools-5.15.0-1037 - Linux kernel version specific tools for version 5.15.0-1037
+linux-aws-tools-5.15.0-1038 - Linux kernel version specific tools for version 5.15.0-1038
+linux-aws-tools-5.15.0-1039 - Linux kernel version specific tools for version 5.15.0-1039
+linux-aws-tools-5.15.0-1040 - Linux kernel version specific tools for version 5.15.0-1040
+linux-aws-tools-5.15.0-1042 - Linux kernel version specific tools for version 5.15.0-1042
+linux-aws-tools-5.15.0-1043 - Linux kernel version specific tools for version 5.15.0-1043
+linux-aws-tools-5.15.0-1044 - Linux kernel version specific tools for version 5.15.0-1044
+linux-aws-tools-5.15.0-1045 - Linux kernel version specific tools for version 5.15.0-1045
+linux-aws-tools-5.15.0-1047 - Linux kernel version specific tools for version 5.15.0-1047
+linux-aws-tools-5.15.0-1048 - Linux kernel version specific tools for version 5.15.0-1048
+linux-azure-5.19-tools-5.19.0-1025 - Linux kernel version specific tools for version 5.19.0-1025
+linux-azure-5.19-tools-5.19.0-1026 - Linux kernel version specific tools for version 5.19.0-1026
+linux-azure-5.19-tools-5.19.0-1027 - Linux kernel version specific tools for version 5.19.0-1027
+linux-azure-6.2-tools-6.2.0-1005 - Linux kernel version specific tools for version 6.2.0-1005
+linux-azure-6.2-tools-6.2.0-1006 - Linux kernel version specific tools for version 6.2.0-1006
+linux-azure-6.2-tools-6.2.0-1007 - Linux kernel version specific tools for version 6.2.0-1007
+linux-azure-6.2-tools-6.2.0-1008 - Linux kernel version specific tools for version 6.2.0-1008
+linux-azure-6.2-tools-6.2.0-1011 - Linux kernel version specific tools for version 6.2.0-1011
+linux-azure-6.2-tools-6.2.0-1012 - Linux kernel version specific tools for version 6.2.0-1012
+linux-azure-6.2-tools-6.2.0-1014 - Linux kernel version specific tools for version 6.2.0-1014
+linux-azure-6.2-tools-6.2.0-1015 - Linux kernel version specific tools for version 6.2.0-1015
+linux-azure-tools-5.15.0-1035 - Linux kernel version specific tools for version 5.15.0-1035
+linux-azure-tools-5.15.0-1036 - Linux kernel version specific tools for version 5.15.0-1036
+linux-azure-tools-5.15.0-1037 - Linux kernel version specific tools for version 5.15.0-1037
+linux-azure-tools-5.15.0-1038 - Linux kernel version specific tools for version 5.15.0-1038
+linux-azure-tools-5.15.0-1039 - Linux kernel version specific tools for version 5.15.0-1039
+linux-azure-tools-5.15.0-1040 - Linux kernel version specific tools for version 5.15.0-1040
+linux-azure-tools-5.15.0-1041 - Linux kernel version specific tools for version 5.15.0-1041
+linux-azure-tools-5.15.0-1042 - Linux kernel version specific tools for version 5.15.0-1042
+linux-azure-tools-5.15.0-1044 - Linux kernel version specific tools for version 5.15.0-1044
+linux-azure-tools-5.15.0-1045 - Linux kernel version specific tools for version 5.15.0-1045
+linux-azure-tools-5.15.0-1046 - Linux kernel version specific tools for version 5.15.0-1046
+linux-azure-tools-5.15.0-1047 - Linux kernel version specific tools for version 5.15.0-1047
+linux-azure-tools-5.15.0-1049 - Linux kernel version specific tools for version 5.15.0-1049
+linux-azure-tools-5.15.0-1050 - Linux kernel version specific tools for version 5.15.0-1050
+linux-gcp-5.19-tools-5.19.0-1022 - Linux kernel version specific tools for version 5.19.0-1022
+linux-gcp-5.19-tools-5.19.0-1024 - Linux kernel version specific tools for version 5.19.0-1024
+linux-gcp-5.19-tools-5.19.0-1025 - Linux kernel version specific tools for version 5.19.0-1025
+linux-gcp-5.19-tools-5.19.0-1026 - Linux kernel version specific tools for version 5.19.0-1026
+linux-gcp-5.19-tools-5.19.0-1027 - Linux kernel version specific tools for version 5.19.0-1027
+linux-gcp-5.19-tools-5.19.0-1030 - Linux kernel version specific tools for version 5.19.0-1030
+linux-gcp-6.2-tools-6.2.0-1009 - Linux kernel version specific tools for version 6.2.0-1009
+linux-gcp-6.2-tools-6.2.0-1010 - Linux kernel version specific tools for version 6.2.0-1010
+linux-gcp-6.2-tools-6.2.0-1011 - Linux kernel version specific tools for version 6.2.0-1011
+linux-gcp-6.2-tools-6.2.0-1012 - Linux kernel version specific tools for version 6.2.0-1012
+linux-gcp-6.2-tools-6.2.0-1013 - Linux kernel version specific tools for version 6.2.0-1013
+linux-gcp-6.2-tools-6.2.0-1014 - Linux kernel version specific tools for version 6.2.0-1014
+linux-gcp-6.2-tools-6.2.0-1016 - Linux kernel version specific tools for version 6.2.0-1016
+linux-gcp-6.2-tools-6.2.0-1017 - Linux kernel version specific tools for version 6.2.0-1017
+linux-gcp-tools-5.15.0-1034 - Linux kernel version specific tools for version 5.15.0-1034
+linux-gcp-tools-5.15.0-1035 - Linux kernel version specific tools for version 5.15.0-1035
+linux-gcp-tools-5.15.0-1036 - Linux kernel version specific tools for version 5.15.0-1036
+linux-gcp-tools-5.15.0-1037 - Linux kernel version specific tools for version 5.15.0-1037
+linux-gcp-tools-5.15.0-1038 - Linux kernel version specific tools for version 5.15.0-1038
+linux-gcp-tools-5.15.0-1039 - Linux kernel version specific tools for version 5.15.0-1039
+linux-gcp-tools-5.15.0-1040 - Linux kernel version specific tools for version 5.15.0-1040
+linux-gcp-tools-5.15.0-1041 - Linux kernel version specific tools for version 5.15.0-1041
+linux-gcp-tools-5.15.0-1042 - Linux kernel version specific tools for version 5.15.0-1042
+linux-gcp-tools-5.15.0-1044 - Linux kernel version specific tools for version 5.15.0-1044
+linux-gcp-tools-5.15.0-1045 - Linux kernel version specific tools for version 5.15.0-1045
+linux-gke-tools-5.15.0-1027 - Linux kernel version specific tools for version 5.15.0-1027
+linux-gke-tools-5.15.0-1028 - Linux kernel version specific tools for version 5.15.0-1028
+linux-gke-tools-5.15.0-1030 - Linux kernel version specific tools for version 5.15.0-1030
+linux-gke-tools-5.15.0-1032 - Linux kernel version specific tools for version 5.15.0-1032
+linux-gke-tools-5.15.0-1033 - Linux kernel version specific tools for version 5.15.0-1033
+linux-gke-tools-5.15.0-1034 - Linux kernel version specific tools for version 5.15.0-1034
+linux-gke-tools-5.15.0-1035 - Linux kernel version specific tools for version 5.15.0-1035
+linux-gke-tools-5.15.0-1036 - Linux kernel version specific tools for version 5.15.0-1036
+linux-gke-tools-5.15.0-1037 - Linux kernel version specific tools for version 5.15.0-1037
+linux-gke-tools-5.15.0-1038 - Linux kernel version specific tools for version 5.15.0-1038
+linux-gke-tools-5.15.0-1039 - Linux kernel version specific tools for version 5.15.0-1039
+linux-gke-tools-5.15.0-1040 - Linux kernel version specific tools for version 5.15.0-1040
+linux-gke-tools-5.15.0-1041 - Linux kernel version specific tools for version 5.15.0-1041
+linux-gke-tools-5.15.0-1042 - Linux kernel version specific tools for version 5.15.0-1042
+linux-gke-tools-5.15.0-1044 - Linux kernel version specific tools for version 5.15.0-1044
+linux-gke-tools-5.15.0-1045 - Linux kernel version specific tools for version 5.15.0-1045
+linux-hwe-5.19-tools-5.19.0-41 - Linux kernel version specific tools for version 5.19.0-41
+linux-hwe-5.19-tools-5.19.0-42 - Linux kernel version specific tools for version 5.19.0-42
+linux-hwe-5.19-tools-5.19.0-43 - Linux kernel version specific tools for version 5.19.0-43
+linux-hwe-5.19-tools-5.19.0-45 - Linux kernel version specific tools for version 5.19.0-45
+linux-hwe-5.19-tools-5.19.0-46 - Linux kernel version specific tools for version 5.19.0-46
+linux-hwe-5.19-tools-5.19.0-50 - Linux kernel version specific tools for version 5.19.0-50
+linux-hwe-6.2-tools-6.2.0-25 - Linux kernel version specific tools for version 6.2.0-25
+linux-hwe-6.2-tools-6.2.0-26 - Linux kernel version specific tools for version 6.2.0-26
+linux-hwe-6.2-tools-6.2.0-31 - Linux kernel version specific tools for version 6.2.0-31
+linux-hwe-6.2-tools-6.2.0-32 - Linux kernel version specific tools for version 6.2.0-32
+linux-hwe-6.2-tools-6.2.0-33 - Linux kernel version specific tools for version 6.2.0-33
+linux-hwe-6.2-tools-6.2.0-34 - Linux kernel version specific tools for version 6.2.0-34
+linux-hwe-6.2-tools-6.2.0-35 - Linux kernel version specific tools for version 6.2.0-35
+linux-ibm-tools-5.15.0-1030 - Linux kernel version specific tools for version 5.15.0-1030
+linux-ibm-tools-5.15.0-1031 - Linux kernel version specific tools for version 5.15.0-1031
+linux-ibm-tools-5.15.0-1032 - Linux kernel version specific tools for version 5.15.0-1032
+linux-ibm-tools-5.15.0-1033 - Linux kernel version specific tools for version 5.15.0-1033
+linux-ibm-tools-5.15.0-1034 - Linux kernel version specific tools for version 5.15.0-1034
+linux-ibm-tools-5.15.0-1035 - Linux kernel version specific tools for version 5.15.0-1035
+linux-ibm-tools-5.15.0-1036 - Linux kernel version specific tools for version 5.15.0-1036
+linux-ibm-tools-5.15.0-1037 - Linux kernel version specific tools for version 5.15.0-1037
+linux-ibm-tools-5.15.0-1038 - Linux kernel version specific tools for version 5.15.0-1038
+linux-ibm-tools-5.15.0-1040 - Linux kernel version specific tools for version 5.15.0-1040
+linux-ibm-tools-5.15.0-1041 - Linux kernel version specific tools for version 5.15.0-1041
+linux-intel-iotg-tools-5.15.0-1028 - Linux kernel version specific tools for version 5.15.0-1028
+linux-intel-iotg-tools-5.15.0-1030 - Linux kernel version specific tools for version 5.15.0-1030
+linux-intel-iotg-tools-5.15.0-1031 - Linux kernel version specific tools for version 5.15.0-1031
+linux-intel-iotg-tools-5.15.0-1033 - Linux kernel version specific tools for version 5.15.0-1033
+linux-intel-iotg-tools-5.15.0-1034 - Linux kernel version specific tools for version 5.15.0-1034
+linux-intel-iotg-tools-5.15.0-1035 - Linux kernel version specific tools for version 5.15.0-1035
+linux-intel-iotg-tools-5.15.0-1036 - Linux kernel version specific tools for version 5.15.0-1036
+linux-intel-iotg-tools-5.15.0-1037 - Linux kernel version specific tools for version 5.15.0-1037
+linux-intel-iotg-tools-5.15.0-1038 - Linux kernel version specific tools for version 5.15.0-1038
+linux-intel-iotg-tools-5.15.0-1039 - Linux kernel version specific tools for version 5.15.0-1039
+linux-intel-iotg-tools-5.15.0-1040 - Linux kernel version specific tools for version 5.15.0-1040
+linux-intel-iotg-tools-5.15.0-1043 - Linux kernel version specific tools for version 5.15.0-1043
+linux-kvm-tools-5.15.0-1033 - Linux kernel version specific tools for version 5.15.0-1033
+linux-kvm-tools-5.15.0-1034 - Linux kernel version specific tools for version 5.15.0-1034
+linux-kvm-tools-5.15.0-1035 - Linux kernel version specific tools for version 5.15.0-1035
+linux-kvm-tools-5.15.0-1037 - Linux kernel version specific tools for version 5.15.0-1037
+linux-kvm-tools-5.15.0-1038 - Linux kernel version specific tools for version 5.15.0-1038
+linux-kvm-tools-5.15.0-1039 - Linux kernel version specific tools for version 5.15.0-1039
+linux-kvm-tools-5.15.0-1040 - Linux kernel version specific tools for version 5.15.0-1040
+linux-kvm-tools-5.15.0-1041 - Linux kernel version specific tools for version 5.15.0-1041
+linux-kvm-tools-5.15.0-1042 - Linux kernel version specific tools for version 5.15.0-1042
+linux-kvm-tools-5.15.0-1044 - Linux kernel version specific tools for version 5.15.0-1044
+linux-kvm-tools-5.15.0-1045 - Linux kernel version specific tools for version 5.15.0-1045
+linux-lowlatency-hwe-5.19-tools-5.19.0-1024 - Linux kernel version specific tools for version 5.19.0-1024
+linux-lowlatency-hwe-5.19-tools-5.19.0-1025 - Linux kernel version specific tools for version 5.19.0-1025
+linux-lowlatency-hwe-5.19-tools-5.19.0-1027 - Linux kernel version specific tools for version 5.19.0-1027
+linux-lowlatency-hwe-5.19-tools-5.19.0-1028 - Linux kernel version specific tools for version 5.19.0-1028
+linux-lowlatency-hwe-5.19-tools-5.19.0-1030 - Linux kernel version specific tools for version 5.19.0-1030
+linux-lowlatency-hwe-6.2-tools-6.2.0-1008 - Linux kernel version specific tools for version 6.2.0-1008
+linux-lowlatency-hwe-6.2-tools-6.2.0-1009 - Linux kernel version specific tools for version 6.2.0-1009
+linux-lowlatency-hwe-6.2-tools-6.2.0-1011 - Linux kernel version specific tools for version 6.2.0-1011
+linux-lowlatency-hwe-6.2-tools-6.2.0-1012 - Linux kernel version specific tools for version 6.2.0-1012
+linux-lowlatency-hwe-6.2-tools-6.2.0-1013 - Linux kernel version specific tools for version 6.2.0-1013
+linux-lowlatency-hwe-6.2-tools-6.2.0-1014 - Linux kernel version specific tools for version 6.2.0-1014
+linux-lowlatency-hwe-6.2-tools-6.2.0-1015 - Linux kernel version specific tools for version 6.2.0-1015
+linux-lowlatency-tools-5.15.0-72 - Linux kernel version specific tools for version 5.15.0-72
+linux-lowlatency-tools-5.15.0-73 - Linux kernel version specific tools for version 5.15.0-73
+linux-lowlatency-tools-5.15.0-75 - Linux kernel version specific tools for version 5.15.0-75
+linux-lowlatency-tools-5.15.0-76 - Linux kernel version specific tools for version 5.15.0-76
+linux-lowlatency-tools-5.15.0-78 - Linux kernel version specific tools for version 5.15.0-78
+linux-lowlatency-tools-5.15.0-79 - Linux kernel version specific tools for version 5.15.0-79
+linux-lowlatency-tools-5.15.0-82 - Linux kernel version specific tools for version 5.15.0-82
+linux-lowlatency-tools-5.15.0-83 - Linux kernel version specific tools for version 5.15.0-83
+linux-lowlatency-tools-5.15.0-84 - Linux kernel version specific tools for version 5.15.0-84
+linux-lowlatency-tools-5.15.0-86 - Linux kernel version specific tools for version 5.15.0-86
+linux-lowlatency-tools-5.15.0-87 - Linux kernel version specific tools for version 5.15.0-87
+linux-nvidia-6.2-tools-6.2.0-1003 - Linux kernel version specific tools for version 6.2.0-1003
+linux-nvidia-6.2-tools-6.2.0-1009 - Linux kernel version specific tools for version 6.2.0-1009
+linux-nvidia-6.2-tools-6.2.0-1010 - Linux kernel version specific tools for version 6.2.0-1010
+linux-nvidia-tools-5.15.0-1025 - Linux kernel version specific tools for version 5.15.0-1025
+linux-nvidia-tools-5.15.0-1026 - Linux kernel version specific tools for version 5.15.0-1026
+linux-nvidia-tools-5.15.0-1027 - Linux kernel version specific tools for version 5.15.0-1027
+linux-nvidia-tools-5.15.0-1028 - Linux kernel version specific tools for version 5.15.0-1028
+linux-nvidia-tools-5.15.0-1029 - Linux kernel version specific tools for version 5.15.0-1029
+linux-nvidia-tools-5.15.0-1030 - Linux kernel version specific tools for version 5.15.0-1030
+linux-nvidia-tools-5.15.0-1031 - Linux kernel version specific tools for version 5.15.0-1031
+linux-nvidia-tools-5.15.0-1032 - Linux kernel version specific tools for version 5.15.0-1032
+linux-nvidia-tools-5.15.0-1033 - Linux kernel version specific tools for version 5.15.0-1033
+linux-nvidia-tools-5.15.0-1037 - Linux kernel version specific tools for version 5.15.0-1037
+linux-nvidia-tools-5.15.0-1039 - Linux kernel version specific tools for version 5.15.0-1039
+linux-oem-5.17-tools-5.17.0-1031 - Linux kernel version specific tools for version 5.17.0-1031
+linux-oem-5.17-tools-5.17.0-1032 - Linux kernel version specific tools for version 5.17.0-1032
+linux-oem-5.17-tools-5.17.0-1033 - Linux kernel version specific tools for version 5.17.0-1033
+linux-oem-5.17-tools-5.17.0-1034 - Linux kernel version specific tools for version 5.17.0-1034
+linux-oem-5.17-tools-5.17.0-1035 - Linux kernel version specific tools for version 5.17.0-1035
+linux-oem-6.0-tools-6.0.0-1016 - Linux kernel version specific tools for version 6.0.0-1016
+linux-oem-6.0-tools-6.0.0-1017 - Linux kernel version specific tools for version 6.0.0-1017
+linux-oem-6.0-tools-6.0.0-1018 - Linux kernel version specific tools for version 6.0.0-1018
+linux-oem-6.0-tools-6.0.0-1019 - Linux kernel version specific tools for version 6.0.0-1019
+linux-oem-6.0-tools-6.0.0-1020 - Linux kernel version specific tools for version 6.0.0-1020
+linux-oem-6.0-tools-6.0.0-1021 - Linux kernel version specific tools for version 6.0.0-1021
+linux-oem-6.1-tools-6.1.0-1012 - Linux kernel version specific tools for version 6.1.0-1012
+linux-oem-6.1-tools-6.1.0-1013 - Linux kernel version specific tools for version 6.1.0-1013
+linux-oem-6.1-tools-6.1.0-1014 - Linux kernel version specific tools for version 6.1.0-1014
+linux-oem-6.1-tools-6.1.0-1015 - Linux kernel version specific tools for version 6.1.0-1015
+linux-oem-6.1-tools-6.1.0-1016 - Linux kernel version specific tools for version 6.1.0-1016
+linux-oem-6.1-tools-6.1.0-1017 - Linux kernel version specific tools for version 6.1.0-1017
+linux-oem-6.1-tools-6.1.0-1019 - Linux kernel version specific tools for version 6.1.0-1019
+linux-oem-6.1-tools-6.1.0-1020 - Linux kernel version specific tools for version 6.1.0-1020
+linux-oem-6.1-tools-6.1.0-1021 - Linux kernel version specific tools for version 6.1.0-1021
+linux-oem-6.1-tools-6.1.0-1022 - Linux kernel version specific tools for version 6.1.0-1022
+linux-oem-6.1-tools-6.1.0-1023 - Linux kernel version specific tools for version 6.1.0-1023
+linux-oem-6.1-tools-6.1.0-1024 - Linux kernel version specific tools for version 6.1.0-1024
+linux-oem-6.5-tools-6.5.0-1003 - Linux kernel version specific tools for version 6.5.0-1003
+linux-oem-6.5-tools-6.5.0-1004 - Linux kernel version specific tools for version 6.5.0-1004
+linux-oracle-5.19-tools-5.19.0-1023 - Oracle Linux kernel version specific tools for version 5.19.0-1023
+linux-oracle-5.19-tools-5.19.0-1024 - Oracle Linux kernel version specific tools for version 5.19.0-1024
+linux-oracle-5.19-tools-5.19.0-1025 - Oracle Linux kernel version specific tools for version 5.19.0-1025
+linux-oracle-5.19-tools-5.19.0-1026 - Oracle Linux kernel version specific tools for version 5.19.0-1026
+linux-oracle-5.19-tools-5.19.0-1027 - Oracle Linux kernel version specific tools for version 5.19.0-1027
+linux-oracle-6.2-tools-6.2.0-1013 - Oracle Linux kernel version specific tools for version 6.2.0-1013
+linux-oracle-6.2-tools-6.2.0-1014 - Oracle Linux kernel version specific tools for version 6.2.0-1014
+linux-oracle-tools-5.15.0-1035 - Oracle Linux kernel version specific tools for version 5.15.0-1035
+linux-oracle-tools-5.15.0-1036 - Oracle Linux kernel version specific tools for version 5.15.0-1036
+linux-oracle-tools-5.15.0-1037 - Oracle Linux kernel version specific tools for version 5.15.0-1037
+linux-oracle-tools-5.15.0-1038 - Oracle Linux kernel version specific tools for version 5.15.0-1038
+linux-oracle-tools-5.15.0-1039 - Oracle Linux kernel version specific tools for version 5.15.0-1039
+linux-oracle-tools-5.15.0-1040 - Oracle Linux kernel version specific tools for version 5.15.0-1040
+linux-oracle-tools-5.15.0-1041 - Oracle Linux kernel version specific tools for version 5.15.0-1041
+linux-oracle-tools-5.15.0-1042 - Oracle Linux kernel version specific tools for version 5.15.0-1042
+linux-oracle-tools-5.15.0-1044 - Oracle Linux kernel version specific tools for version 5.15.0-1044
+linux-oracle-tools-5.15.0-1045 - Oracle Linux kernel version specific tools for version 5.15.0-1045
+linux-oracle-tools-5.15.0-1046 - Oracle Linux kernel version specific tools for version 5.15.0-1046
+linux-tools-5.15.0-1025-nvidia - Linux kernel version specific tools for version 5.15.0-1025
+linux-tools-5.15.0-1025-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1025
+linux-tools-5.15.0-1026-nvidia - Linux kernel version specific tools for version 5.15.0-1026
+linux-tools-5.15.0-1026-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1026
+linux-tools-5.15.0-1027-gke - Linux kernel version specific tools for version 5.15.0-1027
+linux-tools-5.15.0-1027-nvidia - Linux kernel version specific tools for version 5.15.0-1027
+linux-tools-5.15.0-1027-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1027
+linux-tools-5.15.0-1028-gke - Linux kernel version specific tools for version 5.15.0-1028
+linux-tools-5.15.0-1028-intel-iotg - Linux kernel version specific tools for version 5.15.0-1028
+linux-tools-5.15.0-1028-nvidia - Linux kernel version specific tools for version 5.15.0-1028
+linux-tools-5.15.0-1028-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1028
+linux-tools-5.15.0-1029-nvidia - Linux kernel version specific tools for version 5.15.0-1029
+linux-tools-5.15.0-1029-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1029
+linux-tools-5.15.0-1030-gke - Linux kernel version specific tools for version 5.15.0-1030
+linux-tools-5.15.0-1030-ibm - Linux kernel version specific tools for version 5.15.0-1030
+linux-tools-5.15.0-1030-intel-iotg - Linux kernel version specific tools for version 5.15.0-1030
+linux-tools-5.15.0-1030-nvidia - Linux kernel version specific tools for version 5.15.0-1030
+linux-tools-5.15.0-1030-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1030
+linux-tools-5.15.0-1031-ibm - Linux kernel version specific tools for version 5.15.0-1031
+linux-tools-5.15.0-1031-intel-iotg - Linux kernel version specific tools for version 5.15.0-1031
+linux-tools-5.15.0-1031-nvidia - Linux kernel version specific tools for version 5.15.0-1031
+linux-tools-5.15.0-1031-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1031
+linux-tools-5.15.0-1032-gke - Linux kernel version specific tools for version 5.15.0-1032
+linux-tools-5.15.0-1032-ibm - Linux kernel version specific tools for version 5.15.0-1032
+linux-tools-5.15.0-1032-nvidia - Linux kernel version specific tools for version 5.15.0-1032
+linux-tools-5.15.0-1032-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1032
+linux-tools-5.15.0-1033-gke - Linux kernel version specific tools for version 5.15.0-1033
+linux-tools-5.15.0-1033-ibm - Linux kernel version specific tools for version 5.15.0-1033
+linux-tools-5.15.0-1033-intel-iotg - Linux kernel version specific tools for version 5.15.0-1033
+linux-tools-5.15.0-1033-kvm - Linux kernel version specific tools for version 5.15.0-1033
+linux-tools-5.15.0-1033-nvidia - Linux kernel version specific tools for version 5.15.0-1033
+linux-tools-5.15.0-1033-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1033
+linux-tools-5.15.0-1034-gcp - Linux kernel version specific tools for version 5.15.0-1034
+linux-tools-5.15.0-1034-gke - Linux kernel version specific tools for version 5.15.0-1034
+linux-tools-5.15.0-1034-ibm - Linux kernel version specific tools for version 5.15.0-1034
+linux-tools-5.15.0-1034-intel-iotg - Linux kernel version specific tools for version 5.15.0-1034
+linux-tools-5.15.0-1034-kvm - Linux kernel version specific tools for version 5.15.0-1034
+linux-tools-5.15.0-1035-aws - Linux kernel version specific tools for version 5.15.0-1035
+linux-tools-5.15.0-1035-azure - Linux kernel version specific tools for version 5.15.0-1035
+linux-tools-5.15.0-1035-gcp - Linux kernel version specific tools for version 5.15.0-1035
+linux-tools-5.15.0-1035-gke - Linux kernel version specific tools for version 5.15.0-1035
+linux-tools-5.15.0-1035-ibm - Linux kernel version specific tools for version 5.15.0-1035
+linux-tools-5.15.0-1035-intel-iotg - Linux kernel version specific tools for version 5.15.0-1035
+linux-tools-5.15.0-1035-kvm - Linux kernel version specific tools for version 5.15.0-1035
+linux-tools-5.15.0-1035-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1035
+linux-tools-5.15.0-1036-aws - Linux kernel version specific tools for version 5.15.0-1036
+linux-tools-5.15.0-1036-azure - Linux kernel version specific tools for version 5.15.0-1036
+linux-tools-5.15.0-1036-gcp - Linux kernel version specific tools for version 5.15.0-1036
+linux-tools-5.15.0-1036-gke - Linux kernel version specific tools for version 5.15.0-1036
+linux-tools-5.15.0-1036-ibm - Linux kernel version specific tools for version 5.15.0-1036
+linux-tools-5.15.0-1036-intel-iotg - Linux kernel version specific tools for version 5.15.0-1036
+linux-tools-5.15.0-1036-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1036
+linux-tools-5.15.0-1037-aws - Linux kernel version specific tools for version 5.15.0-1037
+linux-tools-5.15.0-1037-azure - Linux kernel version specific tools for version 5.15.0-1037
+linux-tools-5.15.0-1037-gcp - Linux kernel version specific tools for version 5.15.0-1037
+linux-tools-5.15.0-1037-gke - Linux kernel version specific tools for version 5.15.0-1037
+linux-tools-5.15.0-1037-ibm - Linux kernel version specific tools for version 5.15.0-1037
+linux-tools-5.15.0-1037-intel-iotg - Linux kernel version specific tools for version 5.15.0-1037
+linux-tools-5.15.0-1037-kvm - Linux kernel version specific tools for version 5.15.0-1037
+linux-tools-5.15.0-1037-nvidia - Linux kernel version specific tools for version 5.15.0-1037
+linux-tools-5.15.0-1037-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1037
+linux-tools-5.15.0-1037-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1037
+linux-tools-5.15.0-1038-aws - Linux kernel version specific tools for version 5.15.0-1038
+linux-tools-5.15.0-1038-azure - Linux kernel version specific tools for version 5.15.0-1038
+linux-tools-5.15.0-1038-gcp - Linux kernel version specific tools for version 5.15.0-1038
+linux-tools-5.15.0-1038-gke - Linux kernel version specific tools for version 5.15.0-1038
+linux-tools-5.15.0-1038-ibm - Linux kernel version specific tools for version 5.15.0-1038
+linux-tools-5.15.0-1038-intel-iotg - Linux kernel version specific tools for version 5.15.0-1038
+linux-tools-5.15.0-1038-kvm - Linux kernel version specific tools for version 5.15.0-1038
+linux-tools-5.15.0-1038-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1038
+linux-tools-5.15.0-1039-aws - Linux kernel version specific tools for version 5.15.0-1039
+linux-tools-5.15.0-1039-azure - Linux kernel version specific tools for version 5.15.0-1039
+linux-tools-5.15.0-1039-gcp - Linux kernel version specific tools for version 5.15.0-1039
+linux-tools-5.15.0-1039-gke - Linux kernel version specific tools for version 5.15.0-1039
+linux-tools-5.15.0-1039-intel-iotg - Linux kernel version specific tools for version 5.15.0-1039
+linux-tools-5.15.0-1039-kvm - Linux kernel version specific tools for version 5.15.0-1039
+linux-tools-5.15.0-1039-nvidia - Linux kernel version specific tools for version 5.15.0-1039
+linux-tools-5.15.0-1039-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1039
+linux-tools-5.15.0-1039-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1039
+linux-tools-5.15.0-1040-aws - Linux kernel version specific tools for version 5.15.0-1040
+linux-tools-5.15.0-1040-azure - Linux kernel version specific tools for version 5.15.0-1040
+linux-tools-5.15.0-1040-gcp - Linux kernel version specific tools for version 5.15.0-1040
+linux-tools-5.15.0-1040-gke - Linux kernel version specific tools for version 5.15.0-1040
+linux-tools-5.15.0-1040-ibm - Linux kernel version specific tools for version 5.15.0-1040
+linux-tools-5.15.0-1040-intel-iotg - Linux kernel version specific tools for version 5.15.0-1040
+linux-tools-5.15.0-1040-kvm - Linux kernel version specific tools for version 5.15.0-1040
+linux-tools-5.15.0-1040-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1040
+linux-tools-5.15.0-1041-azure - Linux kernel version specific tools for version 5.15.0-1041
+linux-tools-5.15.0-1041-gcp - Linux kernel version specific tools for version 5.15.0-1041
+linux-tools-5.15.0-1041-gke - Linux kernel version specific tools for version 5.15.0-1041
+linux-tools-5.15.0-1041-ibm - Linux kernel version specific tools for version 5.15.0-1041
+linux-tools-5.15.0-1041-kvm - Linux kernel version specific tools for version 5.15.0-1041
+linux-tools-5.15.0-1041-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1041
+linux-tools-5.15.0-1042-aws - Linux kernel version specific tools for version 5.15.0-1042
+linux-tools-5.15.0-1042-azure - Linux kernel version specific tools for version 5.15.0-1042
+linux-tools-5.15.0-1042-gcp - Linux kernel version specific tools for version 5.15.0-1042
+linux-tools-5.15.0-1042-gke - Linux kernel version specific tools for version 5.15.0-1042
+linux-tools-5.15.0-1042-kvm - Linux kernel version specific tools for version 5.15.0-1042
+linux-tools-5.15.0-1042-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1042
+linux-tools-5.15.0-1043-aws - Linux kernel version specific tools for version 5.15.0-1043
+linux-tools-5.15.0-1043-intel-iotg - Linux kernel version specific tools for version 5.15.0-1043
+linux-tools-5.15.0-1044-aws - Linux kernel version specific tools for version 5.15.0-1044
+linux-tools-5.15.0-1044-azure - Linux kernel version specific tools for version 5.15.0-1044
+linux-tools-5.15.0-1044-gcp - Linux kernel version specific tools for version 5.15.0-1044
+linux-tools-5.15.0-1044-gke - Linux kernel version specific tools for version 5.15.0-1044
+linux-tools-5.15.0-1044-kvm - Linux kernel version specific tools for version 5.15.0-1044
+linux-tools-5.15.0-1044-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1044
+linux-tools-5.15.0-1045-aws - Linux kernel version specific tools for version 5.15.0-1045
+linux-tools-5.15.0-1045-azure - Linux kernel version specific tools for version 5.15.0-1045
+linux-tools-5.15.0-1045-gcp - Linux kernel version specific tools for version 5.15.0-1045
+linux-tools-5.15.0-1045-gke - Linux kernel version specific tools for version 5.15.0-1045
+linux-tools-5.15.0-1045-kvm - Linux kernel version specific tools for version 5.15.0-1045
+linux-tools-5.15.0-1045-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1045
+linux-tools-5.15.0-1046-azure - Linux kernel version specific tools for version 5.15.0-1046
+linux-tools-5.15.0-1046-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1046
+linux-tools-5.15.0-1047-aws - Linux kernel version specific tools for version 5.15.0-1047
+linux-tools-5.15.0-1047-azure - Linux kernel version specific tools for version 5.15.0-1047
+linux-tools-5.15.0-1048-aws - Linux kernel version specific tools for version 5.15.0-1048
+linux-tools-5.15.0-1049-azure - Linux kernel version specific tools for version 5.15.0-1049
+linux-tools-5.15.0-1050-azure - Linux kernel version specific tools for version 5.15.0-1050
+linux-tools-5.15.0-72 - Linux kernel version specific tools for version 5.15.0-72
+linux-tools-5.15.0-72-generic - Linux kernel version specific tools for version 5.15.0-72
+linux-tools-5.15.0-72-lowlatency - Linux kernel version specific tools for version 5.15.0-72
+linux-tools-5.15.0-73 - Linux kernel version specific tools for version 5.15.0-73
+linux-tools-5.15.0-73-generic - Linux kernel version specific tools for version 5.15.0-73
+linux-tools-5.15.0-73-lowlatency - Linux kernel version specific tools for version 5.15.0-73
+linux-tools-5.15.0-75 - Linux kernel version specific tools for version 5.15.0-75
+linux-tools-5.15.0-75-generic - Linux kernel version specific tools for version 5.15.0-75
+linux-tools-5.15.0-75-lowlatency - Linux kernel version specific tools for version 5.15.0-75
+linux-tools-5.15.0-76-lowlatency - Linux kernel version specific tools for version 5.15.0-76
+linux-tools-5.15.0-78 - Linux kernel version specific tools for version 5.15.0-78
+linux-tools-5.15.0-78-generic - Linux kernel version specific tools for version 5.15.0-78
+linux-tools-5.15.0-78-lowlatency - Linux kernel version specific tools for version 5.15.0-78
+linux-tools-5.15.0-79 - Linux kernel version specific tools for version 5.15.0-79
+linux-tools-5.15.0-79-generic - Linux kernel version specific tools for version 5.15.0-79
+linux-tools-5.15.0-79-lowlatency - Linux kernel version specific tools for version 5.15.0-79
+linux-tools-5.15.0-82 - Linux kernel version specific tools for version 5.15.0-82
+linux-tools-5.15.0-82-generic - Linux kernel version specific tools for version 5.15.0-82
+linux-tools-5.15.0-82-lowlatency - Linux kernel version specific tools for version 5.15.0-82
+linux-tools-5.15.0-83 - Linux kernel version specific tools for version 5.15.0-83
+linux-tools-5.15.0-83-generic - Linux kernel version specific tools for version 5.15.0-83
+linux-tools-5.15.0-83-lowlatency - Linux kernel version specific tools for version 5.15.0-83
+linux-tools-5.15.0-84 - Linux kernel version specific tools for version 5.15.0-84
+linux-tools-5.15.0-84-generic - Linux kernel version specific tools for version 5.15.0-84
+linux-tools-5.15.0-84-lowlatency - Linux kernel version specific tools for version 5.15.0-84
+linux-tools-5.15.0-86 - Linux kernel version specific tools for version 5.15.0-86
+linux-tools-5.15.0-86-generic - Linux kernel version specific tools for version 5.15.0-86
+linux-tools-5.15.0-86-lowlatency - Linux kernel version specific tools for version 5.15.0-86
+linux-tools-5.15.0-87 - Linux kernel version specific tools for version 5.15.0-87
+linux-tools-5.15.0-87-generic - Linux kernel version specific tools for version 5.15.0-87
+linux-tools-5.15.0-87-lowlatency - Linux kernel version specific tools for version 5.15.0-87
+linux-tools-5.17.0-1031-oem - Linux kernel version specific tools for version 5.17.0-1031
+linux-tools-5.17.0-1032-oem - Linux kernel version specific tools for version 5.17.0-1032
+linux-tools-5.17.0-1033-oem - Linux kernel version specific tools for version 5.17.0-1033
+linux-tools-5.17.0-1034-oem - Linux kernel version specific tools for version 5.17.0-1034
+linux-tools-5.17.0-1035-oem - Linux kernel version specific tools for version 5.17.0-1035
+linux-tools-5.19.0-1022-gcp - Linux kernel version specific tools for version 5.19.0-1022
+linux-tools-5.19.0-1023-oracle - Oracle Linux kernel version specific tools for version 5.19.0-1023
+linux-tools-5.19.0-1024-aws - Linux kernel version specific tools for version 5.19.0-1024
+linux-tools-5.19.0-1024-gcp - Linux kernel version specific tools for version 5.19.0-1024
+linux-tools-5.19.0-1024-lowlatency - Linux kernel version specific tools for version 5.19.0-1024
+linux-tools-5.19.0-1024-oracle - Oracle Linux kernel version specific tools for version 5.19.0-1024
+linux-tools-5.19.0-1025-aws - Linux kernel version specific tools for version 5.19.0-1025
+linux-tools-5.19.0-1025-azure - Linux kernel version specific tools for version 5.19.0-1025
+linux-tools-5.19.0-1025-gcp - Linux kernel version specific tools for version 5.19.0-1025
+linux-tools-5.19.0-1025-lowlatency - Linux kernel version specific tools for version 5.19.0-1025
+linux-tools-5.19.0-1025-oracle - Oracle Linux kernel version specific tools for version 5.19.0-1025
+linux-tools-5.19.0-1026-aws - Linux kernel version specific tools for version 5.19.0-1026
+linux-tools-5.19.0-1026-azure - Linux kernel version specific tools for version 5.19.0-1026
+linux-tools-5.19.0-1026-gcp - Linux kernel version specific tools for version 5.19.0-1026
+linux-tools-5.19.0-1026-oracle - Oracle Linux kernel version specific tools for version 5.19.0-1026
+linux-tools-5.19.0-1027-aws - Linux kernel version specific tools for version 5.19.0-1027
+linux-tools-5.19.0-1027-azure - Linux kernel version specific tools for version 5.19.0-1027
+linux-tools-5.19.0-1027-gcp - Linux kernel version specific tools for version 5.19.0-1027
+linux-tools-5.19.0-1027-lowlatency - Linux kernel version specific tools for version 5.19.0-1027
+linux-tools-5.19.0-1027-oracle - Oracle Linux kernel version specific tools for version 5.19.0-1027
+linux-tools-5.19.0-1028-aws - Linux kernel version specific tools for version 5.19.0-1028
+linux-tools-5.19.0-1028-lowlatency - Linux kernel version specific tools for version 5.19.0-1028
+linux-tools-5.19.0-1029-aws - Linux kernel version specific tools for version 5.19.0-1029
+linux-tools-5.19.0-1030-gcp - Linux kernel version specific tools for version 5.19.0-1030
+linux-tools-5.19.0-1030-lowlatency - Linux kernel version specific tools for version 5.19.0-1030
+linux-tools-5.19.0-41-generic - Linux kernel version specific tools for version 5.19.0-41
+linux-tools-5.19.0-42-generic - Linux kernel version specific tools for version 5.19.0-42
+linux-tools-5.19.0-43-generic - Linux kernel version specific tools for version 5.19.0-43
+linux-tools-5.19.0-45-generic - Linux kernel version specific tools for version 5.19.0-45
+linux-tools-5.19.0-46-generic - Linux kernel version specific tools for version 5.19.0-46
+linux-tools-5.19.0-50-generic - Linux kernel version specific tools for version 5.19.0-50
+linux-tools-6.0.0-1016-oem - Linux kernel version specific tools for version 6.0.0-1016
+linux-tools-6.0.0-1017-oem - Linux kernel version specific tools for version 6.0.0-1017
+linux-tools-6.0.0-1018-oem - Linux kernel version specific tools for version 6.0.0-1018
+linux-tools-6.0.0-1019-oem - Linux kernel version specific tools for version 6.0.0-1019
+linux-tools-6.0.0-1020-oem - Linux kernel version specific tools for version 6.0.0-1020
+linux-tools-6.0.0-1021-oem - Linux kernel version specific tools for version 6.0.0-1021
+linux-tools-6.1.0-1012-oem - Linux kernel version specific tools for version 6.1.0-1012
+linux-tools-6.1.0-1013-oem - Linux kernel version specific tools for version 6.1.0-1013
+linux-tools-6.1.0-1014-oem - Linux kernel version specific tools for version 6.1.0-1014
+linux-tools-6.1.0-1015-oem - Linux kernel version specific tools for version 6.1.0-1015
+linux-tools-6.1.0-1016-oem - Linux kernel version specific tools for version 6.1.0-1016
+linux-tools-6.1.0-1017-oem - Linux kernel version specific tools for version 6.1.0-1017
+linux-tools-6.1.0-1019-oem - Linux kernel version specific tools for version 6.1.0-1019
+linux-tools-6.1.0-1020-oem - Linux kernel version specific tools for version 6.1.0-1020
+linux-tools-6.1.0-1021-oem - Linux kernel version specific tools for version 6.1.0-1021
+linux-tools-6.1.0-1022-oem - Linux kernel version specific tools for version 6.1.0-1022
+linux-tools-6.1.0-1023-oem - Linux kernel version specific tools for version 6.1.0-1023
+linux-tools-6.1.0-1024-oem - Linux kernel version specific tools for version 6.1.0-1024
+linux-tools-6.2.0-1003-nvidia - Linux kernel version specific tools for version 6.2.0-1003
+linux-tools-6.2.0-1005-aws - Linux kernel version specific tools for version 6.2.0-1005
+linux-tools-6.2.0-1005-azure - Linux kernel version specific tools for version 6.2.0-1005
+linux-tools-6.2.0-1006-aws - Linux kernel version specific tools for version 6.2.0-1006
+linux-tools-6.2.0-1006-azure - Linux kernel version specific tools for version 6.2.0-1006
+linux-tools-6.2.0-1007-aws - Linux kernel version specific tools for version 6.2.0-1007
+linux-tools-6.2.0-1007-azure - Linux kernel version specific tools for version 6.2.0-1007
+linux-tools-6.2.0-1008-aws - Linux kernel version specific tools for version 6.2.0-1008
+linux-tools-6.2.0-1008-azure - Linux kernel version specific tools for version 6.2.0-1008
+linux-tools-6.2.0-1008-lowlatency - Linux kernel version specific tools for version 6.2.0-1008
+linux-tools-6.2.0-1009-aws - Linux kernel version specific tools for version 6.2.0-1009
+linux-tools-6.2.0-1009-gcp - Linux kernel version specific tools for version 6.2.0-1009
+linux-tools-6.2.0-1009-lowlatency - Linux kernel version specific tools for version 6.2.0-1009
+linux-tools-6.2.0-1009-nvidia - Linux kernel version specific tools for version 6.2.0-1009
+linux-tools-6.2.0-1010-aws - Linux kernel version specific tools for version 6.2.0-1010
+linux-tools-6.2.0-1010-gcp - Linux kernel version specific tools for version 6.2.0-1010
+linux-tools-6.2.0-1010-nvidia - Linux kernel version specific tools for version 6.2.0-1010
+linux-tools-6.2.0-1011-aws - Linux kernel version specific tools for version 6.2.0-1011
+linux-tools-6.2.0-1011-azure - Linux kernel version specific tools for version 6.2.0-1011
+linux-tools-6.2.0-1011-gcp - Linux kernel version specific tools for version 6.2.0-1011
+linux-tools-6.2.0-1011-lowlatency - Linux kernel version specific tools for version 6.2.0-1011
+linux-tools-6.2.0-1012-aws - Linux kernel version specific tools for version 6.2.0-1012
+linux-tools-6.2.0-1012-azure - Linux kernel version specific tools for version 6.2.0-1012
+linux-tools-6.2.0-1012-gcp - Linux kernel version specific tools for version 6.2.0-1012
+linux-tools-6.2.0-1012-lowlatency - Linux kernel version specific tools for version 6.2.0-1012
+linux-tools-6.2.0-1013-aws - Linux kernel version specific tools for version 6.2.0-1013
+linux-tools-6.2.0-1013-gcp - Linux kernel version specific tools for version 6.2.0-1013
+linux-tools-6.2.0-1013-lowlatency - Linux kernel version specific tools for version 6.2.0-1013
+linux-tools-6.2.0-1013-oracle - Oracle Linux kernel version specific tools for version 6.2.0-1013
+linux-tools-6.2.0-1014-aws - Linux kernel version specific tools for version 6.2.0-1014
+linux-tools-6.2.0-1014-azure - Linux kernel version specific tools for version 6.2.0-1014
+linux-tools-6.2.0-1014-gcp - Linux kernel version specific tools for version 6.2.0-1014
+linux-tools-6.2.0-1014-lowlatency - Linux kernel version specific tools for version 6.2.0-1014
+linux-tools-6.2.0-1014-oracle - Oracle Linux kernel version specific tools for version 6.2.0-1014
+linux-tools-6.2.0-1015-azure - Linux kernel version specific tools for version 6.2.0-1015
+linux-tools-6.2.0-1015-lowlatency - Linux kernel version specific tools for version 6.2.0-1015
+linux-tools-6.2.0-1016-gcp - Linux kernel version specific tools for version 6.2.0-1016
+linux-tools-6.2.0-1017-gcp - Linux kernel version specific tools for version 6.2.0-1017
+linux-tools-6.2.0-25-generic - Linux kernel version specific tools for version 6.2.0-25
+linux-tools-6.2.0-26-generic - Linux kernel version specific tools for version 6.2.0-26
+linux-tools-6.2.0-31-generic - Linux kernel version specific tools for version 6.2.0-31
+linux-tools-6.2.0-32-generic - Linux kernel version specific tools for version 6.2.0-32
+linux-tools-6.2.0-33-generic - Linux kernel version specific tools for version 6.2.0-33
+linux-tools-6.2.0-34-generic - Linux kernel version specific tools for version 6.2.0-34
+linux-tools-6.2.0-35-generic - Linux kernel version specific tools for version 6.2.0-35
+linux-tools-6.5.0-1003-oem - Linux kernel version specific tools for version 6.5.0-1003
+linux-tools-6.5.0-1004-oem - Linux kernel version specific tools for version 6.5.0-1004
+linux-tools-aws-edge - Linux kernel versioned tools for Amazon Web Services (AWS) systems.
+linux-tools-aws-lts-22.04 - Linux kernel versioned tools for Amazon Web Services (AWS) systems.
+linux-tools-azure-edge - Linux kernel versioned tools for Azure systems.
+linux-tools-azure-fde - Linux kernel versioned tools for Azure systems.
+linux-tools-azure-fde-edge - Linux kernel versioned tools for Azure systems.
+linux-tools-azure-fde-lts-22.04 - Linux kernel versioned tools for Azure systems.
+linux-tools-azure-lts-22.04 - Linux kernel versioned tools for Azure systems.
+linux-tools-gcp-edge - Google Cloud Platform (GCP) Linux kernel tools
+linux-tools-gcp-lts-22.04 - Google Cloud Platform (GCP) Linux kernel tools
+linux-tools-nvidia - Linux kernel tools for Nvidia systems.
+linux-tools-nvidia-6.2 - Nvidia Linux kernel tools
+linux-tools-nvidia-edge - Nvidia Linux kernel tools
+linux-tools-nvidia-hwe-22.04 - Nvidia Linux kernel tools
+linux-tools-nvidia-hwe-22.04-edge - Nvidia Linux kernel tools
+linux-tools-nvidia-lowlatency - Linux kernel tools for Nvidia systems.
+linux-tools-oem-22.04a - OEM Linux kernel tools (dummy transitional package)
+linux-tools-oem-22.04b - OEM Linux kernel tools (dummy transitional package)
+linux-tools-oem-22.04c - OEM Linux kernel tools
+linux-tools-oem-22.04d - OEM Linux kernel tools
+linux-tools-oracle-edge - Linux kernel versioned tools for Oracle systems.
+linux-tools-oracle-lts-22.04 - Linux kernel versioned tools for Oracle systems.
+linux-gkeop-tools-5.15.0-1019 - Linux kernel version specific tools for version 5.15.0-1019
+linux-gkeop-tools-5.15.0-1020 - Linux kernel version specific tools for version 5.15.0-1020
+linux-gkeop-tools-5.15.0-1021 - Linux kernel version specific tools for version 5.15.0-1021
+linux-gkeop-tools-5.15.0-1022 - Linux kernel version specific tools for version 5.15.0-1022
+linux-gkeop-tools-5.15.0-1023 - Linux kernel version specific tools for version 5.15.0-1023
+linux-gkeop-tools-5.15.0-1024 - Linux kernel version specific tools for version 5.15.0-1024
+linux-gkeop-tools-5.15.0-1025 - Linux kernel version specific tools for version 5.15.0-1025
+linux-gkeop-tools-5.15.0-1026 - Linux kernel version specific tools for version 5.15.0-1026
+linux-gkeop-tools-5.15.0-1027 - Linux kernel version specific tools for version 5.15.0-1027
+linux-gkeop-tools-5.15.0-1028 - Linux kernel version specific tools for version 5.15.0-1028
+linux-gkeop-tools-5.15.0-1030 - Linux kernel version specific tools for version 5.15.0-1030
+linux-gkeop-tools-5.15.0-1031 - Linux kernel version specific tools for version 5.15.0-1031
+linux-nvidia-5.19-tools-5.19.0-1010 - Linux kernel version specific tools for version 5.19.0-1010
+linux-nvidia-5.19-tools-5.19.0-1014 - Linux kernel version specific tools for version 5.19.0-1014
+linux-oracle-5.19-tools-5.19.0-1022 - Oracle Linux kernel version specific tools for version 5.19.0-1022
+linux-realtime-tools-5.15.0-1032 - Linux kernel version specific tools for version 5.15.0-1032
+linux-tools-5.15.0-1019-gkeop - Linux kernel version specific tools for version 5.15.0-1019
+linux-tools-5.15.0-1020-gkeop - Linux kernel version specific tools for version 5.15.0-1020
+linux-tools-5.15.0-1021-gkeop - Linux kernel version specific tools for version 5.15.0-1021
+linux-tools-5.15.0-1022-gkeop - Linux kernel version specific tools for version 5.15.0-1022
+linux-tools-5.15.0-1023-gkeop - Linux kernel version specific tools for version 5.15.0-1023
+linux-tools-5.15.0-1024-gkeop - Linux kernel version specific tools for version 5.15.0-1024
+linux-tools-5.15.0-1025-gkeop - Linux kernel version specific tools for version 5.15.0-1025
+linux-tools-5.15.0-1026-gkeop - Linux kernel version specific tools for version 5.15.0-1026
+linux-tools-5.15.0-1027-gkeop - Linux kernel version specific tools for version 5.15.0-1027
+linux-tools-5.15.0-1028-gkeop - Linux kernel version specific tools for version 5.15.0-1028
+linux-tools-5.15.0-1030-gkeop - Linux kernel version specific tools for version 5.15.0-1030
+linux-tools-5.15.0-1031-gkeop - Linux kernel version specific tools for version 5.15.0-1031
+linux-tools-5.15.0-1032-realtime - Linux kernel version specific tools for version 5.15.0-1032
+linux-tools-5.19.0-1010-nvidia - Linux kernel version specific tools for version 5.19.0-1010
+linux-tools-5.19.0-1010-nvidia-lowlatency - Linux kernel version specific tools for version 5.19.0-1010
+linux-tools-5.19.0-1014-nvidia - Linux kernel version specific tools for version 5.19.0-1014
+linux-tools-5.19.0-1014-nvidia-lowlatency - Linux kernel version specific tools for version 5.19.0-1014
+linux-tools-5.19.0-1022-oracle - Oracle Linux kernel version specific tools for version 5.19.0-1022
+linux-tools-gkeop - Generic Linux kernel tools
+linux-tools-gkeop-5.15 - Generic Linux kernel tools
+linux-tools-nvidia-5.19 - Nvidia-5.19 Linux kernel tools
+linux-tools-nvidia-lowlatency-5.19 - Nvidia-5.19 Linux kernel tools
+linux-tools-nvidia-lowlatency-edge - Nvidia-5.19 Linux kernel tools
+linux-tools-realtime - Linux kernel versioned tools for real-time systems.
+linux-tools-azure-fde-5.19-edge - Linux kernel versioned tools for Azure systems.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;uname -a&lt;/code&gt; 查看当前 linux 内核版本号&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;~$ uname -a
+Linux LUYANG 5.15.90.1-microsoft-standard-WSL2 #1 SMP Fri Jan 27 02:56:13 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;因此我选择了 &lt;code&gt;linux-tools-5.15.0-87-generic&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;linux-tools-5.15.0-72 - Linux kernel version specific tools for version 5.15.0-72
+linux-tools-5.15.0-72-generic - Linux kernel version specific tools for version 5.15.0-72
+linux-tools-5.15.0-72-lowlatency - Linux kernel version specific tools for version 5.15.0-72
+linux-tools-5.15.0-73 - Linux kernel version specific tools for version 5.15.0-73
+linux-tools-5.15.0-73-generic - Linux kernel version specific tools for version 5.15.0-73
+linux-tools-5.15.0-73-lowlatency - Linux kernel version specific tools for version 5.15.0-73
+linux-tools-5.15.0-75 - Linux kernel version specific tools for version 5.15.0-75
+linux-tools-5.15.0-75-generic - Linux kernel version specific tools for version 5.15.0-75
+linux-tools-5.15.0-75-lowlatency - Linux kernel version specific tools for version 5.15.0-75
+linux-tools-5.15.0-76-lowlatency - Linux kernel version specific tools for version 5.15.0-76
+linux-tools-5.15.0-78 - Linux kernel version specific tools for version 5.15.0-78
+linux-tools-5.15.0-78-generic - Linux kernel version specific tools for version 5.15.0-78
+linux-tools-5.15.0-78-lowlatency - Linux kernel version specific tools for version 5.15.0-78
+linux-tools-5.15.0-79 - Linux kernel version specific tools for version 5.15.0-79
+linux-tools-5.15.0-79-generic - Linux kernel version specific tools for version 5.15.0-79
+linux-tools-5.15.0-79-lowlatency - Linux kernel version specific tools for version 5.15.0-79
+linux-tools-5.15.0-82 - Linux kernel version specific tools for version 5.15.0-82
+linux-tools-5.15.0-82-generic - Linux kernel version specific tools for version 5.15.0-82
+linux-tools-5.15.0-82-lowlatency - Linux kernel version specific tools for version 5.15.0-82
+linux-tools-5.15.0-83 - Linux kernel version specific tools for version 5.15.0-83
+linux-tools-5.15.0-83-generic - Linux kernel version specific tools for version 5.15.0-83
+linux-tools-5.15.0-83-lowlatency - Linux kernel version specific tools for version 5.15.0-83
+linux-tools-5.15.0-84 - Linux kernel version specific tools for version 5.15.0-84
+linux-tools-5.15.0-84-generic - Linux kernel version specific tools for version 5.15.0-84
+linux-tools-5.15.0-84-lowlatency - Linux kernel version specific tools for version 5.15.0-84
+linux-tools-5.15.0-86 - Linux kernel version specific tools for version 5.15.0-86
+linux-tools-5.15.0-86-generic - Linux kernel version specific tools for version 5.15.0-86
+linux-tools-5.15.0-86-lowlatency - Linux kernel version specific tools for version 5.15.0-86
+linux-tools-5.15.0-87 - Linux kernel version specific tools for version 5.15.0-87
+linux-tools-5.15.0-87-generic - Linux kernel version specific tools for version 5.15.0-87
+linux-tools-5.15.0-87-lowlatency - Linux kernel version specific tools for version 5.15.0-87
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;windows-利用-usbipd-bind--attach-adb-device&#34;&gt;windows 利用 usbipd bind &amp;amp; attach adb device&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Notice： usbipd.exe 命令需要在管理员身份运行的 powershell 中执行&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; usbipd.exe wsl -h
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd-win 3.2.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Description:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Convenience commands &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; attaching and detaching devices to Windows Subsystem &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; Linux.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Usage:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  usbipd wsl &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;command&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;options&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Options:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -?, -h, --help  Show &lt;span class=&#34;nb&#34;&gt;help&lt;/span&gt; and usage information
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Commands:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  attach  Attach a USB device to a WSL instance
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  detach  Detach a USB device from a WSL instance
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  list    List USB devices
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; usbipd.exe wsl attach -h
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd-win 3.2.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Description:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Attaches a USB device to a WSL instance.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  The first &lt;span class=&#34;nb&#34;&gt;time&lt;/span&gt; a device is attached this &lt;span class=&#34;nb&#34;&gt;command&lt;/span&gt; will include a &lt;span class=&#34;s1&#34;&gt;&amp;#39;bind&amp;#39;&lt;/span&gt;, &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; which administrator privileges are
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  required. Subsequent attaches can be &lt;span class=&#34;k&#34;&gt;done&lt;/span&gt; with standard user privileges.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Exactly one of the options &lt;span class=&#34;s1&#34;&gt;&amp;#39;--busid&amp;#39;&lt;/span&gt; or &lt;span class=&#34;s1&#34;&gt;&amp;#39;--hardware-id&amp;#39;&lt;/span&gt; is required.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Usage:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  usbipd wsl attach &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;options&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Options:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -a, --auto-attach            Automatically re-attach when the device is detached or unplugged
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -b, --busid &amp;lt;BUSID&amp;gt;          Attach device having &amp;lt;BUSID&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -d, --distribution &amp;lt;NAME&amp;gt;    Name of the WSL distribution to attach to
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -i, --hardware-id &amp;lt;VID:PID&amp;gt;  Attach device having &amp;lt;VID&amp;gt;:&amp;lt;PID&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -?, -h, --help               Show &lt;span class=&#34;nb&#34;&gt;help&lt;/span&gt; and usage information
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; usbipd wsl list
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;BUSID  VID:PID    DEVICE                                                        STATE
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2-1    30c9:0096  HP 5MP Camera, HP IR Camera, Camera DFU Device                Not attached
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2-10   8087:0033  英特尔&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;R&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 无线 Bluetooth&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;R&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;                                   Not attached
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;4-2    18d1:4ee4  bst usb gadget &lt;span class=&#34;k&#34;&gt;function&lt;/span&gt;                                       Not attached
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: warning: USB filter &lt;span class=&#34;s1&#34;&gt;&amp;#39;USBPcap&amp;#39;&lt;/span&gt; is known to be incompatible with this software&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;bind --force&amp;#39;&lt;/span&gt; will be required.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd wsl attach -b &amp;lt;busid&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd wsl attach -i &amp;lt;VID:PID&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; usbipd.exe wsl attach -i 18d1:4ee4
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: info: Device with hardware-id &lt;span class=&#34;s1&#34;&gt;&amp;#39;18d1:4ee4&amp;#39;&lt;/span&gt; found at busid &lt;span class=&#34;s1&#34;&gt;&amp;#39;2-3&amp;#39;&lt;/span&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: info: Using default WSL distribution &lt;span class=&#34;s1&#34;&gt;&amp;#39;Ubuntu&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; specify the &lt;span class=&#34;s1&#34;&gt;&amp;#39;--distribution&amp;#39;&lt;/span&gt; option to &lt;span class=&#34;k&#34;&gt;select&lt;/span&gt; a different one.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: warning: USB filter &lt;span class=&#34;s1&#34;&gt;&amp;#39;USBPcap&amp;#39;&lt;/span&gt; is known to be incompatible with this software&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;bind --force&amp;#39;&lt;/span&gt; will be required.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbip: error: Attach Request &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; 2-3 failed - Device busy &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;exported&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: error: Failed to attach device with busid &lt;span class=&#34;s1&#34;&gt;&amp;#39;2-3&amp;#39;&lt;/span&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; usbipd.exe &lt;span class=&#34;nb&#34;&gt;bind&lt;/span&gt; -h
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd-win 3.2.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Description:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Registers a single USB device &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; sharing, so it can be attached to other machines. Unless the --force option is
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  used, shared devices remain available to the host &lt;span class=&#34;k&#34;&gt;until&lt;/span&gt; they are attached to another machine.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Exactly one of the options &lt;span class=&#34;s1&#34;&gt;&amp;#39;--busid&amp;#39;&lt;/span&gt; or &lt;span class=&#34;s1&#34;&gt;&amp;#39;--hardware-id&amp;#39;&lt;/span&gt; is required.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Usage:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  usbipd &lt;span class=&#34;nb&#34;&gt;bind&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;options&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Options:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -b, --busid &amp;lt;BUSID&amp;gt;          Share device having &amp;lt;BUSID&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -f, --force                  Force binding&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; the host cannot use the device
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -i, --hardware-id &amp;lt;VID:PID&amp;gt;  Share device having &amp;lt;VID&amp;gt;:&amp;lt;PID&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -?, -h, --help               Show &lt;span class=&#34;nb&#34;&gt;help&lt;/span&gt; and usage information
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; usbipd.exe &lt;span class=&#34;nb&#34;&gt;bind&lt;/span&gt; -i 18d1:4ee4 -f
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: info: Device with hardware-id &lt;span class=&#34;s1&#34;&gt;&amp;#39;18d1:4ee4&amp;#39;&lt;/span&gt; found at busid &lt;span class=&#34;s1&#34;&gt;&amp;#39;2-3&amp;#39;&lt;/span&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: warning: A reboot may be required before the changes take effect.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;按照说明重启电脑之后：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; usbipd.exe &lt;span class=&#34;nb&#34;&gt;bind&lt;/span&gt; -i 18d1:4ee4 -f
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: info: Device with hardware-id &lt;span class=&#34;s1&#34;&gt;&amp;#39;18d1:4ee4&amp;#39;&lt;/span&gt; found at busid &lt;span class=&#34;s1&#34;&gt;&amp;#39;2-3&amp;#39;&lt;/span&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: info: Device with busid &lt;span class=&#34;s1&#34;&gt;&amp;#39;2-3&amp;#39;&lt;/span&gt; was already shared.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;此时管理员身份运行 powershell 执行如下命令：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; usbipd.exe wsl attach -i 18d1:4ee4 -a
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: info: Device with hardware-id &lt;span class=&#34;s1&#34;&gt;&amp;#39;18d1:4ee4&amp;#39;&lt;/span&gt; found at busid &lt;span class=&#34;s1&#34;&gt;&amp;#39;2-3&amp;#39;&lt;/span&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: info: Using default WSL distribution &lt;span class=&#34;s1&#34;&gt;&amp;#39;Ubuntu&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; specify the &lt;span class=&#34;s1&#34;&gt;&amp;#39;--distribution&amp;#39;&lt;/span&gt; option to &lt;span class=&#34;k&#34;&gt;select&lt;/span&gt; a different one.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: info: Starting endless attach loop&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; press Ctrl+C to quit.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Attached
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Detached
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbip: error: Attach Request &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; 2-3 failed - Device not found
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Attached
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;加上 &lt;code&gt;-a&lt;/code&gt; 选项后 attach 命令不会退出，会持续监听 &lt;code&gt;-i&lt;/code&gt; 指定的设备，插拔该 usb 设备会自动 attach。如上命令可以看出有一个插拔的过程。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;luyang@LUYANG:~$ adb devices
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;* daemon not running&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; starting now at tcp:5037
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;* daemon started successfully
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;List of devices attached
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;fada-018b0e6b656d0002   device
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;参考链接&#34;&gt;参考链接&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://devblogs.microsoft.com/commandline/connecting-usb-devices-to-wsl/&#34;&gt;https://devblogs.microsoft.com/commandline/connecting-usb-devices-to-wsl/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>wsl 使用 usbipd 访问 USB 设备</title>
+      <link>https://luyoungcn.github.io/posts/usbipd/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      
+      <guid>https://luyoungcn.github.io/posts/usbipd/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;注意：如下 usbipd 命令需要在 &lt;code&gt;以管理员身份运行&lt;/code&gt; 的 powershell 中执行&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;usbipd: USB/IP open-source project&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd wsl attach --busid 4-4
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: error: The service is currently not running&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; a reboot should fix that.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/dorssel/usbipd-win/issues/122&#34;&gt;https://github.com/dorssel/usbipd-win/issues/122&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考了上述链接，也做了重启，仍然报错，于是决定升级 &lt;code&gt;usbipd&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;如下步骤也可以作为如何安装 usbipd，wsl 通过 usbipd 访问 USB 设备&lt;/p&gt;
+&lt;h2 id=&#34;usbipd-安装使用&#34;&gt;usbipd 安装使用&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/dorssel/usbipd-win/releases/tag/v4.0.0&#34;&gt;https://github.com/dorssel/usbipd-win/releases/tag/v4.0.0&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下载 &lt;a href=&#34;https://github.com/dorssel/usbipd-win/releases/download/v4.0.0/usbipd-win_4.0.0.msi&#34;&gt;usbipd-win_4.0.0.msi&lt;/a&gt; 并安装&lt;/p&gt;
+&lt;p&gt;需要注意的是，安装了这个版本发现 usbipd 命令的使用方式变了&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd.exe wsl list
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: error: The &lt;span class=&#34;s1&#34;&gt;&amp;#39;wsl&amp;#39;&lt;/span&gt; subcommand has been removed. Learn about the new syntax at https://learn.microsoft.com/windows/wsl/connect-usb#attach-a-usb-device.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd attach --busid 4-4
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Option &lt;span class=&#34;s1&#34;&gt;&amp;#39;--wsl&amp;#39;&lt;/span&gt; is required.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd-win 4.0.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Description:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Attaches a USB device to a client.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Currently, only WSL is supported. Other clients need to perform an attach using client-side tooling.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Exactly one of the options &lt;span class=&#34;s1&#34;&gt;&amp;#39;--busid&amp;#39;&lt;/span&gt; or &lt;span class=&#34;s1&#34;&gt;&amp;#39;--hardware-id&amp;#39;&lt;/span&gt; is required.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Usage:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  usbipd attach &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;options&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Options:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -a, --auto-attach                      Automatically re-attach when the device is detached or unplugged
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -b, --busid &amp;lt;BUSID&amp;gt;                    Attach device having &amp;lt;BUSID&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -i, --hardware-id &amp;lt;VID:PID&amp;gt;            Attach device having &amp;lt;VID&amp;gt;:&amp;lt;PID&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -w, --wsl &amp;lt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;DISTRIBUTION&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&amp;gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;REQUIRED&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;  Attach to WSL, optionally specifying the distribution to use
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -?, -h, --help                         Show &lt;span class=&#34;nb&#34;&gt;help&lt;/span&gt; and usage information
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/MicrosoftDocs/WSL/issues/1868&#34;&gt;https://github.com/MicrosoftDocs/WSL/issues/1868&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;正确的使用方式&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd.exe list
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Connected:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;BUSID  VID:PID    DEVICE                                                        STATE
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1-1    30c9:0096  HP 5MP Camera, HP IR Camera, Camera DFU Device                Not shared
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1-10   8087:0033  英特尔&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;R&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 无线 Bluetooth&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;R&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;                                   Not shared
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;4-3    0483:572a  USB 串行设备 &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;COM5&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;, USB 大容量存储设备                       Not shared
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;4-4    3415:0308  adb                                                           Not shared
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Persisted:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;GUID                                  DEVICE
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1bfb0182-4c41-487f-bdcb-530e2d2cd7ea  USB Serial Converter
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;d7c7745c-3765-49a5-8ad0-c4697d874eb4  Silicon Labs Dual CP2105 USB to UART Bridge: Enhanced COM...r
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;e7af58b3-5b09-4385-a043-6256222507d3  bst usb gadget &lt;span class=&#34;k&#34;&gt;function&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: warning: USB filter &lt;span class=&#34;s1&#34;&gt;&amp;#39;USBPcap&amp;#39;&lt;/span&gt; is known to be incompatible with this software&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;bind --force&amp;#39;&lt;/span&gt; will be required.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd &lt;span class=&#34;nb&#34;&gt;bind&lt;/span&gt; -b 4-4
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: warning: USB filter &lt;span class=&#34;s1&#34;&gt;&amp;#39;USBPcap&amp;#39;&lt;/span&gt; is known to be incompatible with this software&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;bind --force&amp;#39;&lt;/span&gt; will be required.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd &lt;span class=&#34;nb&#34;&gt;bind&lt;/span&gt; -b 4-4
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: warning: USB filter &lt;span class=&#34;s1&#34;&gt;&amp;#39;USBPcap&amp;#39;&lt;/span&gt; is known to be incompatible with this software&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;bind --force&amp;#39;&lt;/span&gt; will be required.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd attach -w --busid 4-4
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: info: Using WSL distribution &lt;span class=&#34;s1&#34;&gt;&amp;#39;Ubuntu&amp;#39;&lt;/span&gt; to attach&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; the device will be available in all WSL &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; distributions.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: info: Using IP address 172.25.192.1 to reach the host.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后 wsl 中就可以访问到刚刚挂载的 usb 设备了 &lt;code&gt;Bus 001 Device 002: ID 3415:0308 bst bst usb adb Gadget&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;luyang@KFC:/tmp$ sudo lsusb
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Bus &lt;span class=&#34;m&#34;&gt;002&lt;/span&gt; Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Bus &lt;span class=&#34;m&#34;&gt;001&lt;/span&gt; Device 002: ID 3415:0308 bst bst usb adb Gadget
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Bus &lt;span class=&#34;m&#34;&gt;001&lt;/span&gt; Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;注意：usbipd attach 之前要先执行 bind 否则会报错误&lt;/p&gt;&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd attach -w --busid 4-4
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: error: Device is not shared&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; run &lt;span class=&#34;s1&#34;&gt;&amp;#39;usbipd bind -b 4-4&amp;#39;&lt;/span&gt; as administrator first.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;参考链接&#34;&gt;参考链接&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/qq_59475883/article/details/123299689&#34;&gt;WSL2识别USB设备——安装开源 usbipd-win 项目-CSDN博客&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

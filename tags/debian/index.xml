@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Debian on LuyangのBlog</title>
+    <link>https://luyoungcn.github.io/tags/debian/</link>
+    <description>Recent content in Debian on LuyangのBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/debian/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Debian 4.9 Config Static Ip.md</title>
+      <link>https://luyoungcn.github.io/posts/debian4/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      
+      <guid>https://luyoungcn.github.io/posts/debian4/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Linux debian 4.9.0-6-amd64 #1 SMP Debian 4.9.82-1+deb9u3 (2018-03-02) x86_64&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;kk@debian:~$ &lt;code&gt;cat /etc/network/interfaces&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;修改后&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo enp0s3
+iface lo inet loopback
+
+iface enp0s3 inet static
+        address 192.168.20.103
+        netmask 255.255.255.0
+        gateway 192.168.20.1
+dns-nameservers 114.114.114.114
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;kk@debian:~$ &lt;code&gt;/sbin/ifconfig&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;enp0s3: flags=4163&amp;lt;UP,BROADCAST,RUNNING,MULTICAST&amp;gt;  mtu 1500
+        inet 192.168.20.103  netmask 255.255.255.0  broadcast 192.168.20.255
+        inet6 fe80::a00:27ff:fe30:e855  prefixlen 64  scopeid 0x20&amp;lt;link&amp;gt;
+        ether 08:00:27:30:e8:55  txqueuelen 1000  (Ethernet)
+        RX packets 87  bytes 8538 (8.3 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 155  bytes 21027 (20.5 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73&amp;lt;UP,LOOPBACK,RUNNING&amp;gt;  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10&amp;lt;host&amp;gt;
+        loop  txqueuelen 1  (Local Loopback)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;重启网络服务&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo /etc/init.d/networking restart&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这样修改之后, 内网可以 ssh 登陆虚拟机, 但是虚拟机无法连接外网.&lt;/p&gt;
+&lt;p&gt;修改方案:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo vim /etc/resolv.conf&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;默认该文件是空, 添加如下行:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;nameserver 114.114.114.114
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;重启网络服务&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo /etc/init.d/networking restart&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

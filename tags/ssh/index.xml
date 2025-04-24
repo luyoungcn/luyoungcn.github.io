@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ssh on LuyangのBlog</title>
+    <link>https://luyoungcn.github.io/tags/ssh/</link>
+    <description>Recent content in Ssh on LuyangのBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 03 Feb 2023 12:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>vscode remote-ssh 免密登录配置</title>
+      <link>https://luyoungcn.github.io/posts/vscode_remote-ssh_%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate>
+      
+      <guid>https://luyoungcn.github.io/posts/vscode_remote-ssh_%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE/</guid>
+      <description>&lt;h1 id=&#34;vscode-remote-ssh-免密登录&#34;&gt;vscode remote-ssh 免密登录&lt;/h1&gt;
+&lt;h2 id=&#34;环境声明&#34;&gt;环境声明&lt;/h2&gt;
+&lt;p&gt;win10 vscode + remote-ssh + virtualbox (ubuntu 20.04)&lt;/p&gt;
+&lt;h2 id=&#34;windows-配置&#34;&gt;windows 配置&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;安装 vscode，remote-ssh 插件&lt;/li&gt;
+&lt;li&gt;生成 ssh key：&lt;code&gt;ssh-keygen.exe -t rsa&lt;/code&gt; 然后一路回车&lt;/li&gt;
+&lt;li&gt;用户目录下会生成 id_rsa id_rsa.pub 两个文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;服务器-ubuntu-配置&#34;&gt;服务器 ubuntu 配置&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;安装 ssh server: &lt;code&gt;sudo apt install openssh-server&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启动 ssh: &lt;code&gt;sudo service sshd start&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;此时 windows 就可以通过终端工具 ssh 登录服务器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;生成 ssh key：&lt;code&gt;ssh-keygen.exe -t rsa&lt;/code&gt; 然后一路回车&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;sudo vim /etc/ssh/sshd_config&lt;/code&gt; 取消注释 &lt;code&gt;PubkeyAuthentication yes&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将 windows 生成的 id_rsa.pub 文件的内容加入服务器 &lt;code&gt;~/.ssh/authorized_keys&lt;/code&gt; 文件中，如果该文件不存在就创建一个&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;sudo service sshd restart&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;windows-配置-1&#34;&gt;windows 配置&lt;/h2&gt;
+&lt;p&gt;修改用户目录下的配置文件：&lt;code&gt;C:\Users\Administrator\.ssh\config&lt;/code&gt;，内容如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Host 127.0.0.1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  HostName 127.0.0.1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  User luyang
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Port 22
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Host：别名随便起&lt;/li&gt;
+&lt;li&gt;HostName: ubuntu 服务器 IP&lt;/li&gt;
+&lt;li&gt;User: ubuntu 登录用户&lt;/li&gt;
+&lt;li&gt;Port：ssh 登录端口&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;至此 vscode remote-ssh 便可以免密码登录服务器&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git 使用指定的 ssh key</title>
+      <link>https://luyoungcn.github.io/posts/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      
+      <guid>https://luyoungcn.github.io/posts/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/</guid>
+      <description>&lt;p&gt;Git 提供了以下两种方式来指定使用哪个 SSH Key 进行认证：&lt;/p&gt;
+&lt;h2 id=&#34;使用-git-config-命令&#34;&gt;使用 Git Config 命令&lt;/h2&gt;
+&lt;p&gt;使用 &lt;code&gt;git config&lt;/code&gt; 命令来配置 Git 的全局或本地参数。在这个命令中，可以使用 &lt;code&gt;core.sshCommand&lt;/code&gt; 参数来指定使用哪个 SSH Key 进行认证。&lt;/p&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 全局范围内使用 SSH Key&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ git config --global core.sshCommand &lt;span class=&#34;s2&#34;&gt;&amp;#34;ssh -i ~/.ssh/my_private_key&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 仅对当前仓库使用 SSH Key&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ git config core.sshCommand &lt;span class=&#34;s2&#34;&gt;&amp;#34;ssh -i ~/.ssh/my_private_key&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面的命令会告诉 Git，使用 &lt;code&gt;~/.ssh/my_private_key&lt;/code&gt; 文件作为 SSH 私钥进行认证。&lt;/p&gt;
+&lt;h2 id=&#34;使用-git-clone-命令&#34;&gt;使用 Git Clone 命令&lt;/h2&gt;
+&lt;p&gt;在使用 git clone 命令克隆项目时，可以通过 &lt;code&gt;-c&lt;/code&gt; 或 &lt;code&gt;--config&lt;/code&gt; 参数来指定使用哪个 SSH Key 进行认证。示例如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ git clone -c core.sshCommand&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;ssh -i ~/.ssh/my_private_key&amp;#34;&lt;/span&gt; git@github.com:user/repo.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面的命令将会使用 &lt;code&gt;-i ~/.ssh/my_private_key&lt;/code&gt; 指定的 SSH Key 进行认证。&lt;/p&gt;
+&lt;h2 id=&#34;git-push-使用指定的ssh-private-key&#34;&gt;git push 使用指定的ssh private key&lt;/h2&gt;
+&lt;p&gt;在使用 Git 上传代码时，可以通过指定 ssh private key 来进行身份验证而非输入用户名和密码。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;打开终端（命令行），并进入到 Git 本地仓库所在目录。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;输入以下命令来配置 Git 使用指定的 ssh private key：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 如果不执行该指令，ssh-add 可能会报错：Could not open a connection to your authentication agent.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;eval&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;ssh-agent -s&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 其中 /path/to/private/key 替换成你的私钥文件路径。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ssh-add /path/to/private/key
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;确认已将 private key 加入 ssh-agent 后，在命令行中输入以下命令来测试连接：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ssh -T git@github.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 如果连接成功，则会显示如下信息：&amp;#34;Hi {your username}! You&amp;#39;ve successfully authenticated, but GitHub does not provide shell access.&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;执行 Git Push 操作&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git push origin master
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;注意事项&#34;&gt;注意事项&lt;/h2&gt;
+&lt;p&gt;使用 SSH Key 进行认证时，私钥文件必须设置正确的权限（一般是 0600），否则会导致认证失败。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

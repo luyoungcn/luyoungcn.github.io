@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Stress on LuyangのBlog</title>
+    <link>https://luyoungcn.github.io/tags/stress/</link>
+    <description>Recent content in Stress on LuyangのBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 03 Feb 2023 12:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/stress/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DDR 压测命令</title>
+      <link>https://luyoungcn.github.io/posts/ddr-%E5%8E%8B%E6%B5%8B%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate>
+      
+      <guid>https://luyoungcn.github.io/posts/ddr-%E5%8E%8B%E6%B5%8B%E5%91%BD%E4%BB%A4/</guid>
+      <description>&lt;h1 id=&#34;ddr-压测命令&#34;&gt;DDR 压测命令&lt;/h1&gt;
+&lt;p&gt;测试之前可以使用 &lt;code&gt;free -m&lt;/code&gt; 查看内存使用情况。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;» free
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              total        used        free      shared  buff/cache   available
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Mem:       &lt;span class=&#34;m&#34;&gt;16193884&lt;/span&gt;     &lt;span class=&#34;m&#34;&gt;1268028&lt;/span&gt;    &lt;span class=&#34;m&#34;&gt;13921020&lt;/span&gt;        &lt;span class=&#34;m&#34;&gt;6528&lt;/span&gt;     &lt;span class=&#34;m&#34;&gt;1004836&lt;/span&gt;    &lt;span class=&#34;m&#34;&gt;14587148&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Swap:       &lt;span class=&#34;m&#34;&gt;4194304&lt;/span&gt;           &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;     &lt;span class=&#34;m&#34;&gt;4194304&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;» free -m
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              total        used        free      shared  buff/cache   available
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Mem:          &lt;span class=&#34;m&#34;&gt;15814&lt;/span&gt;        &lt;span class=&#34;m&#34;&gt;1231&lt;/span&gt;       &lt;span class=&#34;m&#34;&gt;13598&lt;/span&gt;           &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt;         &lt;span class=&#34;m&#34;&gt;984&lt;/span&gt;       &lt;span class=&#34;m&#34;&gt;14252&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;根据 available 至设置 DDR 压测内存大小。&lt;/p&gt;
+&lt;h2 id=&#34;stressapptest&#34;&gt;stressapptest&lt;/h2&gt;
+&lt;h3 id=&#34;安装-stressapptest&#34;&gt;安装 stressapptest&lt;/h3&gt;
+&lt;p&gt;stressapptest - stress test application for simulating high load situations&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install stressapptest
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;stressapptest-help&#34;&gt;stressapptest help&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;» stressapptest -h
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Stats: SAT revision 1.0.6_autoconf, &lt;span class=&#34;m&#34;&gt;64&lt;/span&gt; bit binary
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Log: buildd @ lgw01-amd64-029 on Sun Mar &lt;span class=&#34;m&#34;&gt;22&lt;/span&gt; 18:14:26 UTC &lt;span class=&#34;m&#34;&gt;2020&lt;/span&gt; from open &lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; release
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Usage: ./sat&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;32&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;64&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;options&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -M mbytes        megabytes of ram to &lt;span class=&#34;nb&#34;&gt;test&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -H mbytes        minimum megabytes of hugepages to require
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -s seconds       number of seconds to run
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -m threads       number of memory copy threads to run
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -i threads       number of memory invert threads to run
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -C threads       number of memory CPU stress threads to run
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; --findfiles      find locations to &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; disk IO automatically
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -d device        add a direct write disk thread with block device &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;or file&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;device&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -f filename      add a disk thread with tempfile &lt;span class=&#34;s1&#34;&gt;&amp;#39;filename&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -l logfile       log output to file &lt;span class=&#34;s1&#34;&gt;&amp;#39;logfile&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; --max_errors n   &lt;span class=&#34;nb&#34;&gt;exit&lt;/span&gt; early after finding &lt;span class=&#34;s1&#34;&gt;&amp;#39;n&amp;#39;&lt;/span&gt; errors
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -v level         verbosity &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;0-20&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;, default is &lt;span class=&#34;m&#34;&gt;8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -W               Use more CPU-stressful memory copy
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -A               run in degraded mode on incompatible systems
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -p pagesize      size in bytes of memory chunks
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; --filesize size  size of disk IO tempfiles
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -n ipaddr        add a network thread connecting to system at &lt;span class=&#34;s1&#34;&gt;&amp;#39;ipaddr&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; --listen         run a thread to listen &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; and respond to network threads.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; --no_errors      run without checking &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; ECC or other errors
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; --force_errors   inject &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt; errors to &lt;span class=&#34;nb&#34;&gt;test&lt;/span&gt; error handling
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; --force_errors_like_crazy   inject a lot of &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt; errors to &lt;span class=&#34;nb&#34;&gt;test&lt;/span&gt; error handling
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -F               don&lt;span class=&#34;s1&#34;&gt;&amp;#39;t result check each transaction
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt; --stop_on_errors  Stop after finding the first error.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt; --read-block-size     size of block for reading (-d)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt; --write-block-size    size of block for writing (-d). If not defined, the size of block for writing will be defined as the size of block for reading
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt; --segment-size   size of segments to split disk into (-d)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt; --cache-size     size of disk cache (-d)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt; --blocks-per-segment  number of blocks to read/write per segment per iteration (-d)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt; --read-threshold      maximum time (in us) a block read should take (-d)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt; --write-threshold     maximum time (in us) a block write should take (-d)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt; --random-threads      number of random threads for each disk write thread (-d)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt; --destructive    write/wipe disk partition (-d)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt; --monitor_mode   only do ECC error polling, no stress load.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt; --cc_test        do the cache coherency testing
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt; --cc_inc_count   number of times to increment the cacheline&amp;#39;&lt;/span&gt;s member
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; --cc_line_count  number of cache line sized datastructures to allocate &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; the cache coherency threads to operate
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; --paddr_base     allocate memory starting from this address
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; --pause_delay    delay &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;in seconds&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; between power spikes
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; --pause_duration duration &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;in seconds&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; of each pause
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; --local_numa     choose memory regions associated with each CPU to be tested by that CPU
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; --remote_numa    choose memory regions not associated with each CPU to be tested by that CPU
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; --interleave_size bytes  size in bytes of each channel&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;s data as interleaved between memory channels
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; --channel_width bits     width in bits of each memory channel
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; --memory_channel u1,u2   defines a comma-separated list of names
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                          &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; dram packages in a memory channel.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                          Use multiple &lt;span class=&#34;nb&#34;&gt;times&lt;/span&gt; to define multiple channels.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./stressapptest -M &lt;span class=&#34;m&#34;&gt;14200&lt;/span&gt; -s &lt;span class=&#34;m&#34;&gt;36000&lt;/span&gt; -m &lt;span class=&#34;m&#34;&gt;8&lt;/span&gt; -i &lt;span class=&#34;m&#34;&gt;8&lt;/span&gt; -C &lt;span class=&#34;m&#34;&gt;8&lt;/span&gt; -l /data/stressapptest.log
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;参数说明&#34;&gt;参数说明&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-M 14200&lt;/code&gt;: 测试内存大小 14200M&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-s 36000&lt;/code&gt;: 测试时常10h，压力测试建议不小于1h&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-m threads&lt;/code&gt;：这个参数用于指定运行内存拷贝线程的数量。内存拷贝线程是执行内存数据复制操作的线程，增加线程数量可以增加内存操作的并发度，从而增加对系统的内存压力。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-i threads&lt;/code&gt;：这个参数用于指定运行内存反转（invert）线程的数量。内存反转线程通常是指执行内存数据位反转操作的线程，这也是一种压力测试，可以用于测试内存的写入和读取性能。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-C threads&lt;/code&gt;：表示启动的 CPU 压力测试线程的数量。增加这个数字可以增加 CPU 的负载，从而测试 CPU 在高压力下的性能表现。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;若测试通过，则终端会打印：&lt;code&gt;Status: PASS – please verify no corrected errors。&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&#34;bw_mem&#34;&gt;bw_mem&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./bw_mem 128M rdwr
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
