@@ -2,815 +2,836 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on LuyangのBlog</title>
-    <link>https://luyoungcn.github.io/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on LuyangのBlog</description>
     <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jan 2024 20:19:08 +0800</lastBuildDate>
-    <atom:link href="https://luyoungcn.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-US</language>
+    <lastBuildDate>Mon, 24 Mar 2025 23:00:00 -0300</lastBuildDate>
+    <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Example</title>
+      <link>/tags/example/</link>
+      <pubDate>Mon, 24 Mar 2025 23:00:00 -0300</pubDate>
+      <guid>/tags/example/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Guide</title>
+      <link>/tags/guide/</link>
+      <pubDate>Mon, 24 Mar 2025 23:00:00 -0300</pubDate>
+      <guid>/tags/guide/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Starter</title>
+      <link>/tags/starter/</link>
+      <pubDate>Mon, 24 Mar 2025 23:00:00 -0300</pubDate>
+      <guid>/tags/starter/</guid>
+      <description></description>
+    </item>
     <item>
       <title>C</title>
-      <link>https://luyoungcn.github.io/tags/c/</link>
+      <link>/tags/c/</link>
       <pubDate>Mon, 01 Jan 2024 20:19:08 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/c/</guid>
+      <guid>/tags/c/</guid>
       <description></description>
     </item>
     <item>
       <title>Errnum</title>
-      <link>https://luyoungcn.github.io/tags/errnum/</link>
+      <link>/tags/errnum/</link>
       <pubDate>Mon, 01 Jan 2024 20:19:08 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/errnum/</guid>
+      <guid>/tags/errnum/</guid>
       <description></description>
     </item>
     <item>
       <title>Glibc</title>
-      <link>https://luyoungcn.github.io/tags/glibc/</link>
+      <link>/tags/glibc/</link>
       <pubDate>Mon, 01 Jan 2024 20:19:08 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/glibc/</guid>
+      <guid>/tags/glibc/</guid>
       <description></description>
     </item>
     <item>
       <title>Perror</title>
-      <link>https://luyoungcn.github.io/tags/perror/</link>
+      <link>/tags/perror/</link>
       <pubDate>Mon, 01 Jan 2024 20:19:08 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/perror/</guid>
+      <guid>/tags/perror/</guid>
       <description></description>
     </item>
     <item>
       <title>RTFSC</title>
-      <link>https://luyoungcn.github.io/tags/rtfsc/</link>
+      <link>/tags/rtfsc/</link>
       <pubDate>Mon, 01 Jan 2024 20:19:08 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/rtfsc/</guid>
+      <guid>/tags/rtfsc/</guid>
       <description></description>
     </item>
     <item>
       <title>Adb</title>
-      <link>https://luyoungcn.github.io/tags/adb/</link>
+      <link>/tags/adb/</link>
       <pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/adb/</guid>
+      <guid>/tags/adb/</guid>
       <description></description>
     </item>
     <item>
       <title>Android</title>
-      <link>https://luyoungcn.github.io/tags/android/</link>
+      <link>/tags/android/</link>
       <pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/android/</guid>
+      <guid>/tags/android/</guid>
       <description></description>
     </item>
     <item>
       <title>Usb</title>
-      <link>https://luyoungcn.github.io/tags/usb/</link>
+      <link>/tags/usb/</link>
       <pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/usb/</guid>
+      <guid>/tags/usb/</guid>
       <description></description>
     </item>
     <item>
       <title>Usbip</title>
-      <link>https://luyoungcn.github.io/tags/usbip/</link>
+      <link>/tags/usbip/</link>
       <pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/usbip/</guid>
+      <guid>/tags/usbip/</guid>
       <description></description>
     </item>
     <item>
       <title>Wsl</title>
-      <link>https://luyoungcn.github.io/tags/wsl/</link>
+      <link>/tags/wsl/</link>
       <pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/wsl/</guid>
+      <guid>/tags/wsl/</guid>
       <description></description>
     </item>
     <item>
       <title>Oh-My-Posh</title>
-      <link>https://luyoungcn.github.io/tags/oh-my-posh/</link>
+      <link>/tags/oh-my-posh/</link>
       <pubDate>Mon, 26 Jun 2023 03:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/oh-my-posh/</guid>
+      <guid>/tags/oh-my-posh/</guid>
       <description></description>
     </item>
     <item>
       <title>Svn</title>
-      <link>https://luyoungcn.github.io/tags/svn/</link>
+      <link>/tags/svn/</link>
       <pubDate>Mon, 26 Jun 2023 03:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/svn/</guid>
+      <guid>/tags/svn/</guid>
       <description></description>
     </item>
     <item>
       <title>Terminal</title>
-      <link>https://luyoungcn.github.io/tags/terminal/</link>
+      <link>/tags/terminal/</link>
       <pubDate>Mon, 26 Jun 2023 03:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/terminal/</guid>
+      <guid>/tags/terminal/</guid>
       <description></description>
     </item>
     <item>
       <title>Ubuntu</title>
-      <link>https://luyoungcn.github.io/tags/ubuntu/</link>
+      <link>/tags/ubuntu/</link>
       <pubDate>Mon, 26 Jun 2023 03:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/ubuntu/</guid>
+      <guid>/tags/ubuntu/</guid>
       <description></description>
     </item>
     <item>
       <title>Openssl</title>
-      <link>https://luyoungcn.github.io/tags/openssl/</link>
+      <link>/tags/openssl/</link>
       <pubDate>Thu, 01 Jun 2023 09:30:01 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/openssl/</guid>
+      <guid>/tags/openssl/</guid>
       <description></description>
     </item>
     <item>
       <title>Wdk</title>
-      <link>https://luyoungcn.github.io/tags/wdk/</link>
+      <link>/tags/wdk/</link>
       <pubDate>Thu, 01 Jun 2023 09:30:01 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/wdk/</guid>
+      <guid>/tags/wdk/</guid>
       <description></description>
     </item>
     <item>
       <title>签名</title>
-      <link>https://luyoungcn.github.io/tags/%E7%AD%BE%E5%90%8D/</link>
+      <link>/tags/%E7%AD%BE%E5%90%8D/</link>
       <pubDate>Thu, 01 Jun 2023 09:30:01 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/%E7%AD%BE%E5%90%8D/</guid>
+      <guid>/tags/%E7%AD%BE%E5%90%8D/</guid>
       <description></description>
     </item>
     <item>
       <title>证书</title>
-      <link>https://luyoungcn.github.io/tags/%E8%AF%81%E4%B9%A6/</link>
+      <link>/tags/%E8%AF%81%E4%B9%A6/</link>
       <pubDate>Thu, 01 Jun 2023 09:30:01 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/%E8%AF%81%E4%B9%A6/</guid>
+      <guid>/tags/%E8%AF%81%E4%B9%A6/</guid>
       <description></description>
     </item>
     <item>
       <title>CodeReview</title>
-      <link>https://luyoungcn.github.io/tags/codereview/</link>
+      <link>/tags/codereview/</link>
       <pubDate>Thu, 01 Jun 2023 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/codereview/</guid>
+      <guid>/tags/codereview/</guid>
       <description></description>
     </item>
     <item>
       <title>Docker</title>
-      <link>https://luyoungcn.github.io/tags/docker/</link>
+      <link>/tags/docker/</link>
       <pubDate>Thu, 01 Jun 2023 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/docker/</guid>
+      <guid>/tags/docker/</guid>
       <description></description>
     </item>
     <item>
       <title>Gerrit</title>
-      <link>https://luyoungcn.github.io/tags/gerrit/</link>
+      <link>/tags/gerrit/</link>
       <pubDate>Thu, 01 Jun 2023 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/gerrit/</guid>
+      <guid>/tags/gerrit/</guid>
       <description></description>
     </item>
     <item>
       <title>Repo</title>
-      <link>https://luyoungcn.github.io/tags/repo/</link>
+      <link>/tags/repo/</link>
       <pubDate>Thu, 01 Jun 2023 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/repo/</guid>
+      <guid>/tags/repo/</guid>
       <description></description>
     </item>
     <item>
       <title>Clion</title>
-      <link>https://luyoungcn.github.io/tags/clion/</link>
+      <link>/tags/clion/</link>
       <pubDate>Tue, 16 May 2023 20:19:08 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/clion/</guid>
+      <guid>/tags/clion/</guid>
       <description></description>
     </item>
     <item>
       <title>Vcpkg</title>
-      <link>https://luyoungcn.github.io/tags/vcpkg/</link>
+      <link>/tags/vcpkg/</link>
       <pubDate>Tue, 16 May 2023 20:19:08 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/vcpkg/</guid>
+      <guid>/tags/vcpkg/</guid>
       <description></description>
     </item>
     <item>
       <title>Visual_studio</title>
-      <link>https://luyoungcn.github.io/tags/visual_studio/</link>
+      <link>/tags/visual_studio/</link>
       <pubDate>Tue, 16 May 2023 20:19:08 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/visual_studio/</guid>
+      <guid>/tags/visual_studio/</guid>
       <description></description>
     </item>
     <item>
       <title>Windows</title>
-      <link>https://luyoungcn.github.io/tags/windows/</link>
+      <link>/tags/windows/</link>
       <pubDate>Tue, 16 May 2023 20:19:08 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/windows/</guid>
+      <guid>/tags/windows/</guid>
       <description></description>
     </item>
     <item>
       <title>Bst</title>
-      <link>https://luyoungcn.github.io/tags/bst/</link>
+      <link>/tags/bst/</link>
       <pubDate>Thu, 09 Feb 2023 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/bst/</guid>
+      <guid>/tags/bst/</guid>
       <description></description>
     </item>
     <item>
       <title>Date</title>
-      <link>https://luyoungcn.github.io/tags/date/</link>
+      <link>/tags/date/</link>
       <pubDate>Thu, 09 Feb 2023 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/date/</guid>
+      <guid>/tags/date/</guid>
       <description></description>
     </item>
     <item>
       <title>Ext4</title>
-      <link>https://luyoungcn.github.io/tags/ext4/</link>
+      <link>/tags/ext4/</link>
       <pubDate>Thu, 09 Feb 2023 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/ext4/</guid>
+      <guid>/tags/ext4/</guid>
       <description></description>
     </item>
     <item>
       <title>Linux</title>
-      <link>https://luyoungcn.github.io/tags/linux/</link>
+      <link>/tags/linux/</link>
       <pubDate>Thu, 09 Feb 2023 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/linux/</guid>
+      <guid>/tags/linux/</guid>
       <description></description>
     </item>
     <item>
       <title>Usbipd</title>
-      <link>https://luyoungcn.github.io/tags/usbipd/</link>
+      <link>/tags/usbipd/</link>
       <pubDate>Thu, 09 Feb 2023 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/usbipd/</guid>
+      <guid>/tags/usbipd/</guid>
       <description></description>
     </item>
     <item>
       <title>I2C</title>
-      <link>https://luyoungcn.github.io/tags/i2c/</link>
+      <link>/tags/i2c/</link>
       <pubDate>Tue, 07 Feb 2023 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/i2c/</guid>
+      <guid>/tags/i2c/</guid>
       <description></description>
     </item>
     <item>
       <title>DDR</title>
-      <link>https://luyoungcn.github.io/tags/ddr/</link>
+      <link>/tags/ddr/</link>
       <pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/ddr/</guid>
+      <guid>/tags/ddr/</guid>
       <description></description>
     </item>
     <item>
       <title>E2fs</title>
-      <link>https://luyoungcn.github.io/tags/e2fs/</link>
+      <link>/tags/e2fs/</link>
       <pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/e2fs/</guid>
+      <guid>/tags/e2fs/</guid>
       <description></description>
     </item>
     <item>
       <title>Libxml</title>
-      <link>https://luyoungcn.github.io/tags/libxml/</link>
+      <link>/tags/libxml/</link>
       <pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/libxml/</guid>
+      <guid>/tags/libxml/</guid>
       <description></description>
     </item>
     <item>
       <title>Python</title>
-      <link>https://luyoungcn.github.io/tags/python/</link>
+      <link>/tags/python/</link>
       <pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/python/</guid>
+      <guid>/tags/python/</guid>
       <description></description>
     </item>
     <item>
       <title>Ssh</title>
-      <link>https://luyoungcn.github.io/tags/ssh/</link>
+      <link>/tags/ssh/</link>
       <pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/ssh/</guid>
+      <guid>/tags/ssh/</guid>
       <description></description>
     </item>
     <item>
       <title>Stress</title>
-      <link>https://luyoungcn.github.io/tags/stress/</link>
+      <link>/tags/stress/</link>
       <pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/stress/</guid>
+      <guid>/tags/stress/</guid>
       <description></description>
     </item>
     <item>
       <title>Tcpdump</title>
-      <link>https://luyoungcn.github.io/tags/tcpdump/</link>
+      <link>/tags/tcpdump/</link>
       <pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/tcpdump/</guid>
+      <guid>/tags/tcpdump/</guid>
       <description></description>
     </item>
     <item>
       <title>Vscode</title>
-      <link>https://luyoungcn.github.io/tags/vscode/</link>
+      <link>/tags/vscode/</link>
       <pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/vscode/</guid>
+      <guid>/tags/vscode/</guid>
       <description></description>
     </item>
     <item>
       <title>Zlib</title>
-      <link>https://luyoungcn.github.io/tags/zlib/</link>
+      <link>/tags/zlib/</link>
       <pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/zlib/</guid>
+      <guid>/tags/zlib/</guid>
       <description></description>
     </item>
     <item>
       <title>Dmesg</title>
-      <link>https://luyoungcn.github.io/tags/dmesg/</link>
+      <link>/tags/dmesg/</link>
       <pubDate>Wed, 01 Feb 2023 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/dmesg/</guid>
+      <guid>/tags/dmesg/</guid>
       <description></description>
     </item>
     <item>
       <title>Akshare</title>
-      <link>https://luyoungcn.github.io/tags/akshare/</link>
+      <link>/tags/akshare/</link>
       <pubDate>Sat, 26 Jun 2021 03:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/akshare/</guid>
+      <guid>/tags/akshare/</guid>
       <description></description>
     </item>
     <item>
       <title>Stock</title>
-      <link>https://luyoungcn.github.io/tags/stock/</link>
+      <link>/tags/stock/</link>
       <pubDate>Sat, 26 Jun 2021 03:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/stock/</guid>
+      <guid>/tags/stock/</guid>
       <description></description>
     </item>
     <item>
       <title>Activity</title>
-      <link>https://luyoungcn.github.io/tags/activity/</link>
+      <link>/tags/activity/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/activity/</guid>
+      <guid>/tags/activity/</guid>
       <description></description>
     </item>
     <item>
       <title>ADC</title>
-      <link>https://luyoungcn.github.io/tags/adc/</link>
+      <link>/tags/adc/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/adc/</guid>
+      <guid>/tags/adc/</guid>
       <description></description>
     </item>
     <item>
       <title>ADI</title>
-      <link>https://luyoungcn.github.io/tags/adi/</link>
+      <link>/tags/adi/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/adi/</guid>
+      <guid>/tags/adi/</guid>
       <description></description>
     </item>
     <item>
       <title>Am</title>
-      <link>https://luyoungcn.github.io/tags/am/</link>
+      <link>/tags/am/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/am/</guid>
+      <guid>/tags/am/</guid>
       <description></description>
     </item>
     <item>
       <title>AndroidStudio</title>
-      <link>https://luyoungcn.github.io/tags/androidstudio/</link>
+      <link>/tags/androidstudio/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/androidstudio/</guid>
+      <guid>/tags/androidstudio/</guid>
       <description></description>
     </item>
     <item>
       <title>Awr2243</title>
-      <link>https://luyoungcn.github.io/tags/awr2243/</link>
+      <link>/tags/awr2243/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/awr2243/</guid>
+      <guid>/tags/awr2243/</guid>
       <description></description>
     </item>
     <item>
       <title>BandWidth</title>
-      <link>https://luyoungcn.github.io/tags/bandwidth/</link>
+      <link>/tags/bandwidth/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/bandwidth/</guid>
+      <guid>/tags/bandwidth/</guid>
       <description></description>
     </item>
     <item>
       <title>Bayer</title>
-      <link>https://luyoungcn.github.io/tags/bayer/</link>
+      <link>/tags/bayer/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/bayer/</guid>
+      <guid>/tags/bayer/</guid>
       <description></description>
     </item>
     <item>
       <title>BeyondCompare</title>
-      <link>https://luyoungcn.github.io/tags/beyondcompare/</link>
+      <link>/tags/beyondcompare/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/beyondcompare/</guid>
+      <guid>/tags/beyondcompare/</guid>
       <description></description>
     </item>
     <item>
       <title>Blog</title>
-      <link>https://luyoungcn.github.io/tags/blog/</link>
+      <link>/tags/blog/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/blog/</guid>
+      <guid>/tags/blog/</guid>
       <description></description>
     </item>
     <item>
       <title>Boost</title>
-      <link>https://luyoungcn.github.io/tags/boost/</link>
+      <link>/tags/boost/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/boost/</guid>
+      <guid>/tags/boost/</guid>
       <description></description>
     </item>
     <item>
       <title>Ccache</title>
-      <link>https://luyoungcn.github.io/tags/ccache/</link>
+      <link>/tags/ccache/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/ccache/</guid>
+      <guid>/tags/ccache/</guid>
       <description></description>
     </item>
     <item>
       <title>Cmake</title>
-      <link>https://luyoungcn.github.io/tags/cmake/</link>
+      <link>/tags/cmake/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/cmake/</guid>
+      <guid>/tags/cmake/</guid>
       <description></description>
     </item>
     <item>
       <title>Cmos</title>
-      <link>https://luyoungcn.github.io/tags/cmos/</link>
+      <link>/tags/cmos/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/cmos/</guid>
+      <guid>/tags/cmos/</guid>
       <description></description>
     </item>
     <item>
       <title>Crystal</title>
-      <link>https://luyoungcn.github.io/tags/crystal/</link>
+      <link>/tags/crystal/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/crystal/</guid>
+      <guid>/tags/crystal/</guid>
       <description></description>
     </item>
     <item>
       <title>Dart</title>
-      <link>https://luyoungcn.github.io/tags/dart/</link>
+      <link>/tags/dart/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/dart/</guid>
+      <guid>/tags/dart/</guid>
       <description></description>
     </item>
     <item>
       <title>Dd</title>
-      <link>https://luyoungcn.github.io/tags/dd/</link>
+      <link>/tags/dd/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/dd/</guid>
+      <guid>/tags/dd/</guid>
       <description></description>
     </item>
     <item>
       <title>Debian</title>
-      <link>https://luyoungcn.github.io/tags/debian/</link>
+      <link>/tags/debian/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/debian/</guid>
+      <guid>/tags/debian/</guid>
       <description></description>
     </item>
     <item>
       <title>Disk</title>
-      <link>https://luyoungcn.github.io/tags/disk/</link>
+      <link>/tags/disk/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/disk/</guid>
+      <guid>/tags/disk/</guid>
       <description></description>
     </item>
     <item>
       <title>Dokuwiki</title>
-      <link>https://luyoungcn.github.io/tags/dokuwiki/</link>
+      <link>/tags/dokuwiki/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/dokuwiki/</guid>
+      <guid>/tags/dokuwiki/</guid>
       <description></description>
     </item>
     <item>
       <title>Driver</title>
-      <link>https://luyoungcn.github.io/tags/driver/</link>
+      <link>/tags/driver/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/driver/</guid>
+      <guid>/tags/driver/</guid>
       <description></description>
     </item>
     <item>
       <title>Electronic</title>
-      <link>https://luyoungcn.github.io/tags/electronic/</link>
+      <link>/tags/electronic/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/electronic/</guid>
+      <guid>/tags/electronic/</guid>
       <description></description>
     </item>
     <item>
       <title>Flutter</title>
-      <link>https://luyoungcn.github.io/tags/flutter/</link>
+      <link>/tags/flutter/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/flutter/</guid>
+      <guid>/tags/flutter/</guid>
       <description></description>
     </item>
     <item>
       <title>Git</title>
-      <link>https://luyoungcn.github.io/tags/git/</link>
+      <link>/tags/git/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/git/</guid>
+      <guid>/tags/git/</guid>
       <description></description>
     </item>
     <item>
       <title>Gitbook</title>
-      <link>https://luyoungcn.github.io/tags/gitbook/</link>
+      <link>/tags/gitbook/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/gitbook/</guid>
+      <guid>/tags/gitbook/</guid>
       <description></description>
     </item>
     <item>
       <title>Github</title>
-      <link>https://luyoungcn.github.io/tags/github/</link>
+      <link>/tags/github/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/github/</guid>
+      <guid>/tags/github/</guid>
       <description></description>
     </item>
     <item>
       <title>GMSL</title>
-      <link>https://luyoungcn.github.io/tags/gmsl/</link>
+      <link>/tags/gmsl/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/gmsl/</guid>
+      <guid>/tags/gmsl/</guid>
       <description></description>
     </item>
     <item>
       <title>Gpio</title>
-      <link>https://luyoungcn.github.io/tags/gpio/</link>
+      <link>/tags/gpio/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/gpio/</guid>
+      <guid>/tags/gpio/</guid>
       <description></description>
     </item>
     <item>
       <title>Hugo</title>
-      <link>https://luyoungcn.github.io/tags/hugo/</link>
+      <link>/tags/hugo/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/hugo/</guid>
+      <guid>/tags/hugo/</guid>
       <description></description>
     </item>
     <item>
       <title>Interrupt</title>
-      <link>https://luyoungcn.github.io/tags/interrupt/</link>
+      <link>/tags/interrupt/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/interrupt/</guid>
+      <guid>/tags/interrupt/</guid>
       <description></description>
     </item>
     <item>
       <title>Iperf</title>
-      <link>https://luyoungcn.github.io/tags/iperf/</link>
+      <link>/tags/iperf/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/iperf/</guid>
+      <guid>/tags/iperf/</guid>
       <description></description>
     </item>
     <item>
       <title>Java</title>
-      <link>https://luyoungcn.github.io/tags/java/</link>
+      <link>/tags/java/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/java/</guid>
+      <guid>/tags/java/</guid>
       <description></description>
     </item>
     <item>
       <title>Kernel</title>
-      <link>https://luyoungcn.github.io/tags/kernel/</link>
+      <link>/tags/kernel/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/kernel/</guid>
+      <guid>/tags/kernel/</guid>
       <description></description>
     </item>
     <item>
       <title>Manjaro</title>
-      <link>https://luyoungcn.github.io/tags/manjaro/</link>
+      <link>/tags/manjaro/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/manjaro/</guid>
+      <guid>/tags/manjaro/</guid>
       <description></description>
     </item>
     <item>
       <title>MAXIM</title>
-      <link>https://luyoungcn.github.io/tags/maxim/</link>
+      <link>/tags/maxim/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/maxim/</guid>
+      <guid>/tags/maxim/</guid>
       <description></description>
     </item>
     <item>
       <title>Mipi</title>
-      <link>https://luyoungcn.github.io/tags/mipi/</link>
+      <link>/tags/mipi/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/mipi/</guid>
+      <guid>/tags/mipi/</guid>
       <description></description>
     </item>
     <item>
       <title>MMWAVE</title>
-      <link>https://luyoungcn.github.io/tags/mmwave/</link>
+      <link>/tags/mmwave/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/mmwave/</guid>
+      <guid>/tags/mmwave/</guid>
       <description></description>
     </item>
     <item>
       <title>Network</title>
-      <link>https://luyoungcn.github.io/tags/network/</link>
+      <link>/tags/network/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/network/</guid>
+      <guid>/tags/network/</guid>
       <description></description>
     </item>
     <item>
       <title>Office</title>
-      <link>https://luyoungcn.github.io/tags/office/</link>
+      <link>/tags/office/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/office/</guid>
+      <guid>/tags/office/</guid>
       <description></description>
     </item>
     <item>
       <title>Opengrok</title>
-      <link>https://luyoungcn.github.io/tags/opengrok/</link>
+      <link>/tags/opengrok/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/opengrok/</guid>
+      <guid>/tags/opengrok/</guid>
       <description></description>
     </item>
     <item>
       <title>OpenHarmony</title>
-      <link>https://luyoungcn.github.io/tags/openharmony/</link>
+      <link>/tags/openharmony/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/openharmony/</guid>
+      <guid>/tags/openharmony/</guid>
       <description></description>
     </item>
     <item>
       <title>OpenSuse</title>
-      <link>https://luyoungcn.github.io/tags/opensuse/</link>
+      <link>/tags/opensuse/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/opensuse/</guid>
+      <guid>/tags/opensuse/</guid>
       <description></description>
     </item>
     <item>
       <title>Performance</title>
-      <link>https://luyoungcn.github.io/tags/performance/</link>
+      <link>/tags/performance/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/performance/</guid>
+      <guid>/tags/performance/</guid>
       <description></description>
     </item>
     <item>
       <title>Plantuml</title>
-      <link>https://luyoungcn.github.io/tags/plantuml/</link>
+      <link>/tags/plantuml/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/plantuml/</guid>
+      <guid>/tags/plantuml/</guid>
       <description></description>
     </item>
     <item>
       <title>Pm</title>
-      <link>https://luyoungcn.github.io/tags/pm/</link>
+      <link>/tags/pm/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/pm/</guid>
+      <guid>/tags/pm/</guid>
       <description></description>
     </item>
     <item>
       <title>Poll</title>
-      <link>https://luyoungcn.github.io/tags/poll/</link>
+      <link>/tags/poll/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/poll/</guid>
+      <guid>/tags/poll/</guid>
       <description></description>
     </item>
     <item>
       <title>PUBLIC</title>
-      <link>https://luyoungcn.github.io/tags/public/</link>
+      <link>/tags/public/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/public/</guid>
+      <guid>/tags/public/</guid>
       <description></description>
     </item>
     <item>
       <title>Radar</title>
-      <link>https://luyoungcn.github.io/tags/radar/</link>
+      <link>/tags/radar/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/radar/</guid>
+      <guid>/tags/radar/</guid>
       <description></description>
     </item>
     <item>
       <title>Raw</title>
-      <link>https://luyoungcn.github.io/tags/raw/</link>
+      <link>/tags/raw/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/raw/</guid>
+      <guid>/tags/raw/</guid>
       <description></description>
     </item>
     <item>
       <title>Realtek</title>
-      <link>https://luyoungcn.github.io/tags/realtek/</link>
+      <link>/tags/realtek/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/realtek/</guid>
+      <guid>/tags/realtek/</guid>
       <description></description>
     </item>
     <item>
       <title>Samba</title>
-      <link>https://luyoungcn.github.io/tags/samba/</link>
+      <link>/tags/samba/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/samba/</guid>
+      <guid>/tags/samba/</guid>
       <description></description>
     </item>
     <item>
       <title>Select</title>
-      <link>https://luyoungcn.github.io/tags/select/</link>
+      <link>/tags/select/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/select/</guid>
+      <guid>/tags/select/</guid>
       <description></description>
     </item>
     <item>
       <title>SERDES</title>
-      <link>https://luyoungcn.github.io/tags/serdes/</link>
+      <link>/tags/serdes/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/serdes/</guid>
+      <guid>/tags/serdes/</guid>
       <description></description>
     </item>
     <item>
       <title>SourceInsight</title>
-      <link>https://luyoungcn.github.io/tags/sourceinsight/</link>
+      <link>/tags/sourceinsight/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/sourceinsight/</guid>
+      <guid>/tags/sourceinsight/</guid>
       <description></description>
     </item>
     <item>
       <title>SPI</title>
-      <link>https://luyoungcn.github.io/tags/spi/</link>
+      <link>/tags/spi/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/spi/</guid>
+      <guid>/tags/spi/</guid>
       <description></description>
     </item>
     <item>
       <title>Submodule</title>
-      <link>https://luyoungcn.github.io/tags/submodule/</link>
+      <link>/tags/submodule/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/submodule/</guid>
+      <guid>/tags/submodule/</guid>
       <description></description>
     </item>
     <item>
       <title>Time</title>
-      <link>https://luyoungcn.github.io/tags/time/</link>
+      <link>/tags/time/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/time/</guid>
+      <guid>/tags/time/</guid>
       <description></description>
     </item>
     <item>
       <title>Timesync</title>
-      <link>https://luyoungcn.github.io/tags/timesync/</link>
+      <link>/tags/timesync/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/timesync/</guid>
+      <guid>/tags/timesync/</guid>
       <description></description>
     </item>
     <item>
       <title>Tp-Link</title>
-      <link>https://luyoungcn.github.io/tags/tp-link/</link>
+      <link>/tags/tp-link/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/tp-link/</guid>
+      <guid>/tags/tp-link/</guid>
       <description></description>
     </item>
     <item>
       <title>Userspace</title>
-      <link>https://luyoungcn.github.io/tags/userspace/</link>
+      <link>/tags/userspace/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/userspace/</guid>
+      <guid>/tags/userspace/</guid>
       <description></description>
     </item>
     <item>
       <title>Virtualbox</title>
-      <link>https://luyoungcn.github.io/tags/virtualbox/</link>
+      <link>/tags/virtualbox/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/virtualbox/</guid>
+      <guid>/tags/virtualbox/</guid>
       <description></description>
     </item>
     <item>
       <title>Wifi</title>
-      <link>https://luyoungcn.github.io/tags/wifi/</link>
+      <link>/tags/wifi/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/wifi/</guid>
+      <guid>/tags/wifi/</guid>
       <description></description>
     </item>
     <item>
       <title>Wiki</title>
-      <link>https://luyoungcn.github.io/tags/wiki/</link>
+      <link>/tags/wiki/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/wiki/</guid>
+      <guid>/tags/wiki/</guid>
       <description></description>
     </item>
     <item>
       <title>Word</title>
-      <link>https://luyoungcn.github.io/tags/word/</link>
+      <link>/tags/word/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/word/</guid>
+      <guid>/tags/word/</guid>
       <description></description>
     </item>
     <item>
       <title>反相器</title>
-      <link>https://luyoungcn.github.io/tags/%E5%8F%8D%E7%9B%B8%E5%99%A8/</link>
+      <link>/tags/%E5%8F%8D%E7%9B%B8%E5%99%A8/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/%E5%8F%8D%E7%9B%B8%E5%99%A8/</guid>
+      <guid>/tags/%E5%8F%8D%E7%9B%B8%E5%99%A8/</guid>
       <description></description>
     </item>
     <item>
       <title>时间同步</title>
-      <link>https://luyoungcn.github.io/tags/%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5/</link>
+      <link>/tags/%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5/</guid>
+      <guid>/tags/%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5/</guid>
       <description></description>
     </item>
     <item>
       <title>爱因斯坦</title>
-      <link>https://luyoungcn.github.io/tags/%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6/</link>
+      <link>/tags/%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6/</guid>
+      <guid>/tags/%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6/</guid>
       <description></description>
     </item>
     <item>
       <title>皮尔斯振荡器</title>
-      <link>https://luyoungcn.github.io/tags/%E7%9A%AE%E5%B0%94%E6%96%AF%E6%8C%AF%E8%8D%A1%E5%99%A8/</link>
+      <link>/tags/%E7%9A%AE%E5%B0%94%E6%96%AF%E6%8C%AF%E8%8D%A1%E5%99%A8/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/%E7%9A%AE%E5%B0%94%E6%96%AF%E6%8C%AF%E8%8D%A1%E5%99%A8/</guid>
+      <guid>/tags/%E7%9A%AE%E5%B0%94%E6%96%AF%E6%8C%AF%E8%8D%A1%E5%99%A8/</guid>
       <description></description>
     </item>
     <item>
       <title>石英晶体谐振器</title>
-      <link>https://luyoungcn.github.io/tags/%E7%9F%B3%E8%8B%B1%E6%99%B6%E4%BD%93%E8%B0%90%E6%8C%AF%E5%99%A8/</link>
+      <link>/tags/%E7%9F%B3%E8%8B%B1%E6%99%B6%E4%BD%93%E8%B0%90%E6%8C%AF%E5%99%A8/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/%E7%9F%B3%E8%8B%B1%E6%99%B6%E4%BD%93%E8%B0%90%E6%8C%AF%E5%99%A8/</guid>
+      <guid>/tags/%E7%9F%B3%E8%8B%B1%E6%99%B6%E4%BD%93%E8%B0%90%E6%8C%AF%E5%99%A8/</guid>
       <description></description>
     </item>
     <item>
       <title>编译器</title>
-      <link>https://luyoungcn.github.io/tags/%E7%BC%96%E8%AF%91%E5%99%A8/</link>
+      <link>/tags/%E7%BC%96%E8%AF%91%E5%99%A8/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/%E7%BC%96%E8%AF%91%E5%99%A8/</guid>
+      <guid>/tags/%E7%BC%96%E8%AF%91%E5%99%A8/</guid>
       <description></description>
     </item>
     <item>
       <title>远程控制</title>
-      <link>https://luyoungcn.github.io/tags/%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6/</link>
+      <link>/tags/%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/tags/%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6/</guid>
+      <guid>/tags/%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6/</guid>
       <description></description>
     </item>
   </channel>

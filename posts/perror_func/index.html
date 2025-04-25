@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en-US" dir="ltr">
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>perror | LuyangのBlog</title>
-<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="https://luyoungcn.github.io/posts/perror_func/">
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/perror_func/">
   <meta property="og:site_name" content="LuyangのBlog">
   <meta property="og:title" content="perror">
   <meta property="og:description" content="重点学习 errnum 转 str 的实现方法
@@ -13,7 +13,7 @@
 perror (const char *s) static void perror_internal (FILE *fp, const char *s, int errnum) __strerror_r string/_strerror.c
 /* Return a string describing the errno code in ERRNUM. */ char * __strerror_r (int errnum, char *buf, size_t buflen) { char *err = (char *) __get_errlist (errnum); if (__glibc_unlikely (err == NULL)) { __snprintf (buf, buflen, &#34;%s%d&#34;, _(&#34;Unknown error &#34;), errnum); return buf; } return _(err); } __get_errlist stdio-common/errlist.c
 const char * __get_errlist (int errnum) { int mapped = ERR_MAP (errnum); if (mapped &gt;= 0 &amp;&amp; mapped &lt; _sys_errlist_internal_len) return _sys_errlist_internal[mapped]; return NULL; } _sys_errlist_internal stdio-common/errlist-data-gen.c">
-  <meta property="og:locale" content="en_us">
+  <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-01-01T20:19:08+08:00">
@@ -48,7 +48,7 @@ const char * __get_errlist (int errnum) { int mapped = ERR_MAP (errnum); if (map
   <div id="container">
     <header id="main-header"><div role="navigation" aria-label="Main">
   <div class="nav-left">
-    <a href="https://luyoungcn.github.io/" style="color: inherit;">LuyangのBlog</a>
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
   </div>
   <div class="nav-right">
     <div style="position:absolute;width:0px;height:0px;">
@@ -56,6 +56,14 @@ const char * __get_errlist (int errnum) { int mapped = ERR_MAP (errnum); if (map
     <div class="nav-item">
       <a aria-current="true" class="ancestor" href="/posts/"
       >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
     </div>
 </div>
     </div>
@@ -67,6 +75,14 @@ const char * __get_errlist (int errnum) { int mapped = ERR_MAP (errnum); if (map
     <div class="nav-item">
       <a aria-current="true" class="ancestor" href="/posts/"
       >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
     </div>
 </div>
     <a id="theme-switcher" href="#">
@@ -86,14 +102,14 @@ const char * __get_errlist (int errnum) { int mapped = ERR_MAP (errnum); if (map
         <main id="main-content"><div class="single-header">
 <ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="https://luyoungcn.github.io/">
+      <a itemprop="item" href="/">
         <span itemprop="name">Home</span>
       </a>
       <meta itemprop="position" content='1' />
     </li>
     <span>&nbsp»&nbsp</span>
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="https://luyoungcn.github.io/posts/">
+      <a itemprop="item" href="/posts/">
         <span itemprop="name">Posts</span>
       </a>
       <meta itemprop="position" content='2' />
@@ -101,15 +117,15 @@ const char * __get_errlist (int errnum) { int mapped = ERR_MAP (errnum); if (map
     <span>&nbsp»&nbsp</span>
 </ol>
 <h1>perror</h1><time class="dim" datetime="2024-01-01T20:19:08&#43;08:00">January 1, 2024</time><div class="term-container"><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/c/">#c</a>
+        <a href="/tags/c/">#c</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/perror/">#perror</a>
+        <a href="/tags/perror/">#perror</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/errnum/">#errnum</a>
+        <a href="/tags/errnum/">#errnum</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/glibc/">#glibc</a>
+        <a href="/tags/glibc/">#glibc</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/rtfsc/">#RTFSC</a>
+        <a href="/tags/rtfsc/">#RTFSC</a>
       </div></ol></div>
   <section class="page-section"><p>重点学习 errnum 转 str 的实现方法</p>
 <ul>
@@ -971,17 +987,14 @@ const char * __get_errlist (int errnum) { int mapped = ERR_MAP (errnum); if (map
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 </div>
+    <div class="dim">© 2025 Lu Yang</div>
     <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
   </div>
 </div>
 </footer>
       </div><aside id="side-pane" class="side-sticky"><div class="side-details">
     <span>4081 words</span>
-    <span>25 - 32 minutes read</span><div class="side-details-taxonomy">
-        <small>categories: 
-          <span class="details-taxonomy"><a href="https://luyoungcn.github.io/categories/coding">coding</a></span></small>
-      </div></div><h3>Related</h3>
+    <span>25 - 32 minutes read</span></div><h3>Related</h3>
     <ul><li><a href="/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2/">交叉编译 glibc-2.35</a></li></ul></aside></div>
   </div>
 </body>

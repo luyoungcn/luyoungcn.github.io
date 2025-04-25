@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en-US" dir="ltr">
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>I2C command | LuyangのBlog</title>
-<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="https://luyoungcn.github.io/posts/i2c_cmd/">
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/i2c_cmd/">
   <meta property="og:site_name" content="LuyangのBlog">
   <meta property="og:title" content="I2C command">
   <meta property="og:description" content="I2C 寄存器读写命令 探测设备 i2cdetect HELLO@WORLD:~# i2cdetect Error: No i2c-bus specified! Usage: i2cdetect [-y] [-a] [-q|-r] I2CBUS [FIRST LAST] i2cdetect -F I2CBUS i2cdetect -l I2CBUS is an integer or an I2C bus name If provided, FIRST and LAST limit the probing range. # I2CBUS: 0 1 2 ... # Notice: -r 参数很重要，不带 -r 参数有些设备探测不到 i2cdetect -y -r &lt;I2CBUS&gt; 对于8bit的reg, value 可以使用 i2cget / i2cset i2cget HELLO@WORLD:~# i2cget Usage: i2cget [-f] [-y] I2CBUS CHIP-ADDRESS [DATA-ADDRESS [MODE]] I2CBUS is an integer or an I2C bus name ADDRESS is an integer (0x03 - 0x77) MODE is one of: b (read byte data, default) w (read word data) c (write byte/read byte) Append p for SMBus PEC # SLAVE_ADDRESS: 使用i2cdetect 出来的结果 i2cget -y -f &lt;I2CBUS&gt; &lt;SLAVE_ADDRESS&gt; &lt;REG&gt; i2cset HELLO@WORLD:~# i2cset Usage: i2cset [-f] [-y] [-m MASK] [-r] I2CBUS CHIP-ADDRESS DATA-ADDRESS [VALUE] ... [MODE] I2CBUS is an integer or an I2C bus name ADDRESS is an integer (0x03 - 0x77) MODE is one of: c (byte, no value) b (byte data, default) w (word data) i (I2C block data) s (SMBus block data) Append p for SMBus PEC i2cset -y -f &lt;I2CBUS&gt; &lt;SLAVE_ADDRESS&gt; &lt;REG&gt; &lt;VALUE&gt; 对于16bit&#43;的reg, value 需要使用 i2ctransfer i2ctransfer root@J3Pilot-B:~# i2ctransfer Usage: i2ctransfer [-f] [-y] [-v] [-V] I2CBUS DESC [DATA] [DESC [DATA]]... I2CBUS is an integer or an I2C bus name DESC describes the transfer in the form: {r|w}LENGTH[@address] 1) read/write-flag 2) LENGTH (range 0-65535) 3) I2C address (use last one if omitted) DATA are LENGTH bytes for a write message. They can be shortened by a suffix: = (keep value constant until LENGTH) &#43; (increase value by 1 until LENGTH) - (decrease value by 1 until LENGTH) p (use pseudo random generator until LENGTH with value as seed) Example (bus 0, read 8 byte at offset 0x64 from EEPROM at 0x50): # i2ctransfer 0 w1@0x50 0x64 r8 Example (same EEPROM, at offset 0x42 write 0xff 0xfe ... 0xf0): # i2ctransfer 0 w17@0x50 0x42 0xff- # W3 写三个参数 16bit 寄存器 （2 Bytes）&#43; value（1 Byte） # i2c bus 0 # slave address 0x36 i2ctransfer -y -f 0 w3@0x33 0x3B 0x9D 0x01 # w2 （16bit寄存器）写两个参数 0x4F 0x0C 寄存器（0x4F0C）到 0x36 slave address # i2c bus 总线 0 # 读取 i2c 总线 0 的 slave address 为 0x36 的设备的寄存器 0x4F0C, 读一个 char # 0x36 是 ovx3c 的 slave address （7bit i2c address） i2ctransfer -y -f 0 w2@0x36 0x4F 0x0C r1 dump 寄存器 00~FF i2cdump HELLO@WORLD:~# i2cdump Error: No i2c-bus specified! Usage: i2cdump [-f] [-y] [-r first-last] I2CBUS ADDRESS [MODE [BANK [BANKREG]]] I2CBUS is an integer or an I2C bus name ADDRESS is an integer (0x03 - 0x77) MODE is one of: b (byte, default) w (word) W (word on even register addresses) s (SMBus block) i (I2C block) c (consecutive byte) Append p for SMBus PEC i2cdump -f -y &lt;I2CBUS&gt; &lt;SLAVE_ADDRESS&gt;">
-  <meta property="og:locale" content="en_us">
+  <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2023-02-07T00:00:00+08:00">
@@ -37,7 +37,7 @@
   <div id="container">
     <header id="main-header"><div role="navigation" aria-label="Main">
   <div class="nav-left">
-    <a href="https://luyoungcn.github.io/" style="color: inherit;">LuyangのBlog</a>
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
   </div>
   <div class="nav-right">
     <div style="position:absolute;width:0px;height:0px;">
@@ -45,6 +45,14 @@
     <div class="nav-item">
       <a aria-current="true" class="ancestor" href="/posts/"
       >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
     </div>
 </div>
     </div>
@@ -56,6 +64,14 @@
     <div class="nav-item">
       <a aria-current="true" class="ancestor" href="/posts/"
       >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
     </div>
 </div>
     <a id="theme-switcher" href="#">
@@ -75,14 +91,14 @@
         <main id="main-content"><div class="single-header">
 <ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="https://luyoungcn.github.io/">
+      <a itemprop="item" href="/">
         <span itemprop="name">Home</span>
       </a>
       <meta itemprop="position" content='1' />
     </li>
     <span>&nbsp»&nbsp</span>
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="https://luyoungcn.github.io/posts/">
+      <a itemprop="item" href="/posts/">
         <span itemprop="name">Posts</span>
       </a>
       <meta itemprop="position" content='2' />
@@ -90,9 +106,9 @@
     <span>&nbsp»&nbsp</span>
 </ol>
 <h1>I2C command</h1><time class="dim" datetime="2023-02-07T00:00:00&#43;08:00">February 7, 2023</time><div class="term-container"><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/i2c/">#I2C</a>
+        <a href="/tags/i2c/">#I2C</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/linux/">#linux</a>
+        <a href="/tags/linux/">#linux</a>
       </div></ol></div>
   <section class="page-section"><h1 id="i2c-寄存器读写命令">I2C 寄存器读写命令</h1>
 <h2 id="探测设备">探测设备</h2>
@@ -179,17 +195,14 @@
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 </div>
+    <div class="dim">© 2025 Lu Yang</div>
     <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
   </div>
 </div>
 </footer>
       </div><aside id="side-pane" class="side-sticky"><div class="side-details">
     <span>462 words</span>
-    <span>2 - 3 minutes read</span><div class="side-details-taxonomy">
-        <small>categories: 
-          <span class="details-taxonomy"><a href="https://luyoungcn.github.io/categories/%E5%B7%A5%E5%85%B7">工具</a></span></small>
-      </div></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+    <span>2 - 3 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
   <ul>
     <li><a href="#探测设备">探测设备</a>
       <ul>

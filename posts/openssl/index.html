@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en-US" dir="ltr">
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>openssl 创建自签名证书,对 Windows Catalog 进行签名 | LuyangのBlog</title>
-<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="https://luyoungcn.github.io/posts/openssl/">
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/openssl/">
   <meta property="og:site_name" content="LuyangのBlog">
   <meta property="og:title" content="openssl 创建自签名证书,对 Windows Catalog 进行签名">
   <meta property="og:description" content="NI-VISA Driver Wizard 生成了一个 .INF 文件。右键该文件安装的过程中提示错误：第三方 INF 不包含数字签名信息。
@@ -13,7 +13,7 @@ Driver Wizard 生成的 INF 文件，必须为其创建 Windows Catalog (.cat)�
 打开 Windows Terminal 在 .INF 文件所在目录下执行如下命令，生成 Windows Catalog 文件：
 Inf2Cat /driver:. /os:10_X64 Windows 平台依赖环境安装 visual studio 2022 WDK Windows Driver Kit Windows SDK Linux 平台依赖环境安装 sudo apt install openssl 准备证书 目的：Linux 平台使用OpenSSL生成带有基本约束扩展的证书
 创建文件 openssl.cnf，内容如下 [req] req_extensions = v3_req distinguished_name = req_distinguished_name [v3_req] basicConstraints = CA:FALSE [req_distinguished_name] countryName = US stateOrProvinceName = California organizationName = DeadBeef commonName = DeadBeef.com 请求签发 CSR openssl req -new -x509 -key private.key -out certificate.crt -days 36500 -config openssl.cnf 生成自签名证书 openssl pkcs12 -export -in certificate.crt -inkey private.key -out yourfile.pfx Windows Catalog 签名 将上前面生成的证书相关的文件，全部拷贝到 Windows 目录，跟 .INF .cat 文件放在一起。">
-  <meta property="og:locale" content="en_us">
+  <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2023-06-01T09:30:01+08:00">
@@ -47,7 +47,7 @@ Inf2Cat /driver:. /os:10_X64 Windows 平台依赖环境安装 visual studio 2022
   <div id="container">
     <header id="main-header"><div role="navigation" aria-label="Main">
   <div class="nav-left">
-    <a href="https://luyoungcn.github.io/" style="color: inherit;">LuyangのBlog</a>
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
   </div>
   <div class="nav-right">
     <div style="position:absolute;width:0px;height:0px;">
@@ -55,6 +55,14 @@ Inf2Cat /driver:. /os:10_X64 Windows 平台依赖环境安装 visual studio 2022
     <div class="nav-item">
       <a aria-current="true" class="ancestor" href="/posts/"
       >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
     </div>
 </div>
     </div>
@@ -66,6 +74,14 @@ Inf2Cat /driver:. /os:10_X64 Windows 平台依赖环境安装 visual studio 2022
     <div class="nav-item">
       <a aria-current="true" class="ancestor" href="/posts/"
       >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
     </div>
 </div>
     <a id="theme-switcher" href="#">
@@ -85,14 +101,14 @@ Inf2Cat /driver:. /os:10_X64 Windows 平台依赖环境安装 visual studio 2022
         <main id="main-content"><div class="single-header">
 <ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="https://luyoungcn.github.io/">
+      <a itemprop="item" href="/">
         <span itemprop="name">Home</span>
       </a>
       <meta itemprop="position" content='1' />
     </li>
     <span>&nbsp»&nbsp</span>
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="https://luyoungcn.github.io/posts/">
+      <a itemprop="item" href="/posts/">
         <span itemprop="name">Posts</span>
       </a>
       <meta itemprop="position" content='2' />
@@ -100,13 +116,13 @@ Inf2Cat /driver:. /os:10_X64 Windows 平台依赖环境安装 visual studio 2022
     <span>&nbsp»&nbsp</span>
 </ol>
 <h1>openssl 创建自签名证书,对 Windows Catalog 进行签名</h1><time class="dim" datetime="2023-06-01T09:30:01&#43;08:00">June 1, 2023</time><div class="term-container"><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/openssl/">#openssl</a>
+        <a href="/tags/openssl/">#openssl</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/wdk/">#wdk</a>
+        <a href="/tags/wdk/">#wdk</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/%E7%AD%BE%E5%90%8D/">#签名</a>
+        <a href="/tags/%E7%AD%BE%E5%90%8D/">#签名</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/%E8%AF%81%E4%B9%A6/">#证书</a>
+        <a href="/tags/%E8%AF%81%E4%B9%A6/">#证书</a>
       </div></ol></div>
   <section class="page-section"><p>NI-VISA Driver Wizard 生成了一个 .INF 文件。右键该文件安装的过程中提示错误：第三方 INF 不包含数字签名信息。</p>
 <p>Driver Wizard 生成的 INF 文件，必须为其创建 Windows Catalog (.cat)文件并进行数字签名，然后才能在Windows 10(或更高版本)机器上安装INF文件。</p>
@@ -170,17 +186,14 @@ commonName             = DeadBeef.com
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 </div>
+    <div class="dim">© 2025 Lu Yang</div>
     <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
   </div>
 </div>
 </footer>
       </div><aside id="side-pane" class="side-sticky"><div class="side-details">
     <span>161 words</span>
-    <span>2 - 3 minutes read</span><div class="side-details-taxonomy">
-        <small>categories: 
-          <span class="details-taxonomy"><a href="https://luyoungcn.github.io/categories/%E5%B7%A5%E5%85%B7">工具</a></span></small>
-      </div></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+    <span>2 - 3 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
   <ul>
     <li><a href="#windows-平台依赖环境安装">Windows 平台依赖环境安装</a></li>
     <li><a href="#linux-平台依赖环境安装">Linux 平台依赖环境安装</a></li>

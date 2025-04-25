@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SERDES on LuyangのBlog</title>
-    <link>https://luyoungcn.github.io/tags/serdes/</link>
+    <link>/tags/serdes/</link>
     <description>Recent content in SERDES on LuyangのBlog</description>
     <generator>Hugo</generator>
-    <language>en-us</language>
+    <language>en-US</language>
     <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
-    <atom:link href="https://luyoungcn.github.io/tags/serdes/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/serdes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ADI GMSL2 SERDES SPI</title>
-      <link>https://luyoungcn.github.io/posts/adi_gmsl2_serdes_spi/</link>
+      <link>/posts/adi_gmsl2_serdes_spi/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/posts/adi_gmsl2_serdes_spi/</guid>
+      <guid>/posts/adi_gmsl2_serdes_spi/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-general-user-guide.pdf&#34;&gt;https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-general-user-guide.pdf&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.analog.com/media/en/technical-documentation/data-sheets/max96752.pdf&#34;&gt;https://www.analog.com/media/en/technical-documentation/data-sheets/max96752.pdf&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.analog.com/media/en/technical-documentation/data-sheets/max9295d.pdf&#34;&gt;https://www.analog.com/media/en/technical-documentation/data-sheets/max9295d.pdf&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;gmsl2-general-user-guide&#34;&gt;&lt;a href=&#34;https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-general-user-guide.pdf&#34;&gt;GMSL2 General User Guide&lt;/a&gt;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;key-features&#34;&gt;Key Features&lt;/h2&gt;&#xA;&lt;p&gt;• Four-wire main (connects to remote peripheral) or four-wire subordinate (connects to µC/SoC).&lt;/p&gt;&#xA;&lt;p&gt;• Remote-side SPI bus supports SPI modes 0 or 3; local-side SPI bus supports SPI mode 0.&lt;/p&gt;&#xA;&lt;p&gt;• Device filtering on (multiple SPI interfaces with different SPI IDs) or off (point-to-point SPI&#xA;interface).&lt;/p&gt;&#xA;&lt;p&gt;• Subordinate Select active low or high.&lt;/p&gt;&#xA;&lt;p&gt;• 600kHz to 25MHz or 50MHz SPI clock (depending on device).&lt;/p&gt;</description>
     </item>
     <item>
       <title>GMSL SERDES 笔记</title>
-      <link>https://luyoungcn.github.io/posts/adi_serdes/</link>
+      <link>/posts/adi_serdes/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/posts/adi_serdes/</guid>
+      <guid>/posts/adi_serdes/</guid>
       <description>&lt;h1 id=&#34;max96724&#34;&gt;MAX96724&lt;/h1&gt;&#xA;&lt;h1 id=&#34;max96724-相关资源&#34;&gt;MAX96724 相关资源&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.analog.com/cn/products/max96724.html#product-overview&#34;&gt;product overview&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.analog.com/media/en/technical-documentation/data-sheets/max96724.pdf&#34;&gt;MAX96724/F/R 英文数据手册 Rev.4&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.analog.com/media/en/technical-documentation/user-guides/max96724fr-user-guide.pdf&#34;&gt;MAX96724/F/R Users Guide&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.analog.com/media/en/technical-documentation/user-guides/gmsl2-channel-specification-user-guide.pdf&#34;&gt;GMSL2 Channel Specification User Guide Rev 1&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.analog.com/media/en/technical-documentation/data-sheets/max96717f.pdf&#34; title=&#34;Open Data Sheet in PDF&#34;&gt;MAX96717F: CSI-2 to GMSL2 Serializer Data Sheet (Rev. 5)&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;max96724-max9295d-pipes-and-csi2&#34;&gt;MAX96724 MAX9295D pipes and csi2&lt;/h2&gt;&#xA;&lt;script src=&#34;https://gist.github.com/luyoungcn/7b0f38d4f4ed39299afb48a3ac34295a.js&#34;&gt;&lt;/script&gt;&#xA;&#xA;&lt;h2 id=&#34;gmsl2-forward-link-and-reverse-link&#34;&gt;GMSL2 forward link and reverse link&lt;/h2&gt;&#xA;&lt;p&gt;In GMSL2, the [[forward link]] transmits data from the serializer (e.g., a camera) to the deserializer (e.g., a display or processor), while the [[[reverse link]]] transmits data in the opposite direction, from the deserializer to the serializer.&lt;/p&gt;</description>
     </item>
   </channel>

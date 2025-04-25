@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en-US" dir="ltr">
 <head>
 	<meta name="generator" content="Hugo 0.146.6">
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>LuyangのBlog</title>
-<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="https://luyoungcn.github.io/">
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/">
   <meta property="og:site_name" content="LuyangのBlog">
   <meta property="og:title" content="LuyangのBlog">
-  <meta property="og:locale" content="en_us">
+  <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
 
   <meta name="twitter:card" content="summary">
@@ -31,7 +31,7 @@
   <div id="container">
     <header id="main-header"><div role="navigation" aria-label="Main">
   <div class="nav-left">
-    <a href="https://luyoungcn.github.io/" style="color: inherit;">LuyangのBlog</a>
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
   </div>
   <div class="nav-right">
     <div style="position:absolute;width:0px;height:0px;">
@@ -39,6 +39,14 @@
     <div class="nav-item">
       <a href="/posts/"
       >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
     </div>
 </div>
     </div>
@@ -50,6 +58,14 @@
     <div class="nav-item">
       <a href="/posts/"
       >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
     </div>
 </div>
     <a id="theme-switcher" href="#">
@@ -66,8 +82,8 @@
 </header>
     <div class="flex grow">
       <div id="main-pane">
-        <main id="main-content"><div class="centered-container"><img style="border: var(--dim-color) 1px solid;border-radius:100%;" width="70px" src="images/profile.jpg"/><h1 class="margin-sm"></h1>
-    <div class="dim" style="width:70%;margin:0 15%;"></div>
+        <main id="main-content"><div class="centered-container"><img style="border: var(--dim-color) 1px solid;border-radius:100%;" width="70px" src="images/rt_logo.jpg"/><h1 class="margin-sm">A Hugo Theme for Bloggers!</h1>
+    <div class="dim" style="width:70%;margin:0 15%;">The definitive, configurable, customizable, old fashioned rusty coloured theme for web writers and readers.</div>
   </div><div style="width:95%;margin:0 auto;">
     <div class="show-md" style="display:none;"><form onsubmit="searchBarSubmit(event)">
   <div class="search-bar"><svg style="min-width:16px;" width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,47 +96,61 @@
 <script>
   function searchBarSubmit(event) {
     event.preventDefault();
-    const relativeUrl = `https:\/\/luyoungcn.github.io\/search/?q=${encodeURIComponent(event.target.elements['searchInput'].value)}`;
+    const relativeUrl = `\/search/?q=${encodeURIComponent(event.target.elements['searchInput'].value)}`;
     window.location.href = relativeUrl;
   }
 </script>
-</div><h2>Recent Posts</h2>
+</div><h2>Featured Posts</h2>
 <div class="flat-list"><div class="flat-list-item">
       <div>
-        <a href="/posts/perror_func/">perror</a>
-        <time class="text-sm dim" style="float: right;" datetime="2023-05-02T00:00:00Z">January 1, 2024</time>
+        <a href="/posts/getting-started/">Getting Started</a>
+        <time class="text-sm dim" style="float: right;" datetime="2023-05-02T00:00:00Z">March 24, 2025</time>
       </div>
-      <small><p>重点学习 errnum 转 str 的实现方法</p></small>
+      <small><p>This post will guide you in setting up your very own Hugo site with this theme. It covers the essential parts: installation, basic usage and recommended next steps. After setting up the basics, feel free to also take a look at other posts!</p></small>
     </div><div class="flat-list-item">
       <div>
-        <a href="/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/">Windows WSL ubuntu adb 配置</a>
-        <time class="text-sm dim" style="float: right;" datetime="2023-05-02T00:00:00Z">October 26, 2023</time>
+        <a href="/posts/configuration/">Configuration</a>
+        <time class="text-sm dim" style="float: right;" datetime="2023-05-02T00:00:00Z">March 24, 2025</time>
       </div>
-      <small><p>windows 可以识别 adb devices</p></small>
+      <small><p>This page outlines the configuration options for the theme. There are plenty of settings for tweaking your site&rsquo;s layout and content presentation. Key features include options for controlling the side pane visibility, adjusting the number of items displayed on each list page, and managing elements such as featured posts, recent posts, taxonomies, and related content.</p></small>
+    </div></div>
+<h2>Recent Posts</h2>
+<div class="flat-list"><div class="flat-list-item">
+      <div>
+        <a href="/about/">About</a>
+        <time class="text-sm dim" style="float: right;" datetime="2023-05-02T00:00:00Z">March 24, 2025</time>
+      </div>
+      <small><p>Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites fun again.</p></small>
     </div><div class="flat-list-item">
       <div>
-        <a href="/posts/ubuntu_2004_%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/">ubuntu 20.04 升级内核</a>
-        <time class="text-sm dim" style="float: right;" datetime="2023-05-02T00:00:00Z">June 26, 2023</time>
+        <a href="/features/dark-mode/">Dark Theme</a>
+        <time class="text-sm dim" style="float: right;" datetime="2023-05-02T00:00:00Z">March 24, 2025</time>
       </div>
-      <small><p>解压源代码并进入源码根目录，然后执行</p></small>
+      <small><p>You can change the current theme between dark and light mode by using the switcher icon at the right of the navbar.</p></small>
     </div><div class="flat-list-item">
       <div>
-        <a href="/posts/svn/">ubuntu 搭建 svn 服务器</a>
-        <time class="text-sm dim" style="float: right;" datetime="2023-05-02T00:00:00Z">June 26, 2023</time>
+        <a href="/features/internationalization/">Internationalization</a>
+        <time class="text-sm dim" style="float: right;" datetime="2023-05-02T00:00:00Z">March 24, 2025</time>
       </div>
-      <small><p>取消注释：</p></small>
+      <small><p>Rusty Typewriter supports internationalization (i18n) files for localizing its sentences. By default it fallsback to english, but you may use the values from an existing translations file or add your own translations in the i18n/&lt;lang&gt;.yaml dir of your site.</p></small>
     </div><div class="flat-list-item">
       <div>
-        <a href="/posts/windows-terminal-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-oh-my-posh/">Windows terminal 安装配置 oh-my-posh</a>
-        <time class="text-sm dim" style="float: right;" datetime="2023-05-02T00:00:00Z">June 26, 2023</time>
+        <a href="/posts/showcase/">Showcase</a>
+        <time class="text-sm dim" style="float: right;" datetime="2023-05-02T00:00:00Z">March 24, 2025</time>
       </div>
-      <small><p>适用于 Windows terminal + powershell</p></small>
+      <small><p>This page focuses on what you can do in terms of markdown syntax. Here you can see which and how each of the components are rendered to HTML in terms of structure and styling.</p></small>
+    </div><div class="flat-list-item">
+      <div>
+        <a href="/features/static-content/">Static Content</a>
+        <time class="text-sm dim" style="float: right;" datetime="2023-05-02T00:00:00Z">March 24, 2025</time>
+      </div>
+      <small><p>Some of the static content on the site, like the home greetings and side pane content, can be defined in the file at data/rtwt/content.yaml. The structure to do so is as follows:</p></small>
     </div></div>
 </div></main>
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 </div>
+    <div class="dim">© 2025 Lu Yang</div>
     <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
   </div>
 </div>
@@ -136,37 +166,46 @@
 <script>
   function searchBarSubmit(event) {
     event.preventDefault();
-    const relativeUrl = `https:\/\/luyoungcn.github.io\/search/?q=${encodeURIComponent(event.target.elements['searchInput'].value)}`;
+    const relativeUrl = `\/search/?q=${encodeURIComponent(event.target.elements['searchInput'].value)}`;
     window.location.href = relativeUrl;
   }
 </script>
-<h3>Tags</h3>
+<div class="side-content">
+    <h3></h3><a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank" rel="noopener noreferrer">
+          <img class="side-content-image" src="images/gh_source.png" width="100%" />
+        </a><p>If you like the theme make sure to give the repo a star!</p>
+  </div><div class="side-content">
+    <h3>Side Pane Features</h3><p>There are lots of features regarding the side pane, check <a href="/features/static-content/">the docs</a> for info.</p>
+  </div><h3>Tags</h3>
     <ul class="taxonomy-list"><li>
-    <a class="tag" href="https://luyoungcn.github.io/tags/linux/">
+    <a class="tag" href="/tags/linux/">
       #linux&nbsp<span class="text-sm dim">11</span>
     </a>
       </li><li>
-    <a class="tag" href="https://luyoungcn.github.io/tags/android/">
+    <a class="tag" href="/tags/android/">
       #android&nbsp<span class="text-sm dim">8</span>
     </a>
       </li><li>
-    <a class="tag" href="https://luyoungcn.github.io/tags/windows/">
+    <a class="tag" href="/tags/windows/">
       #windows&nbsp<span class="text-sm dim">7</span>
     </a>
       </li><li>
-    <a class="tag" href="https://luyoungcn.github.io/tags/mipi/">
-      #mipi&nbsp<span class="text-sm dim">4</span>
+        <a href="/tags">See all...</a>
+      </li></ul><h3>Series</h3>
+    <ul class="taxonomy-list"><li>
+    <a class="tag" href="/series/features/">
+      #features&nbsp<span class="text-sm dim">3</span>
     </a>
       </li><li>
-    <a class="tag" href="https://luyoungcn.github.io/tags/network/">
-      #network&nbsp<span class="text-sm dim">4</span>
+    <a class="tag" href="/series/styling/">
+      #styling&nbsp<span class="text-sm dim">2</span>
     </a>
       </li><li>
-    <a class="tag" href="https://luyoungcn.github.io/tags/wsl/">
-      #wsl&nbsp<span class="text-sm dim">4</span>
+    <a class="tag" href="/series/content/">
+      #content&nbsp<span class="text-sm dim">1</span>
     </a>
       </li><li>
-        <a href="https://luyoungcn.github.io/tags">See all...</a>
+        <a href="/series">See all...</a>
       </li></ul></aside></div>
   </div>
 </body>

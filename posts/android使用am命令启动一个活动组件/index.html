@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en-US" dir="ltr">
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Android 使用 am 命令启动一个活动组件 | LuyangのBlog</title>
-<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="https://luyoungcn.github.io/posts/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/">
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/">
   <meta property="og:site_name" content="LuyangのBlog">
   <meta property="og:title" content="Android 使用 am 命令启动一个活动组件">
   <meta property="og:description" content="am 命令说明 am start -n 命令是 Android 调试桥（ADB）工具的一部分，用于在 Android 设备上启动一个活动。以下是该命令及其组成部分的详细解释：
@@ -13,7 +13,7 @@ am: 代表 Activity Manager（活动管理器）。它是一个命令行工具�
 使用示例 启动图库应用的主活动：
 adb shell am start -n com.android.gallery3d/.app.GalleryActivity adb shell: 在设备上打开一个命令行界面。 am start -n: 启动指定的活动。 com.android.gallery3d/.app.GalleryActivity: 指定要启动的包名和活动。 其他选项 --display &lt;display_id&gt;: 如果设备有多个显示屏，可以指定使用哪个显示屏。 -d &lt;data_uri&gt;: 指定一个数据 URI（例如文件路径或网页链接），活动在启动时可以使用这个 URI。 -a &lt;action&gt;: 指定要执行的操作，例如 android.intent.action.VIEW。 实际示例 如果你想在显示屏 3 上打开图库应用中的特定图片：
 adb shell am start -n com.android.gallery3d/.app.GalleryActivity --display 3 这个命令将在显示屏 3 上打开图库应用的 GalleryActivity。">
-  <meta property="og:locale" content="en_us">
+  <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="1970-01-01T00:00:00+08:00">
@@ -48,7 +48,7 @@ adb shell am start -n com.android.gallery3d/.app.GalleryActivity --display 3 这
   <div id="container">
     <header id="main-header"><div role="navigation" aria-label="Main">
   <div class="nav-left">
-    <a href="https://luyoungcn.github.io/" style="color: inherit;">LuyangのBlog</a>
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
   </div>
   <div class="nav-right">
     <div style="position:absolute;width:0px;height:0px;">
@@ -56,6 +56,14 @@ adb shell am start -n com.android.gallery3d/.app.GalleryActivity --display 3 这
     <div class="nav-item">
       <a aria-current="true" class="ancestor" href="/posts/"
       >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
     </div>
 </div>
     </div>
@@ -67,6 +75,14 @@ adb shell am start -n com.android.gallery3d/.app.GalleryActivity --display 3 这
     <div class="nav-item">
       <a aria-current="true" class="ancestor" href="/posts/"
       >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
     </div>
 </div>
     <a id="theme-switcher" href="#">
@@ -86,14 +102,14 @@ adb shell am start -n com.android.gallery3d/.app.GalleryActivity --display 3 这
         <main id="main-content"><div class="single-header">
 <ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="https://luyoungcn.github.io/">
+      <a itemprop="item" href="/">
         <span itemprop="name">Home</span>
       </a>
       <meta itemprop="position" content='1' />
     </li>
     <span>&nbsp»&nbsp</span>
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="https://luyoungcn.github.io/posts/">
+      <a itemprop="item" href="/posts/">
         <span itemprop="name">Posts</span>
       </a>
       <meta itemprop="position" content='2' />
@@ -101,15 +117,15 @@ adb shell am start -n com.android.gallery3d/.app.GalleryActivity --display 3 这
     <span>&nbsp»&nbsp</span>
 </ol>
 <h1>Android 使用 am 命令启动一个活动组件</h1><time class="dim" datetime="1970-01-01T00:00:00&#43;08:00">January 1, 1970</time><div class="term-container"><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/android/">#android</a>
+        <a href="/tags/android/">#android</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/adb/">#adb</a>
+        <a href="/tags/adb/">#adb</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/am/">#am</a>
+        <a href="/tags/am/">#am</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/pm/">#pm</a>
+        <a href="/tags/pm/">#pm</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/activity/">#activity</a>
+        <a href="/tags/activity/">#activity</a>
       </div></ol></div>
   <section class="page-section"><h2 id="am-命令说明">am 命令说明</h2>
 <p><code>am start -n</code> 命令是 Android 调试桥（ADB）工具的一部分，用于在 Android 设备上启动一个活动。以下是该命令及其组成部分的详细解释：</p>
@@ -183,17 +199,14 @@ adb shell am start -n com.android.gallery3d/.app.GalleryActivity --display 3 这
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 </div>
+    <div class="dim">© 2025 Lu Yang</div>
     <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
   </div>
 </div>
 </footer>
       </div><aside id="side-pane" class="side-sticky"><div class="side-details">
     <span>240 words</span>
-    <span>3 - 4 minutes read</span><div class="side-details-taxonomy">
-        <small>categories: 
-          <span class="details-taxonomy"><a href="https://luyoungcn.github.io/categories/android">Android</a></span></small>
-      </div></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+    <span>3 - 4 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
   <ul>
     <li><a href="#am-命令说明">am 命令说明</a>
       <ul>

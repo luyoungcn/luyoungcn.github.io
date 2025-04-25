@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ccache on LuyangのBlog</title>
-    <link>https://luyoungcn.github.io/tags/ccache/</link>
+    <link>/tags/ccache/</link>
     <description>Recent content in Ccache on LuyangのBlog</description>
     <generator>Hugo</generator>
-    <language>en-us</language>
+    <language>en-US</language>
     <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
-    <atom:link href="https://luyoungcn.github.io/tags/ccache/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/ccache/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android10编译开启ccache</title>
-      <link>https://luyoungcn.github.io/posts/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</link>
+      <link>/posts/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/posts/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</guid>
+      <guid>/posts/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</guid>
       <description>&lt;p&gt;Android10的基线代码google已经将prebuilt的ccache移除,但是保留了相关功能选项&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Author: Dan Willemsen &amp;lt;dwillemsen@google.com&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Date:   Thu Apr 5 15:48:16 2018 -0700&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Remove our binary of ccache&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    This version is rather old, and has many known bugs. The build system is&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    no longer providing ccache, but preserving the option to use your own at&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    your own risk.&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Bug: 32748498&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Test: cs/ccache&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Change-Id: I894a11445127bf8cb3a7ac5a119c500f2c572fb9&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安卓10之前配置&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;export USE_CCACHE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;true&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;export CCACHE_DIR&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$HOME/.cache&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;prebuilts/misc/linux-x86/ccache/ccache -M 10G&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安卓10+通过使用的HOST操作系统安装对应的ccache软件包&lt;/p&gt;</description>
     </item>
   </channel>

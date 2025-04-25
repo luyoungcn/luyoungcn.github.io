@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en-US" dir="ltr">
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>gerrit 环境搭建 | LuyangのBlog</title>
-<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="https://luyoungcn.github.io/posts/gerrit/">
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/gerrit/">
   <meta property="og:site_name" content="LuyangのBlog">
   <meta property="og:title" content="gerrit 环境搭建">
   <meta property="og:description" content="R1 - Gerrit 环境搭建 环境说明 ubuntu 20.04 Gerrit 3.8.0 openjdk version “11.0.19” 2023-04-18 安装依赖软件包 sudo apt install openjdk-11-jdk openjdk-11-jdk-headless openjdk-11-jre openjdk-11-jre-headless 创建 Gerrit 用户 sudo adduser gerrit sudo usermod -a -G sudo gerrit sudo su gerrit mkdir ~/gerrit java -jar gerrit-3.8.0.war init -d ~/gerrit 安装 Gerrit $ java -jar gerrit-3.8.0.war init -d ~/gerrit Using secure store: com.google.gerrit.server.securestore.DefaultSecureStore [2023-06-03 12:19:03,027] [main] INFO com.google.gerrit.server.config.GerritServerConfigProvider : No /home/gerrit/gerrit/etc/gerrit.config; assuming defaults *** Gerrit Code Review 3.8.0 *** Create &#39;/home/gerrit/gerrit&#39; [Y/n]? Y *** Git Repositories *** Location of Git repositories [git]: *** JGit Configuration *** Auto-configured &#34;receive.autogc = false&#34; to disable auto-gc after git-receive-pack. *** Index *** Type [lucene]: *** User Authentication *** Authentication method [openid/?]: ? Supported options are: openid openid_sso http http_ldap client_ssl_cert_ldap ldap ldap_bind custom_extension development_become_any_account oauth Authentication method [openid/?]: http Get username from custom HTTP header [y/N]? y Username HTTP header [SM_USER]: SSO logout URL : Enable signed push support [y/N]? y Use case insensitive usernames [Y/n]? Y *** Review Labels *** Install Verified label [y/N]? N *** Email Delivery *** SMTP server hostname [localhost]: SMTP server port [(default)]: SMTP encryption [none/?]: SMTP username : *** Container Process *** Run as [gerrit]: Java runtime [/usr/lib/jvm/java-11-openjdk-amd64]: Copy gerrit-3.8.0.war to /home/gerrit/gerrit/bin/gerrit.war [Y/n]? Y Copying gerrit-3.8.0.war to /home/gerrit/gerrit/bin/gerrit.war *** SSH Daemon *** Listen on address [*]: Listen on port [29418]: Generating SSH host key ... rsa... ed25519... ecdsa 256... ecdsa 384... ecdsa 521... done *** HTTP Daemon *** Behind reverse proxy [y/N]? y Proxy uses SSL (https://) [y/N]? N Subdirectory on proxy server [/]: Listen on address [*]: Listen on port [8081]: Canonical URL [http://luyang-VirtualBox/]: *** Cache *** *** Plugins *** Installing plugins. Install plugin codemirror-editor version v3.8.0 [y/N]? y Installed codemirror-editor v3.8.0 Install plugin commit-message-length-validator version v3.8.0 [y/N]? y Installed commit-message-length-validator v3.8.0 Install plugin delete-project version v3.8.0 [y/N]? y Installed delete-project v3.8.0 Install plugin download-commands version v3.8.0 [y/N]? y Installed download-commands v3.8.0 Install plugin gitiles version v3.8.0 [y/N]? y Installed gitiles v3.8.0 Install plugin hooks version v3.8.0 [y/N]? y Installed hooks v3.8.0 Install plugin plugin-manager version v3.8.0 [y/N]? y Installed plugin-manager v3.8.0 Install plugin replication version v3.8.0 [y/N]? y Installed replication v3.8.0 Install plugin reviewnotes version v3.8.0 [y/N]? y Installed reviewnotes v3.8.0 Install plugin singleusergroup version v3.8.0 [y/N]? y Installed singleusergroup v3.8.0 Install plugin webhooks version v3.8.0 [y/N]? y Installed webhooks v3.8.0 Initializing plugins. ============================================================================ Welcome to the Gerrit community Find more information on the homepage: https://www.gerritcodereview.com Discuss Gerrit on the mailing list: https://groups.google.com/g/repo-discuss ============================================================================ Initialized /home/gerrit/gerrit Init complete, reindexing accounts,changes,groups,projects with: reindex --site-path /home/gerrit/gerrit --threads 1 --index accounts --index changes --index groups --index projectsReindexed 0 documents in accounts index in 0.0s (0.0/s) Index accounts in version 12 is ready Reindexing groups: 100% (2/2) Reindexed 2 documents in groups index in 0.2s (9.9/s) Index groups in version 9 is ready Reindexing changes: Slicing projects: 100% (2/2), done Reindexed 0 documents in changes index in 0.0s (0.0/s) Index changes in version 82 is ready Reindexing projects: 100% (2/2) Reindexed 2 documents in projects index in 0.1s (25.0/s) Index projects in version 5 is ready Executing /home/gerrit/gerrit/bin/gerrit.sh start Starting Gerrit Code Review: WARNING: Could not adjust Gerrit&#39;s process for the kernel&#39;s out-of-memory killer. This may be caused by /home/gerrit/gerrit/bin/gerrit.sh not being run as root. Consider changing the OOM score adjustment manually for Gerrit&#39;s PID=4510 with e.g.: echo &#39;-1000&#39; | sudo tee /proc/4510/oom_score_adj OK Waiting for server on luyang-VirtualBox:80 ... OK Please open the following URL in the browser: http://luyang-VirtualBox/#/admin/projects/ 配置 Gerrit etc/gerrit.config">
-  <meta property="og:locale" content="en_us">
+  <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2023-06-01T00:00:00+08:00">
@@ -39,7 +39,7 @@
   <div id="container">
     <header id="main-header"><div role="navigation" aria-label="Main">
   <div class="nav-left">
-    <a href="https://luyoungcn.github.io/" style="color: inherit;">LuyangのBlog</a>
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
   </div>
   <div class="nav-right">
     <div style="position:absolute;width:0px;height:0px;">
@@ -47,6 +47,14 @@
     <div class="nav-item">
       <a aria-current="true" class="ancestor" href="/posts/"
       >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
     </div>
 </div>
     </div>
@@ -58,6 +66,14 @@
     <div class="nav-item">
       <a aria-current="true" class="ancestor" href="/posts/"
       >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
     </div>
 </div>
     <a id="theme-switcher" href="#">
@@ -77,14 +93,14 @@
         <main id="main-content"><div class="single-header">
 <ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="https://luyoungcn.github.io/">
+      <a itemprop="item" href="/">
         <span itemprop="name">Home</span>
       </a>
       <meta itemprop="position" content='1' />
     </li>
     <span>&nbsp»&nbsp</span>
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="https://luyoungcn.github.io/posts/">
+      <a itemprop="item" href="/posts/">
         <span itemprop="name">Posts</span>
       </a>
       <meta itemprop="position" content='2' />
@@ -92,13 +108,13 @@
     <span>&nbsp»&nbsp</span>
 </ol>
 <h1>gerrit 环境搭建</h1><time class="dim" datetime="2023-06-01T00:00:00&#43;08:00">June 1, 2023</time><div class="term-container"><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/android/">#android</a>
+        <a href="/tags/android/">#android</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/repo/">#repo</a>
+        <a href="/tags/repo/">#repo</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/gerrit/">#gerrit</a>
+        <a href="/tags/gerrit/">#gerrit</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/codereview/">#CodeReview</a>
+        <a href="/tags/codereview/">#CodeReview</a>
       </div></ol></div>
   <section class="page-section"><h1 id="r1---gerrit-环境搭建">R1 - Gerrit 环境搭建</h1>
 <h1 id="环境说明">环境说明</h1>
@@ -316,17 +332,14 @@ location / {
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 </div>
+    <div class="dim">© 2025 Lu Yang</div>
     <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
   </div>
 </div>
 </footer>
       </div><aside id="side-pane" class="side-sticky"><div class="side-details">
     <span>686 words</span>
-    <span>6 - 7 minutes read</span><div class="side-details-taxonomy">
-        <small>categories: 
-          <span class="details-taxonomy"><a href="https://luyoungcn.github.io/categories/%E5%B7%A5%E5%85%B7">工具</a></span></small>
-      </div></div><h3>Related</h3>
+    <span>6 - 7 minutes read</span></div><h3>Related</h3>
     <ul><li><a href="/posts/repo/">repo</a></li><li><a href="/posts/androidjava-/">Android Java 1.7 环境配置</a></li><li><a href="/posts/androidstudioenv/">Android Studio Env</a></li><li><a href="/posts/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/">Android 使用 am 命令启动一个活动组件</a></li><li><a href="/posts/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/">Android10编译开启ccache</a></li></ul></aside></div>
   </div>
 </body>

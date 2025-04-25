@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Manjaro on LuyangのBlog</title>
-    <link>https://luyoungcn.github.io/tags/manjaro/</link>
+    <link>/tags/manjaro/</link>
     <description>Recent content in Manjaro on LuyangのBlog</description>
     <generator>Hugo</generator>
-    <language>en-us</language>
+    <language>en-US</language>
     <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
-    <atom:link href="https://luyoungcn.github.io/tags/manjaro/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/manjaro/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>manjaro</title>
-      <link>https://luyoungcn.github.io/posts/manjaro/</link>
+      <link>/posts/manjaro/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/posts/manjaro/</guid>
+      <guid>/posts/manjaro/</guid>
       <description>&lt;h2 id=&#34;系统基本信息&#34;&gt;系统基本信息&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[baihao@vstation ~]$ screenfetch&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ██████████████████  ████████     baihao@vstation&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ██████████████████  ████████     OS: Manjaro 20.2.1 Nibia&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ██████████████████  ████████     Kernel: x86_64 Linux 5.9.16-1-MANJARO&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ██████████████████  ████████     Uptime: 17m&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ████████            ████████     Packages: 1220&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ████████  ████████  ████████     Shell: bash 5.1.0&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ████████  ████████  ████████     Resolution: 1920x951&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ████████  ████████  ████████     DE: Xfce4&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ████████  ████████  ████████     WM: Xfwm4&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ████████  ████████  ████████     WM Theme: Matcha-sea&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ████████  ████████  ████████     GTK Theme: Matcha-sea [GTK2]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ████████  ████████  ████████     Icon Theme: Papirus-Maia&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ████████  ████████  ████████     Font: Noto Sans 10&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ████████  ████████  ████████     Disk: 241G / 674G (37%)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                  CPU: Intel Core i7-10510U @ 2x 2.304GHz&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                  GPU: llvmpipe (LLVM 11.0.0, 256 bits)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                  RAM: 2134MiB / 3935MiB&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;wps--fcitx5-无法输入中文&#34;&gt;wps + fcitx5 无法输入中文&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;参考&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
   </channel>

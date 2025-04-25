@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en-US" dir="ltr">
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Android10编译开启ccache | LuyangのBlog</title>
-<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="https://luyoungcn.github.io/posts/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/">
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/">
   <meta property="og:site_name" content="LuyangのBlog">
   <meta property="og:title" content="Android10编译开启ccache">
   <meta property="og:description" content="Android10的基线代码google已经将prebuilt的ccache移除,但是保留了相关功能选项
 commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843 Author: Dan Willemsen &lt;dwillemsen@google.com&gt; Date: Thu Apr 5 15:48:16 2018 -0700 Remove our binary of ccache This version is rather old, and has many known bugs. The build system is no longer providing ccache, but preserving the option to use your own at your own risk. Bug: 32748498 Test: cs/ccache Change-Id: I894a11445127bf8cb3a7ac5a119c500f2c572fb9 安卓10之前配置
 export USE_CCACHE=true export CCACHE_DIR=$HOME/.cache prebuilts/misc/linux-x86/ccache/ccache -M 10G 安卓10&#43;通过使用的HOST操作系统安装对应的ccache软件包">
-  <meta property="og:locale" content="en_us">
+  <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="1970-01-01T00:00:00+08:00">
@@ -42,7 +42,7 @@ export USE_CCACHE=true export CCACHE_DIR=$HOME/.cache prebuilts/misc/linux-x86/c
   <div id="container">
     <header id="main-header"><div role="navigation" aria-label="Main">
   <div class="nav-left">
-    <a href="https://luyoungcn.github.io/" style="color: inherit;">LuyangのBlog</a>
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
   </div>
   <div class="nav-right">
     <div style="position:absolute;width:0px;height:0px;">
@@ -50,6 +50,14 @@ export USE_CCACHE=true export CCACHE_DIR=$HOME/.cache prebuilts/misc/linux-x86/c
     <div class="nav-item">
       <a aria-current="true" class="ancestor" href="/posts/"
       >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
     </div>
 </div>
     </div>
@@ -61,6 +69,14 @@ export USE_CCACHE=true export CCACHE_DIR=$HOME/.cache prebuilts/misc/linux-x86/c
     <div class="nav-item">
       <a aria-current="true" class="ancestor" href="/posts/"
       >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
     </div>
 </div>
     <a id="theme-switcher" href="#">
@@ -80,14 +96,14 @@ export USE_CCACHE=true export CCACHE_DIR=$HOME/.cache prebuilts/misc/linux-x86/c
         <main id="main-content"><div class="single-header">
 <ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="https://luyoungcn.github.io/">
+      <a itemprop="item" href="/">
         <span itemprop="name">Home</span>
       </a>
       <meta itemprop="position" content='1' />
     </li>
     <span>&nbsp»&nbsp</span>
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="https://luyoungcn.github.io/posts/">
+      <a itemprop="item" href="/posts/">
         <span itemprop="name">Posts</span>
       </a>
       <meta itemprop="position" content='2' />
@@ -95,11 +111,11 @@ export USE_CCACHE=true export CCACHE_DIR=$HOME/.cache prebuilts/misc/linux-x86/c
     <span>&nbsp»&nbsp</span>
 </ol>
 <h1>Android10编译开启ccache</h1><time class="dim" datetime="1970-01-01T00:00:00&#43;08:00">January 1, 1970</time><div class="term-container"><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/windows/">#windows</a>
+        <a href="/tags/windows/">#windows</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/android/">#android</a>
+        <a href="/tags/android/">#android</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/ccache/">#ccache</a>
+        <a href="/tags/ccache/">#ccache</a>
       </div></ol></div>
   <section class="page-section"><p>Android10的基线代码google已经将prebuilt的ccache移除,但是保留了相关功能选项</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843
@@ -130,17 +146,14 @@ export USE_CCACHE=true export CCACHE_DIR=$HOME/.cache prebuilts/misc/linux-x86/c
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 </div>
+    <div class="dim">© 2025 Lu Yang</div>
     <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
   </div>
 </div>
 </footer>
       </div><aside id="side-pane" class="side-sticky"><div class="side-details">
     <span>76 words</span>
-    <span>0 - 1 minutes read</span><div class="side-details-taxonomy">
-        <small>categories: 
-          <span class="details-taxonomy"><a href="https://luyoungcn.github.io/categories/%E5%B7%A5%E5%85%B7">工具</a></span></small>
-      </div></div><h3>Related</h3>
+    <span>0 - 1 minutes read</span></div><h3>Related</h3>
     <ul><li><a href="/posts/androidjava-/">Android Java 1.7 环境配置</a></li><li><a href="/posts/androidstudioenv/">Android Studio Env</a></li><li><a href="/posts/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/">Android 使用 am 命令启动一个活动组件</a></li><li><a href="/posts/wifiadb/">Wifi Adb</a></li><li><a href="/posts/windows_remote_desktop/">Windows Remote Desktop</a></li></ul></aside></div>
   </div>
 </body>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Akshare on LuyangのBlog</title>
-    <link>https://luyoungcn.github.io/tags/akshare/</link>
+    <link>/tags/akshare/</link>
     <description>Recent content in Akshare on LuyangのBlog</description>
     <generator>Hugo</generator>
-    <language>en-us</language>
+    <language>en-US</language>
     <lastBuildDate>Sat, 26 Jun 2021 03:00:00 +0800</lastBuildDate>
-    <atom:link href="https://luyoungcn.github.io/tags/akshare/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/akshare/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>akshare 学习笔记</title>
-      <link>https://luyoungcn.github.io/posts/stock/</link>
+      <link>/posts/stock/</link>
       <pubDate>Sat, 26 Jun 2021 03:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/posts/stock/</guid>
+      <guid>/posts/stock/</guid>
       <description>&lt;h1 id=&#34;anaconda-安装&#34;&gt;Anaconda 安装&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/akfamily/akshare/blob/main/docs/topic/anaconda/anaconda-00.md&#34;&gt;https://github.com/akfamily/akshare/blob/main/docs/topic/anaconda/anaconda-00.md&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;resources&#34;&gt;Resources&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://akshare.akfamily.xyz/index.html&#34;&gt;akshare wiki&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.jetbrains.com/help/pycharm/jupyter-notebook-support.html&#34;&gt;PyCharm Jupyter notebook support&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
   </channel>

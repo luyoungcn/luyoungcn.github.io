@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Usbip on LuyangのBlog</title>
-    <link>https://luyoungcn.github.io/tags/usbip/</link>
+    <link>/tags/usbip/</link>
     <description>Recent content in Usbip on LuyangのBlog</description>
     <generator>Hugo</generator>
-    <language>en-us</language>
+    <language>en-US</language>
     <lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0800</lastBuildDate>
-    <atom:link href="https://luyoungcn.github.io/tags/usbip/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/usbip/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Windows WSL ubuntu adb 配置</title>
-      <link>https://luyoungcn.github.io/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</link>
+      <link>/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</guid>
+      <guid>/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;h2 id=&#34;配置前的状态&#34;&gt;配置前的状态&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;windows 11 + wsl + ubuntu 18.04&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;windows 可以识别 adb devices&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;C:\Users&amp;gt;adb devices&#xA;List of devices attached&#xA;fada-018b4209f24d0001   device&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;wsl 识别不到 adb devices&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;luyang@LUYANG:~$ adb devices&#xA;* daemon not running; starting now at tcp:5037&#xA;* daemon started successfully&#xA;List of devices attached&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;windows-安装工具包&#34;&gt;Windows 安装工具包&lt;/h2&gt;&#xA;&lt;p&gt;windows 安装 &lt;a href=&#34;https://github.com/dorssel/usbipd-win/releases&#34;&gt;usbipd-win&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;wsl-安装工具包&#34;&gt;WSL 安装工具包&lt;/h2&gt;&#xA;&lt;p&gt;WSL ubuntu 安装 adb 工具&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install android-tools-adb&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在WSL中，安装 USB/IP 的用户空间工具和 USB 硬件标识符的数据库。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install linux-tools-5.15.0-87-generic hwdata&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 注意 linux-tools 相应的要改成你实际安装的版本&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/5.15.0-87-generic/usbip &lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;关于-linux-tools&#34;&gt;关于 linux-tools&lt;/h3&gt;&#xA;&lt;p&gt;查看当前 ubuntu 系统版本支持的 linux-tools generic版本&lt;/p&gt;</description>
     </item>
   </channel>

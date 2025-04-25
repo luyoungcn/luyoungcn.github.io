@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>BeyondCompare on LuyangのBlog</title>
-    <link>https://luyoungcn.github.io/tags/beyondcompare/</link>
+    <link>/tags/beyondcompare/</link>
     <description>Recent content in BeyondCompare on LuyangのBlog</description>
     <generator>Hugo</generator>
-    <language>en-us</language>
+    <language>en-US</language>
     <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
-    <atom:link href="https://luyoungcn.github.io/tags/beyondcompare/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/beyondcompare/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>BeyondCompare</title>
-      <link>https://luyoungcn.github.io/posts/beyondcompare/</link>
+      <link>/posts/beyondcompare/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://luyoungcn.github.io/posts/beyondcompare/</guid>
+      <guid>/posts/beyondcompare/</guid>
       <description>&lt;h2 id=&#34;window10-beyond-compare--bcompare-42422795-key&#34;&gt;Window10 Beyond Compare  BCompare-4.2.4.22795 key&lt;/h2&gt;&#xA;&lt;p&gt;key&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;H1bJTd2SauPv5Garuaq0Ig43uqq5NJOEw94wxdZTpU-pFB9GmyPk677gJ&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vC1Ro6sbAvKR4pVwtxdCfuoZDb6hJ5bVQKqlfihJfSYZt-xVrVU27+0Ja&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hFbqTmYskatMTgPyjvv99CF2Te8ec+Ys2SPxyZAF0YwOCNOWmsyqN5y9t&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;q2Kw2pjoiDs5gIH-uw5U49JzOB6otS7kThBJE-H9A76u4uUvR8DKb+VcB&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rWu5qSJGEnbsXNfJdq5L2D8QgRdV-sXHp2A-7j1X2n4WIISvU1V9koIyS&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;NisHFBTcWJS0sC5BTFwrtfLEE9lEwz2bxHQpWJiu12ZeKpi+7oUSqebX+&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果运行Beyond Compare报错&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;This license key has been revoked&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.....&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;C:\Users\&amp;lt;username&amp;gt;\AppData\Roaming\Scooter Software\&lt;/code&gt; 目录下的内容全部删除重新启动BeyondCompare即可。&lt;/p&gt;&#xA;&lt;h2 id=&#34;fix-windows-右键菜单中没有beyond-compare选项&#34;&gt;fix windows 右键菜单中没有beyond compare选项&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.scootersoftware.com/support.php?zz=kb_shellex&#34;&gt;Explorer Shell Extension&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>

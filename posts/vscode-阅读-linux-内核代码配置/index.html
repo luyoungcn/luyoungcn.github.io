@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en-US" dir="ltr">
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>vscode 阅读 Linux 内核代码配置 | LuyangのBlog</title>
-<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="https://luyoungcn.github.io/posts/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/">
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/">
   <meta property="og:site_name" content="LuyangのBlog">
   <meta property="og:title" content="vscode 阅读 Linux 内核代码配置">
   <meta property="og:description" content="内核源码根目录下创建 .vscode 目录
@@ -13,7 +13,7 @@
 { &#34;configurations&#34;: [ { &#34;name&#34;: &#34;Linux&#34;, &#34;includePath&#34;: [ &#34;${workspaceFolder}/**&#34; ], &#34;defines&#34;: [ &#34;__KERNEL__&#34; ], [&#34;compilerPath&#34;: &#34;/opt/bstos/2.3.0.4/sysroots/x86_64-bstsdk-linux/usr/bin/aarch64-bst-linux/aarch64-bst-linux-gcc&#34;,](&lt;https://www.notion.so/Docker-22f588b5e85d492895231b70d4b5c4a0?pvs=21&gt;) &#34;cStandard&#34;: &#34;c11&#34;, &#34;cppStandard&#34;: &#34;c&#43;&#43;17&#34;, &#34;intelliSenseMode&#34;: &#34;gcc-x64&#34; } ], &#34;version&#34;: 4 } 说明：
 compilerPath 需要指定编译器bin文件的路径，而不是编译器所在目录 defines 添加 “KERNEL” 为了解决 uapi 相关头文件中会根据该宏控区分应用层和内核层，如果不定义可能出现头文件不存在问题 例如 include/uapi/linux/videodev2.h 中
 #ifndef __KERNEL__ #include &lt;sys/time.h&gt; #endif">
-  <meta property="og:locale" content="en_us">
+  <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="1970-01-01T00:00:00+08:00">
@@ -46,7 +46,7 @@ compilerPath 需要指定编译器bin文件的路径，而不是编译器所在�
   <div id="container">
     <header id="main-header"><div role="navigation" aria-label="Main">
   <div class="nav-left">
-    <a href="https://luyoungcn.github.io/" style="color: inherit;">LuyangのBlog</a>
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
   </div>
   <div class="nav-right">
     <div style="position:absolute;width:0px;height:0px;">
@@ -54,6 +54,14 @@ compilerPath 需要指定编译器bin文件的路径，而不是编译器所在�
     <div class="nav-item">
       <a aria-current="true" class="ancestor" href="/posts/"
       >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
     </div>
 </div>
     </div>
@@ -65,6 +73,14 @@ compilerPath 需要指定编译器bin文件的路径，而不是编译器所在�
     <div class="nav-item">
       <a aria-current="true" class="ancestor" href="/posts/"
       >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
     </div>
 </div>
     <a id="theme-switcher" href="#">
@@ -84,14 +100,14 @@ compilerPath 需要指定编译器bin文件的路径，而不是编译器所在�
         <main id="main-content"><div class="single-header">
 <ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="https://luyoungcn.github.io/">
+      <a itemprop="item" href="/">
         <span itemprop="name">Home</span>
       </a>
       <meta itemprop="position" content='1' />
     </li>
     <span>&nbsp»&nbsp</span>
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="https://luyoungcn.github.io/posts/">
+      <a itemprop="item" href="/posts/">
         <span itemprop="name">Posts</span>
       </a>
       <meta itemprop="position" content='2' />
@@ -99,11 +115,11 @@ compilerPath 需要指定编译器bin文件的路径，而不是编译器所在�
     <span>&nbsp»&nbsp</span>
 </ol>
 <h1>vscode 阅读 Linux 内核代码配置</h1><time class="dim" datetime="1970-01-01T00:00:00&#43;08:00">January 1, 1970</time><div class="term-container"><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/kernel/">#kernel</a>
+        <a href="/tags/kernel/">#kernel</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/linux/">#linux</a>
+        <a href="/tags/linux/">#linux</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/vscode/">#vscode</a>
+        <a href="/tags/vscode/">#vscode</a>
       </div></ol></div>
   <section class="page-section"><p>内核源码根目录下创建 .vscode 目录</p>
 <p>.vscode 目录下创建 c_cpp_properties.json 文件，内容如下：</p>
@@ -138,17 +154,14 @@ compilerPath 需要指定编译器bin文件的路径，而不是编译器所在�
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 </div>
+    <div class="dim">© 2025 Lu Yang</div>
     <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
   </div>
 </div>
 </footer>
       </div><aside id="side-pane" class="side-sticky"><div class="side-details">
     <span>51 words</span>
-    <span>0 - 1 minutes read</span><div class="side-details-taxonomy">
-        <small>categories: 
-          <span class="details-taxonomy"><a href="https://luyoungcn.github.io/categories/%E5%B7%A5%E5%85%B7">工具</a></span></small>
-      </div></div><h3>Related</h3>
+    <span>0 - 1 minutes read</span></div><h3>Related</h3>
     <ul><li><a href="/posts/linux_test_disk_i_o_with_dd/">Linux Test Disk with dd command</a></li><li><a href="/posts/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/">Virtualbox Opensuse 无网络图标 无法上网</a></li><li><a href="/posts/windowsvscodeplantuml%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Windows Vscode Plantuml 环境搭建</a></li><li><a href="/posts/samba/">samba</a></li><li><a href="/posts/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/">一文搞懂应用开发所需 Linux 系统时间的相关知识点</a></li></ul></aside></div>
   </div>
 </body>

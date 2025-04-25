@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en-US" dir="ltr">
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Linux Test Disk with dd command | LuyangのBlog</title>
-<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="https://luyoungcn.github.io/posts/linux_test_disk_i_o_with_dd/">
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/linux_test_disk_i_o_with_dd/">
   <meta property="og:site_name" content="LuyangのBlog">
   <meta property="og:title" content="Linux Test Disk with dd command">
   <meta property="og:description" content="关键命令 # 清空文件系统缓存, 测试读写命令之前需要执行该命令 sudo sh -c &#34;sync &amp;&amp; echo 3 &gt; /proc/sys/vm/drop_caches&#34; # dd 写入速度测试 dd if=/dev/zero of=./test_write count=200 bs=1024k # dd 读取速度测试 dd if=./test_write of=/dev/null bs=1024k 测试脚本 #!/bin/bash # 检查是否提供了足够的参数 if [ $# -lt 1 ]; then echo &#34;Usage: $0 test_count&#34; exit 1 fi # ANSI颜色码 green_color=&#34;\e[32m&#34; # 绿色 red_color=&#34;\e[31m&#34; # 红色 reset_color=&#34;\e[0m&#34; # 重置颜色 total_iterations=$1 # 初始化计数器 write_success_count=0 write_failure_count=0 read_success_count=0 read_failure_count=0 echo &#34;Total number of iterations: $total_iterations&#34; for ((i=1; i&lt;=$total_iterations; i&#43;&#43;)); do # 清空文件系统缓存 sudo sh -c &#34;sync &amp;&amp; echo 3 &gt; /proc/sys/vm/drop_caches&#34; # 执行dd写入测试 if dd if=/dev/zero of=./test_write count=200 bs=1024k 2&gt;&amp;1 | grep -q &#34;records in&#34;; then write_speed=$(dd if=./test_write of=/dev/null bs=1024k 2&gt;&amp;1 | awk &#39;/copied/ {print $(NF-1), $NF}&#39;) echo &#34;write speed: $write_speed&#34; ((write_success_count&#43;&#43;)) else echo &#34;write failed&#34; ((write_failure_count&#43;&#43;)) fi # 再次清空文件系统缓存 sudo sh -c &#34;sync &amp;&amp; echo 3 &gt; /proc/sys/vm/drop_caches&#34; # 执行dd读取测试 if dd if=./test_write of=/dev/null bs=1024k 2&gt;&amp;1 | grep -q &#34;records in&#34;; then read_speed=$(dd if=./test_write of=/dev/null bs=1024k 2&gt;&amp;1 | awk &#39;/copied/ {print $(NF-1), $NF}&#39;) echo &#34;read speed: $read_speed&#34; ((read_success_count&#43;&#43;)) else echo &#34;read failed&#34; ((read_failed_count&#43;&#43;)) fi echo &#34;----------------&#34; done # 输出总的测试次数、成功次数和失败次数 echo &#34;Total number of tests: $total_iterations&#34; echo -e &#34;${green_color}Number of write successful tests: $write_success_count${reset_color}&#34; echo -e &#34;${green_color}Number of read successful tests: $read_success_count${reset_color}&#34; echo -e &#34;${red_color}Number of write failed tests: $write_failure_count${reset_color}&#34; echo -e &#34;${red_color}Number of read failed tests: $read_failure_count${reset_color}&#34;">
-  <meta property="og:locale" content="en_us">
+  <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="1970-01-01T00:00:00+08:00">
@@ -39,7 +39,7 @@
   <div id="container">
     <header id="main-header"><div role="navigation" aria-label="Main">
   <div class="nav-left">
-    <a href="https://luyoungcn.github.io/" style="color: inherit;">LuyangのBlog</a>
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
   </div>
   <div class="nav-right">
     <div style="position:absolute;width:0px;height:0px;">
@@ -47,6 +47,14 @@
     <div class="nav-item">
       <a aria-current="true" class="ancestor" href="/posts/"
       >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
     </div>
 </div>
     </div>
@@ -58,6 +66,14 @@
     <div class="nav-item">
       <a aria-current="true" class="ancestor" href="/posts/"
       >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
     </div>
 </div>
     <a id="theme-switcher" href="#">
@@ -77,14 +93,14 @@
         <main id="main-content"><div class="single-header">
 <ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="https://luyoungcn.github.io/">
+      <a itemprop="item" href="/">
         <span itemprop="name">Home</span>
       </a>
       <meta itemprop="position" content='1' />
     </li>
     <span>&nbsp»&nbsp</span>
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="https://luyoungcn.github.io/posts/">
+      <a itemprop="item" href="/posts/">
         <span itemprop="name">Posts</span>
       </a>
       <meta itemprop="position" content='2' />
@@ -92,13 +108,13 @@
     <span>&nbsp»&nbsp</span>
 </ol>
 <h1>Linux Test Disk with dd command</h1><time class="dim" datetime="1970-01-01T00:00:00&#43;08:00">January 1, 1970</time><div class="term-container"><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/linux/">#linux</a>
+        <a href="/tags/linux/">#linux</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/dd/">#dd</a>
+        <a href="/tags/dd/">#dd</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/disk/">#disk</a>
+        <a href="/tags/disk/">#disk</a>
       </div><div class="tag">
-        <a href="https://luyoungcn.github.io/tags/performance/">#performance</a>
+        <a href="/tags/performance/">#performance</a>
       </div></ol></div>
   <section class="page-section"><h1 id="关键命令">关键命令</h1>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 清空文件系统缓存, 测试读写命令之前需要执行该命令</span>
@@ -173,17 +189,14 @@
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 </div>
+    <div class="dim">© 2025 Lu Yang</div>
     <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
   </div>
 </div>
 </footer>
       </div><aside id="side-pane" class="side-sticky"><div class="side-details">
     <span>213 words</span>
-    <span>1 - 2 minutes read</span><div class="side-details-taxonomy">
-        <small>categories: 
-          <span class="details-taxonomy"><a href="https://luyoungcn.github.io/categories/%E5%B7%A5%E5%85%B7">工具</a></span></small>
-      </div></div><h3>Related</h3>
+    <span>1 - 2 minutes read</span></div><h3>Related</h3>
     <ul><li><a href="/posts/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/">Virtualbox Opensuse 无网络图标 无法上网</a></li><li><a href="/posts/samba/">samba</a></li><li><a href="/posts/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/">vscode 阅读 Linux 内核代码配置</a></li><li><a href="/posts/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/">一文搞懂应用开发所需 Linux 系统时间的相关知识点</a></li><li><a href="/posts/how_to_handle_gpio_interrupt_like_handling_in_linux_userspace/">如何在 Linux 用户空间中进行类似 GPIO 中断的处理</a></li></ul></aside></div>
   </div>
 </body>

@@ -2,607 +2,628 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://luyoungcn.github.io/tags/c/</loc>
+    <loc>/posts/getting-started/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/posts/configuration/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/about/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/series/content/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/features/dark-mode/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/topics/documentation/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/tags/example/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/features/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/series/features/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/tags/guide/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/features/internationalization/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/search/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/series/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/posts/showcase/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/tags/starter/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/features/static-content/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/series/structure/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/series/styling/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/features/taxonomies-support/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/topics/</loc>
+    <lastmod>2025-03-24T23:00:00-03:00</lastmod>
+  </url><url>
+    <loc>/tags/c/</loc>
     <lastmod>2024-01-01T20:19:08+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/categories/</loc>
+    <loc>/tags/errnum/</loc>
     <lastmod>2024-01-01T20:19:08+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/categories/coding/</loc>
+    <loc>/tags/glibc/</loc>
     <lastmod>2024-01-01T20:19:08+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/errnum/</loc>
+    <loc>/posts/perror_func/</loc>
     <lastmod>2024-01-01T20:19:08+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/glibc/</loc>
+    <loc>/tags/perror/</loc>
     <lastmod>2024-01-01T20:19:08+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/</loc>
+    <loc>/tags/rtfsc/</loc>
     <lastmod>2024-01-01T20:19:08+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/perror_func/</loc>
-    <lastmod>2024-01-01T20:19:08+08:00</lastmod>
-  </url><url>
-    <loc>https://luyoungcn.github.io/tags/perror/</loc>
-    <lastmod>2024-01-01T20:19:08+08:00</lastmod>
-  </url><url>
-    <loc>https://luyoungcn.github.io/posts/</loc>
-    <lastmod>2024-01-01T20:19:08+08:00</lastmod>
-  </url><url>
-    <loc>https://luyoungcn.github.io/tags/rtfsc/</loc>
-    <lastmod>2024-01-01T20:19:08+08:00</lastmod>
-  </url><url>
-    <loc>https://luyoungcn.github.io/tags/</loc>
-    <lastmod>2024-01-01T20:19:08+08:00</lastmod>
-  </url><url>
-    <loc>https://luyoungcn.github.io/tags/adb/</loc>
+    <loc>/tags/adb/</loc>
     <lastmod>2023-10-26T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/android/</loc>
+    <loc>/tags/android/</loc>
     <lastmod>2023-10-26T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/usb/</loc>
+    <loc>/tags/usb/</loc>
     <lastmod>2023-10-26T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/usbip/</loc>
+    <loc>/tags/usbip/</loc>
     <lastmod>2023-10-26T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</loc>
+    <loc>/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2023-10-26T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/wsl/</loc>
+    <loc>/tags/wsl/</loc>
     <lastmod>2023-10-26T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/categories/%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2023-10-26T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://luyoungcn.github.io/tags/oh-my-posh/</loc>
+    <loc>/tags/oh-my-posh/</loc>
     <lastmod>2023-06-26T03:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/svn/</loc>
+    <loc>/tags/svn/</loc>
     <lastmod>2023-06-26T03:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/terminal/</loc>
+    <loc>/tags/terminal/</loc>
     <lastmod>2023-06-26T03:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/ubuntu/</loc>
+    <loc>/tags/ubuntu/</loc>
     <lastmod>2023-06-26T03:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/ubuntu_2004_%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/</loc>
+    <loc>/posts/ubuntu_2004_%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/</loc>
     <lastmod>2023-06-26T03:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/svn/</loc>
+    <loc>/posts/svn/</loc>
     <lastmod>2023-06-26T03:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/windows-terminal-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-oh-my-posh/</loc>
+    <loc>/posts/windows-terminal-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-oh-my-posh/</loc>
     <lastmod>2023-06-26T03:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/categories/%E7%8E%AF%E5%A2%83/</loc>
-    <lastmod>2023-06-26T03:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://luyoungcn.github.io/tags/openssl/</loc>
+    <loc>/tags/openssl/</loc>
     <lastmod>2023-06-01T09:30:01+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/openssl/</loc>
+    <loc>/posts/openssl/</loc>
     <lastmod>2023-06-01T09:30:01+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/wdk/</loc>
+    <loc>/tags/wdk/</loc>
     <lastmod>2023-06-01T09:30:01+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/%E7%AD%BE%E5%90%8D/</loc>
+    <loc>/tags/%E7%AD%BE%E5%90%8D/</loc>
     <lastmod>2023-06-01T09:30:01+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/%E8%AF%81%E4%B9%A6/</loc>
+    <loc>/tags/%E8%AF%81%E4%B9%A6/</loc>
     <lastmod>2023-06-01T09:30:01+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/codereview/</loc>
+    <loc>/tags/codereview/</loc>
     <lastmod>2023-06-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/docker/</loc>
+    <loc>/tags/docker/</loc>
     <lastmod>2023-06-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/docker-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
+    <loc>/posts/docker-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
     <lastmod>2023-06-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/gerrit/</loc>
+    <loc>/tags/gerrit/</loc>
     <lastmod>2023-06-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/gerrit/</loc>
+    <loc>/posts/gerrit/</loc>
     <lastmod>2023-06-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/repo/</loc>
+    <loc>/tags/repo/</loc>
     <lastmod>2023-06-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/clion/</loc>
+    <loc>/tags/clion/</loc>
     <lastmod>2023-05-16T20:19:08+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/vcpkg/</loc>
+    <loc>/tags/vcpkg/</loc>
     <lastmod>2023-05-16T20:19:08+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/visual_studio/</loc>
+    <loc>/tags/visual_studio/</loc>
     <lastmod>2023-05-16T20:19:08+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/windows/</loc>
+    <loc>/tags/windows/</loc>
     <lastmod>2023-05-16T20:19:08+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/vcpkg_windows/</loc>
+    <loc>/posts/vcpkg_windows/</loc>
     <lastmod>2023-05-16T20:19:08+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/bst/</loc>
+    <loc>/tags/bst/</loc>
     <lastmod>2023-02-09T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/date/</loc>
+    <loc>/tags/date/</loc>
     <lastmod>2023-02-09T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/ext4/</loc>
+    <loc>/tags/ext4/</loc>
     <lastmod>2023-02-09T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/linux/</loc>
+    <loc>/tags/linux/</loc>
     <lastmod>2023-02-09T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/linux_date_cmd/</loc>
+    <loc>/posts/linux_date_cmd/</loc>
     <lastmod>2023-02-09T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/usbipd/</loc>
+    <loc>/tags/usbipd/</loc>
     <lastmod>2023-02-09T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/windows10_wsl/</loc>
+    <loc>/posts/windows10_wsl/</loc>
     <lastmod>2023-02-09T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/</loc>
+    <loc>/posts/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/</loc>
     <lastmod>2023-02-09T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/i2c/</loc>
+    <loc>/tags/i2c/</loc>
     <lastmod>2023-02-07T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/i2c_cmd/</loc>
+    <loc>/posts/i2c_cmd/</loc>
     <lastmod>2023-02-07T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/ddr/</loc>
+    <loc>/tags/ddr/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/ddr-%E5%8E%8B%E6%B5%8B%E5%91%BD%E4%BB%A4/</loc>
+    <loc>/posts/ddr-%E5%8E%8B%E6%B5%8B%E5%91%BD%E4%BB%A4/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/e2fs/</loc>
+    <loc>/tags/e2fs/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/e2fsprogs-1/</loc>
+    <loc>/posts/e2fsprogs-1/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/libxml/</loc>
+    <loc>/tags/libxml/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/python/</loc>
+    <loc>/tags/python/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/python2/</loc>
+    <loc>/posts/python2/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/ssh/</loc>
+    <loc>/tags/ssh/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/stress/</loc>
+    <loc>/tags/stress/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/tcpdump/</loc>
+    <loc>/tags/tcpdump/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/vscode/</loc>
+    <loc>/tags/vscode/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/vscode_remote-ssh_%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE/</loc>
+    <loc>/posts/vscode_remote-ssh_%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/zlib/</loc>
+    <loc>/tags/zlib/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2/</loc>
+    <loc>/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-libxml2-2/</loc>
+    <loc>/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-libxml2-2/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2/</loc>
+    <loc>/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-tcpdump-4/</loc>
+    <loc>/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-tcpdump-4/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-zlib-1/</loc>
+    <loc>/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-zlib-1/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/dmesg/</loc>
+    <loc>/tags/dmesg/</loc>
     <lastmod>2023-02-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/dmesg_support_iso_timestamp/</loc>
+    <loc>/posts/dmesg_support_iso_timestamp/</loc>
     <lastmod>2023-02-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/gmsl2_csi2_clk/</loc>
+    <loc>/posts/gmsl2_csi2_clk/</loc>
     <lastmod>2023-01-30T23:07:31+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/hobotbuildenv/</loc>
+    <loc>/posts/hobotbuildenv/</loc>
     <lastmod>2023-01-30T23:07:31+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/ros/</loc>
+    <loc>/posts/ros/</loc>
     <lastmod>2023-01-30T23:07:31+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/%E8%80%81%E9%BB%91%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83/</loc>
+    <loc>/posts/%E8%80%81%E9%BB%91%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83/</loc>
     <lastmod>2023-01-30T23:07:31+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/akshare/</loc>
+    <loc>/tags/akshare/</loc>
     <lastmod>2021-06-26T03:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/stock/</loc>
+    <loc>/posts/stock/</loc>
     <lastmod>2021-06-26T03:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/stock/</loc>
+    <loc>/tags/stock/</loc>
     <lastmod>2021-06-26T03:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/activity/</loc>
+    <loc>/tags/activity/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/adc/</loc>
+    <loc>/tags/adc/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/adi/</loc>
+    <loc>/tags/adi/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/adi_gmsl2_serdes_spi/</loc>
+    <loc>/posts/adi_gmsl2_serdes_spi/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/am/</loc>
+    <loc>/tags/am/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/categories/android/</loc>
+    <loc>/posts/androidjava-/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/androidjava-/</loc>
+    <loc>/posts/androidstudioenv/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/androidstudioenv/</loc>
+    <loc>/posts/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</loc>
+    <loc>/posts/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</loc>
+    <loc>/tags/androidstudio/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/androidstudio/</loc>
+    <loc>/tags/awr2243/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/awr2243/</loc>
+    <loc>/tags/bandwidth/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/bandwidth/</loc>
+    <loc>/tags/bayer/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/bayer/</loc>
+    <loc>/posts/beyondcompare/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/beyondcompare/</loc>
+    <loc>/tags/beyondcompare/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/beyondcompare/</loc>
+    <loc>/tags/blog/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/blog/</loc>
+    <loc>/tags/boost/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/boost/</loc>
+    <loc>/tags/ccache/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/categories/build/</loc>
+    <loc>/posts/cmake/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/ccache/</loc>
+    <loc>/tags/cmake/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/cmake/</loc>
+    <loc>/tags/cmos/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/cmake/</loc>
+    <loc>/posts/crystal/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/cmos/</loc>
+    <loc>/tags/crystal/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/crystal/</loc>
+    <loc>/tags/dart/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/crystal/</loc>
+    <loc>/tags/dd/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/dart/</loc>
+    <loc>/tags/debian/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/dd/</loc>
+    <loc>/posts/debian4/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/debian/</loc>
+    <loc>/tags/disk/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/debian4/</loc>
+    <loc>/posts/dokuwiki/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/categories/dev/</loc>
+    <loc>/tags/dokuwiki/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/disk/</loc>
+    <loc>/tags/driver/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/dokuwiki/</loc>
+    <loc>/tags/electronic/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/dokuwiki/</loc>
+    <loc>/posts/flutter/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/driver/</loc>
+    <loc>/tags/flutter/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/electronic/</loc>
+    <loc>/tags/git/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/flutter/</loc>
+    <loc>/posts/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/flutter/</loc>
+    <loc>/posts/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/git/</loc>
+    <loc>/posts/gitbook/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/</loc>
+    <loc>/tags/gitbook/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/</loc>
+    <loc>/tags/github/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/gitbook/</loc>
+    <loc>/tags/gmsl/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/gitbook/</loc>
+    <loc>/posts/adi_serdes/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/github/</loc>
+    <loc>/tags/gpio/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/gmsl/</loc>
+    <loc>/posts/harmony-hpm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/adi_serdes/</loc>
+    <loc>/posts/hugo/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/gpio/</loc>
+    <loc>/tags/hugo/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/categories/hardware/</loc>
+    <loc>/tags/interrupt/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/harmony-hpm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</loc>
+    <loc>/tags/iperf/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/hugo/</loc>
+    <loc>/posts/iperf-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/hugo/</loc>
+    <loc>/tags/java/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/interrupt/</loc>
+    <loc>/tags/kernel/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/iperf/</loc>
+    <loc>/posts/linux_test_disk_i_o_with_dd/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/iperf-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD/</loc>
+    <loc>/posts/manjaro/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/java/</loc>
+    <loc>/tags/manjaro/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/kernel/</loc>
+    <loc>/tags/maxim/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/categories/linux/</loc>
+    <loc>/tags/mipi/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/linux_test_disk_i_o_with_dd/</loc>
+    <loc>/tags/mmwave/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/manjaro/</loc>
+    <loc>/tags/network/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/manjaro/</loc>
+    <loc>/tags/office/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/maxim/</loc>
+    <loc>/posts/opengrok/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/mipi/</loc>
+    <loc>/tags/opengrok/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/mmwave/</loc>
+    <loc>/tags/openharmony/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/network/</loc>
+    <loc>/posts/openharmony-%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/office/</loc>
+    <loc>/tags/opensuse/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/opengrok/</loc>
+    <loc>/tags/performance/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/opengrok/</loc>
+    <loc>/tags/plantuml/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/openharmony/</loc>
+    <loc>/tags/pm/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/openharmony-%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91/</loc>
+    <loc>/tags/poll/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/categories/opensource/</loc>
+    <loc>/tags/public/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/opensuse/</loc>
+    <loc>/tags/radar/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/performance/</loc>
+    <loc>/tags/raw/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/plantuml/</loc>
+    <loc>/tags/realtek/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/pm/</loc>
+    <loc>/posts/repo/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/poll/</loc>
+    <loc>/posts/samba/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/categories/programming/</loc>
+    <loc>/tags/samba/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/public/</loc>
+    <loc>/tags/select/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/categories/radar/</loc>
+    <loc>/tags/serdes/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/radar/</loc>
+    <loc>/posts/sourceinsight/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/raw/</loc>
+    <loc>/tags/sourceinsight/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/realtek/</loc>
+    <loc>/tags/spi/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/repo/</loc>
+    <loc>/tags/submodule/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/samba/</loc>
+    <loc>/tags/time/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/samba/</loc>
+    <loc>/tags/timesync/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/select/</loc>
+    <loc>/tags/tp-link/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/categories/serdes/</loc>
+    <loc>/posts/ubuntu_200406_install_tp_link_ac1300_usb_wifi_adaptor_driver/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/serdes/</loc>
+    <loc>/posts/ubuntu_git_server_build_push_code/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/sourceinsight/</loc>
+    <loc>/tags/userspace/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/sourceinsight/</loc>
+    <loc>/tags/virtualbox/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/spi/</loc>
+    <loc>/posts/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/submodule/</loc>
+    <loc>/posts/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/time/</loc>
+    <loc>/tags/wifi/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/timesync/</loc>
+    <loc>/posts/wifiadb/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/tp-link/</loc>
+    <loc>/tags/wiki/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/ubuntu_200406_install_tp_link_ac1300_usb_wifi_adaptor_driver/</loc>
+    <loc>/posts/windows/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/ubuntu_git_server_build_push_code/</loc>
+    <loc>/posts/windows_remote_desktop/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/userspace/</loc>
+    <loc>/posts/windows_vcpkg_boost/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/virtualbox/</loc>
+    <loc>/posts/windowsvscodeplantuml%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/</loc>
+    <loc>/posts/windows_wsl_%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/</loc>
+    <loc>/posts/word/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/wifi/</loc>
+    <loc>/tags/word/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/wifiadb/</loc>
+    <loc>/posts/usbipd/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/wiki/</loc>
+    <loc>/posts/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/windows/</loc>
+    <loc>/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/windows_remote_desktop/</loc>
+    <loc>/posts/awr2243_adc/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/windows_vcpkg_boost/</loc>
+    <loc>/tags/%E5%8F%8D%E7%9B%B8%E5%99%A8/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/windowsvscodeplantuml%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
+    <loc>/posts/how_to_handle_gpio_interrupt_like_handling_in_linux_userspace/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/windows_wsl_%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/</loc>
+    <loc>/posts/camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/word/</loc>
+    <loc>/tags/%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/tags/word/</loc>
+    <loc>/tags/%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/usbipd/</loc>
+    <loc>/tags/%E7%9A%AE%E5%B0%94%E6%96%AF%E6%8C%AF%E8%8D%A1%E5%99%A8/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
+    <loc>/tags/%E7%9F%B3%E8%8B%B1%E6%99%B6%E4%BD%93%E8%B0%90%E6%8C%AF%E5%99%A8/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE/</loc>
+    <loc>/tags/%E7%BC%96%E8%AF%91%E5%99%A8/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://luyoungcn.github.io/posts/awr2243_adc/</loc>
-    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://luyoungcn.github.io/tags/%E5%8F%8D%E7%9B%B8%E5%99%A8/</loc>
-    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://luyoungcn.github.io/posts/how_to_handle_gpio_interrupt_like_handling_in_linux_userspace/</loc>
-    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://luyoungcn.github.io/posts/camera_%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F_%E4%BB%8Ecmos%E5%88%B0mipi/</loc>
-    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://luyoungcn.github.io/tags/%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5/</loc>
-    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://luyoungcn.github.io/tags/%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6/</loc>
-    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://luyoungcn.github.io/tags/%E7%9A%AE%E5%B0%94%E6%96%AF%E6%8C%AF%E8%8D%A1%E5%99%A8/</loc>
-    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://luyoungcn.github.io/tags/%E7%9F%B3%E8%8B%B1%E6%99%B6%E4%BD%93%E8%B0%90%E6%8C%AF%E5%99%A8/</loc>
-    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://luyoungcn.github.io/tags/%E7%BC%96%E8%AF%91%E5%99%A8/</loc>
-    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://luyoungcn.github.io/tags/%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6/</loc>
+    <loc>/tags/%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url>
 </urlset>
