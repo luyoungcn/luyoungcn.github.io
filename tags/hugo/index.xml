@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Hugo on LuyangのBlog</title>
-    <link>https://luyoungcn.github.io/tags/hugo/</link>
-    <description>Recent content in Hugo on LuyangのBlog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Hugo on PaperMod</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/tags/hugo/</link>
+    <description>Recent content in Hugo on PaperMod</description>
+    <image>
+      <title>PaperMod</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.146.6</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>PaperMod Contributors</copyright>
+    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>hugo</title>
-      <link>https://luyoungcn.github.io/posts/hugo/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/hugo/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      
-      <guid>https://luyoungcn.github.io/posts/hugo/</guid>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/hugo/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://gohugo.io/&#34;&gt;hugo&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;theme: &lt;a href=&#34;https://github.com/xtfly/hugo-theme-next&#34;&gt;next&lt;/a&gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -32,37 +38,19 @@
 &lt;li&gt;start server &lt;code&gt;hugo server --bind 0.0.0.0 --baseURL http://10.0.0.7:1313&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;框架&#34;&gt;框架&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;blog&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;$ ls
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;archetypes  config.toml  content  data  layouts  public  resources  static  themes
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;blog&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;archetypes  config.toml  content  data  layouts  public  resources  static  themes
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;博客内容&#34;&gt;博客内容&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;将你写的博客内容markdown文档所在目录链接到 content 目录，链接文件命名为 post&lt;/li&gt;
 &lt;li&gt;将你的about目录链接到 content 目录，链接文件名为 about&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;blog&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;$ tree content/
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;content/
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── about -&amp;gt; /home/lv/post/about
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└── post -&amp;gt; /home/lv/post
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;blog&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;$ tree content/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;content/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── about -&amp;gt; /home/lv/post/about
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└── post -&amp;gt; /home/lv/post
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;博客发布&#34;&gt;博客发布&lt;/h2&gt;
-&lt;p&gt;将博客发布内容路径链接为 hugo 的根目录， 链接文件命名为 public&lt;/p&gt;
-&lt;h2 id=&#34;hugo-markdown-插入图片&#34;&gt;hugo markdown 插入图片&lt;/h2&gt;
-&lt;p&gt;e.g.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;图片名字：nescafe.png&lt;/li&gt;
-&lt;li&gt;hugo 工程 content/post/hello.md&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ol&gt;
-&lt;li&gt;content/post/ 目录下创建 markdown 文档同名文件夹 hello&lt;/li&gt;
-&lt;li&gt;将图片 nescafe.png 放入 content/post/hello/ 目录下&lt;/li&gt;
-&lt;li&gt;markdown 文件 hello.md 中引用方法：&lt;code&gt;![](nescafe.png)&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;qa&#34;&gt;Q&amp;amp;A&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://discourse.gohugo.io/t/binding-server-to-local-ip-or-0-0-0-0-does-not-work/18999&#34;&gt;https://discourse.gohugo.io/t/binding-server-to-local-ip-or-0-0-0-0-does-not-work/18999&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://wefox.me/docs/create_blog_on_github_by_hugo/&#34;&gt;https://wefox.me/docs/create_blog_on_github_by_hugo/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+&lt;p&gt;将博客发布内容路径链接为 hugo 的根目录， 链接文件命名为 public&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

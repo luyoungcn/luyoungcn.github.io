@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>SourceInsight on LuyangのBlog</title>
-    <link>https://luyoungcn.github.io/tags/sourceinsight/</link>
-    <description>Recent content in SourceInsight on LuyangのBlog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>SourceInsight on PaperMod</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/tags/sourceinsight/</link>
+    <description>Recent content in SourceInsight on PaperMod</description>
+    <image>
+      <title>PaperMod</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.146.6</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/sourceinsight/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>PaperMod Contributors</copyright>
+    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/sourceinsight/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Source Insight</title>
-      <link>https://luyoungcn.github.io/posts/sourceinsight/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/sourceinsight/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      
-      <guid>https://luyoungcn.github.io/posts/sourceinsight/</guid>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/sourceinsight/</guid>
       <description>&lt;h2 id=&#34;注释字体设置&#34;&gt;注释字体设置&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;Options&lt;/code&gt;-&amp;gt;&lt;code&gt;Style Properties&lt;/code&gt;&lt;/li&gt;
@@ -26,9 +32,7 @@
 &lt;li&gt;G(绿)232&lt;/li&gt;
 &lt;li&gt;B(蓝)207
 &lt;code&gt;添加到自定义颜色&lt;/code&gt;-&amp;gt;&lt;code&gt;确定&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+&lt;/ul&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>PUBLIC on LuyangのBlog</title>
-    <link>https://luyoungcn.github.io/tags/public/</link>
-    <description>Recent content in PUBLIC on LuyangのBlog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>PUBLIC on PaperMod</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/tags/public/</link>
+    <description>Recent content in PUBLIC on PaperMod</description>
+    <image>
+      <title>PaperMod</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.146.6</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/public/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>PaperMod Contributors</copyright>
+    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/public/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>wsl 使用 usbipd 访问 USB 设备</title>
-      <link>https://luyoungcn.github.io/posts/usbipd/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/usbipd/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      
-      <guid>https://luyoungcn.github.io/posts/usbipd/</guid>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/usbipd/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;注意：如下 usbipd 命令需要在 &lt;code&gt;以管理员身份运行&lt;/code&gt; 的 powershell 中执行&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;usbipd: USB/IP open-source project&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span style=&#34;color:#ae81ff&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd wsl attach --busid 4-4
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd: error: The service is currently not running; a reboot should fix that.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd wsl attach --busid 4-4
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: error: The service is currently not running&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; a reboot should fix that.
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/dorssel/usbipd-win/issues/122&#34;&gt;https://github.com/dorssel/usbipd-win/issues/122&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;参考了上述链接，也做了重启，仍然报错，于是决定升级 &lt;code&gt;usbipd&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;如下步骤也可以作为如何安装 usbipd，wsl 通过 usbipd 访问 USB 设备&lt;/p&gt;
@@ -25,66 +31,30 @@
 &lt;p&gt;&lt;a href=&#34;https://github.com/dorssel/usbipd-win/releases/tag/v4.0.0&#34;&gt;https://github.com/dorssel/usbipd-win/releases/tag/v4.0.0&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;下载 &lt;a href=&#34;https://github.com/dorssel/usbipd-win/releases/download/v4.0.0/usbipd-win_4.0.0.msi&#34;&gt;usbipd-win_4.0.0.msi&lt;/a&gt; 并安装&lt;/p&gt;
 &lt;p&gt;需要注意的是，安装了这个版本发现 usbipd 命令的使用方式变了&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span style=&#34;color:#ae81ff&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd.exe wsl list
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd: error: The &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;wsl&amp;#39;&lt;/span&gt; subcommand has been removed. Learn about the new syntax at https://learn.microsoft.com/windows/wsl/connect-usb#attach-a-usb-device.
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span style=&#34;color:#ae81ff&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd attach --busid 4-4
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Option &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;--wsl&amp;#39;&lt;/span&gt; is required.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd-win 4.0.0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Description:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Attaches a USB device to a client.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Currently, only WSL is supported. Other clients need to perform an attach using client-side tooling.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Exactly one of the options &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;--busid&amp;#39;&lt;/span&gt; or &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;--hardware-id&amp;#39;&lt;/span&gt; is required.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Usage:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  usbipd attach &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;options&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Options:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -a, --auto-attach                      Automatically re-attach when the device is detached or unplugged
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -b, --busid &amp;lt;BUSID&amp;gt;                    Attach device having &amp;lt;BUSID&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -i, --hardware-id &amp;lt;VID:PID&amp;gt;            Attach device having &amp;lt;VID&amp;gt;:&amp;lt;PID&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -w, --wsl &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;DISTRIBUTION&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;REQUIRED&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;  Attach to WSL, optionally specifying the distribution to use
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -?, -h, --help                         Show help and usage information
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/MicrosoftDocs/WSL/issues/1868&#34;&gt;https://github.com/MicrosoftDocs/WSL/issues/1868&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;正确的使用方式&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span style=&#34;color:#ae81ff&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd.exe list
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Connected:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;BUSID  VID:PID    DEVICE                                                        STATE
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1-1    30c9:0096  HP 5MP Camera, HP IR Camera, Camera DFU Device                Not shared
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1-10   8087:0033  英特尔&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;R&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; 无线 Bluetooth&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;R&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;                                   Not shared
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;4-3    0483:572a  USB 串行设备 &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;COM5&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, USB 大容量存储设备                       Not shared
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;4-4    3415:0308  adb                                                           Not shared
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Persisted:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;GUID                                  DEVICE
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1bfb0182-4c41-487f-bdcb-530e2d2cd7ea  USB Serial Converter
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;d7c7745c-3765-49a5-8ad0-c4697d874eb4  Silicon Labs Dual CP2105 USB to UART Bridge: Enhanced COM...r
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;e7af58b3-5b09-4385-a043-6256222507d3  bst usb gadget &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd: warning: USB filter &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;USBPcap&amp;#39;&lt;/span&gt; is known to be incompatible with this software; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bind --force&amp;#39;&lt;/span&gt; will be required.
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span style=&#34;color:#ae81ff&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd bind -b 4-4
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd: warning: USB filter &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;USBPcap&amp;#39;&lt;/span&gt; is known to be incompatible with this software; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bind --force&amp;#39;&lt;/span&gt; will be required.
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span style=&#34;color:#ae81ff&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd bind -b 4-4
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd: warning: USB filter &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;USBPcap&amp;#39;&lt;/span&gt; is known to be incompatible with this software; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bind --force&amp;#39;&lt;/span&gt; will be required.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span style=&#34;color:#ae81ff&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd attach -w --busid 4-4
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd: info: Using WSL distribution &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Ubuntu&amp;#39;&lt;/span&gt; to attach; the device will be available in all WSL &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; distributions.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd: info: Using IP address 172.25.192.1 to reach the host.
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后 wsl 中就可以访问到刚刚挂载的 usb 设备了 &lt;code&gt;Bus 001 Device 002: ID 3415:0308 bst bst usb adb Gadget&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;luyang@KFC:/tmp$ sudo lsusb
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Bus &lt;span style=&#34;color:#ae81ff&#34;&gt;002&lt;/span&gt; Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Bus &lt;span style=&#34;color:#ae81ff&#34;&gt;001&lt;/span&gt; Device 002: ID 3415:0308 bst bst usb adb Gadget
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Bus &lt;span style=&#34;color:#ae81ff&#34;&gt;001&lt;/span&gt; Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;注意：usbipd attach 之前要先执行 bind 否则会报错误&lt;/p&gt;&lt;/blockquote&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span style=&#34;color:#ae81ff&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd attach -w --busid 4-4
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd: error: Device is not shared; run &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;usbipd bind -b 4-4&amp;#39;&lt;/span&gt; as administrator first.
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;参考链接&#34;&gt;参考链接&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/qq_59475883/article/details/123299689&#34;&gt;WSL2识别USB设备——安装开源 usbipd-win 项目-CSDN博客&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd.exe wsl list
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd: error: The &lt;span class=&#34;s1&#34;&gt;&amp;#39;wsl&amp;#39;&lt;/span&gt; subcommand has been removed. Learn about the new syntax at https://learn.microsoft.com/windows/wsl/connect-usb#attach-a-usb-device.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\W&lt;/span&gt;INDOWS&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; usbipd attach --busid 4-4
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Option &lt;span class=&#34;s1&#34;&gt;&amp;#39;--wsl&amp;#39;&lt;/span&gt; is required.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usbipd-win 4.0.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Description:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Attaches a USB device to a client.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Currently, only WSL is supported. Other clients need to perform an attach using client-side tooling.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Exactly one of the options &lt;span class=&#34;s1&#34;&gt;&amp;#39;--busid&amp;#39;&lt;/span&gt; or &lt;span class=&#34;s1&#34;&gt;&amp;#39;--hardware-id&amp;#39;&lt;/span&gt; is required.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Usage:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  usbipd attach &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;options&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Options:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -a, --auto-attach                      Automatically re-attach when the device is detached or unplugged
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -b, --busid &amp;lt;BUSID&amp;gt;                    Attach device having &amp;lt;BUSID&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -i, --hardware-id &amp;lt;VID:PID&amp;gt;            Attach device having &amp;lt;VID&amp;gt;:&amp;lt;PID&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -w, --wsl &amp;lt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;DISTRIBUTION&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&amp;gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;REQUIRED&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;  Attach to WSL, optionally specifying the distribution to use
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -?, -h, --help                         Show &lt;span class=&#34;nb&#34;&gt;help&lt;/span&gt; and usage information
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/MicrosoftDocs/WSL/issues/1868&#34;&gt;https://github.com/MicrosoftDocs/WSL/issues/1868&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

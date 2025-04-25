@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Word on LuyangのBlog</title>
-    <link>https://luyoungcn.github.io/tags/word/</link>
-    <description>Recent content in Word on LuyangのBlog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Word on PaperMod</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/tags/word/</link>
+    <description>Recent content in Word on PaperMod</description>
+    <image>
+      <title>PaperMod</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.146.6</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/word/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>PaperMod Contributors</copyright>
+    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/word/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>word</title>
-      <link>https://luyoungcn.github.io/posts/word/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/word/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      
-      <guid>https://luyoungcn.github.io/posts/word/</guid>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/word/</guid>
       <description>&lt;h2 id=&#34;基于-office-2016如何隐藏-word-行尾的换行标记&#34;&gt;基于 office 2016如何隐藏 word 行尾的换行标记&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;文件-选项,弹出 Word 选项对话框&lt;/li&gt;
@@ -26,9 +32,7 @@
 &lt;li&gt;检查问题-检查文档&lt;/li&gt;
 &lt;li&gt;点击检查&lt;/li&gt;
 &lt;li&gt;点击需要删除信息部分的 全部删除&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+&lt;/ol&gt;</description>
     </item>
-    
   </channel>
 </rss>

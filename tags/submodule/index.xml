@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Submodule on LuyangのBlog</title>
-    <link>https://luyoungcn.github.io/tags/submodule/</link>
-    <description>Recent content in Submodule on LuyangのBlog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Submodule on PaperMod</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/tags/submodule/</link>
+    <description>Recent content in Submodule on PaperMod</description>
+    <image>
+      <title>PaperMod</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.146.6</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/submodule/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>PaperMod Contributors</copyright>
+    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/submodule/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>git clone 包含 submodule 的仓库</title>
-      <link>https://luyoungcn.github.io/posts/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      
-      <guid>https://luyoungcn.github.io/posts/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/</guid>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/</guid>
       <description>&lt;ol&gt;
 &lt;li&gt;使用 git clone 命令来克隆主仓库：&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone &amp;lt;主仓库 URL&amp;gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone &amp;lt;主仓库 URL&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;进入主仓库所在的根目录，并使用 &lt;code&gt;git submodule init&lt;/code&gt; 命令来初始化 submodule：&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd &amp;lt;主仓库目录&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git submodule init
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; &amp;lt;主仓库目录&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git submodule init
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
 &lt;li&gt;使用 &lt;code&gt;git submodule update&lt;/code&gt; 命令来更新 submodule 中的内容：&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git submodule update
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这个命令会从 submodule 的远程仓库中拉取代码，并将其合并到本地代码中。&lt;/p&gt;
-</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git submodule update
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这个命令会从 submodule 的远程仓库中拉取代码，并将其合并到本地代码中。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

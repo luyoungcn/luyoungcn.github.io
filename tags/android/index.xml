@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Android on LuyangのBlog</title>
-    <link>https://luyoungcn.github.io/tags/android/</link>
-    <description>Recent content in Android on LuyangのBlog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Android on PaperMod</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/tags/android/</link>
+    <description>Recent content in Android on PaperMod</description>
+    <image>
+      <title>PaperMod</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.146.6</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>PaperMod Contributors</copyright>
+    <lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/android/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Windows WSL ubuntu adb 配置</title>
-      <link>https://luyoungcn.github.io/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate>
-      
-      <guid>https://luyoungcn.github.io/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</guid>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;h2 id=&#34;配置前的状态&#34;&gt;配置前的状态&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;windows 11 + wsl + ubuntu 18.04&lt;/li&gt;
@@ -30,743 +36,20 @@ List of devices attached
 &lt;p&gt;windows 安装 &lt;a href=&#34;https://github.com/dorssel/usbipd-win/releases&#34;&gt;usbipd-win&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;wsl-安装工具包&#34;&gt;WSL 安装工具包&lt;/h2&gt;
 &lt;p&gt;WSL ubuntu 安装 adb 工具&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install android-tools-adb
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install android-tools-adb
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在WSL中，安装 USB/IP 的用户空间工具和 USB 硬件标识符的数据库。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install linux-tools-5.15.0-87-generic hwdata
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 注意 linux-tools 相应的要改成你实际安装的版本&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/5.15.0-87-generic/usbip &lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install linux-tools-5.15.0-87-generic hwdata
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 注意 linux-tools 相应的要改成你实际安装的版本&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/5.15.0-87-generic/usbip &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;关于-linux-tools&#34;&gt;关于 linux-tools&lt;/h3&gt;
-&lt;p&gt;查看当前 ubuntu 系统版本支持的 linux-tools generic版本&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;~$ sudo apt-cache search linux-tools
-linux-aws-tools-5.15.0-1004 - Linux kernel version specific tools for version 5.15.0-1004
-linux-azure-tools-5.15.0-1003 - Linux kernel version specific tools for version 5.15.0-1003
-linux-gcp-tools-5.15.0-1003 - Linux kernel version specific tools for version 5.15.0-1003
-linux-gke-tools-5.15.0-1002 - Linux kernel version specific tools for version 5.15.0-1002
-linux-ibm-tools-5.15.0-1002 - Linux kernel version specific tools for version 5.15.0-1002
-linux-intel-iotg-tools-5.15.0-1004 - Linux kernel version specific tools for version 5.15.0-1004
-linux-kvm-tools-5.15.0-1004 - Linux kernel version specific tools for version 5.15.0-1004
-linux-lowlatency-tools-5.15.0-24 - Linux kernel version specific tools for version 5.15.0-24
-linux-oem-5.17-tools-5.17.0-1003 - Linux kernel version specific tools for version 5.17.0-1003
-linux-oracle-tools-5.15.0-1002 - Oracle Linux kernel version specific tools for version 5.15.0-1002
-linux-tools-5.15.0-1002-gke - Linux kernel version specific tools for version 5.15.0-1002
-linux-tools-5.15.0-1002-ibm - Linux kernel version specific tools for version 5.15.0-1002
-linux-tools-5.15.0-1002-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1002
-linux-tools-5.15.0-1003-azure - Linux kernel version specific tools for version 5.15.0-1003
-linux-tools-5.15.0-1003-gcp - Linux kernel version specific tools for version 5.15.0-1003
-linux-tools-5.15.0-1004-aws - Linux kernel version specific tools for version 5.15.0-1004
-linux-tools-5.15.0-1004-intel-iotg - Linux kernel version specific tools for version 5.15.0-1004
-linux-tools-5.15.0-1004-kvm - Linux kernel version specific tools for version 5.15.0-1004
-linux-tools-5.15.0-24-lowlatency - Linux kernel version specific tools for version 5.15.0-24
-linux-tools-5.15.0-25 - Linux kernel version specific tools for version 5.15.0-25
-linux-tools-5.15.0-25-generic - Linux kernel version specific tools for version 5.15.0-25
-linux-tools-5.17.0-1003-oem - Linux kernel version specific tools for version 5.17.0-1003
-linux-tools-aws - Linux kernel versioned tools for Amazon Web Services (AWS) systems.
-linux-tools-azure - Linux kernel versioned tools for Azure systems.
-linux-tools-common - Linux kernel version specific tools for version 5.15.0
-linux-tools-gcp - Google Cloud Platform (GCP) Linux kernel tools
-linux-tools-generic - Generic Linux kernel tools
-linux-tools-generic-hwe-20.04 - Generic Linux kernel tools (dummy transitional package)
-linux-tools-generic-hwe-20.04-edge - Generic Linux kernel tools (dummy transitional package)
-linux-tools-generic-hwe-22.04 - Generic Linux kernel tools
-linux-tools-generic-hwe-22.04-edge - Generic Linux kernel tools
-linux-tools-gke - Linux kernel versioned tools for gke systems.
-linux-tools-gke-5.15 - Linux kernel versioned tools for gke systems.
-linux-tools-host - Linux kernel VM host tools
-linux-tools-ibm - IBM Cloud Platform (ibm) Linux kernel tools
-linux-tools-intel-iotg - Intel-Iotg Linux kernel tools
-linux-tools-kvm - Linux kernel versioned tools for virtual systems.
-linux-tools-lowlatency - lowlatency Linux kernel tools
-linux-tools-lowlatency-hwe-20.04 - lowlatency Linux kernel tools (dummy transitional package)
-linux-tools-lowlatency-hwe-20.04-edge - lowlatency Linux kernel tools (dummy transitional package)
-linux-tools-lowlatency-hwe-22.04 - lowlatency Linux kernel tools
-linux-tools-lowlatency-hwe-22.04-edge - lowlatency Linux kernel tools
-linux-tools-oem-20.04 - OEM Linux kernel tools (dummy transitional package)
-linux-tools-oem-22.04 - OEM Linux kernel tools
-linux-tools-oracle - Linux kernel versioned tools for Oracle systems.
-linux-tools-virtual - Virtual Linux kernel tools
-linux-tools-virtual-hwe-20.04 - Virtual Linux kernel tools (dummy transitional package)
-linux-tools-virtual-hwe-20.04-edge - Virtual Linux kernel tools (dummy transitional package)
-linux-tools-virtual-hwe-22.04 - Virtual Linux kernel tools
-linux-tools-virtual-hwe-22.04-edge - Virtual Linux kernel tools
-linux-aws-5.19-tools-5.19.0-1024 - Linux kernel version specific tools for version 5.19.0-1024
-linux-aws-5.19-tools-5.19.0-1025 - Linux kernel version specific tools for version 5.19.0-1025
-linux-aws-5.19-tools-5.19.0-1026 - Linux kernel version specific tools for version 5.19.0-1026
-linux-aws-5.19-tools-5.19.0-1027 - Linux kernel version specific tools for version 5.19.0-1027
-linux-aws-5.19-tools-5.19.0-1028 - Linux kernel version specific tools for version 5.19.0-1028
-linux-aws-5.19-tools-5.19.0-1029 - Linux kernel version specific tools for version 5.19.0-1029
-linux-aws-6.2-tools-6.2.0-1005 - Linux kernel version specific tools for version 6.2.0-1005
-linux-aws-6.2-tools-6.2.0-1006 - Linux kernel version specific tools for version 6.2.0-1006
-linux-aws-6.2-tools-6.2.0-1007 - Linux kernel version specific tools for version 6.2.0-1007
-linux-aws-6.2-tools-6.2.0-1008 - Linux kernel version specific tools for version 6.2.0-1008
-linux-aws-6.2-tools-6.2.0-1009 - Linux kernel version specific tools for version 6.2.0-1009
-linux-aws-6.2-tools-6.2.0-1010 - Linux kernel version specific tools for version 6.2.0-1010
-linux-aws-6.2-tools-6.2.0-1011 - Linux kernel version specific tools for version 6.2.0-1011
-linux-aws-6.2-tools-6.2.0-1012 - Linux kernel version specific tools for version 6.2.0-1012
-linux-aws-6.2-tools-6.2.0-1013 - Linux kernel version specific tools for version 6.2.0-1013
-linux-aws-6.2-tools-6.2.0-1014 - Linux kernel version specific tools for version 6.2.0-1014
-linux-aws-tools-5.15.0-1035 - Linux kernel version specific tools for version 5.15.0-1035
-linux-aws-tools-5.15.0-1036 - Linux kernel version specific tools for version 5.15.0-1036
-linux-aws-tools-5.15.0-1037 - Linux kernel version specific tools for version 5.15.0-1037
-linux-aws-tools-5.15.0-1038 - Linux kernel version specific tools for version 5.15.0-1038
-linux-aws-tools-5.15.0-1039 - Linux kernel version specific tools for version 5.15.0-1039
-linux-aws-tools-5.15.0-1040 - Linux kernel version specific tools for version 5.15.0-1040
-linux-aws-tools-5.15.0-1042 - Linux kernel version specific tools for version 5.15.0-1042
-linux-aws-tools-5.15.0-1043 - Linux kernel version specific tools for version 5.15.0-1043
-linux-aws-tools-5.15.0-1044 - Linux kernel version specific tools for version 5.15.0-1044
-linux-aws-tools-5.15.0-1045 - Linux kernel version specific tools for version 5.15.0-1045
-linux-aws-tools-5.15.0-1047 - Linux kernel version specific tools for version 5.15.0-1047
-linux-aws-tools-5.15.0-1048 - Linux kernel version specific tools for version 5.15.0-1048
-linux-azure-5.19-tools-5.19.0-1025 - Linux kernel version specific tools for version 5.19.0-1025
-linux-azure-5.19-tools-5.19.0-1026 - Linux kernel version specific tools for version 5.19.0-1026
-linux-azure-5.19-tools-5.19.0-1027 - Linux kernel version specific tools for version 5.19.0-1027
-linux-azure-6.2-tools-6.2.0-1005 - Linux kernel version specific tools for version 6.2.0-1005
-linux-azure-6.2-tools-6.2.0-1006 - Linux kernel version specific tools for version 6.2.0-1006
-linux-azure-6.2-tools-6.2.0-1007 - Linux kernel version specific tools for version 6.2.0-1007
-linux-azure-6.2-tools-6.2.0-1008 - Linux kernel version specific tools for version 6.2.0-1008
-linux-azure-6.2-tools-6.2.0-1011 - Linux kernel version specific tools for version 6.2.0-1011
-linux-azure-6.2-tools-6.2.0-1012 - Linux kernel version specific tools for version 6.2.0-1012
-linux-azure-6.2-tools-6.2.0-1014 - Linux kernel version specific tools for version 6.2.0-1014
-linux-azure-6.2-tools-6.2.0-1015 - Linux kernel version specific tools for version 6.2.0-1015
-linux-azure-tools-5.15.0-1035 - Linux kernel version specific tools for version 5.15.0-1035
-linux-azure-tools-5.15.0-1036 - Linux kernel version specific tools for version 5.15.0-1036
-linux-azure-tools-5.15.0-1037 - Linux kernel version specific tools for version 5.15.0-1037
-linux-azure-tools-5.15.0-1038 - Linux kernel version specific tools for version 5.15.0-1038
-linux-azure-tools-5.15.0-1039 - Linux kernel version specific tools for version 5.15.0-1039
-linux-azure-tools-5.15.0-1040 - Linux kernel version specific tools for version 5.15.0-1040
-linux-azure-tools-5.15.0-1041 - Linux kernel version specific tools for version 5.15.0-1041
-linux-azure-tools-5.15.0-1042 - Linux kernel version specific tools for version 5.15.0-1042
-linux-azure-tools-5.15.0-1044 - Linux kernel version specific tools for version 5.15.0-1044
-linux-azure-tools-5.15.0-1045 - Linux kernel version specific tools for version 5.15.0-1045
-linux-azure-tools-5.15.0-1046 - Linux kernel version specific tools for version 5.15.0-1046
-linux-azure-tools-5.15.0-1047 - Linux kernel version specific tools for version 5.15.0-1047
-linux-azure-tools-5.15.0-1049 - Linux kernel version specific tools for version 5.15.0-1049
-linux-azure-tools-5.15.0-1050 - Linux kernel version specific tools for version 5.15.0-1050
-linux-gcp-5.19-tools-5.19.0-1022 - Linux kernel version specific tools for version 5.19.0-1022
-linux-gcp-5.19-tools-5.19.0-1024 - Linux kernel version specific tools for version 5.19.0-1024
-linux-gcp-5.19-tools-5.19.0-1025 - Linux kernel version specific tools for version 5.19.0-1025
-linux-gcp-5.19-tools-5.19.0-1026 - Linux kernel version specific tools for version 5.19.0-1026
-linux-gcp-5.19-tools-5.19.0-1027 - Linux kernel version specific tools for version 5.19.0-1027
-linux-gcp-5.19-tools-5.19.0-1030 - Linux kernel version specific tools for version 5.19.0-1030
-linux-gcp-6.2-tools-6.2.0-1009 - Linux kernel version specific tools for version 6.2.0-1009
-linux-gcp-6.2-tools-6.2.0-1010 - Linux kernel version specific tools for version 6.2.0-1010
-linux-gcp-6.2-tools-6.2.0-1011 - Linux kernel version specific tools for version 6.2.0-1011
-linux-gcp-6.2-tools-6.2.0-1012 - Linux kernel version specific tools for version 6.2.0-1012
-linux-gcp-6.2-tools-6.2.0-1013 - Linux kernel version specific tools for version 6.2.0-1013
-linux-gcp-6.2-tools-6.2.0-1014 - Linux kernel version specific tools for version 6.2.0-1014
-linux-gcp-6.2-tools-6.2.0-1016 - Linux kernel version specific tools for version 6.2.0-1016
-linux-gcp-6.2-tools-6.2.0-1017 - Linux kernel version specific tools for version 6.2.0-1017
-linux-gcp-tools-5.15.0-1034 - Linux kernel version specific tools for version 5.15.0-1034
-linux-gcp-tools-5.15.0-1035 - Linux kernel version specific tools for version 5.15.0-1035
-linux-gcp-tools-5.15.0-1036 - Linux kernel version specific tools for version 5.15.0-1036
-linux-gcp-tools-5.15.0-1037 - Linux kernel version specific tools for version 5.15.0-1037
-linux-gcp-tools-5.15.0-1038 - Linux kernel version specific tools for version 5.15.0-1038
-linux-gcp-tools-5.15.0-1039 - Linux kernel version specific tools for version 5.15.0-1039
-linux-gcp-tools-5.15.0-1040 - Linux kernel version specific tools for version 5.15.0-1040
-linux-gcp-tools-5.15.0-1041 - Linux kernel version specific tools for version 5.15.0-1041
-linux-gcp-tools-5.15.0-1042 - Linux kernel version specific tools for version 5.15.0-1042
-linux-gcp-tools-5.15.0-1044 - Linux kernel version specific tools for version 5.15.0-1044
-linux-gcp-tools-5.15.0-1045 - Linux kernel version specific tools for version 5.15.0-1045
-linux-gke-tools-5.15.0-1027 - Linux kernel version specific tools for version 5.15.0-1027
-linux-gke-tools-5.15.0-1028 - Linux kernel version specific tools for version 5.15.0-1028
-linux-gke-tools-5.15.0-1030 - Linux kernel version specific tools for version 5.15.0-1030
-linux-gke-tools-5.15.0-1032 - Linux kernel version specific tools for version 5.15.0-1032
-linux-gke-tools-5.15.0-1033 - Linux kernel version specific tools for version 5.15.0-1033
-linux-gke-tools-5.15.0-1034 - Linux kernel version specific tools for version 5.15.0-1034
-linux-gke-tools-5.15.0-1035 - Linux kernel version specific tools for version 5.15.0-1035
-linux-gke-tools-5.15.0-1036 - Linux kernel version specific tools for version 5.15.0-1036
-linux-gke-tools-5.15.0-1037 - Linux kernel version specific tools for version 5.15.0-1037
-linux-gke-tools-5.15.0-1038 - Linux kernel version specific tools for version 5.15.0-1038
-linux-gke-tools-5.15.0-1039 - Linux kernel version specific tools for version 5.15.0-1039
-linux-gke-tools-5.15.0-1040 - Linux kernel version specific tools for version 5.15.0-1040
-linux-gke-tools-5.15.0-1041 - Linux kernel version specific tools for version 5.15.0-1041
-linux-gke-tools-5.15.0-1042 - Linux kernel version specific tools for version 5.15.0-1042
-linux-gke-tools-5.15.0-1044 - Linux kernel version specific tools for version 5.15.0-1044
-linux-gke-tools-5.15.0-1045 - Linux kernel version specific tools for version 5.15.0-1045
-linux-hwe-5.19-tools-5.19.0-41 - Linux kernel version specific tools for version 5.19.0-41
-linux-hwe-5.19-tools-5.19.0-42 - Linux kernel version specific tools for version 5.19.0-42
-linux-hwe-5.19-tools-5.19.0-43 - Linux kernel version specific tools for version 5.19.0-43
-linux-hwe-5.19-tools-5.19.0-45 - Linux kernel version specific tools for version 5.19.0-45
-linux-hwe-5.19-tools-5.19.0-46 - Linux kernel version specific tools for version 5.19.0-46
-linux-hwe-5.19-tools-5.19.0-50 - Linux kernel version specific tools for version 5.19.0-50
-linux-hwe-6.2-tools-6.2.0-25 - Linux kernel version specific tools for version 6.2.0-25
-linux-hwe-6.2-tools-6.2.0-26 - Linux kernel version specific tools for version 6.2.0-26
-linux-hwe-6.2-tools-6.2.0-31 - Linux kernel version specific tools for version 6.2.0-31
-linux-hwe-6.2-tools-6.2.0-32 - Linux kernel version specific tools for version 6.2.0-32
-linux-hwe-6.2-tools-6.2.0-33 - Linux kernel version specific tools for version 6.2.0-33
-linux-hwe-6.2-tools-6.2.0-34 - Linux kernel version specific tools for version 6.2.0-34
-linux-hwe-6.2-tools-6.2.0-35 - Linux kernel version specific tools for version 6.2.0-35
-linux-ibm-tools-5.15.0-1030 - Linux kernel version specific tools for version 5.15.0-1030
-linux-ibm-tools-5.15.0-1031 - Linux kernel version specific tools for version 5.15.0-1031
-linux-ibm-tools-5.15.0-1032 - Linux kernel version specific tools for version 5.15.0-1032
-linux-ibm-tools-5.15.0-1033 - Linux kernel version specific tools for version 5.15.0-1033
-linux-ibm-tools-5.15.0-1034 - Linux kernel version specific tools for version 5.15.0-1034
-linux-ibm-tools-5.15.0-1035 - Linux kernel version specific tools for version 5.15.0-1035
-linux-ibm-tools-5.15.0-1036 - Linux kernel version specific tools for version 5.15.0-1036
-linux-ibm-tools-5.15.0-1037 - Linux kernel version specific tools for version 5.15.0-1037
-linux-ibm-tools-5.15.0-1038 - Linux kernel version specific tools for version 5.15.0-1038
-linux-ibm-tools-5.15.0-1040 - Linux kernel version specific tools for version 5.15.0-1040
-linux-ibm-tools-5.15.0-1041 - Linux kernel version specific tools for version 5.15.0-1041
-linux-intel-iotg-tools-5.15.0-1028 - Linux kernel version specific tools for version 5.15.0-1028
-linux-intel-iotg-tools-5.15.0-1030 - Linux kernel version specific tools for version 5.15.0-1030
-linux-intel-iotg-tools-5.15.0-1031 - Linux kernel version specific tools for version 5.15.0-1031
-linux-intel-iotg-tools-5.15.0-1033 - Linux kernel version specific tools for version 5.15.0-1033
-linux-intel-iotg-tools-5.15.0-1034 - Linux kernel version specific tools for version 5.15.0-1034
-linux-intel-iotg-tools-5.15.0-1035 - Linux kernel version specific tools for version 5.15.0-1035
-linux-intel-iotg-tools-5.15.0-1036 - Linux kernel version specific tools for version 5.15.0-1036
-linux-intel-iotg-tools-5.15.0-1037 - Linux kernel version specific tools for version 5.15.0-1037
-linux-intel-iotg-tools-5.15.0-1038 - Linux kernel version specific tools for version 5.15.0-1038
-linux-intel-iotg-tools-5.15.0-1039 - Linux kernel version specific tools for version 5.15.0-1039
-linux-intel-iotg-tools-5.15.0-1040 - Linux kernel version specific tools for version 5.15.0-1040
-linux-intel-iotg-tools-5.15.0-1043 - Linux kernel version specific tools for version 5.15.0-1043
-linux-kvm-tools-5.15.0-1033 - Linux kernel version specific tools for version 5.15.0-1033
-linux-kvm-tools-5.15.0-1034 - Linux kernel version specific tools for version 5.15.0-1034
-linux-kvm-tools-5.15.0-1035 - Linux kernel version specific tools for version 5.15.0-1035
-linux-kvm-tools-5.15.0-1037 - Linux kernel version specific tools for version 5.15.0-1037
-linux-kvm-tools-5.15.0-1038 - Linux kernel version specific tools for version 5.15.0-1038
-linux-kvm-tools-5.15.0-1039 - Linux kernel version specific tools for version 5.15.0-1039
-linux-kvm-tools-5.15.0-1040 - Linux kernel version specific tools for version 5.15.0-1040
-linux-kvm-tools-5.15.0-1041 - Linux kernel version specific tools for version 5.15.0-1041
-linux-kvm-tools-5.15.0-1042 - Linux kernel version specific tools for version 5.15.0-1042
-linux-kvm-tools-5.15.0-1044 - Linux kernel version specific tools for version 5.15.0-1044
-linux-kvm-tools-5.15.0-1045 - Linux kernel version specific tools for version 5.15.0-1045
-linux-lowlatency-hwe-5.19-tools-5.19.0-1024 - Linux kernel version specific tools for version 5.19.0-1024
-linux-lowlatency-hwe-5.19-tools-5.19.0-1025 - Linux kernel version specific tools for version 5.19.0-1025
-linux-lowlatency-hwe-5.19-tools-5.19.0-1027 - Linux kernel version specific tools for version 5.19.0-1027
-linux-lowlatency-hwe-5.19-tools-5.19.0-1028 - Linux kernel version specific tools for version 5.19.0-1028
-linux-lowlatency-hwe-5.19-tools-5.19.0-1030 - Linux kernel version specific tools for version 5.19.0-1030
-linux-lowlatency-hwe-6.2-tools-6.2.0-1008 - Linux kernel version specific tools for version 6.2.0-1008
-linux-lowlatency-hwe-6.2-tools-6.2.0-1009 - Linux kernel version specific tools for version 6.2.0-1009
-linux-lowlatency-hwe-6.2-tools-6.2.0-1011 - Linux kernel version specific tools for version 6.2.0-1011
-linux-lowlatency-hwe-6.2-tools-6.2.0-1012 - Linux kernel version specific tools for version 6.2.0-1012
-linux-lowlatency-hwe-6.2-tools-6.2.0-1013 - Linux kernel version specific tools for version 6.2.0-1013
-linux-lowlatency-hwe-6.2-tools-6.2.0-1014 - Linux kernel version specific tools for version 6.2.0-1014
-linux-lowlatency-hwe-6.2-tools-6.2.0-1015 - Linux kernel version specific tools for version 6.2.0-1015
-linux-lowlatency-tools-5.15.0-72 - Linux kernel version specific tools for version 5.15.0-72
-linux-lowlatency-tools-5.15.0-73 - Linux kernel version specific tools for version 5.15.0-73
-linux-lowlatency-tools-5.15.0-75 - Linux kernel version specific tools for version 5.15.0-75
-linux-lowlatency-tools-5.15.0-76 - Linux kernel version specific tools for version 5.15.0-76
-linux-lowlatency-tools-5.15.0-78 - Linux kernel version specific tools for version 5.15.0-78
-linux-lowlatency-tools-5.15.0-79 - Linux kernel version specific tools for version 5.15.0-79
-linux-lowlatency-tools-5.15.0-82 - Linux kernel version specific tools for version 5.15.0-82
-linux-lowlatency-tools-5.15.0-83 - Linux kernel version specific tools for version 5.15.0-83
-linux-lowlatency-tools-5.15.0-84 - Linux kernel version specific tools for version 5.15.0-84
-linux-lowlatency-tools-5.15.0-86 - Linux kernel version specific tools for version 5.15.0-86
-linux-lowlatency-tools-5.15.0-87 - Linux kernel version specific tools for version 5.15.0-87
-linux-nvidia-6.2-tools-6.2.0-1003 - Linux kernel version specific tools for version 6.2.0-1003
-linux-nvidia-6.2-tools-6.2.0-1009 - Linux kernel version specific tools for version 6.2.0-1009
-linux-nvidia-6.2-tools-6.2.0-1010 - Linux kernel version specific tools for version 6.2.0-1010
-linux-nvidia-tools-5.15.0-1025 - Linux kernel version specific tools for version 5.15.0-1025
-linux-nvidia-tools-5.15.0-1026 - Linux kernel version specific tools for version 5.15.0-1026
-linux-nvidia-tools-5.15.0-1027 - Linux kernel version specific tools for version 5.15.0-1027
-linux-nvidia-tools-5.15.0-1028 - Linux kernel version specific tools for version 5.15.0-1028
-linux-nvidia-tools-5.15.0-1029 - Linux kernel version specific tools for version 5.15.0-1029
-linux-nvidia-tools-5.15.0-1030 - Linux kernel version specific tools for version 5.15.0-1030
-linux-nvidia-tools-5.15.0-1031 - Linux kernel version specific tools for version 5.15.0-1031
-linux-nvidia-tools-5.15.0-1032 - Linux kernel version specific tools for version 5.15.0-1032
-linux-nvidia-tools-5.15.0-1033 - Linux kernel version specific tools for version 5.15.0-1033
-linux-nvidia-tools-5.15.0-1037 - Linux kernel version specific tools for version 5.15.0-1037
-linux-nvidia-tools-5.15.0-1039 - Linux kernel version specific tools for version 5.15.0-1039
-linux-oem-5.17-tools-5.17.0-1031 - Linux kernel version specific tools for version 5.17.0-1031
-linux-oem-5.17-tools-5.17.0-1032 - Linux kernel version specific tools for version 5.17.0-1032
-linux-oem-5.17-tools-5.17.0-1033 - Linux kernel version specific tools for version 5.17.0-1033
-linux-oem-5.17-tools-5.17.0-1034 - Linux kernel version specific tools for version 5.17.0-1034
-linux-oem-5.17-tools-5.17.0-1035 - Linux kernel version specific tools for version 5.17.0-1035
-linux-oem-6.0-tools-6.0.0-1016 - Linux kernel version specific tools for version 6.0.0-1016
-linux-oem-6.0-tools-6.0.0-1017 - Linux kernel version specific tools for version 6.0.0-1017
-linux-oem-6.0-tools-6.0.0-1018 - Linux kernel version specific tools for version 6.0.0-1018
-linux-oem-6.0-tools-6.0.0-1019 - Linux kernel version specific tools for version 6.0.0-1019
-linux-oem-6.0-tools-6.0.0-1020 - Linux kernel version specific tools for version 6.0.0-1020
-linux-oem-6.0-tools-6.0.0-1021 - Linux kernel version specific tools for version 6.0.0-1021
-linux-oem-6.1-tools-6.1.0-1012 - Linux kernel version specific tools for version 6.1.0-1012
-linux-oem-6.1-tools-6.1.0-1013 - Linux kernel version specific tools for version 6.1.0-1013
-linux-oem-6.1-tools-6.1.0-1014 - Linux kernel version specific tools for version 6.1.0-1014
-linux-oem-6.1-tools-6.1.0-1015 - Linux kernel version specific tools for version 6.1.0-1015
-linux-oem-6.1-tools-6.1.0-1016 - Linux kernel version specific tools for version 6.1.0-1016
-linux-oem-6.1-tools-6.1.0-1017 - Linux kernel version specific tools for version 6.1.0-1017
-linux-oem-6.1-tools-6.1.0-1019 - Linux kernel version specific tools for version 6.1.0-1019
-linux-oem-6.1-tools-6.1.0-1020 - Linux kernel version specific tools for version 6.1.0-1020
-linux-oem-6.1-tools-6.1.0-1021 - Linux kernel version specific tools for version 6.1.0-1021
-linux-oem-6.1-tools-6.1.0-1022 - Linux kernel version specific tools for version 6.1.0-1022
-linux-oem-6.1-tools-6.1.0-1023 - Linux kernel version specific tools for version 6.1.0-1023
-linux-oem-6.1-tools-6.1.0-1024 - Linux kernel version specific tools for version 6.1.0-1024
-linux-oem-6.5-tools-6.5.0-1003 - Linux kernel version specific tools for version 6.5.0-1003
-linux-oem-6.5-tools-6.5.0-1004 - Linux kernel version specific tools for version 6.5.0-1004
-linux-oracle-5.19-tools-5.19.0-1023 - Oracle Linux kernel version specific tools for version 5.19.0-1023
-linux-oracle-5.19-tools-5.19.0-1024 - Oracle Linux kernel version specific tools for version 5.19.0-1024
-linux-oracle-5.19-tools-5.19.0-1025 - Oracle Linux kernel version specific tools for version 5.19.0-1025
-linux-oracle-5.19-tools-5.19.0-1026 - Oracle Linux kernel version specific tools for version 5.19.0-1026
-linux-oracle-5.19-tools-5.19.0-1027 - Oracle Linux kernel version specific tools for version 5.19.0-1027
-linux-oracle-6.2-tools-6.2.0-1013 - Oracle Linux kernel version specific tools for version 6.2.0-1013
-linux-oracle-6.2-tools-6.2.0-1014 - Oracle Linux kernel version specific tools for version 6.2.0-1014
-linux-oracle-tools-5.15.0-1035 - Oracle Linux kernel version specific tools for version 5.15.0-1035
-linux-oracle-tools-5.15.0-1036 - Oracle Linux kernel version specific tools for version 5.15.0-1036
-linux-oracle-tools-5.15.0-1037 - Oracle Linux kernel version specific tools for version 5.15.0-1037
-linux-oracle-tools-5.15.0-1038 - Oracle Linux kernel version specific tools for version 5.15.0-1038
-linux-oracle-tools-5.15.0-1039 - Oracle Linux kernel version specific tools for version 5.15.0-1039
-linux-oracle-tools-5.15.0-1040 - Oracle Linux kernel version specific tools for version 5.15.0-1040
-linux-oracle-tools-5.15.0-1041 - Oracle Linux kernel version specific tools for version 5.15.0-1041
-linux-oracle-tools-5.15.0-1042 - Oracle Linux kernel version specific tools for version 5.15.0-1042
-linux-oracle-tools-5.15.0-1044 - Oracle Linux kernel version specific tools for version 5.15.0-1044
-linux-oracle-tools-5.15.0-1045 - Oracle Linux kernel version specific tools for version 5.15.0-1045
-linux-oracle-tools-5.15.0-1046 - Oracle Linux kernel version specific tools for version 5.15.0-1046
-linux-tools-5.15.0-1025-nvidia - Linux kernel version specific tools for version 5.15.0-1025
-linux-tools-5.15.0-1025-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1025
-linux-tools-5.15.0-1026-nvidia - Linux kernel version specific tools for version 5.15.0-1026
-linux-tools-5.15.0-1026-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1026
-linux-tools-5.15.0-1027-gke - Linux kernel version specific tools for version 5.15.0-1027
-linux-tools-5.15.0-1027-nvidia - Linux kernel version specific tools for version 5.15.0-1027
-linux-tools-5.15.0-1027-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1027
-linux-tools-5.15.0-1028-gke - Linux kernel version specific tools for version 5.15.0-1028
-linux-tools-5.15.0-1028-intel-iotg - Linux kernel version specific tools for version 5.15.0-1028
-linux-tools-5.15.0-1028-nvidia - Linux kernel version specific tools for version 5.15.0-1028
-linux-tools-5.15.0-1028-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1028
-linux-tools-5.15.0-1029-nvidia - Linux kernel version specific tools for version 5.15.0-1029
-linux-tools-5.15.0-1029-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1029
-linux-tools-5.15.0-1030-gke - Linux kernel version specific tools for version 5.15.0-1030
-linux-tools-5.15.0-1030-ibm - Linux kernel version specific tools for version 5.15.0-1030
-linux-tools-5.15.0-1030-intel-iotg - Linux kernel version specific tools for version 5.15.0-1030
-linux-tools-5.15.0-1030-nvidia - Linux kernel version specific tools for version 5.15.0-1030
-linux-tools-5.15.0-1030-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1030
-linux-tools-5.15.0-1031-ibm - Linux kernel version specific tools for version 5.15.0-1031
-linux-tools-5.15.0-1031-intel-iotg - Linux kernel version specific tools for version 5.15.0-1031
-linux-tools-5.15.0-1031-nvidia - Linux kernel version specific tools for version 5.15.0-1031
-linux-tools-5.15.0-1031-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1031
-linux-tools-5.15.0-1032-gke - Linux kernel version specific tools for version 5.15.0-1032
-linux-tools-5.15.0-1032-ibm - Linux kernel version specific tools for version 5.15.0-1032
-linux-tools-5.15.0-1032-nvidia - Linux kernel version specific tools for version 5.15.0-1032
-linux-tools-5.15.0-1032-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1032
-linux-tools-5.15.0-1033-gke - Linux kernel version specific tools for version 5.15.0-1033
-linux-tools-5.15.0-1033-ibm - Linux kernel version specific tools for version 5.15.0-1033
-linux-tools-5.15.0-1033-intel-iotg - Linux kernel version specific tools for version 5.15.0-1033
-linux-tools-5.15.0-1033-kvm - Linux kernel version specific tools for version 5.15.0-1033
-linux-tools-5.15.0-1033-nvidia - Linux kernel version specific tools for version 5.15.0-1033
-linux-tools-5.15.0-1033-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1033
-linux-tools-5.15.0-1034-gcp - Linux kernel version specific tools for version 5.15.0-1034
-linux-tools-5.15.0-1034-gke - Linux kernel version specific tools for version 5.15.0-1034
-linux-tools-5.15.0-1034-ibm - Linux kernel version specific tools for version 5.15.0-1034
-linux-tools-5.15.0-1034-intel-iotg - Linux kernel version specific tools for version 5.15.0-1034
-linux-tools-5.15.0-1034-kvm - Linux kernel version specific tools for version 5.15.0-1034
-linux-tools-5.15.0-1035-aws - Linux kernel version specific tools for version 5.15.0-1035
-linux-tools-5.15.0-1035-azure - Linux kernel version specific tools for version 5.15.0-1035
-linux-tools-5.15.0-1035-gcp - Linux kernel version specific tools for version 5.15.0-1035
-linux-tools-5.15.0-1035-gke - Linux kernel version specific tools for version 5.15.0-1035
-linux-tools-5.15.0-1035-ibm - Linux kernel version specific tools for version 5.15.0-1035
-linux-tools-5.15.0-1035-intel-iotg - Linux kernel version specific tools for version 5.15.0-1035
-linux-tools-5.15.0-1035-kvm - Linux kernel version specific tools for version 5.15.0-1035
-linux-tools-5.15.0-1035-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1035
-linux-tools-5.15.0-1036-aws - Linux kernel version specific tools for version 5.15.0-1036
-linux-tools-5.15.0-1036-azure - Linux kernel version specific tools for version 5.15.0-1036
-linux-tools-5.15.0-1036-gcp - Linux kernel version specific tools for version 5.15.0-1036
-linux-tools-5.15.0-1036-gke - Linux kernel version specific tools for version 5.15.0-1036
-linux-tools-5.15.0-1036-ibm - Linux kernel version specific tools for version 5.15.0-1036
-linux-tools-5.15.0-1036-intel-iotg - Linux kernel version specific tools for version 5.15.0-1036
-linux-tools-5.15.0-1036-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1036
-linux-tools-5.15.0-1037-aws - Linux kernel version specific tools for version 5.15.0-1037
-linux-tools-5.15.0-1037-azure - Linux kernel version specific tools for version 5.15.0-1037
-linux-tools-5.15.0-1037-gcp - Linux kernel version specific tools for version 5.15.0-1037
-linux-tools-5.15.0-1037-gke - Linux kernel version specific tools for version 5.15.0-1037
-linux-tools-5.15.0-1037-ibm - Linux kernel version specific tools for version 5.15.0-1037
-linux-tools-5.15.0-1037-intel-iotg - Linux kernel version specific tools for version 5.15.0-1037
-linux-tools-5.15.0-1037-kvm - Linux kernel version specific tools for version 5.15.0-1037
-linux-tools-5.15.0-1037-nvidia - Linux kernel version specific tools for version 5.15.0-1037
-linux-tools-5.15.0-1037-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1037
-linux-tools-5.15.0-1037-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1037
-linux-tools-5.15.0-1038-aws - Linux kernel version specific tools for version 5.15.0-1038
-linux-tools-5.15.0-1038-azure - Linux kernel version specific tools for version 5.15.0-1038
-linux-tools-5.15.0-1038-gcp - Linux kernel version specific tools for version 5.15.0-1038
-linux-tools-5.15.0-1038-gke - Linux kernel version specific tools for version 5.15.0-1038
-linux-tools-5.15.0-1038-ibm - Linux kernel version specific tools for version 5.15.0-1038
-linux-tools-5.15.0-1038-intel-iotg - Linux kernel version specific tools for version 5.15.0-1038
-linux-tools-5.15.0-1038-kvm - Linux kernel version specific tools for version 5.15.0-1038
-linux-tools-5.15.0-1038-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1038
-linux-tools-5.15.0-1039-aws - Linux kernel version specific tools for version 5.15.0-1039
-linux-tools-5.15.0-1039-azure - Linux kernel version specific tools for version 5.15.0-1039
-linux-tools-5.15.0-1039-gcp - Linux kernel version specific tools for version 5.15.0-1039
-linux-tools-5.15.0-1039-gke - Linux kernel version specific tools for version 5.15.0-1039
-linux-tools-5.15.0-1039-intel-iotg - Linux kernel version specific tools for version 5.15.0-1039
-linux-tools-5.15.0-1039-kvm - Linux kernel version specific tools for version 5.15.0-1039
-linux-tools-5.15.0-1039-nvidia - Linux kernel version specific tools for version 5.15.0-1039
-linux-tools-5.15.0-1039-nvidia-lowlatency - Linux kernel version specific tools for version 5.15.0-1039
-linux-tools-5.15.0-1039-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1039
-linux-tools-5.15.0-1040-aws - Linux kernel version specific tools for version 5.15.0-1040
-linux-tools-5.15.0-1040-azure - Linux kernel version specific tools for version 5.15.0-1040
-linux-tools-5.15.0-1040-gcp - Linux kernel version specific tools for version 5.15.0-1040
-linux-tools-5.15.0-1040-gke - Linux kernel version specific tools for version 5.15.0-1040
-linux-tools-5.15.0-1040-ibm - Linux kernel version specific tools for version 5.15.0-1040
-linux-tools-5.15.0-1040-intel-iotg - Linux kernel version specific tools for version 5.15.0-1040
-linux-tools-5.15.0-1040-kvm - Linux kernel version specific tools for version 5.15.0-1040
-linux-tools-5.15.0-1040-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1040
-linux-tools-5.15.0-1041-azure - Linux kernel version specific tools for version 5.15.0-1041
-linux-tools-5.15.0-1041-gcp - Linux kernel version specific tools for version 5.15.0-1041
-linux-tools-5.15.0-1041-gke - Linux kernel version specific tools for version 5.15.0-1041
-linux-tools-5.15.0-1041-ibm - Linux kernel version specific tools for version 5.15.0-1041
-linux-tools-5.15.0-1041-kvm - Linux kernel version specific tools for version 5.15.0-1041
-linux-tools-5.15.0-1041-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1041
-linux-tools-5.15.0-1042-aws - Linux kernel version specific tools for version 5.15.0-1042
-linux-tools-5.15.0-1042-azure - Linux kernel version specific tools for version 5.15.0-1042
-linux-tools-5.15.0-1042-gcp - Linux kernel version specific tools for version 5.15.0-1042
-linux-tools-5.15.0-1042-gke - Linux kernel version specific tools for version 5.15.0-1042
-linux-tools-5.15.0-1042-kvm - Linux kernel version specific tools for version 5.15.0-1042
-linux-tools-5.15.0-1042-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1042
-linux-tools-5.15.0-1043-aws - Linux kernel version specific tools for version 5.15.0-1043
-linux-tools-5.15.0-1043-intel-iotg - Linux kernel version specific tools for version 5.15.0-1043
-linux-tools-5.15.0-1044-aws - Linux kernel version specific tools for version 5.15.0-1044
-linux-tools-5.15.0-1044-azure - Linux kernel version specific tools for version 5.15.0-1044
-linux-tools-5.15.0-1044-gcp - Linux kernel version specific tools for version 5.15.0-1044
-linux-tools-5.15.0-1044-gke - Linux kernel version specific tools for version 5.15.0-1044
-linux-tools-5.15.0-1044-kvm - Linux kernel version specific tools for version 5.15.0-1044
-linux-tools-5.15.0-1044-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1044
-linux-tools-5.15.0-1045-aws - Linux kernel version specific tools for version 5.15.0-1045
-linux-tools-5.15.0-1045-azure - Linux kernel version specific tools for version 5.15.0-1045
-linux-tools-5.15.0-1045-gcp - Linux kernel version specific tools for version 5.15.0-1045
-linux-tools-5.15.0-1045-gke - Linux kernel version specific tools for version 5.15.0-1045
-linux-tools-5.15.0-1045-kvm - Linux kernel version specific tools for version 5.15.0-1045
-linux-tools-5.15.0-1045-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1045
-linux-tools-5.15.0-1046-azure - Linux kernel version specific tools for version 5.15.0-1046
-linux-tools-5.15.0-1046-oracle - Oracle Linux kernel version specific tools for version 5.15.0-1046
-linux-tools-5.15.0-1047-aws - Linux kernel version specific tools for version 5.15.0-1047
-linux-tools-5.15.0-1047-azure - Linux kernel version specific tools for version 5.15.0-1047
-linux-tools-5.15.0-1048-aws - Linux kernel version specific tools for version 5.15.0-1048
-linux-tools-5.15.0-1049-azure - Linux kernel version specific tools for version 5.15.0-1049
-linux-tools-5.15.0-1050-azure - Linux kernel version specific tools for version 5.15.0-1050
-linux-tools-5.15.0-72 - Linux kernel version specific tools for version 5.15.0-72
-linux-tools-5.15.0-72-generic - Linux kernel version specific tools for version 5.15.0-72
-linux-tools-5.15.0-72-lowlatency - Linux kernel version specific tools for version 5.15.0-72
-linux-tools-5.15.0-73 - Linux kernel version specific tools for version 5.15.0-73
-linux-tools-5.15.0-73-generic - Linux kernel version specific tools for version 5.15.0-73
-linux-tools-5.15.0-73-lowlatency - Linux kernel version specific tools for version 5.15.0-73
-linux-tools-5.15.0-75 - Linux kernel version specific tools for version 5.15.0-75
-linux-tools-5.15.0-75-generic - Linux kernel version specific tools for version 5.15.0-75
-linux-tools-5.15.0-75-lowlatency - Linux kernel version specific tools for version 5.15.0-75
-linux-tools-5.15.0-76-lowlatency - Linux kernel version specific tools for version 5.15.0-76
-linux-tools-5.15.0-78 - Linux kernel version specific tools for version 5.15.0-78
-linux-tools-5.15.0-78-generic - Linux kernel version specific tools for version 5.15.0-78
-linux-tools-5.15.0-78-lowlatency - Linux kernel version specific tools for version 5.15.0-78
-linux-tools-5.15.0-79 - Linux kernel version specific tools for version 5.15.0-79
-linux-tools-5.15.0-79-generic - Linux kernel version specific tools for version 5.15.0-79
-linux-tools-5.15.0-79-lowlatency - Linux kernel version specific tools for version 5.15.0-79
-linux-tools-5.15.0-82 - Linux kernel version specific tools for version 5.15.0-82
-linux-tools-5.15.0-82-generic - Linux kernel version specific tools for version 5.15.0-82
-linux-tools-5.15.0-82-lowlatency - Linux kernel version specific tools for version 5.15.0-82
-linux-tools-5.15.0-83 - Linux kernel version specific tools for version 5.15.0-83
-linux-tools-5.15.0-83-generic - Linux kernel version specific tools for version 5.15.0-83
-linux-tools-5.15.0-83-lowlatency - Linux kernel version specific tools for version 5.15.0-83
-linux-tools-5.15.0-84 - Linux kernel version specific tools for version 5.15.0-84
-linux-tools-5.15.0-84-generic - Linux kernel version specific tools for version 5.15.0-84
-linux-tools-5.15.0-84-lowlatency - Linux kernel version specific tools for version 5.15.0-84
-linux-tools-5.15.0-86 - Linux kernel version specific tools for version 5.15.0-86
-linux-tools-5.15.0-86-generic - Linux kernel version specific tools for version 5.15.0-86
-linux-tools-5.15.0-86-lowlatency - Linux kernel version specific tools for version 5.15.0-86
-linux-tools-5.15.0-87 - Linux kernel version specific tools for version 5.15.0-87
-linux-tools-5.15.0-87-generic - Linux kernel version specific tools for version 5.15.0-87
-linux-tools-5.15.0-87-lowlatency - Linux kernel version specific tools for version 5.15.0-87
-linux-tools-5.17.0-1031-oem - Linux kernel version specific tools for version 5.17.0-1031
-linux-tools-5.17.0-1032-oem - Linux kernel version specific tools for version 5.17.0-1032
-linux-tools-5.17.0-1033-oem - Linux kernel version specific tools for version 5.17.0-1033
-linux-tools-5.17.0-1034-oem - Linux kernel version specific tools for version 5.17.0-1034
-linux-tools-5.17.0-1035-oem - Linux kernel version specific tools for version 5.17.0-1035
-linux-tools-5.19.0-1022-gcp - Linux kernel version specific tools for version 5.19.0-1022
-linux-tools-5.19.0-1023-oracle - Oracle Linux kernel version specific tools for version 5.19.0-1023
-linux-tools-5.19.0-1024-aws - Linux kernel version specific tools for version 5.19.0-1024
-linux-tools-5.19.0-1024-gcp - Linux kernel version specific tools for version 5.19.0-1024
-linux-tools-5.19.0-1024-lowlatency - Linux kernel version specific tools for version 5.19.0-1024
-linux-tools-5.19.0-1024-oracle - Oracle Linux kernel version specific tools for version 5.19.0-1024
-linux-tools-5.19.0-1025-aws - Linux kernel version specific tools for version 5.19.0-1025
-linux-tools-5.19.0-1025-azure - Linux kernel version specific tools for version 5.19.0-1025
-linux-tools-5.19.0-1025-gcp - Linux kernel version specific tools for version 5.19.0-1025
-linux-tools-5.19.0-1025-lowlatency - Linux kernel version specific tools for version 5.19.0-1025
-linux-tools-5.19.0-1025-oracle - Oracle Linux kernel version specific tools for version 5.19.0-1025
-linux-tools-5.19.0-1026-aws - Linux kernel version specific tools for version 5.19.0-1026
-linux-tools-5.19.0-1026-azure - Linux kernel version specific tools for version 5.19.0-1026
-linux-tools-5.19.0-1026-gcp - Linux kernel version specific tools for version 5.19.0-1026
-linux-tools-5.19.0-1026-oracle - Oracle Linux kernel version specific tools for version 5.19.0-1026
-linux-tools-5.19.0-1027-aws - Linux kernel version specific tools for version 5.19.0-1027
-linux-tools-5.19.0-1027-azure - Linux kernel version specific tools for version 5.19.0-1027
-linux-tools-5.19.0-1027-gcp - Linux kernel version specific tools for version 5.19.0-1027
-linux-tools-5.19.0-1027-lowlatency - Linux kernel version specific tools for version 5.19.0-1027
-linux-tools-5.19.0-1027-oracle - Oracle Linux kernel version specific tools for version 5.19.0-1027
-linux-tools-5.19.0-1028-aws - Linux kernel version specific tools for version 5.19.0-1028
-linux-tools-5.19.0-1028-lowlatency - Linux kernel version specific tools for version 5.19.0-1028
-linux-tools-5.19.0-1029-aws - Linux kernel version specific tools for version 5.19.0-1029
-linux-tools-5.19.0-1030-gcp - Linux kernel version specific tools for version 5.19.0-1030
-linux-tools-5.19.0-1030-lowlatency - Linux kernel version specific tools for version 5.19.0-1030
-linux-tools-5.19.0-41-generic - Linux kernel version specific tools for version 5.19.0-41
-linux-tools-5.19.0-42-generic - Linux kernel version specific tools for version 5.19.0-42
-linux-tools-5.19.0-43-generic - Linux kernel version specific tools for version 5.19.0-43
-linux-tools-5.19.0-45-generic - Linux kernel version specific tools for version 5.19.0-45
-linux-tools-5.19.0-46-generic - Linux kernel version specific tools for version 5.19.0-46
-linux-tools-5.19.0-50-generic - Linux kernel version specific tools for version 5.19.0-50
-linux-tools-6.0.0-1016-oem - Linux kernel version specific tools for version 6.0.0-1016
-linux-tools-6.0.0-1017-oem - Linux kernel version specific tools for version 6.0.0-1017
-linux-tools-6.0.0-1018-oem - Linux kernel version specific tools for version 6.0.0-1018
-linux-tools-6.0.0-1019-oem - Linux kernel version specific tools for version 6.0.0-1019
-linux-tools-6.0.0-1020-oem - Linux kernel version specific tools for version 6.0.0-1020
-linux-tools-6.0.0-1021-oem - Linux kernel version specific tools for version 6.0.0-1021
-linux-tools-6.1.0-1012-oem - Linux kernel version specific tools for version 6.1.0-1012
-linux-tools-6.1.0-1013-oem - Linux kernel version specific tools for version 6.1.0-1013
-linux-tools-6.1.0-1014-oem - Linux kernel version specific tools for version 6.1.0-1014
-linux-tools-6.1.0-1015-oem - Linux kernel version specific tools for version 6.1.0-1015
-linux-tools-6.1.0-1016-oem - Linux kernel version specific tools for version 6.1.0-1016
-linux-tools-6.1.0-1017-oem - Linux kernel version specific tools for version 6.1.0-1017
-linux-tools-6.1.0-1019-oem - Linux kernel version specific tools for version 6.1.0-1019
-linux-tools-6.1.0-1020-oem - Linux kernel version specific tools for version 6.1.0-1020
-linux-tools-6.1.0-1021-oem - Linux kernel version specific tools for version 6.1.0-1021
-linux-tools-6.1.0-1022-oem - Linux kernel version specific tools for version 6.1.0-1022
-linux-tools-6.1.0-1023-oem - Linux kernel version specific tools for version 6.1.0-1023
-linux-tools-6.1.0-1024-oem - Linux kernel version specific tools for version 6.1.0-1024
-linux-tools-6.2.0-1003-nvidia - Linux kernel version specific tools for version 6.2.0-1003
-linux-tools-6.2.0-1005-aws - Linux kernel version specific tools for version 6.2.0-1005
-linux-tools-6.2.0-1005-azure - Linux kernel version specific tools for version 6.2.0-1005
-linux-tools-6.2.0-1006-aws - Linux kernel version specific tools for version 6.2.0-1006
-linux-tools-6.2.0-1006-azure - Linux kernel version specific tools for version 6.2.0-1006
-linux-tools-6.2.0-1007-aws - Linux kernel version specific tools for version 6.2.0-1007
-linux-tools-6.2.0-1007-azure - Linux kernel version specific tools for version 6.2.0-1007
-linux-tools-6.2.0-1008-aws - Linux kernel version specific tools for version 6.2.0-1008
-linux-tools-6.2.0-1008-azure - Linux kernel version specific tools for version 6.2.0-1008
-linux-tools-6.2.0-1008-lowlatency - Linux kernel version specific tools for version 6.2.0-1008
-linux-tools-6.2.0-1009-aws - Linux kernel version specific tools for version 6.2.0-1009
-linux-tools-6.2.0-1009-gcp - Linux kernel version specific tools for version 6.2.0-1009
-linux-tools-6.2.0-1009-lowlatency - Linux kernel version specific tools for version 6.2.0-1009
-linux-tools-6.2.0-1009-nvidia - Linux kernel version specific tools for version 6.2.0-1009
-linux-tools-6.2.0-1010-aws - Linux kernel version specific tools for version 6.2.0-1010
-linux-tools-6.2.0-1010-gcp - Linux kernel version specific tools for version 6.2.0-1010
-linux-tools-6.2.0-1010-nvidia - Linux kernel version specific tools for version 6.2.0-1010
-linux-tools-6.2.0-1011-aws - Linux kernel version specific tools for version 6.2.0-1011
-linux-tools-6.2.0-1011-azure - Linux kernel version specific tools for version 6.2.0-1011
-linux-tools-6.2.0-1011-gcp - Linux kernel version specific tools for version 6.2.0-1011
-linux-tools-6.2.0-1011-lowlatency - Linux kernel version specific tools for version 6.2.0-1011
-linux-tools-6.2.0-1012-aws - Linux kernel version specific tools for version 6.2.0-1012
-linux-tools-6.2.0-1012-azure - Linux kernel version specific tools for version 6.2.0-1012
-linux-tools-6.2.0-1012-gcp - Linux kernel version specific tools for version 6.2.0-1012
-linux-tools-6.2.0-1012-lowlatency - Linux kernel version specific tools for version 6.2.0-1012
-linux-tools-6.2.0-1013-aws - Linux kernel version specific tools for version 6.2.0-1013
-linux-tools-6.2.0-1013-gcp - Linux kernel version specific tools for version 6.2.0-1013
-linux-tools-6.2.0-1013-lowlatency - Linux kernel version specific tools for version 6.2.0-1013
-linux-tools-6.2.0-1013-oracle - Oracle Linux kernel version specific tools for version 6.2.0-1013
-linux-tools-6.2.0-1014-aws - Linux kernel version specific tools for version 6.2.0-1014
-linux-tools-6.2.0-1014-azure - Linux kernel version specific tools for version 6.2.0-1014
-linux-tools-6.2.0-1014-gcp - Linux kernel version specific tools for version 6.2.0-1014
-linux-tools-6.2.0-1014-lowlatency - Linux kernel version specific tools for version 6.2.0-1014
-linux-tools-6.2.0-1014-oracle - Oracle Linux kernel version specific tools for version 6.2.0-1014
-linux-tools-6.2.0-1015-azure - Linux kernel version specific tools for version 6.2.0-1015
-linux-tools-6.2.0-1015-lowlatency - Linux kernel version specific tools for version 6.2.0-1015
-linux-tools-6.2.0-1016-gcp - Linux kernel version specific tools for version 6.2.0-1016
-linux-tools-6.2.0-1017-gcp - Linux kernel version specific tools for version 6.2.0-1017
-linux-tools-6.2.0-25-generic - Linux kernel version specific tools for version 6.2.0-25
-linux-tools-6.2.0-26-generic - Linux kernel version specific tools for version 6.2.0-26
-linux-tools-6.2.0-31-generic - Linux kernel version specific tools for version 6.2.0-31
-linux-tools-6.2.0-32-generic - Linux kernel version specific tools for version 6.2.0-32
-linux-tools-6.2.0-33-generic - Linux kernel version specific tools for version 6.2.0-33
-linux-tools-6.2.0-34-generic - Linux kernel version specific tools for version 6.2.0-34
-linux-tools-6.2.0-35-generic - Linux kernel version specific tools for version 6.2.0-35
-linux-tools-6.5.0-1003-oem - Linux kernel version specific tools for version 6.5.0-1003
-linux-tools-6.5.0-1004-oem - Linux kernel version specific tools for version 6.5.0-1004
-linux-tools-aws-edge - Linux kernel versioned tools for Amazon Web Services (AWS) systems.
-linux-tools-aws-lts-22.04 - Linux kernel versioned tools for Amazon Web Services (AWS) systems.
-linux-tools-azure-edge - Linux kernel versioned tools for Azure systems.
-linux-tools-azure-fde - Linux kernel versioned tools for Azure systems.
-linux-tools-azure-fde-edge - Linux kernel versioned tools for Azure systems.
-linux-tools-azure-fde-lts-22.04 - Linux kernel versioned tools for Azure systems.
-linux-tools-azure-lts-22.04 - Linux kernel versioned tools for Azure systems.
-linux-tools-gcp-edge - Google Cloud Platform (GCP) Linux kernel tools
-linux-tools-gcp-lts-22.04 - Google Cloud Platform (GCP) Linux kernel tools
-linux-tools-nvidia - Linux kernel tools for Nvidia systems.
-linux-tools-nvidia-6.2 - Nvidia Linux kernel tools
-linux-tools-nvidia-edge - Nvidia Linux kernel tools
-linux-tools-nvidia-hwe-22.04 - Nvidia Linux kernel tools
-linux-tools-nvidia-hwe-22.04-edge - Nvidia Linux kernel tools
-linux-tools-nvidia-lowlatency - Linux kernel tools for Nvidia systems.
-linux-tools-oem-22.04a - OEM Linux kernel tools (dummy transitional package)
-linux-tools-oem-22.04b - OEM Linux kernel tools (dummy transitional package)
-linux-tools-oem-22.04c - OEM Linux kernel tools
-linux-tools-oem-22.04d - OEM Linux kernel tools
-linux-tools-oracle-edge - Linux kernel versioned tools for Oracle systems.
-linux-tools-oracle-lts-22.04 - Linux kernel versioned tools for Oracle systems.
-linux-gkeop-tools-5.15.0-1019 - Linux kernel version specific tools for version 5.15.0-1019
-linux-gkeop-tools-5.15.0-1020 - Linux kernel version specific tools for version 5.15.0-1020
-linux-gkeop-tools-5.15.0-1021 - Linux kernel version specific tools for version 5.15.0-1021
-linux-gkeop-tools-5.15.0-1022 - Linux kernel version specific tools for version 5.15.0-1022
-linux-gkeop-tools-5.15.0-1023 - Linux kernel version specific tools for version 5.15.0-1023
-linux-gkeop-tools-5.15.0-1024 - Linux kernel version specific tools for version 5.15.0-1024
-linux-gkeop-tools-5.15.0-1025 - Linux kernel version specific tools for version 5.15.0-1025
-linux-gkeop-tools-5.15.0-1026 - Linux kernel version specific tools for version 5.15.0-1026
-linux-gkeop-tools-5.15.0-1027 - Linux kernel version specific tools for version 5.15.0-1027
-linux-gkeop-tools-5.15.0-1028 - Linux kernel version specific tools for version 5.15.0-1028
-linux-gkeop-tools-5.15.0-1030 - Linux kernel version specific tools for version 5.15.0-1030
-linux-gkeop-tools-5.15.0-1031 - Linux kernel version specific tools for version 5.15.0-1031
-linux-nvidia-5.19-tools-5.19.0-1010 - Linux kernel version specific tools for version 5.19.0-1010
-linux-nvidia-5.19-tools-5.19.0-1014 - Linux kernel version specific tools for version 5.19.0-1014
-linux-oracle-5.19-tools-5.19.0-1022 - Oracle Linux kernel version specific tools for version 5.19.0-1022
-linux-realtime-tools-5.15.0-1032 - Linux kernel version specific tools for version 5.15.0-1032
-linux-tools-5.15.0-1019-gkeop - Linux kernel version specific tools for version 5.15.0-1019
-linux-tools-5.15.0-1020-gkeop - Linux kernel version specific tools for version 5.15.0-1020
-linux-tools-5.15.0-1021-gkeop - Linux kernel version specific tools for version 5.15.0-1021
-linux-tools-5.15.0-1022-gkeop - Linux kernel version specific tools for version 5.15.0-1022
-linux-tools-5.15.0-1023-gkeop - Linux kernel version specific tools for version 5.15.0-1023
-linux-tools-5.15.0-1024-gkeop - Linux kernel version specific tools for version 5.15.0-1024
-linux-tools-5.15.0-1025-gkeop - Linux kernel version specific tools for version 5.15.0-1025
-linux-tools-5.15.0-1026-gkeop - Linux kernel version specific tools for version 5.15.0-1026
-linux-tools-5.15.0-1027-gkeop - Linux kernel version specific tools for version 5.15.0-1027
-linux-tools-5.15.0-1028-gkeop - Linux kernel version specific tools for version 5.15.0-1028
-linux-tools-5.15.0-1030-gkeop - Linux kernel version specific tools for version 5.15.0-1030
-linux-tools-5.15.0-1031-gkeop - Linux kernel version specific tools for version 5.15.0-1031
-linux-tools-5.15.0-1032-realtime - Linux kernel version specific tools for version 5.15.0-1032
-linux-tools-5.19.0-1010-nvidia - Linux kernel version specific tools for version 5.19.0-1010
-linux-tools-5.19.0-1010-nvidia-lowlatency - Linux kernel version specific tools for version 5.19.0-1010
-linux-tools-5.19.0-1014-nvidia - Linux kernel version specific tools for version 5.19.0-1014
-linux-tools-5.19.0-1014-nvidia-lowlatency - Linux kernel version specific tools for version 5.19.0-1014
-linux-tools-5.19.0-1022-oracle - Oracle Linux kernel version specific tools for version 5.19.0-1022
-linux-tools-gkeop - Generic Linux kernel tools
-linux-tools-gkeop-5.15 - Generic Linux kernel tools
-linux-tools-nvidia-5.19 - Nvidia-5.19 Linux kernel tools
-linux-tools-nvidia-lowlatency-5.19 - Nvidia-5.19 Linux kernel tools
-linux-tools-nvidia-lowlatency-edge - Nvidia-5.19 Linux kernel tools
-linux-tools-realtime - Linux kernel versioned tools for real-time systems.
-linux-tools-azure-fde-5.19-edge - Linux kernel versioned tools for Azure systems.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;uname -a&lt;/code&gt; 查看当前 linux 内核版本号&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;~$ uname -a
-Linux LUYANG 5.15.90.1-microsoft-standard-WSL2 #1 SMP Fri Jan 27 02:56:13 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;因此我选择了 &lt;code&gt;linux-tools-5.15.0-87-generic&lt;/code&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;linux-tools-5.15.0-72 - Linux kernel version specific tools for version 5.15.0-72
-linux-tools-5.15.0-72-generic - Linux kernel version specific tools for version 5.15.0-72
-linux-tools-5.15.0-72-lowlatency - Linux kernel version specific tools for version 5.15.0-72
-linux-tools-5.15.0-73 - Linux kernel version specific tools for version 5.15.0-73
-linux-tools-5.15.0-73-generic - Linux kernel version specific tools for version 5.15.0-73
-linux-tools-5.15.0-73-lowlatency - Linux kernel version specific tools for version 5.15.0-73
-linux-tools-5.15.0-75 - Linux kernel version specific tools for version 5.15.0-75
-linux-tools-5.15.0-75-generic - Linux kernel version specific tools for version 5.15.0-75
-linux-tools-5.15.0-75-lowlatency - Linux kernel version specific tools for version 5.15.0-75
-linux-tools-5.15.0-76-lowlatency - Linux kernel version specific tools for version 5.15.0-76
-linux-tools-5.15.0-78 - Linux kernel version specific tools for version 5.15.0-78
-linux-tools-5.15.0-78-generic - Linux kernel version specific tools for version 5.15.0-78
-linux-tools-5.15.0-78-lowlatency - Linux kernel version specific tools for version 5.15.0-78
-linux-tools-5.15.0-79 - Linux kernel version specific tools for version 5.15.0-79
-linux-tools-5.15.0-79-generic - Linux kernel version specific tools for version 5.15.0-79
-linux-tools-5.15.0-79-lowlatency - Linux kernel version specific tools for version 5.15.0-79
-linux-tools-5.15.0-82 - Linux kernel version specific tools for version 5.15.0-82
-linux-tools-5.15.0-82-generic - Linux kernel version specific tools for version 5.15.0-82
-linux-tools-5.15.0-82-lowlatency - Linux kernel version specific tools for version 5.15.0-82
-linux-tools-5.15.0-83 - Linux kernel version specific tools for version 5.15.0-83
-linux-tools-5.15.0-83-generic - Linux kernel version specific tools for version 5.15.0-83
-linux-tools-5.15.0-83-lowlatency - Linux kernel version specific tools for version 5.15.0-83
-linux-tools-5.15.0-84 - Linux kernel version specific tools for version 5.15.0-84
-linux-tools-5.15.0-84-generic - Linux kernel version specific tools for version 5.15.0-84
-linux-tools-5.15.0-84-lowlatency - Linux kernel version specific tools for version 5.15.0-84
-linux-tools-5.15.0-86 - Linux kernel version specific tools for version 5.15.0-86
-linux-tools-5.15.0-86-generic - Linux kernel version specific tools for version 5.15.0-86
-linux-tools-5.15.0-86-lowlatency - Linux kernel version specific tools for version 5.15.0-86
-linux-tools-5.15.0-87 - Linux kernel version specific tools for version 5.15.0-87
-linux-tools-5.15.0-87-generic - Linux kernel version specific tools for version 5.15.0-87
-linux-tools-5.15.0-87-lowlatency - Linux kernel version specific tools for version 5.15.0-87
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;windows-利用-usbipd-bind--attach-adb-device&#34;&gt;windows 利用 usbipd bind &amp;amp; attach adb device&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Notice： usbipd.exe 命令需要在管理员身份运行的 powershell 中执行&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; usbipd.exe wsl -h
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd-win 3.2.0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Description:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Convenience commands &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; attaching and detaching devices to Windows Subsystem &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; Linux.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Usage:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  usbipd wsl &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;command&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;options&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Options:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -?, -h, --help  Show help and usage information
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Commands:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  attach  Attach a USB device to a WSL instance
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  detach  Detach a USB device from a WSL instance
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  list    List USB devices
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; usbipd.exe wsl attach -h
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd-win 3.2.0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Description:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Attaches a USB device to a WSL instance.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  The first time a device is attached this command will include a &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bind&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; which administrator privileges are
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  required. Subsequent attaches can be &lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt; with standard user privileges.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Exactly one of the options &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;--busid&amp;#39;&lt;/span&gt; or &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;--hardware-id&amp;#39;&lt;/span&gt; is required.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Usage:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  usbipd wsl attach &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;options&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Options:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -a, --auto-attach            Automatically re-attach when the device is detached or unplugged
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -b, --busid &amp;lt;BUSID&amp;gt;          Attach device having &amp;lt;BUSID&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -d, --distribution &amp;lt;NAME&amp;gt;    Name of the WSL distribution to attach to
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -i, --hardware-id &amp;lt;VID:PID&amp;gt;  Attach device having &amp;lt;VID&amp;gt;:&amp;lt;PID&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -?, -h, --help               Show help and usage information
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; usbipd wsl list
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;BUSID  VID:PID    DEVICE                                                        STATE
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2-1    30c9:0096  HP 5MP Camera, HP IR Camera, Camera DFU Device                Not attached
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2-10   8087:0033  英特尔&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;R&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; 无线 Bluetooth&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;R&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;                                   Not attached
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;4-2    18d1:4ee4  bst usb gadget &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;                                       Not attached
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd: warning: USB filter &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;USBPcap&amp;#39;&lt;/span&gt; is known to be incompatible with this software; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bind --force&amp;#39;&lt;/span&gt; will be required.
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd wsl attach -b &amp;lt;busid&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd wsl attach -i &amp;lt;VID:PID&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; usbipd.exe wsl attach -i 18d1:4ee4
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd: info: Device with hardware-id &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;18d1:4ee4&amp;#39;&lt;/span&gt; found at busid &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2-3&amp;#39;&lt;/span&gt;.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd: info: Using default WSL distribution &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Ubuntu&amp;#39;&lt;/span&gt;; specify the &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;--distribution&amp;#39;&lt;/span&gt; option to &lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; a different one.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd: warning: USB filter &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;USBPcap&amp;#39;&lt;/span&gt; is known to be incompatible with this software; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bind --force&amp;#39;&lt;/span&gt; will be required.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbip: error: Attach Request &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; 2-3 failed - Device busy &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;exported&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd: error: Failed to attach device with busid &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2-3&amp;#39;&lt;/span&gt;.
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; usbipd.exe bind -h
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd-win 3.2.0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Description:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Registers a single USB device &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; sharing, so it can be attached to other machines. Unless the --force option is
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  used, shared devices remain available to the host &lt;span style=&#34;color:#66d9ef&#34;&gt;until&lt;/span&gt; they are attached to another machine.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Exactly one of the options &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;--busid&amp;#39;&lt;/span&gt; or &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;--hardware-id&amp;#39;&lt;/span&gt; is required.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Usage:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  usbipd bind &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;options&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Options:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -b, --busid &amp;lt;BUSID&amp;gt;          Share device having &amp;lt;BUSID&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -f, --force                  Force binding; the host cannot use the device
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -i, --hardware-id &amp;lt;VID:PID&amp;gt;  Share device having &amp;lt;VID&amp;gt;:&amp;lt;PID&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -?, -h, --help               Show help and usage information
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; usbipd.exe bind -i 18d1:4ee4 -f
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd: info: Device with hardware-id &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;18d1:4ee4&amp;#39;&lt;/span&gt; found at busid &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2-3&amp;#39;&lt;/span&gt;.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd: warning: A reboot may be required before the changes take effect.
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;按照说明重启电脑之后：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; usbipd.exe bind -i 18d1:4ee4 -f
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd: info: Device with hardware-id &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;18d1:4ee4&amp;#39;&lt;/span&gt; found at busid &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2-3&amp;#39;&lt;/span&gt;.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd: info: Device with busid &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2-3&amp;#39;&lt;/span&gt; was already shared.
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;此时管理员身份运行 powershell 执行如下命令：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; usbipd.exe wsl attach -i 18d1:4ee4 -a
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd: info: Device with hardware-id &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;18d1:4ee4&amp;#39;&lt;/span&gt; found at busid &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2-3&amp;#39;&lt;/span&gt;.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd: info: Using default WSL distribution &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Ubuntu&amp;#39;&lt;/span&gt;; specify the &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;--distribution&amp;#39;&lt;/span&gt; option to &lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; a different one.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd: info: Starting endless attach loop; press Ctrl+C to quit.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Attached
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Detached
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbip: error: Attach Request &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; 2-3 failed - Device not found
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Attached
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;加上 &lt;code&gt;-a&lt;/code&gt; 选项后 attach 命令不会退出，会持续监听 &lt;code&gt;-i&lt;/code&gt; 指定的设备，插拔该 usb 设备会自动 attach。如上命令可以看出有一个插拔的过程。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;luyang@LUYANG:~$ adb devices
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;* daemon not running; starting now at tcp:5037
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;* daemon started successfully
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;List of devices attached
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fada-018b0e6b656d0002   device
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;参考链接&#34;&gt;参考链接&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://devblogs.microsoft.com/commandline/connecting-usb-devices-to-wsl/&#34;&gt;https://devblogs.microsoft.com/commandline/connecting-usb-devices-to-wsl/&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;查看当前 ubuntu 系统版本支持的 linux-tools generic版本&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>gerrit 环境搭建</title>
-      <link>https://luyoungcn.github.io/posts/gerrit/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/gerrit/</link>
       <pubDate>Thu, 01 Jun 2023 00:00:00 +0800</pubDate>
-      
-      <guid>https://luyoungcn.github.io/posts/gerrit/</guid>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/gerrit/</guid>
       <description>&lt;h1 id=&#34;r1---gerrit-环境搭建&#34;&gt;R1 - Gerrit 环境搭建&lt;/h1&gt;
 &lt;h1 id=&#34;环境说明&#34;&gt;环境说明&lt;/h1&gt;
 &lt;ul&gt;
@@ -775,219 +58,163 @@ linux-tools-5.15.0-87-lowlatency - Linux kernel version specific tools for versi
 &lt;li&gt;openjdk version &amp;ldquo;11.0.19&amp;rdquo; 2023-04-18&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;安装依赖软件包&#34;&gt;安装依赖软件包&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install openjdk-11-jdk openjdk-11-jdk-headless openjdk-11-jre openjdk-11-jre-headless
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install openjdk-11-jdk openjdk-11-jdk-headless openjdk-11-jre openjdk-11-jre-headless
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;创建-gerrit-用户&#34;&gt;创建 Gerrit 用户&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo adduser gerrit
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo usermod -a -G sudo gerrit
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo su gerrit
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir ~/gerrit
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;java -jar gerrit-3.8.0.war init -d ~/gerrit
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo adduser gerrit
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo usermod -a -G sudo gerrit
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo su gerrit
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir ~/gerrit
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;java -jar gerrit-3.8.0.war init -d ~/gerrit
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;安装-gerrit&#34;&gt;安装 Gerrit&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ java -jar gerrit-3.8.0.war init -d ~/gerrit
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Using secure store: com.google.gerrit.server.securestore.DefaultSecureStore
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;2023-06-03 12:19:03,027&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;main&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; INFO  com.google.gerrit.server.config.GerritServerConfigProvider : No /home/gerrit/gerrit/etc/gerrit.config; assuming defaults
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** Gerrit Code Review 3.8.0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Create &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/home/gerrit/gerrit&amp;#39;&lt;/span&gt;   &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;Y/n&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;? Y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** Git Repositories
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Location of Git repositories   &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;git&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;: 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** JGit Configuration
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Auto-configured &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;receive.autogc = false&amp;#34;&lt;/span&gt; to disable auto-gc after git-receive-pack.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** Index
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Type                           &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;lucene&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;: 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** User Authentication
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Authentication method          &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;openid/?&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;: ?
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;       Supported options are:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         openid
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         openid_sso
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         http
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         http_ldap
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         client_ssl_cert_ldap
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         ldap
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         ldap_bind
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         custom_extension
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         development_become_any_account
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         oauth
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Authentication method          &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;openid/?&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;: http
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Get username from custom HTTP header &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;y/N&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;? y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Username HTTP header           &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;SM_USER&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;: 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SSO logout URL                 : 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Enable signed push support     &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;y/N&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;? y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Use &lt;span style=&#34;color:#66d9ef&#34;&gt;case&lt;/span&gt; insensitive usernames &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;Y/n&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;? Y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** Review Labels
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Install Verified label         &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;y/N&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;? N
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** Email Delivery
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SMTP server hostname           &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;localhost&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;: 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SMTP server port               &lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;default&lt;span style=&#34;color:#f92672&#34;&gt;)]&lt;/span&gt;: 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SMTP encryption                &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;none/?&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;: 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SMTP username                  : 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** Container Process
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Run as                         &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;gerrit&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;: 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Java runtime                   &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;/usr/lib/jvm/java-11-openjdk-amd64&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;: 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Copy gerrit-3.8.0.war to /home/gerrit/gerrit/bin/gerrit.war &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;Y/n&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;? Y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Copying gerrit-3.8.0.war to /home/gerrit/gerrit/bin/gerrit.war
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** SSH Daemon
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Listen on address              &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;*&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;: 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Listen on port                 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;29418&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;: 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Generating SSH host key ... rsa... ed25519... ecdsa 256... ecdsa 384... ecdsa 521... &lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** HTTP Daemon
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Behind reverse proxy           &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;y/N&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;? y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Proxy uses SSL &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;https://&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;y/N&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;? N
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Subdirectory on proxy server   &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;/&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;: 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Listen on address              &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;*&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;: 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Listen on port                 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;8081&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;: 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Canonical URL                  &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;http://luyang-VirtualBox/&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;: 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** Cache
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** Plugins
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;*** 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Installing plugins.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Install plugin codemirror-editor version v3.8.0 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;y/N&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;? y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Installed codemirror-editor v3.8.0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Install plugin commit-message-length-validator version v3.8.0 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;y/N&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;? y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Installed commit-message-length-validator v3.8.0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Install plugin delete-project version v3.8.0 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;y/N&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;? y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Installed delete-project v3.8.0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Install plugin download-commands version v3.8.0 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;y/N&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;? y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Installed download-commands v3.8.0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Install plugin gitiles version v3.8.0 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;y/N&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;? y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Installed gitiles v3.8.0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Install plugin hooks version v3.8.0 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;y/N&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;? y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Installed hooks v3.8.0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Install plugin plugin-manager version v3.8.0 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;y/N&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;? y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Installed plugin-manager v3.8.0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Install plugin replication version v3.8.0 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;y/N&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;? y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Installed replication v3.8.0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Install plugin reviewnotes version v3.8.0 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;y/N&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;? y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Installed reviewnotes v3.8.0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Install plugin singleusergroup version v3.8.0 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;y/N&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;? y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Installed singleusergroup v3.8.0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Install plugin webhooks version v3.8.0 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;y/N&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;? y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Installed webhooks v3.8.0
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Initializing plugins.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;============================================================================&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Welcome to the Gerrit community
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Find more information on the homepage: https://www.gerritcodereview.com
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Discuss Gerrit on the mailing list: https://groups.google.com/g/repo-discuss
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;============================================================================&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Initialized /home/gerrit/gerrit
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Init complete, reindexing accounts,changes,groups,projects with: reindex --site-path /home/gerrit/gerrit --threads &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; --index accounts --index changes --index groups --index projectsReindexed &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; documents in accounts index in 0.0s &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;0.0/s&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Index accounts in version &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt; is ready
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Reindexing groups:      100% &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;2/2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Reindexed &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; documents in groups index in 0.2s &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;9.9/s&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Index groups in version &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt; is ready
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Reindexing changes: Slicing projects: 100% &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;2/2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;    
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Reindexed &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; documents in changes index in 0.0s &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;0.0/s&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Index changes in version &lt;span style=&#34;color:#ae81ff&#34;&gt;82&lt;/span&gt; is ready
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Reindexing projects:    100% &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;2/2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Reindexed &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; documents in projects index in 0.1s &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;25.0/s&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Index projects in version &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt; is ready
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Executing /home/gerrit/gerrit/bin/gerrit.sh start
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Starting Gerrit Code Review: WARNING: Could not adjust Gerrit&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s process for the kernel&amp;#39;&lt;/span&gt;s out-of-memory killer.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         This may be caused by /home/gerrit/gerrit/bin/gerrit.sh not being run as root.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         Consider changing the OOM score adjustment manually &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; Gerrit&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s PID=4510 with e.g.:
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;         echo &amp;#39;&lt;/span&gt;-1000&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;&lt;/span&gt; | sudo tee /proc/4510/oom_score_adj
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;OK
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Waiting &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; server on luyang-VirtualBox:80 ... OK
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Please open the following URL in the browser: http://luyang-VirtualBox/#/admin/projects/
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ java -jar gerrit-3.8.0.war init -d ~/gerrit
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Using secure store: com.google.gerrit.server.securestore.DefaultSecureStore
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;2023-06-03 12:19:03,027&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;main&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; INFO  com.google.gerrit.server.config.GerritServerConfigProvider : No /home/gerrit/gerrit/etc/gerrit.config&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; assuming defaults
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** Gerrit Code Review 3.8.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Create &lt;span class=&#34;s1&#34;&gt;&amp;#39;/home/gerrit/gerrit&amp;#39;&lt;/span&gt;   &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;Y/n&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;? Y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** Git Repositories
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Location of Git repositories   &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;git&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** JGit Configuration
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Auto-configured &lt;span class=&#34;s2&#34;&gt;&amp;#34;receive.autogc = false&amp;#34;&lt;/span&gt; to disable auto-gc after git-receive-pack.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** Index
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Type                           &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;lucene&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** User Authentication
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Authentication method          &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;openid/?&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;: ?
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       Supported options are:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         openid
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         openid_sso
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         http
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         http_ldap
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         client_ssl_cert_ldap
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         ldap
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         ldap_bind
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         custom_extension
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         development_become_any_account
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         oauth
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Authentication method          &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;openid/?&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;: http
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Get username from custom HTTP header &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;y/N&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;? y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Username HTTP header           &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;SM_USER&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SSO &lt;span class=&#34;nb&#34;&gt;logout&lt;/span&gt; URL                 : 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Enable signed push support     &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;y/N&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;? y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Use &lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; insensitive usernames &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;Y/n&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;? Y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** Review Labels
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Install Verified label         &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;y/N&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;? N
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** Email Delivery
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SMTP server hostname           &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;localhost&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SMTP server port               &lt;span class=&#34;o&#34;&gt;[(&lt;/span&gt;default&lt;span class=&#34;o&#34;&gt;)]&lt;/span&gt;: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SMTP encryption                &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;none/?&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SMTP username                  : 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** Container Process
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Run as                         &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;gerrit&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Java runtime                   &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;/usr/lib/jvm/java-11-openjdk-amd64&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Copy gerrit-3.8.0.war to /home/gerrit/gerrit/bin/gerrit.war &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;Y/n&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;? Y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Copying gerrit-3.8.0.war to /home/gerrit/gerrit/bin/gerrit.war
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** SSH Daemon
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Listen on address              &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;*&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Listen on port                 &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;29418&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Generating SSH host key ... rsa... ed25519... ecdsa 256... ecdsa 384... ecdsa 521... &lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** HTTP Daemon
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Behind reverse proxy           &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;y/N&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;? y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Proxy uses SSL &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;https://&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;      &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;y/N&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;? N
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Subdirectory on proxy server   &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;/&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Listen on address              &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;*&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Listen on port                 &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;8081&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Canonical URL                  &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;http://luyang-VirtualBox/&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** Cache
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** Plugins
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*** 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Installing plugins.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Install plugin codemirror-editor version v3.8.0 &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;y/N&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;? y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Installed codemirror-editor v3.8.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Install plugin commit-message-length-validator version v3.8.0 &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;y/N&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;? y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Installed commit-message-length-validator v3.8.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Install plugin delete-project version v3.8.0 &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;y/N&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;? y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Installed delete-project v3.8.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Install plugin download-commands version v3.8.0 &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;y/N&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;? y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Installed download-commands v3.8.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Install plugin gitiles version v3.8.0 &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;y/N&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;? y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Installed gitiles v3.8.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Install plugin hooks version v3.8.0 &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;y/N&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;? y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Installed hooks v3.8.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Install plugin plugin-manager version v3.8.0 &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;y/N&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;? y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Installed plugin-manager v3.8.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Install plugin replication version v3.8.0 &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;y/N&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;? y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Installed replication v3.8.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Install plugin reviewnotes version v3.8.0 &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;y/N&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;? y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Installed reviewnotes v3.8.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Install plugin singleusergroup version v3.8.0 &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;y/N&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;? y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Installed singleusergroup v3.8.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Install plugin webhooks version v3.8.0 &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;y/N&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;? y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Installed webhooks v3.8.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Initializing plugins.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;============================================================================&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Welcome to the Gerrit community
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Find more information on the homepage: https://www.gerritcodereview.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Discuss Gerrit on the mailing list: https://groups.google.com/g/repo-discuss
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;============================================================================&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Initialized /home/gerrit/gerrit
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Init complete, reindexing accounts,changes,groups,projects with: reindex --site-path /home/gerrit/gerrit --threads &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; --index accounts --index changes --index groups --index projectsReindexed &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; documents in accounts index in 0.0s &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;0.0/s&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Index accounts in version &lt;span class=&#34;m&#34;&gt;12&lt;/span&gt; is ready
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Reindexing groups:      100% &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;2/2&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Reindexed &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; documents in groups index in 0.2s &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;9.9/s&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Index groups in version &lt;span class=&#34;m&#34;&gt;9&lt;/span&gt; is ready
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Reindexing changes: Slicing projects: 100% &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;2/2&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;, &lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Reindexed &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; documents in changes index in 0.0s &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;0.0/s&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Index changes in version &lt;span class=&#34;m&#34;&gt;82&lt;/span&gt; is ready
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Reindexing projects:    100% &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;2/2&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Reindexed &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; documents in projects index in 0.1s &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;25.0/s&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Index projects in version &lt;span class=&#34;m&#34;&gt;5&lt;/span&gt; is ready
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Executing /home/gerrit/gerrit/bin/gerrit.sh start
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Starting Gerrit Code Review: WARNING: Could not adjust Gerrit&lt;span class=&#34;s1&#34;&gt;&amp;#39;s process for the kernel&amp;#39;&lt;/span&gt;s out-of-memory killer.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         This may be caused by /home/gerrit/gerrit/bin/gerrit.sh not being run as root.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         Consider changing the OOM score adjustment manually &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; Gerrit&lt;span class=&#34;s1&#34;&gt;&amp;#39;s PID=4510 with e.g.:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;         echo &amp;#39;&lt;/span&gt;-1000&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; sudo tee /proc/4510/oom_score_adj
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;OK
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Waiting &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; server on luyang-VirtualBox:80 ... OK
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Please open the following URL in the browser: http://luyang-VirtualBox/#/admin/projects/
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;配置-gerrit&#34;&gt;配置 Gerrit&lt;/h1&gt;
-&lt;p&gt;&lt;code&gt;etc/gerrit.config&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;gerrit&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        basePath &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; git
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        canonicalWebUrl &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; http://192.168.56.104:8080
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        serverId &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; d00cca90-af13-4298-9273-72d50cce94ce
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;container&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        javaOptions &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-Dflogger.backend_factory=com.google.common.flogger.backend.log4j.Log4jBackendFactory#getInstance&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        javaOptions &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-Dflogger.logging_context=com.google.gerrit.server.logging.LoggingContext#getInstance&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        user &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; gerrit
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        javaHome &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; /usr/lib/jvm/java-11-openjdk-amd64
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;index&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        type &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; lucene
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;auth&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        type &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; HTTP
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        httpHeader &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; SM_USER
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        userNameCaseInsensitive &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; true
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;receive&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        enableSignedPush &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; true
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;sendemail&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        enable &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; true
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        smtpServer &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; smtp.qq.com
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        smtpServerPort &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;465&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        smtpEncryption &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; SSL
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        sslVerify &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; true
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        smtpUser &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 193944320@qq.com
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        smtpPass &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; fjas;jfa;sdjfalk
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        from &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;SCM&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;&amp;lt;193944320@qq.com&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;sshd&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        listenAddress &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; *:29418
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;httpd&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        listenUrl &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; proxy-http://*:8081/
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;cache&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        directory &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; cache
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;安装配置-nginx&#34;&gt;安装配置 Nginx&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install nginx
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;/etc/nginx/conf.d/gerrit.conf&lt;/code&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;server {
-
-listen *:8080;
-server_name 192.168.56.104;
-allow  all;
-deny  all;
-
-auth_basic &amp;#34;Welcomme to Gerrit Code Review Site!&amp;#34;;
-auth_basic_user_file /home/gerrit/gerrit/etc/gerrit.password;
-
-location / {
-    proxy_redirect off;
-    proxy_pass http://192.168.56.104:8081;
-    proxy_set_header X-Forwarded-For $remote_addr;
-    proxy_set_header Host $host;
-}
-
-}
-&lt;/code&gt;&lt;/pre&gt;</description>
+&lt;p&gt;&lt;code&gt;etc/gerrit.config&lt;/code&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Android Java 1.7 环境配置</title>
-      <link>https://luyoungcn.github.io/posts/androidjava-/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/androidjava-/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      
-      <guid>https://luyoungcn.github.io/posts/androidjava-/</guid>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/androidjava-/</guid>
       <description>&lt;p&gt;下载jdk 1.7&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://repo.huaweicloud.com/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz&#34;&gt;https://repo.huaweicloud.com/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;解压&lt;/p&gt;
@@ -1000,26 +227,23 @@ location / {
 &lt;p&gt;安装&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;sudo mv jdk1.7.0_80 /usr/lib/&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;switchjdk7.sh 文件内容如下，该文件放在代码顶层目录：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# add JDK7 cofig ----&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;export JAVA_HOME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/usr/lib/jdk1.7.0_80/
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;export JRE_HOME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;JAVA_HOME&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/jre
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;export CLASSPATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;.:&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;JAVA_HOME&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/lib:&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;JRE_HOME&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/lib
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;export PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;JAVA_HOME&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;/bin:$PATH
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# add JDK7 cofig ----&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# add JDK7 cofig ----&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;JAVA_HOME&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/usr/lib/jdk1.7.0_80/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;JRE_HOME&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;JAVA_HOME&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;/jre
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;CLASSPATH&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;.:&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;JAVA_HOME&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;/lib:&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;JRE_HOME&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;/lib
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;PATH&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;JAVA_HOME&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;/bin:&lt;span class=&#34;nv&#34;&gt;$PATH&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# add JDK7 cofig ----&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;执行如下命令切换java 1.7，仅当前终端有效&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;source switchjdk7.sh&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://repo.huaweicloud.com/java/jdk/6u45-b06/&#34;&gt;https://repo.huaweicloud.com/java/jdk/6u45-b06/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://repo.huaweicloud.com/java/jdk/7u80-b15/&#34;&gt;https://repo.huaweicloud.com/java/jdk/7u80-b15/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html&#34;&gt;https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a href=&#34;https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html&#34;&gt;https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Android Studio Env</title>
-      <link>https://luyoungcn.github.io/posts/androidstudioenv/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/androidstudioenv/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      
-      <guid>https://luyoungcn.github.io/posts/androidstudioenv/</guid>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/androidstudioenv/</guid>
       <description>&lt;h2 id=&#34;工具&#34;&gt;工具&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://developer.android.google.cn/studio&#34;&gt;AndroidStudio&lt;/a&gt;&lt;/li&gt;
@@ -1040,7 +264,7 @@ location / {
 &lt;/ul&gt;
 &lt;h2 id=&#34;问题解决&#34;&gt;问题解决&lt;/h2&gt;
 &lt;h3 id=&#34;安装完android-studio首次启动报错&#34;&gt;安装完Android Studio首次启动报错&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Unable to access Android SDK add-on list
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Unable to access Android SDK add-on list
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;选择cancel&lt;/p&gt;
 &lt;h3 id=&#34;gradle-下载环境配置&#34;&gt;gradle 下载环境配置&lt;/h3&gt;
 &lt;p&gt;For Windows&lt;/p&gt;
@@ -1079,16 +303,13 @@ location / {
   }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;ubuntu-android-studio-system-entry&#34;&gt;ubuntu android studio system entry&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;Android Studio -&amp;gt; Tools -&amp;gt; Create Desktop Entry&lt;/code&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;code&gt;Android Studio -&amp;gt; Tools -&amp;gt; Create Desktop Entry&lt;/code&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Android 使用 am 命令启动一个活动组件</title>
-      <link>https://luyoungcn.github.io/posts/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      
-      <guid>https://luyoungcn.github.io/posts/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</guid>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</guid>
       <description>&lt;h2 id=&#34;am-命令说明&#34;&gt;am 命令说明&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;am start -n&lt;/code&gt; 命令是 Android 调试桥（ADB）工具的一部分，用于在 Android 设备上启动一个活动。以下是该命令及其组成部分的详细解释：&lt;/p&gt;
 &lt;ul&gt;
@@ -1119,120 +340,71 @@ location / {
 &lt;h3 id=&#34;实际示例&#34;&gt;实际示例&lt;/h3&gt;
 &lt;p&gt;如果你想在显示屏 3 上打开图库应用中的特定图片：&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb shell am start -n com.android.gallery3d/.app.GalleryActivity --display 3
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个命令将在显示屏 3 上打开图库应用的 &lt;code&gt;GalleryActivity&lt;/code&gt;。&lt;/p&gt;
-&lt;h2 id=&#34;如何获取-package_name-以及-activity_name&#34;&gt;如何获取 package_name 以及 activity_name&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;pm list packages&lt;/code&gt; 命令获取当前系统中的所有 package。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;130|console:/ &lt;span style=&#34;color:#75715e&#34;&gt;# pm list packages&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;......
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;package:com.android.internal.systemui.navbar.gestural
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;package:com.android.gallery3d
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;package:com.android.providers.userdictionary
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;......
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以 gallery3d &lt;code&gt;com.android.gallery3d&lt;/code&gt; 为例：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;console:/ &lt;span style=&#34;color:#75715e&#34;&gt;# dumpsys package com.android.gallery3d | grep -A 1 &amp;#39;MAIN&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      android.intent.action.MAIN:&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; 1080.400705&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; servicemanager: Since &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;artd&amp;#39;&lt;/span&gt; could not be found, trying to start it as a lazy AIDL service. &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; it&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s not configured to be a lazy service, it may be stuck starting or still starting).
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        c99ebe com.android.gallery3d/.app.GalleryActivity filter 92aab1f
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          Action: &amp;#34;android.intent.action.MAIN&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          Category: &amp;#34;android.intent.category.DEFAULT&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;--
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          Action: &amp;#34;android.intent.action.MAIN&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        be96ced com.andro[ 1080.418995] init: starting service &amp;#39;&lt;/span&gt;artd&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;id.gallery3d/.app.Gallery filter de1c722
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          Action: &amp;#34;android.intent.action.MAIN&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          Category: &amp;#34;android.intent.category.DEFAULT&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;--
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          Action: &amp;#34;android.intent.action.MAIN&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          Category: &amp;#34;android.intent.category.DEFAULT&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;--
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;[ 1080.446599] init: ... started service &amp;#39;&lt;/span&gt;artd&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; has pid 2312
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;[ 1080.458298] BpBinder: onLastStrongRef automatically unlinking death recipients: 
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    privateFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION PRIVATE_FLAG_REQUEST_LEGACY_EXTERNAL_STORAGE HAS_DOMAIN_URLS PRODUCT PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    forceQueryable=false
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;--
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    privatePkgFlags=[ PRI[ 1080.472553] init: Control message: Processed ctl.interface_start for &amp;#39;&lt;/span&gt;aidl/artd&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;&lt;/span&gt; from pid: &lt;span style=&#34;color:#ae81ff&#34;&gt;248&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;/system/bin/servicemanager&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;VATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION PRIVATE_FLAG_REQUEST_LEGACY_EXTERNAL_STORAGE HAS_DOMAIN_URLS PRODUCT PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    apexModuleName&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;null
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;关键信息：&lt;code&gt;c99ebe com.android.gallery3d/.app.GalleryActivity filter 92aab1f&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;对应的 package and activity name 组合：&lt;code&gt;com.android.gallery3d/.app.GalleryActivity&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;套用到 am 命令中就是：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;am start -n com.android.gallery3d/.app.GalleryActivity --display &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个命令将在显示屏 3 上打开图库应用的 &lt;code&gt;GalleryActivity&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Android10编译开启ccache</title>
-      <link>https://luyoungcn.github.io/posts/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      
-      <guid>https://luyoungcn.github.io/posts/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</guid>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/</guid>
       <description>&lt;p&gt;Android10的基线代码google已经将prebuilt的ccache移除,但是保留了相关功能选项&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Author: Dan Willemsen &amp;lt;dwillemsen@google.com&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Date:   Thu Apr 5 15:48:16 2018 -0700
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Remove our binary of ccache
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    This version is rather old, and has many known bugs. The build system is
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    no longer providing ccache, but preserving the option to use your own at
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    your own risk.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Bug: 32748498
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Test: cs/ccache
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Change-Id: I894a11445127bf8cb3a7ac5a119c500f2c572fb9
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Author: Dan Willemsen &amp;lt;dwillemsen@google.com&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Date:   Thu Apr 5 15:48:16 2018 -0700
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    Remove our binary of ccache
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    This version is rather old, and has many known bugs. The build system is
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    no longer providing ccache, but preserving the option to use your own at
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    your own risk.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    Bug: 32748498
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    Test: cs/ccache
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    Change-Id: I894a11445127bf8cb3a7ac5a119c500f2c572fb9
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安卓10之前配置&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;export USE_CCACHE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;true
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;export CCACHE_DIR&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$HOME/.cache
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;prebuilts/misc/linux-x86/ccache/ccache -M 10G
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安卓10+通过使用的HOST操作系统安装对应的ccache软件包&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;export USE_CCACHE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;true
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;export CCACHE_EXEC&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/usr/bin/ccache
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;export CCACHE_DIR&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$HOME/.cache
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;CCACHE_EXEC&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt; -M 50G
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以通过如下命令查询cache状态
-&lt;code&gt;ccache -s&lt;/code&gt;&lt;/p&gt;
-</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;USE_CCACHE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;CCACHE_DIR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$HOME&lt;/span&gt;/.cache
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;prebuilts/misc/linux-x86/ccache/ccache -M 10G
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安卓10+通过使用的HOST操作系统安装对应的ccache软件包&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>repo</title>
-      <link>https://luyoungcn.github.io/posts/repo/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/repo/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      
-      <guid>https://luyoungcn.github.io/posts/repo/</guid>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/repo/</guid>
       <description>&lt;h2 id=&#34;环境准备&#34;&gt;环境准备&lt;/h2&gt;
 &lt;p&gt;下载repo工具&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;user110@server005:~/bin$  curl https://mirrors.tuna.tsinghua.edu.cn/git/git-repo -o repo
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;user110@server005:~/bin$  chmod +x repo
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user110@server005:~/bin$  curl https://mirrors.tuna.tsinghua.edu.cn/git/git-repo -o repo
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user110@server005:~/bin$  chmod +x repo
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;添加环境变量中&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;user110@server005:~/bin$ vim ~/.bashrc
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# add code&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$PATH:$HOME/bin
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;export REPO_URL&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;‘git://10.20.6.145/git-repo’ &lt;span style=&#34;color:#75715e&#34;&gt;# repo 源地址&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;user110@server005:~/bin$ source ~/.bashrc
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user110@server005:~/bin$ vim ~/.bashrc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# add code&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;PATH&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$PATH&lt;/span&gt;:&lt;span class=&#34;nv&#34;&gt;$HOME&lt;/span&gt;/bin
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;REPO_URL&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;‘git://10.20.6.145/git-repo’ &lt;span class=&#34;c1&#34;&gt;# repo 源地址&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user110@server005:~/bin$ &lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; ~/.bashrc
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上传 ssh public key&lt;/p&gt;
 &lt;h2 id=&#34;拉代码&#34;&gt;拉代码&lt;/h2&gt;
 &lt;p&gt;初始化&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;user110@server005:~/delete$ repo init -u &amp;lt;ssh://user112@10.20.6.136:29418/platform/manifest.git&amp;gt; -b &amp;lt;branch&amp;gt; -m &amp;lt;manifest_xml&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-u:表示git仓库地址
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-m:表示具体的xml文件
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-b:表示指定特殊的分支
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user110@server005:~/delete$ repo init -u &amp;lt;ssh://user112@10.20.6.136:29418/platform/manifest.git&amp;gt; -b &amp;lt;branch&amp;gt; -m &amp;lt;manifest_xml&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-u:表示git仓库地址
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-m:表示具体的xml文件
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-b:表示指定特殊的分支
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;同步&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;user110@server005:~/delete$ repo sync –j8
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user110@server005:~/delete$ repo sync –j8
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;工作流&#34;&gt;工作流&lt;/h2&gt;
 &lt;h3 id=&#34;创建开发分支&#34;&gt;创建开发分支&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;repo start &amp;lt;branch_name&amp;gt; -all
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;repo start &amp;lt;branch_name&amp;gt; -all
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;修改&#34;&gt;修改&lt;/h3&gt;
 &lt;p&gt;修改代码&lt;/p&gt;
 &lt;h3 id=&#34;提交&#34;&gt;提交&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git add &amp;lt;files to be added&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;xxxxxx&amp;#34;&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git add &amp;lt;files to be added&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;xxxxxx&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;上传&#34;&gt;上传&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;repo upload
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;or
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git push origin HEAD:refs/for/&amp;lt;branch_name&amp;gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;repo upload
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;or
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git push origin HEAD:refs/for/&amp;lt;branch_name&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;repo-目录内容简介&#34;&gt;repo 目录内容简介&lt;/h2&gt;
 &lt;table&gt;
   &lt;thead&gt;
@@ -1271,31 +443,26 @@ location / {
           &lt;td&gt;repo 工具的源代码&lt;/td&gt;
       &lt;/tr&gt;
   &lt;/tbody&gt;
-&lt;/table&gt;
-</description>
+&lt;/table&gt;</description>
     </item>
-    
     <item>
       <title>Wifi Adb</title>
-      <link>https://luyoungcn.github.io/posts/wifiadb/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/wifiadb/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      
-      <guid>https://luyoungcn.github.io/posts/wifiadb/</guid>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/wifiadb/</guid>
       <description>&lt;h2 id=&#34;操作手顺&#34;&gt;操作手顺&lt;/h2&gt;
 &lt;p&gt;手机USB连接电脑&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adb shell &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;setprop persist.adb.tcp.port 5555&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adb tcpip &lt;span style=&#34;color:#ae81ff&#34;&gt;5555&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;adb shell &lt;span class=&#34;s2&#34;&gt;&amp;#34;setprop persist.adb.tcp.port 5555&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;adb tcpip &lt;span class=&#34;m&#34;&gt;5555&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;手机连上wifi，确认ip地址
 此时可以断开手USB，然后通过wifiadb连接&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adb connect 10.100.2.5
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;adb connect 10.100.2.5
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;qa&#34;&gt;Q&amp;amp;A&lt;/h2&gt;
 &lt;h3 id=&#34;issue&#34;&gt;Issue&lt;/h3&gt;
 &lt;p&gt;执行命令 &lt;code&gt;adb connect 10.100.2.5&lt;/code&gt; 报错&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;missing port in specification: tcp:10.100.2.5
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;missing port in specification: tcp:10.100.2.5
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;answer&#34;&gt;Answer&lt;/h3&gt;
-&lt;p&gt;使用命令 &lt;code&gt;adb connect 10.100.2.5:5555&lt;/code&gt; 解决&lt;/p&gt;
-</description>
+&lt;p&gt;使用命令 &lt;code&gt;adb connect 10.100.2.5:5555&lt;/code&gt; 解决&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

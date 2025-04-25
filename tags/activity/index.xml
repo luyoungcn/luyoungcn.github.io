@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Activity on LuyangのBlog</title>
-    <link>https://luyoungcn.github.io/tags/activity/</link>
-    <description>Recent content in Activity on LuyangのBlog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Activity on PaperMod</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/tags/activity/</link>
+    <description>Recent content in Activity on PaperMod</description>
+    <image>
+      <title>PaperMod</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.146.6</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/activity/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>PaperMod Contributors</copyright>
+    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/activity/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android 使用 am 命令启动一个活动组件</title>
-      <link>https://luyoungcn.github.io/posts/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      
-      <guid>https://luyoungcn.github.io/posts/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</guid>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</guid>
       <description>&lt;h2 id=&#34;am-命令说明&#34;&gt;am 命令说明&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;am start -n&lt;/code&gt; 命令是 Android 调试桥（ADB）工具的一部分，用于在 Android 设备上启动一个活动。以下是该命令及其组成部分的详细解释：&lt;/p&gt;
 &lt;ul&gt;
@@ -43,46 +49,7 @@
 &lt;h3 id=&#34;实际示例&#34;&gt;实际示例&lt;/h3&gt;
 &lt;p&gt;如果你想在显示屏 3 上打开图库应用中的特定图片：&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb shell am start -n com.android.gallery3d/.app.GalleryActivity --display 3
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个命令将在显示屏 3 上打开图库应用的 &lt;code&gt;GalleryActivity&lt;/code&gt;。&lt;/p&gt;
-&lt;h2 id=&#34;如何获取-package_name-以及-activity_name&#34;&gt;如何获取 package_name 以及 activity_name&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;pm list packages&lt;/code&gt; 命令获取当前系统中的所有 package。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;130|console:/ &lt;span style=&#34;color:#75715e&#34;&gt;# pm list packages&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;......
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;package:com.android.internal.systemui.navbar.gestural
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;package:com.android.gallery3d
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;package:com.android.providers.userdictionary
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;......
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以 gallery3d &lt;code&gt;com.android.gallery3d&lt;/code&gt; 为例：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;console:/ &lt;span style=&#34;color:#75715e&#34;&gt;# dumpsys package com.android.gallery3d | grep -A 1 &amp;#39;MAIN&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      android.intent.action.MAIN:&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; 1080.400705&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; servicemanager: Since &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;artd&amp;#39;&lt;/span&gt; could not be found, trying to start it as a lazy AIDL service. &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; it&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s not configured to be a lazy service, it may be stuck starting or still starting).
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        c99ebe com.android.gallery3d/.app.GalleryActivity filter 92aab1f
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          Action: &amp;#34;android.intent.action.MAIN&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          Category: &amp;#34;android.intent.category.DEFAULT&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;--
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          Action: &amp;#34;android.intent.action.MAIN&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        be96ced com.andro[ 1080.418995] init: starting service &amp;#39;&lt;/span&gt;artd&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;id.gallery3d/.app.Gallery filter de1c722
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          Action: &amp;#34;android.intent.action.MAIN&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          Category: &amp;#34;android.intent.category.DEFAULT&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;--
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          Action: &amp;#34;android.intent.action.MAIN&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          Category: &amp;#34;android.intent.category.DEFAULT&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;--
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;[ 1080.446599] init: ... started service &amp;#39;&lt;/span&gt;artd&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; has pid 2312
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;[ 1080.458298] BpBinder: onLastStrongRef automatically unlinking death recipients: 
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    privateFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION PRIVATE_FLAG_REQUEST_LEGACY_EXTERNAL_STORAGE HAS_DOMAIN_URLS PRODUCT PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    forceQueryable=false
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;--
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    privatePkgFlags=[ PRI[ 1080.472553] init: Control message: Processed ctl.interface_start for &amp;#39;&lt;/span&gt;aidl/artd&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;&lt;/span&gt; from pid: &lt;span style=&#34;color:#ae81ff&#34;&gt;248&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;/system/bin/servicemanager&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;VATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION PRIVATE_FLAG_REQUEST_LEGACY_EXTERNAL_STORAGE HAS_DOMAIN_URLS PRODUCT PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    apexModuleName&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;null
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;关键信息：&lt;code&gt;c99ebe com.android.gallery3d/.app.GalleryActivity filter 92aab1f&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;对应的 package and activity name 组合：&lt;code&gt;com.android.gallery3d/.app.GalleryActivity&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;套用到 am 命令中就是：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;am start -n com.android.gallery3d/.app.GalleryActivity --display &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个命令将在显示屏 3 上打开图库应用的 &lt;code&gt;GalleryActivity&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

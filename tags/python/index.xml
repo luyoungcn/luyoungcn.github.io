@@ -1,61 +1,63 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Python on LuyangのBlog</title>
-    <link>https://luyoungcn.github.io/tags/python/</link>
-    <description>Recent content in Python on LuyangのBlog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Python on PaperMod</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/tags/python/</link>
+    <description>Recent content in Python on PaperMod</description>
+    <image>
+      <title>PaperMod</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.146.6</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 03 Feb 2023 12:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>PaperMod Contributors</copyright>
+    <lastBuildDate>Fri, 03 Feb 2023 12:00:00 +0800</lastBuildDate>
+    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>python2.7 环境及包管理</title>
-      <link>https://luyoungcn.github.io/posts/python2/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/python2/</link>
       <pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate>
-      
-      <guid>https://luyoungcn.github.io/posts/python2/</guid>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/python2/</guid>
       <description>&lt;h1 id=&#34;python27-环境及包管理&#34;&gt;python2.7 环境及包管理&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install python2.7
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo python2.7 get-pip.py
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip2 install simplejson
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install python2.7
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo python2.7 get-pip.py
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip2 install simplejson
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>交叉编译 Python-2.7.16</title>
-      <link>https://luyoungcn.github.io/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2/</link>
       <pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate>
-      
-      <guid>https://luyoungcn.github.io/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2/</guid>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2/</guid>
       <description>&lt;h1 id=&#34;交叉编译-python-2716&#34;&gt;交叉编译 Python-2.7.16&lt;/h1&gt;
 &lt;p&gt;需要在代码的根路径新建一个 &lt;code&gt;config.sit&lt;/code&gt;，内容参考如下：
 &lt;code&gt;--enable-shared﻿&lt;/code&gt; 生成动态链接库&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;export PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;lt;path-to-gcc-linaro-5.3-2016.02-x86_64_arm-linuxgnueabihf&amp;gt;/bin&amp;#34;&lt;/span&gt;:$PATH
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;export CROSS_COMPILE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;arm-linux-gnueabihf
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;export CONFIG_SITE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;./config.site
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# config.site 文件内容如下：&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat config.site
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ac_cv_file__dev_ptmx&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;no
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ac_cv_file__dev_ptc&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;no
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./configure --prefix&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/code/Python-2.7.16/build_out &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;--host&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;arm-linux-gnueabihf &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;--build&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;x86_64 &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;--disable-ipv6 &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;--enable-shared
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;make
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;make install
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;PATH&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;lt;path-to-gcc-linaro-5.3-2016.02-x86_64_arm-linuxgnueabihf&amp;gt;/bin&amp;#34;&lt;/span&gt;:&lt;span class=&#34;nv&#34;&gt;$PATH&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;CROSS_COMPILE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;arm-linux-gnueabihf
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;CONFIG_SITE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;./config.site
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# config.site 文件内容如下：&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cat config.site
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;ac_cv_file__dev_ptmx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;no
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;ac_cv_file__dev_ptc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;no
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./configure --prefix&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/code/Python-2.7.16/build_out &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--host&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;arm-linux-gnueabihf &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--build&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;x86_64 &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--disable-ipv6 &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--enable-shared
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make install
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>akshare 学习笔记</title>
-      <link>https://luyoungcn.github.io/posts/stock/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/stock/</link>
       <pubDate>Sat, 26 Jun 2021 03:00:00 +0800</pubDate>
-      
-      <guid>https://luyoungcn.github.io/posts/stock/</guid>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/stock/</guid>
       <description>&lt;h1 id=&#34;anaconda-安装&#34;&gt;Anaconda 安装&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/akfamily/akshare/blob/main/docs/topic/anaconda/anaconda-00.md&#34;&gt;https://github.com/akfamily/akshare/blob/main/docs/topic/anaconda/anaconda-00.md&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;resources&#34;&gt;Resources&lt;/h1&gt;
@@ -63,9 +65,7 @@
 &lt;li&gt;&lt;a href=&#34;https://akshare.akfamily.xyz/index.html&#34;&gt;akshare wiki&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.jetbrains.com/help/pycharm/jupyter-notebook-support.html&#34;&gt;PyCharm Jupyter notebook support&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+&lt;/ul&gt;</description>
     </item>
-    
   </channel>
 </rss>

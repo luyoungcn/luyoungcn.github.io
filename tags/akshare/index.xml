@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Akshare on LuyangのBlog</title>
-    <link>https://luyoungcn.github.io/tags/akshare/</link>
-    <description>Recent content in Akshare on LuyangのBlog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Akshare on PaperMod</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/tags/akshare/</link>
+    <description>Recent content in Akshare on PaperMod</description>
+    <image>
+      <title>PaperMod</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.146.6</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 26 Jun 2021 03:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/akshare/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>PaperMod Contributors</copyright>
+    <lastBuildDate>Sat, 26 Jun 2021 03:00:00 +0800</lastBuildDate>
+    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/akshare/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>akshare 学习笔记</title>
-      <link>https://luyoungcn.github.io/posts/stock/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/stock/</link>
       <pubDate>Sat, 26 Jun 2021 03:00:00 +0800</pubDate>
-      
-      <guid>https://luyoungcn.github.io/posts/stock/</guid>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/stock/</guid>
       <description>&lt;h1 id=&#34;anaconda-安装&#34;&gt;Anaconda 安装&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/akfamily/akshare/blob/main/docs/topic/anaconda/anaconda-00.md&#34;&gt;https://github.com/akfamily/akshare/blob/main/docs/topic/anaconda/anaconda-00.md&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;resources&#34;&gt;Resources&lt;/h1&gt;
@@ -20,9 +26,7 @@
 &lt;li&gt;&lt;a href=&#34;https://akshare.akfamily.xyz/index.html&#34;&gt;akshare wiki&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.jetbrains.com/help/pycharm/jupyter-notebook-support.html&#34;&gt;PyCharm Jupyter notebook support&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+&lt;/ul&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>爱因斯坦 on LuyangのBlog</title>
-    <link>https://luyoungcn.github.io/tags/%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6/</link>
-    <description>Recent content in 爱因斯坦 on LuyangのBlog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>爱因斯坦 on PaperMod</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/tags/%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6/</link>
+    <description>Recent content in 爱因斯坦 on PaperMod</description>
+    <image>
+      <title>PaperMod</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.146.6</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>PaperMod Contributors</copyright>
+    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>crystal</title>
-      <link>https://luyoungcn.github.io/posts/crystal/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/crystal/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      
-      <guid>https://luyoungcn.github.io/posts/crystal/</guid>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/crystal/</guid>
       <description>&lt;p&gt;Crystal Oscillator 晶体振荡器&lt;/p&gt;
 &lt;h1 id=&#34;无源晶振&#34;&gt;无源晶振&lt;/h1&gt;
 &lt;ul&gt;
@@ -39,10 +45,8 @@
 &lt;p&gt;无源晶振的实际输出频率并不是完全固定的，而是可以在一定范围内微调，起微调作用的就是这两个外接电容。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;切记: 谐振电容一定要按照芯片参考设计来，搞错了不起振，爱因斯坦可不负责, 高尔基血的教训&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;awr2243-40mhz-晶振起振后波形&#34;&gt;AWR2243 40MHz 晶振起振后波形&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;AWR2243ABIGABLQ1_crystal_circuit.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;AWR2243ABIGABLQ1_crystal_%E7%A4%BA%E6%B3%A2%E5%99%A8%E6%B3%A2%E5%BD%A2.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://adityatelange.github.io/hugo-PaperMod/posts/crystal/AWR2243ABIGABLQ1_crystal_circuit.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://adityatelange.github.io/hugo-PaperMod/posts/crystal/AWR2243ABIGABLQ1_crystal_%E7%A4%BA%E6%B3%A2%E5%99%A8%E6%B3%A2%E5%BD%A2.jpg&#34;&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

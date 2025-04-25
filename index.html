@@ -1,318 +1,385 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 105%">
+<html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.146.6">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="generator" content="Hugo 0.146.6"><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>PaperMod</title>
 
-  
-  <meta name="author" content="">
+<meta name="description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
+<meta name="author" content="Theme PaperMod">
+<link rel="canonical" href="https://adityatelange.github.io/hugo-PaperMod/">
+<link crossorigin="anonymous" href="/hugo-PaperMod/assets/css/stylesheet.36ab24e4c1b924360adfc391166b0e8914323d9d6ffa42a50f9c6c435c5e1831.css" integrity="sha256-Nqsk5MG5JDYK38ORFmsOiRQyPZ1v&#43;kKlD5xsQ1xeGDE=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://adityatelange.github.io/hugo-PaperMod/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://adityatelange.github.io/hugo-PaperMod/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://adityatelange.github.io/hugo-PaperMod/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://adityatelange.github.io/hugo-PaperMod/apple-touch-icon.png">
+<link rel="mask-icon" href="https://adityatelange.github.io/hugo-PaperMod/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://adityatelange.github.io/hugo-PaperMod/index.xml">
+<link rel="alternate" type="application/json" href="https://adityatelange.github.io/hugo-PaperMod/index.json">
+<link rel="alternate" hreflang="en" href="https://adityatelange.github.io/hugo-PaperMod/">
+<link rel="alternate" hreflang="fr" href="https://adityatelange.github.io/hugo-PaperMod/fr/">
+<link rel="alternate" hreflang="fa" href="https://adityatelange.github.io/hugo-PaperMod/fa/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
-  
-  
-  <meta name="description" content="TeXify3 - A LaTeX-style hugo theme with the gruvbox color scheme for personal blogging">
-  
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
-  
-  <link rel="apple-touch-icon" sizes="180x180" href="https://luyoungcn.github.io//images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://luyoungcn.github.io//images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://luyoungcn.github.io//images/favicon-16x16.png">
+            .list {
+                background: var(--theme);
+            }
 
-  
-  
-  <meta name="keywords" content='hugo latex theme blog texify texify2 texify3 michael neuper'>
-  
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-  
-  
-  <link rel="stylesheet" href='/katex/katex.min.css'>
-<script defer defer src='/katex/katex.min.js'></script>
-<script defer src='/katex/contrib/auto-render.min.js'></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-          delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-              {left: '\\(', right: '\\)', display: false},
-              {left: '\\[', right: '\\]', display: true}
-          ],
-          throwOnError : false
-        });
-    });
-</script>
-  
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
 
-  
-    <script async data-name="BMC-Widget" 
-        data-cfasync="true" 
-        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-        data-id="michaelneuper" 
-        data-description="Like what I do? Buy me a coffee!" 
-        data-message="" 
-        data-color="#d79921" 
-        data-position="Right" 
-        data-x_margin="18" 
-        data-y_margin="18"
-        crossorigin="anonymous">
-  </script>
-  
-
-  
-  <meta property="og:url" content="https://luyoungcn.github.io/">
-  <meta property="og:site_name" content="LuyangのBlog">
-  <meta property="og:title" content="LuyangのBlog">
-  <meta property="og:description" content="A personal blog built based on Hugo, used to record personal development musings.
-愿 花常好月长圆人长寿
-TeXify3 theme">
+    </style>
+</noscript><meta property="og:url" content="https://adityatelange.github.io/hugo-PaperMod/">
+  <meta property="og:site_name" content="PaperMod">
+  <meta property="og:title" content="PaperMod">
+  <meta property="og:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="website">
+      <meta property="og:image" content="https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png">
+<meta name="twitter:title" content="PaperMod">
+<meta name="twitter:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
 
-
-  
-  <link rel="canonical" href="https://luyoungcn.github.io/">
-
-  
-  
-  <link rel="alternate" type="application/rss+xml" href="https://luyoungcn.github.io/index.xml" title="LuyangのBlog" />
-  
-  
-  <meta itemprop="name" content="LuyangのBlog">
-  <meta itemprop="description" content="A personal blog built based on Hugo, used to record personal development musings.
-愿 花常好月长圆人长寿
-TeXify3 theme">
-  <meta itemprop="dateModified" content="2025-04-25T01:14:03+08:00">
-  <meta itemprop="wordCount" content="25">
-
-  
-  
-  
-    <link rel="stylesheet" href="/css/common.min.e562d763c6d0825495eb17de8b2c1d9800cf7c08db1c36accedf77a5fccfc4b9.css" integrity="sha256-5WLXY8bQglSV6xfeiywdmADPfAjbHDaszt93pfzPxLk=" crossorigin="anonymous">
-  
-
-  
-  
-    <link rel="stylesheet" href="/css/content.min.ba38eba94cb47fef9936258c42d11ff19fa9686a30b38e783773fe3f15eb44dc.css" integrity="sha256-ujjrqUy0f&#43;&#43;ZNiWMQtEf8Z&#43;paGows454N3P&#43;PxXrRNw=" crossorigin="anonymous">
-  
-
-  
-  
-  <title>LuyangのBlog</title>
-  
-
-  
-  
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="LuyangのBlog">
-  <meta name="twitter:description" content="A personal blog built based on Hugo, used to record personal development musings.
-愿 花常好月长圆人长寿
-TeXify3 theme">
-
-
-  
-
-
-  <link rel="stylesheet" href="/css/index.min.1a5a45e0f487fca4e7dc535918e08270aeedac29162a881bb3c2cf9171c418d2.css" integrity="sha256-GlpF4PSH/KTn3FNZGOCCcK7trCkWKogbs8LPkXHEGNI=" crossorigin="anonymous">
-
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "PaperMod",
+  "url": "https://adityatelange.github.io/hugo-PaperMod/",
+  "description": "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod",
+  "logo": "https://adityatelange.github.io/hugo-PaperMod/favicon.ico",
+  "sameAs": [
+      "https://github.com/adityatelange/hugo-PaperMod", "https://discord.gg/ahpmTvhVmp", "https://x.com/intent/tweet/?text=Checkout%20Hugo%20PaperMod%20%E2%9C%A8%0AA%20fast,%20clean,%20responsive%20Hugo%20theme.\u0026url=https://github.com/adityatelange/hugo-PaperMod\u0026hashtags=Hugo,PaperMod", "https://ko-fi.com/adityatelange"
+  ]
+}
+</script>
 </head>
 
-<body>
-  <div id="wrapper">
-    
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
+</script>
 
-<header id="header">
-  <h1>
-    <a href="https://luyoungcn.github.io/">LuyangのBlog</a>
-    <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle theme">
-        <svg width="2rem" height="2rem" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496">
-        <path fill="currentColor" d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" transform="translate(-8 -8)"/>
-        </svg>
-    </button>
-  </h1>
-
-  <nav>
-    
-    <span class="nav-bar-item">
-      
-        <span class="icon"><svg width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M17,11H16a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm0,4H16a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2ZM11,9h6a1,1,0,0,0,0-2H11a1,1,0,0,0,0,2ZM21,3H7A1,1,0,0,0,6,4V7H3A1,1,0,0,0,2,8V18a3,3,0,0,0,3,3H18a4,4,0,0,0,4-4V4A1,1,0,0,0,21,3ZM6,18a1,1,0,0,1-2,0V9H6Zm14-1a2,2,0,0,1-2,2H7.82A3,3,0,0,0,8,18V5H20Zm-9-4h1a1,1,0,0,0,0-2H11a1,1,0,0,0,0,2Zm0,4h1a1,1,0,0,0,0-2H11a1,1,0,0,0,0,2Z"/></svg>
-</span>
-      
-      <a class="link" href="/posts/">Blog</a>
-    </span>
-    
-    <span class="nav-bar-item">
-      
-        <span class="icon"><svg width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.88,16.88a3,3,0,0,0,0,4.24,3,3,0,0,0,4.24,0,3,3,0,0,0-4.24-4.24Zm2.83,2.83a1,1,0,0,1-1.42-1.42,1,1,0,0,1,1.42,0A1,1,0,0,1,5.71,19.71ZM5,12a1,1,0,0,0,0,2,5,5,0,0,1,5,5,1,1,0,0,0,2,0,7,7,0,0,0-7-7ZM5,8a1,1,0,0,0,0,2,9,9,0,0,1,9,9,1,1,0,0,0,2,0,11.08,11.08,0,0,0-3.22-7.78A11.08,11.08,0,0,0,5,8Zm10.61.39A15.11,15.11,0,0,0,5,4,1,1,0,0,0,5,6,13,13,0,0,1,18,19a1,1,0,0,0,2,0A15.11,15.11,0,0,0,15.61,8.39Z"/></svg>
-</span>
-      
-      <a class="link" href="/index.xml">RSS</a>
-    </span>
-    
-    <span class="nav-bar-item">
-      
-        <span class="icon"><svg width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1">
-<path d="M10.07031,20.50291a1.00008,1.00008,0,0,0-1.18115-.9834c-1.30908.24024-2.96191.27637-3.40137-.958a5.70754,5.70754,0,0,0-1.83691-2.415,1.20073,1.20073,0,0,1-.1665-.10938,1,1,0,0,0-.93067-.64551H2.54883a.99965.99965,0,0,0-1,.99512c-.00391.81543.811,1.33789,1.1416,1.51465a4.4408,4.4408,0,0,1,.92383,1.35937c.36426,1.02344,1.42285,2.57617,4.46582,2.376.001.03516.00195.06836.00244.09863l.00439.26758a1,1,0,0,0,2,0l-.00488-.31836C10.07715,21.4951,10.07031,21.22068,10.07031,20.50291Zm10.667-15.126c.03174-.125.063-.26367.09034-.41992a6.27792,6.27792,0,0,0-.40821-3.293,1.002,1.002,0,0,0-.61572-.58007c-.356-.12012-1.67041-.35645-4.18408,1.25a13.86918,13.86918,0,0,0-6.354,0C6.76221.751,5.45459.9658,5.10205,1.07908a.99744.99744,0,0,0-.63135.584,6.3003,6.3003,0,0,0-.40332,3.35644c.02442.12793.05078.2461.07813.35449A6.26928,6.26928,0,0,0,2.89014,9.20311a8.42168,8.42168,0,0,0,.04248.92187c.334,4.60254,3.334,5.98438,5.42431,6.459-.04345.125-.083.25878-.11816.40039a1.00023,1.00023,0,0,0,1.94238.47851,1.6784,1.6784,0,0,1,.46778-.87793.99947.99947,0,0,0-.5459-1.74512c-3.4541-.39453-4.95362-1.80175-5.1792-4.89843a6.61076,6.61076,0,0,1-.03369-.73828,4.25769,4.25769,0,0,1,.91943-2.71289,3.022,3.022,0,0,1,.1958-.23145.99988.99988,0,0,0,.188-1.02441,3.3876,3.3876,0,0,1-.15527-.55567A4.09356,4.09356,0,0,1,6.1167,3.06346a7.54263,7.54263,0,0,1,2.415,1.17968,1.00877,1.00877,0,0,0,.82764.13282,11.77716,11.77716,0,0,1,6.17285.001,1.00549,1.00549,0,0,0,.83056-.13769,7.572,7.572,0,0,1,2.40528-1.19043,4.03977,4.03977,0,0,1,.0874,1.57812,3.205,3.205,0,0,1-.16895.60743.9999.9999,0,0,0,.188,1.02441c.07715.08691.1543.18066.22363.26855A4.12186,4.12186,0,0,1,20,9.20311a7.03888,7.03888,0,0,1-.0376.77734c-.22021,3.05566-1.72558,4.46387-5.1958,4.85937a1,1,0,0,0-.54541,1.7461,1.63079,1.63079,0,0,1,.46631.9082,3.06079,3.06079,0,0,1,.09229.81934v2.334C14.77,21.2949,14.77,21.78025,14.77,22.00291a1,1,0,1,0,2,0c0-.2168,0-.69238.00977-1.33984V18.31346a4.8815,4.8815,0,0,0-.15479-1.31153,4.25638,4.25638,0,0,0-.11621-.416,6.51258,6.51258,0,0,0,5.44531-6.42383A8.69677,8.69677,0,0,0,22,9.20311,6.13062,6.13062,0,0,0,20.7373,5.37693Z"/></svg>
-</span>
-      
-      <a class="link" href="https://github.com/luyoungcn">GitHub</a>
-    </span>
-    
-  </nav>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://adityatelange.github.io/hugo-PaperMod/" accesskey="h" title="PaperMod (Alt + H)">PaperMod</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://adityatelange.github.io/hugo-PaperMod/fr/" title="French"
+                            aria-label=":fr:">🇫🇷</a>
+                    </li>
+                    <li>
+                        <a href="https://adityatelange.github.io/hugo-PaperMod/fa/" title="Fa"
+                            aria-label="Fa">Fa</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://adityatelange.github.io/hugo-PaperMod/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/adityatelange/hugo-PaperMod/wiki/" title="WiKi">
+                    <span>WiKi</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </header>
-<hr class="head-rule"></hr>
-    
-<main class="grid-container">
-    <div id="content" class="index">
-        
-            <p>A personal blog built based on Hugo, used to record personal development musings.</p>
-<hr>
-<h2 id="愿">愿</h2>
-<p>花常好月长圆人长寿</p>
-<hr>
-<p><a href="https://github.com/michaelneuper/hugo-texify3">TeXify3</a> theme</p>
-
-        
+<main class="main"> 
+<article class="first-entry home-info">
+    <header class="entry-header">
+        <h1>PaperMod&rsquo;s Demo</h1>
+    </header>
+    <div class="entry-content">
+        <p>👋 Welcome to demo page of Hugo&rsquo;s theme PaperMod!</p>
+<ul>
+<li><strong>PaperMod</strong>  is designed to be clean and simple but fast and responsive theme with useful feature-set that enhances UX.</li>
+<li>Feel free to show your support by giving us a star 🌟 on GitHub and sharing with your friends and social media .</li>
+<li>PaperMod is based on theme <a href="https://github.com/nanxiaobei/hugo-paper/tree/4330c8b12aa48bfdecbcad6ad66145f679a430b3">Paper</a>.</li>
+</ul>
     </div>
+    <footer class="entry-footer">
+        <div class="social-icons" >
+    <a href="https://github.com/adityatelange/hugo-PaperMod" target="_blank" rel="noopener noreferrer me"
+        title="View Source on Github">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+    </a>
+    <a href="https://discord.gg/ahpmTvhVmp" target="_blank" rel="noopener noreferrer me"
+        title="Join Discord Community">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36" fill="currentColor" stroke="none" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z" />
+</svg>
+    </a>
+    <a href="https://x.com/intent/tweet/?text=Checkout%20Hugo%20PaperMod%20%E2%9C%A8%0AA%20fast,%20clean,%20responsive%20Hugo%20theme.&amp;url=https://github.com/adityatelange/hugo-PaperMod&amp;hashtags=Hugo,PaperMod" target="_blank" rel="noopener noreferrer me"
+        title="Share PaperMod on X/Twitter">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+    <path
+        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+    </path>
+</svg>
+    </a>
+    <a href="https://ko-fi.com/adityatelange" target="_blank" rel="noopener noreferrer me"
+        title="Buy Me a Ko-Fi :)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -3 23 27" preserveAspectRatio="xMidYMid meet" fill="none"
+    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734c4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09c-.443-.441-3.368-3.049-4.034-3.954c-.709-.965-1.041-2.7-.091-3.71c.951-1.01 3.005-1.086 4.363.407c0 0 1.565-1.782 3.468-.963c1.904.82 1.832 3.011.723 4.311zm6.173.478c-.928.116-1.682.028-1.682.028V7.284h1.77s1.971.551 1.971 2.638c0 1.913-.985 2.667-2.059 3.015z" />
+</svg>
+    </a>
+</div>
 
-    <div class="sidebar">
-        
-        <h3 class="taxonomy">
-            <span class="icon">
-                <svg width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="taxonomy-svg">
-                    <path d="M3.71,16.29a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21,1,1,0,0,0-.21.33,1,1,0,0,0,.21,1.09,1.15,1.15,0,0,0,.33.21.94.94,0,0,0,.76,0,1.15,1.15,0,0,0,.33-.21,1,1,0,0,0,.21-1.09A1,1,0,0,0,3.71,16.29ZM7,8H21a1,1,0,0,0,0-2H7A1,1,0,0,0,7,8ZM3.71,11.29a1,1,0,0,0-1.09-.21,1.15,1.15,0,0,0-.33.21,1,1,0,0,0-.21.33.94.94,0,0,0,0,.76,1.15,1.15,0,0,0,.21.33,1.15,1.15,0,0,0,.33.21.94.94,0,0,0,.76,0,1.15,1.15,0,0,0,.33-.21,1.15,1.15,0,0,0,.21-.33.94.94,0,0,0,0-.76A1,1,0,0,0,3.71,11.29ZM21,11H7a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2ZM3.71,6.29a1,1,0,0,0-.33-.21,1,1,0,0,0-1.09.21,1.15,1.15,0,0,0-.21.33.94.94,0,0,0,0,.76,1.15,1.15,0,0,0,.21.33,1.15,1.15,0,0,0,.33.21,1,1,0,0,0,1.09-.21,1.15,1.15,0,0,0,.21-.33.94.94,0,0,0,0-.76A1.15,1.15,0,0,0,3.71,6.29ZM21,16H7a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"/></svg>
-            </span>
-            <a href="/categories/">Categories</a>
-        </h3>
-        <ul class="nav-list sidenav">
-            
-            <li>
-                <a href="https://luyoungcn.github.io/categories/coding/">Coding</a>
-            </li>
-            
-            <li>
-                <a href="https://luyoungcn.github.io/categories/%E5%B7%A5%E5%85%B7/">工具</a>
-            </li>
-            
-            <li>
-                <a href="https://luyoungcn.github.io/categories/%E7%8E%AF%E5%A2%83/">环境</a>
-            </li>
-            
-            <li>
-                <a href="https://luyoungcn.github.io/categories/android/">Android</a>
-            </li>
-            
-            <li>
-                <a href="https://luyoungcn.github.io/categories/build/">Build</a>
-            </li>
-            
-            <li>
-                <a href="https://luyoungcn.github.io/categories/dev/">Dev</a>
-            </li>
-            
-            <li>
-                <a href="https://luyoungcn.github.io/categories/hardware/">Hardware</a>
-            </li>
-            
-            <li>
-                <a href="https://luyoungcn.github.io/categories/linux/">Linux</a>
-            </li>
-            
-            <li>
-                <a href="https://luyoungcn.github.io/categories/opensource/">OpenSource</a>
-            </li>
-            
-            <li>
-                <a href="https://luyoungcn.github.io/categories/programming/">Programming</a>
-            </li>
-            
-        </ul>
-        
-        
-        <p></p>
-        <h3 class="taxonomy">
-            <span class="icon">
-                <svg width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="taxonomy-svg">
-                    <path d="M7.5,6A1.5,1.5,0,1,0,9,7.5,1.5,1.5,0,0,0,7.5,6Zm13.62,4.71L12.71,2.29A1,1,0,0,0,12,2H3A1,1,0,0,0,2,3v9a1,1,0,0,0,.29.71l8.42,8.41a3,3,0,0,0,4.24,0L21.12,15a3,3,0,0,0,0-4.24Zm-1.41,2.82h0l-6.18,6.17a1,1,0,0,1-1.41,0L4,11.59V4h7.59l8.12,8.12a1,1,0,0,1,.29.71A1,1,0,0,1,19.71,13.53Z"/></svg>
-            </span>
-            <a href="/tags/">Tags</a>
-        </h3>
-        <ul class="nav-list sidenav">
-            
-            <li>
-                <a href="https://luyoungcn.github.io/tags/c/">C</a>
-            </li>
-            
-            <li>
-                <a href="https://luyoungcn.github.io/tags/errnum/">Errnum</a>
-            </li>
-            
-            <li>
-                <a href="https://luyoungcn.github.io/tags/glibc/">Glibc</a>
-            </li>
-            
-            <li>
-                <a href="https://luyoungcn.github.io/tags/perror/">Perror</a>
-            </li>
-            
-            <li>
-                <a href="https://luyoungcn.github.io/tags/rtfsc/">RTFSC</a>
-            </li>
-            
-            <li>
-                <a href="https://luyoungcn.github.io/tags/adb/">Adb</a>
-            </li>
-            
-            <li>
-                <a href="https://luyoungcn.github.io/tags/android/">Android</a>
-            </li>
-            
-            <li>
-                <a href="https://luyoungcn.github.io/tags/usb/">Usb</a>
-            </li>
-            
-            <li>
-                <a href="https://luyoungcn.github.io/tags/usbip/">Usbip</a>
-            </li>
-            
-            <li>
-                <a href="https://luyoungcn.github.io/tags/wsl/">Wsl</a>
-            </li>
-            
-        </ul>
-        
-    </div>
-</main>
+    </footer>
+</article>
 
-    <footer id="footer">
-  <div>
-    <span>Powered by  <a class=link href=https://gohugo.io target=_blank rel=noopener>Hugo</a> | 
-Theme <a class=link href=https://github.com/michaelneuper/hugo-texify3 target=_blank rel=noopener>TeXify3</a>
-</span>
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">perror
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>重点学习 errnum 转 str 的实现方法
+妙 妙 妙 perror stdio-common/perror.c
+perror (const char *s) static void perror_internal (FILE *fp, const char *s, int errnum) __strerror_r string/_strerror.c
+/* Return a string describing the errno code in ERRNUM. */ char * __strerror_r (int errnum, char *buf, size_t buflen) { char *err = (char *) __get_errlist (errnum); if (__glibc_unlikely (err == NULL)) { __snprintf (buf, buflen, &#34;%s%d&#34;, _(&#34;Unknown error &#34;), errnum); return buf; } return _(err); } __get_errlist stdio-common/errlist.c
+const char * __get_errlist (int errnum) { int mapped = ERR_MAP (errnum); if (mapped &gt;= 0 &amp;&amp; mapped &lt; _sys_errlist_internal_len) return _sys_errlist_internal[mapped]; return NULL; } _sys_errlist_internal stdio-common/errlist-data-gen.c
+const char *const _sys_errlist_internal[] = { #define _S(n, str) [ERR_MAP(n)] = str, #include &lt;errlist.h&gt; #undef _S }; const size_t _sys_errlist_internal_len = array_length (_sys_errlist_internal); _S sysdeps/gnu/errlist.h
+...</p>
   </div>
-  <div>
-    <span>Copyright © 2025 </span>
+  <footer class="entry-footer"><span title='2024-01-01 20:19:08 +0800 CST'>January 1, 2024</span>&nbsp;·&nbsp;20 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to perror" href="https://adityatelange.github.io/hugo-PaperMod/posts/perror_func/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Windows WSL ubuntu adb 配置
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>配置前的状态 windows 11 &#43; wsl &#43; ubuntu 18.04 windows 可以识别 adb devices
+C:\Users&gt;adb devices List of devices attached fada-018b4209f24d0001 device wsl 识别不到 adb devices
+luyang@LUYANG:~$ adb devices * daemon not running; starting now at tcp:5037 * daemon started successfully List of devices attached Windows 安装工具包 windows 安装 usbipd-win
+WSL 安装工具包 WSL ubuntu 安装 adb 工具
+sudo apt install android-tools-adb 在WSL中，安装 USB/IP 的用户空间工具和 USB 硬件标识符的数据库。
+sudo apt install linux-tools-5.15.0-87-generic hwdata # 注意 linux-tools 相应的要改成你实际安装的版本 sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/5.15.0-87-generic/usbip 20 关于 linux-tools 查看当前 ubuntu 系统版本支持的 linux-tools generic版本
+...</p>
   </div>
+  <footer class="entry-footer"><span title='2023-10-26 00:00:00 +0800 CST'>October 26, 2023</span>&nbsp;·&nbsp;32 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to Windows WSL ubuntu adb 配置" href="https://adityatelange.github.io/hugo-PaperMod/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">ubuntu 20.04 升级内核
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>系统信息 $ lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Description: Ubuntu 20.04.6 LTS Release: 20.04 Codename: focal $ uname -a Linux kang-HP-ProBook-440-14-inch-G10-Notebook-PC 5.15.0-67-generic #74~20.04.1-Ubuntu SMP Wed Feb 22 14:52:34 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux 安装依赖 sudo apt update &amp;&amp; sudo apt upgrade sudo apt install binutils build-essential gcc make perl net-tools libncurses-dev \ openssh-server git fakeroot libssl-dev bc flex libelf-dev bison \ dwarves zstd Linux 源码下载 官网：https://www.kernel.org/pub/ Git：https://git.kernel.org/ ftp：http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/ 拷贝 .config 配置文件 解压源代码并进入源码根目录，然后执行
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-06-26 03:00:00 +0800 CST'>June 26, 2023</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to ubuntu 20.04 升级内核" href="https://adityatelange.github.io/hugo-PaperMod/posts/ubuntu_2004_%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">ubuntu 搭建 svn 服务器
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>安装 subversion sudo apt-get remove --purge subversion sudo apt-get update sudo apt-get install subversion 创建 SVN 用户 sudo adduser svn sudo adduser svn sudo sudo su svn 创建仓库目录 sudo mkdir /svn sudo mkdir /svn/repos sudo mkdir /svn/repos/public sudo chmod 777 -R /svn/repos/public sudo chown svn:svn -R /svn 创建版本库 sudo svnadmin create /svn/repos/public $ ls -lah /svn/repos/public total 32K drwxrwxrwx 6 svn svn 4.0K 6月 19 14:15 . drwxr-xr-x 3 svn svn 4.0K 6月 19 14:15 .. drwxr-xr-x 2 root root 4.0K 6月 19 14:15 conf drwxr-sr-x 6 root root 4.0K 6月 19 14:15 db -r--r--r-- 1 root root 2 6月 19 14:15 format drwxr-xr-x 2 root root 4.0K 6月 19 14:15 hooks drwxr-xr-x 2 root root 4.0K 6月 19 14:15 locks -rw-r--r-- 1 root root 246 6月 19 14:15 README.txt cd /svn/repos/public sudo chmod -R 777 db cd conf sudo cp svnserve.conf svnserve.conf.bak sudo vim svnserve.conf 取消注释：
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-06-26 03:00:00 +0800 CST'>June 26, 2023</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to ubuntu 搭建 svn 服务器" href="https://adityatelange.github.io/hugo-PaperMod/posts/svn/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Windows terminal 安装配置 oh-my-posh
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>适用于 Windows terminal &#43; powershell
+安装 oh-my-posh Microsoft Store 中搜索并安装：oh-my-posh by jandedobbeleer
+使用图标字体 Nerd Fonts - Iconic font aggregator, glyphs/icons collection, &amp; fonts patcher
+去这里下载一个自己喜欢的字体，并配置 windows terminal power shell profile 使用该字体。
+配置 profile 判断当前的 shell 类型：oh-my-posh get shell
+PS C:\Users\luyang\Desktop&gt; oh-my-posh get shell powershell 修改配置文件：
+notepad $PROFILE 添加如下内容：
+oh-my-posh init pwsh | Invoke-Expression 如果 notepad $PROFILE 报错，说配置文件不存在需要自己创建一个：
+New-Item -Path $PROFILE -Type File -Force 加载配置：
+. $PROFILE Q&amp;A 运行报错：
+Windows PowerShell 版权所有（C） Microsoft Corporation。保留所有权利。 安装最新的 PowerShell，了解新功能和改进！https://aka.ms/PSWindows . : 无法加载文件 C:\Users\luyang\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1，因为在此系统上禁止运行脚 本。有关详细信息，请参阅 https:/go.microsoft.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。 所在位置 行:1 字符: 3 &#43; . &#39;C:\Users\luyang\Documents\WindowsPowerShell\Microsoft.PowerShell_pr ... &#43; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ &#43; CategoryInfo : SecurityError: (:) []，PSSecurityException &#43; FullyQualifiedErrorId : UnauthorizedAccess 原因：PowerShell 默认禁止运行脚本，PowerShell 默认禁止运行脚本;
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-06-26 03:00:00 +0800 CST'>June 26, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Theme PaperMod</footer>
+  <a class="entry-link" aria-label="post link to Windows terminal 安装配置 oh-my-posh" href="https://adityatelange.github.io/hugo-PaperMod/posts/windows-terminal-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-oh-my-posh/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://adityatelange.github.io/hugo-PaperMod/page/2/">Next&nbsp;2/14&nbsp;»
+    </a>
+  </nav>
 </footer>
+    </main>
+    
+<footer class="footer">
+        <span>© <a href="https://github.com/adityatelange/hugo-PaperMod/graphs/contributors">PaperMod Contributors</a></span> · 
 
-  </div>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
 
-  
-  <script src='https://luyoungcn.github.io/js/script.js' defer></script>
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
 
-  
-  
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
 
-  
-  
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
 
-  
-  
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
 
+</script>
 </body>
 
 </html>

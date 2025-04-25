@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>OpenSuse on LuyangのBlog</title>
-    <link>https://luyoungcn.github.io/tags/opensuse/</link>
-    <description>Recent content in OpenSuse on LuyangのBlog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>OpenSuse on PaperMod</title>
+    <link>https://adityatelange.github.io/hugo-PaperMod/tags/opensuse/</link>
+    <description>Recent content in OpenSuse on PaperMod</description>
+    <image>
+      <title>PaperMod</title>
+      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
+      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.146.6</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate><atom:link href="https://luyoungcn.github.io/tags/opensuse/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>PaperMod Contributors</copyright>
+    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/opensuse/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Virtualbox Opensuse 无网络图标 无法上网</title>
-      <link>https://luyoungcn.github.io/posts/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/</link>
+      <link>https://adityatelange.github.io/hugo-PaperMod/posts/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      
-      <guid>https://luyoungcn.github.io/posts/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/</guid>
+      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/</guid>
       <description>&lt;p&gt;参考链接&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://forum.suse.org.cn/t/eth0/2049/4&#34;&gt;https://forum.suse.org.cn/t/eth0/2049/4&lt;/a&gt;&lt;/li&gt;
@@ -31,9 +37,7 @@
 &lt;p&gt;&lt;code&gt;/etc/resolv.conf&lt;/code&gt;文件的最后加入：&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;nameserver 8.8.8.8
 nameserver 8.8.4.4
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;之后就能 &lt;code&gt;ping&lt;/code&gt; 或者 &lt;code&gt;nslookup&lt;/code&gt; 百度了。&lt;/p&gt;
-</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;之后就能 &lt;code&gt;ping&lt;/code&gt; 或者 &lt;code&gt;nslookup&lt;/code&gt; 百度了。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
