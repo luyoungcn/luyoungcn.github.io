@@ -1,101 +1,95 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/categories/</link>
-    <description>Recent content in Categories on PaperMod</description>
-    <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.146.6</generator>
-    <language>en</language>
-    <copyright>PaperMod Contributors</copyright>
+    <title>Categories on LuyangのBlog</title>
+    <link>https://luyoungcn.github.io/categories/</link>
+    <description>Recent content in Categories on LuyangのBlog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
     <lastBuildDate>Mon, 01 Jan 2024 20:19:08 +0800</lastBuildDate>
-    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://luyoungcn.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Coding</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/categories/coding/</link>
+      <link>https://luyoungcn.github.io/categories/coding/</link>
       <pubDate>Mon, 01 Jan 2024 20:19:08 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/categories/coding/</guid>
+      <guid>https://luyoungcn.github.io/categories/coding/</guid>
       <description></description>
     </item>
     <item>
       <title>工具</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/categories/%E5%B7%A5%E5%85%B7/</link>
+      <link>https://luyoungcn.github.io/categories/%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/categories/%E5%B7%A5%E5%85%B7/</guid>
+      <guid>https://luyoungcn.github.io/categories/%E5%B7%A5%E5%85%B7/</guid>
       <description></description>
     </item>
     <item>
       <title>环境</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/categories/%E7%8E%AF%E5%A2%83/</link>
+      <link>https://luyoungcn.github.io/categories/%E7%8E%AF%E5%A2%83/</link>
       <pubDate>Mon, 26 Jun 2023 03:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/categories/%E7%8E%AF%E5%A2%83/</guid>
+      <guid>https://luyoungcn.github.io/categories/%E7%8E%AF%E5%A2%83/</guid>
       <description></description>
     </item>
     <item>
       <title>Android</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/categories/android/</link>
+      <link>https://luyoungcn.github.io/categories/android/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/categories/android/</guid>
+      <guid>https://luyoungcn.github.io/categories/android/</guid>
       <description></description>
     </item>
     <item>
       <title>Build</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/categories/build/</link>
+      <link>https://luyoungcn.github.io/categories/build/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/categories/build/</guid>
+      <guid>https://luyoungcn.github.io/categories/build/</guid>
       <description></description>
     </item>
     <item>
       <title>Dev</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/categories/dev/</link>
+      <link>https://luyoungcn.github.io/categories/dev/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/categories/dev/</guid>
+      <guid>https://luyoungcn.github.io/categories/dev/</guid>
       <description></description>
     </item>
     <item>
       <title>Hardware</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/categories/hardware/</link>
+      <link>https://luyoungcn.github.io/categories/hardware/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/categories/hardware/</guid>
+      <guid>https://luyoungcn.github.io/categories/hardware/</guid>
       <description></description>
     </item>
     <item>
       <title>Linux</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/categories/linux/</link>
+      <link>https://luyoungcn.github.io/categories/linux/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/categories/linux/</guid>
+      <guid>https://luyoungcn.github.io/categories/linux/</guid>
       <description></description>
     </item>
     <item>
       <title>OpenSource</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/categories/opensource/</link>
+      <link>https://luyoungcn.github.io/categories/opensource/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/categories/opensource/</guid>
+      <guid>https://luyoungcn.github.io/categories/opensource/</guid>
       <description></description>
     </item>
     <item>
       <title>Programming</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/categories/programming/</link>
+      <link>https://luyoungcn.github.io/categories/programming/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/categories/programming/</guid>
+      <guid>https://luyoungcn.github.io/categories/programming/</guid>
       <description></description>
     </item>
     <item>
       <title>Radar</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/categories/radar/</link>
+      <link>https://luyoungcn.github.io/categories/radar/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/categories/radar/</guid>
+      <guid>https://luyoungcn.github.io/categories/radar/</guid>
       <description></description>
     </item>
     <item>
       <title>SERDES</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/categories/serdes/</link>
+      <link>https://luyoungcn.github.io/categories/serdes/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/categories/serdes/</guid>
+      <guid>https://luyoungcn.github.io/categories/serdes/</guid>
       <description></description>
     </item>
   </channel>

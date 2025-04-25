@@ -1,384 +1,161 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>ubuntu 搭建 svn 服务器 | PaperMod</title>
-<meta name="keywords" content="svn">
-<meta name="description" content="安装 subversion
-sudo apt-get remove --purge subversion
-
-sudo apt-get update
-sudo apt-get install subversion
-创建 SVN 用户
-sudo adduser svn
-sudo adduser svn sudo
-sudo su svn
-创建仓库目录
-sudo mkdir /svn
-sudo mkdir /svn/repos
-sudo mkdir /svn/repos/public
-sudo chmod 777 -R /svn/repos/public
-sudo chown svn:svn -R /svn
-创建版本库
-sudo svnadmin create /svn/repos/public
-
-$ ls -lah /svn/repos/public
-total 32K
-drwxrwxrwx 6 svn  svn  4.0K 6月  19 14:15 .
-drwxr-xr-x 3 svn  svn  4.0K 6月  19 14:15 ..
-drwxr-xr-x 2 root root 4.0K 6月  19 14:15 conf
-drwxr-sr-x 6 root root 4.0K 6月  19 14:15 db
--r--r--r-- 1 root root    2 6月  19 14:15 format
-drwxr-xr-x 2 root root 4.0K 6月  19 14:15 hooks
-drwxr-xr-x 2 root root 4.0K 6月  19 14:15 locks
--rw-r--r-- 1 root root  246 6月  19 14:15 README.txt
-cd /svn/repos/public
-sudo chmod -R 777 db
-cd conf
-sudo cp svnserve.conf svnserve.conf.bak
-sudo vim svnserve.conf
-取消注释：">
-<meta name="author" content="Theme PaperMod">
-<link rel="canonical" href="https://adityatelange.github.io/hugo-PaperMod/posts/svn/">
-<link crossorigin="anonymous" href="/hugo-PaperMod/assets/css/stylesheet.36ab24e4c1b924360adfc391166b0e8914323d9d6ffa42a50f9c6c435c5e1831.css" integrity="sha256-Nqsk5MG5JDYK38ORFmsOiRQyPZ1v&#43;kKlD5xsQ1xeGDE=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://adityatelange.github.io/hugo-PaperMod/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://adityatelange.github.io/hugo-PaperMod/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://adityatelange.github.io/hugo-PaperMod/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://adityatelange.github.io/hugo-PaperMod/apple-touch-icon.png">
-<link rel="mask-icon" href="https://adityatelange.github.io/hugo-PaperMod/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://adityatelange.github.io/hugo-PaperMod/posts/svn/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript><meta property="og:url" content="https://adityatelange.github.io/hugo-PaperMod/posts/svn/">
-  <meta property="og:site_name" content="PaperMod">
+<title>ubuntu 搭建 svn 服务器 | LuyangのBlog</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="https://luyoungcn.github.io/posts/svn/">
+  <meta property="og:site_name" content="LuyangのBlog">
   <meta property="og:title" content="ubuntu 搭建 svn 服务器">
   <meta property="og:description" content="安装 subversion sudo apt-get remove --purge subversion sudo apt-get update sudo apt-get install subversion 创建 SVN 用户 sudo adduser svn sudo adduser svn sudo sudo su svn 创建仓库目录 sudo mkdir /svn sudo mkdir /svn/repos sudo mkdir /svn/repos/public sudo chmod 777 -R /svn/repos/public sudo chown svn:svn -R /svn 创建版本库 sudo svnadmin create /svn/repos/public $ ls -lah /svn/repos/public total 32K drwxrwxrwx 6 svn svn 4.0K 6月 19 14:15 . drwxr-xr-x 3 svn svn 4.0K 6月 19 14:15 .. drwxr-xr-x 2 root root 4.0K 6月 19 14:15 conf drwxr-sr-x 6 root root 4.0K 6月 19 14:15 db -r--r--r-- 1 root root 2 6月 19 14:15 format drwxr-xr-x 2 root root 4.0K 6月 19 14:15 hooks drwxr-xr-x 2 root root 4.0K 6月 19 14:15 locks -rw-r--r-- 1 root root 246 6月 19 14:15 README.txt cd /svn/repos/public sudo chmod -R 777 db cd conf sudo cp svnserve.conf svnserve.conf.bak sudo vim svnserve.conf 取消注释：">
-  <meta property="og:locale" content="en">
+  <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2023-06-26T03:00:00+08:00">
     <meta property="article:modified_time" content="2023-06-26T03:00:00+08:00">
     <meta property="article:tag" content="Svn">
-      <meta property="og:image" content="https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png">
-<meta name="twitter:title" content="ubuntu 搭建 svn 服务器">
-<meta name="twitter:description" content="安装 subversion
-sudo apt-get remove --purge subversion
 
-sudo apt-get update
-sudo apt-get install subversion
-创建 SVN 用户
-sudo adduser svn
-sudo adduser svn sudo
-sudo su svn
-创建仓库目录
-sudo mkdir /svn
-sudo mkdir /svn/repos
-sudo mkdir /svn/repos/public
-sudo chmod 777 -R /svn/repos/public
-sudo chown svn:svn -R /svn
-创建版本库
-sudo svnadmin create /svn/repos/public
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ubuntu 搭建 svn 服务器">
+  <meta name="twitter:description" content="安装 subversion sudo apt-get remove --purge subversion sudo apt-get update sudo apt-get install subversion 创建 SVN 用户 sudo adduser svn sudo adduser svn sudo sudo su svn 创建仓库目录 sudo mkdir /svn sudo mkdir /svn/repos sudo mkdir /svn/repos/public sudo chmod 777 -R /svn/repos/public sudo chown svn:svn -R /svn 创建版本库 sudo svnadmin create /svn/repos/public $ ls -lah /svn/repos/public total 32K drwxrwxrwx 6 svn svn 4.0K 6月 19 14:15 . drwxr-xr-x 3 svn svn 4.0K 6月 19 14:15 .. drwxr-xr-x 2 root root 4.0K 6月 19 14:15 conf drwxr-sr-x 6 root root 4.0K 6月 19 14:15 db -r--r--r-- 1 root root 2 6月 19 14:15 format drwxr-xr-x 2 root root 4.0K 6月 19 14:15 hooks drwxr-xr-x 2 root root 4.0K 6月 19 14:15 locks -rw-r--r-- 1 root root 246 6月 19 14:15 README.txt cd /svn/repos/public sudo chmod -R 777 db cd conf sudo cp svnserve.conf svnserve.conf.bak sudo vim svnserve.conf 取消注释：">
 
-$ ls -lah /svn/repos/public
-total 32K
-drwxrwxrwx 6 svn  svn  4.0K 6月  19 14:15 .
-drwxr-xr-x 3 svn  svn  4.0K 6月  19 14:15 ..
-drwxr-xr-x 2 root root 4.0K 6月  19 14:15 conf
-drwxr-sr-x 6 root root 4.0K 6月  19 14:15 db
--r--r--r-- 1 root root    2 6月  19 14:15 format
-drwxr-xr-x 2 root root 4.0K 6月  19 14:15 hooks
-drwxr-xr-x 2 root root 4.0K 6月  19 14:15 locks
--rw-r--r-- 1 root root  246 6月  19 14:15 README.txt
-cd /svn/repos/public
-sudo chmod -R 777 db
-cd conf
-sudo cp svnserve.conf svnserve.conf.bak
-sudo vim svnserve.conf
-取消注释：">
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.e139b0e3b3aff8f0e8e0272554b671a06c857a42278b36c539d96c69ddee2ca2.css" integrity="sha256-4Tmw47Ov&#43;PDo4CclVLZxoGyFekInizbFOdlsad3uLKI=" crossorigin="anonymous">
 
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://adityatelange.github.io/hugo-PaperMod/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "ubuntu 搭建 svn 服务器",
-      "item": "https://adityatelange.github.io/hugo-PaperMod/posts/svn/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "ubuntu 搭建 svn 服务器",
-  "name": "ubuntu 搭建 svn 服务器",
-  "description": "安装 subversion sudo apt-get remove --purge subversion sudo apt-get update sudo apt-get install subversion 创建 SVN 用户 sudo adduser svn sudo adduser svn sudo sudo su svn 创建仓库目录 sudo mkdir /svn sudo mkdir /svn/repos sudo mkdir /svn/repos/public sudo chmod 777 -R /svn/repos/public sudo chown svn:svn -R /svn 创建版本库 sudo svnadmin create /svn/repos/public $ ls -lah /svn/repos/public total 32K drwxrwxrwx 6 svn svn 4.0K 6月 19 14:15 . drwxr-xr-x 3 svn svn 4.0K 6月 19 14:15 .. drwxr-xr-x 2 root root 4.0K 6月 19 14:15 conf drwxr-sr-x 6 root root 4.0K 6月 19 14:15 db -r--r--r-- 1 root root 2 6月 19 14:15 format drwxr-xr-x 2 root root 4.0K 6月 19 14:15 hooks drwxr-xr-x 2 root root 4.0K 6月 19 14:15 locks -rw-r--r-- 1 root root 246 6月 19 14:15 README.txt cd /svn/repos/public sudo chmod -R 777 db cd conf sudo cp svnserve.conf svnserve.conf.bak sudo vim svnserve.conf 取消注释：\n",
-  "keywords": [
-    "svn"
-  ],
-  "articleBody": "安装 subversion sudo apt-get remove --purge subversion sudo apt-get update sudo apt-get install subversion 创建 SVN 用户 sudo adduser svn sudo adduser svn sudo sudo su svn 创建仓库目录 sudo mkdir /svn sudo mkdir /svn/repos sudo mkdir /svn/repos/public sudo chmod 777 -R /svn/repos/public sudo chown svn:svn -R /svn 创建版本库 sudo svnadmin create /svn/repos/public $ ls -lah /svn/repos/public total 32K drwxrwxrwx 6 svn svn 4.0K 6月 19 14:15 . drwxr-xr-x 3 svn svn 4.0K 6月 19 14:15 .. drwxr-xr-x 2 root root 4.0K 6月 19 14:15 conf drwxr-sr-x 6 root root 4.0K 6月 19 14:15 db -r--r--r-- 1 root root 2 6月 19 14:15 format drwxr-xr-x 2 root root 4.0K 6月 19 14:15 hooks drwxr-xr-x 2 root root 4.0K 6月 19 14:15 locks -rw-r--r-- 1 root root 246 6月 19 14:15 README.txt cd /svn/repos/public sudo chmod -R 777 db cd conf sudo cp svnserve.conf svnserve.conf.bak sudo vim svnserve.conf 取消注释：\n$ sudo diff -u svnserve.conf svnserve.conf.bak --- svnserve.conf 2023-06-19 13:27:33.473464875 +0800 +++ svnserve.conf.bak 2023-06-19 13:26:30.071350251 +0800 @@ -16,15 +16,15 @@ ### The sample settings below are the defaults and specify that anonymous ### users have read-only access to the repository, while authenticated ### users have read and write access to the repository. -anon-access = read -auth-access = write +# anon-access = read +# auth-access = write ### The password-db option controls the location of the password ### database file. Unless you specify a path starting with a /, ### the file's location is relative to the directory containing ### this configuration file. ### If SASL is enabled (see below), this file will NOT be used. ### Uncomment the line below to use the default password file. -password-db = passwd +# password-db = passwd ### The authz-db option controls the location of the authorization ### rules for path-based access control. Unless you specify a path ### starting with a /, the file's location is relative to the @@ -33,7 +33,7 @@ ### file in a Subversion repository. If you don't specify an authz-db, ### no path-based access control is done. ### Uncomment the line below to use the default authorization file. -authz-db = authz +# authz-db = authz ### The groups-db option controls the location of the file with the ### group definitions and allows maintaining groups separately from the ### authorization rules. The groups-db file is of the same format as the 说明：（去掉前面的#，并且顶格）\nanon-access = none 匿名用户不可读 auth-access = write 权限用户可写 password-db = passwd 密码文件为 passwd authz-db = authz 权限文件为 authz 修改 passwd sudo cp passwd passwd.bak sudo vim passwd $ cat /svn/repos/public/conf/passwd ### This file is an example password file for svnserve. ### Its format is similar to that of svnserve.conf. As shown in the ### example below it contains one section labelled [users]. ### The name and password for each user follow, one account per line. [users] hanmeimei = iampassword lilei = helloworld 新增用户格式：名字 = 密码\n修改 authz sudo cp authz authz.bak sudo vim authz $ cat /svn/repos/public/conf/authz ### This file is an example authorization file for svnserve. ### Its format is identical to that of mod_authz_svn authorization ### files. ### As shown below each section defines authorizations for the path and ### (optional) repository specified by the section name. ### The authorizations follow. An authorization line can refer to: ### - a single user, ### - a group of users defined in a special [groups] section, ### - an alias defined in a special [aliases] section, ### - all authenticated users, using the '$authenticated' token, ### - only anonymous users, using the '$anonymous' token, ### - anyone, using the '*' wildcard. ### ### A match can be inverted by prefixing the rule with '~'. Rules can ### grant read ('r') access, read-write ('rw') access, or no access ### (''). [aliases] # joe = /C=XZ/ST=Dessert/L=Snake City/O=Snake Oil, Ltd./OU=Research Institute/CN=Joe Average [groups] students = hanmeimei,lilei # harry_and_sally = harry,sally # harry_sally_and_joe = harry,sally,\u0026joe # [/foo/bar] # harry = rw # \u0026joe = r # * = # [repository:/baz/fuz] # @harry_and_sally = rw # * = r [public:/] @students = rw * = 启动服务 sudo su svn sudo svnserve -d -r /svn --listen-port 81 下载安装 windows 小乌龟 https://tortoisesvn.net/downloads.zh.html\n访问 svn 服务器 svn://10.0.0.:81/public ",
-  "wordCount" : "689",
-  "inLanguage": "en",
-  "image": "https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png","datePublished": "2023-06-26T03:00:00+08:00",
-  "dateModified": "2023-06-26T03:00:00+08:00",
-  "author":{
-    "@type": "Person",
-    "name": "Theme PaperMod"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://adityatelange.github.io/hugo-PaperMod/posts/svn/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "PaperMod",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://adityatelange.github.io/hugo-PaperMod/favicon.ico"
-    }
-  }
-}
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
 </head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="https://luyoungcn.github.io/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
 
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://adityatelange.github.io/hugo-PaperMod/" accesskey="h" title="PaperMod (Alt + H)">PaperMod</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="https://adityatelange.github.io/hugo-PaperMod/fr/" title="French"
-                            aria-label=":fr:">🇫🇷</a>
-                    </li>
-                    <li>
-                        <a href="https://adityatelange.github.io/hugo-PaperMod/fa/" title="Fa"
-                            aria-label="Fa">Fa</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="https://adityatelange.github.io/hugo-PaperMod/archives" title="Archive">
-                    <span>Archive</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://adityatelange.github.io/hugo-PaperMod/search/" title="Search (Alt &#43; /)" accesskey=/>
-                    <span>Search</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://adityatelange.github.io/hugo-PaperMod/tags/" title="Tags">
-                    <span>Tags</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://github.com/adityatelange/hugo-PaperMod/wiki/" title="WiKi">
-                    <span>WiKi</span>&nbsp;
-                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
-                        <path d="M15 3h6v6"></path>
-                        <path d="M10 14L21 3"></path>
-                    </svg>
-                </a>
-            </li>
-        </ul>
-    </nav>
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
 </header>
-<main class="main">
-
-<article class="post-single">
-  <header class="post-header">
-    <div class="breadcrumbs"><a href="https://adityatelange.github.io/hugo-PaperMod/">Home</a>&nbsp;»&nbsp;<a href="https://adityatelange.github.io/hugo-PaperMod/posts/">Posts</a></div>
-    <h1 class="post-title entry-hint-parent">
-      ubuntu 搭建 svn 服务器
-    </h1>
-    <div class="post-meta"><span title='2023-06-26 03:00:00 +0800 CST'>June 26, 2023</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Theme PaperMod&nbsp;|&nbsp;<a href="https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content/posts/svn.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
-
-</div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
-
-        <div class="inner"><ul>
-                <li>
-                    <a href="#%e5%ae%89%e8%a3%85-subversion" aria-label="安装 subversion">安装 subversion</a></li>
-                <li>
-                    <a href="#%e5%88%9b%e5%bb%ba-svn-%e7%94%a8%e6%88%b7" aria-label="创建 SVN 用户">创建 SVN 用户</a></li>
-                <li>
-                    <a href="#%e5%88%9b%e5%bb%ba%e4%bb%93%e5%ba%93%e7%9b%ae%e5%bd%95" aria-label="创建仓库目录">创建仓库目录</a></li>
-                <li>
-                    <a href="#%e5%88%9b%e5%bb%ba%e7%89%88%e6%9c%ac%e5%ba%93" aria-label="创建版本库">创建版本库</a></li>
-                <li>
-                    <a href="#%e4%bf%ae%e6%94%b9-passwd" aria-label="修改 passwd">修改 passwd</a></li>
-                <li>
-                    <a href="#%e4%bf%ae%e6%94%b9-authz" aria-label="修改 authz">修改 authz</a></li>
-                <li>
-                    <a href="#%e5%90%af%e5%8a%a8%e6%9c%8d%e5%8a%a1" aria-label="启动服务">启动服务</a></li>
-                <li>
-                    <a href="#%e4%b8%8b%e8%bd%bd%e5%ae%89%e8%a3%85-windows-%e5%b0%8f%e4%b9%8c%e9%be%9f" aria-label="下载安装 windows 小乌龟">下载安装 windows 小乌龟</a></li>
-                <li>
-                    <a href="#%e8%ae%bf%e9%97%ae-svn-%e6%9c%8d%e5%8a%a1%e5%99%a8" aria-label="访问 svn 服务器">访问 svn 服务器</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
-
-  <div class="post-content"><h2 id="安装-subversion">安装 subversion<a hidden class="anchor" aria-hidden="true" href="#安装-subversion">#</a></h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get remove --purge subversion
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">sudo apt-get update
-</span></span><span class="line"><span class="cl">sudo apt-get install subversion
-</span></span></code></pre></div><h2 id="创建-svn-用户">创建 SVN 用户<a hidden class="anchor" aria-hidden="true" href="#创建-svn-用户">#</a></h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo adduser svn
-</span></span><span class="line"><span class="cl">sudo adduser svn sudo
-</span></span><span class="line"><span class="cl">sudo su svn
-</span></span></code></pre></div><h2 id="创建仓库目录">创建仓库目录<a hidden class="anchor" aria-hidden="true" href="#创建仓库目录">#</a></h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mkdir /svn
-</span></span><span class="line"><span class="cl">sudo mkdir /svn/repos
-</span></span><span class="line"><span class="cl">sudo mkdir /svn/repos/public
-</span></span><span class="line"><span class="cl">sudo chmod <span class="m">777</span> -R /svn/repos/public
-</span></span><span class="line"><span class="cl">sudo chown svn:svn -R /svn
-</span></span></code></pre></div><h2 id="创建版本库">创建版本库<a hidden class="anchor" aria-hidden="true" href="#创建版本库">#</a></h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo svnadmin create /svn/repos/public
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">$ ls -lah /svn/repos/public
-</span></span><span class="line"><span class="cl">total 32K
-</span></span><span class="line"><span class="cl">drwxrwxrwx <span class="m">6</span> svn  svn  4.0K 6月  <span class="m">19</span> 14:15 .
-</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">3</span> svn  svn  4.0K 6月  <span class="m">19</span> 14:15 ..
-</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">2</span> root root 4.0K 6月  <span class="m">19</span> 14:15 conf
-</span></span><span class="line"><span class="cl">drwxr-sr-x <span class="m">6</span> root root 4.0K 6月  <span class="m">19</span> 14:15 db
-</span></span><span class="line"><span class="cl">-r--r--r-- <span class="m">1</span> root root    <span class="m">2</span> 6月  <span class="m">19</span> 14:15 format
-</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">2</span> root root 4.0K 6月  <span class="m">19</span> 14:15 hooks
-</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">2</span> root root 4.0K 6月  <span class="m">19</span> 14:15 locks
-</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> root root  <span class="m">246</span> 6月  <span class="m">19</span> 14:15 README.txt
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /svn/repos/public
-</span></span><span class="line"><span class="cl">sudo chmod -R <span class="m">777</span> db
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> conf
-</span></span><span class="line"><span class="cl">sudo cp svnserve.conf svnserve.conf.bak
-</span></span><span class="line"><span class="cl">sudo vim svnserve.conf
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="https://luyoungcn.github.io/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="https://luyoungcn.github.io/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>ubuntu 搭建 svn 服务器</h1><time class="dim" datetime="2023-06-26T03:00:00&#43;08:00">June 26, 2023</time><div class="term-container"><div class="tag">
+        <a href="https://luyoungcn.github.io/tags/svn/">#svn</a>
+      </div></ol></div>
+  <section class="page-section"><h2 id="安装-subversion">安装 subversion</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get remove --purge subversion
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo apt-get update
+</span></span><span style="display:flex;"><span>sudo apt-get install subversion
+</span></span></code></pre></div><h2 id="创建-svn-用户">创建 SVN 用户</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo adduser svn
+</span></span><span style="display:flex;"><span>sudo adduser svn sudo
+</span></span><span style="display:flex;"><span>sudo su svn
+</span></span></code></pre></div><h2 id="创建仓库目录">创建仓库目录</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mkdir /svn
+</span></span><span style="display:flex;"><span>sudo mkdir /svn/repos
+</span></span><span style="display:flex;"><span>sudo mkdir /svn/repos/public
+</span></span><span style="display:flex;"><span>sudo chmod <span style="color:#ae81ff">777</span> -R /svn/repos/public
+</span></span><span style="display:flex;"><span>sudo chown svn:svn -R /svn
+</span></span></code></pre></div><h2 id="创建版本库">创建版本库</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo svnadmin create /svn/repos/public
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ ls -lah /svn/repos/public
+</span></span><span style="display:flex;"><span>total 32K
+</span></span><span style="display:flex;"><span>drwxrwxrwx <span style="color:#ae81ff">6</span> svn  svn  4.0K 6月  <span style="color:#ae81ff">19</span> 14:15 .
+</span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">3</span> svn  svn  4.0K 6月  <span style="color:#ae81ff">19</span> 14:15 ..
+</span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">2</span> root root 4.0K 6月  <span style="color:#ae81ff">19</span> 14:15 conf
+</span></span><span style="display:flex;"><span>drwxr-sr-x <span style="color:#ae81ff">6</span> root root 4.0K 6月  <span style="color:#ae81ff">19</span> 14:15 db
+</span></span><span style="display:flex;"><span>-r--r--r-- <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">2</span> 6月  <span style="color:#ae81ff">19</span> 14:15 format
+</span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">2</span> root root 4.0K 6月  <span style="color:#ae81ff">19</span> 14:15 hooks
+</span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">2</span> root root 4.0K 6月  <span style="color:#ae81ff">19</span> 14:15 locks
+</span></span><span style="display:flex;"><span>-rw-r--r-- <span style="color:#ae81ff">1</span> root root  <span style="color:#ae81ff">246</span> 6月  <span style="color:#ae81ff">19</span> 14:15 README.txt
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /svn/repos/public
+</span></span><span style="display:flex;"><span>sudo chmod -R <span style="color:#ae81ff">777</span> db
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd conf
+</span></span><span style="display:flex;"><span>sudo cp svnserve.conf svnserve.conf.bak
+</span></span><span style="display:flex;"><span>sudo vim svnserve.conf
 </span></span></code></pre></div><p>取消注释：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl">$ sudo diff -u svnserve.conf svnserve.conf.bak 
-</span></span><span class="line"><span class="cl"><span class="gd">--- svnserve.conf       2023-06-19 13:27:33.473464875 +0800
-</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+++ svnserve.conf.bak   2023-06-19 13:26:30.071350251 +0800
-</span></span></span><span class="line"><span class="cl"><span class="gi"></span><span class="gu">@@ -16,15 +16,15 @@
-</span></span></span><span class="line"><span class="cl"><span class="gu"></span> ### The sample settings below are the defaults and specify that anonymous
-</span></span><span class="line"><span class="cl"> ### users have read-only access to the repository, while authenticated
-</span></span><span class="line"><span class="cl"> ### users have read and write access to the repository.
-</span></span><span class="line"><span class="cl"><span class="gd">-anon-access = read
-</span></span></span><span class="line"><span class="cl"><span class="gd">-auth-access = write
-</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+# anon-access = read
-</span></span></span><span class="line"><span class="cl"><span class="gi">+# auth-access = write
-</span></span></span><span class="line"><span class="cl"><span class="gi"></span> ### The password-db option controls the location of the password
-</span></span><span class="line"><span class="cl"> ### database file.  Unless you specify a path starting with a /,
-</span></span><span class="line"><span class="cl"> ### the file&#39;s location is relative to the directory containing
-</span></span><span class="line"><span class="cl"> ### this configuration file.
-</span></span><span class="line"><span class="cl"> ### If SASL is enabled (see below), this file will NOT be used.
-</span></span><span class="line"><span class="cl"> ### Uncomment the line below to use the default password file.
-</span></span><span class="line"><span class="cl"><span class="gd">-password-db = passwd
-</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+# password-db = passwd
-</span></span></span><span class="line"><span class="cl"><span class="gi"></span> ### The authz-db option controls the location of the authorization
-</span></span><span class="line"><span class="cl"> ### rules for path-based access control.  Unless you specify a path
-</span></span><span class="line"><span class="cl"> ### starting with a /, the file&#39;s location is relative to the
-</span></span><span class="line"><span class="cl"><span class="gu">@@ -33,7 +33,7 @@
-</span></span></span><span class="line"><span class="cl"><span class="gu"></span> ### file in a Subversion repository.  If you don&#39;t specify an authz-db,
-</span></span><span class="line"><span class="cl"> ### no path-based access control is done.
-</span></span><span class="line"><span class="cl"> ### Uncomment the line below to use the default authorization file.
-</span></span><span class="line"><span class="cl"><span class="gd">-authz-db = authz
-</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+# authz-db = authz
-</span></span></span><span class="line"><span class="cl"><span class="gi"></span> ### The groups-db option controls the location of the file with the
-</span></span><span class="line"><span class="cl"> ### group definitions and allows maintaining groups separately from the
-</span></span><span class="line"><span class="cl"> ### authorization rules.  The groups-db file is of the same format as the
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>$ sudo diff -u svnserve.conf svnserve.conf.bak 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--- svnserve.conf       2023-06-19 13:27:33.473464875 +0800
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ svnserve.conf.bak   2023-06-19 13:26:30.071350251 +0800
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -16,15 +16,15 @@
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> ### The sample settings below are the defaults and specify that anonymous
+</span></span><span style="display:flex;"><span> ### users have read-only access to the repository, while authenticated
+</span></span><span style="display:flex;"><span> ### users have read and write access to the repository.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-anon-access = read
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672">-auth-access = write
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+# anon-access = read
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+# auth-access = write
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span> ### The password-db option controls the location of the password
+</span></span><span style="display:flex;"><span> ### database file.  Unless you specify a path starting with a /,
+</span></span><span style="display:flex;"><span> ### the file&#39;s location is relative to the directory containing
+</span></span><span style="display:flex;"><span> ### this configuration file.
+</span></span><span style="display:flex;"><span> ### If SASL is enabled (see below), this file will NOT be used.
+</span></span><span style="display:flex;"><span> ### Uncomment the line below to use the default password file.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-password-db = passwd
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+# password-db = passwd
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span> ### The authz-db option controls the location of the authorization
+</span></span><span style="display:flex;"><span> ### rules for path-based access control.  Unless you specify a path
+</span></span><span style="display:flex;"><span> ### starting with a /, the file&#39;s location is relative to the
+</span></span><span style="display:flex;"><span><span style="color:#75715e">@@ -33,7 +33,7 @@
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> ### file in a Subversion repository.  If you don&#39;t specify an authz-db,
+</span></span><span style="display:flex;"><span> ### no path-based access control is done.
+</span></span><span style="display:flex;"><span> ### Uncomment the line below to use the default authorization file.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-authz-db = authz
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+# authz-db = authz
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span> ### The groups-db option controls the location of the file with the
+</span></span><span style="display:flex;"><span> ### group definitions and allows maintaining groups separately from the
+</span></span><span style="display:flex;"><span> ### authorization rules.  The groups-db file is of the same format as the
 </span></span></code></pre></div><p>说明：（去掉前面的#，并且顶格）</p>
 <ul>
 <li><code>anon-access = none</code> 匿名用户不可读</li>
@@ -386,277 +163,95 @@ sudo vim svnserve.conf
 <li><code>password-db = passwd</code> 密码文件为 <code>passwd</code></li>
 <li><code>authz-db = authz</code> 权限文件为 <code>authz</code></li>
 </ul>
-<h2 id="修改-passwd">修改 passwd<a hidden class="anchor" aria-hidden="true" href="#修改-passwd">#</a></h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo cp passwd passwd.bak
-</span></span><span class="line"><span class="cl">sudo vim passwd
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ cat /svn/repos/public/conf/passwd 
-</span></span><span class="line"><span class="cl"><span class="c1">### This file is an example password file for svnserve.</span>
-</span></span><span class="line"><span class="cl"><span class="c1">### Its format is similar to that of svnserve.conf. As shown in the</span>
-</span></span><span class="line"><span class="cl"><span class="c1">### example below it contains one section labelled [users].</span>
-</span></span><span class="line"><span class="cl"><span class="c1">### The name and password for each user follow, one account per line.</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">[</span>users<span class="o">]</span>
-</span></span><span class="line"><span class="cl"><span class="nv">hanmeimei</span> <span class="o">=</span> iampassword
-</span></span><span class="line"><span class="cl"><span class="nv">lilei</span> <span class="o">=</span> helloworld
+<h2 id="修改-passwd">修改 passwd</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo cp passwd passwd.bak
+</span></span><span style="display:flex;"><span>sudo vim passwd
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat /svn/repos/public/conf/passwd 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### This file is an example password file for svnserve.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Its format is similar to that of svnserve.conf. As shown in the</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### example below it contains one section labelled [users].</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### The name and password for each user follow, one account per line.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>users<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>hanmeimei <span style="color:#f92672">=</span> iampassword
+</span></span><span style="display:flex;"><span>lilei <span style="color:#f92672">=</span> helloworld
 </span></span></code></pre></div><p>新增用户格式：名字 = 密码</p>
-<h2 id="修改-authz">修改 authz<a hidden class="anchor" aria-hidden="true" href="#修改-authz">#</a></h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo cp authz authz.bak
-</span></span><span class="line"><span class="cl">sudo vim authz
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ cat /svn/repos/public/conf/authz 
-</span></span><span class="line"><span class="cl"><span class="c1">### This file is an example authorization file for svnserve.</span>
-</span></span><span class="line"><span class="cl"><span class="c1">### Its format is identical to that of mod_authz_svn authorization</span>
-</span></span><span class="line"><span class="cl"><span class="c1">### files.</span>
-</span></span><span class="line"><span class="cl"><span class="c1">### As shown below each section defines authorizations for the path and</span>
-</span></span><span class="line"><span class="cl"><span class="c1">### (optional) repository specified by the section name.</span>
-</span></span><span class="line"><span class="cl"><span class="c1">### The authorizations follow. An authorization line can refer to:</span>
-</span></span><span class="line"><span class="cl"><span class="c1">###  - a single user,</span>
-</span></span><span class="line"><span class="cl"><span class="c1">###  - a group of users defined in a special [groups] section,</span>
-</span></span><span class="line"><span class="cl"><span class="c1">###  - an alias defined in a special [aliases] section,</span>
-</span></span><span class="line"><span class="cl"><span class="c1">###  - all authenticated users, using the &#39;$authenticated&#39; token,</span>
-</span></span><span class="line"><span class="cl"><span class="c1">###  - only anonymous users, using the &#39;$anonymous&#39; token,</span>
-</span></span><span class="line"><span class="cl"><span class="c1">###  - anyone, using the &#39;*&#39; wildcard.</span>
-</span></span><span class="line"><span class="cl"><span class="c1">###</span>
-</span></span><span class="line"><span class="cl"><span class="c1">### A match can be inverted by prefixing the rule with &#39;~&#39;. Rules can</span>
-</span></span><span class="line"><span class="cl"><span class="c1">### grant read (&#39;r&#39;) access, read-write (&#39;rw&#39;) access, or no access</span>
-</span></span><span class="line"><span class="cl"><span class="c1">### (&#39;&#39;).</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">[</span>aliases<span class="o">]</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># joe = /C=XZ/ST=Dessert/L=Snake City/O=Snake Oil, Ltd./OU=Research Institute/CN=Joe Average</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">[</span>groups<span class="o">]</span>
-</span></span><span class="line"><span class="cl"><span class="nv">students</span> <span class="o">=</span> hanmeimei,lilei
-</span></span><span class="line"><span class="cl"><span class="c1"># harry_and_sally = harry,sally</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># harry_sally_and_joe = harry,sally,&amp;joe</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># [/foo/bar]</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># harry = rw</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># &amp;joe = r</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># * =</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># [repository:/baz/fuz]</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># @harry_and_sally = rw</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># * = r</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>public:/<span class="o">]</span>
-</span></span><span class="line"><span class="cl">@students <span class="o">=</span> rw
-</span></span><span class="line"><span class="cl">* <span class="o">=</span>
-</span></span></code></pre></div><h2 id="启动服务">启动服务<a hidden class="anchor" aria-hidden="true" href="#启动服务">#</a></h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo su svn
-</span></span><span class="line"><span class="cl">sudo svnserve -d -r /svn --listen-port <span class="m">81</span>
-</span></span></code></pre></div><h2 id="下载安装-windows-小乌龟">下载安装 windows 小乌龟<a hidden class="anchor" aria-hidden="true" href="#下载安装-windows-小乌龟">#</a></h2>
+<h2 id="修改-authz">修改 authz</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo cp authz authz.bak
+</span></span><span style="display:flex;"><span>sudo vim authz
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat /svn/repos/public/conf/authz 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### This file is an example authorization file for svnserve.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Its format is identical to that of mod_authz_svn authorization</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### files.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### As shown below each section defines authorizations for the path and</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### (optional) repository specified by the section name.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### The authorizations follow. An authorization line can refer to:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">###  - a single user,</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">###  - a group of users defined in a special [groups] section,</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">###  - an alias defined in a special [aliases] section,</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">###  - all authenticated users, using the &#39;$authenticated&#39; token,</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">###  - only anonymous users, using the &#39;$anonymous&#39; token,</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">###  - anyone, using the &#39;*&#39; wildcard.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">###</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### A match can be inverted by prefixing the rule with &#39;~&#39;. Rules can</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### grant read (&#39;r&#39;) access, read-write (&#39;rw&#39;) access, or no access</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### (&#39;&#39;).</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>aliases<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># joe = /C=XZ/ST=Dessert/L=Snake City/O=Snake Oil, Ltd./OU=Research Institute/CN=Joe Average</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>groups<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>students <span style="color:#f92672">=</span> hanmeimei,lilei
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># harry_and_sally = harry,sally</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># harry_sally_and_joe = harry,sally,&amp;joe</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># [/foo/bar]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># harry = rw</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># &amp;joe = r</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># * =</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># [repository:/baz/fuz]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># @harry_and_sally = rw</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># * = r</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>public:/<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>@students <span style="color:#f92672">=</span> rw
+</span></span><span style="display:flex;"><span>* <span style="color:#f92672">=</span>
+</span></span></code></pre></div><h2 id="启动服务">启动服务</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo su svn
+</span></span><span style="display:flex;"><span>sudo svnserve -d -r /svn --listen-port <span style="color:#ae81ff">81</span>
+</span></span></code></pre></div><h2 id="下载安装-windows-小乌龟">下载安装 windows 小乌龟</h2>
 <p><a href="https://tortoisesvn.net/downloads.zh.html">https://tortoisesvn.net/downloads.zh.html</a></p>
-<h2 id="访问-svn-服务器">访问 svn 服务器<a hidden class="anchor" aria-hidden="true" href="#访问-svn-服务器">#</a></h2>
+<h2 id="访问-svn-服务器">访问 svn 服务器</h2>
 <ul>
 <li><code>svn://10.0.0.:81/public</code></li>
 </ul>
-
-
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 </div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
   </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="https://adityatelange.github.io/hugo-PaperMod/tags/svn/">Svn</a></li>
-    </ul>
-<nav class="paginav">
-  <a class="prev" href="https://adityatelange.github.io/hugo-PaperMod/posts/ubuntu_2004_%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/">
-    <span class="title">« Prev</span>
-    <br>
-    <span>ubuntu 20.04 升级内核</span>
-  </a>
-  <a class="next" href="https://adityatelange.github.io/hugo-PaperMod/posts/windows-terminal-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-oh-my-posh/">
-    <span class="title">Next »</span>
-    <br>
-    <span>Windows terminal 安装配置 oh-my-posh</span>
-  </a>
-</nav>
-
-
-<ul class="share-buttons">
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share ubuntu 搭建 svn 服务器 on x"
-            href="https://x.com/intent/tweet/?text=ubuntu%20%e6%90%ad%e5%bb%ba%20svn%20%e6%9c%8d%e5%8a%a1%e5%99%a8&amp;url=https%3a%2f%2fadityatelange.github.io%2fhugo-PaperMod%2fposts%2fsvn%2f&amp;hashtags=svn">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share ubuntu 搭建 svn 服务器 on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fadityatelange.github.io%2fhugo-PaperMod%2fposts%2fsvn%2f&amp;title=ubuntu%20%e6%90%ad%e5%bb%ba%20svn%20%e6%9c%8d%e5%8a%a1%e5%99%a8&amp;summary=ubuntu%20%e6%90%ad%e5%bb%ba%20svn%20%e6%9c%8d%e5%8a%a1%e5%99%a8&amp;source=https%3a%2f%2fadityatelange.github.io%2fhugo-PaperMod%2fposts%2fsvn%2f">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share ubuntu 搭建 svn 服务器 on reddit"
-            href="https://reddit.com/submit?url=https%3a%2f%2fadityatelange.github.io%2fhugo-PaperMod%2fposts%2fsvn%2f&title=ubuntu%20%e6%90%ad%e5%bb%ba%20svn%20%e6%9c%8d%e5%8a%a1%e5%99%a8">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share ubuntu 搭建 svn 服务器 on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fadityatelange.github.io%2fhugo-PaperMod%2fposts%2fsvn%2f">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share ubuntu 搭建 svn 服务器 on whatsapp"
-            href="https://api.whatsapp.com/send?text=ubuntu%20%e6%90%ad%e5%bb%ba%20svn%20%e6%9c%8d%e5%8a%a1%e5%99%a8%20-%20https%3a%2f%2fadityatelange.github.io%2fhugo-PaperMod%2fposts%2fsvn%2f">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share ubuntu 搭建 svn 服务器 on telegram"
-            href="https://telegram.me/share/url?text=ubuntu%20%e6%90%ad%e5%bb%ba%20svn%20%e6%9c%8d%e5%8a%a1%e5%99%a8&amp;url=https%3a%2f%2fadityatelange.github.io%2fhugo-PaperMod%2fposts%2fsvn%2f">
-            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share ubuntu 搭建 svn 服务器 on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=ubuntu%20%e6%90%ad%e5%bb%ba%20svn%20%e6%9c%8d%e5%8a%a1%e5%99%a8&u=https%3a%2f%2fadityatelange.github.io%2fhugo-PaperMod%2fposts%2fsvn%2f">
-            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
-                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
-                <path
-                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
-            </svg>
-        </a>
-    </li>
-</ul>
-
-  </footer>
-</article>
-    </main>
-    
-<footer class="footer">
-        <span>© <a href="https://github.com/adityatelange/hugo-PaperMod/graphs/contributors">PaperMod Contributors</a></span> · 
-
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
+</div>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
-
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerHTML = 'copy';
-
-        function copyingDone() {
-            copybutton.innerHTML = 'copied!';
-            setTimeout(() => {
-                copybutton.innerHTML = 'copy';
-            }, 2000);
-        }
-
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
-
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
-
-        if (container.classList.contains("highlight")) {
-            container.appendChild(copybutton);
-        } else if (container.parentNode.firstChild == container) {
-            
-        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-            
-            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-        } else {
-            
-            codeblock.parentNode.appendChild(copybutton);
-        }
-    });
-</script>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>689 words</span>
+    <span>4 - 5 minutes read</span><div class="side-details-taxonomy">
+        <small>categories: 
+          <span class="details-taxonomy"><a href="https://luyoungcn.github.io/categories/%E5%B7%A5%E5%85%B7">工具</a></span></small>
+      </div></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#安装-subversion">安装 subversion</a></li>
+    <li><a href="#创建-svn-用户">创建 SVN 用户</a></li>
+    <li><a href="#创建仓库目录">创建仓库目录</a></li>
+    <li><a href="#创建版本库">创建版本库</a></li>
+    <li><a href="#修改-passwd">修改 passwd</a></li>
+    <li><a href="#修改-authz">修改 authz</a></li>
+    <li><a href="#启动服务">启动服务</a></li>
+    <li><a href="#下载安装-windows-小乌龟">下载安装 windows 小乌龟</a></li>
+    <li><a href="#访问-svn-服务器">访问 svn 服务器</a></li>
+  </ul>
+</nav></aside></div>
+  </div>
 </body>
-
 </html>

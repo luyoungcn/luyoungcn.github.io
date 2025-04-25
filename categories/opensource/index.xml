@@ -1,81 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>OpenSource on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/categories/opensource/</link>
-    <description>Recent content in OpenSource on PaperMod</description>
-    <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.146.6</generator>
-    <language>en</language>
-    <copyright>PaperMod Contributors</copyright>
+    <title>OpenSource on LuyangのBlog</title>
+    <link>https://luyoungcn.github.io/categories/opensource/</link>
+    <description>Recent content in OpenSource on LuyangのBlog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
     <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
-    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/categories/opensource/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://luyoungcn.github.io/categories/opensource/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Harmony HPM 包管理器</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/harmony-hpm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</link>
+      <link>https://luyoungcn.github.io/posts/harmony-hpm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/harmony-hpm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</guid>
-      <description>&lt;h1 id=&#34;hpm&#34;&gt;HPM&lt;/h1&gt;
-&lt;p&gt;OpenHarmony HPM 指的是 “Harmony Package Manager”&lt;/p&gt;
-&lt;h1 id=&#34;hpm-part&#34;&gt;HPM Part&lt;/h1&gt;
-&lt;p&gt;Module level HPM Part：用于实现模块或 Part 的复用。分发的内容可以是源码或二进制文件。通常，这样的 HPM Part 对应着一个代码仓库，是代码仓库的一个版本。&lt;/p&gt;
-&lt;p&gt;Distribution-level HPM Part：用于描述操作系统发行版。它由一系列依赖部件和用于构建发行版的脚本组成。该发行版包含完整操作系统的各种组件（如驱动程序、内核、框架和应用程序）。构建后生成的镜像可用于烧录。&lt;/p&gt;
-&lt;p&gt;HPM Part 由两种类型的文件组成：描述文件和内容文件。&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://gitee.com/openharmony/docs/raw/master/en/device-dev/hpm-part/figures/en-us_image_0000001195369804.png&#34;&gt;
-图 1 部件/模块级 HPM 部件与分布级 HPM 部件之间的关系&lt;/p&gt;
-&lt;p&gt;OpenHarmony Package Manager （HPM） 是一个连接 consumers 和 providers 的开放式协作平台。HPM 部件是由 HPM 管理的对象。&lt;/p&gt;
-&lt;p&gt;通过 HPM 平台，提供商可以发布 HPM Parts，消费者可以下载和使用 HPM Parts。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Providers 声明 HPM 部件的属性并将其发布到平台。&lt;/li&gt;
-&lt;li&gt;Consumer 在指定版本的 HPM Part 中声明依赖，获取所需的资源。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://gitee.com/openharmony/docs/raw/master/en/device-dev/hpm-part/figures/en-us_image_0000001240409717.png&#34;&gt;&lt;/p&gt;
-&lt;h1 id=&#34;hpm-包括以下内容&#34;&gt;HPM 包括以下内容&lt;/h1&gt;
-&lt;h2 id=&#34;hpm-cliohoshpm-cli-发布的跨平台命令行工具&#34;&gt;hpm-cli：@ohos/hpm-cli 发布的跨平台命令行工具&lt;/h2&gt;
-&lt;p&gt;hpm-cli 工具提供了一系列用于创建、构建、安装、打包、运行和发布 HPM 部件的命令。您可以使用这些命令来管理 HPM 部件的生命周期。&lt;/p&gt;</description>
+      <guid>https://luyoungcn.github.io/posts/harmony-hpm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</guid>
+      <description>&lt;h1 id=&#34;hpm&#34;&gt;HPM&lt;/h1&gt;&#xA;&lt;p&gt;OpenHarmony HPM 指的是 “Harmony Package Manager”&lt;/p&gt;&#xA;&lt;h1 id=&#34;hpm-part&#34;&gt;HPM Part&lt;/h1&gt;&#xA;&lt;p&gt;Module level HPM Part：用于实现模块或 Part 的复用。分发的内容可以是源码或二进制文件。通常，这样的 HPM Part 对应着一个代码仓库，是代码仓库的一个版本。&lt;/p&gt;&#xA;&lt;p&gt;Distribution-level HPM Part：用于描述操作系统发行版。它由一系列依赖部件和用于构建发行版的脚本组成。该发行版包含完整操作系统的各种组件（如驱动程序、内核、框架和应用程序）。构建后生成的镜像可用于烧录。&lt;/p&gt;&#xA;&lt;p&gt;HPM Part 由两种类型的文件组成：描述文件和内容文件。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://gitee.com/openharmony/docs/raw/master/en/device-dev/hpm-part/figures/en-us_image_0000001195369804.png&#34; alt=&#34;&#34;&gt;&#xA;图 1 部件/模块级 HPM 部件与分布级 HPM 部件之间的关系&lt;/p&gt;&#xA;&lt;p&gt;OpenHarmony Package Manager （HPM） 是一个连接 consumers 和 providers 的开放式协作平台。HPM 部件是由 HPM 管理的对象。&lt;/p&gt;&#xA;&lt;p&gt;通过 HPM 平台，提供商可以发布 HPM Parts，消费者可以下载和使用 HPM Parts。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Providers 声明 HPM 部件的属性并将其发布到平台。&lt;/li&gt;&#xA;&lt;li&gt;Consumer 在指定版本的 HPM Part 中声明依赖，获取所需的资源。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://gitee.com/openharmony/docs/raw/master/en/device-dev/hpm-part/figures/en-us_image_0000001240409717.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;hpm-包括以下内容&#34;&gt;HPM 包括以下内容&lt;/h1&gt;&#xA;&lt;h2 id=&#34;hpm-cliohoshpm-cli-发布的跨平台命令行工具&#34;&gt;hpm-cli：@ohos/hpm-cli 发布的跨平台命令行工具&lt;/h2&gt;&#xA;&lt;p&gt;hpm-cli 工具提供了一系列用于创建、构建、安装、打包、运行和发布 HPM 部件的命令。您可以使用这些命令来管理 HPM 部件的生命周期。&lt;/p&gt;</description>
     </item>
     <item>
       <title>OpenHarmony 代码下载编译</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/openharmony-%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91/</link>
+      <link>https://luyoungcn.github.io/posts/openharmony-%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/openharmony-%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91/</guid>
-      <description>&lt;h2 id=&#34;代码下载&#34;&gt;代码下载&lt;/h2&gt;
-&lt;p&gt;OpenHarmony源代码以 [[HPM]] 部分的形式提供，可以通过以下任意方式获取：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;从Gitee代码库获取源码。您可以使用repo或git工具从代码仓库下载最新的代码。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;从&lt;a href=&#34;https://gitee.com/link?target=https%3A%2F%2Frepo.harmonyos.com%2F%23%2Fen%2Fhome&#34;&gt;DevEco Marketplace&lt;/a&gt;获取源代码。访问&lt;a href=&#34;https://gitee.com/link?target=https%3A%2F%2Frepo.harmonyos.com%2F%23%2Fen%2Fhome&#34;&gt;DevEco Marketplace&lt;/a&gt; ，搜索您想要的开源发行版，并下载组件列表（或自定义组件并下载组件列表）。然后使用&lt;strong&gt;hpm-cli&lt;/strong&gt;工具在本地PC上下载并安装组件和编译工具链。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;从镜像站点下载发行版的压缩文件。该方法下载速度较快，因此您也可以使用该方法获取早期版本的源代码。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;从GitHub镜像仓库获取源码。您可以使用&lt;strong&gt;repo&lt;/strong&gt;或&lt;strong&gt;git&lt;/strong&gt;工具从代码仓库下载最新的代码。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;gitee-获取源码&#34;&gt;gitee 获取源码&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt -y install git git-lfs vim python3 python3-pip
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git config --global user.name &amp;lt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git config --global user.email &amp;lt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /usr/bin
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo ln -s pyhon3 python
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装 repo 工具&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir ~/bin
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 -o ~/bin/repo 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod a+x ~/bin/repo
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;将repo工具的路径添加到环境变量中&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vim ~/.bashrc               &lt;span class=&#34;c1&#34;&gt;# Edit environment variables.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;PATH&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;~/bin:&lt;span class=&#34;nv&#34;&gt;$PATH&lt;/span&gt;     &lt;span class=&#34;c1&#34;&gt;# Add the path of the **repo** tool to the end of environment variables.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; ~/.bashrc            &lt;span class=&#34;c1&#34;&gt;# Apply environment variables.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;如果您想开发商业功能，请下载发布代码，该代码更稳定。如果您想快速访问适合您的开发的最新功能，请下载主代码。&lt;/p&gt;</description>
+      <guid>https://luyoungcn.github.io/posts/openharmony-%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD%E7%BC%96%E8%AF%91/</guid>
+      <description>&lt;h2 id=&#34;代码下载&#34;&gt;代码下载&lt;/h2&gt;&#xA;&lt;p&gt;OpenHarmony源代码以 [[HPM]] 部分的形式提供，可以通过以下任意方式获取：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;从Gitee代码库获取源码。您可以使用repo或git工具从代码仓库下载最新的代码。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;从&lt;a href=&#34;https://gitee.com/link?target=https%3A%2F%2Frepo.harmonyos.com%2F%23%2Fen%2Fhome&#34;&gt;DevEco Marketplace&lt;/a&gt;获取源代码。访问&lt;a href=&#34;https://gitee.com/link?target=https%3A%2F%2Frepo.harmonyos.com%2F%23%2Fen%2Fhome&#34;&gt;DevEco Marketplace&lt;/a&gt; ，搜索您想要的开源发行版，并下载组件列表（或自定义组件并下载组件列表）。然后使用&lt;strong&gt;hpm-cli&lt;/strong&gt;工具在本地PC上下载并安装组件和编译工具链。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;从镜像站点下载发行版的压缩文件。该方法下载速度较快，因此您也可以使用该方法获取早期版本的源代码。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;从GitHub镜像仓库获取源码。您可以使用&lt;strong&gt;repo&lt;/strong&gt;或&lt;strong&gt;git&lt;/strong&gt;工具从代码仓库下载最新的代码。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;gitee-获取源码&#34;&gt;gitee 获取源码&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt -y install git git-lfs vim python3 python3-pip&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global user.name &amp;lt;&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global user.email &amp;lt;&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd /usr/bin&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ln -s pyhon3 python&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装 repo 工具&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir ~/bin&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 -o ~/bin/repo &#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chmod a+x ~/bin/repo&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;将repo工具的路径添加到环境变量中&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vim ~/.bashrc               &lt;span style=&#34;color:#75715e&#34;&gt;# Edit environment variables.&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;export PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;~/bin:$PATH     &lt;span style=&#34;color:#75715e&#34;&gt;# Add the path of the **repo** tool to the end of environment variables.&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;source ~/.bashrc            &lt;span style=&#34;color:#75715e&#34;&gt;# Apply environment variables.&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;&#xA;&lt;p&gt;如果您想开发商业功能，请下载发布代码，该代码更稳定。如果您想快速访问适合您的开发的最新功能，请下载主代码。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

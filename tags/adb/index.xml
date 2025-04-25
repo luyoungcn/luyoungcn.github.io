@@ -1,105 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Adb on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/adb/</link>
-    <description>Recent content in Adb on PaperMod</description>
-    <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.146.6</generator>
-    <language>en</language>
-    <copyright>PaperMod Contributors</copyright>
+    <title>Adb on LuyangのBlog</title>
+    <link>https://luyoungcn.github.io/tags/adb/</link>
+    <description>Recent content in Adb on LuyangのBlog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
     <lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0800</lastBuildDate>
-    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/adb/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://luyoungcn.github.io/tags/adb/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Windows WSL ubuntu adb 配置</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</link>
+      <link>https://luyoungcn.github.io/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</guid>
-      <description>&lt;h2 id=&#34;配置前的状态&#34;&gt;配置前的状态&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;windows 11 + wsl + ubuntu 18.04&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;windows 可以识别 adb devices&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;C:\Users&amp;gt;adb devices
-List of devices attached
-fada-018b4209f24d0001   device
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;wsl 识别不到 adb devices&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;luyang@LUYANG:~$ adb devices
-* daemon not running; starting now at tcp:5037
-* daemon started successfully
-List of devices attached
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;windows-安装工具包&#34;&gt;Windows 安装工具包&lt;/h2&gt;
-&lt;p&gt;windows 安装 &lt;a href=&#34;https://github.com/dorssel/usbipd-win/releases&#34;&gt;usbipd-win&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;wsl-安装工具包&#34;&gt;WSL 安装工具包&lt;/h2&gt;
-&lt;p&gt;WSL ubuntu 安装 adb 工具&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install android-tools-adb
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在WSL中，安装 USB/IP 的用户空间工具和 USB 硬件标识符的数据库。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install linux-tools-5.15.0-87-generic hwdata
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 注意 linux-tools 相应的要改成你实际安装的版本&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/5.15.0-87-generic/usbip &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;关于-linux-tools&#34;&gt;关于 linux-tools&lt;/h3&gt;
-&lt;p&gt;查看当前 ubuntu 系统版本支持的 linux-tools generic版本&lt;/p&gt;</description>
+      <guid>https://luyoungcn.github.io/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</guid>
+      <description>&lt;h2 id=&#34;配置前的状态&#34;&gt;配置前的状态&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;windows 11 + wsl + ubuntu 18.04&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;windows 可以识别 adb devices&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;C:\Users&amp;gt;adb devices&#xA;List of devices attached&#xA;fada-018b4209f24d0001   device&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;wsl 识别不到 adb devices&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;luyang@LUYANG:~$ adb devices&#xA;* daemon not running; starting now at tcp:5037&#xA;* daemon started successfully&#xA;List of devices attached&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;windows-安装工具包&#34;&gt;Windows 安装工具包&lt;/h2&gt;&#xA;&lt;p&gt;windows 安装 &lt;a href=&#34;https://github.com/dorssel/usbipd-win/releases&#34;&gt;usbipd-win&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;wsl-安装工具包&#34;&gt;WSL 安装工具包&lt;/h2&gt;&#xA;&lt;p&gt;WSL ubuntu 安装 adb 工具&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install android-tools-adb&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在WSL中，安装 USB/IP 的用户空间工具和 USB 硬件标识符的数据库。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install linux-tools-5.15.0-87-generic hwdata&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 注意 linux-tools 相应的要改成你实际安装的版本&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/5.15.0-87-generic/usbip &lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;关于-linux-tools&#34;&gt;关于 linux-tools&lt;/h3&gt;&#xA;&lt;p&gt;查看当前 ubuntu 系统版本支持的 linux-tools generic版本&lt;/p&gt;</description>
     </item>
     <item>
       <title>Android 使用 am 命令启动一个活动组件</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</link>
+      <link>https://luyoungcn.github.io/posts/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</guid>
-      <description>&lt;h2 id=&#34;am-命令说明&#34;&gt;am 命令说明&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;am start -n&lt;/code&gt; 命令是 Android 调试桥（ADB）工具的一部分，用于在 Android 设备上启动一个活动。以下是该命令及其组成部分的详细解释：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;am&lt;/code&gt;&lt;/strong&gt;: 代表 &lt;strong&gt;Activity Manager（活动管理器）&lt;/strong&gt;。它是一个命令行工具，可以用于在 Android 设备上执行各种与活动、服务和广播相关的操作。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;start&lt;/code&gt;&lt;/strong&gt;: 这个子命令用于启动一个活动。活动表示一个带有用户界面的单个屏幕，启动活动意味着打开一个特定的应用程序界面。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;-n&lt;/code&gt;&lt;/strong&gt;: 该选项指定你想要启动的活动的组件名称。组件名称由两部分组成：
-&lt;ul&gt;
-&lt;li&gt;应用程序的 &lt;strong&gt;包名&lt;/strong&gt;（例如 &lt;code&gt;com.android.gallery3d&lt;/code&gt;）。&lt;/li&gt;
-&lt;li&gt;你想要启动的活动的 &lt;strong&gt;完整类名&lt;/strong&gt;（例如 &lt;code&gt;.app.GalleryActivity&lt;/code&gt;）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;组件名称的格式为 &lt;code&gt;package_name/.ActivityName&lt;/code&gt;。&lt;/p&gt;
-&lt;h3 id=&#34;使用示例&#34;&gt;使用示例&lt;/h3&gt;
-&lt;p&gt;启动图库应用的主活动：&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb shell am start -n com.android.gallery3d/.app.GalleryActivity
-&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;adb shell&lt;/code&gt;&lt;/strong&gt;: 在设备上打开一个命令行界面。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;am start -n&lt;/code&gt;&lt;/strong&gt;: 启动指定的活动。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;com.android.gallery3d/.app.GalleryActivity&lt;/code&gt;&lt;/strong&gt;: 指定要启动的包名和活动。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;其他选项&#34;&gt;其他选项&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;--display &amp;lt;display_id&amp;gt;&lt;/code&gt;&lt;/strong&gt;: 如果设备有多个显示屏，可以指定使用哪个显示屏。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;-d &amp;lt;data_uri&amp;gt;&lt;/code&gt;&lt;/strong&gt;: 指定一个数据 URI（例如文件路径或网页链接），活动在启动时可以使用这个 URI。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;-a &amp;lt;action&amp;gt;&lt;/code&gt;&lt;/strong&gt;: 指定要执行的操作，例如 &lt;code&gt;android.intent.action.VIEW&lt;/code&gt;。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;实际示例&#34;&gt;实际示例&lt;/h3&gt;
-&lt;p&gt;如果你想在显示屏 3 上打开图库应用中的特定图片：&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb shell am start -n com.android.gallery3d/.app.GalleryActivity --display 3
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个命令将在显示屏 3 上打开图库应用的 &lt;code&gt;GalleryActivity&lt;/code&gt;。&lt;/p&gt;</description>
+      <guid>https://luyoungcn.github.io/posts/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/</guid>
+      <description>&lt;h2 id=&#34;am-命令说明&#34;&gt;am 命令说明&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;am start -n&lt;/code&gt; 命令是 Android 调试桥（ADB）工具的一部分，用于在 Android 设备上启动一个活动。以下是该命令及其组成部分的详细解释：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;&lt;code&gt;am&lt;/code&gt;&lt;/strong&gt;: 代表 &lt;strong&gt;Activity Manager（活动管理器）&lt;/strong&gt;。它是一个命令行工具，可以用于在 Android 设备上执行各种与活动、服务和广播相关的操作。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;&lt;code&gt;start&lt;/code&gt;&lt;/strong&gt;: 这个子命令用于启动一个活动。活动表示一个带有用户界面的单个屏幕，启动活动意味着打开一个特定的应用程序界面。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;&lt;code&gt;-n&lt;/code&gt;&lt;/strong&gt;: 该选项指定你想要启动的活动的组件名称。组件名称由两部分组成：&#xA;&lt;ul&gt;&#xA;&lt;li&gt;应用程序的 &lt;strong&gt;包名&lt;/strong&gt;（例如 &lt;code&gt;com.android.gallery3d&lt;/code&gt;）。&lt;/li&gt;&#xA;&lt;li&gt;你想要启动的活动的 &lt;strong&gt;完整类名&lt;/strong&gt;（例如 &lt;code&gt;.app.GalleryActivity&lt;/code&gt;）。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;组件名称的格式为 &lt;code&gt;package_name/.ActivityName&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;h3 id=&#34;使用示例&#34;&gt;使用示例&lt;/h3&gt;&#xA;&lt;p&gt;启动图库应用的主活动：&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb shell am start -n com.android.gallery3d/.app.GalleryActivity&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;&lt;code&gt;adb shell&lt;/code&gt;&lt;/strong&gt;: 在设备上打开一个命令行界面。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;&lt;code&gt;am start -n&lt;/code&gt;&lt;/strong&gt;: 启动指定的活动。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;&lt;code&gt;com.android.gallery3d/.app.GalleryActivity&lt;/code&gt;&lt;/strong&gt;: 指定要启动的包名和活动。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;其他选项&#34;&gt;其他选项&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;&lt;code&gt;--display &amp;lt;display_id&amp;gt;&lt;/code&gt;&lt;/strong&gt;: 如果设备有多个显示屏，可以指定使用哪个显示屏。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;&lt;code&gt;-d &amp;lt;data_uri&amp;gt;&lt;/code&gt;&lt;/strong&gt;: 指定一个数据 URI（例如文件路径或网页链接），活动在启动时可以使用这个 URI。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;&lt;code&gt;-a &amp;lt;action&amp;gt;&lt;/code&gt;&lt;/strong&gt;: 指定要执行的操作，例如 &lt;code&gt;android.intent.action.VIEW&lt;/code&gt;。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;实际示例&#34;&gt;实际示例&lt;/h3&gt;&#xA;&lt;p&gt;如果你想在显示屏 3 上打开图库应用中的特定图片：&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb shell am start -n com.android.gallery3d/.app.GalleryActivity --display 3&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个命令将在显示屏 3 上打开图库应用的 &lt;code&gt;GalleryActivity&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Wifi Adb</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/wifiadb/</link>
+      <link>https://luyoungcn.github.io/posts/wifiadb/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/wifiadb/</guid>
-      <description>&lt;h2 id=&#34;操作手顺&#34;&gt;操作手顺&lt;/h2&gt;
-&lt;p&gt;手机USB连接电脑&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;adb shell &lt;span class=&#34;s2&#34;&gt;&amp;#34;setprop persist.adb.tcp.port 5555&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;adb tcpip &lt;span class=&#34;m&#34;&gt;5555&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;手机连上wifi，确认ip地址
-此时可以断开手USB，然后通过wifiadb连接&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;adb connect 10.100.2.5
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;qa&#34;&gt;Q&amp;amp;A&lt;/h2&gt;
-&lt;h3 id=&#34;issue&#34;&gt;Issue&lt;/h3&gt;
-&lt;p&gt;执行命令 &lt;code&gt;adb connect 10.100.2.5&lt;/code&gt; 报错&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;missing port in specification: tcp:10.100.2.5
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;answer&#34;&gt;Answer&lt;/h3&gt;
-&lt;p&gt;使用命令 &lt;code&gt;adb connect 10.100.2.5:5555&lt;/code&gt; 解决&lt;/p&gt;</description>
+      <guid>https://luyoungcn.github.io/posts/wifiadb/</guid>
+      <description>&lt;h2 id=&#34;操作手顺&#34;&gt;操作手顺&lt;/h2&gt;&#xA;&lt;p&gt;手机USB连接电脑&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adb shell &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;setprop persist.adb.tcp.port 5555&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adb tcpip &lt;span style=&#34;color:#ae81ff&#34;&gt;5555&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;手机连上wifi，确认ip地址&#xA;此时可以断开手USB，然后通过wifiadb连接&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adb connect 10.100.2.5&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;qa&#34;&gt;Q&amp;amp;A&lt;/h2&gt;&#xA;&lt;h3 id=&#34;issue&#34;&gt;Issue&lt;/h3&gt;&#xA;&lt;p&gt;执行命令 &lt;code&gt;adb connect 10.100.2.5&lt;/code&gt; 报错&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;missing port in specification: tcp:10.100.2.5&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;answer&#34;&gt;Answer&lt;/h3&gt;&#xA;&lt;p&gt;使用命令 &lt;code&gt;adb connect 10.100.2.5:5555&lt;/code&gt; 解决&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

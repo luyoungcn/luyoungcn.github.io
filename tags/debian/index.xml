@@ -1,51 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Debian on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/debian/</link>
-    <description>Recent content in Debian on PaperMod</description>
-    <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.146.6</generator>
-    <language>en</language>
-    <copyright>PaperMod Contributors</copyright>
+    <title>Debian on LuyangのBlog</title>
+    <link>https://luyoungcn.github.io/tags/debian/</link>
+    <description>Recent content in Debian on LuyangのBlog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
     <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
-    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/debian/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://luyoungcn.github.io/tags/debian/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Debian 4.9 Config Static Ip.md</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/debian4/</link>
+      <link>https://luyoungcn.github.io/posts/debian4/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/debian4/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Linux debian 4.9.0-6-amd64 #1 SMP Debian 4.9.82-1+deb9u3 (2018-03-02) x86_64&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;kk@debian:~$ &lt;code&gt;cat /etc/network/interfaces&lt;/code&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# This file describes the network interfaces available on your system
-# and how to activate them. For more information, see interfaces(5).
-
-source /etc/network/interfaces.d/*
-
-# The loopback network interface
-auto lo
-iface lo inet loopback
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;修改后&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# This file describes the network interfaces available on your system
-# and how to activate them. For more information, see interfaces(5).
-
-source /etc/network/interfaces.d/*
-
-# The loopback network interface
-auto lo enp0s3
-iface lo inet loopback
-
-iface enp0s3 inet static
-        address 192.168.20.103
-        netmask 255.255.255.0
-        gateway 192.168.20.1
-dns-nameservers 114.114.114.114
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;kk@debian:~$ &lt;code&gt;/sbin/ifconfig&lt;/code&gt;&lt;/p&gt;</description>
+      <guid>https://luyoungcn.github.io/posts/debian4/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Linux debian 4.9.0-6-amd64 #1 SMP Debian 4.9.82-1+deb9u3 (2018-03-02) x86_64&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;kk@debian:~$ &lt;code&gt;cat /etc/network/interfaces&lt;/code&gt;&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# This file describes the network interfaces available on your system&#xA;# and how to activate them. For more information, see interfaces(5).&#xA;&#xA;source /etc/network/interfaces.d/*&#xA;&#xA;# The loopback network interface&#xA;auto lo&#xA;iface lo inet loopback&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;修改后&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# This file describes the network interfaces available on your system&#xA;# and how to activate them. For more information, see interfaces(5).&#xA;&#xA;source /etc/network/interfaces.d/*&#xA;&#xA;# The loopback network interface&#xA;auto lo enp0s3&#xA;iface lo inet loopback&#xA;&#xA;iface enp0s3 inet static&#xA;        address 192.168.20.103&#xA;        netmask 255.255.255.0&#xA;        gateway 192.168.20.1&#xA;dns-nameservers 114.114.114.114&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;kk@debian:~$ &lt;code&gt;/sbin/ifconfig&lt;/code&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

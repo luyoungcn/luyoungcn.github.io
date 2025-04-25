@@ -1,57 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Terminal on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/terminal/</link>
-    <description>Recent content in Terminal on PaperMod</description>
-    <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.146.6</generator>
-    <language>en</language>
-    <copyright>PaperMod Contributors</copyright>
+    <title>Terminal on LuyangのBlog</title>
+    <link>https://luyoungcn.github.io/tags/terminal/</link>
+    <description>Recent content in Terminal on LuyangのBlog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
     <lastBuildDate>Mon, 26 Jun 2023 03:00:00 +0800</lastBuildDate>
-    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/terminal/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://luyoungcn.github.io/tags/terminal/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Windows terminal 安装配置 oh-my-posh</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/windows-terminal-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-oh-my-posh/</link>
+      <link>https://luyoungcn.github.io/posts/windows-terminal-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-oh-my-posh/</link>
       <pubDate>Mon, 26 Jun 2023 03:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/windows-terminal-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-oh-my-posh/</guid>
-      <description>&lt;p&gt;适用于 Windows terminal + powershell&lt;/p&gt;
-&lt;h2 id=&#34;安装-oh-my-posh&#34;&gt;安装 oh-my-posh&lt;/h2&gt;
-&lt;p&gt;Microsoft Store 中搜索并安装：&lt;code&gt;oh-my-posh&lt;/code&gt; by &lt;code&gt;jandedobbeleer&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;使用图标字体&#34;&gt;使用图标字体&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.nerdfonts.com/font-downloads&#34;&gt;Nerd Fonts - Iconic font aggregator, glyphs/icons collection, &amp;amp; fonts patcher&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;去这里下载一个自己喜欢的字体，并配置 windows terminal power shell profile 使用该字体。&lt;/p&gt;
-&lt;h2 id=&#34;配置-profile&#34;&gt;配置 profile&lt;/h2&gt;
-&lt;p&gt;判断当前的 shell 类型：&lt;code&gt;oh-my-posh get shell&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:&lt;span class=&#34;se&#34;&gt;\U&lt;/span&gt;sers&lt;span class=&#34;se&#34;&gt;\l&lt;/span&gt;uyang&lt;span class=&#34;se&#34;&gt;\D&lt;/span&gt;esktop&amp;gt; oh-my-posh get shell
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;powershell
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改配置文件：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;notepad &lt;span class=&#34;nv&#34;&gt;$PROFILE&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;添加如下内容：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;oh-my-posh init pwsh &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; Invoke-Expression
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果 &lt;code&gt;notepad $PROFILE&lt;/code&gt; 报错，说配置文件不存在需要自己创建一个：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;New-Item -Path &lt;span class=&#34;nv&#34;&gt;$PROFILE&lt;/span&gt; -Type File -Force
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;加载配置：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;. &lt;span class=&#34;nv&#34;&gt;$PROFILE&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;qa&#34;&gt;Q&amp;amp;A&lt;/h2&gt;
-&lt;p&gt;运行报错：&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Windows PowerShell
-版权所有（C） Microsoft Corporation。保留所有权利。
-
-安装最新的 PowerShell，了解新功能和改进！https://aka.ms/PSWindows
-
-. : 无法加载文件 C:\Users\luyang\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1，因为在此系统上禁止运行脚
-本。有关详细信息，请参阅 https:/go.microsoft.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。
-所在位置 行:1 字符: 3
-+ . &amp;#39;C:\Users\luyang\Documents\WindowsPowerShell\Microsoft.PowerShell_pr ...
-+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : SecurityError: (:) []，PSSecurityException
-    + FullyQualifiedErrorId : UnauthorizedAccess
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;原因：PowerShell 默认禁止运行脚本，PowerShell 默认禁止运行脚本;&lt;/p&gt;</description>
+      <guid>https://luyoungcn.github.io/posts/windows-terminal-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-oh-my-posh/</guid>
+      <description>&lt;p&gt;适用于 Windows terminal + powershell&lt;/p&gt;&#xA;&lt;h2 id=&#34;安装-oh-my-posh&#34;&gt;安装 oh-my-posh&lt;/h2&gt;&#xA;&lt;p&gt;Microsoft Store 中搜索并安装：&lt;code&gt;oh-my-posh&lt;/code&gt; by &lt;code&gt;jandedobbeleer&lt;/code&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;使用图标字体&#34;&gt;使用图标字体&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.nerdfonts.com/font-downloads&#34;&gt;Nerd Fonts - Iconic font aggregator, glyphs/icons collection, &amp;amp; fonts patcher&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;去这里下载一个自己喜欢的字体，并配置 windows terminal power shell profile 使用该字体。&lt;/p&gt;&#xA;&lt;h2 id=&#34;配置-profile&#34;&gt;配置 profile&lt;/h2&gt;&#xA;&lt;p&gt;判断当前的 shell 类型：&lt;code&gt;oh-my-posh get shell&lt;/code&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\U&lt;/span&gt;sers&lt;span style=&#34;color:#ae81ff&#34;&gt;\l&lt;/span&gt;uyang&lt;span style=&#34;color:#ae81ff&#34;&gt;\D&lt;/span&gt;esktop&amp;gt; oh-my-posh get shell&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;powershell&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改配置文件：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;notepad $PROFILE&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;添加如下内容：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;oh-my-posh init pwsh | Invoke-Expression&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果 &lt;code&gt;notepad $PROFILE&lt;/code&gt; 报错，说配置文件不存在需要自己创建一个：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;New-Item -Path $PROFILE -Type File -Force&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;加载配置：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;. $PROFILE&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;qa&#34;&gt;Q&amp;amp;A&lt;/h2&gt;&#xA;&lt;p&gt;运行报错：&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Windows PowerShell&#xA;版权所有（C） Microsoft Corporation。保留所有权利。&#xA;&#xA;安装最新的 PowerShell，了解新功能和改进！https://aka.ms/PSWindows&#xA;&#xA;. : 无法加载文件 C:\Users\luyang\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1，因为在此系统上禁止运行脚&#xA;本。有关详细信息，请参阅 https:/go.microsoft.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。&#xA;所在位置 行:1 字符: 3&#xA;+ . &amp;#39;C:\Users\luyang\Documents\WindowsPowerShell\Microsoft.PowerShell_pr ...&#xA;+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~&#xA;    + CategoryInfo          : SecurityError: (:) []，PSSecurityException&#xA;    + FullyQualifiedErrorId : UnauthorizedAccess&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;原因：PowerShell 默认禁止运行脚本，PowerShell 默认禁止运行脚本;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

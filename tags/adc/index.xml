@@ -1,39 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ADC on PaperMod</title>
-    <link>https://adityatelange.github.io/hugo-PaperMod/tags/adc/</link>
-    <description>Recent content in ADC on PaperMod</description>
-    <image>
-      <title>PaperMod</title>
-      <url>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</url>
-      <link>https://adityatelange.github.io/hugo-PaperMod/images/papermod-cover.png</link>
-    </image>
-    <generator>Hugo -- 0.146.6</generator>
-    <language>en</language>
-    <copyright>PaperMod Contributors</copyright>
+    <title>ADC on LuyangのBlog</title>
+    <link>https://luyoungcn.github.io/tags/adc/</link>
+    <description>Recent content in ADC on LuyangのBlog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
     <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
-    <atom:link href="https://adityatelange.github.io/hugo-PaperMod/tags/adc/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://luyoungcn.github.io/tags/adc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于雷达 AWR2243 ADC OVER CSI HSI</title>
-      <link>https://adityatelange.github.io/hugo-PaperMod/posts/awr2243_adc/</link>
+      <link>https://luyoungcn.github.io/posts/awr2243_adc/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>https://adityatelange.github.io/hugo-PaperMod/posts/awr2243_adc/</guid>
-      <description>&lt;h1 id=&#34;关于雷达-awr2243-adc-over-csi-hsi&#34;&gt;关于雷达 AWR2243 ADC OVER CSI HSI&lt;/h1&gt;
-&lt;p&gt;AWR2243 的 CSI2 支持最高数据位速率（Data bit rate）为 600Mbps，DDR 时钟最高为 300Mhz。外部处理器 CSI2 支持的最高时钟至少要等于 AWR2243 配置的 CSI2 输出时钟。&lt;/p&gt;
-&lt;h2 id=&#34;awr2243-data-sources&#34;&gt;AWR2243 Data Sources&lt;/h2&gt;
-&lt;h3 id=&#34;input-sources&#34;&gt;Input Sources&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;DFE(digital front-end) &amp;mdash; 设备实时数据&lt;/li&gt;
-&lt;li&gt;HIL(hardware in the loop) &amp;mdash; 数据回放&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;interleaved-and-non-interleaved-modes&#34;&gt;Interleaved and Non-Interleaved Modes&lt;/h3&gt;
-&lt;p&gt;在 AWR12xx, AWR22xx, 和 XWR14xx 器件变体上，建议使用&lt;strong&gt;交织存储模式&lt;/strong&gt;，因为它还有助于通过相应通道轻松映射和传输每个 RX 通道数据。&lt;/p&gt;
-&lt;p&gt;AWR2243 的 ADC 存储器对于数据存储可以配置为交织模式或者是非交织模式。&lt;/p&gt;
-&lt;p&gt;在交织模式下，ADC 数据是以&lt;strong&gt;采样点为间隔&lt;/strong&gt;在不同接收通道下交织输出。对于非交织模式，ADC 数据按照接收通道把一个接收通道的完整的一个 chirp 数据输出后再输出另一个接收通道的数据。对于不同的模式，外部处理器在获取数据后，需要使用 EDMA 或者其他处理代码，正确重组数据，进行处理。在 &lt;code&gt;mmwave_mcuplus_sdk_04_02_00_02&lt;/code&gt; 的例程里，DDMA 的例程使用了交织模式，TDMA 的例程使用了非交织模式。&lt;/p&gt;
-&lt;p&gt;下面是不同模式数据数据输出的一个例子，Rx0、Rx1、Rx2、 Rx3 表示不同的接收通道。接收通道后面的数字表示采样点个数。N+1为每个 chirp 的采样点数。&lt;/p&gt;
-&lt;h4 id=&#34;交织模式&#34;&gt;交织模式&lt;/h4&gt;
-&lt;p&gt;Rx00 Rx10 Rx20 Rx30 Rx01 Rx11 Rx21 Rx31&amp;hellip;&amp;hellip;.Rx3N&lt;/p&gt;</description>
+      <guid>https://luyoungcn.github.io/posts/awr2243_adc/</guid>
+      <description>&lt;h1 id=&#34;关于雷达-awr2243-adc-over-csi-hsi&#34;&gt;关于雷达 AWR2243 ADC OVER CSI HSI&lt;/h1&gt;&#xA;&lt;p&gt;AWR2243 的 CSI2 支持最高数据位速率（Data bit rate）为 600Mbps，DDR 时钟最高为 300Mhz。外部处理器 CSI2 支持的最高时钟至少要等于 AWR2243 配置的 CSI2 输出时钟。&lt;/p&gt;&#xA;&lt;h2 id=&#34;awr2243-data-sources&#34;&gt;AWR2243 Data Sources&lt;/h2&gt;&#xA;&lt;h3 id=&#34;input-sources&#34;&gt;Input Sources&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;DFE(digital front-end) &amp;mdash; 设备实时数据&lt;/li&gt;&#xA;&lt;li&gt;HIL(hardware in the loop) &amp;mdash; 数据回放&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;interleaved-and-non-interleaved-modes&#34;&gt;Interleaved and Non-Interleaved Modes&lt;/h3&gt;&#xA;&lt;p&gt;在 AWR12xx, AWR22xx, 和 XWR14xx 器件变体上，建议使用&lt;strong&gt;交织存储模式&lt;/strong&gt;，因为它还有助于通过相应通道轻松映射和传输每个 RX 通道数据。&lt;/p&gt;&#xA;&lt;p&gt;AWR2243 的 ADC 存储器对于数据存储可以配置为交织模式或者是非交织模式。&lt;/p&gt;&#xA;&lt;p&gt;在交织模式下，ADC 数据是以&lt;strong&gt;采样点为间隔&lt;/strong&gt;在不同接收通道下交织输出。对于非交织模式，ADC 数据按照接收通道把一个接收通道的完整的一个 chirp 数据输出后再输出另一个接收通道的数据。对于不同的模式，外部处理器在获取数据后，需要使用 EDMA 或者其他处理代码，正确重组数据，进行处理。在 &lt;code&gt;mmwave_mcuplus_sdk_04_02_00_02&lt;/code&gt; 的例程里，DDMA 的例程使用了交织模式，TDMA 的例程使用了非交织模式。&lt;/p&gt;&#xA;&lt;p&gt;下面是不同模式数据数据输出的一个例子，Rx0、Rx1、Rx2、 Rx3 表示不同的接收通道。接收通道后面的数字表示采样点个数。N+1为每个 chirp 的采样点数。&lt;/p&gt;&#xA;&lt;h4 id=&#34;交织模式&#34;&gt;交织模式&lt;/h4&gt;&#xA;&lt;p&gt;Rx00 Rx10 Rx20 Rx30 Rx01 Rx11 Rx21 Rx31&amp;hellip;&amp;hellip;.Rx3N&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
