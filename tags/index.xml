@@ -107,6 +107,20 @@
       <description></description>
     </item>
     <item>
+      <title>SPI</title>
+      <link>/tags/spi/</link>
+      <pubDate>Mon, 26 Jun 2023 03:00:00 +0800</pubDate>
+      <guid>/tags/spi/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Spidev</title>
+      <link>/tags/spidev/</link>
+      <pubDate>Mon, 26 Jun 2023 03:00:00 +0800</pubDate>
+      <guid>/tags/spidev/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Svn</title>
       <link>/tags/svn/</link>
       <pubDate>Mon, 26 Jun 2023 03:00:00 +0800</pubDate>
@@ -713,13 +727,6 @@
       <link>/tags/sourceinsight/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
       <guid>/tags/sourceinsight/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>SPI</title>
-      <link>/tags/spi/</link>
-      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>/tags/spi/</guid>
       <description></description>
     </item>
     <item>

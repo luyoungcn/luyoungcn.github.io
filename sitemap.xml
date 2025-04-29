@@ -107,7 +107,16 @@
     <loc>/tags/wsl/</loc>
     <lastmod>2023-10-26T00:00:00+08:00</lastmod>
   </url><url>
+    <loc>/posts/android-7/</loc>
+    <lastmod>2023-06-26T03:00:00+08:00</lastmod>
+  </url><url>
     <loc>/tags/oh-my-posh/</loc>
+    <lastmod>2023-06-26T03:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/spi/</loc>
+    <lastmod>2023-06-26T03:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/spidev/</loc>
     <lastmod>2023-06-26T03:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/svn/</loc>
@@ -522,9 +531,6 @@
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/sourceinsight/</loc>
-    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>/tags/spi/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/submodule/</loc>
