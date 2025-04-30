@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Memory on LuyangのBlog</title>
+    <link>/tags/memory/</link>
+    <description>Recent content in Memory on LuyangのBlog</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Thu, 01 Jun 2023 09:30:01 +0800</lastBuildDate>
+    <atom:link href="/tags/memory/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>asan</title>
+      <link>/posts/asan/</link>
+      <pubDate>Thu, 01 Jun 2023 09:30:01 +0800</pubDate>
+      <guid>/posts/asan/</guid>
+      <description>&lt;script src=&#34;https://gist.github.com/luyoungcn/b544977db493d7016f87ae60c51cc4cd.js&#34;&gt;&lt;/script&gt;</description>
+    </item>
+  </channel>
+</rss>
