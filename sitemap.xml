@@ -11,7 +11,13 @@
     <loc>/tags/git/</loc>
     <lastmod>2025-05-15T00:00:00+08:00</lastmod>
   </url><url>
+    <loc>/tags/linux/</loc>
+    <lastmod>2025-05-15T00:00:00+08:00</lastmod>
+  </url><url>
     <loc>/</loc>
+    <lastmod>2025-05-15T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/posix/</loc>
     <lastmod>2025-05-15T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/posts/</loc>
@@ -20,10 +26,19 @@
     <loc>/tags/</loc>
     <lastmod>2025-05-15T00:00:00+08:00</lastmod>
   </url><url>
+    <loc>/tags/timer/</loc>
+    <lastmod>2025-05-15T00:00:00+08:00</lastmod>
+  </url><url>
     <loc>/tags/ubuntu/</loc>
     <lastmod>2025-05-15T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/posts/ubuntu_git_server_build_push_code/</loc>
+    <lastmod>2025-05-15T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/posts/linux-%E5%AE%9A%E6%97%B6%E5%99%A8%E7%B2%BE%E5%87%86%E7%9A%84%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/</loc>
+    <lastmod>2025-05-15T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%AE%9A%E6%97%B6%E5%99%A8/</loc>
     <lastmod>2025-05-15T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/about/</loc>
@@ -207,9 +222,6 @@
     <lastmod>2023-02-09T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/ext4/</loc>
-    <lastmod>2023-02-09T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>/tags/linux/</loc>
     <lastmod>2023-02-09T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/posts/linux_date_cmd/</loc>

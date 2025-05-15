@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>内核态定时器 timer | LuyangのBlog</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/linux-%E5%AE%9A%E6%97%B6%E5%99%A8%E7%B2%BE%E5%87%86%E7%9A%84%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="内核态定时器 timer">
+  <meta property="og:description" content="需要链接 rt 库
+Linux 定时器：精准的时间管理 在各种应用场景中，精确地在特定时间执行某些任务至关重要。无论是周期性地收集系统状态、在预定时间发送告警，还是实现复杂的任务调度，都需要可靠的定时器机制。Linux 内核提供了多种方式来处理时间，其中 POSIX 定时器提供了一种强大且灵活的解决方案。
+POSIX 定时器简介 POSIX 定时器是符合 POSIX.1b 标准的实时扩展的一部分，它允许应用程序创建和管理多个高精度定时器。与传统的 sleep() 或 alarm() 等函数相比，POSIX 定时器提供了更精细的控制和更多的功能。
+核心概念包括：
+定时器 ID (timer_t): 每个成功创建的定时器都会返回一个唯一的标识符，类型为 timer_t。你可以使用这个 ID 来操作特定的定时器。 定时器事件: 当定时器到期时，会产生一个信号或者触发一个线程函数。 定时器属性: 可以设置定时器的触发方式（单次或周期性）、初始延迟以及时间间隔。 关键的系统调用 接下来，我们重点介绍用于创建、设置和管理 POSIX 定时器的关键系统调用。
+1. timer_create(): 创建定时器 timer_create() 系统调用用于创建一个新的 POSIX 定时器。
+#include &lt;signal.h&gt; #include &lt;time.h&gt; #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include &lt;errno.h&gt; int main() { timer_t timerid; struct sigevent sev; // 设置定时器到期时的通知方式为信号 sev.sigev_notify = SIGEV_SIGNAL; sev.sigev_signo = SIGRTMIN; // 使用一个实时信号 sev.sigev_value.sival_ptr = &amp;timerid; // 传递定时器 ID if (timer_create(CLOCK_REALTIME, &amp;sev, &amp;timerid) == -1) { perror(&#34;timer_create&#34;); exit(EXIT_FAILURE); } printf(&#34;定时器创建成功，ID: %ld\n&#34;, (long)timerid); // ... 后续设置和使用定时器的代码 ... return 0; } 代码解释:">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-05-15T00:00:00+08:00">
+    <meta property="article:modified_time" content="2025-05-15T00:00:00+08:00">
+    <meta property="article:tag" content="Timer">
+    <meta property="article:tag" content="定时器">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Posix">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="内核态定时器 timer">
+  <meta name="twitter:description" content="需要链接 rt 库
+Linux 定时器：精准的时间管理 在各种应用场景中，精确地在特定时间执行某些任务至关重要。无论是周期性地收集系统状态、在预定时间发送告警，还是实现复杂的任务调度，都需要可靠的定时器机制。Linux 内核提供了多种方式来处理时间，其中 POSIX 定时器提供了一种强大且灵活的解决方案。
+POSIX 定时器简介 POSIX 定时器是符合 POSIX.1b 标准的实时扩展的一部分，它允许应用程序创建和管理多个高精度定时器。与传统的 sleep() 或 alarm() 等函数相比，POSIX 定时器提供了更精细的控制和更多的功能。
+核心概念包括：
+定时器 ID (timer_t): 每个成功创建的定时器都会返回一个唯一的标识符，类型为 timer_t。你可以使用这个 ID 来操作特定的定时器。 定时器事件: 当定时器到期时，会产生一个信号或者触发一个线程函数。 定时器属性: 可以设置定时器的触发方式（单次或周期性）、初始延迟以及时间间隔。 关键的系统调用 接下来，我们重点介绍用于创建、设置和管理 POSIX 定时器的关键系统调用。
+1. timer_create(): 创建定时器 timer_create() 系统调用用于创建一个新的 POSIX 定时器。
+#include &lt;signal.h&gt; #include &lt;time.h&gt; #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include &lt;errno.h&gt; int main() { timer_t timerid; struct sigevent sev; // 设置定时器到期时的通知方式为信号 sev.sigev_notify = SIGEV_SIGNAL; sev.sigev_signo = SIGRTMIN; // 使用一个实时信号 sev.sigev_value.sival_ptr = &amp;timerid; // 传递定时器 ID if (timer_create(CLOCK_REALTIME, &amp;sev, &amp;timerid) == -1) { perror(&#34;timer_create&#34;); exit(EXIT_FAILURE); } printf(&#34;定时器创建成功，ID: %ld\n&#34;, (long)timerid); // ... 后续设置和使用定时器的代码 ... return 0; } 代码解释:">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.e139b0e3b3aff8f0e8e0272554b671a06c857a42278b36c539d96c69ddee2ca2.css" integrity="sha256-4Tmw47Ov&#43;PDo4CclVLZxoGyFekInizbFOdlsad3uLKI=" crossorigin="anonymous">
+
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>内核态定时器 timer</h1><time class="dim" datetime="2025-05-15T00:00:00&#43;08:00">May 15, 2025</time><div class="term-container"><div class="tag">
+        <a href="/tags/timer/">#timer</a>
+      </div><div class="tag">
+        <a href="/tags/%E5%AE%9A%E6%97%B6%E5%99%A8/">#定时器</a>
+      </div><div class="tag">
+        <a href="/tags/linux/">#linux</a>
+      </div><div class="tag">
+        <a href="/tags/posix/">#posix</a>
+      </div></ol></div>
+  <section class="page-section"><p>需要链接 rt 库</p>
+<h2 id="linux-定时器精准的时间管理">Linux 定时器：精准的时间管理</h2>
+<p>在各种应用场景中，精确地在特定时间执行某些任务至关重要。无论是周期性地收集系统状态、在预定时间发送告警，还是实现复杂的任务调度，都需要可靠的定时器机制。Linux 内核提供了多种方式来处理时间，其中 POSIX 定时器提供了一种强大且灵活的解决方案。</p>
+<h3 id="posix-定时器简介">POSIX 定时器简介</h3>
+<p>POSIX 定时器是符合 POSIX.1b 标准的实时扩展的一部分，它允许应用程序创建和管理多个高精度定时器。与传统的 <code>sleep()</code> 或 <code>alarm()</code> 等函数相比，POSIX 定时器提供了更精细的控制和更多的功能。</p>
+<p>核心概念包括：</p>
+<ul>
+<li><strong>定时器 ID (<code>timer_t</code>)</strong>: 每个成功创建的定时器都会返回一个唯一的标识符，类型为 <code>timer_t</code>。你可以使用这个 ID 来操作特定的定时器。</li>
+<li><strong>定时器事件</strong>: 当定时器到期时，会产生一个信号或者触发一个线程函数。</li>
+<li><strong>定时器属性</strong>: 可以设置定时器的触发方式（单次或周期性）、初始延迟以及时间间隔。</li>
+</ul>
+<h3 id="关键的系统调用">关键的系统调用</h3>
+<p>接下来，我们重点介绍用于创建、设置和管理 POSIX 定时器的关键系统调用。</p>
+<h4 id="1-timer_create-创建定时器">1. <code>timer_create()</code>: 创建定时器</h4>
+<p><code>timer_create()</code> 系统调用用于创建一个新的 POSIX 定时器。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;signal.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;time.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;errno.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">timer_t</span> timerid;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> sigevent sev;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 设置定时器到期时的通知方式为信号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    sev.sigev_notify <span style="color:#f92672">=</span> SIGEV_SIGNAL;
+</span></span><span style="display:flex;"><span>    sev.sigev_signo <span style="color:#f92672">=</span> SIGRTMIN; <span style="color:#75715e">// 使用一个实时信号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    sev.sigev_value.sival_ptr <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>timerid; <span style="color:#75715e">// 传递定时器 ID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_create</span>(CLOCK_REALTIME, <span style="color:#f92672">&amp;</span>sev, <span style="color:#f92672">&amp;</span>timerid) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;timer_create&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(EXIT_FAILURE);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;定时器创建成功，ID: %ld</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, (<span style="color:#66d9ef">long</span>)timerid);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... 后续设置和使用定时器的代码 ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>代码解释:</strong></p>
+<ul>
+<li>我们包含了必要的头文件 <code>&lt;signal.h&gt;</code>、<code>&lt;time.h&gt;</code>、<code>&lt;stdio.h&gt;</code> 和 <code>&lt;stdlib.h&gt;</code>。</li>
+<li>声明了一个 <code>timer_t</code> 类型的变量 <code>timerid</code> 用于存储定时器 ID，以及一个 <code>struct sigevent</code> 类型的变量 <code>sev</code> 用于设置定时器到期时的行为。</li>
+<li><code>sev.sigev_notify = SIGEV_SIGNAL;</code> 指定当定时器到期时，通过发送信号的方式通知进程。</li>
+<li><code>sev.sigev_signo = SIGRTMIN;</code> 设置发送的信号为实时信号 <code>SIGRTMIN</code>。实时信号比标准信号具有更高的优先级和可靠性。</li>
+<li><code>sev.sigev_value.sival_ptr = &amp;timerid;</code> 允许在信号处理函数中获取定时器 ID。</li>
+<li><code>timer_create(CLOCK_REALTIME, &amp;sev, &amp;timerid)</code> 调用创建定时器。
+<ul>
+<li><code>CLOCK_REALTIME</code> 指定了使用系统实时时钟。其他时钟类型包括 <code>CLOCK_MONOTONIC</code>（单调递增时钟，不受系统时间调整影响）等。</li>
+<li><code>&amp;sev</code> 是指向 <code>sigevent</code> 结构的指针，定义了定时器到期时的行为。</li>
+<li><code>&amp;timerid</code> 是一个指向 <code>timer_t</code> 变量的指针，用于接收新创建的定时器 ID。</li>
+</ul>
+</li>
+<li>如果 <code>timer_create()</code> 返回 -1，则表示创建失败，我们使用 <code>perror()</code> 输出错误信息并退出。</li>
+<li>成功创建后，我们打印了定时器的 ID。</li>
+</ul>
+<p><strong>编译和运行:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gcc timer_create_example.c -o timer_create_example -lrt
+</span></span><span style="display:flex;"><span>./timer_create_example
+</span></span></code></pre></div><p><strong>可能的运行结果:</strong></p>
+<pre tabindex="0"><code>定时器创建成功，ID: 0
+</code></pre><p>（实际的定时器 ID 可能不同）</p>
+<h4 id="2-timer_settime-设置定时器">2. <code>timer_settime()</code>: 设置定时器</h4>
+<p><code>timer_settime()</code> 系统调用用于启动或停止定时器，并设置其初始延迟和间隔时间。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;signal.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;time.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;errno.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define TIMER_SIG SIGRTMIN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">timer_handler</span>(<span style="color:#66d9ef">int</span> sig, <span style="color:#66d9ef">siginfo_t</span> <span style="color:#f92672">*</span>si, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>uc) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">timer_t</span> <span style="color:#f92672">*</span>tidp;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    tidp <span style="color:#f92672">=</span> (<span style="color:#66d9ef">timer_t</span> <span style="color:#f92672">*</span>)si<span style="color:#f92672">-&gt;</span>si_value.sival_ptr;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;[%ld] 定时器到期，信号：%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, (<span style="color:#66d9ef">long</span>)<span style="color:#f92672">*</span>tidp, sig);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">timer_t</span> timerid;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> sigevent sev;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> itimerspec its;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> sigaction sa;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 设置信号处理函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    sa.sa_flags <span style="color:#f92672">=</span> SA_SIGINFO;
+</span></span><span style="display:flex;"><span>    sa.sa_sigaction <span style="color:#f92672">=</span> timer_handler;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">sigemptyset</span>(<span style="color:#f92672">&amp;</span>sa.sa_mask);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">sigaction</span>(TIMER_SIG, <span style="color:#f92672">&amp;</span>sa, NULL) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;sigaction&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(EXIT_FAILURE);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 创建定时器
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    sev.sigev_notify <span style="color:#f92672">=</span> SIGEV_SIGNAL;
+</span></span><span style="display:flex;"><span>    sev.sigev_signo <span style="color:#f92672">=</span> TIMER_SIG;
+</span></span><span style="display:flex;"><span>    sev.sigev_value.sival_ptr <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>timerid;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_create</span>(CLOCK_REALTIME, <span style="color:#f92672">&amp;</span>sev, <span style="color:#f92672">&amp;</span>timerid) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;timer_create&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(EXIT_FAILURE);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;定时器创建成功，ID: %ld</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, (<span style="color:#66d9ef">long</span>)timerid);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 设置定时器的初始延迟和间隔
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    its.it_value.tv_sec <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;      <span style="color:#75715e">// 初始延迟 2 秒
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    its.it_value.tv_nsec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    its.it_interval.tv_sec <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;   <span style="color:#75715e">// 间隔时间 1 秒（周期性定时器）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    its.it_interval.tv_nsec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_settime</span>(timerid, <span style="color:#ae81ff">0</span>, <span style="color:#f92672">&amp;</span>its, NULL) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;timer_settime&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(EXIT_FAILURE);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;定时器已启动，每隔 1 秒触发一次，初始延迟 2 秒...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 让程序运行一段时间
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">sleep</span>(<span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 停止定时器
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    its.it_value.tv_sec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    its.it_value.tv_nsec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    its.it_interval.tv_sec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    its.it_interval.tv_nsec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_settime</span>(timerid, <span style="color:#ae81ff">0</span>, <span style="color:#f92672">&amp;</span>its, NULL) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;timer_settime (停止)&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(EXIT_FAILURE);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;定时器已停止。</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 删除定时器
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_delete</span>(timerid) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;timer_delete&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(EXIT_FAILURE);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;定时器已删除。</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>代码解释:</strong></p>
+<ul>
+<li>我们定义了一个信号处理函数 <code>timer_handler</code>，当定时器到期并发送 <code>TIMER_SIG</code> 信号时，该函数会被调用。</li>
+<li>在 <code>main</code> 函数中，我们首先使用 <code>sigaction()</code> 设置了信号 <code>TIMER_SIG</code> 的处理方式，将其与 <code>timer_handler</code> 函数关联起来。<code>SA_SIGINFO</code> 标志表示信号处理函数接收附加信息（通过 <code>siginfo_t</code> 结构）。</li>
+<li>创建定时器的步骤与之前的示例相同。</li>
+<li>我们声明了一个 <code>struct itimerspec</code> 类型的变量 <code>its</code>，用于设置定时器的超时值。
+<ul>
+<li><code>its.it_value</code> 指定了定时器的初始延迟。</li>
+<li><code>its.it_interval</code> 指定了定时器的间隔时间。如果 <code>it_interval</code> 的两个字段都设置为 0，则定时器只触发一次。如果都大于 0，则定时器会周期性地触发。</li>
+</ul>
+</li>
+<li><code>timer_settime(timerid, 0, &amp;its, NULL)</code> 调用启动或修改定时器。
+<ul>
+<li><code>timerid</code> 是要操作的定时器 ID。</li>
+<li>第二个参数 <code>flags</code> 可以是 0 或 <code>TIMER_ABSTIME</code>。如果为 0，则 <code>it_value</code> 是相对时间；如果为 <code>TIMER_ABSTIME</code>，则 <code>it_value</code> 是绝对时间（基于定时器的时钟）。</li>
+<li><code>&amp;its</code> 是指向 <code>itimerspec</code> 结构的指针，包含了新的定时器设置。</li>
+<li><code>NULL</code> 表示我们不关心旧的定时器设置。如果需要获取之前的设置，可以传递一个指向 <code>itimerspec</code> 结构的指针。</li>
+</ul>
+</li>
+<li>程序使用 <code>sleep(10)</code> 暂停 10 秒，以便观察定时器的触发。</li>
+<li>之后，我们将 <code>its.it_value</code> 和 <code>its.it_interval</code> 都设置为 0，从而停止了定时器。</li>
+<li>最后，我们使用 <code>timer_delete()</code> 系统调用删除了不再需要的定时器。</li>
+</ul>
+<p><strong>编译和运行:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>gcc timer_settime_example.c -o timer_settime_example -lrt
+</span></span><span style="display:flex;"><span>./timer_settime_example
+</span></span></code></pre></div><p><strong>可能的运行结果:</strong></p>
+<pre tabindex="0"><code>定时器创建成功，ID: 0
+定时器已启动，每隔 1 秒触发一次，初始延迟 2 秒...
+[0] 定时器到期，信号：34
+[0] 定时器到期，信号：34
+[0] 定时器到期，信号：34
+[0] 定时器到期，信号：34
+[0] 定时器到期，信号：34
+[0] 定时器到期，信号：34
+[0] 定时器到期，信号：34
+[0] 定时器到期，信号：34
+定时器已停止。
+定时器已删除。
+</code></pre><p>（实际的定时器 ID 和信号编号可能不同，34 对应 <code>SIGRTMIN</code>）</p>
+<h4 id="3-timer_gettime-获取定时器状态">3. <code>timer_gettime()</code>: 获取定时器状态</h4>
+<p><code>timer_gettime()</code> 系统调用用于获取当前定时器的剩余时间和间隔。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;signal.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;time.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;errno.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">timer_t</span> timerid;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> sigevent sev;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> itimerspec its;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> itimerspec current_its;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 创建一个单次触发的定时器
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    sev.sigev_notify <span style="color:#f92672">=</span> SIGEV_NONE; <span style="color:#75715e">// 不发送信号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_create</span>(CLOCK_REALTIME, <span style="color:#f92672">&amp;</span>sev, <span style="color:#f92672">&amp;</span>timerid) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;timer_create&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(EXIT_FAILURE);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;定时器创建成功，ID: %ld</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, (<span style="color:#66d9ef">long</span>)timerid);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 设置定时器在 3 秒后触发一次
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    its.it_value.tv_sec <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>    its.it_value.tv_nsec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    its.it_interval.tv_sec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    its.it_interval.tv_nsec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_settime</span>(timerid, <span style="color:#ae81ff">0</span>, <span style="color:#f92672">&amp;</span>its, NULL) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;timer_settime&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(EXIT_FAILURE);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;定时器已设置为 3 秒后触发。</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">sleep</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取定时器的当前状态
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_gettime</span>(timerid, <span style="color:#f92672">&amp;</span>current_its) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;timer_gettime&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(EXIT_FAILURE);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;当前剩余时间: %ld 秒 %ld 纳秒</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>           (<span style="color:#66d9ef">long</span>)current_its.it_value.tv_sec, (<span style="color:#66d9ef">long</span>)current_its.it_value.tv_nsec);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;间隔时间: %ld 秒 %ld 纳秒</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>           (<span style="color:#66d9ef">long</span>)current_its.it_interval.tv_sec, (<span style="color:#66d9ef">long</span>)current_its.it_interval.tv_nsec);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 等待定时器触发
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">sleep</span>(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 再次获取定时器状态（应该已经触发）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_gettime</span>(timerid, <span style="color:#f92672">&amp;</span>current_its) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;timer_gettime&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(EXIT_FAILURE);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;触发后剩余时间: %ld 秒 %ld 纳秒</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>           (<span style="color:#66d9ef">long</span>)current_its.it_value.tv_sec, (<span style="color:#66d9ef">long</span>)current_its.it_value.tv_nsec);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;触发后间隔时间: %ld 秒 %ld 纳秒</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>           (<span style="color:#66d9ef">long</span>)current_its.it_interval.tv_sec, (<span style="color:#66d9ef">long</span>)current_its.it_interval.tv_nsec);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_delete</span>(timerid) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;timer_delete&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(EXIT_FAILURE);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;定时器已删除。</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>代码解释:</strong></p>
+<ul>
+<li>我们创建了一个单次触发的定时器，设置 <code>sev.sigev_notify = SIGEV_NONE;</code> 表示不发送信号，仅仅使用定时器本身的功能。</li>
+<li>使用 <code>timer_settime()</code> 设置定时器在 3 秒后触发一次。</li>
+<li>在等待 1 秒后，我们调用 <code>timer_gettime(timerid, &amp;current_its)</code> 来获取当前定时器的状态，并将结果存储在 <code>current_its</code> 结构中。</li>
+<li>我们打印了当前的剩余时间和间隔时间。对于单次触发的定时器，触发后剩余时间通常会接近 0。</li>
+<li>程序等待 3 秒，让定时器触发。</li>
+<li>再次调用 <code>timer_gettime()</code>，可以看到触发后剩余时间通常为 0。</li>
+</ul>
+<p><strong>编译和运行:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>gcc timer_gettime_example.c -o timer_gettime_example -lrt
+</span></span><span style="display:flex;"><span>./timer_gettime_example
+</span></span></code></pre></div><p><strong>可能的运行结果:</strong></p>
+<pre tabindex="0"><code>定时器创建成功，ID: 0
+定时器已设置为 3 秒后触发。
+当前剩余时间: 2 秒 999999999 纳秒
+间隔时间: 0 秒 0 纳秒
+触发后剩余时间: 0 秒 0 纳秒
+触发后间隔时间: 0 秒 0 纳秒
+定时器已删除。
+</code></pre><p>（实际的纳秒值可能略有不同）</p>
+<h3 id="其他重要的系统调用">其他重要的系统调用</h3>
+<p>除了上述三个核心系统调用外，还有一个用于删除定时器的函数：</p>
+<ul>
+<li><strong><code>timer_delete(timer_t timerid)</code></strong>: 删除由 <code>timer_create()</code> 创建的定时器。一旦删除，与该定时器 ID 关联的资源将被释放。</li>
+</ul>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>671 words</span>
+    <span>10 - 13 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#linux-定时器精准的时间管理">Linux 定时器：精准的时间管理</a>
+      <ul>
+        <li><a href="#posix-定时器简介">POSIX 定时器简介</a></li>
+        <li><a href="#关键的系统调用">关键的系统调用</a></li>
+        <li><a href="#其他重要的系统调用">其他重要的系统调用</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/linux_date_cmd/">Linux date 命令用法</a></li><li><a href="/posts/windows10_wsl/">windows10 WSL setup</a></li><li><a href="/posts/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/">黑芝麻平台交叉编译 openssl</a></li><li><a href="/posts/dmesg_support_iso_timestamp/">dmesg use CST timestamp</a></li><li><a href="/posts/linux_test_disk_i_o_with_dd/">Linux Test Disk with dd command</a></li></ul></aside></div>
+  </div>
+</body>
+</html>
