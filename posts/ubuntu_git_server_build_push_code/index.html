@@ -179,7 +179,7 @@ git:x:1003:1004:,,,:/home/git:/usr/bin/git-shell 这样，git 用户可以正常
 </span></span></code></pre></div><p>接下来生成对应的密钥：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh-keygen -t rsa -C <span style="color:#e6db74">&#34;email@qq.com&#34;</span>
 </span></span></code></pre></div><h3 id="3密钥使用">3.密钥使用</h3>
-<p>创建好密钥之后可以将公钥保存到 git 服务器的 <code>authorized_keys</code> 中使其可以访问 git 服务器，或者填写到 github 上，来向 github 上传项目。</p>
+<p>创建好密钥之后可以将公钥保存到 git 服务器的 <code>authorized_keys</code> （<code>/home/git/.ssh/authorized_keys</code>）中使其可以访问 git 服务器，或者填写到 github 上，来向 github 上传项目。</p>
 <p>密钥的位置：</p>
 <ul>
 <li>Linux/Mac：<code>～/.ssh/id_rsa.pub</code></li>
