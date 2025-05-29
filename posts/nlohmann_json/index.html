@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>nlohmann json lib | LuyangのBlog</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/nlohmann_json/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="nlohmann json lib">
+  <meta property="og:description" content="nlohmann json Modern C&#43;&#43; JSON lib 摘要 本文档全面介绍了 nlohmann/json，一个广受欢迎的现代C&#43;&#43; JSON库。我们将从其起源与发展入手，探讨其在C&#43;&#43;生态系统中的地位，并与其他主流C&#43;&#43; JSON库进行比较。随后，深入剖析 nlohmann/json 的架构与设计哲学，揭示其简洁易用的特点。最后，文档将详细阐述 nlohmann/json 在C&#43;&#43;项目中的具体应用，包括安装、基本语法、核心API以及高级用法，旨在为C&#43;&#43;开发者提供一份权威、实用的参考指南。
+关键词: C&#43;&#43;, JSON, nlohmann/json, 数据序列化, 反序列化, 开源库
+1. nlohmann/json 简介 1.1 nlohmann的起源与发展 nlohmann/json 库由Niels Lohmann于2013年启动开发，其设计初衷是为C&#43;&#43;提供一个现代、直观且功能完备的JSON处理解决方案。在JSON成为Web应用和数据交换事实标准的背景下，C&#43;&#43;社区对一个易于使用且性能良好的JSON库的需求日益增长。早期的C&#43;&#43; JSON库往往存在API复杂、学习曲线陡峭或依赖外部库过多的问题。nlohmann/json 的出现，以其仅头文件、无需编译、API设计与标准库容器（如 std::vector 和 std::map）高度契合的特点，迅速获得了C&#43;&#43;开发者的青睐。
+自发布以来，nlohmann/json 持续迭代，不断完善功能、提升性能并修复潜在问题。它在GitHub上拥有庞大的社区支持和活跃的开发，已成为C&#43;&#43;生态系统中处理JSON数据的首选库之一，广泛应用于各种项目，包括嵌入式系统、高性能服务器、桌面应用等。
+1.2 与其他C&#43;&#43; JSON库的比较 C&#43;&#43;社区拥有多种JSON处理库，各有优劣。下表对 nlohmann/json 与其他几个主流C&#43;&#43; JSON库进行了比较：
+特性/库 nlohmann/json RapidJSON Boost.PropertyTree jsoncpp API设计 直观，类似STL容器操作 DOM/SAX，性能导向 树形结构，通用数据 DOM，传统C&#43;&#43;风格 易用性 极高，学习曲线平缓 中等，需要理解DOM/SAX模型 中等，需要理解属性树概念 中等，较为传统 性能 良好，满足大多数应用 极高，注重解析和序列化速度 中等，通用性带来的开销 中等 依赖 仅头文件，无外部依赖 仅头文件，无外部依赖 Boost库，依赖较重 需编译，无外部依赖 功能完备性 完备，支持各种JSON操作 完备，支持各种JSON操作 完备，但JSON仅是其一种格式 完备 内存效率 良好，但可能不如RapidJSON极致 极高，池分配器优化 中等 中等 编译时间 快速（仅头文件） 快速（仅头文件） 较慢（Boost库） 较慢（需编译） 总结:">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="1970-01-01T00:00:00+08:00">
+    <meta property="article:modified_time" content="1970-01-01T00:00:00+08:00">
+    <meta property="article:tag" content="Opensource">
+    <meta property="article:tag" content="Json">
+    <meta property="article:tag" content="Nlohmann">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="nlohmann json lib">
+  <meta name="twitter:description" content="nlohmann json Modern C&#43;&#43; JSON lib 摘要 本文档全面介绍了 nlohmann/json，一个广受欢迎的现代C&#43;&#43; JSON库。我们将从其起源与发展入手，探讨其在C&#43;&#43;生态系统中的地位，并与其他主流C&#43;&#43; JSON库进行比较。随后，深入剖析 nlohmann/json 的架构与设计哲学，揭示其简洁易用的特点。最后，文档将详细阐述 nlohmann/json 在C&#43;&#43;项目中的具体应用，包括安装、基本语法、核心API以及高级用法，旨在为C&#43;&#43;开发者提供一份权威、实用的参考指南。
+关键词: C&#43;&#43;, JSON, nlohmann/json, 数据序列化, 反序列化, 开源库
+1. nlohmann/json 简介 1.1 nlohmann的起源与发展 nlohmann/json 库由Niels Lohmann于2013年启动开发，其设计初衷是为C&#43;&#43;提供一个现代、直观且功能完备的JSON处理解决方案。在JSON成为Web应用和数据交换事实标准的背景下，C&#43;&#43;社区对一个易于使用且性能良好的JSON库的需求日益增长。早期的C&#43;&#43; JSON库往往存在API复杂、学习曲线陡峭或依赖外部库过多的问题。nlohmann/json 的出现，以其仅头文件、无需编译、API设计与标准库容器（如 std::vector 和 std::map）高度契合的特点，迅速获得了C&#43;&#43;开发者的青睐。
+自发布以来，nlohmann/json 持续迭代，不断完善功能、提升性能并修复潜在问题。它在GitHub上拥有庞大的社区支持和活跃的开发，已成为C&#43;&#43;生态系统中处理JSON数据的首选库之一，广泛应用于各种项目，包括嵌入式系统、高性能服务器、桌面应用等。
+1.2 与其他C&#43;&#43; JSON库的比较 C&#43;&#43;社区拥有多种JSON处理库，各有优劣。下表对 nlohmann/json 与其他几个主流C&#43;&#43; JSON库进行了比较：
+特性/库 nlohmann/json RapidJSON Boost.PropertyTree jsoncpp API设计 直观，类似STL容器操作 DOM/SAX，性能导向 树形结构，通用数据 DOM，传统C&#43;&#43;风格 易用性 极高，学习曲线平缓 中等，需要理解DOM/SAX模型 中等，需要理解属性树概念 中等，较为传统 性能 良好，满足大多数应用 极高，注重解析和序列化速度 中等，通用性带来的开销 中等 依赖 仅头文件，无外部依赖 仅头文件，无外部依赖 Boost库，依赖较重 需编译，无外部依赖 功能完备性 完备，支持各种JSON操作 完备，支持各种JSON操作 完备，但JSON仅是其一种格式 完备 内存效率 良好，但可能不如RapidJSON极致 极高，池分配器优化 中等 中等 编译时间 快速（仅头文件） 快速（仅头文件） 较慢（Boost库） 较慢（需编译） 总结:">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.e139b0e3b3aff8f0e8e0272554b671a06c857a42278b36c539d96c69ddee2ca2.css" integrity="sha256-4Tmw47Ov&#43;PDo4CclVLZxoGyFekInizbFOdlsad3uLKI=" crossorigin="anonymous">
+
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>nlohmann json lib</h1><time class="dim" datetime="1970-01-01T00:00:00&#43;08:00">January 1, 1970</time><div class="term-container"><div class="tag">
+        <a href="/tags/opensource/">#opensource</a>
+      </div><div class="tag">
+        <a href="/tags/json/">#json</a>
+      </div><div class="tag">
+        <a href="/tags/nlohmann/">#nlohmann</a>
+      </div></ol></div>
+  <section class="page-section"><h1 id="nlohmann-json-modern-c-json-lib">nlohmann json Modern C++ JSON lib</h1>
+<h2 id="摘要">摘要</h2>
+<p>本文档全面介绍了 <code>nlohmann/json</code>，一个广受欢迎的现代C++ JSON库。我们将从其起源与发展入手，探讨其在C++生态系统中的地位，并与其他主流C++ JSON库进行比较。随后，深入剖析 <code>nlohmann/json</code> 的架构与设计哲学，揭示其简洁易用的特点。最后，文档将详细阐述 <code>nlohmann/json</code> 在C++项目中的具体应用，包括安装、基本语法、核心API以及高级用法，旨在为C++开发者提供一份权威、实用的参考指南。</p>
+<p><strong>关键词</strong>: C++, JSON, nlohmann/json, 数据序列化, 反序列化, 开源库</p>
+<hr>
+<h2 id="1-nlohmannjson-简介">1. nlohmann/json 简介</h2>
+<h3 id="11-nlohmann的起源与发展">1.1 nlohmann的起源与发展</h3>
+<p><code>nlohmann/json</code> 库由Niels Lohmann于2013年启动开发，其设计初衷是为C++提供一个现代、直观且功能完备的JSON处理解决方案。在JSON成为Web应用和数据交换事实标准的背景下，C++社区对一个易于使用且性能良好的JSON库的需求日益增长。早期的C++ JSON库往往存在API复杂、学习曲线陡峭或依赖外部库过多的问题。<code>nlohmann/json</code> 的出现，以其<strong>仅头文件</strong>、<strong>无需编译</strong>、<strong>API设计与标准库容器（如 <code>std::vector</code> 和 <code>std::map</code>）高度契合</strong>的特点，迅速获得了C++开发者的青睐。</p>
+<p>自发布以来，<code>nlohmann/json</code> 持续迭代，不断完善功能、提升性能并修复潜在问题。它在GitHub上拥有庞大的社区支持和活跃的开发，已成为C++生态系统中处理JSON数据的首选库之一，广泛应用于各种项目，包括嵌入式系统、高性能服务器、桌面应用等。</p>
+<h3 id="12-与其他c-json库的比较">1.2 与其他C++ JSON库的比较</h3>
+<p>C++社区拥有多种JSON处理库，各有优劣。下表对 <code>nlohmann/json</code> 与其他几个主流C++ JSON库进行了比较：</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>特性/库</strong></td>
+          <td><strong>nlohmann/json</strong></td>
+          <td><strong>RapidJSON</strong></td>
+          <td><strong>Boost.PropertyTree</strong></td>
+          <td><strong>jsoncpp</strong></td>
+      </tr>
+      <tr>
+          <td><strong>API设计</strong></td>
+          <td>直观，类似STL容器操作</td>
+          <td>DOM/SAX，性能导向</td>
+          <td>树形结构，通用数据</td>
+          <td>DOM，传统C++风格</td>
+      </tr>
+      <tr>
+          <td><strong>易用性</strong></td>
+          <td>极高，学习曲线平缓</td>
+          <td>中等，需要理解DOM/SAX模型</td>
+          <td>中等，需要理解属性树概念</td>
+          <td>中等，较为传统</td>
+      </tr>
+      <tr>
+          <td><strong>性能</strong></td>
+          <td>良好，满足大多数应用</td>
+          <td>极高，注重解析和序列化速度</td>
+          <td>中等，通用性带来的开销</td>
+          <td>中等</td>
+      </tr>
+      <tr>
+          <td><strong>依赖</strong></td>
+          <td>仅头文件，无外部依赖</td>
+          <td>仅头文件，无外部依赖</td>
+          <td>Boost库，依赖较重</td>
+          <td>需编译，无外部依赖</td>
+      </tr>
+      <tr>
+          <td><strong>功能完备性</strong></td>
+          <td>完备，支持各种JSON操作</td>
+          <td>完备，支持各种JSON操作</td>
+          <td>完备，但JSON仅是其一种格式</td>
+          <td>完备</td>
+      </tr>
+      <tr>
+          <td><strong>内存效率</strong></td>
+          <td>良好，但可能不如RapidJSON极致</td>
+          <td>极高，池分配器优化</td>
+          <td>中等</td>
+          <td>中等</td>
+      </tr>
+      <tr>
+          <td><strong>编译时间</strong></td>
+          <td>快速（仅头文件）</td>
+          <td>快速（仅头文件）</td>
+          <td>较慢（Boost库）</td>
+          <td>较慢（需编译）</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>总结</strong>:</p>
+<ul>
+<li><strong><code>nlohmann/json</code></strong>: 适用于追求开发效率、代码简洁性和易用性的项目。其API设计哲学使得C++开发者能够以自然的方式操作JSON数据。</li>
+<li><strong><code>RapidJSON</code></strong>: 适用于对性能有极致要求的场景，如大数据处理、高并发服务器等。但其API相对底层，学习成本较高。</li>
+<li><strong><code>Boost.PropertyTree</code></strong>: 提供更通用的树状数据结构处理能力，JSON只是其支持的一种序列化格式。适用于需要处理多种配置或数据格式的复杂系统。</li>
+<li><strong><code>jsoncpp</code></strong>: 一个成熟但相对传统的C++ JSON库，其API风格可能不如 <code>nlohmann/json</code> 现代和直观。</li>
+</ul>
+<h3 id="13-nlohmann的架构与设计理念">1.3 nlohmann的架构与设计理念</h3>
+<p><code>nlohmann/json</code> 的核心设计理念是**“像使用标准库容器一样使用JSON”**。它通过重载运算符和提供类似STL的接口，使得JSON对象的创建、访问和修改变得异常直观。</p>
+<p>其架构主要基于一个 <code>basic_json</code> 模板类，该类可以根据需要进行特化，以支持不同类型和自定义的分配器。默认的 <code>json</code> 类型是 <code>basic_json&lt;std::map, std::vector, std::string, bool, int64_t, uint64_t, double, std::allocator&gt;</code> 的别名，它代表了JSON数据模型中的六种基本类型：null、布尔值、数字（整数和浮点数）、字符串、数组和对象。</p>
+<p><strong>设计原则</strong>:</p>
+<ul>
+<li><strong>仅头文件 (Header-Only)</strong>: <code>nlohmann/json</code> 仅由一个头文件 (<code>json.hpp</code>) 组成，无需编译即可直接包含到项目中，极大地简化了集成过程。</li>
+<li><strong>强类型安全 (Strong Type Safety)</strong>: 尽管JSON本身是无模式的，但 <code>nlohmann/json</code> 在运行时提供了类型检查机制。尝试以错误类型访问JSON值会抛出异常，有助于在开发阶段发现问题。</li>
+<li><strong>直观的API</strong>: 借鉴C++标准库的设计思想，通过重载 <code>operator[]</code>、<code>operator=</code>、<code>push_back</code> 等，使得JSON操作与C++容器操作保持一致性。</li>
+<li><strong>异常安全 (Exception Safety)</strong>: 库在发生错误时（如类型不匹配、键不存在等）会抛出 <code>json::exception</code> 或其派生类，允许开发者使用 <code>try-catch</code> 机制进行错误处理。</li>
+<li><strong>透明的序列化/反序列化 (Transparent Serialization/Deserialization)</strong>: 通过集成 <code>operator&lt;&lt;</code> 和 <code>operator&gt;&gt;</code>，使得JSON数据的I/O操作与C++流操作无缝衔接。</li>
+<li><strong>支持自定义类型 (Support for Custom Types)</strong>: 提供了 <code>to_json</code> 和 <code>from_json</code> 机制，允许开发者轻松地将自定义C++对象序列化为JSON，以及将JSON反序列化为自定义对象。</li>
+<li><strong>C++11及更高版本兼容</strong>: 充分利用C++11及后续标准的新特性，如右值引用、<code>auto</code> 关键字、列表初始化等，使得代码更加现代和高效。</li>
+</ul>
+<hr>
+<h2 id="2-nlohmann在c中的应用">2. nlohmann在C++中的应用</h2>
+<h3 id="21-nlohmann的安装与引用">2.1 nlohmann的安装与引用</h3>
+<p>由于 <code>nlohmann/json</code> 是一个仅头文件的库，其安装和引用过程非常简单。</p>
+<h4 id="211-安装"><strong>2.1.1 安装</strong></h4>
+<h5 id="手动下载">手动下载</h5>
+<p>直接从GitHub仓库下载最新的 json.hpp 文件：https://github.com/nlohmann/json/releases</p>
+<p>将其放置在您的C++项目可以找到的某个包含路径下。</p>
+<h5 id="cmake">CMake</h5>
+<p>如果您的项目使用CMake，可以通过 FetchContent 或 add_subdirectory 来集成。</p>
+<p>使用 FetchContent (推荐):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>include(<span style="color:#e6db74">FetchContent</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>FetchContent_Declare(
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">nlohmann_json</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">GIT_REPOSITORY</span> <span style="color:#e6db74">https://github.com/nlohmann/json.git</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">GIT_TAG</span>        <span style="color:#e6db74">v3.11.2</span> <span style="color:#75715e"># 或其他最新版本
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>FetchContent_MakeAvailable(<span style="color:#e6db74">nlohmann_json</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 在您的目标中链接
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>target_link_libraries(<span style="color:#e6db74">YourProject</span> <span style="color:#e6db74">PRIVATE</span> <span style="color:#e6db74">nlohmann_json::nlohmann_json</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h5 id="包管理器"><strong>包管理器</strong></h5>
+<ul>
+<li><strong>Conan</strong>: 在 <code>conanfile.txt</code> 或 <code>conanfile.py</code> 中添加 <code>nlohmann_json/x.y.z</code>。</li>
+<li><strong>vcpkg</strong>: <code>vcpkg install nlohmann-json</code></li>
+<li><strong>Homebrew (macOS/Linux)</strong>: <code>brew install nlohmann-json</code></li>
+</ul>
+<h4 id="212-引用"><strong>2.1.2 引用</strong></h4>
+<p>在C++源文件中，只需简单地包含 <code>json.hpp</code> 头文件即可：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;json.hpp&#34;</span><span style="color:#75715e"> </span><span style="color:#75715e">// 如果json.hpp在项目根目录或指定包含路径下
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 或者 #include &lt;nlohmann/json.hpp&gt; 如果通过CMake或包管理器安装
+</span></span></span></code></pre></div><p>为了方便使用 <code>nlohmann::json</code> 类型，通常会使用 <code>using</code> 声明：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> json <span style="color:#f92672">=</span> nlohmann<span style="color:#f92672">::</span>json;
+</span></span></code></pre></div><h3 id="22-基本语法">2.2 基本语法</h3>
+<p><code>nlohmann/json</code> 提供了与C++标准库容器相似的直观API，使得JSON数据的操作变得非常自然。</p>
+<p><strong>2.2.1 JSON对象的创建与初始化</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;json.hpp&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> json <span style="color:#f92672">=</span> nlohmann<span style="color:#f92672">::</span>json;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 1. 空JSON对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    json j_empty_object <span style="color:#f92672">=</span> json<span style="color:#f92672">::</span>object();
+</span></span><span style="display:flex;"><span>    json j_empty_object_alt <span style="color:#f92672">=</span> {}; <span style="color:#75715e">// 使用列表初始化创建空对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 2. 空JSON数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    json j_empty_array <span style="color:#f92672">=</span> json<span style="color:#f92672">::</span>array();
+</span></span><span style="display:flex;"><span>    json j_empty_array_alt <span style="color:#f92672">=</span> json<span style="color:#f92672">::</span>parse(<span style="color:#e6db74">&#34;[]&#34;</span>); <span style="color:#75715e">// 从字符串解析空数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 3. 直接初始化JSON对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    json j_object <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#e6db74">&#34;Alice&#34;</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;age&#34;</span>, <span style="color:#ae81ff">30</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;isStudent&#34;</span>, false},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;courses&#34;</span>, {<span style="color:#e6db74">&#34;Math&#34;</span>, <span style="color:#e6db74">&#34;Physics&#34;</span>, <span style="color:#e6db74">&#34;Chemistry&#34;</span>}},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;address&#34;</span>, {
+</span></span><span style="display:flex;"><span>            {<span style="color:#e6db74">&#34;street&#34;</span>, <span style="color:#e6db74">&#34;123 Main St&#34;</span>},
+</span></span><span style="display:flex;"><span>            {<span style="color:#e6db74">&#34;city&#34;</span>, <span style="color:#e6db74">&#34;Anytown&#34;</span>}
+</span></span><span style="display:flex;"><span>        }}
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Initialized JSON Object:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> j_object.dump(<span style="color:#ae81ff">4</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 4. 直接初始化JSON数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    json j_array <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;apple&#34;</span>, <span style="color:#ae81ff">123</span>, true, <span style="color:#ae81ff">3.14</span>, <span style="color:#66d9ef">nullptr</span>};
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Initialized JSON Array:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> j_array.dump(<span style="color:#ae81ff">4</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>2.2.2 访问JSON元素</strong></p>
+<ul>
+<li><strong>通过键名访问 (对象)</strong>: 使用 <code>operator[]</code> 或 <code>at()</code>。<code>at()</code> 在键不存在时会抛出异常，而 <code>operator[]</code> 会创建新键。</li>
+<li><strong>通过索引访问 (数组)</strong>: 使用 <code>operator[]</code> 或 <code>at()</code>。</li>
+<li><strong>类型检查</strong>: <code>is_string()</code>, <code>is_number()</code>, <code>is_boolean()</code>, <code>is_array()</code>, <code>is_object()</code>, <code>is_null()</code>。</li>
+<li><strong>类型转换</strong>: 使用 <code>get&lt;T&gt;()</code> 或隐式转换。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;json.hpp&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> json <span style="color:#f92672">=</span> nlohmann<span style="color:#f92672">::</span>json;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    json data <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#e6db74">&#34;Bob&#34;</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;age&#34;</span>, <span style="color:#ae81ff">25</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;city&#34;</span>, <span style="color:#e6db74">&#34;New York&#34;</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;interests&#34;</span>, {<span style="color:#e6db74">&#34;coding&#34;</span>, <span style="color:#e6db74">&#34;reading&#34;</span>, <span style="color:#e6db74">&#34;hiking&#34;</span>}},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;details&#34;</span>, {
+</span></span><span style="display:flex;"><span>            {<span style="color:#e6db74">&#34;is_active&#34;</span>, true},
+</span></span><span style="display:flex;"><span>            {<span style="color:#e6db74">&#34;member_since&#34;</span>, <span style="color:#ae81ff">2020</span>}
+</span></span><span style="display:flex;"><span>        }},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;null_value&#34;</span>, <span style="color:#66d9ef">nullptr</span>}
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 访问对象元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Name: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> data[<span style="color:#e6db74">&#34;name&#34;</span>] <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl; <span style="color:#75715e">// Bob
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Age: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> data.at(<span style="color:#e6db74">&#34;age&#34;</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl; <span style="color:#75715e">// 25
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 访问数组元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;First interest: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> data[<span style="color:#e6db74">&#34;interests&#34;</span>][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl; <span style="color:#75715e">// coding
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Second interest (using at()): &#34;</span> <span style="color:#f92672">&lt;&lt;</span> data.at(<span style="color:#e6db74">&#34;interests&#34;</span>).at(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl; <span style="color:#75715e">// reading
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 访问嵌套元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Is active: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> data[<span style="color:#e6db74">&#34;details&#34;</span>][<span style="color:#e6db74">&#34;is_active&#34;</span>] <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl; <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 类型检查
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (data[<span style="color:#e6db74">&#34;age&#34;</span>].is_number()) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Age is a number.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (data[<span style="color:#e6db74">&#34;interests&#34;</span>].is_array()) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Interests is an array.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (data[<span style="color:#e6db74">&#34;null_value&#34;</span>].is_null()) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Null value is null.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 类型转换
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>string name <span style="color:#f92672">=</span> data[<span style="color:#e6db74">&#34;name&#34;</span>].get<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>string<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> age <span style="color:#f92672">=</span> data[<span style="color:#e6db74">&#34;age&#34;</span>]; <span style="color:#75715e">// 隐式转换
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">bool</span> isActive <span style="color:#f92672">=</span> data[<span style="color:#e6db74">&#34;details&#34;</span>][<span style="color:#e6db74">&#34;is_active&#34;</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Name (converted): &#34;</span> <span style="color:#f92672">&lt;&lt;</span> name <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Age (converted): &#34;</span> <span style="color:#f92672">&lt;&lt;</span> age <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Is active (converted): &#34;</span> <span style="color:#f92672">&lt;&lt;</span> isActive <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 访问不存在的键 (operator[] 会创建，at() 会抛异常)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Trying to access non-existent key (operator[]): &#34;</span> <span style="color:#f92672">&lt;&lt;</span> data[<span style="color:#e6db74">&#34;non_existent_key&#34;</span>] <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// std::cout &lt;&lt; data.at(&#34;another_non_existent_key&#34;) &lt;&lt; std::endl; // 这会抛出 json::out_of_range 异常
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>2.2.3 修改JSON元素</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;json.hpp&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> json <span style="color:#f92672">=</span> nlohmann<span style="color:#f92672">::</span>json;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    json profile <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#e6db74">&#34;Charlie&#34;</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;age&#34;</span>, <span style="color:#ae81ff">28</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;email&#34;</span>, <span style="color:#e6db74">&#34;charlie@example.com&#34;</span>}
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Original profile:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> profile.dump(<span style="color:#ae81ff">4</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 修改现有值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    profile[<span style="color:#e6db74">&#34;age&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">29</span>;
+</span></span><span style="display:flex;"><span>    profile[<span style="color:#e6db74">&#34;email&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;charlie.new@example.com&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 添加新键值对
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    profile[<span style="color:#e6db74">&#34;occupation&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Software Engineer&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 添加新数组元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    profile[<span style="color:#e6db74">&#34;skills&#34;</span>] <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;C++&#34;</span>, <span style="color:#e6db74">&#34;Python&#34;</span>, <span style="color:#e6db74">&#34;JavaScript&#34;</span>};
+</span></span><span style="display:flex;"><span>    profile[<span style="color:#e6db74">&#34;skills&#34;</span>].push_back(<span style="color:#e6db74">&#34;Go&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 修改嵌套对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    profile[<span style="color:#e6db74">&#34;address&#34;</span>] <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;street&#34;</span>, <span style="color:#e6db74">&#34;456 Oak Ave&#34;</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;zip&#34;</span>, <span style="color:#e6db74">&#34;10001&#34;</span>}
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    profile[<span style="color:#e6db74">&#34;address&#34;</span>][<span style="color:#e6db74">&#34;city&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;San Francisco&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Modified profile:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> profile.dump(<span style="color:#ae81ff">4</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>2.2.4 遍历JSON</strong></p>
+<p><code>nlohmann/json</code> 支持基于范围的 <code>for</code> 循环遍历JSON对象和数组。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;json.hpp&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> json <span style="color:#f92672">=</span> nlohmann<span style="color:#f92672">::</span>json;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    json data <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;id&#34;</span>, <span style="color:#ae81ff">101</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;title&#34;</span>, <span style="color:#e6db74">&#34;Sample Document&#34;</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;tags&#34;</span>, {<span style="color:#e6db74">&#34;programming&#34;</span>, <span style="color:#e6db74">&#34;json&#34;</span>, <span style="color:#e6db74">&#34;c++&#34;</span>}},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;contributors&#34;</span>, {
+</span></span><span style="display:flex;"><span>            {<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#e6db74">&#34;Alice&#34;</span>}, {<span style="color:#e6db74">&#34;id&#34;</span>, <span style="color:#ae81ff">1</span>}
+</span></span><span style="display:flex;"><span>        }},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;contributors&#34;</span>, {
+</span></span><span style="display:flex;"><span>            {<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#e6db74">&#34;Bob&#34;</span>}, {<span style="color:#e6db74">&#34;id&#34;</span>, <span style="color:#ae81ff">2</span>}
+</span></span><span style="display:flex;"><span>        }}
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Iterating over JSON object (key-value pairs):</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (json<span style="color:#f92672">::</span>iterator it <span style="color:#f92672">=</span> data.begin(); it <span style="color:#f92672">!=</span> data.end(); <span style="color:#f92672">++</span>it) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;  Key: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> it.key() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;, Value: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> it.value() <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 或者使用基于范围的 for 循环 (更简洁)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// for (auto const&amp; [key, val] : data.items()) { // C++17 结构化绑定
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//     std::cout &lt;&lt; &#34;  Key: &#34; &lt;&lt; key &lt;&lt; &#34;, Value: &#34; &lt;&lt; val &lt;&lt; std::endl;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Iterating over JSON array (tags):</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> tag : data[<span style="color:#e6db74">&#34;tags&#34;</span>]) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;  Tag: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> tag <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Iterating over array of objects (contributors):</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 注意：如果&#34;contributors&#34;是对象，则第二次赋值会覆盖第一次。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 这里假设它是一个数组，演示迭代数组中的对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 重新构建data，确保contributors是数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    json actual_data <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;id&#34;</span>, <span style="color:#ae81ff">101</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;title&#34;</span>, <span style="color:#e6db74">&#34;Sample Document&#34;</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;tags&#34;</span>, {<span style="color:#e6db74">&#34;programming&#34;</span>, <span style="color:#e6db74">&#34;json&#34;</span>, <span style="color:#e6db74">&#34;c++&#34;</span>}},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;contributors&#34;</span>, json<span style="color:#f92672">::</span>array({
+</span></span><span style="display:flex;"><span>            {{<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#e6db74">&#34;Alice&#34;</span>}, {<span style="color:#e6db74">&#34;id&#34;</span>, <span style="color:#ae81ff">1</span>}},
+</span></span><span style="display:flex;"><span>            {{<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#e6db74">&#34;Bob&#34;</span>}, {<span style="color:#e6db74">&#34;id&#34;</span>, <span style="color:#ae81ff">2</span>}}
+</span></span><span style="display:flex;"><span>        })}
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> contributor : actual_data[<span style="color:#e6db74">&#34;contributors&#34;</span>]) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;  Contributor Name: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> contributor[<span style="color:#e6db74">&#34;name&#34;</span>]
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;, ID: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> contributor[<span style="color:#e6db74">&#34;id&#34;</span>] <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="23-核心-api">2.3 核心 API</h3>
+<p><code>nlohmann/json</code> 提供了丰富的核心API，用于JSON数据的解析、序列化、查询、操作和类型转换。</p>
+<p><strong>2.3.1 解析与序列化</strong></p>
+<ul>
+<li><strong>解析 (Parsing)</strong>: 从字符串、文件流等解析JSON数据。
+<ul>
+<li><code>json::parse(source)</code>: 从字符串或输入流解析。</li>
+<li><code>json::accept(source)</code>: 检查字符串是否是有效的JSON而无需完整解析。</li>
+</ul>
+</li>
+<li><strong>序列化 (Serialization)</strong>: 将JSON数据转换为字符串。
+<ul>
+<li><code>dump(indent = -1, indent_char = ' ', ensure_ascii = false)</code>: 将JSON序列化为字符串。<code>indent</code> 参数用于美化输出，<code>-1</code> 表示不美化。</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;fstream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;json.hpp&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> json <span style="color:#f92672">=</span> nlohmann<span style="color:#f92672">::</span>json;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 从字符串解析
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>string json_str <span style="color:#f92672">=</span> R<span style="color:#e6db74">&#34;({&#34;</span>product<span style="color:#e6db74">&#34;: &#34;</span>Laptop<span style="color:#e6db74">&#34;, &#34;</span>price<span style="color:#e6db74">&#34;: 1200.50, &#34;</span>inStock<span style="color:#e6db74">&#34;: true})&#34;</span>;
+</span></span><span style="display:flex;"><span>    json product_data <span style="color:#f92672">=</span> json<span style="color:#f92672">::</span>parse(json_str);
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Parsed from string:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> product_data.dump(<span style="color:#ae81ff">4</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 从文件解析
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 假设存在一个名为 &#34;config.json&#34; 的文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// {&#34;setting1&#34;: &#34;value1&#34;, &#34;setting2&#34;: 123}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>ofstream ofs(<span style="color:#e6db74">&#34;config.json&#34;</span>);
+</span></span><span style="display:flex;"><span>    ofs <span style="color:#f92672">&lt;&lt;</span> R<span style="color:#e6db74">&#34;({&#34;</span>setting1<span style="color:#e6db74">&#34;: &#34;</span>value1<span style="color:#e6db74">&#34;, &#34;</span>setting2<span style="color:#e6db74">&#34;: 123})&#34;</span>;
+</span></span><span style="display:flex;"><span>    ofs.close();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>ifstream ifs(<span style="color:#e6db74">&#34;config.json&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ifs.is_open()) {
+</span></span><span style="display:flex;"><span>        json config;
+</span></span><span style="display:flex;"><span>        ifs <span style="color:#f92672">&gt;&gt;</span> config; <span style="color:#75715e">// 使用运算符重载进行解析
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Parsed from file:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> config.dump(<span style="color:#ae81ff">4</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>        ifs.close();
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error: Could not open config.json&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 序列化为字符串 (美化输出)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>string pretty_json <span style="color:#f92672">=</span> product_data.dump(<span style="color:#ae81ff">2</span>); <span style="color:#75715e">// 2个空格缩进
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Pretty JSON:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> pretty_json <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 序列化为紧凑字符串 (无缩进)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>string compact_json <span style="color:#f92672">=</span> product_data.dump(); <span style="color:#75715e">// 默认无缩进 (indent = -1)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Compact JSON:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> compact_json <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>2.3.2 查找与查询</strong></p>
+<ul>
+<li><code>count(key)</code>: 检查JSON对象中是否存在某个键。</li>
+<li><code>contains(key)</code>: 检查JSON对象中是否存在某个键 (C++20)。</li>
+<li><code>find(key)</code>: 返回指向键值对的迭代器，如果不存在则返回 <code>end()</code>。</li>
+<li><code>value(key, default_value)</code>: 安全地获取某个键的值，如果键不存在则返回默认值。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;json.hpp&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> json <span style="color:#f92672">=</span> nlohmann<span style="color:#f92672">::</span>json;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    json user <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;id&#34;</span>, <span style="color:#ae81ff">1001</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;username&#34;</span>, <span style="color:#e6db74">&#34;johndoe&#34;</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;email&#34;</span>, <span style="color:#e6db74">&#34;john@example.com&#34;</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;roles&#34;</span>, {<span style="color:#e6db74">&#34;admin&#34;</span>, <span style="color:#e6db74">&#34;editor&#34;</span>}}
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 检查键是否存在
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (user.count(<span style="color:#e6db74">&#34;username&#34;</span>)) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Username exists: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> user[<span style="color:#e6db74">&#34;username&#34;</span>] <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (user.contains(<span style="color:#e6db74">&#34;email&#34;</span>)) { <span style="color:#75715e">// C++20 及以上版本可用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Email exists: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> user[<span style="color:#e6db74">&#34;email&#34;</span>] <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 使用 find()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">auto</span> it <span style="color:#f92672">=</span> user.find(<span style="color:#e6db74">&#34;roles&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (it <span style="color:#f92672">!=</span> user.end()) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Roles found: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>it <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Roles not found.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">auto</span> non_existent_it <span style="color:#f92672">=</span> user.find(<span style="color:#e6db74">&#34;password&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (non_existent_it <span style="color:#f92672">==</span> user.end()) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Password not found (as expected).&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 使用 value() 安全获取
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>string city <span style="color:#f92672">=</span> user.value(<span style="color:#e6db74">&#34;city&#34;</span>, <span style="color:#e6db74">&#34;Unknown&#34;</span>); <span style="color:#75715e">// city不存在，返回&#34;Unknown&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;User&#39;s city: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> city <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>string username <span style="color:#f92672">=</span> user.value(<span style="color:#e6db74">&#34;username&#34;</span>, <span style="color:#e6db74">&#34;Guest&#34;</span>); <span style="color:#75715e">// username存在，返回实际值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;User&#39;s username: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> username <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>2.3.3 修改与删除</strong></p>
+<ul>
+<li><code>clear()</code>: 清空JSON对象或数组。</li>
+<li><code>erase()</code>: 删除元素。</li>
+<li><code>push_back()</code>: 向数组添加元素。</li>
+<li><code>emplace()</code>: 在对象中插入元素。</li>
+<li><code>update()</code>: 合并或更新JSON对象。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;json.hpp&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> json <span style="color:#f92672">=</span> nlohmann<span style="color:#f92672">::</span>json;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    json settings <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;theme&#34;</span>, <span style="color:#e6db74">&#34;dark&#34;</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;fontSize&#34;</span>, <span style="color:#ae81ff">14</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;notifications&#34;</span>, true},
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;features&#34;</span>, {<span style="color:#e6db74">&#34;darkMode&#34;</span>, <span style="color:#e6db74">&#34;autoSave&#34;</span>}}
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Original settings:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> settings.dump(<span style="color:#ae81ff">4</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 修改值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    settings[<span style="color:#e6db74">&#34;fontSize&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 添加新键值对
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    settings[<span style="color:#e6db74">&#34;language&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;en-US&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 删除键值对
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    settings.erase(<span style="color:#e6db74">&#34;notifications&#34;</span>); <span style="color:#75715e">// 按键删除
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 或者 settings.erase(settings.find(&#34;notifications&#34;)); // 按迭代器删除
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 向数组添加元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    settings[<span style="color:#e6db74">&#34;features&#34;</span>].push_back(<span style="color:#e6db74">&#34;spellCheck&#34;</span>);
+</span></span><span style="display:flex;"><span>    settings[<span style="color:#e6db74">&#34;features&#34;</span>].insert(settings[<span style="color:#e6db74">&#34;features&#34;</span>].begin(), <span style="color:#e6db74">&#34;hotReload&#34;</span>); <span style="color:#75715e">// 插入到开头
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 清空数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// settings[&#34;features&#34;].clear();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Modified settings:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> settings.dump(<span style="color:#ae81ff">4</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// update() 合并对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    json new_defaults <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;language&#34;</span>, <span style="color:#e6db74">&#34;zh-CN&#34;</span>}, <span style="color:#75715e">// 会覆盖
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        {<span style="color:#e6db74">&#34;defaultFolder&#34;</span>, <span style="color:#e6db74">&#34;/home/user/docs&#34;</span>}, <span style="color:#75715e">// 会添加
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        {<span style="color:#e6db74">&#34;fontSize&#34;</span>, <span style="color:#ae81ff">12</span>} <span style="color:#75715e">// 会覆盖
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    };
+</span></span><span style="display:flex;"><span>    settings.update(new_defaults);
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Settings after update:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> settings.dump(<span style="color:#ae81ff">4</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="24-高级语法">2.4 高级语法</h3>
+<p><strong>2.4.1 自定义类型序列化与反序列化</strong></p>
+<p><code>nlohmann/json</code> 提供了强大的机制，允许开发者轻松地将自定义C++结构体或类与JSON数据进行双向转换，无需手动编写复杂的解析和构建逻辑。这通过为自定义类型重载 <code>to_json</code> 和 <code>from_json</code> 函数来实现。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;json.hpp&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> json <span style="color:#f92672">=</span> nlohmann<span style="color:#f92672">::</span>json;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 定义一个自定义结构体
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Person</span> {
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>string name;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> age;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>string<span style="color:#f92672">&gt;</span> hobbies;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> is_student;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 为 Person 类型提供 to_json 函数（将 Person 转换为 json）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">to_json</span>(json<span style="color:#f92672">&amp;</span> j, <span style="color:#66d9ef">const</span> Person<span style="color:#f92672">&amp;</span> p) {
+</span></span><span style="display:flex;"><span>    j <span style="color:#f92672">=</span> json{{<span style="color:#e6db74">&#34;name&#34;</span>, p.name},
+</span></span><span style="display:flex;"><span>             {<span style="color:#e6db74">&#34;age&#34;</span>, p.age},
+</span></span><span style="display:flex;"><span>             {<span style="color:#e6db74">&#34;hobbies&#34;</span>, p.hobbies},
+</span></span><span style="display:flex;"><span>             {<span style="color:#e6db74">&#34;is_student&#34;</span>, p.is_student}};
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 为 Person 类型提供 from_json 函数（将 json 转换为 Person）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">from_json</span>(<span style="color:#66d9ef">const</span> json<span style="color:#f92672">&amp;</span> j, Person<span style="color:#f92672">&amp;</span> p) {
+</span></span><span style="display:flex;"><span>    j.at(<span style="color:#e6db74">&#34;name&#34;</span>).get_to(p.name);
+</span></span><span style="display:flex;"><span>    j.at(<span style="color:#e6db74">&#34;age&#34;</span>).get_to(p.age);
+</span></span><span style="display:flex;"><span>    j.at(<span style="color:#e6db74">&#34;hobbies&#34;</span>).get_to(p.hobbies);
+</span></span><span style="display:flex;"><span>    j.at(<span style="color:#e6db74">&#34;is_student&#34;</span>).get_to(p.is_student);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 1. 将 C++ 对象序列化为 JSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    Person alice <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;Alice&#34;</span>, <span style="color:#ae81ff">25</span>, {<span style="color:#e6db74">&#34;reading&#34;</span>, <span style="color:#e6db74">&#34;cycling&#34;</span>}, true};
+</span></span><span style="display:flex;"><span>    json j_alice <span style="color:#f92672">=</span> alice; <span style="color:#75715e">// 自动调用 to_json(j_alice, alice)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Alice as JSON:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> j_alice.dump(<span style="color:#ae81ff">4</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 2. 将 JSON 反序列化为 C++ 对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    json j_bob <span style="color:#f92672">=</span> R<span style="color:#e6db74">&#34;(</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Bob&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">30</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;hobbies&#34;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;gaming&#34;</span>, <span style="color:#e6db74">&#34;hiking&#34;</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;is_student&#34;</span><span style="color:#f92672">:</span> false
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    )<span style="color:#e6db74">&#34;_json; // 使用 _json 字面量操作符解析字符串</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Person bob <span style="color:#f92672">=</span> j_bob.get<span style="color:#f92672">&lt;</span>Person<span style="color:#f92672">&gt;</span>(); <span style="color:#75715e">// 自动调用 from_json(j_bob, bob)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Bob (from JSON):</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Name: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> bob.name <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Age: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> bob.age <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Hobbies: &#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> hobby : bob.hobbies) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> hobby <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Is Student: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> (bob.is_student <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;Yes&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;No&#34;</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 错误处理：如果 JSON 缺少某个字段，from_json 会抛出异常
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    json invalid_json <span style="color:#f92672">=</span> R<span style="color:#e6db74">&#34;({&#34;</span>name<span style="color:#e6db74">&#34;: &#34;</span>Eve<span style="color:#e6db74">&#34;, &#34;</span>age<span style="color:#e6db74">&#34;: 22})&#34;</span>_json;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        Person eve <span style="color:#f92672">=</span> invalid_json.get<span style="color:#f92672">&lt;</span>Person<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#66d9ef">const</span> json<span style="color:#f92672">::</span>exception<span style="color:#f92672">&amp;</span> e) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Error deserializing invalid_json: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> e.what() <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>2.4.2 JSON Pointer</strong></p>
+<p>JSON Pointer (RFC 6901) 提供了一种标准化的方式来在JSON文档中定位特定的值。<code>nlohmann/json</code> 完全支持JSON Pointer。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;json.hpp&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> json <span style="color:#f92672">=</span> nlohmann<span style="color:#f92672">::</span>json;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    json doc <span style="color:#f92672">=</span> R<span style="color:#e6db74">&#34;(</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;foo&#34;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;bar&#34;</span>, <span style="color:#e6db74">&#34;baz&#34;</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;a/b&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;c%d&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;e^f&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;g|h&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;i</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">j&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;k</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">l&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">6</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">7</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;m~n&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">8</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;object&#34;</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;nested_key&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;nested_value&#34;</span>
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;array&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>                {<span style="color:#e6db74">&#34;item1&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value1&#34;</span>},
+</span></span><span style="display:flex;"><span>                {<span style="color:#e6db74">&#34;item2&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value2&#34;</span>}
+</span></span><span style="display:flex;"><span>            ]
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    )<span style="color:#e6db74">&#34;_json;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 使用 JSON Pointer 访问元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;doc[</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">/foo/0</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">]: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> doc.at(<span style="color:#e6db74">&#34;/foo/0&#34;</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;         <span style="color:#75715e">// &#34;bar&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;doc[</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">/a~1b</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">]: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> doc.at(<span style="color:#e6db74">&#34;/a~1b&#34;</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;           <span style="color:#75715e">// 1  (斜杠编码为 ~1)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;doc[</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">/m~0n</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">]: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> doc.at(<span style="color:#e6db74">&#34;/m~0n&#34;</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;           <span style="color:#75715e">// 8  (波浪号编码为 ~0)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;doc[</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">/object/nested_key</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">]: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> doc.at(<span style="color:#e6db74">&#34;/object/nested_key&#34;</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl; <span style="color:#75715e">// &#34;nested_value&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;doc[</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">/array/0/item1</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">]: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> doc.at(<span style="color:#e6db74">&#34;/array/0/item1&#34;</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl; <span style="color:#75715e">// &#34;value1&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// JSON Pointer 赋值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    doc[<span style="color:#e6db74">&#34;/foo/1&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;qux&#34;</span>;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Modified doc (foo/1):</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> doc.dump(<span style="color:#ae81ff">4</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// JSON Pointer 添加新值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    doc[<span style="color:#e6db74">&#34;/new_key&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;new_value&#34;</span>;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Modified doc (new_key):</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> doc.dump(<span style="color:#ae81ff">4</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 检查是否存在
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (doc.contains(<span style="color:#e6db74">&#34;/object/nested_key&#34;</span>)) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;/object/nested_key&#39; exists.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 错误处理：访问不存在的 JSON Pointer
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> doc.at(<span style="color:#e6db74">&#34;/non_existent_path&#34;</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#66d9ef">const</span> json<span style="color:#f92672">::</span>exception<span style="color:#f92672">&amp;</span> e) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error accessing non-existent path: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> e.what() <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>2.4.3 JSON Patch</strong></p>
+<p>JSON Patch ([[RFC 6902]]) 定义了一种标准的数据格式，用于描述对JSON文档的更改。<code>nlohmann/json</code> 提供了对JSON Patch 的支持，包括生成和应用补丁。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;json.hpp&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> json <span style="color:#f92672">=</span> nlohmann<span style="color:#f92672">::</span>json;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    json document <span style="color:#f92672">=</span> R<span style="color:#e6db74">&#34;(</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;baz&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;qux&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;foo&#34;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;bar&#34;</span>, <span style="color:#e6db74">&#34;baz&#34;</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;glossary&#34;</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;title&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;example glossary&#34;</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    )<span style="color:#e6db74">&#34;_json;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    json other_document <span style="color:#f92672">=</span> R<span style="color:#e6db74">&#34;(</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;baz&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;boo&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;foo&#34;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;bar&#34;</span>, <span style="color:#e6db74">&#34;boo&#34;</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;test&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;hello&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;glossary&#34;</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;title&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;updated glossary&#34;</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    )<span style="color:#e6db74">&#34;_json;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Original Document:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> document.dump(<span style="color:#ae81ff">4</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Other Document:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> other_document.dump(<span style="color:#ae81ff">4</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 1. 生成 JSON Patch
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 计算从 document 到 other_document 的差异
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    json patch <span style="color:#f92672">=</span> json<span style="color:#f92672">::</span>diff(document, other_document);
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Generated JSON Patch:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> patch.dump(<span style="color:#ae81ff">4</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 2. 应用 JSON Patch
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    json patched_document <span style="color:#f92672">=</span> document.patch(patch);
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Document after applying patch:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> patched_document.dump(<span style="color:#ae81ff">4</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 验证补丁是否正确应用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (patched_document <span style="color:#f92672">==</span> other_document) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Patched document matches other_document.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Patched document does NOT match other_document.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 手动创建 JSON Patch
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    json manual_patch <span style="color:#f92672">=</span> json<span style="color:#f92672">::</span>array({
+</span></span><span style="display:flex;"><span>        {{<span style="color:#e6db74">&#34;op&#34;</span>, <span style="color:#e6db74">&#34;replace&#34;</span>}, {<span style="color:#e6db74">&#34;path&#34;</span>, <span style="color:#e6db74">&#34;/baz&#34;</span>}, {<span style="color:#e6db74">&#34;value&#34;</span>, <span style="color:#e6db74">&#34;new_qux&#34;</span>}},
+</span></span><span style="display:flex;"><span>        {{<span style="color:#e6db74">&#34;op&#34;</span>, <span style="color:#e6db74">&#34;add&#34;</span>}, {<span style="color:#e6db74">&#34;path&#34;</span>, <span style="color:#e6db74">&#34;/new_key&#34;</span>}, {<span style="color:#e6db74">&#34;value&#34;</span>, <span style="color:#ae81ff">123</span>}},
+</span></span><span style="display:flex;"><span>        {{<span style="color:#e6db74">&#34;op&#34;</span>, <span style="color:#e6db74">&#34;remove&#34;</span>}, {<span style="color:#e6db74">&#34;path&#34;</span>, <span style="color:#e6db74">&#34;/foo/0&#34;</span>}}
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    json doc_to_patch <span style="color:#f92672">=</span> document; <span style="color:#75715e">// 复制一份进行操作
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        doc_to_patch <span style="color:#f92672">=</span> doc_to_patch.patch(manual_patch);
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Document after applying manual patch:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> doc_to_patch.dump(<span style="color:#ae81ff">4</span>) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#66d9ef">const</span> json<span style="color:#f92672">::</span>exception<span style="color:#f92672">&amp;</span> e) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error applying manual patch: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> e.what() <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="结论">结论</h2>
+<p><code>nlohmann/json</code> 库凭借其仅头文件、直观的API设计、强大的功能集以及对C++现代特性的充分利用，已成为C++处理JSON数据的首选解决方案。它不仅简化了JSON的解析和序列化过程，还通过支持JSON Pointer 和 JSON Patch 等高级特性，极大地提升了C++在复杂数据操作方面的能力。无论是小型配置解析还是大型系统间的数据交换，<code>nlohmann/json</code> 都能提供一个高效、可靠且易于维护的工具。随着C++标准的不断演进，<code>nlohmann/json</code> 也将继续保持其领先地位，为C++开发者提供更加便捷和强大的JSON处理体验。</p>
+<hr>
+<h2 id="参考文献">参考文献</h2>
+<ul>
+<li>[1] nlohmann/json GitHub Repository: <code>https://github.com/nlohmann/json</code></li>
+<li>[2] JSON (JavaScript Object Notation) - ECMA-404 The JSON Data Interchange Format: <code>https://www.ecma-international.org/publications-and-standards/standards/ecma-404/</code></li>
+<li>[3] RFC 6901 - JSON Pointer: <code>https://tools.ietf.org/html/rfc6901</code></li>
+<li>[4] RFC 6902 - JSON Patch: <code>https://tools.ietf.org/html/rfc6902</code></li>
+</ul>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>2000 words</span>
+    <span>23 - 30 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#摘要">摘要</a></li>
+    <li><a href="#1-nlohmannjson-简介">1. nlohmann/json 简介</a>
+      <ul>
+        <li><a href="#11-nlohmann的起源与发展">1.1 nlohmann的起源与发展</a></li>
+        <li><a href="#12-与其他c-json库的比较">1.2 与其他C++ JSON库的比较</a></li>
+        <li><a href="#13-nlohmann的架构与设计理念">1.3 nlohmann的架构与设计理念</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-nlohmann在c中的应用">2. nlohmann在C++中的应用</a>
+      <ul>
+        <li><a href="#21-nlohmann的安装与引用">2.1 nlohmann的安装与引用</a></li>
+        <li><a href="#22-基本语法">2.2 基本语法</a></li>
+        <li><a href="#23-核心-api">2.3 核心 API</a></li>
+        <li><a href="#24-高级语法">2.4 高级语法</a></li>
+      </ul>
+    </li>
+    <li><a href="#结论">结论</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ul>
+</nav></aside></div>
+  </div>
+</body>
+</html>
