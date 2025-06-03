@@ -6,8 +6,43 @@
     <description>Recent content in Tags on LuyangのBlog</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Thu, 15 May 2025 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 03 Jun 2025 00:00:00 +0800</lastBuildDate>
     <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VLA</title>
+      <link>/tags/vla/</link>
+      <pubDate>Tue, 03 Jun 2025 00:00:00 +0800</pubDate>
+      <guid>/tags/vla/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>内存</title>
+      <link>/tags/%E5%86%85%E5%AD%98/</link>
+      <pubDate>Tue, 03 Jun 2025 00:00:00 +0800</pubDate>
+      <guid>/tags/%E5%86%85%E5%AD%98/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>可变长数组</title>
+      <link>/tags/%E5%8F%AF%E5%8F%98%E9%95%BF%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Tue, 03 Jun 2025 00:00:00 +0800</pubDate>
+      <guid>/tags/%E5%8F%AF%E5%8F%98%E9%95%BF%E6%95%B0%E7%BB%84/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>堆栈</title>
+      <link>/tags/%E5%A0%86%E6%A0%88/</link>
+      <pubDate>Tue, 03 Jun 2025 00:00:00 +0800</pubDate>
+      <guid>/tags/%E5%A0%86%E6%A0%88/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>数组</title>
+      <link>/tags/%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Tue, 03 Jun 2025 00:00:00 +0800</pubDate>
+      <guid>/tags/%E6%95%B0%E7%BB%84/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Git</title>
       <link>/tags/git/</link>
