@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CMake：include_directories 与 target_include_directories 使用指南 | LuyangのBlog</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/cmakeinclude_directories-%E4%B8%8E-target_include_directories-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="CMake：include_directories 与 target_include_directories 使用指南">
+  <meta property="og:description" content="CMake：include_directories 与 target_include_directories 使用指南 概述 在CMake中，include_directories()和target_include_directories()都用于指定头文件搜索路径，但它们在作用范围和使用方法上有显著区别。现代CMake项目建议优先使用target_include_directories()。
+命令详解 1. include_directories() (全局作用域) ​作用范围​：影响当前目录及之后定义的所有目标
+​工作方式​：为所有目标添加公共包含路径
+​使用场景​：简单项目或旧版CMake兼容
+​语法​：
+include_directories([AFTER|BEFORE] [SYSTEM] dir1 [dir2 ...]) 使用示例： include_directories(include third_party/lib) add_executable(app1 src/app1.cpp) add_executable(app2 src/app2.cpp) # app1和app2都会自动包含include/和third_party/lib/路径 2. target_include_directories() (目标特定作用域) ​作用范围​：仅影响指定目标
+​工作方式​：为目标添加私有或公开包含路径
+​使用场景​：现代CMake项目推荐方式（CMake 3.0&#43;）
+​语法​：
+target_include_directories(&lt;target&gt; [SYSTEM] [BEFORE] &lt;INTERFACE|PUBLIC|PRIVATE&gt; [item1...] [&lt;INTERFACE|PUBLIC|PRIVATE&gt; [item2...] ...]) 关键字说明： 关键字 描述 PRIVATE 仅当前目标使用（不向依赖者传递） INTERFACE 仅依赖此目标的其他目标使用（当前目标不使用） PUBLIC 当前目标和依赖者都使用（= PRIVATE &#43; INTERFACE） 使用示例： # 共享库定义 add_library(math_lib STATIC src/math.cpp) target_include_directories(math_lib PRIVATE src # 仅编译库时使用 INTERFACE include # 库使用者的包含路径 ) # 可执行文件定义 add_executable(calculator src/main.cpp) target_include_directories(calculator PRIVATE app_include # 仅本目标使用的路径 ) target_link_libraries(calculator PRIVATE math_lib) # calculator将自动获得math_lib的include/路径 核心区别对比 ​特性​ include_directories() target_include_directories() ​作用范围​ 全局（所有目标） 目标特定 ​依赖传播​ ❌ 不支持 ✅ 通过PUBLIC/INTERFACE支持 ​现代CMake推荐度​ ❌ 不推荐 ✅ 强烈推荐 ​代码隔离性​ ❌ 差（路径污染风险） ✅ 优秀（路径隔离） ​典型用法时机​ 在目标定义前调用 在目标定义后调用 ​使用依赖关系​ 无关联 与target_link_libraries()协同使用 最佳实践指南 ​优先使用目标特定作用域​">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-03T00:00:00+08:00">
+    <meta property="article:modified_time" content="2025-06-03T00:00:00+08:00">
+    <meta property="article:tag" content="Cmake">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="CMake：include_directories 与 target_include_directories 使用指南">
+  <meta name="twitter:description" content="CMake：include_directories 与 target_include_directories 使用指南 概述 在CMake中，include_directories()和target_include_directories()都用于指定头文件搜索路径，但它们在作用范围和使用方法上有显著区别。现代CMake项目建议优先使用target_include_directories()。
+命令详解 1. include_directories() (全局作用域) ​作用范围​：影响当前目录及之后定义的所有目标
+​工作方式​：为所有目标添加公共包含路径
+​使用场景​：简单项目或旧版CMake兼容
+​语法​：
+include_directories([AFTER|BEFORE] [SYSTEM] dir1 [dir2 ...]) 使用示例： include_directories(include third_party/lib) add_executable(app1 src/app1.cpp) add_executable(app2 src/app2.cpp) # app1和app2都会自动包含include/和third_party/lib/路径 2. target_include_directories() (目标特定作用域) ​作用范围​：仅影响指定目标
+​工作方式​：为目标添加私有或公开包含路径
+​使用场景​：现代CMake项目推荐方式（CMake 3.0&#43;）
+​语法​：
+target_include_directories(&lt;target&gt; [SYSTEM] [BEFORE] &lt;INTERFACE|PUBLIC|PRIVATE&gt; [item1...] [&lt;INTERFACE|PUBLIC|PRIVATE&gt; [item2...] ...]) 关键字说明： 关键字 描述 PRIVATE 仅当前目标使用（不向依赖者传递） INTERFACE 仅依赖此目标的其他目标使用（当前目标不使用） PUBLIC 当前目标和依赖者都使用（= PRIVATE &#43; INTERFACE） 使用示例： # 共享库定义 add_library(math_lib STATIC src/math.cpp) target_include_directories(math_lib PRIVATE src # 仅编译库时使用 INTERFACE include # 库使用者的包含路径 ) # 可执行文件定义 add_executable(calculator src/main.cpp) target_include_directories(calculator PRIVATE app_include # 仅本目标使用的路径 ) target_link_libraries(calculator PRIVATE math_lib) # calculator将自动获得math_lib的include/路径 核心区别对比 ​特性​ include_directories() target_include_directories() ​作用范围​ 全局（所有目标） 目标特定 ​依赖传播​ ❌ 不支持 ✅ 通过PUBLIC/INTERFACE支持 ​现代CMake推荐度​ ❌ 不推荐 ✅ 强烈推荐 ​代码隔离性​ ❌ 差（路径污染风险） ✅ 优秀（路径隔离） ​典型用法时机​ 在目标定义前调用 在目标定义后调用 ​使用依赖关系​ 无关联 与target_link_libraries()协同使用 最佳实践指南 ​优先使用目标特定作用域​">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.e139b0e3b3aff8f0e8e0272554b671a06c857a42278b36c539d96c69ddee2ca2.css" integrity="sha256-4Tmw47Ov&#43;PDo4CclVLZxoGyFekInizbFOdlsad3uLKI=" crossorigin="anonymous">
+
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>CMake：include_directories 与 target_include_directories 使用指南</h1><time class="dim" datetime="2025-06-03T00:00:00&#43;08:00">June 3, 2025</time><div class="term-container"><div class="tag">
+        <a href="/tags/cmake/">#cmake</a>
+      </div></ol></div>
+  <section class="page-section"><h1 id="cmakeinclude_directories-与-target_include_directories-使用指南">CMake：<code>include_directories</code> 与 <code>target_include_directories</code> 使用指南</h1>
+<h2 id="概述">概述</h2>
+<p>在CMake中，<code>include_directories()</code>和<code>target_include_directories()</code>都用于指定头文件搜索路径，但它们在作用范围和使用方法上有显著区别。现代CMake项目建议优先使用<code>target_include_directories()</code>。</p>
+<hr>
+<h2 id="命令详解">命令详解</h2>
+<h3 id="1-include_directories-全局作用域">1. <code>include_directories()</code> (全局作用域)</h3>
+<ul>
+<li>
+<p>​<strong>作用范围</strong>​：影响当前目录及之后定义的所有目标</p>
+</li>
+<li>
+<p>​<strong>工作方式</strong>​：为所有目标添加公共包含路径</p>
+</li>
+<li>
+<p>​<strong>使用场景</strong>​：简单项目或旧版CMake兼容</p>
+</li>
+<li>
+<p>​<strong>语法</strong>​：</p>
+<pre tabindex="0"><code>include_directories([AFTER|BEFORE] [SYSTEM] dir1 [dir2 ...])
+</code></pre></li>
+</ul>
+<h4 id="使用示例">使用示例：</h4>
+<pre tabindex="0"><code>include_directories(include third_party/lib)
+
+add_executable(app1 src/app1.cpp)
+add_executable(app2 src/app2.cpp)
+# app1和app2都会自动包含include/和third_party/lib/路径
+</code></pre><hr>
+<h3 id="2-target_include_directories-目标特定作用域">2. <code>target_include_directories()</code> (目标特定作用域)</h3>
+<ul>
+<li>
+<p>​<strong>作用范围</strong>​：仅影响指定目标</p>
+</li>
+<li>
+<p>​<strong>工作方式</strong>​：为目标添加私有或公开包含路径</p>
+</li>
+<li>
+<p>​<strong>使用场景</strong>​：现代CMake项目推荐方式（CMake 3.0+）</p>
+</li>
+<li>
+<p>​<strong>语法</strong>​：</p>
+<pre tabindex="0"><code>target_include_directories(&lt;target&gt; [SYSTEM] [BEFORE]
+  &lt;INTERFACE|PUBLIC|PRIVATE&gt; [item1...]
+  [&lt;INTERFACE|PUBLIC|PRIVATE&gt; [item2...] ...])
+</code></pre></li>
+</ul>
+<h4 id="关键字说明">关键字说明：</h4>
+<table>
+  <thead>
+      <tr>
+          <th>关键字</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>PRIVATE</code></td>
+          <td>仅当前目标使用（不向依赖者传递）</td>
+      </tr>
+      <tr>
+          <td><code>INTERFACE</code></td>
+          <td>仅依赖此目标的其他目标使用（当前目标不使用）</td>
+      </tr>
+      <tr>
+          <td><code>PUBLIC</code></td>
+          <td>当前目标和依赖者都使用（= PRIVATE + INTERFACE）</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="使用示例-1">使用示例：</h4>
+<pre tabindex="0"><code># 共享库定义
+add_library(math_lib STATIC src/math.cpp)
+target_include_directories(math_lib
+    PRIVATE src          # 仅编译库时使用
+    INTERFACE include    # 库使用者的包含路径
+)
+
+# 可执行文件定义
+add_executable(calculator src/main.cpp)
+target_include_directories(calculator 
+    PRIVATE app_include  # 仅本目标使用的路径
+)
+target_link_libraries(calculator PRIVATE math_lib)
+
+# calculator将自动获得math_lib的include/路径
+</code></pre><hr>
+<h2 id="核心区别对比">核心区别对比</h2>
+<table>
+  <thead>
+      <tr>
+          <th>​<strong>特性</strong>​</th>
+          <th><code>include_directories()</code></th>
+          <th><code>target_include_directories()</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>​<strong>作用范围</strong>​</td>
+          <td>全局（所有目标）</td>
+          <td>目标特定</td>
+      </tr>
+      <tr>
+          <td>​<strong>依赖传播</strong>​</td>
+          <td>❌ 不支持</td>
+          <td>✅ 通过<code>PUBLIC</code>/<code>INTERFACE</code>支持</td>
+      </tr>
+      <tr>
+          <td>​<strong>现代CMake推荐度</strong>​</td>
+          <td>❌ 不推荐</td>
+          <td>✅ 强烈推荐</td>
+      </tr>
+      <tr>
+          <td>​<strong>代码隔离性</strong>​</td>
+          <td>❌ 差（路径污染风险）</td>
+          <td>✅ 优秀（路径隔离）</td>
+      </tr>
+      <tr>
+          <td>​<strong>典型用法时机</strong>​</td>
+          <td>在目标定义前调用</td>
+          <td>在目标定义后调用</td>
+      </tr>
+      <tr>
+          <td>​<strong>使用依赖关系</strong>​</td>
+          <td>无关联</td>
+          <td>与<code>target_link_libraries()</code>协同使用</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="最佳实践指南">最佳实践指南</h2>
+<ol>
+<li>
+<p>​<strong>优先使用目标特定作用域</strong>​</p>
+<pre tabindex="0"><code># 推荐 ✔
+add_library(my_lib ...)
+target_include_directories(my_lib ...)
+
+# 避免 ✖
+include_directories(...)
+add_library(my_lib ...)
+</code></pre></li>
+<li>
+<p>​<strong>正确使用可见性关键字</strong>​</p>
+<ul>
+<li><code>PRIVATE</code>：仅内部实现需要的头文件</li>
+<li><code>INTERFACE</code>：库的公共API头文件</li>
+<li><code>PUBLIC</code>：实现需要且使用者也需要访问的头文件</li>
+</ul>
+</li>
+<li>
+<p>​**结合使用<code>target_link_libraries()</code>**​</p>
+<pre tabindex="0"><code># 消费者自动获得依赖项的公开头文件路径
+target_link_libraries(consumer PRIVATE provider)
+</code></pre></li>
+<li>
+<p>​<strong>处理系统头文件</strong>​</p>
+<pre tabindex="0"><code>target_include_directories(my_target SYSTEM PRIVATE /usr/local/custom_include)
+</code></pre></li>
+<li>
+<p>​<strong>路径处理注意事项</strong>​</p>
+<ul>
+<li>
+<p>优先使用绝对路径或生成器表达式：</p>
+<pre tabindex="0"><code>target_include_directories(my_lib PRIVATE 
+    &#34;$&lt;BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include&gt;&#34;
+    &#34;$&lt;INSTALL_INTERFACE:include&gt;&#34;
+)
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="迁移策略旧项目升级">迁移策略（旧项目升级）</h2>
+<ol>
+<li>
+<p>逐步替换全局包含</p>
+<pre tabindex="0"><code># 旧方式
+include_directories(common_include)
+
+# 新方式：为每个目标单独添加
+target_include_directories(target1 PRIVATE common_include)
+target_include_directories(target2 PRIVATE common_include)
+</code></pre></li>
+<li>
+<p>处理子目录包含</p>
+<pre tabindex="0"><code># 旧方式
+add_subdirectory(lib)
+include_directories(${lib_include_dir})
+
+# 新方式：通过目标链接传播
+target_link_libraries(my_app PRIVATE lib_target)
+</code></pre></li>
+<li>
+<p>使用接口目标统一管理</p>
+<pre tabindex="0"><code>add_library(global_includes INTERFACE)
+target_include_directories(global_includes INTERFACE
+    common_include
+    third_party/include
+)
+
+target_link_libraries(my_app PRIVATE global_includes)
+</code></pre></li>
+</ol>
+<hr>
+<h2 id="总结建议">总结建议</h2>
+<table>
+  <thead>
+      <tr>
+          <th>​<strong>场景</strong>​</th>
+          <th>​<strong>推荐方法</strong>​</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>现代新项目</td>
+          <td>全部使用<code>target_include_directories()</code></td>
+      </tr>
+      <tr>
+          <td>旧项目维护</td>
+          <td>逐步替换为目标特定方式</td>
+      </tr>
+      <tr>
+          <td>跨目标共享路径</td>
+          <td>创建<code>INTERFACE</code>库统一管理</td>
+      </tr>
+      <tr>
+          <td>第三方库包含</td>
+          <td>配合<code>find_package()</code>使用导入目标</td>
+      </tr>
+      <tr>
+          <td>目录范围简单包含（小型项目）</td>
+          <td>审慎使用<code>include_directories()</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>​<strong>黄金法则</strong>​：在定义目标(<code>add_executable</code>/<code>add_library</code>)之后，总是优先使用<code>target_include_directories()</code>进行包含路径的设置，并通过适当的可见性关键字确保路径的正确传播。</p>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>200 words</span>
+    <span>4 - 6 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#概述">概述</a></li>
+    <li><a href="#命令详解">命令详解</a>
+      <ul>
+        <li><a href="#1-include_directories-全局作用域">1. <code>include_directories()</code> (全局作用域)</a></li>
+        <li><a href="#2-target_include_directories-目标特定作用域">2. <code>target_include_directories()</code> (目标特定作用域)</a></li>
+      </ul>
+    </li>
+    <li><a href="#核心区别对比">核心区别对比</a></li>
+    <li><a href="#最佳实践指南">最佳实践指南</a></li>
+    <li><a href="#迁移策略旧项目升级">迁移策略（旧项目升级）</a></li>
+    <li><a href="#总结建议">总结建议</a></li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/cmake%E6%9D%A1%E4%BB%B6%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%E4%B8%8E%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%AE%A1%E7%90%86/">CMake条件编译：原理、工程实践与变量作用域管理</a></li><li><a href="/posts/cmake/">cmake</a></li><li><a href="/posts/windows_vcpkg_boost/">windows vcpkg boost 开发环境</a></li></ul></aside></div>
+  </div>
+</body>
+</html>
