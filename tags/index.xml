@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 04 Jun 2025 02:30:00 +0800</lastBuildDate>
     <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Cppp</title>
-      <link>/tags/cppp/</link>
+      <title>Cpp</title>
+      <link>/tags/cpp/</link>
       <pubDate>Wed, 04 Jun 2025 02:30:00 +0800</pubDate>
-      <guid>/tags/cppp/</guid>
+      <guid>/tags/cpp/</guid>
       <description></description>
     </item>
     <item>
@@ -223,13 +223,6 @@
       <link>/tags/terminal/</link>
       <pubDate>Mon, 26 Jun 2023 03:00:00 +0800</pubDate>
       <guid>/tags/terminal/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Cpp</title>
-      <link>/tags/cpp/</link>
-      <pubDate>Thu, 01 Jun 2023 09:30:01 +0800</pubDate>
-      <guid>/tags/cpp/</guid>
       <description></description>
     </item>
     <item>
