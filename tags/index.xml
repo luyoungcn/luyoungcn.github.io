@@ -6,13 +6,27 @@
     <description>Recent content in Tags on LuyangのBlog</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 04 Jun 2025 02:30:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 06 Jun 2025 02:30:00 +0800</lastBuildDate>
     <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cpp</title>
       <link>/tags/cpp/</link>
-      <pubDate>Wed, 04 Jun 2025 02:30:00 +0800</pubDate>
+      <pubDate>Fri, 06 Jun 2025 02:30:00 +0800</pubDate>
       <guid>/tags/cpp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Singleton</title>
+      <link>/tags/singleton/</link>
+      <pubDate>Fri, 06 Jun 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/singleton/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>单例模式</title>
+      <link>/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Fri, 06 Jun 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
       <description></description>
     </item>
     <item>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📌深入 C&#43;&#43; 单例模式：原理、实现方式对比与 shared_ptr 架构设计 | LuyangのBlog</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/%E6%B7%B1%E5%85%A5-c&#43;&#43;-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E5%8E%9F%E7%90%86%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%E5%AF%B9%E6%AF%94%E4%B8%8E-shared_ptr-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="📌深入 C&#43;&#43; 单例模式：原理、实现方式对比与 shared_ptr 架构设计">
+  <meta property="og:description" content="📌深入 C&#43;&#43; 单例模式：原理、实现方式对比与 shared_ptr 架构设计 1️⃣ 什么是单例？基本语义与使用场景 单例（[[Singleton]]）是对象创建模式中最常见的一种，其目标是确保类在系统中只有一个实例，并提供全局访问入口。
+✅ 常见使用场景： 配置中心（ConfigManager） 日志系统（Logger） 资源池（如内存池、线程池） 调度器、会话管理器 框架注册表、插件系统 2️⃣ 单例的五种常见实现方式 推荐使用方式：
+懒汉式 &#43; 线程安全（C&#43;&#43;11 标准）局部静态变量（Meyers Singleton）— 【推荐使用】 shared_ptr 单例（更灵活） 🍃1. 饿汉式单例（Early Instantiation） class Singleton { public: static Singleton&amp; instance() { return inst; } private: Singleton() {} static Singleton inst; }; Singleton Singleton::inst; ✅ 简单易懂，线程安全（由 C&#43;&#43; 静态对象初始化保障） ❌ 资源可能浪费，程序启动就构造实例 🍃2. 懒汉式（Lazy Initialization）&#43; 非线程安全 class Singleton { public: static Singleton* getInstance() { if (!instance_) instance_ = new Singleton; return instance_; } private: Singleton() {} static Singleton* instance_; }; Singleton* Singleton::instance_ = nullptr; ✅ 仅在需要时创建实例 ❌ 非线程安全，多个线程可能同时构造多个实例 🍃3. 懒汉式 &#43; 线程安全（C&#43;&#43;11 标准）局部静态变量（Meyers Singleton）— 【推荐使用】 class Singleton { public: static Singleton&amp; instance() { static Singleton inst; // C&#43;&#43;11 保证线程安全 return inst; } private: Singleton() = default; Singleton(const Singleton&amp;) = delete; Singleton&amp; operator=(const Singleton&amp;) = delete; }; ✅ 推荐使用：线程安全、懒加载、无锁开销 ✅ 析构自动管理，依赖 C&#43;&#43; 静态局部变量特性 ❗ 禁止拷贝构造、赋值运算，防止实例复制 ✅ 最简洁、安全、高效的方式（默认推荐） 后面会有这种方式的语法语义与底层源码解析">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-06T02:30:00+08:00">
+    <meta property="article:modified_time" content="2025-06-06T02:30:00+08:00">
+    <meta property="article:tag" content="Cpp">
+    <meta property="article:tag" content="单例模式">
+    <meta property="article:tag" content="Singleton">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="📌深入 C&#43;&#43; 单例模式：原理、实现方式对比与 shared_ptr 架构设计">
+  <meta name="twitter:description" content="📌深入 C&#43;&#43; 单例模式：原理、实现方式对比与 shared_ptr 架构设计 1️⃣ 什么是单例？基本语义与使用场景 单例（[[Singleton]]）是对象创建模式中最常见的一种，其目标是确保类在系统中只有一个实例，并提供全局访问入口。
+✅ 常见使用场景： 配置中心（ConfigManager） 日志系统（Logger） 资源池（如内存池、线程池） 调度器、会话管理器 框架注册表、插件系统 2️⃣ 单例的五种常见实现方式 推荐使用方式：
+懒汉式 &#43; 线程安全（C&#43;&#43;11 标准）局部静态变量（Meyers Singleton）— 【推荐使用】 shared_ptr 单例（更灵活） 🍃1. 饿汉式单例（Early Instantiation） class Singleton { public: static Singleton&amp; instance() { return inst; } private: Singleton() {} static Singleton inst; }; Singleton Singleton::inst; ✅ 简单易懂，线程安全（由 C&#43;&#43; 静态对象初始化保障） ❌ 资源可能浪费，程序启动就构造实例 🍃2. 懒汉式（Lazy Initialization）&#43; 非线程安全 class Singleton { public: static Singleton* getInstance() { if (!instance_) instance_ = new Singleton; return instance_; } private: Singleton() {} static Singleton* instance_; }; Singleton* Singleton::instance_ = nullptr; ✅ 仅在需要时创建实例 ❌ 非线程安全，多个线程可能同时构造多个实例 🍃3. 懒汉式 &#43; 线程安全（C&#43;&#43;11 标准）局部静态变量（Meyers Singleton）— 【推荐使用】 class Singleton { public: static Singleton&amp; instance() { static Singleton inst; // C&#43;&#43;11 保证线程安全 return inst; } private: Singleton() = default; Singleton(const Singleton&amp;) = delete; Singleton&amp; operator=(const Singleton&amp;) = delete; }; ✅ 推荐使用：线程安全、懒加载、无锁开销 ✅ 析构自动管理，依赖 C&#43;&#43; 静态局部变量特性 ❗ 禁止拷贝构造、赋值运算，防止实例复制 ✅ 最简洁、安全、高效的方式（默认推荐） 后面会有这种方式的语法语义与底层源码解析">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.e139b0e3b3aff8f0e8e0272554b671a06c857a42278b36c539d96c69ddee2ca2.css" integrity="sha256-4Tmw47Ov&#43;PDo4CclVLZxoGyFekInizbFOdlsad3uLKI=" crossorigin="anonymous">
+
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>📌深入 C&#43;&#43; 单例模式：原理、实现方式对比与 shared_ptr 架构设计</h1><time class="dim" datetime="2025-06-06T02:30:00&#43;08:00">June 6, 2025</time><div class="term-container"><div class="tag">
+        <a href="/tags/cpp/">#cpp</a>
+      </div><div class="tag">
+        <a href="/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">#单例模式</a>
+      </div><div class="tag">
+        <a href="/tags/singleton/">#singleton</a>
+      </div></ol></div>
+  <section class="page-section"><h1 id="深入-c-单例模式原理实现方式对比与-shared_ptr-架构设计">📌深入 C++ 单例模式：原理、实现方式对比与 shared_ptr 架构设计</h1>
+<h2 id="1-什么是单例基本语义与使用场景">1️⃣ 什么是单例？基本语义与使用场景</h2>
+<p>单例（[[Singleton]]）是对象创建模式中最常见的一种，其目标是确保类在系统中<strong>只有一个实例</strong>，并提供全局访问入口。</p>
+<h3 id="-常见使用场景">✅ 常见使用场景：</h3>
+<ul>
+<li>配置中心（ConfigManager）</li>
+<li>日志系统（Logger）</li>
+<li>资源池（如内存池、线程池）</li>
+<li>调度器、会话管理器</li>
+<li>框架注册表、插件系统</li>
+</ul>
+<h2 id="2-单例的五种常见实现方式">2️⃣ 单例的五种常见实现方式</h2>
+<blockquote>
+<p>推荐使用方式：</p>
+<ol>
+<li>懒汉式 + 线程安全（C++11 标准）局部静态变量（Meyers Singleton）&mdash; 【推荐使用】</li>
+<li>shared_ptr 单例（更灵活）</li>
+</ol></blockquote>
+<h3 id="1-饿汉式单例early-instantiation">🍃1. 饿汉式单例（Early Instantiation）</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Singleton</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> Singleton<span style="color:#f92672">&amp;</span> instance() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> inst;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    Singleton() {}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> Singleton inst;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>Singleton Singleton<span style="color:#f92672">::</span>inst;
+</span></span></code></pre></div><ul>
+<li>✅ 简单易懂，线程安全（由 C++ 静态对象初始化保障）</li>
+<li>❌ 资源可能浪费，程序启动就构造实例</li>
+</ul>
+<h3 id="2-懒汉式lazy-initialization-非线程安全">🍃2. 懒汉式（Lazy Initialization）+ 非线程安全</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Singleton</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> Singleton<span style="color:#f92672">*</span> getInstance() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>instance_)
+</span></span><span style="display:flex;"><span>            instance_ <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Singleton;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> instance_;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    Singleton() {}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> Singleton<span style="color:#f92672">*</span> instance_;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Singleton<span style="color:#f92672">*</span> Singleton<span style="color:#f92672">::</span>instance_ <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span></code></pre></div><ul>
+<li>✅ 仅在需要时创建实例</li>
+<li>❌ 非线程安全，多个线程可能同时构造多个实例</li>
+</ul>
+<h3 id="3-懒汉式--线程安全c11-标准局部静态变量meyers-singleton-推荐使用">🍃3. 懒汉式 + 线程安全（C++11 标准）局部静态变量（Meyers Singleton）&mdash; 【推荐使用】</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Singleton</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> Singleton<span style="color:#f92672">&amp;</span> instance() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> Singleton inst;  <span style="color:#75715e">// C++11 保证线程安全
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> inst;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    Singleton() <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
+</span></span><span style="display:flex;"><span>    Singleton(<span style="color:#66d9ef">const</span> Singleton<span style="color:#f92672">&amp;</span>) <span style="color:#f92672">=</span> <span style="color:#66d9ef">delete</span>;
+</span></span><span style="display:flex;"><span>    Singleton<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(<span style="color:#66d9ef">const</span> Singleton<span style="color:#f92672">&amp;</span>) <span style="color:#f92672">=</span> <span style="color:#66d9ef">delete</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>✅ 推荐使用：线程安全、懒加载、无锁开销</li>
+<li>✅ 析构自动管理，依赖 C++ 静态局部变量特性</li>
+<li>❗ 禁止拷贝构造、赋值运算，防止实例复制</li>
+<li>✅ 最简洁、安全、高效的方式（默认推荐）</li>
+</ul>
+<p>后面会有这种方式的语法语义与底层源码解析</p>
+<h3 id="4-懒汉式--双重检查锁dclp-double-checked-locking">🍃4. 懒汉式 + 双重检查锁（DCLP Double-Checked Locking）</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Singleton</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> Singleton<span style="color:#f92672">*</span> instance() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>inst) {
+</span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>lock_guard<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>mutex<span style="color:#f92672">&gt;</span> lock(mtx);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>inst) inst <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Singleton;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> inst;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> Singleton<span style="color:#f92672">*</span> inst;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> std<span style="color:#f92672">::</span>mutex mtx;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>✅ 懒加载，适用于需要动态构造析构控制的场景</li>
+<li>❌ 实现复杂，容易出错</li>
+<li>⚠️ 在 C++11 前实现容易出错（缺乏内存屏障）</li>
+</ul>
+<h3 id="5-智能指针--延迟构造">🍃5. 智能指针 + 延迟构造</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Singleton</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> std<span style="color:#f92672">::</span>shared_ptr<span style="color:#f92672">&lt;</span>Singleton<span style="color:#f92672">&gt;</span> instance() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> std<span style="color:#f92672">::</span>shared_ptr<span style="color:#f92672">&lt;</span>Singleton<span style="color:#f92672">&gt;</span> inst(<span style="color:#66d9ef">new</span> Singleton);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> inst;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>支持自定义析构、更适合资源生命周期管理</p>
+<h3 id="6-模板化-shared_ptr-单例进阶-现代-c-的正确打开方式">🍃6. 模板化 shared_ptr 单例（进阶）&mdash; 现代 C++ 的正确打开方式</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SharedSingleton</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> Ptr <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>shared_ptr<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setDeleter</span>(std<span style="color:#f92672">::</span>function<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span>(T<span style="color:#f92672">*</span>)<span style="color:#f92672">&gt;</span> deleter) {
+</span></span><span style="display:flex;"><span>        getDeleter() <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>move(deleter);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span>... Args<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> Ptr instance(Args<span style="color:#f92672">&amp;&amp;</span>... args) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>call_once(getOnceFlag(), [<span style="color:#f92672">&amp;</span>] {
+</span></span><span style="display:flex;"><span>            instance_() <span style="color:#f92672">=</span> Ptr(<span style="color:#66d9ef">new</span> T(std<span style="color:#f92672">::</span>forward<span style="color:#f92672">&lt;</span>Args<span style="color:#f92672">&gt;</span>(args)...), getDeleter());
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">instance_</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">reset</span>() {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>lock_guard<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>mutex<span style="color:#f92672">&gt;</span> lock(getMutex());
+</span></span><span style="display:flex;"><span>        instance_().reset();
+</span></span><span style="display:flex;"><span>        getOnceFlag() <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>once_flag();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> Ptr<span style="color:#f92672">&amp;</span> instance_() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> Ptr inst;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> inst;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> std<span style="color:#f92672">::</span>once_flag<span style="color:#f92672">&amp;</span> getOnceFlag() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> std<span style="color:#f92672">::</span>once_flag flag;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> flag;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> std<span style="color:#f92672">::</span>mutex<span style="color:#f92672">&amp;</span> getMutex() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> std<span style="color:#f92672">::</span>mutex mtx;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> mtx;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> std<span style="color:#f92672">::</span>function<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span>(T<span style="color:#f92672">*</span>)<span style="color:#f92672">&gt;&amp;</span> getDeleter() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> std<span style="color:#f92672">::</span>function<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span>(T<span style="color:#f92672">*</span>)<span style="color:#f92672">&gt;</span> deleter <span style="color:#f92672">=</span> [](T<span style="color:#f92672">*</span> p) { <span style="color:#66d9ef">delete</span> p; };
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> deleter;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="3-实现方式对比分析">3️⃣ 实现方式对比分析</h2>
+<table>
+  <thead>
+      <tr>
+          <th>实现方式</th>
+          <th>构造控制</th>
+          <th>析构控制</th>
+          <th>支持传参</th>
+          <th>线程安全</th>
+          <th>生命周期可控</th>
+          <th>工程推荐度</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>饿汉式</td>
+          <td>❌</td>
+          <td>❌</td>
+          <td>❌</td>
+          <td>✅</td>
+          <td>❌</td>
+          <td>🟡</td>
+      </tr>
+      <tr>
+          <td>懒汉式+DCLP</td>
+          <td>✅</td>
+          <td>❌</td>
+          <td>❌</td>
+          <td>⚠️</td>
+          <td>❌</td>
+          <td>❌（风险大）</td>
+      </tr>
+      <tr>
+          <td>Meyers Singleton</td>
+          <td>✅</td>
+          <td>❌</td>
+          <td>❌</td>
+          <td>✅（C++11）</td>
+          <td>❌</td>
+          <td>✅</td>
+      </tr>
+      <tr>
+          <td>shared_ptr静态</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>❌</td>
+          <td>✅</td>
+          <td>部分</td>
+          <td>✅</td>
+      </tr>
+      <tr>
+          <td>shared_ptr模板封装</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>✅✅✅</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="4-懒汉式--线程安全c11-标准局部静态变量meyers-singleton-语法语义与底层源码解析">4️⃣ 懒汉式 + 线程安全（C++11 标准）局部静态变量（Meyers Singleton）&mdash; 语法语义与底层源码解析</h2>
+<h3 id="局部静态变量的线程安全c11">🍃局部静态变量的线程安全（C++11）</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> Singleton<span style="color:#f92672">&amp;</span> getInstance() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> Singleton instance;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> instance;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>C++11 标准 <code>[stmt.dcl/4]</code>：[[局部静态变量的初始化]]是[[线程安全]]的。</p>
+<p>[[编译器]]在初始化前加锁，保证只有一个线程可以构造它。</p>
+<p>编译器生成等价伪代码（示意）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>Singleton<span style="color:#f92672">&amp;</span> getInstance() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">bool</span> initialized <span style="color:#f92672">=</span> false;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">char</span> storage[<span style="color:#66d9ef">sizeof</span>(Singleton)];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> std<span style="color:#f92672">::</span>once_flag flag;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>call_once(flag, [<span style="color:#f92672">&amp;</span>] {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> (<span style="color:#f92672">&amp;</span>storage) Singleton();
+</span></span><span style="display:flex;"><span>        initialized <span style="color:#f92672">=</span> true;
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">reinterpret_cast</span><span style="color:#f92672">&lt;</span>Singleton<span style="color:#f92672">*&gt;</span>(<span style="color:#f92672">&amp;</span>storage);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="析构顺序与静态对象生命周期问题">🍃析构顺序与静态对象生命周期问题</h3>
+<ul>
+<li>局部 <code>static</code> 实例会在 <code>main()</code> 退出后被自动[[析构]]</li>
+<li>如果你希望手动控制生命周期（如 <code>exit()</code> 后仍然存在），需配合 <code>new</code> 与 <code>atexit</code> 或 <code>shared_ptr</code> 实现。</li>
+</ul>
+<h3 id="源码级剖析glibc--clang-libc">🍃源码级剖析（glibc + clang libc++）</h3>
+<p>[[glibc]] 层面：<code>pthread_once</code> 实现</p>
+<p>[[glibc]] 中 <code>std::call_once</code> 依赖 <code>pthread_once</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">pthread_once</span>(pthread_once_t <span style="color:#f92672">*</span>once_control, <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>init_routine)(<span style="color:#66d9ef">void</span>));
+</span></span></code></pre></div><p><code>pthread_once</code> 使用锁 + 状态标志 + [[memory barrier]] 保证只初始化一次
+是 [[C++11]] <code>std::call_once</code> 的基础</p>
+<p>[[libc++]] 实现（<code>&lt;mutex&gt;</code>）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> std {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Callable</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> call_once(once_flag<span style="color:#f92672">&amp;</span> flag, Callable<span style="color:#f92672">&amp;&amp;</span> f);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>内部采用了双状态原子标记（<code>__called</code>, <code>__complete</code>）</p>
+<p>GCC 实现中使用 <code>__atomic_load_n</code> + <code>__sync_bool_compare_and_swap</code> 保证[[原子性]]</p>
+<h2 id="5-底层原理解析语义--abi-行为--构造顺序">5️⃣ 底层原理解析：语义 + ABI 行为 + 构造顺序</h2>
+<h3 id="-stdcall_once--stdonce_flag">🧵 <code>std::call_once</code> + <code>std::once_flag</code></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> std<span style="color:#f92672">::</span>once_flag f;
+</span></span><span style="display:flex;"><span>std<span style="color:#f92672">::</span>call_once(f, [] { singleton <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Singleton(); });
+</span></span></code></pre></div><h3 id="-内存模型分析">🔥 内存模型分析</h3>
+<ul>
+<li>局部 static：存储于静态区</li>
+<li>shared_ptr：堆区资源，引用计数释放</li>
+</ul>
+<h2 id="6-resourcepool--threadpool-工程实践">6️⃣ ResourcePool / ThreadPool 工程实践</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> pool <span style="color:#f92672">=</span> SharedSingleton<span style="color:#f92672">&lt;</span>BufferPool<span style="color:#f92672">&gt;::</span>instance(<span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">8</span><span style="color:#f92672">*</span><span style="color:#ae81ff">1024</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> buf <span style="color:#f92672">=</span> pool<span style="color:#f92672">-&gt;</span>acquire();
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> pool <span style="color:#f92672">=</span> SharedSingleton<span style="color:#f92672">&lt;</span>ThreadPool<span style="color:#f92672">&gt;::</span>instance(<span style="color:#ae81ff">8</span>);
+</span></span><span style="display:flex;"><span>pool<span style="color:#f92672">-&gt;</span>enqueue([] { do_work(); });
+</span></span></code></pre></div><h2 id="-总结与设计哲学">✅ 总结与设计哲学</h2>
+<table>
+  <thead>
+      <tr>
+          <th>能力点</th>
+          <th>Meyers Singleton</th>
+          <th>shared_ptr 封装</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>安全性</td>
+          <td>✅</td>
+          <td>✅</td>
+      </tr>
+      <tr>
+          <td>灵活性</td>
+          <td>❌</td>
+          <td>✅✅</td>
+      </tr>
+      <tr>
+          <td>生命周期控制</td>
+          <td>❌</td>
+          <td>✅✅✅</td>
+      </tr>
+      <tr>
+          <td>测试友好性</td>
+          <td>❌</td>
+          <td>✅✅</td>
+      </tr>
+      <tr>
+          <td>工程适配度</td>
+          <td>🟡</td>
+          <td>✅✅✅</td>
+      </tr>
+  </tbody>
+</table>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>543 words</span>
+    <span>7 - 9 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-什么是单例基本语义与使用场景">1️⃣ 什么是单例？基本语义与使用场景</a>
+      <ul>
+        <li><a href="#-常见使用场景">✅ 常见使用场景：</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-单例的五种常见实现方式">2️⃣ 单例的五种常见实现方式</a>
+      <ul>
+        <li><a href="#1-饿汉式单例early-instantiation">🍃1. 饿汉式单例（Early Instantiation）</a></li>
+        <li><a href="#2-懒汉式lazy-initialization-非线程安全">🍃2. 懒汉式（Lazy Initialization）+ 非线程安全</a></li>
+        <li><a href="#3-懒汉式--线程安全c11-标准局部静态变量meyers-singleton-推荐使用">🍃3. 懒汉式 + 线程安全（C++11 标准）局部静态变量（Meyers Singleton）&mdash; 【推荐使用】</a></li>
+        <li><a href="#4-懒汉式--双重检查锁dclp-double-checked-locking">🍃4. 懒汉式 + 双重检查锁（DCLP Double-Checked Locking）</a></li>
+        <li><a href="#5-智能指针--延迟构造">🍃5. 智能指针 + 延迟构造</a></li>
+        <li><a href="#6-模板化-shared_ptr-单例进阶-现代-c-的正确打开方式">🍃6. 模板化 shared_ptr 单例（进阶）&mdash; 现代 C++ 的正确打开方式</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-实现方式对比分析">3️⃣ 实现方式对比分析</a></li>
+    <li><a href="#4-懒汉式--线程安全c11-标准局部静态变量meyers-singleton-语法语义与底层源码解析">4️⃣ 懒汉式 + 线程安全（C++11 标准）局部静态变量（Meyers Singleton）&mdash; 语法语义与底层源码解析</a>
+      <ul>
+        <li><a href="#局部静态变量的线程安全c11">🍃局部静态变量的线程安全（C++11）</a></li>
+        <li><a href="#析构顺序与静态对象生命周期问题">🍃析构顺序与静态对象生命周期问题</a></li>
+        <li><a href="#源码级剖析glibc--clang-libc">🍃源码级剖析（glibc + clang libc++）</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-底层原理解析语义--abi-行为--构造顺序">5️⃣ 底层原理解析：语义 + ABI 行为 + 构造顺序</a>
+      <ul>
+        <li><a href="#-stdcall_once--stdonce_flag">🧵 <code>std::call_once</code> + <code>std::once_flag</code></a></li>
+        <li><a href="#-内存模型分析">🔥 内存模型分析</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-resourcepool--threadpool-工程实践">6️⃣ ResourcePool / ThreadPool 工程实践</a></li>
+    <li><a href="#-总结与设计哲学">✅ 总结与设计哲学</a></li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/-c&#43;&#43;-%E7%B1%BB%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0-static-%E4%B8%8E-const-%E7%9A%84%E5%A3%B0%E6%98%8E%E4%B8%8E%E5%AE%9A%E4%B9%89%E8%A7%84%E5%88%99%E8%A7%A3%E6%9E%90/">📌 C&#43;&#43;类成员函数 static 与 const 的声明与定义规则解析</a></li><li><a href="/posts/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-c&#43;&#43;-%E4%B8%AD%E7%9A%84-std-ref-%E5%92%8C-cref-%E7%9A%84%E5%BC%95%E7%94%A8%E5%B0%81%E8%A3%85%E6%9C%BA%E5%88%B6/">📌深入理解 C&#43;&#43; 中的 std ref 和 cref 的引用封装机制</a></li><li><a href="/posts/asan/">asan</a></li></ul></aside></div>
+  </div>
+</body>
+</html>
