@@ -13,7 +13,7 @@
       <link>/posts/cmake/</link>
       <pubDate>Wed, 04 Jun 2025 00:00:00 +0800</pubDate>
       <guid>/posts/cmake/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://cmake.org/cmake/help/latest/index.html&#34;&gt;Lastest Release Cmake Reference Documentation&lt;/a&gt;&#xA;&lt;a href=&#34;https://cmake.org/documentation/&#34;&gt;https://cmake.org/documentation/&lt;/a&gt;&#xA;&lt;a href=&#34;https://modern-cmake-cn.github.io/Modern-CMake-zh_CN/&#34;&gt;Modern CMake 简体中文版&lt;/a&gt;&#xA;&lt;a href=&#34;https://cmake.readthedocs.io/en/latest/&#34;&gt;cmake 实践&lt;/a&gt;&#xA;[CMake-Summary-of-documentation-chinese-@&lt;a href=&#34;https://github.com/fenneishi&#34;&gt;fenneishi&lt;/a&gt;]&lt;/p&gt;</description>
+      <description>&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://cmake.org/cmake/help/latest/index.html&#34;&gt;Lastest Release Cmake Reference Documentation&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://cmake.org/documentation/&#34;&gt;https://cmake.org/documentation/&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://modern-cmake-cn.github.io/Modern-CMake-zh_CN/&#34;&gt;Modern CMake 简体中文版&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://cmake.readthedocs.io/en/latest/&#34;&gt;cmake 实践&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;[CMake-Summary-of-documentation-chinese-@&lt;a href=&#34;https://github.com/fenneishi&#34;&gt;fenneishi&lt;/a&gt;]&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>CMake：include_directories 与 target_include_directories 使用指南</title>
