@@ -38,8 +38,11 @@
     <loc>/posts/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-c&#43;&#43;-%E4%B8%AD%E7%9A%84-std-ref-%E5%92%8C-cref-%E7%9A%84%E5%BC%95%E7%94%A8%E5%B0%81%E8%A3%85%E6%9C%BA%E5%88%B6/</loc>
     <lastmod>2025-06-04T02:30:00+08:00</lastmod>
   </url><url>
+    <loc>/posts/cmake/</loc>
+    <lastmod>2025-06-04T00:00:00+08:00</lastmod>
+  </url><url>
     <loc>/tags/cmake/</loc>
-    <lastmod>2025-06-03T00:00:00+08:00</lastmod>
+    <lastmod>2025-06-04T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/posts/cmakeinclude_directories-%E4%B8%8E-target_include_directories-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</loc>
     <lastmod>2025-06-03T00:00:00+08:00</lastmod>
@@ -420,9 +423,6 @@
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/ccache/</loc>
-    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>/posts/cmake/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/cmos/</loc>
