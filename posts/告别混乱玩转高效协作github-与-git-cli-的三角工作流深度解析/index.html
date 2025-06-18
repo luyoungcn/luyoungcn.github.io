@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🔊告别混乱，玩转高效协作：GitHub 与 Git CLI 的“三角工作流”深度解析 | LuyangのBlog</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/%E5%91%8A%E5%88%AB%E6%B7%B7%E4%B9%B1%E7%8E%A9%E8%BD%AC%E9%AB%98%E6%95%88%E5%8D%8F%E4%BD%9Cgithub-%E4%B8%8E-git-cli-%E7%9A%84%E4%B8%89%E8%A7%92%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="🔊告别混乱，玩转高效协作：GitHub 与 Git CLI 的“三角工作流”深度解析">
+  <meta property="og:description" content="告别混乱，玩转高效协作：GitHub 与 Git CLI 的“三角工作流”深度解析 在现代软件开发中，团队协作是常态。无论是参与热门的开源项目，还是在公司内部与同事并肩作战，高效的代码管理策略都是成功的基石。如果你曾对 Git 的分支操作感到困惑，或者觉得 GitHub 上的 Fork (派生) 和 Pull Request (PR) 让人望而却步，那么是时候深入了解并掌握一套强大的协作模式了——那就是 “三角工作流”（Triangular Workflow）。
+它不仅能让你的代码管理井然有序，还能大幅提升团队的协作效率。更棒的是，有了强大的 GitHub CLI (gh 命令) 作为你的得力助手，整个流程将变得前所未有的流畅和智能。
+理解“三角工作流”的核心概念：一场厨房里的协作革命 为了更好地理解“三角工作流”，我们不妨把它想象成一家星级餐馆的厨房运作模式。
+1. 主厨的食谱书：项目的“上游仓库”（Upstream Repository） 类比： 这本食谱书是餐馆的灵魂，记载了所有招牌菜的稳定、经过严格验证的配方。它是所有菜品的最终版本，不会被随意修改。 实际意义： 上游仓库就是项目的原始仓库，通常由项目维护者掌控。它的 main (或 master) 和 develop 分支包含了项目的核心代码，稳定且随时准备发布。你通常没有直接向其推送代码的权限，这是为了保证代码库的质量和稳定性。 2. 你自己的食谱本：你的“派生仓库”（Forked Repository） 类比： 作为一名新加入的厨师，你不能直接在主厨的食谱书上涂改。因此，你会抄写一本属于你自己的食谱本。这本食谱本是你个人的试验田，你可以随意在上面添加笔记、修改配方，甚至尝试全新的菜肴。 实际意义： 派生仓库是你在 GitHub 上从上游仓库复制的一个个人副本。这个副本完全属于你，你可以自由地向其推送（push）代码、创建分支，而不会影响到原始的上游仓库。这是你进行个人开发和试验的“安全沙箱”。 3. 你的新菜试验单：你的“特性分支”（Feature Branch / Topic Branch） 类比： 主厨让你开发一道新甜点。你不会直接在你自己的食谱本上修改，因为你可能需要尝试好几种配方和做法。你会拿出一张空白的试验单，专门用来记录和修改这个新甜点的配方。你可以在这张试验单上放心地试验，即使失败了，也不会弄乱你自己的食谱本。 实际意义： 特性分支是你在本地从 main 或 develop 分支创建的临时性、短生命周期分支。每当你需要开发一个新功能、修复一个 Bug 或进行任何独立的工作时，都应该创建一个新的特性分支。这能确保你的不同工作任务之间互相隔离，避免代码冲突和混乱。 4. 递交新菜建议：提交“拉取请求”（Pull Request - PR） 类比： 当你确信新甜点的配方完美无缺，并想让它成为餐馆的正式菜品时，你不会直接把它写到主厨的食谱书里。你会把你的试验单连同你的自信，一起递交给“主厨”，并说：“主厨，这是我研发的新甜点配方，请您审查！” 主厨和资深厨师会仔细审查你的配方。如果没问题，它就会被正式收录到主厨的食谱书中。 实际意义： Pull Request 是你在 GitHub 上发起的一个请求，请求项目维护者（主厨）将你派生仓库中特性分支的代码，合并到上游仓库的指定分支（通常是 develop 或 main）。这是一个代码审查和讨论的平台，确保只有高质量、符合规范的代码才能进入主项目。 “三角工作流”的实战演练：Git CLI 与 GitHub 联手 理解了核心概念，接下来我们通过 Git CLI 命令，一步步地实现这个强大的工作流：">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-04T02:30:00+08:00">
+    <meta property="article:modified_time" content="2025-06-04T02:30:00+08:00">
+    <meta property="article:tag" content="Git">
+    <meta property="article:tag" content="Github">
+    <meta property="article:tag" content="Workflow">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="🔊告别混乱，玩转高效协作：GitHub 与 Git CLI 的“三角工作流”深度解析">
+  <meta name="twitter:description" content="告别混乱，玩转高效协作：GitHub 与 Git CLI 的“三角工作流”深度解析 在现代软件开发中，团队协作是常态。无论是参与热门的开源项目，还是在公司内部与同事并肩作战，高效的代码管理策略都是成功的基石。如果你曾对 Git 的分支操作感到困惑，或者觉得 GitHub 上的 Fork (派生) 和 Pull Request (PR) 让人望而却步，那么是时候深入了解并掌握一套强大的协作模式了——那就是 “三角工作流”（Triangular Workflow）。
+它不仅能让你的代码管理井然有序，还能大幅提升团队的协作效率。更棒的是，有了强大的 GitHub CLI (gh 命令) 作为你的得力助手，整个流程将变得前所未有的流畅和智能。
+理解“三角工作流”的核心概念：一场厨房里的协作革命 为了更好地理解“三角工作流”，我们不妨把它想象成一家星级餐馆的厨房运作模式。
+1. 主厨的食谱书：项目的“上游仓库”（Upstream Repository） 类比： 这本食谱书是餐馆的灵魂，记载了所有招牌菜的稳定、经过严格验证的配方。它是所有菜品的最终版本，不会被随意修改。 实际意义： 上游仓库就是项目的原始仓库，通常由项目维护者掌控。它的 main (或 master) 和 develop 分支包含了项目的核心代码，稳定且随时准备发布。你通常没有直接向其推送代码的权限，这是为了保证代码库的质量和稳定性。 2. 你自己的食谱本：你的“派生仓库”（Forked Repository） 类比： 作为一名新加入的厨师，你不能直接在主厨的食谱书上涂改。因此，你会抄写一本属于你自己的食谱本。这本食谱本是你个人的试验田，你可以随意在上面添加笔记、修改配方，甚至尝试全新的菜肴。 实际意义： 派生仓库是你在 GitHub 上从上游仓库复制的一个个人副本。这个副本完全属于你，你可以自由地向其推送（push）代码、创建分支，而不会影响到原始的上游仓库。这是你进行个人开发和试验的“安全沙箱”。 3. 你的新菜试验单：你的“特性分支”（Feature Branch / Topic Branch） 类比： 主厨让你开发一道新甜点。你不会直接在你自己的食谱本上修改，因为你可能需要尝试好几种配方和做法。你会拿出一张空白的试验单，专门用来记录和修改这个新甜点的配方。你可以在这张试验单上放心地试验，即使失败了，也不会弄乱你自己的食谱本。 实际意义： 特性分支是你在本地从 main 或 develop 分支创建的临时性、短生命周期分支。每当你需要开发一个新功能、修复一个 Bug 或进行任何独立的工作时，都应该创建一个新的特性分支。这能确保你的不同工作任务之间互相隔离，避免代码冲突和混乱。 4. 递交新菜建议：提交“拉取请求”（Pull Request - PR） 类比： 当你确信新甜点的配方完美无缺，并想让它成为餐馆的正式菜品时，你不会直接把它写到主厨的食谱书里。你会把你的试验单连同你的自信，一起递交给“主厨”，并说：“主厨，这是我研发的新甜点配方，请您审查！” 主厨和资深厨师会仔细审查你的配方。如果没问题，它就会被正式收录到主厨的食谱书中。 实际意义： Pull Request 是你在 GitHub 上发起的一个请求，请求项目维护者（主厨）将你派生仓库中特性分支的代码，合并到上游仓库的指定分支（通常是 develop 或 main）。这是一个代码审查和讨论的平台，确保只有高质量、符合规范的代码才能进入主项目。 “三角工作流”的实战演练：Git CLI 与 GitHub 联手 理解了核心概念，接下来我们通过 Git CLI 命令，一步步地实现这个强大的工作流：">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.e139b0e3b3aff8f0e8e0272554b671a06c857a42278b36c539d96c69ddee2ca2.css" integrity="sha256-4Tmw47Ov&#43;PDo4CclVLZxoGyFekInizbFOdlsad3uLKI=" crossorigin="anonymous">
+
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>🔊告别混乱，玩转高效协作：GitHub 与 Git CLI 的“三角工作流”深度解析</h1><time class="dim" datetime="2025-06-04T02:30:00&#43;08:00">June 4, 2025</time><div class="term-container"><div class="tag">
+        <a href="/tags/git/">#git</a>
+      </div><div class="tag">
+        <a href="/tags/github/">#github</a>
+      </div><div class="tag">
+        <a href="/tags/workflow/">#workflow</a>
+      </div></ol></div>
+  <section class="page-section"><h2 id="告别混乱玩转高效协作github-与-git-cli-的三角工作流深度解析">告别混乱，玩转高效协作：GitHub 与 Git CLI 的“三角工作流”深度解析</h2>
+<p>在现代软件开发中，团队协作是常态。无论是参与热门的开源项目，还是在公司内部与同事并肩作战，高效的代码管理策略都是成功的基石。如果你曾对 Git 的分支操作感到困惑，或者觉得 GitHub 上的 Fork (派生) 和 Pull Request (PR) 让人望而却步，那么是时候深入了解并掌握一套强大的协作模式了——那就是 <strong>“三角工作流”（Triangular Workflow）</strong>。</p>
+<p>它不仅能让你的代码管理井然有序，还能大幅提升团队的协作效率。更棒的是，有了强大的 <strong>GitHub CLI (<code>gh</code> 命令)</strong> 作为你的得力助手，整个流程将变得前所未有的流畅和智能。</p>
+<hr>
+<h3 id="理解三角工作流的核心概念一场厨房里的协作革命">理解“三角工作流”的核心概念：一场厨房里的协作革命</h3>
+<p>为了更好地理解“三角工作流”，我们不妨把它想象成一家星级餐馆的厨房运作模式。</p>
+<h4 id="1-主厨的食谱书项目的上游仓库upstream-repository">1. 主厨的食谱书：项目的“上游仓库”（Upstream Repository）</h4>
+<ul>
+<li><strong>类比：</strong> 这本食谱书是餐馆的灵魂，记载了所有招牌菜的<strong>稳定、经过严格验证</strong>的配方。它是所有菜品的最终版本，不会被随意修改。</li>
+<li><strong>实际意义：</strong> <strong>上游仓库</strong>就是项目的原始仓库，通常由项目维护者掌控。它的 <code>main</code> (或 <code>master</code>) 和 <code>develop</code> 分支包含了项目的核心代码，稳定且随时准备发布。你通常<strong>没有直接向其推送代码的权限</strong>，这是为了保证代码库的质量和稳定性。</li>
+</ul>
+<h4 id="2-你自己的食谱本你的派生仓库forked-repository">2. 你自己的食谱本：你的“派生仓库”（Forked Repository）</h4>
+<ul>
+<li><strong>类比：</strong> 作为一名新加入的厨师，你不能直接在主厨的食谱书上涂改。因此，你会<strong>抄写一本属于你自己的食谱本</strong>。这本食谱本是你个人的试验田，你可以随意在上面添加笔记、修改配方，甚至尝试全新的菜肴。</li>
+<li><strong>实际意义：</strong> <strong>派生仓库</strong>是你在 GitHub 上从上游仓库复制的一个<strong>个人副本</strong>。这个副本完全属于你，你可以自由地向其推送（<code>push</code>）代码、创建分支，而不会影响到原始的上游仓库。这是你进行个人开发和试验的“安全沙箱”。</li>
+</ul>
+<h4 id="3-你的新菜试验单你的特性分支feature-branch--topic-branch">3. 你的新菜试验单：你的“特性分支”（Feature Branch / Topic Branch）</h4>
+<ul>
+<li><strong>类比：</strong> 主厨让你开发一道新甜点。你不会直接在你自己的食谱本上修改，因为你可能需要尝试好几种配方和做法。你会拿出一张<strong>空白的试验单</strong>，专门用来记录和修改这个新甜点的配方。你可以在这张试验单上放心地试验，即使失败了，也不会弄乱你自己的食谱本。</li>
+<li><strong>实际意义：</strong> <strong>特性分支</strong>是你在本地从 <code>main</code> 或 <code>develop</code> 分支创建的<strong>临时性、短生命周期分支</strong>。每当你需要开发一个新功能、修复一个 Bug 或进行任何独立的工作时，都应该创建一个新的特性分支。这能确保你的不同工作任务之间<strong>互相隔离</strong>，避免代码冲突和混乱。</li>
+</ul>
+<h4 id="4-递交新菜建议提交拉取请求pull-request---pr">4. 递交新菜建议：提交“拉取请求”（Pull Request - PR）</h4>
+<ul>
+<li><strong>类比：</strong> 当你确信新甜点的配方完美无缺，并想让它成为餐馆的正式菜品时，你不会直接把它写到主厨的食谱书里。你会把你的<strong>试验单</strong>连同你的自信，一起递交给“主厨”，并说：“主厨，这是我研发的新甜点配方，请您审查！” 主厨和资深厨师会仔细审查你的配方。如果没问题，它就会被正式收录到<strong>主厨的食谱书</strong>中。</li>
+<li><strong>实际意义：</strong> <strong>Pull Request</strong> 是你在 GitHub 上发起的一个<strong>请求</strong>，请求项目维护者（主厨）将你派生仓库中特性分支的代码，合并到上游仓库的指定分支（通常是 <code>develop</code> 或 <code>main</code>）。这是一个代码审查和讨论的平台，确保只有高质量、符合规范的代码才能进入主项目。</li>
+</ul>
+<hr>
+<h3 id="三角工作流的实战演练git-cli-与-github-联手">“三角工作流”的实战演练：Git CLI 与 GitHub 联手</h3>
+<p>理解了核心概念，接下来我们通过 Git CLI 命令，一步步地实现这个强大的工作流：</p>
+<h4 id="步骤-1-在-github-上派生fork上游仓库">步骤 1: 在 GitHub 上“派生”（Fork）上游仓库</h4>
+<p>这是你拥有自己“食谱本”的第一步。</p>
+<ul>
+<li><strong>目标：</strong> 获取一个你可以自由操作的项目副本。</li>
+<li><strong>操作：</strong> 访问原始项目的 GitHub 页面，点击右上角的 <strong><code>Fork</code></strong> 按钮。</li>
+<li><strong>结果：</strong> 你的 GitHub 账号下会出现一个与原项目同名的仓库，这就是你的<strong>派生仓库</strong>。</li>
+</ul>
+<h4 id="2-克隆clone你的派生仓库到本地">2. 克隆（Clone）你的派生仓库到本地</h4>
+<p>把你的“食谱本”下载到你的本地电脑。</p>
+<ul>
+<li>
+<p><strong>目标：</strong> 在你的本地电脑上创建派生仓库的工作副本。</p>
+</li>
+<li>
+<p><strong>操作：</strong></p>
+<ol>
+<li>
+<p>打开你的 GitHub 派生仓库页面，复制其 URL (HTTPS 或 SSH)。</p>
+</li>
+<li>
+<p>在你的终端或命令行中执行：</p>
+<p>Bash</p>
+<pre tabindex="0"><code>git clone [你的派生仓库URL]
+# 示例：git clone https://github.com/your-username/project-repo.git
+</code></pre></li>
+</ol>
+</li>
+<li>
+<p><strong>结果：</strong> 本地电脑上会有一个与你派生仓库内容完全一致的文件夹。</p>
+</li>
+</ul>
+<h4 id="3-添加上游upstream远程仓库">3. 添加“上游”（Upstream）远程仓库</h4>
+<p>让你的本地 Git 知道“主厨的食谱书”在哪里。</p>
+<ul>
+<li>
+<p><strong>目标：</strong> 建立与原始项目仓库的连接，以便获取其最新更新。</p>
+</li>
+<li>
+<p><strong>操作：</strong> 进入你刚刚克隆的本地项目文件夹，并添加上游远程：</p>
+<p>Bash</p>
+<pre tabindex="0"><code>cd [项目文件夹名]
+git remote add upstream [原始项目GitHub仓库的URL]
+# 示例：git remote add upstream https://github.com/original-org/original-repo.git
+</code></pre></li>
+<li>
+<p><strong>结果：</strong> 你的本地 Git 配置中多了一个名为 <code>upstream</code> 的远程，它指向了原始项目。</p>
+</li>
+</ul>
+<h4 id="4-同步最新代码并创建特性分支">4. 同步最新代码并创建特性分支</h4>
+<p>确保你在最新代码的基础上开始你的“新菜试验”。</p>
+<ul>
+<li>
+<p><strong>目标：</strong> 确保你的新功能开发基于项目最新的代码状态，并保证工作隔离。</p>
+</li>
+<li>
+<p><strong>操作：</strong></p>
+<ol>
+<li>
+<p>切换到你本地的主分支（通常是 <code>main</code> 或 <code>master</code>）：</p>
+<p>Bash</p>
+<pre tabindex="0"><code>git checkout main
+</code></pre></li>
+<li>
+<p>从上游拉取最新代码到你的本地 <code>main</code> 分支：</p>
+<p>Bash</p>
+<pre tabindex="0"><code>git pull upstream main
+</code></pre></li>
+<li>
+<p>从你本地的 <code>main</code> 分支创建一个新的特性分支：</p>
+<p>Bash</p>
+<pre tabindex="0"><code>git checkout -b feature/implement-user-profile
+# &#39;feature/&#39; 是一种常见的命名约定，表示这是一个功能分支
+</code></pre></li>
+</ol>
+</li>
+<li>
+<p><strong>结果：</strong> 你现在位于一个全新的、干净的特性分支上，可以安全地开始你的新工作。</p>
+</li>
+</ul>
+<h4 id="5-在特性分支上开发并提交更改">5. 在特性分支上开发并提交更改</h4>
+<p>在你的“试验单”上记录每一步的开发过程。</p>
+<ul>
+<li><strong>目标：</strong> 编写代码，并在每个逻辑单元完成后记录你的进度。</li>
+<li><strong>操作：</strong>
+<ol>
+<li>编写你的代码。</li>
+<li>暂存更改：<code>git add .</code> (或 <code>git add [具体文件名]</code>)</li>
+<li>提交更改：<code>git commit -m &quot;feat: Add basic user profile view&quot;</code></li>
+</ol>
+</li>
+<li><strong>结果：</strong> 你的代码更改被记录在当前特性分支的提交历史中。</li>
+</ul>
+<h4 id="6-将特性分支推送到你的派生仓库">6. 将特性分支推送到你的派生仓库</h4>
+<p>把你的“试验单”上传到你的 GitHub “食谱本”上。</p>
+<ul>
+<li>
+<p><strong>目标：</strong> 将你的本地工作同步到你在 GitHub 上的派生仓库，作为在线备份和 PR 的来源。</p>
+</li>
+<li>
+<p><strong>操作：</strong></p>
+<p>Bash</p>
+<pre tabindex="0"><code>git push origin feature/implement-user-profile
+# &#39;origin&#39; 默认就是指向你派生仓库的远程名称
+</code></pre></li>
+<li>
+<p><strong>结果：</strong> 你的 <code>feature/implement-user-profile</code> 分支及其所有提交现在已经上传到你的 GitHub 派生仓库。</p>
+</li>
+</ul>
+<hr>
+<h3 id="github-cli-如何简化递交新菜建议创建-pr-你的专属厨房助理效率对比">GitHub CLI 如何简化“递交新菜建议”（创建 PR）—— 你的专属“厨房助理”效率对比</h3>
+<p>在“三角工作流”中，当你辛辛苦苦完成了“新菜试验单”（<strong>特性分支</strong>）上的工作，并希望将它“递交给主厨”（<strong>创建 Pull Request - PR</strong>）时，这一步往往是许多开发者感到繁琐和困惑的环节。这里，我们将对比<strong>传统手动方式</strong>和拥有 <strong>GitHub CLI (<code>gh</code> 命令)</strong> 这位“厨房助理”的<strong>智能方式</strong>，看看效率的巨大差异。</p>
+<h4 id="场景你已完成新菜试验单并推送到你的食谱本">场景：你已完成“新菜试验单”并推送到你的“食谱本”</h4>
+<p>假设你已经从“主厨的食谱书”（上游仓库）派生（Fork）了你自己的“食谱本”（派生仓库），并且在本地的“试验单”（<code>feature/new-dessert</code> 特性分支）上完成了代码编写，并已将其推送到你的 GitHub 派生仓库。现在，你需要向“主厨的食谱书”（上游仓库）提交 Pull Request。</p>
+<h4 id="1-确定来源你提交的是哪张试验单">1. 确定“来源”：你提交的是哪张“试验单”？</h4>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>方式</strong></td>
+          <td><strong>传统手动方式</strong></td>
+          <td><strong>使用 GitHub CLI 的智能方式</strong></td>
+      </tr>
+      <tr>
+          <td><strong>操作</strong></td>
+          <td>浏览器中，你通常需要手动导航到你的派生仓库的该分支页面，或在 PR 创建页面手动选择源分支。</td>
+          <td>在命令行中，你只需确保你<strong>当前就在该特性分支上</strong>（例如 <code>git checkout feature/new-dessert</code>）。</td>
+      </tr>
+      <tr>
+          <td><strong>“厨房助理”</strong></td>
+          <td>你需要<strong>指明</strong>：“主厨，这是我这张 <code>feature/new-dessert</code> 的试验单！”</td>
+          <td>“厨房助理”会<strong>自动识别</strong>：“好的，我知道你现在拿着 <code>feature/new-dessert</code> 这张试验单。”</td>
+      </tr>
+      <tr>
+          <td><strong>智能体现</strong></td>
+          <td>无智能，完全依赖你的手动选择。</td>
+          <td><strong>上下文感知</strong>：<code>gh</code> 命令自动识别当前 Git 分支作为 PR 的来源。</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="2-确定去向这份建议要递交给哪本主厨的食谱书的哪个区域">2. 确定“去向”：这份建议要递交给哪本“主厨的食谱书”的哪个区域？</h4>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>方式</strong></td>
+          <td><strong>传统手动方式</strong></td>
+          <td><strong>使用 GitHub CLI 的智能方式</strong></td>
+      </tr>
+      <tr>
+          <td><strong>操作</strong></td>
+          <td>浏览器中，你需要在 PR 创建页面<strong>手动选择</strong>：&lt;br&gt; - <strong>目标仓库</strong>：选择“主厨的食谱书” (例如 <code>original-org/original-repo</code>)&lt;br&gt; - <strong>目标分支</strong>：选择正确的合并目标 (例如 <code>main</code> 或 <code>develop</code>)</td>
+          <td>在命令行中，你只需输入 <code>gh pr create</code>。</td>
+      </tr>
+      <tr>
+          <td><strong>“厨房助理”</strong></td>
+          <td>你需要<strong>明确告诉</strong>：“主厨，这份试验单是要递交到您的‘主食谱书’的‘主菜区’（<code>main</code> 分支）！”</td>
+          <td>“厨房助理”会<strong>自动判断</strong>：“我知道你的‘食谱本’是从这本‘主食谱书’派生来的，通常新菜建议是递交到‘主菜区’（<code>main</code> 或 <code>develop</code> 分支）。”它甚至会为你预选好。</td>
+      </tr>
+      <tr>
+          <td><strong>智能体现</strong></td>
+          <td><strong>繁琐且易错</strong>：手动选择目标仓库和分支，如果项目有多个相似名称的分支，容易选错。</td>
+          <td><strong>关系智能识别与自动推荐</strong>：<code>gh</code> 命令能理解本地 Git 配置中的远程关系（<code>origin</code> 和 <code>upstream</code>），并智能地推荐最合理的上游目标分支。这极大地减少了操作失误。</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="3-填写建议表单并递交创建-pr-页面">3. 填写“建议表单”并递交（创建 PR 页面）</h4>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>方式</strong></td>
+          <td><strong>传统手动方式</strong></td>
+          <td><strong>使用 GitHub CLI 的智能方式</strong></td>
+      </tr>
+      <tr>
+          <td><strong>操作</strong></td>
+          <td>打开浏览器，登录 GitHub，点击多个按钮，进入 PR 创建页面。然后，<strong>手动填写</strong> PR 标题和描述。最后点击“Create pull request”。</td>
+          <td>在命令行中，输入 <code>gh pr create</code> (或 <code>gh pr create --web</code>)。</td>
+      </tr>
+      <tr>
+          <td><strong>“厨房助理”</strong></td>
+          <td>你需要自己跑腿，拿着手写的“建议表单”跑到主厨办公室，再逐项填写。</td>
+          <td>“厨房助理”会<strong>直接帮你打开表单，并预填好大部分信息</strong>。它知道你正在哪个项目工作，你的“试验单”是哪个，以及要递交给哪本“主食谱书”的哪个区域。你只需在弹出的浏览器页面上（或命令行提示符下）填写标题和描述即可。</td>
+      </tr>
+      <tr>
+          <td><strong>智能体现</strong></td>
+          <td><strong>效率低下</strong>：需要在命令行和浏览器之间切换，重复性点击和填写。</td>
+          <td><strong>流程集成与自动化</strong>：<code>gh</code> 命令将一系列跨工具的操作整合，实现了一键式创建 PR。特别是 <code>--web</code> 参数，直接在浏览器中为你预填好关键信息，让整个流程变得无比流畅。</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="三角工作流的巨大优势">“三角工作流”的巨大优势</h3>
+<p>掌握了这种工作流，你将体验到前所未有的协作效率和代码管理清晰度：</p>
+<ol>
+<li><strong>代码隔离与稳定性保障：</strong> 你的个人开发完全在独立分支和派生仓库中进行，不会直接影响上游的稳定代码。这极大地降低了引入 Bug 的风险。</li>
+<li><strong>并行开发与高效协作：</strong> 团队成员可以同时在各自的特性分支上工作，互不干扰。通过 Pull Request 机制，团队能够有效地进行代码审查、讨论和集成。</li>
+<li><strong>清晰的代码历史与可追溯性：</strong> 每个功能或修复都有其独立的特性分支和 Pull Request，使得项目历史记录清晰、易于理解和回溯。</li>
+<li><strong>友好的开源贡献模式：</strong> 对于开源项目而言，“派生-克隆-PR”的模式是主流贡献方式，它提供了一个安全、规范的通道，鼓励更多开发者参与贡献。</li>
+<li><strong>GitHub CLI 带来的极致体验：</strong> <code>gh</code> 命令将一系列复杂的 Git 和 GitHub 操作，简化为直观的命令行指令，让开发者能够更专注于代码本身，而非繁琐的流程。</li>
+</ol>
+<hr>
+<h3 id="结语">结语</h3>
+<p>“三角工作流”并非仅仅是一种技术流程，它更是一种成熟、高效的协作哲学。通过清晰的角色划分和流程规范，它使得复杂的多人协作变得井然有序。而 <strong>GitHub CLI</strong> 的出现，更是为这种工作流插上了翅膀，让你的每一次贡献都更加流畅、更加智能。</p>
+<p>现在，你已经全面掌握了“三角工作流”的精髓。是时候拿起你的 Git CLI，加入到全球开发者的行列中，用你的代码，让世界变得更美好！</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://github.blog/open-source/git/how-the-github-cli-can-now-enable-triangular-workflows/">How the GitHub CLI can now enable triangular workflows</a></li>
+<li><a href="https://www.infoq.cn/article/2015/08/git-25-released">Git 2.5 增加了工作树、改进了三角工作流、性能等诸多方面</a></li>
+<li><a href="https://www.infoq.cn/article/Nah3qU5TMfZ5xRI2FB3M?utm_term=wxgroup">GitHub CLI 增强了对三角工作流的支持</a></li>
+</ul>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>430 words</span>
+    <span>12 - 16 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#告别混乱玩转高效协作github-与-git-cli-的三角工作流深度解析">告别混乱，玩转高效协作：GitHub 与 Git CLI 的“三角工作流”深度解析</a>
+      <ul>
+        <li><a href="#理解三角工作流的核心概念一场厨房里的协作革命">理解“三角工作流”的核心概念：一场厨房里的协作革命</a></li>
+        <li><a href="#三角工作流的实战演练git-cli-与-github-联手">“三角工作流”的实战演练：Git CLI 与 GitHub 联手</a></li>
+        <li><a href="#github-cli-如何简化递交新菜建议创建-pr-你的专属厨房助理效率对比">GitHub CLI 如何简化“递交新菜建议”（创建 PR）—— 你的专属“厨房助理”效率对比</a></li>
+        <li><a href="#三角工作流的巨大优势">“三角工作流”的巨大优势</a></li>
+        <li><a href="#结语">结语</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/">git clone 包含 submodule 的仓库</a></li><li><a href="/posts/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/">git 使用指定的 ssh key</a></li><li><a href="/posts/ubuntu_git_server_build_push_code/">Ubuntu git 仓库搭建及代码上传</a></li></ul></aside></div>
+  </div>
+</body>
+</html>
