@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>PUBLIC on LuyangのBlog</title>
-    <link>/tags/public/</link>
-    <description>Recent content in PUBLIC on LuyangのBlog</description>
+    <title>权限 on LuyangのBlog</title>
+    <link>/tags/%E6%9D%83%E9%99%90/</link>
+    <description>Recent content in 权限 on LuyangのBlog</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0800</lastBuildDate>
-    <atom:link href="/tags/public/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/%E6%9D%83%E9%99%90/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>wsl2 ubuntu 访问 USB 设备</title>
       <link>/posts/wsl2-ubuntu-%E8%AE%BF%E9%97%AE-usb-%E8%AE%BE%E5%A4%87/</link>

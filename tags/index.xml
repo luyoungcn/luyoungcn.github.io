@@ -205,7 +205,7 @@
       <description></description>
     </item>
     <item>
-      <title>Usb</title>
+      <title>USB</title>
       <link>/tags/usb/</link>
       <pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate>
       <guid>/tags/usb/</guid>
@@ -219,7 +219,7 @@
       <description></description>
     </item>
     <item>
-      <title>Wsl</title>
+      <title>WSL</title>
       <link>/tags/wsl/</link>
       <pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate>
       <guid>/tags/wsl/</guid>
@@ -937,6 +937,13 @@
       <link>/tags/%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
       <guid>/tags/%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>权限</title>
+      <link>/tags/%E6%9D%83%E9%99%90/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      <guid>/tags/%E6%9D%83%E9%99%90/</guid>
       <description></description>
     </item>
     <item>
