@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>C&#43;&#43; 前向声明与指针使用指南 | LuyangのBlog</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/c&#43;&#43;-%E5%89%8D%E5%90%91%E5%A3%B0%E6%98%8E%E4%B8%8E%E6%8C%87%E9%92%88%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="C&#43;&#43; 前向声明与指针使用指南">
+  <meta property="og:description" content="c&#43;&#43; 为什么有些类属性使用普通的指针定义，而不是使用智能指针 DogClass *ptr; 而不是 std::unique_ptr&lt;DogClass&gt; ptr;
+C&#43;&#43; 前向声明与指针使用指南 前向声明与不完整类型 在 C&#43;&#43; 中，前向声明（Forward Declaration）允许我们在不包含完整类定义的情况下引用一个类。这对于减少编译依赖和解决循环依赖问题非常有用。
+// 前向声明示例 class MyClass; // 只声明存在性，不提供定义 此时，MyClass 被称为不完整类型（Incomplete Type），因为编译器只知道该类存在，但不知道它的大小、成员或方法。
+std::unique_ptr 与不完整类型 当使用 std::unique_ptr 管理前向声明类的对象时，会出现问题：
+// 头文件中 class MyForwardDeclaredClass; // 前向声明 class Container { private: std::unique_ptr&lt;MyForwardDeclaredClass&gt; ptr_; // 编译错误! }; 上述代码在编译时会失败，错误类似于：
+error: invalid application of &#39;sizeof&#39; to incomplete type &#39;MyForwardDeclaredClass&#39; 原因分析 这个问题出现的原因是：
+std::unique_ptr 的析构函数需要知道如何删除它管理的对象 为此，编译器需要在编译 Container 类时知道 MyForwardDeclaredClass 的完整定义 当编译器尝试计算不完整类型的 sizeof 时，无法确定其大小，因此报错 具体来说，std::unique_ptr 的默认删除器 std::default_delete 在析构时会执行：
+template &lt;typename T&gt; void std::default_delete&lt;T&gt;::operator()(T* ptr) const { static_assert(sizeof(T) &gt; 0, &#34;Type must be complete&#34;); delete ptr; } 当类型不完整时，sizeof(T) 无法计算，触发 static_assert 失败。">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="1970-01-01T00:00:00+08:00">
+    <meta property="article:modified_time" content="1970-01-01T00:00:00+08:00">
+    <meta property="article:tag" content="Cpp">
+    <meta property="article:tag" content="前向声明">
+    <meta property="article:tag" content="ForwardDeclaration">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="C&#43;&#43; 前向声明与指针使用指南">
+  <meta name="twitter:description" content="c&#43;&#43; 为什么有些类属性使用普通的指针定义，而不是使用智能指针 DogClass *ptr; 而不是 std::unique_ptr&lt;DogClass&gt; ptr;
+C&#43;&#43; 前向声明与指针使用指南 前向声明与不完整类型 在 C&#43;&#43; 中，前向声明（Forward Declaration）允许我们在不包含完整类定义的情况下引用一个类。这对于减少编译依赖和解决循环依赖问题非常有用。
+// 前向声明示例 class MyClass; // 只声明存在性，不提供定义 此时，MyClass 被称为不完整类型（Incomplete Type），因为编译器只知道该类存在，但不知道它的大小、成员或方法。
+std::unique_ptr 与不完整类型 当使用 std::unique_ptr 管理前向声明类的对象时，会出现问题：
+// 头文件中 class MyForwardDeclaredClass; // 前向声明 class Container { private: std::unique_ptr&lt;MyForwardDeclaredClass&gt; ptr_; // 编译错误! }; 上述代码在编译时会失败，错误类似于：
+error: invalid application of &#39;sizeof&#39; to incomplete type &#39;MyForwardDeclaredClass&#39; 原因分析 这个问题出现的原因是：
+std::unique_ptr 的析构函数需要知道如何删除它管理的对象 为此，编译器需要在编译 Container 类时知道 MyForwardDeclaredClass 的完整定义 当编译器尝试计算不完整类型的 sizeof 时，无法确定其大小，因此报错 具体来说，std::unique_ptr 的默认删除器 std::default_delete 在析构时会执行：
+template &lt;typename T&gt; void std::default_delete&lt;T&gt;::operator()(T* ptr) const { static_assert(sizeof(T) &gt; 0, &#34;Type must be complete&#34;); delete ptr; } 当类型不完整时，sizeof(T) 无法计算，触发 static_assert 失败。">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.e139b0e3b3aff8f0e8e0272554b671a06c857a42278b36c539d96c69ddee2ca2.css" integrity="sha256-4Tmw47Ov&#43;PDo4CclVLZxoGyFekInizbFOdlsad3uLKI=" crossorigin="anonymous">
+
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>C&#43;&#43; 前向声明与指针使用指南</h1><time class="dim" datetime="1970-01-01T00:00:00&#43;08:00">January 1, 1970</time><div class="term-container"><div class="tag">
+        <a href="/tags/cpp/">#cpp</a>
+      </div><div class="tag">
+        <a href="/tags/%E5%89%8D%E5%90%91%E5%A3%B0%E6%98%8E/">#前向声明</a>
+      </div><div class="tag">
+        <a href="/tags/forwarddeclaration/">#ForwardDeclaration</a>
+      </div></ol></div>
+  <section class="page-section"><blockquote>
+<p>c++ 为什么有些类属性使用普通的指针定义，而不是使用智能指针
+<code>DogClass *ptr;</code> 而不是 <code>std::unique_ptr&lt;DogClass&gt; ptr</code>;</p></blockquote>
+<h1 id="c-前向声明与指针使用指南">C++ 前向声明与指针使用指南</h1>
+<h2 id="前向声明与不完整类型">前向声明与不完整类型</h2>
+<p>在 C++ 中，<strong>前向声明</strong>（Forward Declaration）允许我们在不包含完整类定义的情况下引用一个类。这对于减少编译依赖和解决循环依赖问题非常有用。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 前向声明示例
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyClass</span>; <span style="color:#75715e">// 只声明存在性，不提供定义
+</span></span></span></code></pre></div><p>此时，<code>MyClass</code> 被称为<strong>不完整类型</strong>（Incomplete Type），因为编译器只知道该类存在，但不知道它的大小、成员或方法。</p>
+<h2 id="stdunique_ptr-与不完整类型">std::unique_ptr 与不完整类型</h2>
+<p>当使用 <code>std::unique_ptr</code> 管理前向声明类的对象时，会出现问题：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 头文件中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyForwardDeclaredClass</span>; <span style="color:#75715e">// 前向声明
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Container</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>MyForwardDeclaredClass<span style="color:#f92672">&gt;</span> ptr_; <span style="color:#75715e">// 编译错误!
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span></code></pre></div><p>上述代码在编译时会失败，错误类似于：</p>
+<pre tabindex="0"><code>error: invalid application of &#39;sizeof&#39; to incomplete type &#39;MyForwardDeclaredClass&#39;
+</code></pre><h3 id="原因分析">原因分析</h3>
+<p>这个问题出现的原因是：</p>
+<ol>
+<li><code>std::unique_ptr</code> 的析构函数需要知道如何删除它管理的对象</li>
+<li>为此，编译器需要在编译 <code>Container</code> 类时知道 <code>MyForwardDeclaredClass</code> 的完整定义</li>
+<li>当编译器尝试计算不完整类型的 <code>sizeof</code> 时，无法确定其大小，因此报错</li>
+</ol>
+<p>具体来说，<code>std::unique_ptr</code> 的默认删除器 <code>std::default_delete</code> 在析构时会执行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> std<span style="color:#f92672">::</span>default_delete<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span><span style="color:#66d9ef">operator</span>()(T<span style="color:#f92672">*</span> ptr) <span style="color:#66d9ef">const</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static_assert</span>(<span style="color:#66d9ef">sizeof</span>(T) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;Type must be complete&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">delete</span> ptr;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>当类型不完整时，<code>sizeof(T)</code> 无法计算，触发 <code>static_assert</code> 失败。</p>
+<h2 id="解决方案">解决方案</h2>
+<h3 id="1-使用原始指针配合手动内存管理">1. 使用原始指针配合手动内存管理</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 头文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyForwardDeclaredClass</span>; <span style="color:#75715e">// 前向声明
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Container</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    MyForwardDeclaredClass<span style="color:#f92672">*</span> ptr_ <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">~</span>Container() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (ptr_) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">delete</span> ptr_;
+</span></span><span style="display:flex;"><span>            ptr_ <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>这种方法避免了编译期 <code>sizeof</code> 检查，因为原始指针不需要知道所指向对象的大小。但必须注意手动管理内存，避免内存泄漏。</p>
+<h3 id="2-将-unique_ptr-的定义移至实现文件">2. 将 unique_ptr 的定义移至实现文件</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 头文件 Container.h
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyForwardDeclaredClass</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Container</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>MyForwardDeclaredClass<span style="color:#f92672">&gt;</span> ptr_;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    Container();
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">~</span>Container(); <span style="color:#75715e">// 声明析构函数，但在实现文件中定义
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 实现文件 Container.cpp
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Container.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;MyForwardDeclaredClass.h&#34;</span><span style="color:#75715e"> </span><span style="color:#75715e">// 包含完整定义
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>Container<span style="color:#f92672">::</span>Container() <span style="color:#f92672">:</span> ptr_(<span style="color:#66d9ef">new</span> MyForwardDeclaredClass()) {}
+</span></span><span style="display:flex;"><span>Container<span style="color:#f92672">::~</span>Container() <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>; <span style="color:#75715e">// 在这里，类型已完整，析构函数可以正常工作
+</span></span></span></code></pre></div><p>这种方法是PIMPL（Pointer to Implementation）模式的一种应用。</p>
+<h3 id="3-使用自定义删除器">3. 使用自定义删除器</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 头文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyForwardDeclaredClass</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Container</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>MyForwardDeclaredClass, <span style="color:#66d9ef">void</span>(<span style="color:#f92672">*</span>)(MyForwardDeclaredClass<span style="color:#f92672">*</span>)<span style="color:#f92672">&gt;</span> ptr_;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    Container();
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">~</span>Container();
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 实现文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Container.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;MyForwardDeclaredClass.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">deleter</span>(MyForwardDeclaredClass<span style="color:#f92672">*</span> ptr) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">delete</span> ptr;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Container<span style="color:#f92672">::</span>Container() <span style="color:#f92672">:</span> ptr_(<span style="color:#66d9ef">new</span> MyForwardDeclaredClass(), deleter) {}
+</span></span><span style="display:flex;"><span>Container<span style="color:#f92672">::~</span>Container() <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
+</span></span></code></pre></div><h2 id="最佳实践">最佳实践</h2>
+<ol>
+<li><strong>优先使用完整类型</strong>：如果可能，尽量在使用 <code>std::unique_ptr</code> 的头文件中包含完整类定义</li>
+<li><strong>PIMPL 模式</strong>：当需要隐藏实现细节时，使用 PIMPL 模式并在实现文件中定义析构函数</li>
+<li><strong>混合方法</strong>：
+<ul>
+<li>头文件中使用原始指针声明</li>
+<li>实现文件中使用 <code>std::unique_ptr</code> 管理生命周期</li>
+</ul>
+</li>
+<li><strong>注意其他智能指针</strong>：
+<ul>
+<li><code>std::shared_ptr</code> 也需要完整类型，但可以使用自定义删除器解决</li>
+<li><code>std::weak_ptr</code> 继承了 <code>std::shared_ptr</code> 的限制</li>
+</ul>
+</li>
+</ol>
+<h2 id="总结">总结</h2>
+<p>不能对不完整类型使用 <code>std::unique_ptr</code> 的根本原因是智能指针需要在编译时确定对象的大小和删除方式。处理这一限制的方法包括使用原始指针、将智能指针的定义移至实现文件，或使用自定义删除器。理解这些技术可以帮助我们更有效地管理 C++ 代码中的对象生命周期和头文件依赖。</p>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>234 words</span>
+    <span>4 - 5 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前向声明与不完整类型">前向声明与不完整类型</a></li>
+    <li><a href="#stdunique_ptr-与不完整类型">std::unique_ptr 与不完整类型</a>
+      <ul>
+        <li><a href="#原因分析">原因分析</a></li>
+      </ul>
+    </li>
+    <li><a href="#解决方案">解决方案</a>
+      <ul>
+        <li><a href="#1-使用原始指针配合手动内存管理">1. 使用原始指针配合手动内存管理</a></li>
+        <li><a href="#2-将-unique_ptr-的定义移至实现文件">2. 将 unique_ptr 的定义移至实现文件</a></li>
+        <li><a href="#3-使用自定义删除器">3. 使用自定义删除器</a></li>
+      </ul>
+    </li>
+    <li><a href="#最佳实践">最佳实践</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav></aside></div>
+  </div>
+</body>
+</html>
