@@ -272,6 +272,18 @@
     <loc>/tags/clion/</loc>
     <lastmod>2023-05-16T20:19:08+08:00</lastmod>
   </url><url>
+    <loc>/tags/epoll/</loc>
+    <lastmod>2023-05-16T20:19:08+08:00</lastmod>
+  </url><url>
+    <loc>/tags/poll/</loc>
+    <lastmod>2023-05-16T20:19:08+08:00</lastmod>
+  </url><url>
+    <loc>/tags/request/</loc>
+    <lastmod>2023-05-16T20:19:08+08:00</lastmod>
+  </url><url>
+    <loc>/tags/response/</loc>
+    <lastmod>2023-05-16T20:19:08+08:00</lastmod>
+  </url><url>
     <loc>/tags/vcpkg/</loc>
     <lastmod>2023-05-16T20:19:08+08:00</lastmod>
   </url><url>
@@ -282,6 +294,21 @@
     <lastmod>2023-05-16T20:19:08+08:00</lastmod>
   </url><url>
     <loc>/posts/vcpkg_windows/</loc>
+    <lastmod>2023-05-16T20:19:08+08:00</lastmod>
+  </url><url>
+    <loc>/posts/zeromq-req-rsp-%E6%A8%A1%E5%BC%8F%E4%B8%8E-zmq-poll-%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/</loc>
+    <lastmod>2023-05-16T20:19:08+08:00</lastmod>
+  </url><url>
+    <loc>/tags/zmq/</loc>
+    <lastmod>2023-05-16T20:19:08+08:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/</loc>
+    <lastmod>2023-05-16T20:19:08+08:00</lastmod>
+  </url><url>
+    <loc>/tags/%E9%80%9A%E4%BF%A1/</loc>
+    <lastmod>2023-05-16T20:19:08+08:00</lastmod>
+  </url><url>
+    <loc>/tags/%E9%98%BB%E5%A1%9E/</loc>
     <lastmod>2023-05-16T20:19:08+08:00</lastmod>
   </url><url>
     <loc>/tags/bst/</loc>
@@ -597,9 +624,6 @@
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/pm/</loc>
-    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>/tags/poll/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/public/</loc>
