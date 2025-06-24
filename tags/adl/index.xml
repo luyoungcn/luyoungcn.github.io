@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ADL on LuyangのBlog</title>
+    <link>/tags/adl/</link>
+    <description>Recent content in ADL on LuyangのBlog</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 23 Jun 2025 00:00:00 +0800</lastBuildDate>
+    <atom:link href="/tags/adl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>深入 C&#43;&#43; 的隐秘角落：彻底解析参数依赖查找 (ADL)</title>
+      <link>/posts/%E6%B7%B1%E5%85%A5-c&#43;&#43;-%E7%9A%84%E9%9A%90%E7%A7%98%E8%A7%92%E8%90%BD%E5%BD%BB%E5%BA%95%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0%E4%BE%9D%E8%B5%96%E6%9F%A5%E6%89%BE-adl/</link>
+      <pubDate>Mon, 23 Jun 2025 00:00:00 +0800</pubDate>
+      <guid>/posts/%E6%B7%B1%E5%85%A5-c&#43;&#43;-%E7%9A%84%E9%9A%90%E7%A7%98%E8%A7%92%E8%90%BD%E5%BD%BB%E5%BA%95%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0%E4%BE%9D%E8%B5%96%E6%9F%A5%E6%89%BE-adl/</guid>
+      <description>&lt;h1 id=&#34;深入-c-的隐秘角落彻底解析参数依赖查找-adl&#34;&gt;深入 C++ 的隐秘角落：彻底解析参数依赖查找 (ADL)&lt;/h1&gt;&#xA;&lt;p&gt;在 C++ 的世界里，有些特性如同空气，无处不在，默默地支撑着我们代码的优雅与简洁，但我们却很少去探究其背后的原理。&lt;code&gt;std::cout &amp;lt;&amp;lt; &amp;quot;Hello, World!&amp;quot;;&lt;/code&gt; 这行代码对于每个 C++ 开发者来说都再熟悉不过。但是，你是否曾停下来想过，&lt;code&gt;operator&amp;lt;&amp;lt;&lt;/code&gt; 函数明明定义在 &lt;code&gt;std&lt;/code&gt; 命名空间中，为什么我们在调用它时，并不需要写成 &lt;code&gt;std::operator&amp;lt;&amp;lt;(std::cout, &amp;quot;Hello, World!&amp;quot;);&lt;/code&gt; 这种冗长繁琐的形式？&lt;/p&gt;&#xA;&lt;p&gt;这个问题的答案，就隐藏在 C++ 语言一个强大而又微妙的机制中——&lt;strong&gt;参数依赖查找（Argument-Dependent Lookup）&lt;/strong&gt;，通常被缩写为 &lt;strong&gt;ADL&lt;/strong&gt;。它还有一个广为人知的名字，叫 &lt;strong&gt;Koenig 查找（Koenig Lookup）&lt;/strong&gt;，以其发现者 Andrew Koenig 的名字命名。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Scott_Meyers.jpg/500px-Scott_Meyers.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;ADL 是 C++ 名称查找规则的重要组成部分。它极大地提升了泛型编程和操作符重载的可用性，使得代码更符合人类的直觉。然而，它也是一柄双刃剑，如果不了解其工作原理，有时会导致一些令人困惑的编译错误或意想不到的行为。&lt;/p&gt;&#xA;&lt;p&gt;这篇超过5000字的长文，将作为一份详尽的指南，带你拨开 ADL 的层层迷雾。我们将从没有 ADL 的世界开始，逐步揭示 ADL 的核心机制、详细规则、与模板和“隐藏友元”等现代 C++ 技术的协同工作，并最终探讨如何规避其带来的陷阱，编写出更健壮、更可维护的 C++ 代码。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;第一章：前 ADL 时代 —— 常规的无限定名称查找&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;1.1 名称查找的基本原则&lt;/li&gt;&#xA;&lt;li&gt;1.2 命名空间带来的挑战&lt;/li&gt;&#xA;&lt;li&gt;1.3 没有 ADL 的代码之痛&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;第二章：ADL 的诞生与核心机制&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;2.1 ADL 的正式定义&lt;/li&gt;&#xA;&lt;li&gt;2.2 关键概念：关联命名空间 (Associated Namespaces)&lt;/li&gt;&#xA;&lt;li&gt;2.3 两阶段查找的协作&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;第三章：深入 ADL 的规则与细节&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
