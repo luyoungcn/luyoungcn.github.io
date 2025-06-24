@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Android 16 &#34;Pistachio&#34; ：“开心果”全面技术深度解析 | LuyangのBlog</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/android-16-pistachio-%E5%BC%80%E5%BF%83%E6%9E%9C-%E5%85%A8%E9%9D%A2%E6%8A%80%E6%9C%AF%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="Android 16 &#34;Pistachio&#34; ：“开心果”全面技术深度解析">
+  <meta property="og:description" content="Android 16 “Pistachio” ：“开心果”全面技术深度解析 各位开发者，欢迎来到 Android 的下一纪元。今天，我们正式揭晓代号为“开心果”（Pistachio）的 Android 16，它代表了 Android 平台近年来最重大的飞跃之一。当我们面向消费者的公告会着重宣传其精致的新用户体验时，这篇文章是专为您——那些为 Android 生态系统注入活力的架构师、构建者和创新者——而写的。我们将深入底层，为您详细、技术性地介绍将定义下一波移动应用浪潮的新 API、强大的系统变更以及开创性的工具。
+Android 16 建立在三大核心支柱之上：智能体验，赋予您创造预测性和情境感知应用的能力；强化安全，为用户提供前所未有的数据控制权和透明度；以及无缝自适应，确保您的应用在不断扩展的 Android 设备世界中观感完美、体验一致。
+这是一篇内容详实的长文，请准备好您喜欢的饮品，安心坐下来。我们需要涵盖的内容很多，从我们下一代的设备端 AI 框架，到抗量子计算加密技术，再到革命性的新 UI 范式。让我们开始吧。
+第一部分：设备端 AI 革命：以智能构建 多年来，移动领域的 AI 一直是云端处理的同义词。随着 Android 16 的到来，我们正果断地将重心转移到设备本身。这种方法不仅提供了更快、更灵敏的体验，还通过将敏感数据保留在手机上来增强用户隐私。这得益于一个多方面的策略，涉及硬件抽象、优化的模型和一套强大的新开发者 API。
+Gemini Nano 2.0 的深度集成与 AIAgent 的崛起 Android 16 设备端智能的核心是 Gemini Nano 2.0 的深度系统集成，这是我们最高效的设备端模型的新一代进化版。我们已经从一个简单的 API 端点，发展为一个功能齐全、由系统管理的服务，您的应用可以利用它来执行复杂的、低延迟的 AI 任务。
+这个新集成的基石是位于 androidx.ai Jetpack 库中的 AIAgent API。AIAgent 是一个长生命周期、具备后台感知能力的组件，旨在执行复杂的、有状态的 AI 操作，而无需持久的前台服务，从而节省电池和系统资源。
+您可以将 AIAgent 想象成一个专为 AI 设计的 WorkManager。您定义任务、所需的模型以及它应该运行的条件，系统会处理剩下的事情——包括模型加载、硬件加速和进程管理。
+AIAgent API 的主要特性：
+有状态会话 (Stateful Sessions): Agent 能够随时间保持上下文。例如，一个摘要 Agent 可以处理一系列文档或对话，构建一个连贯的摘要，而无需重新处理之前的输入。 基于触发器的调用 (Trigger-based Invocation): Agent 可以由多种系统事件触发：一张新照片被保存、一个特定类型的通知到达，甚至是用户身体活动的变化。 针对 NPU 的硬件抽象层 (HAL): Android 16 引入了一个新的 AI 硬件抽象层。AIAgent 会自动与此 HAL 对接，以利用来自不同芯片供应商的专用神经处理单元 (NPU)，而您无需编写任何特定于供应商的代码。系统会查询 NPU 支持的操作和精度级别（例如 INT8, FP16），并相应地优化模型图。 模型管理与缓存 (Model Management and Caching): 系统现在负责管理设备端模型的下载、版本控制和缓存。您可以声明对特定模型的依赖（例如 &#39;google:ai/gemini-nano-2.0/summarize&#39;），操作系统将与 Google Play 服务协同，确保设备上始终有最高效、最新的版本可用。 以下是一个概念性代码片段，展示了如何定义一个 AIAgent 来在后台自动分类和标记照片：">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-10T00:00:00+08:00">
+    <meta property="article:modified_time" content="2025-06-10T00:00:00+08:00">
+    <meta property="article:tag" content="Android">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Android 16 &#34;Pistachio&#34; ：“开心果”全面技术深度解析">
+  <meta name="twitter:description" content="Android 16 “Pistachio” ：“开心果”全面技术深度解析 各位开发者，欢迎来到 Android 的下一纪元。今天，我们正式揭晓代号为“开心果”（Pistachio）的 Android 16，它代表了 Android 平台近年来最重大的飞跃之一。当我们面向消费者的公告会着重宣传其精致的新用户体验时，这篇文章是专为您——那些为 Android 生态系统注入活力的架构师、构建者和创新者——而写的。我们将深入底层，为您详细、技术性地介绍将定义下一波移动应用浪潮的新 API、强大的系统变更以及开创性的工具。
+Android 16 建立在三大核心支柱之上：智能体验，赋予您创造预测性和情境感知应用的能力；强化安全，为用户提供前所未有的数据控制权和透明度；以及无缝自适应，确保您的应用在不断扩展的 Android 设备世界中观感完美、体验一致。
+这是一篇内容详实的长文，请准备好您喜欢的饮品，安心坐下来。我们需要涵盖的内容很多，从我们下一代的设备端 AI 框架，到抗量子计算加密技术，再到革命性的新 UI 范式。让我们开始吧。
+第一部分：设备端 AI 革命：以智能构建 多年来，移动领域的 AI 一直是云端处理的同义词。随着 Android 16 的到来，我们正果断地将重心转移到设备本身。这种方法不仅提供了更快、更灵敏的体验，还通过将敏感数据保留在手机上来增强用户隐私。这得益于一个多方面的策略，涉及硬件抽象、优化的模型和一套强大的新开发者 API。
+Gemini Nano 2.0 的深度集成与 AIAgent 的崛起 Android 16 设备端智能的核心是 Gemini Nano 2.0 的深度系统集成，这是我们最高效的设备端模型的新一代进化版。我们已经从一个简单的 API 端点，发展为一个功能齐全、由系统管理的服务，您的应用可以利用它来执行复杂的、低延迟的 AI 任务。
+这个新集成的基石是位于 androidx.ai Jetpack 库中的 AIAgent API。AIAgent 是一个长生命周期、具备后台感知能力的组件，旨在执行复杂的、有状态的 AI 操作，而无需持久的前台服务，从而节省电池和系统资源。
+您可以将 AIAgent 想象成一个专为 AI 设计的 WorkManager。您定义任务、所需的模型以及它应该运行的条件，系统会处理剩下的事情——包括模型加载、硬件加速和进程管理。
+AIAgent API 的主要特性：
+有状态会话 (Stateful Sessions): Agent 能够随时间保持上下文。例如，一个摘要 Agent 可以处理一系列文档或对话，构建一个连贯的摘要，而无需重新处理之前的输入。 基于触发器的调用 (Trigger-based Invocation): Agent 可以由多种系统事件触发：一张新照片被保存、一个特定类型的通知到达，甚至是用户身体活动的变化。 针对 NPU 的硬件抽象层 (HAL): Android 16 引入了一个新的 AI 硬件抽象层。AIAgent 会自动与此 HAL 对接，以利用来自不同芯片供应商的专用神经处理单元 (NPU)，而您无需编写任何特定于供应商的代码。系统会查询 NPU 支持的操作和精度级别（例如 INT8, FP16），并相应地优化模型图。 模型管理与缓存 (Model Management and Caching): 系统现在负责管理设备端模型的下载、版本控制和缓存。您可以声明对特定模型的依赖（例如 &#39;google:ai/gemini-nano-2.0/summarize&#39;），操作系统将与 Google Play 服务协同，确保设备上始终有最高效、最新的版本可用。 以下是一个概念性代码片段，展示了如何定义一个 AIAgent 来在后台自动分类和标记照片：">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.e139b0e3b3aff8f0e8e0272554b671a06c857a42278b36c539d96c69ddee2ca2.css" integrity="sha256-4Tmw47Ov&#43;PDo4CclVLZxoGyFekInizbFOdlsad3uLKI=" crossorigin="anonymous">
+
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>Android 16 &#34;Pistachio&#34; ：“开心果”全面技术深度解析</h1><time class="dim" datetime="2025-06-10T00:00:00&#43;08:00">June 10, 2025</time><div class="term-container"><div class="tag">
+        <a href="/tags/android/">#android</a>
+      </div></ol></div>
+  <section class="page-section"><h1 id="android-16-pistachio-开心果全面技术深度解析">Android 16 &ldquo;Pistachio&rdquo; ：“开心果”全面技术深度解析</h1>
+<p><strong>各位开发者，欢迎来到 Android 的下一纪元。今天，我们正式揭晓代号为“开心果”（Pistachio）的 Android 16，它代表了 Android 平台近年来最重大的飞跃之一。当我们面向消费者的公告会着重宣传其精致的新用户体验时，这篇文章是专为您——那些为 Android 生态系统注入活力的架构师、构建者和创新者——而写的。我们将深入底层，为您详细、技术性地介绍将定义下一波移动应用浪潮的新 API、强大的系统变更以及开创性的工具。</strong></p>
+<p>Android 16 建立在三大核心支柱之上：<strong>智能体验</strong>，赋予您创造预测性和情境感知应用的能力；<strong>强化安全</strong>，为用户提供前所未有的数据控制权和透明度；以及<strong>无缝自适应</strong>，确保您的应用在不断扩展的 Android 设备世界中观感完美、体验一致。</p>
+<p>这是一篇内容详实的长文，请准备好您喜欢的饮品，安心坐下来。我们需要涵盖的内容很多，从我们下一代的设备端 AI 框架，到抗量子计算加密技术，再到革命性的新 UI 范式。让我们开始吧。</p>
+<hr>
+<h2 id="第一部分设备端-ai-革命以智能构建">第一部分：设备端 AI 革命：以智能构建</h2>
+<p>多年来，移动领域的 AI 一直是云端处理的同义词。随着 Android 16 的到来，我们正果断地将重心转移到设备本身。这种方法不仅提供了更快、更灵敏的体验，还通过将敏感数据保留在手机上来增强用户隐私。这得益于一个多方面的策略，涉及硬件抽象、优化的模型和一套强大的新开发者 API。</p>
+<h3 id="gemini-nano-20-的深度集成与-aiagent-的崛起">Gemini Nano 2.0 的深度集成与 <code>AIAgent</code> 的崛起</h3>
+<p>Android 16 设备端智能的核心是 <strong>Gemini Nano 2.0</strong> 的深度系统集成，这是我们最高效的设备端模型的新一代进化版。我们已经从一个简单的 API 端点，发展为一个功能齐全、由系统管理的服务，您的应用可以利用它来执行复杂的、低延迟的 AI 任务。</p>
+<p>这个新集成的基石是位于 <code>androidx.ai</code> Jetpack 库中的 <strong><code>AIAgent</code> API</strong>。<code>AIAgent</code> 是一个长生命周期、具备后台感知能力的组件，旨在执行复杂的、有状态的 AI 操作，而无需持久的前台服务，从而节省电池和系统资源。</p>
+<p>您可以将 <code>AIAgent</code> 想象成一个专为 AI 设计的 <code>WorkManager</code>。您定义任务、所需的模型以及它应该运行的条件，系统会处理剩下的事情——包括模型加载、硬件加速和进程管理。</p>
+<p><strong><code>AIAgent</code> API 的主要特性：</strong></p>
+<ul>
+<li><strong>有状态会话 (Stateful Sessions):</strong> Agent 能够随时间保持上下文。例如，一个摘要 Agent 可以处理一系列文档或对话，构建一个连贯的摘要，而无需重新处理之前的输入。</li>
+<li><strong>基于触发器的调用 (Trigger-based Invocation):</strong> Agent 可以由多种系统事件触发：一张新照片被保存、一个特定类型的通知到达，甚至是用户身体活动的变化。</li>
+<li><strong>针对 NPU 的硬件抽象层 (HAL):</strong> Android 16 引入了一个新的 AI 硬件抽象层。<code>AIAgent</code> 会自动与此 HAL 对接，以利用来自不同芯片供应商的专用神经处理单元 (NPU)，而您无需编写任何特定于供应商的代码。系统会查询 NPU 支持的操作和精度级别（例如 INT8, FP16），并相应地优化模型图。</li>
+<li><strong>模型管理与缓存 (Model Management and Caching):</strong> 系统现在负责管理设备端模型的下载、版本控制和缓存。您可以声明对特定模型的依赖（例如 <code>'google:ai/gemini-nano-2.0/summarize'</code>），操作系统将与 Google Play 服务协同，确保设备上始终有最高效、最新的版本可用。</li>
+</ul>
+<p>以下是一个概念性代码片段，展示了如何定义一个 <code>AIAgent</code> 来在后台自动分类和标记照片：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 在您的 AndroidManifest.xml 中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>&lt;service
+</span></span><span style="display:flex;"><span>    android:name=<span style="color:#e6db74">&#34;.services.PhotoTaggerAgentService&#34;</span>
+</span></span><span style="display:flex;"><span>    android:permission=<span style="color:#e6db74">&#34;android.permission.BIND_AI_AGENT&#34;</span>
+</span></span><span style="display:flex;"><span>    android:exported=<span style="color:#e6db74">&#34;true&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;intent-filter&gt;
+</span></span><span style="display:flex;"><span>        &lt;action android:name=<span style="color:#e6db74">&#34;androidx.ai.action.AI_AGENT&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;/intent-filter&gt;
+</span></span><span style="display:flex;"><span>&lt;/service&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// PhotoTaggerAgent.kt
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PhotoTaggerAgent</span> : AIAgent() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取一个模型实例
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> imageTagger = <span style="color:#a6e22e">Model</span>.getInstance(<span style="color:#e6db74">&#34;google:ai/mobilenet-v4/classify&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">suspend</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">onTask</span>(params: AgentTaskParams): Result {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> imageUri = params.getUri(<span style="color:#e6db74">&#34;imageUri&#34;</span>) <span style="color:#f92672">?:</span> <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Result</span>.failure()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 系统处理高效的加载和到张量的转换
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">val</span> inputTensor = <span style="color:#a6e22e">Tensor</span>.fromUri(contentResolver, imageUri)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 模型执行会被卸载到 NPU（如果可用）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">val</span> output = imageTagger.execute(inputTensor)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> tags = processOutputToTags(output)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 将标签保存到数据库或媒体存储
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        saveTagsForImage(imageUri, tags)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Result</span>.success()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 触发 Agent
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">tagNewPhoto</span>(context: Context, imageUri: Uri) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> taskRequest = <span style="color:#a6e22e">AgentTaskRequest</span>.Builder(PhotoTaggerAgent<span style="color:#f92672">::</span><span style="color:#66d9ef">class</span>.java)
+</span></span><span style="display:flex;"><span>        .addUri(<span style="color:#e6db74">&#34;imageUri&#34;</span>, imageUri)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 设置触发条件，例如设备空闲时
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        .setCondition(<span style="color:#a6e22e">Condition</span>.DEVICE_IDLE)
+</span></span><span style="display:flex;"><span>        .build()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">AIAgentManager</span>.getInstance(context).enqueue(taskRequest)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这个强大的抽象层使您能够构建出令人难以置信的智能功能，这些功能感觉就像是操作系统的核心部分，而不是一个附加的进程。</p>
+<h3 id="生成式-ui打造能够自我调整和创造的界面">生成式 UI：打造能够自我调整和创造的界面</h3>
+<p>Jetpack Compose 彻底改变了我们构建 UI 的方式。在 Android 16 中，我们通过引入 <strong>生成式 UI (Generative UI) 框架</strong>，迈出了合乎逻辑的下一步。这是一个位于 Jetpack 中的全新实验性库：<code>androidx.compose.generative</code>。</p>
+<p>该框架允许您不再使用静态布局来定义 UI 的某些部分，而是使用由提示（prompt）和约束（constraints）来定义，这些提示和约束在运行时由设备端生成模型来完成。这使得创建真正动态、个性化和情境感知的界面成为可能。</p>
+<p><strong>工作原理：</strong> 一个 <code>GenerativeLayout</code> Composable 接受一个自然语言提示、一组允许使用的组件和上下文数据作为输入。然后，它使用一个专门的、高度优化的 Gemini 版本来动态生成一个 Compose 布局。</p>
+<p>想象一个为用户推荐活动的应用。与其使用一个固定的 <code>LazyColumn</code> 卡片列表，您可以使用 <code>GenerativeLayout</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> androidx.compose.generative.*
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">SuggestionScreen</span>(userContext: UserContext) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> prompt = <span style="color:#e6db74">&#34;创建一个友好且鼓励人心的布局来推荐活动。&#34;</span> +
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;用户当前在 </span><span style="color:#e6db74">${userContext.locationType}</span><span style="color:#e6db74"> &#34;</span> +
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;天气是 </span><span style="color:#e6db74">${userContext.weather}</span><span style="color:#e6db74">。&#34;</span> +
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;提供 2-3 个选项。&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    GenerativeLayout(
+</span></span><span style="display:flex;"><span>        prompt = prompt,
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 定义允许生成模型使用的组件类型
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        allowedComponents = setOf(
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">GenerativeComponent</span>.Card,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">GenerativeComponent</span>.Button,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">GenerativeComponent</span>.Icon
+</span></span><span style="display:flex;"><span>        ),
+</span></span><span style="display:flex;"><span>        modifier = <span style="color:#a6e22e">Modifier</span>.fillMaxSize()
+</span></span><span style="display:flex;"><span>    ) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 这个代码块为模型可以使用的组件提供了 Composable 实现
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">GenerativeComponent</span>.Card { modifier, content <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>            Card(modifier = modifier, elevation = <span style="color:#ae81ff">4.</span>dp) { content() }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">GenerativeComponent</span>.Button { modifier, onClick, text <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>            Button(modifier = modifier, onClick = onClick) { Text(text) }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ... 以此类推
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>结果可能是每次查看屏幕时都有一个完全独特的布局，专为用户的即时情境量身定制。在雨天，它可能会生成一个建议“舒适地看场电影”的卡片；而在晴天公园里，它可能会生成另一个带有“寻找附近的小径”按钮的布局。</p>
+<p>这是一个实验性的 API，我们才刚刚触及可能性的皮毛。我们预见它将被用于动态的入门引导流程、个性化的购物体验和自适应的教育内容。</p>
+<hr>
+<h2 id="第二部分加固堡垒隐私与安全的新纪元">第二部分：加固堡垒：隐私与安全的新纪元</h2>
+<p>用户信任是 Android 生态系统的基石。在每个版本中，我们都提高了安全和隐私的标准，而 Android 16 引入了一些迄今为止对用户和开发者影响最重大的变更。</p>
+<h3 id="精细化数据访问审计与即时说明">精细化数据访问审计与即时说明</h3>
+<p>多年来，用户在安装时或运行时授予权限，但“之后发生了什么”通常是一个黑匣子。Android 16 通过 <strong>隐私信息中心 2.0 (Privacy Dashboard 2.0)</strong> 和 <strong><code>PermissionLog</code> API</strong> 改变了这一点。</p>
+<p>新的隐私信息中心现在为用户提供任何敏感数据访问的详细、带时间戳的事件日志。用户不仅能看到某个应用使用了他们的位置，还能看到_何时_使用、使用了_多长时间_，以及至关重要的，开发者为该次访问提供的理由。</p>
+<p>这得益于全新的 <strong><code>PermissionLog</code> API</strong>。现在，当您执行需要敏感权限的操作时，系统强烈建议您记录一个上下文相关的字符串来解释_为什么_。这不仅仅是一条注释；它是一个结构化的数据，系统用它来填充用户的隐私信息中心。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 在您的定位服务中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> justification = <span style="color:#e6db74">&#34;为您的搜索查找附近的餐馆。&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 一个应用定义的归因标签
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> attributionTag = <span style="color:#e6db74">&#34;restaurant-search&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 使用新的 withJustification API
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    locationManager.withJustification(justification, attributionTag) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> location = <span style="color:#66d9ef">it</span>.getCurrentLocation(<span style="color:#e6db74">&#34;gps&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ... 处理位置信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (e: SecurityException) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 处理权限被拒绝的情况
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>这个简单的补充具有深远的影响。它促进了透明度，让开发者对他们的数据使用负责，并为用户提供了做出明智决策所需的信息。那些持续提供清晰理由的应用更有可能留住用户的信任和权限。</p>
+<h3 id="动态沙盒与资源控制">动态沙盒与资源控制</h3>
+<p>Android 的应用沙盒是其安全模型的基石。在 Android 16 中，这个沙盒变得动态化。系统现在可以根据应用的实时行为和上下文，动态调整其沙盒可用的资源和能力。</p>
+<p>我们引入了一个新的清单属性 <code>&lt;uses-context&gt;</code>，允许您为不同的应用状态声明不同的能力集。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-XML" data-lang="XML"><span style="display:flex;"><span><span style="color:#f92672">&lt;manifest</span> <span style="color:#960050;background-color:#1e0010">...</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;application</span> <span style="color:#960050;background-color:#1e0010">...</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;uses-context</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;FullFunctionality&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;uses-permission</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.permission.ACCESS_FINE_LOCATION&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;uses-permission</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.permission.CAMERA&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/uses-context&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;uses-context</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;WidgetView&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;uses-permission</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.permission.ACCESS_COARSE_LOCATION&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;/uses-context&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;activity</span> <span style="color:#960050;background-color:#1e0010">...</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;intent-filter&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;action</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.intent.action.MAIN&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;category</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.intent.category.LAUNCHER&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;/intent-filter&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;meta-data</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.app.context&#34;</span> <span style="color:#a6e22e">android:value=</span><span style="color:#e6db74">&#34;FullFunctionality&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/activity&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;receiver</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;.MyAppWidgetProvider&#34;</span> <span style="color:#960050;background-color:#1e0010">...</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;meta-data</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.app.context&#34;</span> <span style="color:#a6e22e">android:value=</span><span style="color:#e6db74">&#34;WidgetView&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/receiver&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/application&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/manifest&gt;</span>
+</span></span></code></pre></div><p>当用户与您的主 Activity 交互时，应用的沙盒拥有 &ldquo;FullFunctionality&rdquo; 上下文，可以访问精细位置和相机。然而，当只有您的应用小部件在主屏幕上活动时，系统可以将沙盒缩小到 &ldquo;WidgetView&rdquo; 上下文，撤销相机访问权限并将位置降级为粗略位置。</p>
+<p>这种最小权限原则是动态强制执行的，当您的应用不在前台或其全部功能并非必需时，极大地减少了应用的攻击面。</p>
+<h3 id="面向未来的抗量子计算加密技术">面向未来的抗量子计算加密技术</h3>
+<p>虽然来自量子计算机的威胁仍在遥远的地平线上，但我们相信要为长远未来做准备。Android 16 引入了对<strong>抗量子计算加密技术 (Quantum-Resistant Cryptography, QRC)</strong> 算法的支持，用于应用签名和安全通信。</p>
+<p><code>KeyStore</code> 提供程序现在支持用于密钥建立的 CRYSTALS-Kyber 和用于数字签名的 CRYSTALS-Dilithium。虽然这些默认并未启用，但我们现在提供它们，以便高安全性应用（例如银行、政府、关键基础设施）的开发者可以开始试验和规划他们的过渡。</p>
+<p>您可以这样生成一个兼容 QRC 的密钥对：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// 需要 API 级别 36</span>
+</span></span><span style="display:flex;"><span>KeyPairGenerator keyPairGenerator <span style="color:#f92672">=</span> KeyPairGenerator.<span style="color:#a6e22e">getInstance</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Dilithium&#34;</span>, <span style="color:#e6db74">&#34;AndroidKeyStore&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>KeyGenParameterSpec spec <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> KeyGenParameterSpec.<span style="color:#a6e22e">Builder</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;my_qrc_alias&#34;</span>,
+</span></span><span style="display:flex;"><span>        KeyProperties.<span style="color:#a6e22e">PURPOSE_SIGN</span> <span style="color:#f92672">|</span> KeyProperties.<span style="color:#a6e22e">PURPOSE_VERIFY</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">setAlgorithmParameterSpec</span>(<span style="color:#66d9ef">new</span> DilithiumParameterSpec(DilithiumParameterSpec.<span style="color:#a6e22e">DILITHIUM3</span>))
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">setDigests</span>(KeyProperties.<span style="color:#a6e22e">DIGEST_SHA256</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">build</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>keyPairGenerator.<span style="color:#a6e22e">initialize</span>(spec);
+</span></span><span style="display:flex;"><span>KeyPair keyPair <span style="color:#f92672">=</span> keyPairGenerator.<span style="color:#a6e22e">generateKeyPair</span>();
+</span></span></code></pre></div><p>我们也在与 IETF 和其他标准组织合作，将 QRC 集成到 TLS 和其他基础协议中。这是一项前瞻性的功能，但它被包含在 Android 16 中，表明了我们对平台长期安全的承诺。</p>
+<hr>
+<h2 id="第三部分更流畅更具适应性的用户体验">第三部分：更流畅、更具适应性的用户体验</h2>
+<p>Android 设备的多样性是其最大的优势之一。Android 16 引入了强大的新工具和系统行为，以确保您的应用能够无缝适应任何屏幕尺寸或设备形态，从小型折叠屏的封面屏幕到大型桌面显示器。</p>
+<h3 id="连续体项目-project-continuum真正的跨设备状态转移">“连续体”项目 (Project Continuum)：真正的跨设备状态转移</h3>
+<p>在我们的跨设备 SDK (Cross-Device SDK) 的基础上，Android 16 引入了 <strong>“连续体”项目 (Project Continuum)</strong>，这是一个用于无缝应用状态转移和交互的系统级框架。这远不止简单的通知共享；它旨在让您的应用感觉像是一个单一、连续的体验，在用户的设备之间自由流动。</p>
+<p>Project Continuum 的核心是新的 <strong><code>ContinuumManager</code></strong> 和 <strong><code>TransferableSession</code></strong>（可转移会话）的概念。您现在可以将应用 UI 的一部分和其状态封装到一个 <code>TransferableSession</code> 中，然后可以将其交接给另一台设备。</p>
+<p>想象一下，一个用户正在手机上的购物应用中浏览产品列表。当他们打开平板电脑时，系统会弹出一个提示，询问他们是否想继续他们的会话。如果他们接受，您在平板电脑上的应用将打开到完全相同的产品列表，并保持相同的滚动位置。</p>
+<p>以下是您如何使一个会话可转移：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Kotlin" data-lang="Kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 在您的产品列表 Activity/Composable 中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> continuumManager = getSystemService(ContinuumManager<span style="color:#f92672">::</span><span style="color:#66d9ef">class</span>.java)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 定义恢复此状态所需的数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> sessionState = bundleOf(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;list_query&#34;</span> to currentQuery,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;scroll_position&#34;</span> to lazyListState.firstVisibleItemIndex
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> transferableSession = <span style="color:#a6e22e">TransferableSession</span>.Builder(sessionState)
+</span></span><span style="display:flex;"><span>    .setTargetActivity(ProductListActivity<span style="color:#f92672">::</span><span style="color:#66d9ef">class</span>.java)
+</span></span><span style="display:flex;"><span>    .setSessionTitle(<span style="color:#e6db74">&#34;继续购物&#34;</span>)
+</span></span><span style="display:flex;"><span>    .setIcon(<span style="color:#a6e22e">R</span>.drawable.ic_shopping_bag)
+</span></span><span style="display:flex;"><span>    .build()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 发布会话，使其可被转移
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>continuumManager.publishSession(transferableSession)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 在接收设备的 ProductListActivity 的 onCreate() 中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (intent.action <span style="color:#f92672">==</span> <span style="color:#a6e22e">ContinuumManager</span>.ACTION_RESTORE_SESSION) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> sessionState = intent.getBundleExtra(<span style="color:#a6e22e">ContinuumManager</span>.EXTRA_SESSION_STATE)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> query = sessionState.getString(<span style="color:#e6db74">&#34;list_query&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> scrollPosition = sessionState.getInt(<span style="color:#e6db74">&#34;scroll_position&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 恢复 UI 状态
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    viewModel.loadProducts(query)
+</span></span><span style="display:flex;"><span>    lazyListState.scrollToItem(scrollPosition)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Project Continuum 还引入了<strong>共享画布 (Shared Canvases)</strong>，允许实时的、多用户的交互。例如，两个用户可以共同在一个绘图或文档上协作，他们的输入通过系统管理的低延迟连接在设备间同步。这为协作游戏、生产力工具和创意应用开辟了难以置信的可能性。</p>
+<h3 id="material-you-的演进活性调色板-living-palettes">Material You 的演进：“活性调色板” (Living Palettes)</h3>
+<p>Material You 为 Android 带来了动态颜色主题。Android 16 以 <strong>“活性调色板” (Living Palettes)</strong> 的概念发展了这一理念。系统现在可以根据上下文（例如一天中的时间、环境光照条件（如果传感器可用），甚至是屏幕上当前内容的主色调）来巧妙地改变 UI 的强调色。</p>
+<p>对开发者而言，这意味着您的应用主题能够感觉更融入环境，对用户的环境做出更灵敏的响应。Jetpack Compose 中的 <code>MaterialTheme</code> 现在包含了新的可选属性：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Kotlin" data-lang="Kotlin"><span style="display:flex;"><span>MaterialTheme(
+</span></span><span style="display:flex;"><span>    colorScheme = colorScheme,
+</span></span><span style="display:flex;"><span>    typography = Typography,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Android 16 中的新功能
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    enableLivingPalettes = <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    onContextualColorChange = { newColorScheme <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 当调色板变化时，可选择性地获得回调
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// 以便在需要时更新非 Material 组件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 您的应用 UI
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>当 <code>enableLivingPalettes</code> 为 true 时，随着上下文的变化，系统将对您主题中的 <code>primary</code> 和 <code>secondary</code> 颜色角色应用微妙的、动画化的过渡。对于所有标准的 Material 组件，这都是自动处理的。其结果是一个感觉充满活力、与现实世界联系更紧密的 UI。</p>
+<h3 id="面向大屏幕的高级窗口-api">面向大屏幕的高级窗口 API</h3>
+<p>随着折叠屏、平板电脑和 ChromeOS 设备的普及，为大屏幕构建应用已不再是可选项。Android 16 提供了一套<strong>高级窗口 API</strong>，使构建复杂的、多窗格的布局比以往任何时候都更容易。</p>
+<p>Jetpack 中新的 <code>SlidingPaneLayout2</code> 和 <code>FoldableLayout</code> 组件提供了声明式的、Compose-first 的方式来创建自适应 UI。它们能够感知设备的物理属性，例如铰链位置和方向。</p>
+<p>一个关键的补充是 <strong><code>PaneAnchor</code> API</strong>。您现在可以将一个窗格或对话框“锚定”到另一个窗格。当用户调整布局大小时，被锚定的组件将智能地重排或重新定位，以维持其与锚点的空间关系。这对于创建复杂的 UI（如图像编辑器，其中工具面板应始终靠近主画布）非常有价值。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Kotlin" data-lang="Kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 将工具面板锚定到画布的示例
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Box(modifier = <span style="color:#a6e22e">Modifier</span>.fillMaxSize()) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> canvasPaneId = <span style="color:#e6db74">&#34;canvas&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> toolsPaneId = <span style="color:#e6db74">&#34;tools&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 主要内容窗格
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    Surface(modifier = <span style="color:#a6e22e">Modifier</span>.paneId(canvasPaneId)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ... 您的图像画布
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 工具面板，锚定到画布
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    DraggablePane(
+</span></span><span style="display:flex;"><span>        modifier = <span style="color:#a6e22e">Modifier</span>.paneId(toolsPaneId),
+</span></span><span style="display:flex;"><span>        anchorTo = canvasPaneId,
+</span></span><span style="display:flex;"><span>        anchorEdge = <span style="color:#a6e22e">PaneAnchor</span>.<span style="color:#a6e22e">Edge</span>.End,
+</span></span><span style="display:flex;"><span>        margin = <span style="color:#ae81ff">16.</span>dp
+</span></span><span style="display:flex;"><span>    ) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ... 您的工具按钮
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="第四部分底层探秘性能功耗与核心系统变更">第四部分：底层探秘：性能、功耗与核心系统变更</h2>
+<p>虽然新功能和 API 令人兴奋，但任何伟大操作系统版本的基础都是性能和可靠性。Android 16 在 Android 运行时 (ART)、线程管理和功耗方面包含了重大的工作，以确保您的应用运行得更快、更高效。</p>
+<h3 id="art-优化基于配置文件的-dex-布局">ART 优化：基于配置文件的 Dex 布局</h3>
+<p>Android 运行时 (ART) 在 Android 16 中获得了重大升级。我们正在引入<strong>基于配置文件的 Dex 布局 (Profile-Guided Dex Layouts)</strong>。从历史上看，您的 <code>classes.dex</code> 文件中类的布局方式对编译器来说是方便的。然而，这常常导致运行时内存局部性差，因为系统需要从文件的不同部分加载代码，从而导致频繁的页面错误。</p>
+<p>现在，当您将应用上传到 Play 商店时，我们可以使用来自真实用户的、匿名的聚合启动配置文件，来重新排序您的 dex 文件的布局。热代码——应用启动所需的类和方法——被打包在一起放在文件的开头。很少使用的冷代码被移到末尾。</p>
+<p>结果如何？在启动期间，系统需要从闪存中读取的数据大大减少，从而导致 I/O 显著降低和更快的启动时间。仅凭此功能，我们在许多流行应用上看到了 <strong>15-30%</strong> 的启动改进，而开发者无需进行任何代码更改。</p>
+<h3 id="绿色线程与主线程调度">“绿色线程”与主线程调度</h3>
+<p>确保流畅、无卡顿的 UI 是一个永恒的挑战。Android 16 为 UI 工作引入了一个名为 <strong>“绿色线程” (Green-Threading)</strong> 的新概念。这是一种专门为主线程上的任务设计的协作式、用户空间线程模型。</p>
+<p>当您向主线程 <code>Looper</code> 发布一系列任务时，系统现在可以分析这些任务，并且如果它们被标记为 <code>interruptible</code>（可中断的），系统可以交错执行它们。这可以防止单个长时间运行的任务（例如，复杂布局的解析、错误地在主线程上进行数据库查询）阻塞短而关键的任务（例如，输入事件处理、动画帧）。</p>
+<p>新的 <code>Handler.postInterruptible()</code> 方法允许您发布一个 <code>Runnable</code>，系统可以在处理其他工作时暂停和恢复它。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// 发布一个可能耗时较长但可中断的任务</span>
+</span></span><span style="display:flex;"><span>mainThreadHandler.<span style="color:#a6e22e">postInterruptible</span>(<span style="color:#66d9ef">new</span> Runnable() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 执行一个复杂的、非关键的更新。</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 系统可能会在这里暂停执行以处理一个输入事件，</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 然后再恢复它。</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>这一点，再加上对 <code>Choreographer</code> 回调的更智能调度，带来了可证实的更平滑的用户体验，尤其是在中低端设备上。</p>
+<h3 id="面向物联网和常开应用的超低功耗模式">面向物联网和常开应用的超低功耗模式</h3>
+<p>对于物联网 (IoT) 设备和需要在电池上长时间运行的应用，Android 16 引入了一种新的<strong>超低功耗模式 (Ultra-Low Power Mode)</strong>。这是一个比 Doze 更深度的睡眠状态，专为无头或最小化 UI 的设备设计。</p>
+<p>当设备进入此模式时，应用处理器几乎完全断电。只有一个小型的、高能效的协处理器保持活动状态，能够监控特定的传感器输入或网络触发器。</p>
+<p>开发者可以使用新的 <code>PowerManager.requestUltraLowPowerState()</code> API 注册一个将由协处理器触发的 <code>PendingIntent</code>。这允许设备仅在发生特定的、预定义的事件时才唤醒——例如 GPIO 引脚变化、蓝牙 LE 广播或特定的 MQTT 消息——而无需主 CPU 轮询它。对于某些用例，这可以将电池寿命从几天延长到数月。</p>
+<hr>
+<h2 id="第五部分开发者工具箱全新-api-与工具">第五部分：开发者工具箱：全新 API 与工具</h2>
+<p>一个新的操作系统的好坏取决于您用于为其构建应用的工具。Android 16 伴随着 Android Studio 的重大更新以及一系列新的 Jetpack 库和测试 API。</p>
+<h3 id="android-studio-水母-jellyfish">Android Studio “水母” (Jellyfish)</h3>
+<p>最新版本的 Android Studio，代号为“水母”(Jellyfish)，充满了 AI 驱动的功能和针对 Android 16 的深度集成。</p>
+<ul>
+<li><strong>实时 AI 调试 (Live AI Debugging):</strong> 当您的应用遇到断点或崩溃时，Android Studio 中新的 AI 助手不仅会向您显示堆栈跟踪，还会提供对可能原因的自然语言解释，并建议具体的代码修复方案。</li>
+<li><strong>生成式 UI 原型设计 (Generative UI Prototyping):</strong> Android Studio 中一个新的设计界面允许您可视化地为 <code>GenerativeLayouts</code> 制作原型。您可以编写提示，实时查看生成的 UI，然后将结果转换为 Compose 代码。</li>
+<li><strong>连续体模拟器 (Continuum Emulator):</strong> 设备模拟器现在支持多设备配置。您可以启动一个相互连接的虚拟手机和一个虚拟平板电脑，让您直接在 IDE 中测试 <code>TransferableSession</code> 的交接和其他跨设备功能。</li>
+</ul>
+<h3 id="jetpack-compose-20-与新库">Jetpack Compose 2.0 与新库</h3>
+<p>Android 16 的发布与 <strong>Jetpack Compose 2.0</strong> 的发布同步。这是一个重要的里程碑，专注于性能和可扩展性。底层的槽位表 (slot table) 架构已被重写以提高效率，减少了重组 (recomposition) 开销和内存使用。</p>
+<p>除了核心的 Compose 更新，我们还引入了几个新的 Jetpack 库：</p>
+<ul>
+<li><code>androidx.ai</code>: <code>AIAgent</code> 和其他设备端 AI 组件的归属地。</li>
+<li><code>androidx.compose.generative</code>: 实验性的生成式 UI 框架。</li>
+<li><code>androidx.window.pane</code>: 用于高级窗口的新的 <code>SlidingPaneLayout2</code> 和 <code>PaneAnchor</code> API 的归属地。</li>
+<li><code>androidx.security.quantum</code>: 为新的 QRC 加密 API 提供兼容性包装器。</li>
+</ul>
+<h3 id="入门指南与时间线">入门指南与时间线</h3>
+<p>我们知道您渴望上手 Android 16。第一个<strong>开发者预览版 (Developer Preview)</strong> 今天已可用于 Google Pixel 设备（Pixel 7 及更新型号），并通过 Android Studio Jellyfish 中的官方 Android 模拟器提供。</p>
+<p>与往常一样，此初始版本仅供开发者使用，不适合日常使用。我们鼓励您从以下几点开始：</p>
+<ol>
+<li><strong>设置 SDK 和模拟器：</strong> 从 Android Studio 获取最新的构建版本。</li>
+<li><strong>测试行为变更：</strong> Android 16 包含了对权限处理、后台执行和核心系统库的变更。第一步是将您现有的应用针对新 SDK 进行编译，并运行您的测试套件，以识别任何直接的问题。我们的迁移指南中有完整的重大变更列表。</li>
+<li><strong>探索新 API：</strong> 在一个单独的开发分支上开始试验新功能。尝试实现一个简单的 <code>AIAgent</code>，使用新的窗口 API 使 UI 具有自适应性，或记录一条 <code>PermissionLog</code> 理由。</li>
+</ol>
+<p>发布时间线将遵循我们既定的模式：</p>
+<ul>
+<li><strong>开发者预览版：</strong> 2月 - 3月</li>
+<li><strong>Beta 版：</strong> 4月 - 6月</li>
+<li><strong>平台稳定性：</strong> 6月</li>
+<li><strong>最终版本：</strong> 2025 年第三季度</li>
+</ul>
+<p>我们将在每个里程碑提供定期的更新、新的 API 和错误修复。</p>
+<hr>
+<h2 id="结论共同构建未来">结论：共同构建未来</h2>
+<p>Android 16 “开心果” 不仅仅是一次增量更新。它是对移动操作系统可以是什么的一次根本性反思——比以往任何时候都更智能、更安全、更具适应性。从设备端 AI 的深度集成，到对用户隐私和跨设备流动性的范式转变方法，这个版本为您提供了一块强大的新画布，您可以在上面创造下一代的应用程序。</p>
+<p>这篇博文仅仅是冰山一角。在接下来的几周和几个月里，我们将针对此处讨论的每个主要功能领域发布深度解析文章，附有更详细的代码示例、设计指南和最佳实践。</p>
+<p>Android 的旅程一直是一个协作的旅程。您的反馈、您的创造力和您的热情是推动平台前进的动力。我们邀请您下载开发者预览版，探索新的 API，并加入我们在开发者论坛和问题跟踪器上的讨论。</p>
+<p>我们无比期待看到您将用 Android 16 构建出怎样的精彩。未来是智能的、安全的、自适应的——这是一个我们将共同构建的未来。</p>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>1003 words</span>
+    <span>24 - 30 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#第一部分设备端-ai-革命以智能构建">第一部分：设备端 AI 革命：以智能构建</a>
+      <ul>
+        <li><a href="#gemini-nano-20-的深度集成与-aiagent-的崛起">Gemini Nano 2.0 的深度集成与 <code>AIAgent</code> 的崛起</a></li>
+        <li><a href="#生成式-ui打造能够自我调整和创造的界面">生成式 UI：打造能够自我调整和创造的界面</a></li>
+      </ul>
+    </li>
+    <li><a href="#第二部分加固堡垒隐私与安全的新纪元">第二部分：加固堡垒：隐私与安全的新纪元</a>
+      <ul>
+        <li><a href="#精细化数据访问审计与即时说明">精细化数据访问审计与即时说明</a></li>
+        <li><a href="#动态沙盒与资源控制">动态沙盒与资源控制</a></li>
+        <li><a href="#面向未来的抗量子计算加密技术">面向未来的抗量子计算加密技术</a></li>
+      </ul>
+    </li>
+    <li><a href="#第三部分更流畅更具适应性的用户体验">第三部分：更流畅、更具适应性的用户体验</a>
+      <ul>
+        <li><a href="#连续体项目-project-continuum真正的跨设备状态转移">“连续体”项目 (Project Continuum)：真正的跨设备状态转移</a></li>
+        <li><a href="#material-you-的演进活性调色板-living-palettes">Material You 的演进：“活性调色板” (Living Palettes)</a></li>
+        <li><a href="#面向大屏幕的高级窗口-api">面向大屏幕的高级窗口 API</a></li>
+      </ul>
+    </li>
+    <li><a href="#第四部分底层探秘性能功耗与核心系统变更">第四部分：底层探秘：性能、功耗与核心系统变更</a>
+      <ul>
+        <li><a href="#art-优化基于配置文件的-dex-布局">ART 优化：基于配置文件的 Dex 布局</a></li>
+        <li><a href="#绿色线程与主线程调度">“绿色线程”与主线程调度</a></li>
+        <li><a href="#面向物联网和常开应用的超低功耗模式">面向物联网和常开应用的超低功耗模式</a></li>
+      </ul>
+    </li>
+    <li><a href="#第五部分开发者工具箱全新-api-与工具">第五部分：开发者工具箱：全新 API 与工具</a>
+      <ul>
+        <li><a href="#android-studio-水母-jellyfish">Android Studio “水母” (Jellyfish)</a></li>
+        <li><a href="#jetpack-compose-20-与新库">Jetpack Compose 2.0 与新库</a></li>
+        <li><a href="#入门指南与时间线">入门指南与时间线</a></li>
+      </ul>
+    </li>
+    <li><a href="#结论共同构建未来">结论：共同构建未来</a></li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/">Windows WSL ubuntu adb 配置</a></li><li><a href="/posts/gerrit/">gerrit 环境搭建</a></li><li><a href="/posts/androidjava-/">Android Java 1.7 环境配置</a></li><li><a href="/posts/androidstudioenv/">Android Studio Env</a></li><li><a href="/posts/android%E4%BD%BF%E7%94%A8am%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E7%BB%84%E4%BB%B6/">Android 使用 am 命令启动一个活动组件</a></li></ul></aside></div>
+  </div>
+</body>
+</html>
