@@ -23,10 +23,22 @@
     <loc>/posts/visual-studio/</loc>
     <lastmod>2025-06-25T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>/tags/adl/</loc>
-    <lastmod>2025-06-23T00:00:00+08:00</lastmod>
+    <loc>/posts/-threadlocal-%E5%85%A8%E9%9D%A2%E8%A7%A3%E6%9E%90/</loc>
+    <lastmod>2025-06-24T02:30:00+08:00</lastmod>
   </url><url>
     <loc>/tags/cpp/</loc>
+    <lastmod>2025-06-24T02:30:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/java/</loc>
+    <lastmod>2025-06-24T02:30:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/thread/</loc>
+    <lastmod>2025-06-24T02:30:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/threadlocal/</loc>
+    <lastmod>2025-06-24T02:30:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/adl/</loc>
     <lastmod>2025-06-23T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/posts/%E6%B7%B1%E5%85%A5-c&#43;&#43;-%E7%9A%84%E9%9A%90%E7%A7%98%E8%A7%92%E8%90%BD%E5%BD%BB%E5%BA%95%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0%E4%BE%9D%E8%B5%96%E6%9F%A5%E6%89%BE-adl/</loc>
@@ -600,9 +612,6 @@
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/posts/iperf-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD/</loc>
-    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>/tags/java/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/json/</loc>
