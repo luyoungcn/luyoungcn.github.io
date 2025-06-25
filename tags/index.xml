@@ -30,6 +30,13 @@
       <description></description>
     </item>
     <item>
+      <title>ScopedValue</title>
+      <link>/tags/scopedvalue/</link>
+      <pubDate>Tue, 24 Jun 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/scopedvalue/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Thread</title>
       <link>/tags/thread/</link>
       <pubDate>Tue, 24 Jun 2025 02:30:00 +0800</pubDate>
@@ -41,6 +48,20 @@
       <link>/tags/threadlocal/</link>
       <pubDate>Tue, 24 Jun 2025 02:30:00 +0800</pubDate>
       <guid>/tags/threadlocal/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>结构化并发</title>
+      <link>/tags/%E7%BB%93%E6%9E%84%E5%8C%96%E5%B9%B6%E5%8F%91/</link>
+      <pubDate>Tue, 24 Jun 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/%E7%BB%93%E6%9E%84%E5%8C%96%E5%B9%B6%E5%8F%91/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>虚拟线程</title>
+      <link>/tags/%E8%99%9A%E6%8B%9F%E7%BA%BF%E7%A8%8B/</link>
+      <pubDate>Tue, 24 Jun 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/%E8%99%9A%E6%8B%9F%E7%BA%BF%E7%A8%8B/</guid>
       <description></description>
     </item>
     <item>
