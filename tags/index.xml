@@ -6,8 +6,15 @@
     <description>Recent content in Tags on LuyangのBlog</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 23 Jun 2025 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 25 Jun 2025 00:00:00 +0800</lastBuildDate>
     <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Visual_studio</title>
+      <link>/tags/visual_studio/</link>
+      <pubDate>Wed, 25 Jun 2025 00:00:00 +0800</pubDate>
+      <guid>/tags/visual_studio/</guid>
+      <description></description>
+    </item>
     <item>
       <title>ADL</title>
       <link>/tags/adl/</link>
@@ -412,13 +419,6 @@
       <link>/tags/vcpkg/</link>
       <pubDate>Tue, 16 May 2023 20:19:08 +0800</pubDate>
       <guid>/tags/vcpkg/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Visual_studio</title>
-      <link>/tags/visual_studio/</link>
-      <pubDate>Tue, 16 May 2023 20:19:08 +0800</pubDate>
-      <guid>/tags/visual_studio/</guid>
       <description></description>
     </item>
     <item>

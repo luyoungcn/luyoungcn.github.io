@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🛠️ Visual Studio | LuyangのBlog</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/visual-studio/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="🛠️ Visual Studio">
+  <meta property="og:description" content="The beauty of open source is that it is technically borderless. — u/AlterTableUsernames
+Visual Studio 切换语言 在Visual Studio 中切换语言
+打开“工具”菜单:在Visual Studio 中，点击“工具”菜单。 进入“选项”:选择“选项” (Options)。 找到“环境”:在左侧的树形菜单中，找到“环境” (Environment)。 选择“区域设置”:在“环境”下，选择“区域设置” (International Settings)。 选择语言:在右侧的“语言”下拉菜单中，选择你想要的语言(例如中文)。 应用并重启:点击“确定” (OK) 应用更改，然后重启Visual Studio。 如果下拉语言后没有没有想要的语言，需要通过 Visual Studio Installer 安装后再来设置。
+![[Pasted image 20250625161515.png]]
+fopen 编译报错 This function or variable may be unsafe 1&gt;xxxxx error C4996: &#39;fopen&#39;: This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. 在 Visual Studio 项目设置中，请按照以下步骤操作：">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-25T00:00:00+08:00">
+    <meta property="article:modified_time" content="2025-06-25T00:00:00+08:00">
+    <meta property="article:tag" content="Visual_studio">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="🛠️ Visual Studio">
+  <meta name="twitter:description" content="The beauty of open source is that it is technically borderless. — u/AlterTableUsernames
+Visual Studio 切换语言 在Visual Studio 中切换语言
+打开“工具”菜单:在Visual Studio 中，点击“工具”菜单。 进入“选项”:选择“选项” (Options)。 找到“环境”:在左侧的树形菜单中，找到“环境” (Environment)。 选择“区域设置”:在“环境”下，选择“区域设置” (International Settings)。 选择语言:在右侧的“语言”下拉菜单中，选择你想要的语言(例如中文)。 应用并重启:点击“确定” (OK) 应用更改，然后重启Visual Studio。 如果下拉语言后没有没有想要的语言，需要通过 Visual Studio Installer 安装后再来设置。
+![[Pasted image 20250625161515.png]]
+fopen 编译报错 This function or variable may be unsafe 1&gt;xxxxx error C4996: &#39;fopen&#39;: This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. 在 Visual Studio 项目设置中，请按照以下步骤操作：">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.e139b0e3b3aff8f0e8e0272554b671a06c857a42278b36c539d96c69ddee2ca2.css" integrity="sha256-4Tmw47Ov&#43;PDo4CclVLZxoGyFekInizbFOdlsad3uLKI=" crossorigin="anonymous">
+
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>🛠️ Visual Studio</h1><time class="dim" datetime="2025-06-25T00:00:00&#43;08:00">June 25, 2025</time><div class="term-container"><div class="tag">
+        <a href="/tags/visual_studio/">#visual_studio</a>
+      </div></ol></div>
+  <section class="page-section"><blockquote>
+<p>The beauty of open source is that it is technically borderless. &mdash; <a href="https://www.reddit.com/user/AlterTableUsernames/">u/AlterTableUsernames</a></p></blockquote>
+<h2 id="visual-studio-切换语言">Visual Studio 切换语言</h2>
+<p>在Visual Studio 中切换语言</p>
+<ol>
+<li>打开“工具”菜单:在Visual Studio 中，点击“工具”菜单。</li>
+<li>进入“选项”:选择“选项” (Options)。</li>
+<li>找到“环境”:在左侧的树形菜单中，找到“环境” (Environment)。</li>
+<li>选择“区域设置”:在“环境”下，选择“区域设置” (International Settings)。</li>
+<li>选择语言:在右侧的“语言”下拉菜单中，选择你想要的语言(例如中文)。</li>
+<li>应用并重启:点击“确定” (OK) 应用更改，然后重启Visual Studio。</li>
+</ol>
+<p>如果下拉语言后没有没有想要的语言，需要通过 Visual Studio Installer 安装后再来设置。</p>
+<p>![[Pasted image 20250625161515.png]]</p>
+<h2 id="fopen-编译报错-this-function-or-variable-may-be-unsafe">fopen 编译报错 This function or variable may be unsafe</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>1&gt;xxxxx error C4996: <span style="color:#e6db74">&#39;fopen&#39;</span>: This <span style="color:#66d9ef">function</span> or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help <span style="color:#66d9ef">for</span> details.
+</span></span></code></pre></div><p>在 Visual Studio 项目设置中，请按照以下步骤操作：</p>
+<ol>
+<li><strong>打开项目属性</strong>：
+<ul>
+<li>在 Visual Studio 的解决方案资源管理器中，右键单击项目名称。
+<ul>
+<li>![[Pasted image 20250625161712.png]]</li>
+</ul>
+</li>
+<li>从上下文菜单中选择“<strong>属性</strong>”。
+<ul>
+<li>![[Pasted image 20250625161734.png]]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>导航至预处理器定义</strong>：
+<ul>
+<li>在项目属性窗口中，展开“<strong>配置属性</strong>”。</li>
+<li>展开“<strong>C/C++</strong>”。</li>
+<li>点击“<strong>预处理器</strong>”。
+<ul>
+<li>![[Pasted image 20250625161747.png]]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>添加</strong>：
+<ul>
+<li>在“预处理器定义”字段中，添加<code>_CRT_SECURE_NO_WARNINGS</code>。</li>
+<li>点击“<strong>确定</strong>”以应用更改。</li>
+</ul>
+</li>
+<li><strong>重新构建项目</strong>：这将确保更改生效，并且警告 C4996 被抑制。</li>
+</ol>
+<blockquote>
+<p>调试过程中遇到了严格按照上述配置后，即使 Build -&gt; Clean Solution, Build -&gt; Build Solution 仍然报相同的错误。退出 Visual Studio 后再次打开，重新编译，通过。</p></blockquote>
+<p><strong>重要提示</strong>：</p>
+<ul>
+<li><strong>SDL 检查</strong>：如果你使用的是 Visual Studio 2012 或更高版本，还有一个额外的设置，称为“SDL 检查”，位于 C/C++ &gt; 通用。此设置启用了额外的安全代码生成功能，并将安全相关的警告作为错误处理。将“SDL 检查”设置为“否”也可以抑制警告，但通常建议保持启用状态，并尽可能解决底层的安全问题。</li>
+<li><strong>替代方法</strong>：虽然将<code>_CRT_SECURE_NO_WARNINGS</code>添加到预处理器定义是全局抑制项目中警告的推荐方式，但你也可以：
+<ul>
+<li>在代码文件的开头添加<code>#define _CRT_SECURE_NO_WARNINGS</code>，在任何<code>#include</code>指令之前。</li>
+<li>使用<code>#pragma warning(disable:4996)</code>来抑制特定代码段的警告。</li>
+</ul>
+</li>
+</ul>
+<p>请记住，抑制警告并不能解决使用潜在不安全函数相关的安全风险。最好使用这些函数的安全版本（如<code>strcpy_s</code>、<code>sprintf_s</code>等），或在代码中实现适当的安全措施。</p>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>136 words</span>
+    <span>2 - 3 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#visual-studio-切换语言">Visual Studio 切换语言</a></li>
+    <li><a href="#fopen-编译报错-this-function-or-variable-may-be-unsafe">fopen 编译报错 This function or variable may be unsafe</a></li>
+  </ul>
+</nav><h3>Attachments</h3>
+    <ul><li><a href="/posts/visual-studio/Pasted%20image%2020250625161515.png">Pasted image 20250625161515.png</a></li><li><a href="/posts/visual-studio/Pasted%20image%2020250625161712.png">Pasted image 20250625161712.png</a></li><li><a href="/posts/visual-studio/Pasted%20image%2020250625161734.png">Pasted image 20250625161734.png</a></li><li><a href="/posts/visual-studio/Pasted%20image%2020250625161747.png">Pasted image 20250625161747.png</a></li></ul><h3>Related</h3>
+    <ul><li><a href="/posts/vcpkg_windows/">windows vcpkg</a></li></ul></aside></div>
+  </div>
+</body>
+</html>

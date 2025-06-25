@@ -8,19 +8,25 @@
     <loc>/posts/configuration/</loc>
     <lastmod>2025-03-24T23:00:00-03:00</lastmod>
   </url><url>
+    <loc>/</loc>
+    <lastmod>2025-06-25T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2025-06-25T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2025-06-25T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/visual_studio/</loc>
+    <lastmod>2025-06-25T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/posts/visual-studio/</loc>
+    <lastmod>2025-06-25T00:00:00+08:00</lastmod>
+  </url><url>
     <loc>/tags/adl/</loc>
     <lastmod>2025-06-23T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/cpp/</loc>
-    <lastmod>2025-06-23T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>/</loc>
-    <lastmod>2025-06-23T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2025-06-23T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
     <lastmod>2025-06-23T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/posts/%E6%B7%B1%E5%85%A5-c&#43;&#43;-%E7%9A%84%E9%9A%90%E7%A7%98%E8%A7%92%E8%90%BD%E5%BD%BB%E5%BA%95%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0%E4%BE%9D%E8%B5%96%E6%9F%A5%E6%89%BE-adl/</loc>
@@ -318,9 +324,6 @@
     <lastmod>2023-05-16T20:19:08+08:00</lastmod>
   </url><url>
     <loc>/tags/vcpkg/</loc>
-    <lastmod>2023-05-16T20:19:08+08:00</lastmod>
-  </url><url>
-    <loc>/tags/visual_studio/</loc>
     <lastmod>2023-05-16T20:19:08+08:00</lastmod>
   </url><url>
     <loc>/tags/windows/</loc>

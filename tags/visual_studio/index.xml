@@ -6,8 +6,15 @@
     <description>Recent content in Visual_studio on LuyangのBlog</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 16 May 2023 20:19:08 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 25 Jun 2025 00:00:00 +0800</lastBuildDate>
     <atom:link href="/tags/visual_studio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>🛠️ Visual Studio</title>
+      <link>/posts/visual-studio/</link>
+      <pubDate>Wed, 25 Jun 2025 00:00:00 +0800</pubDate>
+      <guid>/posts/visual-studio/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;The beauty of open source is that it is technically borderless. &amp;mdash; &lt;a href=&#34;https://www.reddit.com/user/AlterTableUsernames/&#34;&gt;u/AlterTableUsernames&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;visual-studio-切换语言&#34;&gt;Visual Studio 切换语言&lt;/h2&gt;&#xA;&lt;p&gt;在Visual Studio 中切换语言&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;打开“工具”菜单:在Visual Studio 中，点击“工具”菜单。&lt;/li&gt;&#xA;&lt;li&gt;进入“选项”:选择“选项” (Options)。&lt;/li&gt;&#xA;&lt;li&gt;找到“环境”:在左侧的树形菜单中，找到“环境” (Environment)。&lt;/li&gt;&#xA;&lt;li&gt;选择“区域设置”:在“环境”下，选择“区域设置” (International Settings)。&lt;/li&gt;&#xA;&lt;li&gt;选择语言:在右侧的“语言”下拉菜单中，选择你想要的语言(例如中文)。&lt;/li&gt;&#xA;&lt;li&gt;应用并重启:点击“确定” (OK) 应用更改，然后重启Visual Studio。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;如果下拉语言后没有没有想要的语言，需要通过 Visual Studio Installer 安装后再来设置。&lt;/p&gt;&#xA;&lt;p&gt;![[Pasted image 20250625161515.png]]&lt;/p&gt;&#xA;&lt;h2 id=&#34;fopen-编译报错-this-function-or-variable-may-be-unsafe&#34;&gt;fopen 编译报错 This function or variable may be unsafe&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1&amp;gt;xxxxx error C4996: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;fopen&amp;#39;&lt;/span&gt;: This &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; details.&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在 Visual Studio 项目设置中，请按照以下步骤操作：&lt;/p&gt;</description>
+    </item>
     <item>
       <title>windows vcpkg</title>
       <link>/posts/vcpkg_windows/</link>
