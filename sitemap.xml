@@ -8,14 +8,23 @@
     <loc>/posts/configuration/</loc>
     <lastmod>2025-03-24T23:00:00-03:00</lastmod>
   </url><url>
+    <loc>/posts/cmake-%E7%8E%B0%E4%BB%A3%E5%8C%96%E9%85%8D%E7%BD%AE%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/</loc>
+    <lastmod>2025-06-29T02:30:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/cmake/</loc>
+    <lastmod>2025-06-29T02:30:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/cpp/</loc>
+    <lastmod>2025-06-29T02:30:00+08:00</lastmod>
+  </url><url>
     <loc>/</loc>
-    <lastmod>2025-06-25T00:00:00+08:00</lastmod>
+    <lastmod>2025-06-29T02:30:00+08:00</lastmod>
   </url><url>
     <loc>/posts/</loc>
-    <lastmod>2025-06-25T00:00:00+08:00</lastmod>
+    <lastmod>2025-06-29T02:30:00+08:00</lastmod>
   </url><url>
     <loc>/tags/</loc>
-    <lastmod>2025-06-25T00:00:00+08:00</lastmod>
+    <lastmod>2025-06-29T02:30:00+08:00</lastmod>
   </url><url>
     <loc>/tags/visual_studio/</loc>
     <lastmod>2025-06-25T00:00:00+08:00</lastmod>
@@ -27,9 +36,6 @@
     <lastmod>2025-06-24T02:30:00+08:00</lastmod>
   </url><url>
     <loc>/posts/%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90-java-%E7%BA%BF%E7%A8%8B%E6%9C%AC%E5%9C%B0%E5%8C%96%E4%BB%8E-threadlocal-%E5%88%B0-scopedvalue-%E7%9A%84%E6%BC%94%E8%BF%9B%E4%B8%8E%E9%80%89%E6%8B%A9/</loc>
-    <lastmod>2025-06-24T02:30:00+08:00</lastmod>
-  </url><url>
-    <loc>/tags/cpp/</loc>
     <lastmod>2025-06-24T02:30:00+08:00</lastmod>
   </url><url>
     <loc>/tags/java/</loc>
@@ -123,9 +129,6 @@
     <lastmod>2025-06-04T02:30:00+08:00</lastmod>
   </url><url>
     <loc>/posts/cmake/</loc>
-    <lastmod>2025-06-04T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>/tags/cmake/</loc>
     <lastmod>2025-06-04T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/posts/cmakeinclude_directories-%E4%B8%8E-target_include_directories-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</loc>
