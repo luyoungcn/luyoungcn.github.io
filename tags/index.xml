@@ -23,6 +23,41 @@
       <description></description>
     </item>
     <item>
+      <title>OpenCV</title>
+      <link>/tags/opencv/</link>
+      <pubDate>Fri, 27 Jun 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/opencv/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>/tags/python/</link>
+      <pubDate>Fri, 27 Jun 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Windows</title>
+      <link>/tags/windows/</link>
+      <pubDate>Fri, 27 Jun 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/windows/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Wsl</title>
+      <link>/tags/wsl/</link>
+      <pubDate>Fri, 27 Jun 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/wsl/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>YOLO</title>
+      <link>/tags/yolo/</link>
+      <pubDate>Fri, 27 Jun 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/yolo/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Visual_studio</title>
       <link>/tags/visual_studio/</link>
       <pubDate>Wed, 25 Jun 2025 00:00:00 +0800</pubDate>
@@ -310,13 +345,6 @@
       <description></description>
     </item>
     <item>
-      <title>WSL</title>
-      <link>/tags/wsl/</link>
-      <pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate>
-      <guid>/tags/wsl/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Bookmark</title>
       <link>/tags/bookmark/</link>
       <pubDate>Mon, 26 Jun 2023 03:00:00 +0800</pubDate>
@@ -464,13 +492,6 @@
       <description></description>
     </item>
     <item>
-      <title>Windows</title>
-      <link>/tags/windows/</link>
-      <pubDate>Tue, 16 May 2023 20:19:08 +0800</pubDate>
-      <guid>/tags/windows/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Zmq</title>
       <link>/tags/zmq/</link>
       <pubDate>Tue, 16 May 2023 20:19:08 +0800</pubDate>
@@ -559,13 +580,6 @@
       <link>/tags/math/</link>
       <pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate>
       <guid>/tags/math/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Python</title>
-      <link>/tags/python/</link>
-      <pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate>
-      <guid>/tags/python/</guid>
       <description></description>
     </item>
     <item>

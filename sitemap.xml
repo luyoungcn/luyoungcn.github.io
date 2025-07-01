@@ -26,6 +26,24 @@
     <loc>/tags/</loc>
     <lastmod>2025-06-29T02:30:00+08:00</lastmod>
   </url><url>
+    <loc>/posts/-yolo-%E5%AE%9E%E6%97%B6%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0windows-%E6%91%84%E5%83%8F%E5%A4%B4%E6%8E%A8%E6%B5%81-&#43;-wsl-yolo-%E8%AF%86%E5%88%AB/</loc>
+    <lastmod>2025-06-27T02:30:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/opencv/</loc>
+    <lastmod>2025-06-27T02:30:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/python/</loc>
+    <lastmod>2025-06-27T02:30:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/windows/</loc>
+    <lastmod>2025-06-27T02:30:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/wsl/</loc>
+    <lastmod>2025-06-27T02:30:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/yolo/</loc>
+    <lastmod>2025-06-27T02:30:00+08:00</lastmod>
+  </url><url>
     <loc>/tags/visual_studio/</loc>
     <lastmod>2025-06-25T00:00:00+08:00</lastmod>
   </url><url>
@@ -260,9 +278,6 @@
     <loc>/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2023-10-26T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>/tags/wsl/</loc>
-    <lastmod>2023-10-26T00:00:00+08:00</lastmod>
-  </url><url>
     <loc>/posts/android-7/</loc>
     <lastmod>2023-06-26T03:00:00+08:00</lastmod>
   </url><url>
@@ -353,9 +368,6 @@
     <loc>/tags/vcpkg/</loc>
     <lastmod>2023-05-16T20:19:08+08:00</lastmod>
   </url><url>
-    <loc>/tags/windows/</loc>
-    <lastmod>2023-05-16T20:19:08+08:00</lastmod>
-  </url><url>
     <loc>/posts/vcpkg_windows/</loc>
     <lastmod>2023-05-16T20:19:08+08:00</lastmod>
   </url><url>
@@ -420,9 +432,6 @@
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/math/</loc>
-    <lastmod>2023-02-03T12:00:00+08:00</lastmod>
-  </url><url>
-    <loc>/tags/python/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
     <loc>/posts/python2/</loc>
