@@ -6,20 +6,90 @@
     <description>Recent content in Tags on LuyangのBlog</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 29 Jun 2025 02:30:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 08 Jul 2025 02:30:00 +0800</lastBuildDate>
     <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Cmake</title>
-      <link>/tags/cmake/</link>
-      <pubDate>Sun, 29 Jun 2025 02:30:00 +0800</pubDate>
-      <guid>/tags/cmake/</guid>
+      <title>AArch64</title>
+      <link>/tags/aarch64/</link>
+      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/aarch64/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ARM</title>
+      <link>/tags/arm/</link>
+      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/arm/</guid>
       <description></description>
     </item>
     <item>
       <title>Cpp</title>
       <link>/tags/cpp/</link>
-      <pubDate>Sun, 29 Jun 2025 02:30:00 +0800</pubDate>
+      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
       <guid>/tags/cpp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Glibc</title>
+      <link>/tags/glibc/</link>
+      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/glibc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kernel</title>
+      <link>/tags/kernel/</link>
+      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/kernel/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>/tags/linux/</link>
+      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OOM</title>
+      <link>/tags/oom/</link>
+      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/oom/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Syscall</title>
+      <link>/tags/syscall/</link>
+      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/syscall/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Zmq</title>
+      <link>/tags/zmq/</link>
+      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/zmq/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>内存泄漏</title>
+      <link>/tags/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/</link>
+      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>系统调用</title>
+      <link>/tags/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/</link>
+      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cmake</title>
+      <link>/tags/cmake/</link>
+      <pubDate>Sun, 29 Jun 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/cmake/</guid>
       <description></description>
     </item>
     <item>
@@ -233,13 +303,6 @@
       <description></description>
     </item>
     <item>
-      <title>Linux</title>
-      <link>/tags/linux/</link>
-      <pubDate>Thu, 15 May 2025 00:00:00 +0800</pubDate>
-      <guid>/tags/linux/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Posix</title>
       <link>/tags/posix/</link>
       <pubDate>Thu, 15 May 2025 00:00:00 +0800</pubDate>
@@ -300,13 +363,6 @@
       <link>/tags/errnum/</link>
       <pubDate>Mon, 01 Jan 2024 20:19:08 +0800</pubDate>
       <guid>/tags/errnum/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Glibc</title>
-      <link>/tags/glibc/</link>
-      <pubDate>Mon, 01 Jan 2024 20:19:08 +0800</pubDate>
-      <guid>/tags/glibc/</guid>
       <description></description>
     </item>
     <item>
@@ -489,13 +545,6 @@
       <link>/tags/vcpkg/</link>
       <pubDate>Tue, 16 May 2023 20:19:08 +0800</pubDate>
       <guid>/tags/vcpkg/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Zmq</title>
-      <link>/tags/zmq/</link>
-      <pubDate>Tue, 16 May 2023 20:19:08 +0800</pubDate>
-      <guid>/tags/zmq/</guid>
       <description></description>
     </item>
     <item>
@@ -846,13 +895,6 @@
       <link>/tags/json/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
       <guid>/tags/json/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Kernel</title>
-      <link>/tags/kernel/</link>
-      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>/tags/kernel/</guid>
       <description></description>
     </item>
     <item>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📘AArch64 下 glibc `open()` 调用到内核系统调用入口的全路径解析 | LuyangのBlog</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/aarch64-%E4%B8%8B-glibc-open-%E8%B0%83%E7%94%A8%E5%88%B0%E5%86%85%E6%A0%B8%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%85%A5%E5%8F%A3%E7%9A%84%E5%85%A8%E8%B7%AF%E5%BE%84%E8%A7%A3%E6%9E%90/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="📘AArch64 下 glibc `open()` 调用到内核系统调用入口的全路径解析">
+  <meta property="og:description" content="📘AArch64 下 glibc open() 调用到内核系统调用入口的全路径解析 目标 本文档对 AArch64 (即 ARM64) 架构下从 glibc 中的 open() 函数调用至 Linux 内核中 sys_openat() 系统调用入口的全路径进行全面、精精、严密的分析。选用 AArch64 架构是因为其在嵌入式、手机、服务器等领域应用很广，宜于全面理解 Linux syscall 机制。
+一、从 glibc open() 函数调用开始 int fd = open(&#34;/tmp/a.txt&#34;, O_RDONLY); open() 是 POSIX API，glibc 中实际是一层展开：
+#define open(...) SYSCALL_CANCEL(openat, AT_FDCWD, __VA_ARGS__) 即使用 openat() 实现。
+二、glibc syscall 展开层层结构 以 5 个参数为例：
+1. 调用链进程 SYSCALL_CANCEL(openat, AT_FDCWD, file, flags, mode) 展开层层如下：
+SYSCALL_CANCEL(...) → INLINE_SYSCALL_CALL(...) → __INLINE_SYSCALL_DISP(__INLINE_SYSCALL, ...) → __SYSCALL_CONCAT(__INLINE_SYSCALL, N)(...) → __INLINE_SYSCALL5(name, a1, a2, a3, a4, a5) → INLINE_SYSCALL(name, 5, a1, a2, a3, a4, a5) 2. INLINE_SYSCALL 实现 #define INLINE_SYSCALL(name, nr, args...) \ ({ \ long int sc_ret = INTERNAL_SYSCALL(name, nr, args); \ __glibc_unlikely(INTERNAL_SYSCALL_ERROR_P(sc_ret)) \ ? SYSCALL_ERROR_LABEL(INTERNAL_SYSCALL_ERRNO(sc_ret)) \ : sc_ret; \ }) 三、INTERNAL_SYSCALL 到 svc #0 入核 1. 实际定义分部 在 sysdeps/unix/sysv/linux/aarch64/sysdep.h 中：">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-08T02:30:00+08:00">
+    <meta property="article:modified_time" content="2025-07-08T02:30:00+08:00">
+    <meta property="article:tag" content="Glibc">
+    <meta property="article:tag" content="AArch64">
+    <meta property="article:tag" content="ARM">
+    <meta property="article:tag" content="Syscall">
+    <meta property="article:tag" content="系统调用">
+    <meta property="article:tag" content="Linux">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="📘AArch64 下 glibc `open()` 调用到内核系统调用入口的全路径解析">
+  <meta name="twitter:description" content="📘AArch64 下 glibc open() 调用到内核系统调用入口的全路径解析 目标 本文档对 AArch64 (即 ARM64) 架构下从 glibc 中的 open() 函数调用至 Linux 内核中 sys_openat() 系统调用入口的全路径进行全面、精精、严密的分析。选用 AArch64 架构是因为其在嵌入式、手机、服务器等领域应用很广，宜于全面理解 Linux syscall 机制。
+一、从 glibc open() 函数调用开始 int fd = open(&#34;/tmp/a.txt&#34;, O_RDONLY); open() 是 POSIX API，glibc 中实际是一层展开：
+#define open(...) SYSCALL_CANCEL(openat, AT_FDCWD, __VA_ARGS__) 即使用 openat() 实现。
+二、glibc syscall 展开层层结构 以 5 个参数为例：
+1. 调用链进程 SYSCALL_CANCEL(openat, AT_FDCWD, file, flags, mode) 展开层层如下：
+SYSCALL_CANCEL(...) → INLINE_SYSCALL_CALL(...) → __INLINE_SYSCALL_DISP(__INLINE_SYSCALL, ...) → __SYSCALL_CONCAT(__INLINE_SYSCALL, N)(...) → __INLINE_SYSCALL5(name, a1, a2, a3, a4, a5) → INLINE_SYSCALL(name, 5, a1, a2, a3, a4, a5) 2. INLINE_SYSCALL 实现 #define INLINE_SYSCALL(name, nr, args...) \ ({ \ long int sc_ret = INTERNAL_SYSCALL(name, nr, args); \ __glibc_unlikely(INTERNAL_SYSCALL_ERROR_P(sc_ret)) \ ? SYSCALL_ERROR_LABEL(INTERNAL_SYSCALL_ERRNO(sc_ret)) \ : sc_ret; \ }) 三、INTERNAL_SYSCALL 到 svc #0 入核 1. 实际定义分部 在 sysdeps/unix/sysv/linux/aarch64/sysdep.h 中：">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.e139b0e3b3aff8f0e8e0272554b671a06c857a42278b36c539d96c69ddee2ca2.css" integrity="sha256-4Tmw47Ov&#43;PDo4CclVLZxoGyFekInizbFOdlsad3uLKI=" crossorigin="anonymous">
+
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>📘AArch64 下 glibc `open()` 调用到内核系统调用入口的全路径解析</h1><time class="dim" datetime="2025-07-08T02:30:00&#43;08:00">July 8, 2025</time><div class="term-container"><div class="tag">
+        <a href="/tags/glibc/">#glibc</a>
+      </div><div class="tag">
+        <a href="/tags/aarch64/">#AArch64</a>
+      </div><div class="tag">
+        <a href="/tags/arm/">#ARM</a>
+      </div><div class="tag">
+        <a href="/tags/syscall/">#syscall</a>
+      </div><div class="tag">
+        <a href="/tags/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/">#系统调用</a>
+      </div><div class="tag">
+        <a href="/tags/linux/">#linux</a>
+      </div><div class="tag">
+        <a href="/tags/kernel/">#kernel</a>
+      </div></ol></div>
+  <section class="page-section"><h1 id="aarch64-下-glibc-open-调用到内核系统调用入口的全路径解析">📘AArch64 下 glibc <code>open()</code> 调用到内核系统调用入口的全路径解析</h1>
+<h2 id="目标">目标</h2>
+<p>本文档对 AArch64 (即 ARM64) 架构下从 glibc 中的 <code>open()</code> 函数调用至 Linux 内核中 <code>sys_openat()</code> 系统调用入口的全路径进行全面、精精、严密的分析。选用 AArch64 架构是因为其在嵌入式、手机、服务器等领域应用很广，宜于全面理解 Linux syscall 机制。</p>
+<hr>
+<h2 id="一从-glibc-open-函数调用开始">一、从 glibc <code>open()</code> 函数调用开始</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> fd <span style="color:#f92672">=</span> <span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;/tmp/a.txt&#34;</span>, O_RDONLY);
+</span></span></code></pre></div><p><code>open()</code> 是 POSIX API，glibc 中实际是一层展开：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define open(...) SYSCALL_CANCEL(openat, AT_FDCWD, __VA_ARGS__)
+</span></span></span></code></pre></div><p>即使用 <code>openat()</code> 实现。</p>
+<hr>
+<h2 id="二glibc-syscall-展开层层结构">二、glibc syscall 展开层层结构</h2>
+<p>以 5 个参数为例：</p>
+<h3 id="1-调用链进程">1. 调用链进程</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">SYSCALL_CANCEL</span>(openat, AT_FDCWD, file, flags, mode)
+</span></span></code></pre></div><p>展开层层如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">SYSCALL_CANCEL</span>(...)                
+</span></span><span style="display:flex;"><span> <span style="color:#960050;background-color:#1e0010">→</span> <span style="color:#a6e22e">INLINE_SYSCALL_CALL</span>(...)            
+</span></span><span style="display:flex;"><span> <span style="color:#960050;background-color:#1e0010">→</span> <span style="color:#a6e22e">__INLINE_SYSCALL_DISP</span>(__INLINE_SYSCALL, ...)
+</span></span><span style="display:flex;"><span> <span style="color:#960050;background-color:#1e0010">→</span> <span style="color:#a6e22e">__SYSCALL_CONCAT</span>(__INLINE_SYSCALL, N)(...)
+</span></span><span style="display:flex;"><span> <span style="color:#960050;background-color:#1e0010">→</span> <span style="color:#a6e22e">__INLINE_SYSCALL5</span>(name, a1, a2, a3, a4, a5)
+</span></span><span style="display:flex;"><span> <span style="color:#960050;background-color:#1e0010">→</span> <span style="color:#a6e22e">INLINE_SYSCALL</span>(name, <span style="color:#ae81ff">5</span>, a1, a2, a3, a4, a5)
+</span></span></code></pre></div><h3 id="2-inline_syscall-实现">2. INLINE_SYSCALL 实现</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define INLINE_SYSCALL(name, nr, args...) \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">({ \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  long int sc_ret = INTERNAL_SYSCALL(name, nr, args); \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  __glibc_unlikely(INTERNAL_SYSCALL_ERROR_P(sc_ret)) \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    ? SYSCALL_ERROR_LABEL(INTERNAL_SYSCALL_ERRNO(sc_ret)) \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    : sc_ret; \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">})
+</span></span></span></code></pre></div><hr>
+<h2 id="三internal_syscall-到-svc-0-入核">三、INTERNAL_SYSCALL 到 svc #0 入核</h2>
+<h3 id="1-实际定义分部">1. 实际定义分部</h3>
+<p>在 <code>sysdeps/unix/sysv/linux/aarch64/sysdep.h</code> 中：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define INTERNAL_SYSCALL(name, nr, args...) \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  INTERNAL_SYSCALL_RAW(__NR_##name, nr, args)
+</span></span></span></code></pre></div><h3 id="2-internal_syscall_raw-核心实现">2. INTERNAL_SYSCALL_RAW 核心实现</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define INTERNAL_SYSCALL_RAW(name, nr, args...)            \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">({ long _sys_result;                                       \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">   {                                                       \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     LOAD_ARGS_##nr (args)                                 \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     register long _x8 asm (&#34;x8&#34;) = (name);                \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     asm volatile (                                        \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">       &#34;svc 0  </span><span style="color:#75715e">// syscall &#34; #name                          \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;=r&#34;</span> (_x0)                                        \
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;r&#34;</span>(_x8) ASM_ARGS_<span style="color:#960050;background-color:#1e0010">##</span>nr                           \
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;memory&#34;</span>);                                        \
+</span></span><span style="display:flex;"><span>     _sys_result <span style="color:#f92672">=</span> _x0;                                    \
+</span></span><span style="display:flex;"><span>   }                                                       \
+</span></span><span style="display:flex;"><span>   _sys_result; })
+</span></span></code></pre></div><h3 id="3-参数装入">3. 参数装入</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x0 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x0&#34;</span>) <span style="color:#f92672">=</span> arg1; <span style="color:#75715e">// fd
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x1 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x1&#34;</span>) <span style="color:#f92672">=</span> arg2; <span style="color:#75715e">// path
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x2 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x2&#34;</span>) <span style="color:#f92672">=</span> arg3; <span style="color:#75715e">// flags
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x3 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x3&#34;</span>) <span style="color:#f92672">=</span> arg4; <span style="color:#75715e">// mode
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x4 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x4&#34;</span>) <span style="color:#f92672">=</span> arg5; <span style="color:#75715e">// reserve
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x8 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x8&#34;</span>) <span style="color:#f92672">=</span> __NR_openat;
+</span></span></code></pre></div><h3 id="4-结果">4. 结果</h3>
+<p>执行指令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span><span style="color:#a6e22e">svc</span> <span style="color:#75715e">#0
+</span></span></span></code></pre></div><hr>
+<h2 id="四内核端调用扩展">四、内核端调用扩展</h2>
+<h3 id="1-输入异常向量-entrys">1. 输入异常向量 entry.S</h3>
+<p>文件：<code>arch/arm64/kernel/entry.S</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span>el0_sync:
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">kernel_entry</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">bl</span> <span style="color:#66d9ef">el0_sync_handler</span>
+</span></span></code></pre></div><h3 id="2-el0_sync_handler">2. el0_sync_handler()</h3>
+<p>文件：<code>arch/arm64/kernel/syscall.c</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">el0_sync_handler</span>(<span style="color:#66d9ef">struct</span> pt_regs <span style="color:#f92672">*</span>regs) {
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">syscall_handler</span>(regs);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="3-syscall_handler">3. syscall_handler()</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> scno <span style="color:#f92672">=</span> regs<span style="color:#f92672">-&gt;</span>regs[<span style="color:#ae81ff">8</span>]; <span style="color:#75715e">// x8 是 syscall 号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>sys_call_table[scno] <span style="color:#960050;background-color:#1e0010">→</span> <span style="color:#a6e22e">sys_openat</span>(...)
+</span></span></code></pre></div><h3 id="4-sys_openat">4. sys_openat()</h3>
+<p>在内核 fs 层：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">SYSCALL_DEFINE4</span>(openat, <span style="color:#66d9ef">int</span> dfd, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> __user <span style="color:#f92672">*</span>filename,
+</span></span><span style="display:flex;"><span>                         <span style="color:#66d9ef">int</span> flags, <span style="color:#66d9ef">umode_t</span> mode)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">do_sys_openat2</span>(dfd, filename, flags, mode);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>经由 VFS 层扩展到文件系统，最终返回 fd 或错误码</p>
+<hr>
+<h2 id="五完整调用链流程图">五、完整调用链流程图</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>glibc:
+</span></span><span style="display:flex;"><span>    open(path, flags, mode)
+</span></span><span style="display:flex;"><span>      → SYSCALL_CANCEL(openat, AT_FDCWD, ...)
+</span></span><span style="display:flex;"><span>      → __INLINE_SYSCALL5(...)
+</span></span><span style="display:flex;"><span>      → INLINE_SYSCALL(...)
+</span></span><span style="display:flex;"><span>      → INTERNAL_SYSCALL(...)
+</span></span><span style="display:flex;"><span>      → INTERNAL_SYSCALL_RAW(...)
+</span></span><span style="display:flex;"><span>        → 参数装入到 x0~x5, x8
+</span></span><span style="display:flex;"><span>        → svc #0
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kernel:
+</span></span><span style="display:flex;"><span>    svc #0
+</span></span><span style="display:flex;"><span>      → entry.S: el0_sync
+</span></span><span style="display:flex;"><span>        → el0_sync_handler()
+</span></span><span style="display:flex;"><span>          → syscall_handler()
+</span></span><span style="display:flex;"><span>            → sys_call_table[__NR_openat]
+</span></span><span style="display:flex;"><span>              → sys_openat(...)
+</span></span><span style="display:flex;"><span>                → do_sys_openat2()
+</span></span><span style="display:flex;"><span>                  → VFS
+</span></span><span style="display:flex;"><span>                    → file system
+</span></span></code></pre></div><hr>
+<h2 id="附录-系统调用-abi-规则-aarch64">附录: 系统调用 ABI 规则 (AArch64)</h2>
+<table>
+  <thead>
+      <tr>
+          <th>参数</th>
+          <th>存储位</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>syscall#</td>
+          <td>x8</td>
+          <td>系统调用编号</td>
+      </tr>
+      <tr>
+          <td>arg1</td>
+          <td>x0</td>
+          <td>第一个参数</td>
+      </tr>
+      <tr>
+          <td>arg2</td>
+          <td>x1</td>
+          <td>第二个参数</td>
+      </tr>
+      <tr>
+          <td>arg3</td>
+          <td>x2</td>
+          <td>第三个参数</td>
+      </tr>
+      <tr>
+          <td>arg4</td>
+          <td>x3</td>
+          <td>第四个参数</td>
+      </tr>
+      <tr>
+          <td>arg5</td>
+          <td>x4</td>
+          <td>第五个参数</td>
+      </tr>
+      <tr>
+          <td>arg6</td>
+          <td>x5</td>
+          <td>第六个参数</td>
+      </tr>
+      <tr>
+          <td>return</td>
+          <td>x0</td>
+          <td>系统调用返回值</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="结论">结论</h2>
+<ul>
+<li>glibc 通过多层 macro 抽象，最终进入 <code>INTERNAL_SYSCALL_RAW</code> 模板</li>
+<li>参数装入到 x0~x5，系统调用编号装入 x8</li>
+<li><code>svc #0</code> 触发输入异常</li>
+<li>内核通过 <code>sys_call_table</code> 分发到 <code>sys_openat()</code></li>
+<li>并最终返回 fd 给用户端</li>
+</ul>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>398 words</span>
+    <span>4 - 5 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#目标">目标</a></li>
+    <li><a href="#一从-glibc-open-函数调用开始">一、从 glibc <code>open()</code> 函数调用开始</a></li>
+    <li><a href="#二glibc-syscall-展开层层结构">二、glibc syscall 展开层层结构</a>
+      <ul>
+        <li><a href="#1-调用链进程">1. 调用链进程</a></li>
+        <li><a href="#2-inline_syscall-实现">2. INLINE_SYSCALL 实现</a></li>
+      </ul>
+    </li>
+    <li><a href="#三internal_syscall-到-svc-0-入核">三、INTERNAL_SYSCALL 到 svc #0 入核</a>
+      <ul>
+        <li><a href="#1-实际定义分部">1. 实际定义分部</a></li>
+        <li><a href="#2-internal_syscall_raw-核心实现">2. INTERNAL_SYSCALL_RAW 核心实现</a></li>
+        <li><a href="#3-参数装入">3. 参数装入</a></li>
+        <li><a href="#4-结果">4. 结果</a></li>
+      </ul>
+    </li>
+    <li><a href="#四内核端调用扩展">四、内核端调用扩展</a>
+      <ul>
+        <li><a href="#1-输入异常向量-entrys">1. 输入异常向量 entry.S</a></li>
+        <li><a href="#2-el0_sync_handler">2. el0_sync_handler()</a></li>
+        <li><a href="#3-syscall_handler">3. syscall_handler()</a></li>
+        <li><a href="#4-sys_openat">4. sys_openat()</a></li>
+      </ul>
+    </li>
+    <li><a href="#五完整调用链流程图">五、完整调用链流程图</a></li>
+    <li><a href="#附录-系统调用-abi-规则-aarch64">附录: 系统调用 ABI 规则 (AArch64)</a></li>
+    <li><a href="#结论">结论</a></li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/">vscode 阅读 Linux 内核代码配置</a></li><li><a href="/posts/linux-%E5%AE%9A%E6%97%B6%E5%99%A8%E7%B2%BE%E5%87%86%E7%9A%84%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/">内核态定时器 timer</a></li><li><a href="/posts/perror_func/">perror</a></li><li><a href="/posts/linux_date_cmd/">Linux date 命令用法</a></li><li><a href="/posts/windows10_wsl/">windows10 WSL setup</a></li></ul></aside></div>
+  </div>
+</body>
+</html>

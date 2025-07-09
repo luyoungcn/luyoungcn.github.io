@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📘 深入理解 ZeroMQ 异步连接与 REQ 消息堆积行为 | LuyangのBlog</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-zeromq-%E5%BC%82%E6%AD%A5%E8%BF%9E%E6%8E%A5%E4%B8%8E-req-%E6%B6%88%E6%81%AF%E5%A0%86%E7%A7%AF%E8%A1%8C%E4%B8%BA/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="📘 深入理解 ZeroMQ 异步连接与 REQ 消息堆积行为">
+  <meta property="og:description" content="📘 深入理解 ZeroMQ 异步连接与 REQ 消息堆积行为 ✨ 文档概览 章节 内容 1. 简介 ZeroMQ connect() 行为误区 2. 异步连接机制 connect() 实现原理与延迟连接 3. REQ socket 特性 REQ 的 FSM 状态机与堆积陷阱 4. 内存增长问题分析 实例重现与底层解释 5. 如何规避问题 参数设置、代码优化方案 6. 替代方案 使用 DEALER 替代 REQ 的可行性 7. 源码分析 ZeroMQ 源码路径与关键组件说明 8. 附录与参考资料 官方文献、工具、命令等 1. 🔰 简介：为什么连接成功了服务端却没起来？ 当你调用如下代码时：
+zmq::socket_t socket(context, zmq::socket_type::req); socket.connect(&#34;tcp://127.0.0.1:5555&#34;); LogInfo(&#34;Socket connected to endpoint&#34;); 你可能会误以为服务端已经在线并成功连接。
+这是一个常见误区。
+✅ 正确理解： connect() 只是将目标 endpoint 添加到内部连接目标列表中，并不会立即发起 TCP 连接或等待对端响应。
+这是 ZeroMQ 异步非阻塞通信模型的特性。">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-08T02:30:00+08:00">
+    <meta property="article:modified_time" content="2025-07-08T02:30:00+08:00">
+    <meta property="article:tag" content="Cpp">
+    <meta property="article:tag" content="Zmq">
+    <meta property="article:tag" content="OOM">
+    <meta property="article:tag" content="内存泄漏">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="📘 深入理解 ZeroMQ 异步连接与 REQ 消息堆积行为">
+  <meta name="twitter:description" content="📘 深入理解 ZeroMQ 异步连接与 REQ 消息堆积行为 ✨ 文档概览 章节 内容 1. 简介 ZeroMQ connect() 行为误区 2. 异步连接机制 connect() 实现原理与延迟连接 3. REQ socket 特性 REQ 的 FSM 状态机与堆积陷阱 4. 内存增长问题分析 实例重现与底层解释 5. 如何规避问题 参数设置、代码优化方案 6. 替代方案 使用 DEALER 替代 REQ 的可行性 7. 源码分析 ZeroMQ 源码路径与关键组件说明 8. 附录与参考资料 官方文献、工具、命令等 1. 🔰 简介：为什么连接成功了服务端却没起来？ 当你调用如下代码时：
+zmq::socket_t socket(context, zmq::socket_type::req); socket.connect(&#34;tcp://127.0.0.1:5555&#34;); LogInfo(&#34;Socket connected to endpoint&#34;); 你可能会误以为服务端已经在线并成功连接。
+这是一个常见误区。
+✅ 正确理解： connect() 只是将目标 endpoint 添加到内部连接目标列表中，并不会立即发起 TCP 连接或等待对端响应。
+这是 ZeroMQ 异步非阻塞通信模型的特性。">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.e139b0e3b3aff8f0e8e0272554b671a06c857a42278b36c539d96c69ddee2ca2.css" integrity="sha256-4Tmw47Ov&#43;PDo4CclVLZxoGyFekInizbFOdlsad3uLKI=" crossorigin="anonymous">
+
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>📘 深入理解 ZeroMQ 异步连接与 REQ 消息堆积行为</h1><time class="dim" datetime="2025-07-08T02:30:00&#43;08:00">July 8, 2025</time><div class="term-container"><div class="tag">
+        <a href="/tags/cpp/">#cpp</a>
+      </div><div class="tag">
+        <a href="/tags/zmq/">#zmq</a>
+      </div><div class="tag">
+        <a href="/tags/oom/">#OOM</a>
+      </div><div class="tag">
+        <a href="/tags/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/">#内存泄漏</a>
+      </div></ol></div>
+  <section class="page-section"><h1 id="-深入理解-zeromq-异步连接与-req-消息堆积行为">📘 深入理解 ZeroMQ 异步连接与 REQ 消息堆积行为</h1>
+<hr>
+<h2 id="-文档概览">✨ 文档概览</h2>
+<table>
+  <thead>
+      <tr>
+          <th>章节</th>
+          <th>内容</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1. 简介</td>
+          <td>ZeroMQ <code>connect()</code> 行为误区</td>
+      </tr>
+      <tr>
+          <td>2. 异步连接机制</td>
+          <td><code>connect()</code> 实现原理与延迟连接</td>
+      </tr>
+      <tr>
+          <td>3. REQ socket 特性</td>
+          <td>REQ 的 FSM 状态机与堆积陷阱</td>
+      </tr>
+      <tr>
+          <td>4. 内存增长问题分析</td>
+          <td>实例重现与底层解释</td>
+      </tr>
+      <tr>
+          <td>5. 如何规避问题</td>
+          <td>参数设置、代码优化方案</td>
+      </tr>
+      <tr>
+          <td>6. 替代方案</td>
+          <td>使用 DEALER 替代 REQ 的可行性</td>
+      </tr>
+      <tr>
+          <td>7. 源码分析</td>
+          <td>ZeroMQ 源码路径与关键组件说明</td>
+      </tr>
+      <tr>
+          <td>8. 附录与参考资料</td>
+          <td>官方文献、工具、命令等</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="1--简介为什么连接成功了服务端却没起来">1. 🔰 简介：为什么连接成功了服务端却没起来？</h2>
+<p>当你调用如下代码时：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>zmq<span style="color:#f92672">::</span>socket_t socket(context, zmq<span style="color:#f92672">::</span>socket_type<span style="color:#f92672">::</span>req);
+</span></span><span style="display:flex;"><span>socket.connect(<span style="color:#e6db74">&#34;tcp://127.0.0.1:5555&#34;</span>);
+</span></span><span style="display:flex;"><span>LogInfo(<span style="color:#e6db74">&#34;Socket connected to endpoint&#34;</span>);
+</span></span></code></pre></div><p>你可能会误以为服务端已经在线并成功连接。</p>
+<p><strong>这是一个常见误区。</strong></p>
+<h3 id="-正确理解">✅ 正确理解：</h3>
+<blockquote>
+<p><code>connect()</code> 只是将目标 endpoint 添加到内部连接目标列表中，并不会立即发起 TCP 连接或等待对端响应。</p></blockquote>
+<p>这是 ZeroMQ 异步非阻塞通信模型的特性。</p>
+<hr>
+<h2 id="2--异步连接机制原理">2. ⚙️ 异步连接机制原理</h2>
+<h3 id="connect-实际做了什么"><code>connect()</code> 实际做了什么？</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>socket.connect(<span style="color:#e6db74">&#34;tcp://127.0.0.1:5555&#34;</span>);
+</span></span></code></pre></div><p>执行过程：</p>
+<ol>
+<li>向 ZeroMQ socket 注册连接目标（endpoint）；</li>
+<li>将连接请求投递给后台 I/O 线程；</li>
+<li>I/O 线程尝试通过 <code>connect()</code> 建立 TCP 连接；</li>
+<li>若连接失败，ZeroMQ 会自动重试（受 <code>reconnect_ivl</code> 控制）；</li>
+<li>期间调用者不会被阻塞或抛出异常。</li>
+</ol>
+<h3 id="所以">所以：</h3>
+<ul>
+<li><code>connect()</code> 不代表连接已成功；</li>
+<li>即使服务端未启动，日志依然会显示 “连接成功”。</li>
+</ul>
+<hr>
+<h2 id="3--req-socket-的状态机陷阱">3. 🚨 REQ socket 的状态机陷阱</h2>
+<p>REQ socket 的行为与其他类型不同：</p>
+<h3 id="fsm有限状态机">FSM（有限状态机）：</h3>
+<pre tabindex="0"><code>[ReadyToSend] --send()--&gt; [MustRecv]
+[MustRecv] --recv()--&gt; [ReadyToSend]
+</code></pre><p><strong>规则：</strong> 每次 <code>send()</code> <strong>之后必须调用</strong> <code>recv()</code>，否则：</p>
+<ul>
+<li>再次调用 <code>send()</code> 会<strong>悄悄排入队列</strong>；</li>
+<li>这些消息不会立即报错；</li>
+<li>不受 <code>ZMQ_SNDHWM</code> 限制；</li>
+<li>消息缓冲区将无限增长 → <strong>内存持续上涨</strong>。</li>
+</ul>
+<hr>
+<h2 id="4--内存增长问题复现与分析">4. 💥 内存增长问题复现与分析</h2>
+<h3 id="示例只调用-send不-recv">示例：只调用 <code>send()</code>，不 <code>recv()</code>：</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1000000</span>; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>    socket.send(msg, zmq<span style="color:#f92672">::</span>send_flags<span style="color:#f92672">::</span>dontwait);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>结果：</p>
+<ul>
+<li>服务端未启动；</li>
+<li>内存使用量不断增加；</li>
+<li>不触发 <code>sndhwm</code>，也不会报错；</li>
+<li>系统资源最终耗尽。</li>
+</ul>
+<hr>
+<h2 id="5--正确写法与规避方案">5. ✅ 正确写法与规避方案</h2>
+<h3 id="-修复方案一严格-sendrecv-配对">✅ 修复方案一：严格 send/recv 配对</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>socket.send(msg, zmq<span style="color:#f92672">::</span>send_flags<span style="color:#f92672">::</span>dontwait);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>zmq<span style="color:#f92672">::</span>message_t reply;
+</span></span><span style="display:flex;"><span>socket.recv(reply, zmq<span style="color:#f92672">::</span>recv_flags<span style="color:#f92672">::</span>dontwait);
+</span></span></code></pre></div><p>即使对端未上线，也要调用 <code>recv()</code> 清空状态机。</p>
+<hr>
+<h3 id="-修复方案二切换为-dealer-socket">✅ 修复方案二：切换为 <code>DEALER</code> socket</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>zmq<span style="color:#f92672">::</span>socket_t socket(context, zmq<span style="color:#f92672">::</span>socket_type<span style="color:#f92672">::</span>dealer);
+</span></span></code></pre></div><ul>
+<li><code>DEALER</code> 没有 FSM 限制；</li>
+<li>支持多次 send / recv；</li>
+<li>更适合高频、异步、多线程模型；</li>
+<li>服务端需改为 <code>ROUTER</code>。</li>
+</ul>
+<hr>
+<h3 id="-参数推荐配置">⚙️ 参数推荐配置</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>socket.set(zmq<span style="color:#f92672">::</span>sockopt<span style="color:#f92672">::</span>linger, <span style="color:#ae81ff">0</span>);            <span style="color:#75715e">// 快速关闭
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>socket.set(zmq<span style="color:#f92672">::</span>sockopt<span style="color:#f92672">::</span>sndhwm, <span style="color:#ae81ff">100</span>);          <span style="color:#75715e">// 控制消息堆积
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>socket.set(zmq<span style="color:#f92672">::</span>sockopt<span style="color:#f92672">::</span>rcvtimeo, <span style="color:#ae81ff">3000</span>);       <span style="color:#75715e">// 防止 recv 阻塞
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>socket.set(zmq<span style="color:#f92672">::</span>sockopt<span style="color:#f92672">::</span>sndtimeo, <span style="color:#ae81ff">1000</span>);       <span style="color:#75715e">// 防止 send 阻塞
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>socket.set(zmq<span style="color:#f92672">::</span>sockopt<span style="color:#f92672">::</span>reconnect_ivl, <span style="color:#ae81ff">100</span>);   <span style="color:#75715e">// 快速重连
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>socket.set(zmq<span style="color:#f92672">::</span>sockopt<span style="color:#f92672">::</span>reconnect_ivl_max, <span style="color:#ae81ff">3000</span>);
+</span></span></code></pre></div><hr>
+<h3 id="-使用监控检测连接状态">✅ 使用监控检测连接状态</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>socket.monitor(<span style="color:#e6db74">&#34;inproc://monitor&#34;</span>, ZMQ_EVENT_CONNECTED <span style="color:#f92672">|</span> ZMQ_EVENT_DISCONNECTED);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 用另一个 socket 监听事件流
+</span></span></span></code></pre></div><hr>
+<h2 id="6--dealer-替代-req-的完整对比">6. 🔁 DEALER 替代 REQ 的完整对比</h2>
+<table>
+  <thead>
+      <tr>
+          <th>特性</th>
+          <th>REQ</th>
+          <th>DEALER</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>是否受 FSM 限制</td>
+          <td>✅ 是</td>
+          <td>❌ 否</td>
+      </tr>
+      <tr>
+          <td>是否支持异步</td>
+          <td>❌ 阻塞式</td>
+          <td>✅ 完全异步</td>
+      </tr>
+      <tr>
+          <td>是否可以持续发送</td>
+          <td>❌ 必须 recv 之后才能 send</td>
+          <td>✅ 任意 send / recv</td>
+      </tr>
+      <tr>
+          <td>是否适合多线程</td>
+          <td>❌ 一般不推荐</td>
+          <td>✅ 高度可控</td>
+      </tr>
+      <tr>
+          <td>适用服务端类型</td>
+          <td>REP</td>
+          <td>ROUTER</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="7--源码解析libzmq">7. 🔍 源码解析（libzmq）</h2>
+<h3 id="调用链">调用链：</h3>
+<pre tabindex="0"><code>zmq::socket_t::connect()
+ ↓
+zmq_connect()
+ ↓
+socket_base_t::connect()
+ ↓
+endpoint_base_t::connect()
+ ↓
+tcp_connecter_t::start_connecting()
+ ↓
+::connect() → EINPROGRESS → poll 写事件等待连接完成
+</code></pre><h3 id="buffer-堆积的位置">buffer 堆积的位置：</h3>
+<ul>
+<li>在 <code>socket_base_t::send()</code> 中，REQ FSM 状态控制逻辑会判断是否允许发送；</li>
+<li>若处于 MustRecv 状态，会将消息缓存入 <code>outpipe</code> 而不是立即发送；</li>
+<li><code>ZMQ_SNDHWM</code> 只作用于 outbound pipe，FSM 内部状态机并不受限于它。</li>
+</ul>
+<hr>
+<h2 id="8--附录与参考资料">8. 📚 附录与参考资料</h2>
+<h3 id="官方文献">官方文献：</h3>
+<ul>
+<li><a href="https://zguide.zeromq.org">ZeroMQ Guide (zguide)</a></li>
+<li><a href="https://zeromq.org/socket-api/">ZeroMQ API Reference</a></li>
+<li><a href="https://zguide.zeromq.org/docs/chapter2/#Monitoring-Socket-Events">ZeroMQ Monitoring Events</a></li>
+<li><a href="https://github.com/zeromq/libzmq">ZeroMQ GitHub (libzmq)</a></li>
+</ul>
+<h3 id="相关命令">相关命令：</h3>
+<table>
+  <thead>
+      <tr>
+          <th>命令</th>
+          <th>说明</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>`netstat -an</td>
+          <td>grep 5555`</td>
+          <td>查看端口监听</td>
+      </tr>
+      <tr>
+          <td><code>lsof -i:5555</code></td>
+          <td>查看哪个进程占用</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>valgrind --tool=massif</code></td>
+          <td>检查内存使用增长</td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-总结">🎯 总结</h2>
+<ul>
+<li>ZeroMQ 的 <code>connect()</code> 是非阻塞、异步行为；</li>
+<li><code>REQ</code> socket 必须 <code>send → recv</code> 配对，否则会无限堆积消息；</li>
+<li><code>sndhwm</code> 对 <code>REQ</code> 不起作用，不能限制其消息堆积；</li>
+<li>最好使用 <code>DEALER</code> 替代 <code>REQ</code>，以支持灵活通信；</li>
+<li>必须监控连接状态，合理设计握手机制，避免因误判“已连接”而堆积消息导致 OOM。</li>
+</ul>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>359 words</span>
+    <span>5 - 7 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#-文档概览">✨ 文档概览</a></li>
+    <li><a href="#1--简介为什么连接成功了服务端却没起来">1. 🔰 简介：为什么连接成功了服务端却没起来？</a>
+      <ul>
+        <li><a href="#-正确理解">✅ 正确理解：</a></li>
+      </ul>
+    </li>
+    <li><a href="#2--异步连接机制原理">2. ⚙️ 异步连接机制原理</a>
+      <ul>
+        <li><a href="#connect-实际做了什么"><code>connect()</code> 实际做了什么？</a></li>
+        <li><a href="#所以">所以：</a></li>
+      </ul>
+    </li>
+    <li><a href="#3--req-socket-的状态机陷阱">3. 🚨 REQ socket 的状态机陷阱</a>
+      <ul>
+        <li><a href="#fsm有限状态机">FSM（有限状态机）：</a></li>
+      </ul>
+    </li>
+    <li><a href="#4--内存增长问题复现与分析">4. 💥 内存增长问题复现与分析</a>
+      <ul>
+        <li><a href="#示例只调用-send不-recv">示例：只调用 <code>send()</code>，不 <code>recv()</code>：</a></li>
+      </ul>
+    </li>
+    <li><a href="#5--正确写法与规避方案">5. ✅ 正确写法与规避方案</a>
+      <ul>
+        <li><a href="#-修复方案一严格-sendrecv-配对">✅ 修复方案一：严格 send/recv 配对</a></li>
+        <li><a href="#-修复方案二切换为-dealer-socket">✅ 修复方案二：切换为 <code>DEALER</code> socket</a></li>
+        <li><a href="#-参数推荐配置">⚙️ 参数推荐配置</a></li>
+        <li><a href="#-使用监控检测连接状态">✅ 使用监控检测连接状态</a></li>
+      </ul>
+    </li>
+    <li><a href="#6--dealer-替代-req-的完整对比">6. 🔁 DEALER 替代 REQ 的完整对比</a></li>
+    <li><a href="#7--源码解析libzmq">7. 🔍 源码解析（libzmq）</a>
+      <ul>
+        <li><a href="#调用链">调用链：</a></li>
+        <li><a href="#buffer-堆积的位置">buffer 堆积的位置：</a></li>
+      </ul>
+    </li>
+    <li><a href="#8--附录与参考资料">8. 📚 附录与参考资料</a>
+      <ul>
+        <li><a href="#官方文献">官方文献：</a></li>
+        <li><a href="#相关命令">相关命令：</a></li>
+      </ul>
+    </li>
+    <li><a href="#-总结">🎯 总结</a></li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/cmake-%E7%8E%B0%E4%BB%A3%E5%8C%96%E9%85%8D%E7%BD%AE%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/">📌CMake 现代化配置完整指南</a></li><li><a href="/posts/-threadlocal-%E5%85%A8%E9%9D%A2%E8%A7%A3%E6%9E%90/">📘ThreadLocal 全面解析</a></li><li><a href="/posts/%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90-java-%E7%BA%BF%E7%A8%8B%E6%9C%AC%E5%9C%B0%E5%8C%96%E4%BB%8E-threadlocal-%E5%88%B0-scopedvalue-%E7%9A%84%E6%BC%94%E8%BF%9B%E4%B8%8E%E9%80%89%E6%8B%A9/">📘深入解析 Java 线程本地化：从 ThreadLocal 到 ScopedValue 的演进与选择</a></li><li><a href="/posts/%E6%B7%B1%E5%85%A5-c&#43;&#43;-%E7%9A%84%E9%9A%90%E7%A7%98%E8%A7%92%E8%90%BD%E5%BD%BB%E5%BA%95%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0%E4%BE%9D%E8%B5%96%E6%9F%A5%E6%89%BE-adl/">深入 C&#43;&#43; 的隐秘角落：彻底解析参数依赖查找 (ADL)</a></li><li><a href="/posts/%E6%B7%B1%E5%85%A5-c&#43;&#43;-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E5%8E%9F%E7%90%86%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%E5%AF%B9%E6%AF%94%E4%B8%8E-shared_ptr-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">📌深入 C&#43;&#43; 单例模式：原理、实现方式对比与 shared_ptr 架构设计</a></li></ul></aside></div>
+  </div>
+</body>
+</html>
