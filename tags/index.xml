@@ -6,8 +6,22 @@
     <description>Recent content in Tags on LuyangのBlog</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 08 Jul 2025 02:30:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 13 Jul 2025 02:30:00 +0800</lastBuildDate>
     <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bin</title>
+      <link>/tags/bin/</link>
+      <pubDate>Sun, 13 Jul 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/bin/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cpp</title>
+      <link>/tags/cpp/</link>
+      <pubDate>Sun, 13 Jul 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/cpp/</guid>
+      <description></description>
+    </item>
     <item>
       <title>AArch64</title>
       <link>/tags/aarch64/</link>
@@ -20,13 +34,6 @@
       <link>/tags/arm/</link>
       <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
       <guid>/tags/arm/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Cpp</title>
-      <link>/tags/cpp/</link>
-      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
-      <guid>/tags/cpp/</guid>
       <description></description>
     </item>
     <item>
