@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📘 Git Submodule 全面技术文档 | LuyangのBlog</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/-git-submodule-%E5%85%A8%E9%9D%A2%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="📘 Git Submodule 全面技术文档">
+  <meta property="og:description" content="Git Submodule 全面技术文档 📘 简介 Git Submodule（子模块）是 Git 提供的一种机制，使得一个 Git 仓库可以包含另一个 Git 仓库作为其子目录。这在大型项目中非常有用，例如依赖多个第三方库、模块化项目结构、多个项目共享组件等场景。
+📦 基本概念 主仓库（Superproject）：包含子模块的顶层仓库。 子模块（Submodule）：嵌套在主仓库中的另一个 Git 仓库，记录的是其特定提交版本。 .gitmodules 文件：记录子模块路径和对应的远程地址。 子模块 HEAD 是“冻结”的：主仓库记录的是子模块的某个提交哈希值，而不是其分支。 📥 子模块的基本操作 添加子模块 git submodule add &lt;repository-url&gt; [&lt;path&gt;] 例如：
+git submodule add https://github.com/example/libfoo external/libfoo 这将：
+克隆子模块到指定路径 在 .gitmodules 添加记录 在主仓库中记录子模块当前 commit 克隆带子模块的项目 git clone --recurse-submodules &lt;repo-url&gt; 或者：
+git clone &lt;repo-url&gt; cd &lt;repo-name&gt; git submodule update --init --recursive 更新子模块内容 拉取最新的子模块版本：
+git submodule update --remote --merge 如果你只是想把子模块切换到其远程分支的最新提交：
+git submodule update --remote 🔁 子模块日常工作流 切换分支时初始化子模块 git checkout &lt;branch-name&gt; git submodule update --init --recursive 提交包含子模块更新的更改 cd external/libfoo git pull origin master # 更新子模块内容 cd ../.. git add external/libfoo git commit -m &#34;Update submodule libfoo&#34; 注意：提交的是子模块指针的变化（commit hash 改变）。">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="1970-01-01T00:00:00+08:00">
+    <meta property="article:modified_time" content="1970-01-01T00:00:00+08:00">
+    <meta property="article:tag" content="Git">
+    <meta property="article:tag" content="Submodule">
+    <meta property="article:tag" content="Github">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="📘 Git Submodule 全面技术文档">
+  <meta name="twitter:description" content="Git Submodule 全面技术文档 📘 简介 Git Submodule（子模块）是 Git 提供的一种机制，使得一个 Git 仓库可以包含另一个 Git 仓库作为其子目录。这在大型项目中非常有用，例如依赖多个第三方库、模块化项目结构、多个项目共享组件等场景。
+📦 基本概念 主仓库（Superproject）：包含子模块的顶层仓库。 子模块（Submodule）：嵌套在主仓库中的另一个 Git 仓库，记录的是其特定提交版本。 .gitmodules 文件：记录子模块路径和对应的远程地址。 子模块 HEAD 是“冻结”的：主仓库记录的是子模块的某个提交哈希值，而不是其分支。 📥 子模块的基本操作 添加子模块 git submodule add &lt;repository-url&gt; [&lt;path&gt;] 例如：
+git submodule add https://github.com/example/libfoo external/libfoo 这将：
+克隆子模块到指定路径 在 .gitmodules 添加记录 在主仓库中记录子模块当前 commit 克隆带子模块的项目 git clone --recurse-submodules &lt;repo-url&gt; 或者：
+git clone &lt;repo-url&gt; cd &lt;repo-name&gt; git submodule update --init --recursive 更新子模块内容 拉取最新的子模块版本：
+git submodule update --remote --merge 如果你只是想把子模块切换到其远程分支的最新提交：
+git submodule update --remote 🔁 子模块日常工作流 切换分支时初始化子模块 git checkout &lt;branch-name&gt; git submodule update --init --recursive 提交包含子模块更新的更改 cd external/libfoo git pull origin master # 更新子模块内容 cd ../.. git add external/libfoo git commit -m &#34;Update submodule libfoo&#34; 注意：提交的是子模块指针的变化（commit hash 改变）。">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.ffb26980ae2df7bdfe47815d8a3f0130f36070ee4a3320a5f22d16842be2537f.css" integrity="sha256-/7JpgK4t973&#43;R4Fdij8BMPNgcO5KMyCl8i0WhCviU38=" crossorigin="anonymous">
+
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>📘 Git Submodule 全面技术文档</h1><time class="dim" datetime="1970-01-01T00:00:00&#43;08:00">January 1, 1970</time><div class="term-container"><div class="tag">
+        <a href="/tags/git/">#git</a>
+      </div><div class="tag">
+        <a href="/tags/submodule/">#submodule</a>
+      </div><div class="tag">
+        <a href="/tags/github/">#github</a>
+      </div></ol></div>
+  <section class="page-section"><h1 id="git-submodule-全面技术文档">Git Submodule 全面技术文档</h1>
+<h2 id="-简介">📘 简介</h2>
+<p><code>Git Submodule</code>（子模块）是 Git 提供的一种机制，使得一个 Git 仓库可以包含另一个 Git 仓库作为其子目录。这在大型项目中非常有用，例如依赖多个第三方库、模块化项目结构、多个项目共享组件等场景。</p>
+<hr>
+<h2 id="-基本概念">📦 基本概念</h2>
+<ul>
+<li><strong>主仓库（Superproject）</strong>：包含子模块的顶层仓库。</li>
+<li><strong>子模块（Submodule）</strong>：嵌套在主仓库中的另一个 Git 仓库，记录的是其特定提交版本。</li>
+<li><strong><code>.gitmodules</code> 文件</strong>：记录子模块路径和对应的远程地址。</li>
+<li><strong>子模块 HEAD 是“冻结”的</strong>：主仓库记录的是子模块的某个<strong>提交哈希值</strong>，而不是其分支。</li>
+</ul>
+<hr>
+<h2 id="-子模块的基本操作">📥 子模块的基本操作</h2>
+<h3 id="添加子模块">添加子模块</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git submodule add &lt;repository-url&gt; <span style="color:#f92672">[</span>&lt;path&gt;<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git submodule add https://github.com/example/libfoo external/libfoo
+</span></span></code></pre></div><p>这将：</p>
+<ul>
+<li>克隆子模块到指定路径</li>
+<li>在 <code>.gitmodules</code> 添加记录</li>
+<li>在主仓库中记录子模块当前 commit</li>
+</ul>
+<h3 id="克隆带子模块的项目">克隆带子模块的项目</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone --recurse-submodules &lt;repo-url&gt;
+</span></span></code></pre></div><p>或者：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone &lt;repo-url&gt;
+</span></span><span style="display:flex;"><span>cd &lt;repo-name&gt;
+</span></span><span style="display:flex;"><span>git submodule update --init --recursive
+</span></span></code></pre></div><h3 id="更新子模块内容">更新子模块内容</h3>
+<p>拉取最新的子模块版本：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git submodule update --remote --merge
+</span></span></code></pre></div><p>如果你只是想把子模块切换到其远程分支的最新提交：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git submodule update --remote
+</span></span></code></pre></div><hr>
+<h2 id="-子模块日常工作流">🔁 子模块日常工作流</h2>
+<h3 id="切换分支时初始化子模块">切换分支时初始化子模块</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git checkout &lt;branch-name&gt;
+</span></span><span style="display:flex;"><span>git submodule update --init --recursive
+</span></span></code></pre></div><h3 id="提交包含子模块更新的更改">提交包含子模块更新的更改</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd external/libfoo
+</span></span><span style="display:flex;"><span>git pull origin master  <span style="color:#75715e"># 更新子模块内容</span>
+</span></span><span style="display:flex;"><span>cd ../..
+</span></span><span style="display:flex;"><span>git add external/libfoo
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Update submodule libfoo&#34;</span>
+</span></span></code></pre></div><p>注意：提交的是子模块指针的变化（commit hash 改变）。</p>
+<hr>
+<h2 id="-子模块文件详解">🧰 子模块文件详解</h2>
+<h3 id="gitmodules"><code>.gitmodules</code></h3>
+<p>位于主仓库根目录，内容如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[submodule &#34;external/libfoo&#34;]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">external/libfoo
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    url = https://github.com/example/libfoo.git</span>
+</span></span></code></pre></div><p>这个文件会被纳入版本控制。</p>
+<h3 id="gitconfig-中的对应配置"><code>.git/config</code> 中的对应配置</h3>
+<p>每个本地 clone 后，Git 会在 <code>.git/config</code> 中创建类似配置（不纳入版本控制）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[submodule &#34;external/libfoo&#34;]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">https://github.com/example/libfoo.git</span>
+</span></span></code></pre></div><hr>
+<h2 id="-子模块常用命令速查表">🔧 子模块常用命令速查表</h2>
+<table>
+  <thead>
+      <tr>
+          <th>功能</th>
+          <th>命令</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>添加子模块</td>
+          <td><code>git submodule add &lt;url&gt; [path]</code></td>
+      </tr>
+      <tr>
+          <td>初始化子模块（首次克隆后）</td>
+          <td><code>git submodule init</code></td>
+      </tr>
+      <tr>
+          <td>同步子模块</td>
+          <td><code>git submodule update</code></td>
+      </tr>
+      <tr>
+          <td>递归更新子模块</td>
+          <td><code>git submodule update --init --recursive</code></td>
+      </tr>
+      <tr>
+          <td>拉取最新子模块</td>
+          <td><code>git submodule update --remote</code></td>
+      </tr>
+      <tr>
+          <td>删除子模块（手动操作）</td>
+          <td>见下方删除子模块流程</td>
+      </tr>
+      <tr>
+          <td>查看状态</td>
+          <td><code>git submodule status</code></td>
+      </tr>
+      <tr>
+          <td>检查子模块 URL 是否更新</td>
+          <td><code>git submodule sync</code></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-删除子模块">❌ 删除子模块</h2>
+<p>Git 目前不提供自动删除子模块的命令，需手动操作：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 1. 删除子模块目录</span>
+</span></span><span style="display:flex;"><span>rm -rf path/to/submodule
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. 从 .gitmodules 移除记录</span>
+</span></span><span style="display:flex;"><span>git config -f .gitmodules --remove-section submodule.path/to/submodule
+</span></span><span style="display:flex;"><span>git add .gitmodules
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3. 从主仓库配置中删除子模块引用</span>
+</span></span><span style="display:flex;"><span>git config -f .git/config --remove-section submodule.path/to/submodule
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 4. 从索引中移除</span>
+</span></span><span style="display:flex;"><span>git rm --cached path/to/submodule
+</span></span></code></pre></div><hr>
+<h2 id="-注意事项与最佳实践">⚠️ 注意事项与最佳实践</h2>
+<ul>
+<li>子模块指针是一个 commit ID，<strong>不会自动跟踪子模块的分支变更</strong>。</li>
+<li>子模块更新后，<strong>主仓库必须提交子模块的新 commit ID</strong>。</li>
+<li>变更子模块内容时，需进入子模块目录进行操作。</li>
+<li>子模块无法用于需要频繁同步的双向开发，适合版本相对稳定的依赖项。</li>
+</ul>
+<hr>
+<h2 id="-子模块-vs-subtree-简要对比">🆚 子模块 vs Subtree 简要对比</h2>
+<table>
+  <thead>
+      <tr>
+          <th>特性</th>
+          <th>Submodule</th>
+          <th>Subtree</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>子项目为独立仓库</td>
+          <td>✅</td>
+          <td>✅</td>
+      </tr>
+      <tr>
+          <td>子仓库是否固定版本</td>
+          <td>✅</td>
+          <td>❌（可合并）</td>
+      </tr>
+      <tr>
+          <td>合并提交历史</td>
+          <td>❌</td>
+          <td>✅</td>
+      </tr>
+      <tr>
+          <td>操作复杂度</td>
+          <td>较高</td>
+          <td>较低（git subtree 命令较少）</td>
+      </tr>
+      <tr>
+          <td>主项目控制子模块内容</td>
+          <td>不直接控制</td>
+          <td>可直接改动</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-实战建议">🧪 实战建议</h2>
+<h3 id="多人协作建议">多人协作建议</h3>
+<ul>
+<li>每次 clone 时务必执行 <code>--recurse-submodules</code> 或 <code>update --init</code></li>
+<li>变更子模块内容请务必同时 <code>commit</code> 子模块和主仓库变更</li>
+<li>定期执行 <code>git submodule status</code> 检查同步状态</li>
+</ul>
+<h3 id="在-cicd-中使用">在 CI/CD 中使用</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 建议在 CI 中使用以下命令拉取完整内容</span>
+</span></span><span style="display:flex;"><span>git submodule update --init --recursive
+</span></span></code></pre></div><hr>
+<h2 id="-总结">🔚 总结</h2>
+<p>Git 子模块是强大但略微复杂的依赖管理机制。使用得当可以有效分离模块和组件，但需注意版本控制方式的不同与操作规范性。</p>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>283 words</span>
+    <span>4 - 6 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#-简介">📘 简介</a></li>
+    <li><a href="#-基本概念">📦 基本概念</a></li>
+    <li><a href="#-子模块的基本操作">📥 子模块的基本操作</a>
+      <ul>
+        <li><a href="#添加子模块">添加子模块</a></li>
+        <li><a href="#克隆带子模块的项目">克隆带子模块的项目</a></li>
+        <li><a href="#更新子模块内容">更新子模块内容</a></li>
+      </ul>
+    </li>
+    <li><a href="#-子模块日常工作流">🔁 子模块日常工作流</a>
+      <ul>
+        <li><a href="#切换分支时初始化子模块">切换分支时初始化子模块</a></li>
+        <li><a href="#提交包含子模块更新的更改">提交包含子模块更新的更改</a></li>
+      </ul>
+    </li>
+    <li><a href="#-子模块文件详解">🧰 子模块文件详解</a>
+      <ul>
+        <li><a href="#gitmodules"><code>.gitmodules</code></a></li>
+        <li><a href="#gitconfig-中的对应配置"><code>.git/config</code> 中的对应配置</a></li>
+      </ul>
+    </li>
+    <li><a href="#-子模块常用命令速查表">🔧 子模块常用命令速查表</a></li>
+    <li><a href="#-删除子模块">❌ 删除子模块</a></li>
+    <li><a href="#-注意事项与最佳实践">⚠️ 注意事项与最佳实践</a></li>
+    <li><a href="#-子模块-vs-subtree-简要对比">🆚 子模块 vs Subtree 简要对比</a></li>
+    <li><a href="#-实战建议">🧪 实战建议</a>
+      <ul>
+        <li><a href="#多人协作建议">多人协作建议</a></li>
+        <li><a href="#在-cicd-中使用">在 CI/CD 中使用</a></li>
+      </ul>
+    </li>
+    <li><a href="#-总结">🔚 总结</a></li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/">git 使用指定的 ssh key</a></li></ul></aside></div>
+  </div>
+</body>
+</html>

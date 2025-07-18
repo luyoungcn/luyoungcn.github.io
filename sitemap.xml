@@ -314,7 +314,7 @@
     <loc>/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2023-10-26T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>/posts/android-7/</loc>
+    <loc>/posts/android-7.1-build-spidev_test.c/</loc>
     <lastmod>2023-06-26T03:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/bookmark/</loc>
@@ -455,7 +455,7 @@
     <loc>/tags/e2fs/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>/posts/e2fsprogs-1/</loc>
+    <loc>/posts/e2fsprogs-1.42.8%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/libxml/</loc>
@@ -467,7 +467,7 @@
     <loc>/tags/math/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>/posts/python2/</loc>
+    <loc>/posts/python2.7-%E7%8E%AF%E5%A2%83%E5%8F%8A%E5%8C%85%E7%AE%A1%E7%90%86/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/ssh/</loc>
@@ -488,19 +488,19 @@
     <loc>/tags/zlib/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2/</loc>
+    <loc>/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-glibc-2.35/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-libxml2-2/</loc>
+    <loc>/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-libxml2-2.9.10/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2/</loc>
+    <loc>/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2.7.16/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-tcpdump-4/</loc>
+    <loc>/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-tcpdump-4.99.1/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
-    <loc>/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-zlib-1/</loc>
+    <loc>/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-zlib-1.2.12/</loc>
     <lastmod>2023-02-03T12:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/dmesg/</loc>
@@ -530,6 +530,9 @@
     <loc>/tags/stock/</loc>
     <lastmod>2021-06-26T03:00:00+08:00</lastmod>
   </url><url>
+    <loc>/posts/-git-submodule-%E5%85%A8%E9%9D%A2%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/</loc>
+    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
+  </url><url>
     <loc>/tags/activity/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
@@ -545,7 +548,7 @@
     <loc>/tags/am/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>/posts/androidjava-/</loc>
+    <loc>/posts/androidjava-.7%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/posts/androidstudioenv/</loc>
@@ -605,7 +608,7 @@
     <loc>/tags/debian/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>/posts/debian4/</loc>
+    <loc>/posts/debian4.9configstaticip/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/disk/</loc>
@@ -630,9 +633,6 @@
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/forwarddeclaration/</loc>
-    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>/posts/git_clone%E5%8C%85%E5%90%ABsubmodule%E7%9A%84%E4%BB%93%E5%BA%93/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/posts/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AE%9A%E7%9A%84ssh_key/</loc>

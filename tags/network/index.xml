@@ -10,9 +10,9 @@
     <atom:link href="/tags/network/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Debian 4.9 Config Static Ip.md</title>
-      <link>/posts/debian4/</link>
+      <link>/posts/debian4.9configstaticip/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>/posts/debian4/</guid>
+      <guid>/posts/debian4.9configstaticip/</guid>
       <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Linux debian 4.9.0-6-amd64 #1 SMP Debian 4.9.82-1+deb9u3 (2018-03-02) x86_64&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;kk@debian:~$ &lt;code&gt;cat /etc/network/interfaces&lt;/code&gt;&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# This file describes the network interfaces available on your system&#xA;# and how to activate them. For more information, see interfaces(5).&#xA;&#xA;source /etc/network/interfaces.d/*&#xA;&#xA;# The loopback network interface&#xA;auto lo&#xA;iface lo inet loopback&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;修改后&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# This file describes the network interfaces available on your system&#xA;# and how to activate them. For more information, see interfaces(5).&#xA;&#xA;source /etc/network/interfaces.d/*&#xA;&#xA;# The loopback network interface&#xA;auto lo enp0s3&#xA;iface lo inet loopback&#xA;&#xA;iface enp0s3 inet static&#xA;        address 192.168.20.103&#xA;        netmask 255.255.255.0&#xA;        gateway 192.168.20.1&#xA;dns-nameservers 114.114.114.114&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;kk@debian:~$ &lt;code&gt;/sbin/ifconfig&lt;/code&gt;&lt;/p&gt;</description>
     </item>
     <item>

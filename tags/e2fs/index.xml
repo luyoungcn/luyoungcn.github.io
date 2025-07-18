@@ -10,9 +10,9 @@
     <atom:link href="/tags/e2fs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>e2fsprogs-1.42.8 源码编译安装</title>
-      <link>/posts/e2fsprogs-1/</link>
+      <link>/posts/e2fsprogs-1.42.8%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</link>
       <pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate>
-      <guid>/posts/e2fsprogs-1/</guid>
+      <guid>/posts/e2fsprogs-1.42.8%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</guid>
       <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tar xvf e2fsprogs-1.42.8.tar.gz&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd e2fsprogs-1.42.8&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir build&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd build/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;../configure&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;make&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo make install&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;问题：&lt;/p&gt;&#xA;&lt;p&gt;ubuntu20.04 编译报错 &lt;code&gt;undefined reference to &#39;makedev&#39;&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;解决方法:&#xA;&lt;code&gt;vim &amp;lt;path-to-e2fsprogs-1.42.8&amp;gt;/lib/blkid/devname.c&lt;/code&gt;&#xA;添加头文件 &lt;code&gt;#include &amp;lt;sys/sysmacros.h&lt;/code&gt;&lt;/p&gt;</description>
     </item>
   </channel>
