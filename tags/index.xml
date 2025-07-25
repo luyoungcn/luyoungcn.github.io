@@ -100,6 +100,27 @@
       <description></description>
     </item>
     <item>
+      <title>打印机</title>
+      <link>/tags/%E6%89%93%E5%8D%B0%E6%9C%BA/</link>
+      <pubDate>Sun, 29 Jun 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/%E6%89%93%E5%8D%B0%E6%9C%BA/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>扫描</title>
+      <link>/tags/%E6%89%AB%E6%8F%8F/</link>
+      <pubDate>Sun, 29 Jun 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/%E6%89%AB%E6%8F%8F/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>扫描仪</title>
+      <link>/tags/%E6%89%AB%E6%8F%8F%E4%BB%AA/</link>
+      <pubDate>Sun, 29 Jun 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/%E6%89%AB%E6%8F%8F%E4%BB%AA/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>OpenCV</title>
       <link>/tags/opencv/</link>
       <pubDate>Fri, 27 Jun 2025 02:30:00 +0800</pubDate>
@@ -695,6 +716,13 @@
       <description></description>
     </item>
     <item>
+      <title>ACPI</title>
+      <link>/tags/acpi/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      <guid>/tags/acpi/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Activity</title>
       <link>/tags/activity/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
@@ -814,6 +842,13 @@
       <description></description>
     </item>
     <item>
+      <title>DeviceTree</title>
+      <link>/tags/devicetree/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      <guid>/tags/devicetree/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Disk</title>
       <link>/tags/disk/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
@@ -835,10 +870,24 @@
       <description></description>
     </item>
     <item>
+      <title>DTS</title>
+      <link>/tags/dts/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      <guid>/tags/dts/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Electronic</title>
       <link>/tags/electronic/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
       <guid>/tags/electronic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Firmware</title>
+      <link>/tags/firmware/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      <guid>/tags/firmware/</guid>
       <description></description>
     </item>
     <item>
@@ -853,6 +902,13 @@
       <link>/tags/forwarddeclaration/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
       <guid>/tags/forwarddeclaration/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fwnode</title>
+      <link>/tags/fwnode/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
+      <guid>/tags/fwnode/</guid>
       <description></description>
     </item>
     <item>

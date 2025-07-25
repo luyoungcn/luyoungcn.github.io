@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>扫描仪 on LuyangのBlog</title>
+    <link>/tags/%E6%89%AB%E6%8F%8F%E4%BB%AA/</link>
+    <description>Recent content in 扫描仪 on LuyangのBlog</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 29 Jun 2025 02:30:00 +0800</lastBuildDate>
+    <atom:link href="/tags/%E6%89%AB%E6%8F%8F%E4%BB%AA/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>📌HP 惠普 NPI4D1722 (HP LaserJet MFP M232dw) 打印机扫面环境配置及扫描方法</title>
+      <link>/posts/hp%E6%83%A0%E6%99%AEnpi4d1722_hp_laserjet_mfp_m232dw%E6%89%93%E5%8D%B0%E6%9C%BA%E6%89%AB%E9%9D%A2%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%8F%8A%E6%89%AB%E6%8F%8F%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Sun, 29 Jun 2025 02:30:00 +0800</pubDate>
+      <guid>/posts/hp%E6%83%A0%E6%99%AEnpi4d1722_hp_laserjet_mfp_m232dw%E6%89%93%E5%8D%B0%E6%9C%BA%E6%89%AB%E9%9D%A2%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%8F%8A%E6%89%AB%E6%8F%8F%E6%96%B9%E6%B3%95/</guid>
+      <description>&lt;h2 id=&#34;hp-惠普-npi4d1722-hp-laserjet-mfp-m232dw-打印机扫面环境配置及扫描方法&#34;&gt;📌HP 惠普 NPI4D1722 (HP LaserJet MFP M232dw) 打印机扫面环境配置及扫描方法&lt;/h2&gt;&#xA;&lt;p&gt;进入网页 &lt;a href=&#34;https://123.hp.com/cn/zh/&#34;&gt;123HP&lt;/a&gt;&#xA;输入打印机产品型号：&lt;code&gt;HP LaserJet MFP M232dw Printer&lt;/code&gt;, 点击 &lt;code&gt;下一步&lt;/code&gt;&#xA;安装 HP Smart 以完成设置。点击 &lt;code&gt;安装 HP SMART&lt;/code&gt;&#xA;跳转到 Microsoft Store 进行安装&lt;/p&gt;&#xA;&lt;p&gt;安装完成后自动运行 HP Smart, 根据直到一步一步配置好打印机。如果打印机和电脑在同一个局域网中，自动就能找到该设备&#xA;![[Pasted image 20250724193838.png]]&lt;/p&gt;&#xA;&lt;p&gt;连接成功后，程序主界面如下，根据需要点击相应图标来进行相关工作&#xA;![[Pasted image 20250724193940.png]]&lt;/p&gt;&#xA;&lt;h2 id=&#34;扫描&#34;&gt;扫描&lt;/h2&gt;&#xA;&lt;p&gt;点击 扫描 图标&lt;/p&gt;&#xA;&lt;p&gt;![[Pasted image 20250724195027.png]]&lt;/p&gt;&#xA;&lt;p&gt;此时将待扫描的内容放到打印机里，然后点击右下角的 扫描，等待几秒钟扫描完成，显示如下&#xA;![[Pasted image 20250724195247.png]]&lt;/p&gt;&#xA;&lt;p&gt;如果想扫描多张内容，点击右上角的 &lt;code&gt;+添加&lt;/code&gt;, 循环执行前面的操作。&lt;/p&gt;&#xA;&lt;p&gt;点击 保存&#xA;![[Pasted image 20250724200751.png]]&lt;/p&gt;&#xA;&lt;p&gt;点击 保存&#xA;![[Pasted image 20250724200830.png]]&lt;/p&gt;&#xA;&lt;p&gt;三页扫描内容就会保存在一份 PDF 中。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

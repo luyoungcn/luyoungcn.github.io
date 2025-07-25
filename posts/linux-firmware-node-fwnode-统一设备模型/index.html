@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📘 Linux Firmware Node (fwnode) 统一设备模型 | LuyangのBlog</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/linux-firmware-node-fwnode-%E7%BB%9F%E4%B8%80%E8%AE%BE%E5%A4%87%E6%A8%A1%E5%9E%8B/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="📘 Linux Firmware Node (fwnode) 统一设备模型">
+  <meta property="og:description" content="📘Linux Firmware Node (fwnode) 统一设备模型 1. 引言 Linux fwnode（Firmware Node）统一设备模型是 Linux 内核中用于抽象不同固件描述机制的通用框架。它为设备树（Device Tree）、ACPI（Advanced Configuration and Power Interface）以及其他固件描述方式提供了统一的接口，使得驱动程序可以以相同的方式访问设备属性信息，而无需关心底层的固件实现细节。
+2. 历史背景与发展历程 2.1 早期固件描述问题 在 fwnode 框架出现之前，Linux 内核面临以下挑战：
+平台依赖性强：ARM 平台主要使用 Device Tree，x86 平台使用 ACPI 代码重复：驱动程序需要为不同固件格式编写重复的解析代码 维护困难：跨平台驱动维护成本高，兼容性问题频发 struct device *dev =...; int ret, irq; /* 检查设备是否关联了设备树节点 */ if (dev-&gt;of_node) { /* 如果存在，则使用 of_* 系列 API 从设备树中读取属性 */ ret = of_property_read_u32(dev-&gt;of_node, &#34;interrupts&#34;, &amp;irq); if (ret) { // 错误处理 } } else if (ACPI_HANDLE(dev)) { /* 否则，检查设备是否有关联的 ACPI 句柄 */ /* 使用 ACPI 特定的 API 来解析 _CRS (Current Resource Settings) */ /* 这通常涉及到一套复杂、冗长的 ACPI 资源解析逻辑 */ //... complex ACPI resource parsing logic... } else { /* 可能还有基于平台数据的传统硬编码方式 */ //... } 2.2 发展时间线 Linux 内核社区对统一设备描述接口的探索始于 2014 年，旨在解决多固件接口并存带来的架构性问题。fwnode 框架正是这一架构演进的核心成果。以下是该框架的演进时间线和关键节点：">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="1970-01-01T00:00:00+08:00">
+    <meta property="article:modified_time" content="1970-01-01T00:00:00+08:00">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="ACPI">
+    <meta property="article:tag" content="DTS">
+    <meta property="article:tag" content="DeviceTree">
+    <meta property="article:tag" content="Kernel">
+    <meta property="article:tag" content="Firmware">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="📘 Linux Firmware Node (fwnode) 统一设备模型">
+  <meta name="twitter:description" content="📘Linux Firmware Node (fwnode) 统一设备模型 1. 引言 Linux fwnode（Firmware Node）统一设备模型是 Linux 内核中用于抽象不同固件描述机制的通用框架。它为设备树（Device Tree）、ACPI（Advanced Configuration and Power Interface）以及其他固件描述方式提供了统一的接口，使得驱动程序可以以相同的方式访问设备属性信息，而无需关心底层的固件实现细节。
+2. 历史背景与发展历程 2.1 早期固件描述问题 在 fwnode 框架出现之前，Linux 内核面临以下挑战：
+平台依赖性强：ARM 平台主要使用 Device Tree，x86 平台使用 ACPI 代码重复：驱动程序需要为不同固件格式编写重复的解析代码 维护困难：跨平台驱动维护成本高，兼容性问题频发 struct device *dev =...; int ret, irq; /* 检查设备是否关联了设备树节点 */ if (dev-&gt;of_node) { /* 如果存在，则使用 of_* 系列 API 从设备树中读取属性 */ ret = of_property_read_u32(dev-&gt;of_node, &#34;interrupts&#34;, &amp;irq); if (ret) { // 错误处理 } } else if (ACPI_HANDLE(dev)) { /* 否则，检查设备是否有关联的 ACPI 句柄 */ /* 使用 ACPI 特定的 API 来解析 _CRS (Current Resource Settings) */ /* 这通常涉及到一套复杂、冗长的 ACPI 资源解析逻辑 */ //... complex ACPI resource parsing logic... } else { /* 可能还有基于平台数据的传统硬编码方式 */ //... } 2.2 发展时间线 Linux 内核社区对统一设备描述接口的探索始于 2014 年，旨在解决多固件接口并存带来的架构性问题。fwnode 框架正是这一架构演进的核心成果。以下是该框架的演进时间线和关键节点：">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.ffb26980ae2df7bdfe47815d8a3f0130f36070ee4a3320a5f22d16842be2537f.css" integrity="sha256-/7JpgK4t973&#43;R4Fdij8BMPNgcO5KMyCl8i0WhCviU38=" crossorigin="anonymous">
+
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>📘 Linux Firmware Node (fwnode) 统一设备模型</h1><time class="dim" datetime="1970-01-01T00:00:00&#43;08:00">January 1, 1970</time><div class="term-container"><div class="tag">
+        <a href="/tags/linux/">#linux</a>
+      </div><div class="tag">
+        <a href="/tags/acpi/">#ACPI</a>
+      </div><div class="tag">
+        <a href="/tags/dts/">#DTS</a>
+      </div><div class="tag">
+        <a href="/tags/devicetree/">#DeviceTree</a>
+      </div><div class="tag">
+        <a href="/tags/kernel/">#kernel</a>
+      </div><div class="tag">
+        <a href="/tags/firmware/">#firmware</a>
+      </div><div class="tag">
+        <a href="/tags/fwnode/">#fwnode</a>
+      </div></ol></div>
+  <section class="page-section"><h1 id="linux-firmware-node-fwnode-统一设备模型">📘Linux Firmware Node (fwnode) 统一设备模型</h1>
+<h2 id="1-引言">1. 引言</h2>
+<p>Linux fwnode（Firmware Node）统一设备模型是 Linux 内核中用于抽象不同固件描述机制的通用框架。它为设备树（Device Tree）、ACPI（Advanced Configuration and Power Interface）以及其他固件描述方式提供了统一的接口，使得驱动程序可以以相同的方式访问设备属性信息，而无需关心底层的固件实现细节。</p>
+<h2 id="2-历史背景与发展历程">2. 历史背景与发展历程</h2>
+<h3 id="21-早期固件描述问题">2.1 早期固件描述问题</h3>
+<p>在 fwnode 框架出现之前，Linux 内核面临以下挑战：</p>
+<ul>
+<li><strong>平台依赖性强</strong>：ARM 平台主要使用 Device Tree，x86 平台使用 ACPI</li>
+<li><strong>代码重复</strong>：驱动程序需要为不同固件格式编写重复的解析代码</li>
+<li><strong>维护困难</strong>：跨平台驱动维护成本高，兼容性问题频发</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> device <span style="color:#f92672">*</span>dev <span style="color:#f92672">=</span>...;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> ret, irq;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 检查设备是否关联了设备树节点 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (dev<span style="color:#f92672">-&gt;</span>of_node) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 如果存在，则使用 of_* 系列 API 从设备树中读取属性 */</span>
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">of_property_read_u32</span>(dev<span style="color:#f92672">-&gt;</span>of_node, <span style="color:#e6db74">&#34;interrupts&#34;</span>, <span style="color:#f92672">&amp;</span>irq);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ret) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 错误处理
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">ACPI_HANDLE</span>(dev)) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 否则，检查设备是否有关联的 ACPI 句柄 */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 使用 ACPI 特定的 API 来解析 _CRS (Current Resource Settings) */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 这通常涉及到一套复杂、冗长的 ACPI 资源解析逻辑 */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//... complex ACPI resource parsing logic...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 可能还有基于平台数据的传统硬编码方式 */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h3 id="22-发展时间线">2.2 发展时间线</h3>
+<p>Linux 内核社区对统一设备描述接口的探索始于 2014 年，旨在解决多固件接口并存带来的架构性问题。fwnode 框架正是这一架构演进的核心成果。以下是该框架的演进时间线和关键节点：</p>
+<h3 id="21-时间线与里程碑">2.1 时间线与里程碑</h3>
+<table>
+  <thead>
+      <tr>
+          <th>时间</th>
+          <th>里程碑</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>2014</strong></td>
+          <td>概念提出</td>
+          <td>内核核心开发者 <strong>Rafael J. Wysocki</strong> 首次提出 “统一固件描述接口” 概念，目标是抽象 DT 与 ACPI 的异构性</td>
+      </tr>
+      <tr>
+          <td><strong>2015</strong></td>
+          <td>初始实现</td>
+          <td><code>fwnode_handle</code> 和基本的抽象框架首次被合入内核主线（4.x 开始）</td>
+      </tr>
+      <tr>
+          <td><strong>2016</strong></td>
+          <td>支持 ACPI</td>
+          <td>fwnode 开始全面支持基于 ACPI 的设备描述与节点绑定，实现与设备树等价的抽象访问</td>
+      </tr>
+      <tr>
+          <td><strong>2017–2019</strong></td>
+          <td>高级功能扩展</td>
+          <td>添加支持图形化拓扑（graph nodes）、软件节点（swnode）、引用计数、路径解析等高级能力</td>
+      </tr>
+      <tr>
+          <td><strong>2020–现在</strong></td>
+          <td>持续优化与应用拓展</td>
+          <td>在性能、可维护性和安全性方面不断改进，广泛应用于 I2C、SPI、GPIO、USB、MIPI、PCI 等通用设备驱动</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="22-推动者与维护者">2.2 推动者与维护者</h3>
+<p>fwnode 的设计和推进由内核电源管理子系统的核心维护者 <strong>Rafael J. Wysocki</strong> 主导，其他如 <strong>Andy Shevchenko</strong>、<strong>Greg Kroah-Hartman</strong> 等开发者也为其在设备模型中的集成和扩展提供了大量贡献。</p>
+<p>相关子系统涉及：</p>
+<ul>
+<li><code>drivers/base</code>（核心驱动模型）</li>
+<li><code>drivers/of</code>（设备树适配层）</li>
+<li><code>drivers/acpi</code>（ACPI 层封装）</li>
+<li><code>drivers/base/swnode.c</code>（软件节点支持）</li>
+<li><code>include/linux/fwnode.h</code>（核心 API 定义）</li>
+</ul>
+<h3 id="23-应用范围与影响力">2.3 应用范围与影响力</h3>
+<p>fwnode 框架的引入，极大地提升了驱动的跨平台兼容性和开发效率。它已经成为 Linux 内核中中大型设备驱动的标准架构组件：</p>
+<ul>
+<li>
+<p>✅ <strong>已迁移子系统示例：</strong></p>
+<ul>
+<li>SPI 控制器（如 DesignWare SPI、Mediatek SPI）</li>
+<li>I2C 控制器</li>
+<li>GPIO 子系统</li>
+<li>USB Host/Device 控制器</li>
+<li>CSI/MIPI 摄像头接口</li>
+<li>PCI host bridge 初始化代码</li>
+<li>多媒体子系统中的 graph-based 描述（如 HDMI、DSI、V4L2）</li>
+</ul>
+</li>
+<li>
+<p>✅ <strong>典型优势：</strong></p>
+<ul>
+<li>同一驱动无需判断 <code>dev-&gt;of_node</code> 还是 <code>ACPI_HANDLE()</code>，直接使用 <code>dev_fwnode()</code> 即可统一访问设备信息</li>
+<li>支持 DT/ACPI/SWNode 无缝集成，便于平台代码抽象</li>
+<li>使驱动代码更具可测试性与模块化能力</li>
+</ul>
+</li>
+</ul>
+<h3 id="24-关键版本节点内核版本参考">2.4 关键版本节点（内核版本参考）</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Linux 版本</th>
+          <th>演进亮点</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>4.1–4.4</td>
+          <td>初始 <code>fwnode_handle</code> 框架建立</td>
+      </tr>
+      <tr>
+          <td>4.5–4.9</td>
+          <td>ACPI fwnode 封装完善</td>
+      </tr>
+      <tr>
+          <td>4.10–4.19</td>
+          <td>引入 <code>swnode</code>，支持虚拟设备</td>
+      </tr>
+      <tr>
+          <td>5.0–5.4</td>
+          <td>图形拓扑、引用计数增强；<code>device_get_match_data()</code> 推广</td>
+      </tr>
+      <tr>
+          <td>5.5–5.15+</td>
+          <td>广泛推广至 I2C/SPI/USB 驱动中，默认采用 fwnode 访问</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="3-架构设计">3. 架构设计</h2>
+<h3 id="31-整体架构">3.1 整体架构</h3>
+<pre tabindex="0"><code>    ┌─────────────────────┐
+    │   Driver Layer      │  ← 驱动程序层
+    └─────────┬───────────┘
+              │
+    ┌─────────▼───────────┐
+    │   fwnode APIs       │  ← 统一 API 层
+    └─────────┬───────────┘
+              │
+    ┌─────────▼───────────┐
+    │ fwnode Operations   │  ← 操作函数层
+    └─────┬───┬───┬───────┘
+          │   │   │
+    ┌─────▼─┐ │ ┌─▼─────┐
+    │  DT   │ │ │ ACPI  │    ← 固件实现层
+    │fwnode │ │ │fwnode │
+    └───────┘ │ └───────┘
+              │
+        ┌─────▼─────┐
+        │   Other   │
+        │  fwnode   │
+        └───────────┘
+</code></pre><h3 id="32-核心数据结构">3.2 核心数据结构</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * struct fwnode_handle - firmware node handle
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @secondary: 指向次要固件节点的指针
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @ops: 操作函数集合指针
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @dev: 关联的设备指针
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fwnode_handle {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>secondary;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_operations <span style="color:#f92672">*</span>ops;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> device <span style="color:#f92672">*</span>dev;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> list_head suppliers;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> list_head consumers;
+</span></span><span style="display:flex;"><span>    u8 flags;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="33-操作函数接口">3.3 操作函数接口</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * struct fwnode_operations - fwnode 操作函数集
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fwnode_operations {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>get)(<span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>put)(<span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> (<span style="color:#f92672">*</span>device_is_available)(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>device_get_match_data)(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
+</span></span><span style="display:flex;"><span>                                         <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> device <span style="color:#f92672">*</span>dev);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> (<span style="color:#f92672">*</span>property_present)(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
+</span></span><span style="display:flex;"><span>                             <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>propname);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> (<span style="color:#f92672">*</span>property_read_int_array)(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
+</span></span><span style="display:flex;"><span>                                   <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>propname,
+</span></span><span style="display:flex;"><span>                                   <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> elem_size, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>val,
+</span></span><span style="display:flex;"><span>                                   <span style="color:#66d9ef">size_t</span> nval);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> (<span style="color:#f92672">*</span>property_read_string_array)(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
+</span></span><span style="display:flex;"><span>                                      <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>propname, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>val,
+</span></span><span style="display:flex;"><span>                                      <span style="color:#66d9ef">size_t</span> nval);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>get_name)(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>get_name_prefix)(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>get_parent)(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>get_next_child_node)(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
+</span></span><span style="display:flex;"><span>                                                 <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>child);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>get_named_child_node)(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
+</span></span><span style="display:flex;"><span>                                                  <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> (<span style="color:#f92672">*</span>get_reference_args)(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
+</span></span><span style="display:flex;"><span>                              <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>prop, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>nargs_prop,
+</span></span><span style="display:flex;"><span>                              <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> nargs, <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> index,
+</span></span><span style="display:flex;"><span>                              <span style="color:#66d9ef">struct</span> fwnode_reference_args <span style="color:#f92672">*</span>args);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>graph_get_next_endpoint)(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
+</span></span><span style="display:flex;"><span>                                                     <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>prev);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>graph_get_remote_endpoint)(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>graph_get_port_parent)(<span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> (<span style="color:#f92672">*</span>graph_parse_endpoint)(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
+</span></span><span style="display:flex;"><span>                                <span style="color:#66d9ef">struct</span> fwnode_endpoint <span style="color:#f92672">*</span>endpoint);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>iomap)(<span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode, <span style="color:#66d9ef">int</span> index);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> (<span style="color:#f92672">*</span>irq_get)(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode, <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> index);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> (<span style="color:#f92672">*</span>add_links)(<span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode);
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="4-核心组件详解">4. 核心组件详解</h2>
+<h3 id="41-fwnode_handle-结构体">4.1 fwnode_handle 结构体</h3>
+<p>fwnode_handle 是整个框架的核心，它代表一个固件节点的抽象：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 示例：获取和释放 fwnode
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span><span style="color:#a6e22e">fwnode_get</span>(<span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>fwnode)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> NULL;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> fwnode<span style="color:#f92672">-&gt;</span>ops<span style="color:#f92672">-&gt;</span>get <span style="color:#f92672">?</span> fwnode<span style="color:#f92672">-&gt;</span>ops<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get</span>(fwnode) <span style="color:#f92672">:</span> fwnode;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">fwnode_put</span>(<span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>fwnode)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (fwnode<span style="color:#f92672">-&gt;</span>ops<span style="color:#f92672">-&gt;</span>put)
+</span></span><span style="display:flex;"><span>        fwnode<span style="color:#f92672">-&gt;</span>ops<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">put</span>(fwnode);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="42-设备属性操作">4.2 设备属性操作</h3>
+<h4 id="421-属性存在性检查">4.2.1 属性存在性检查</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">fwnode_property_present</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
+</span></span><span style="display:flex;"><span>                             <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>propname)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> ret;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">IS_ERR_OR_NULL</span>(fwnode))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">fwnode_call_bool_op</span>(fwnode, property_present, propname);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>ret <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">IS_ERR_OR_NULL</span>(fwnode<span style="color:#f92672">-&gt;</span>secondary))
+</span></span><span style="display:flex;"><span>        ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">fwnode_call_bool_op</span>(fwnode<span style="color:#f92672">-&gt;</span>secondary, property_present, propname);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="422-整数属性读取">4.2.2 整数属性读取</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fwnode_property_read_u32_array</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
+</span></span><span style="display:flex;"><span>                                   <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>propname, u32 <span style="color:#f92672">*</span>val, <span style="color:#66d9ef">size_t</span> nval)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> ret;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">fwnode_call_int_op</span>(fwnode, property_read_int_array,
+</span></span><span style="display:flex;"><span>                             propname, <span style="color:#66d9ef">sizeof</span>(u32), val, nval);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">==</span> <span style="color:#f92672">-</span>EINVAL <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">IS_ERR_OR_NULL</span>(fwnode<span style="color:#f92672">-&gt;</span>secondary))
+</span></span><span style="display:flex;"><span>        ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">fwnode_call_int_op</span>(fwnode<span style="color:#f92672">-&gt;</span>secondary, property_read_int_array,
+</span></span><span style="display:flex;"><span>                                 propname, <span style="color:#66d9ef">sizeof</span>(u32), val, nval);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="423-字符串属性读取">4.2.3 字符串属性读取</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fwnode_property_read_string_array</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
+</span></span><span style="display:flex;"><span>                                      <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>propname, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>val,
+</span></span><span style="display:flex;"><span>                                      <span style="color:#66d9ef">size_t</span> nval)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> ret;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">fwnode_call_int_op</span>(fwnode, property_read_string_array,
+</span></span><span style="display:flex;"><span>                             propname, val, nval);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">==</span> <span style="color:#f92672">-</span>EINVAL <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">IS_ERR_OR_NULL</span>(fwnode<span style="color:#f92672">-&gt;</span>secondary))
+</span></span><span style="display:flex;"><span>        ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">fwnode_call_int_op</span>(fwnode<span style="color:#f92672">-&gt;</span>secondary, property_read_string_array,
+</span></span><span style="display:flex;"><span>                                 propname, val, nval);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="43-节点遍历操作">4.3 节点遍历操作</h3>
+<h4 id="431-子节点遍历">4.3.1 子节点遍历</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define fwnode_for_each_child_node(fwnode, child)                  \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    for (child = fwnode_get_next_child_node(fwnode, NULL); child; \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">         child = fwnode_get_next_child_node(fwnode, child))
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span><span style="color:#a6e22e">fwnode_get_next_child_node</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
+</span></span><span style="display:flex;"><span>                                                 <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>child)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">IS_ERR_OR_NULL</span>(fwnode))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> NULL;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fwnode_call_ptr_op</span>(fwnode, get_next_child_node, child);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="432-父节点获取">4.3.2 父节点获取</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span><span style="color:#a6e22e">fwnode_get_parent</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">IS_ERR_OR_NULL</span>(fwnode))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> NULL;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fwnode_call_ptr_op</span>(fwnode, get_parent);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="44-图形节点支持">4.4 图形节点支持</h3>
+<p>图形节点用于描述设备间的连接关系，特别是在多媒体子系统中：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * struct fwnode_endpoint - 端点描述结构体
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fwnode_endpoint {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> port;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> id;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>local_fwnode;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fwnode_graph_parse_endpoint</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
+</span></span><span style="display:flex;"><span>                                <span style="color:#66d9ef">struct</span> fwnode_endpoint <span style="color:#f92672">*</span>endpoint)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">memset</span>(endpoint, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#f92672">*</span>endpoint));
+</span></span><span style="display:flex;"><span>    endpoint<span style="color:#f92672">-&gt;</span>local_fwnode <span style="color:#f92672">=</span> fwnode;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fwnode_call_int_op</span>(fwnode, graph_parse_endpoint, endpoint);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="5-实现机制">5. 实现机制</h2>
+<h3 id="51-device-tree-fwnode-实现">5.1 Device Tree fwnode 实现</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_operations of_fwnode_ops <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    .get <span style="color:#f92672">=</span> of_fwnode_get,
+</span></span><span style="display:flex;"><span>    .put <span style="color:#f92672">=</span> of_fwnode_put,
+</span></span><span style="display:flex;"><span>    .device_is_available <span style="color:#f92672">=</span> of_fwnode_device_is_available,
+</span></span><span style="display:flex;"><span>    .device_get_match_data <span style="color:#f92672">=</span> of_fwnode_device_get_match_data,
+</span></span><span style="display:flex;"><span>    .property_present <span style="color:#f92672">=</span> of_fwnode_property_present,
+</span></span><span style="display:flex;"><span>    .property_read_int_array <span style="color:#f92672">=</span> of_fwnode_property_read_int_array,
+</span></span><span style="display:flex;"><span>    .property_read_string_array <span style="color:#f92672">=</span> of_fwnode_property_read_string_array,
+</span></span><span style="display:flex;"><span>    .get_name <span style="color:#f92672">=</span> of_fwnode_get_name,
+</span></span><span style="display:flex;"><span>    .get_name_prefix <span style="color:#f92672">=</span> of_fwnode_get_name_prefix,
+</span></span><span style="display:flex;"><span>    .get_parent <span style="color:#f92672">=</span> of_fwnode_get_parent,
+</span></span><span style="display:flex;"><span>    .get_next_child_node <span style="color:#f92672">=</span> of_fwnode_get_next_child_node,
+</span></span><span style="display:flex;"><span>    .get_named_child_node <span style="color:#f92672">=</span> of_fwnode_get_named_child_node,
+</span></span><span style="display:flex;"><span>    .get_reference_args <span style="color:#f92672">=</span> of_fwnode_get_reference_args,
+</span></span><span style="display:flex;"><span>    .graph_get_next_endpoint <span style="color:#f92672">=</span> of_fwnode_graph_get_next_endpoint,
+</span></span><span style="display:flex;"><span>    .graph_get_remote_endpoint <span style="color:#f92672">=</span> of_fwnode_graph_get_remote_endpoint,
+</span></span><span style="display:flex;"><span>    .graph_get_port_parent <span style="color:#f92672">=</span> of_fwnode_graph_get_port_parent,
+</span></span><span style="display:flex;"><span>    .graph_parse_endpoint <span style="color:#f92672">=</span> of_fwnode_graph_parse_endpoint,
+</span></span><span style="display:flex;"><span>    .iomap <span style="color:#f92672">=</span> of_fwnode_iomap,
+</span></span><span style="display:flex;"><span>    .irq_get <span style="color:#f92672">=</span> of_fwnode_irq_get,
+</span></span><span style="display:flex;"><span>    .add_links <span style="color:#f92672">=</span> of_fwnode_add_links,
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span><span style="color:#a6e22e">of_fwnode_handle</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> device_node <span style="color:#f92672">*</span>node)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> node <span style="color:#f92672">?</span> <span style="color:#f92672">&amp;</span>node<span style="color:#f92672">-&gt;</span>fwnode : NULL;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="52-acpi-fwnode-实现">5.2 ACPI fwnode 实现</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_operations acpi_fwnode_ops <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    .get <span style="color:#f92672">=</span> acpi_fwnode_get,
+</span></span><span style="display:flex;"><span>    .put <span style="color:#f92672">=</span> acpi_fwnode_put,
+</span></span><span style="display:flex;"><span>    .device_is_available <span style="color:#f92672">=</span> acpi_fwnode_device_is_available,
+</span></span><span style="display:flex;"><span>    .device_get_match_data <span style="color:#f92672">=</span> acpi_fwnode_device_get_match_data,
+</span></span><span style="display:flex;"><span>    .property_present <span style="color:#f92672">=</span> acpi_fwnode_property_present,
+</span></span><span style="display:flex;"><span>    .property_read_int_array <span style="color:#f92672">=</span> acpi_fwnode_property_read_int_array,
+</span></span><span style="display:flex;"><span>    .property_read_string_array <span style="color:#f92672">=</span> acpi_fwnode_property_read_string_array,
+</span></span><span style="display:flex;"><span>    .get_name <span style="color:#f92672">=</span> acpi_fwnode_get_name,
+</span></span><span style="display:flex;"><span>    .get_name_prefix <span style="color:#f92672">=</span> acpi_fwnode_get_name_prefix,
+</span></span><span style="display:flex;"><span>    .get_parent <span style="color:#f92672">=</span> acpi_fwnode_get_parent,
+</span></span><span style="display:flex;"><span>    .get_next_child_node <span style="color:#f92672">=</span> acpi_fwnode_get_next_child_node,
+</span></span><span style="display:flex;"><span>    .get_named_child_node <span style="color:#f92672">=</span> acpi_fwnode_get_named_child_node,
+</span></span><span style="display:flex;"><span>    .get_reference_args <span style="color:#f92672">=</span> acpi_fwnode_get_reference_args,
+</span></span><span style="display:flex;"><span>    .graph_get_next_endpoint <span style="color:#f92672">=</span> acpi_fwnode_graph_get_next_endpoint,
+</span></span><span style="display:flex;"><span>    .graph_get_remote_endpoint <span style="color:#f92672">=</span> acpi_fwnode_graph_get_remote_endpoint,
+</span></span><span style="display:flex;"><span>    .graph_get_port_parent <span style="color:#f92672">=</span> acpi_fwnode_graph_get_port_parent,
+</span></span><span style="display:flex;"><span>    .graph_parse_endpoint <span style="color:#f92672">=</span> acpi_fwnode_graph_parse_endpoint,
+</span></span><span style="display:flex;"><span>    .iomap <span style="color:#f92672">=</span> acpi_fwnode_iomap,
+</span></span><span style="display:flex;"><span>    .irq_get <span style="color:#f92672">=</span> acpi_fwnode_irq_get,
+</span></span><span style="display:flex;"><span>    .add_links <span style="color:#f92672">=</span> acpi_fwnode_add_links,
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="6-使用流程">6. 使用流程</h2>
+<h3 id="61-典型使用流程">6.1 典型使用流程</h3>
+<pre tabindex="0"><code>1. 获取设备的 fwnode_handle
+   ↓
+2. 检查属性是否存在
+   ↓
+3. 读取属性值
+   ↓
+4. 处理子节点（如需要）
+   ↓
+5. 释放 fwnode 引用
+</code></pre><h3 id="62-代码示例">6.2 代码示例</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 示例驱动程序使用 fwnode API
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">example_driver_probe</span>(<span style="color:#66d9ef">struct</span> platform_device <span style="color:#f92672">*</span>pdev)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> device <span style="color:#f92672">*</span>dev <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>pdev<span style="color:#f92672">-&gt;</span>dev;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode <span style="color:#f92672">=</span> <span style="color:#a6e22e">dev_fwnode</span>(dev);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>child;
+</span></span><span style="display:flex;"><span>    u32 reg_value;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>clock_name;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> ret;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 检查必要属性是否存在 */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">fwnode_property_present</span>(fwnode, <span style="color:#e6db74">&#34;reg&#34;</span>)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">dev_err</span>(dev, <span style="color:#e6db74">&#34;Missing &#39;reg&#39; property</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span>ENODEV;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 读取寄存器地址 */</span>
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">fwnode_property_read_u32</span>(fwnode, <span style="color:#e6db74">&#34;reg&#34;</span>, <span style="color:#f92672">&amp;</span>reg_value);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ret) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">dev_err</span>(dev, <span style="color:#e6db74">&#34;Failed to read &#39;reg&#39; property: %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 读取时钟名称 */</span>
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">fwnode_property_read_string</span>(fwnode, <span style="color:#e6db74">&#34;clock-names&#34;</span>, <span style="color:#f92672">&amp;</span>clock_name);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>ret)
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">dev_info</span>(dev, <span style="color:#e6db74">&#34;Using clock: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, clock_name);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 遍历子节点 */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fwnode_for_each_child_node</span>(fwnode, child) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>child_name;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">fwnode_property_read_string</span>(child, <span style="color:#e6db74">&#34;label&#34;</span>, <span style="color:#f92672">&amp;</span>child_name);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>ret)
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">dev_info</span>(dev, <span style="color:#e6db74">&#34;Found child: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, child_name);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="7-高级功能">7. 高级功能</h2>
+<h3 id="71-引用计数管理">7.1 引用计数管理</h3>
+<p>fwnode 框架实现了自动引用计数管理，确保节点在使用期间不会被释放：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span><span style="color:#a6e22e">fwnode_handle_get</span>(<span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fwnode_get</span>(fwnode);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">fwnode_handle_put</span>(<span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fwnode_put</span>(fwnode);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="72-设备链接管理">7.2 设备链接管理</h3>
+<p>fwnode 支持设备间依赖关系的自动管理：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fwnode_link_add</span>(<span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>con, <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>sup)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> fwnode_link <span style="color:#f92672">*</span>link;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> ret <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">mutex_lock</span>(<span style="color:#f92672">&amp;</span>fwnode_link_lock);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">list_for_each_entry</span>(link, <span style="color:#f92672">&amp;</span>sup<span style="color:#f92672">-&gt;</span>suppliers, s_hook)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (link<span style="color:#f92672">-&gt;</span>consumer <span style="color:#f92672">==</span> con)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">goto</span> out;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    link <span style="color:#f92672">=</span> <span style="color:#a6e22e">kzalloc</span>(<span style="color:#66d9ef">sizeof</span>(<span style="color:#f92672">*</span>link), GFP_KERNEL);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>link) {
+</span></span><span style="display:flex;"><span>        ret <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>ENOMEM;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">goto</span> out;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    link<span style="color:#f92672">-&gt;</span>supplier <span style="color:#f92672">=</span> sup;
+</span></span><span style="display:flex;"><span>    link<span style="color:#f92672">-&gt;</span>consumer <span style="color:#f92672">=</span> con;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">list_add</span>(<span style="color:#f92672">&amp;</span>link<span style="color:#f92672">-&gt;</span>s_hook, <span style="color:#f92672">&amp;</span>sup<span style="color:#f92672">-&gt;</span>suppliers);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">list_add</span>(<span style="color:#f92672">&amp;</span>link<span style="color:#f92672">-&gt;</span>c_hook, <span style="color:#f92672">&amp;</span>con<span style="color:#f92672">-&gt;</span>consumers);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>out:
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">mutex_unlock</span>(<span style="color:#f92672">&amp;</span>fwnode_link_lock);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="73-图形节点扩展">7.3 图形节点扩展</h3>
+<p>支持复杂的设备连接图描述：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span><span style="color:#a6e22e">fwnode_graph_get_next_endpoint</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
+</span></span><span style="display:flex;"><span>                                                     <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>prev)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">IS_ERR_OR_NULL</span>(fwnode))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> NULL;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fwnode_call_ptr_op</span>(fwnode, graph_get_next_endpoint, prev);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span><span style="color:#a6e22e">fwnode_graph_get_remote_endpoint</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">IS_ERR_OR_NULL</span>(fwnode))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> NULL;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fwnode_call_ptr_op</span>(fwnode, graph_get_remote_endpoint);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="8-最佳实践">8. 最佳实践</h2>
+<h3 id="81-驱动程序设计原则">8.1 驱动程序设计原则</h3>
+<ol>
+<li>
+<p><strong>统一接口使用</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* 推荐：使用 fwnode API */</span>
+</span></span><span style="display:flex;"><span>ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">fwnode_property_read_u32</span>(<span style="color:#a6e22e">dev_fwnode</span>(dev), <span style="color:#e6db74">&#34;reg&#34;</span>, <span style="color:#f92672">&amp;</span>reg);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 不推荐：直接使用特定固件 API */</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ret = of_property_read_u32(dev-&gt;of_node, &#34;reg&#34;, &amp;reg);
+</span></span></span></code></pre></div></li>
+<li>
+<p><strong>错误处理</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>child;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fwnode_for_each_child_node</span>(fwnode, child) {
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">process_child_node</span>(child);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ret) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fwnode_handle_put</span>(child);  <span style="color:#75715e">/* 重要：释放引用 */</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li>
+<p><strong>资源清理</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">example_driver_cleanup</span>(<span style="color:#66d9ef">struct</span> device <span style="color:#f92672">*</span>dev)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode <span style="color:#f92672">=</span> <span style="color:#a6e22e">dev_fwnode</span>(dev);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* fwnode 本身由设备框架管理，无需手动释放 */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 但子节点引用需要显式释放 */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="82-性能优化建议">8.2 性能优化建议</h3>
+<ol>
+<li>
+<p><strong>缓存常用属性</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> example_data {
+</span></span><span style="display:flex;"><span>    u32 cached_reg;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>cached_name;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">example_cache_properties</span>(<span style="color:#66d9ef">struct</span> device <span style="color:#f92672">*</span>dev, <span style="color:#66d9ef">struct</span> example_data <span style="color:#f92672">*</span>data)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode <span style="color:#f92672">=</span> <span style="color:#a6e22e">dev_fwnode</span>(dev);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fwnode_property_read_u32</span>(fwnode, <span style="color:#e6db74">&#34;reg&#34;</span>, <span style="color:#f92672">&amp;</span>data<span style="color:#f92672">-&gt;</span>cached_reg);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fwnode_property_read_string</span>(fwnode, <span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#f92672">&amp;</span>data<span style="color:#f92672">-&gt;</span>cached_name);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li>
+<p><strong>避免重复查找</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* 不推荐：重复查找 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">fwnode_property_present</span>(fwnode, <span style="color:#e6db74">&#34;enable-gpios&#34;</span>)) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fwnode_property_read_u32</span>(fwnode, <span style="color:#e6db74">&#34;enable-gpios&#34;</span>, <span style="color:#f92672">&amp;</span>gpio);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 推荐：一次性读取并检查返回值 */</span>
+</span></span><span style="display:flex;"><span>ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">fwnode_property_read_u32</span>(fwnode, <span style="color:#e6db74">&#34;enable-gpios&#34;</span>, <span style="color:#f92672">&amp;</span>gpio);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>ret) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 使用 gpio 值 */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="83-调试技巧">8.3 调试技巧</h3>
+<ol>
+<li>
+<p><strong>属性检查</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">debug_print_properties</span>(<span style="color:#66d9ef">struct</span> device <span style="color:#f92672">*</span>dev)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode <span style="color:#f92672">=</span> <span style="color:#a6e22e">dev_fwnode</span>(dev);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">fwnode_property_present</span>(fwnode, <span style="color:#e6db74">&#34;reg&#34;</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">dev_dbg</span>(dev, <span style="color:#e6db74">&#34;Has &#39;reg&#39; property</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">fwnode_property_present</span>(fwnode, <span style="color:#e6db74">&#34;interrupts&#34;</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">dev_dbg</span>(dev, <span style="color:#e6db74">&#34;Has &#39;interrupts&#39; property</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li>
+<p><strong>节点层次结构调试</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">debug_print_node_hierarchy</span>(<span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode, <span style="color:#66d9ef">int</span> level)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>child;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    name <span style="color:#f92672">=</span> <span style="color:#a6e22e">fwnode_get_name</span>(fwnode);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">pr_debug</span>(<span style="color:#e6db74">&#34;%*s%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, level <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;&#34;</span>, name <span style="color:#f92672">?:</span> <span style="color:#e6db74">&#34;&lt;unnamed&gt;&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fwnode_for_each_child_node</span>(fwnode, child) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">debug_print_node_hierarchy</span>(child, level <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="9-故障排查">9. 故障排查</h2>
+<h3 id="91-常见问题">9.1 常见问题</h3>
+<ol>
+<li>
+<p><strong>属性不存在错误</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* 问题：假设属性存在 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fwnode_property_read_u32</span>(fwnode, <span style="color:#e6db74">&#34;missing-prop&#34;</span>, <span style="color:#f92672">&amp;</span>value);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 解决：检查返回值 */</span>
+</span></span><span style="display:flex;"><span>ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">fwnode_property_read_u32</span>(fwnode, <span style="color:#e6db74">&#34;maybe-missing&#34;</span>, <span style="color:#f92672">&amp;</span>value);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">==</span> <span style="color:#f92672">-</span>EINVAL)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">dev_warn</span>(dev, <span style="color:#e6db74">&#34;Property &#39;maybe-missing&#39; not found, using default</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span></code></pre></div></li>
+<li>
+<p><strong>节点引用泄漏</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* 问题：忘记释放子节点引用 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fwnode_for_each_child_node</span>(fwnode, child) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (error_condition)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span>EFAULT;  <span style="color:#75715e">/* 泄漏了 child 引用 */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 解决：正确释放引用 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fwnode_for_each_child_node</span>(fwnode, child) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (error_condition) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fwnode_handle_put</span>(child);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span>EFAULT;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="92-调试工具">9.2 调试工具</h3>
+<ol>
+<li>
+<p><strong>内核调试选项</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 启用设备树调试</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#ae81ff">1</span> &gt; /sys/kernel/debug/dynamic_debug/control
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;file drivers/of/* +p&#39;</span> &gt; /sys/kernel/debug/dynamic_debug/control
+</span></span></code></pre></div></li>
+<li>
+<p><strong>sysfs 接口</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看设备固件信息</span>
+</span></span><span style="display:flex;"><span>cat /sys/devices/.../firmware_node/...
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="10-未来发展">10. 未来发展</h2>
+<h3 id="101-发展趋势">10.1 发展趋势</h3>
+<ol>
+<li><strong>性能优化</strong>：继续优化属性查找和缓存机制</li>
+<li><strong>功能扩展</strong>：支持更多固件格式和特性</li>
+<li><strong>工具改进</strong>：更好的调试和分析工具</li>
+</ol>
+<h3 id="102-相关技术">10.2 相关技术</h3>
+<ul>
+<li><strong>设备资源管理</strong>：与 devres 框架的深度集成</li>
+<li><strong>电源管理</strong>：与 PM 框架的协作优化</li>
+<li><strong>热插拔支持</strong>：动态设备管理能力增强</li>
+</ul>
+<h2 id="11-结论">11. 结论</h2>
+<p>Linux fwnode 统一设备模型为内核提供了一套优雅的固件抽象层，有效解决了跨平台驱动开发的复杂性问题。通过提供统一的 API 接口，它简化了驱动程序的开发和维护，提高了代码的可重用性和可移植性。</p>
+<p>随着 Linux 内核的持续发展，fwnode 框架将继续演进，为更多的硬件平台和使用场景提供支持。对于内核开发者而言，深入理解和正确使用 fwnode API 是编写高质量、跨平台驱动程序的关键技能。</p>
+<hr>
+<h1 id="附录">附录</h1>
+<ul>
+<li>相关源码路径：
+<ul>
+<li><code>drivers/base/property.c</code></li>
+<li><code>drivers/of/property.c</code></li>
+<li><code>drivers/acpi/property.c</code></li>
+<li><code>include/linux/fwnode.h</code></li>
+</ul>
+</li>
+<li>官方文档：
+<ul>
+<li><code>Documentation/devicetree/bindings/</code></li>
+<li><code>Documentation/driver-api/fwnode.rst</code></li>
+</ul>
+</li>
+</ul>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>1505 words</span>
+    <span>20 - 26 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-引言">1. 引言</a></li>
+    <li><a href="#2-历史背景与发展历程">2. 历史背景与发展历程</a>
+      <ul>
+        <li><a href="#21-早期固件描述问题">2.1 早期固件描述问题</a></li>
+        <li><a href="#22-发展时间线">2.2 发展时间线</a></li>
+        <li><a href="#21-时间线与里程碑">2.1 时间线与里程碑</a></li>
+        <li><a href="#22-推动者与维护者">2.2 推动者与维护者</a></li>
+        <li><a href="#23-应用范围与影响力">2.3 应用范围与影响力</a></li>
+        <li><a href="#24-关键版本节点内核版本参考">2.4 关键版本节点（内核版本参考）</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-架构设计">3. 架构设计</a>
+      <ul>
+        <li><a href="#31-整体架构">3.1 整体架构</a></li>
+        <li><a href="#32-核心数据结构">3.2 核心数据结构</a></li>
+        <li><a href="#33-操作函数接口">3.3 操作函数接口</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-核心组件详解">4. 核心组件详解</a>
+      <ul>
+        <li><a href="#41-fwnode_handle-结构体">4.1 fwnode_handle 结构体</a></li>
+        <li><a href="#42-设备属性操作">4.2 设备属性操作</a></li>
+        <li><a href="#43-节点遍历操作">4.3 节点遍历操作</a></li>
+        <li><a href="#44-图形节点支持">4.4 图形节点支持</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-实现机制">5. 实现机制</a>
+      <ul>
+        <li><a href="#51-device-tree-fwnode-实现">5.1 Device Tree fwnode 实现</a></li>
+        <li><a href="#52-acpi-fwnode-实现">5.2 ACPI fwnode 实现</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-使用流程">6. 使用流程</a>
+      <ul>
+        <li><a href="#61-典型使用流程">6.1 典型使用流程</a></li>
+        <li><a href="#62-代码示例">6.2 代码示例</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-高级功能">7. 高级功能</a>
+      <ul>
+        <li><a href="#71-引用计数管理">7.1 引用计数管理</a></li>
+        <li><a href="#72-设备链接管理">7.2 设备链接管理</a></li>
+        <li><a href="#73-图形节点扩展">7.3 图形节点扩展</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-最佳实践">8. 最佳实践</a>
+      <ul>
+        <li><a href="#81-驱动程序设计原则">8.1 驱动程序设计原则</a></li>
+        <li><a href="#82-性能优化建议">8.2 性能优化建议</a></li>
+        <li><a href="#83-调试技巧">8.3 调试技巧</a></li>
+      </ul>
+    </li>
+    <li><a href="#9-故障排查">9. 故障排查</a>
+      <ul>
+        <li><a href="#91-常见问题">9.1 常见问题</a></li>
+        <li><a href="#92-调试工具">9.2 调试工具</a></li>
+      </ul>
+    </li>
+    <li><a href="#10-未来发展">10. 未来发展</a>
+      <ul>
+        <li><a href="#101-发展趋势">10.1 发展趋势</a></li>
+        <li><a href="#102-相关技术">10.2 相关技术</a></li>
+      </ul>
+    </li>
+    <li><a href="#11-结论">11. 结论</a></li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/">vscode 阅读 Linux 内核代码配置</a></li><li><a href="/posts/linux_test_disk_i_o_with_dd/">Linux Test Disk with dd command</a></li><li><a href="/posts/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/">Virtualbox Opensuse 无网络图标 无法上网</a></li><li><a href="/posts/samba/">samba</a></li><li><a href="/posts/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/">一文搞懂应用开发所需 Linux 系统时间的相关知识点</a></li></ul></aside></div>
+  </div>
+</body>
+</html>
