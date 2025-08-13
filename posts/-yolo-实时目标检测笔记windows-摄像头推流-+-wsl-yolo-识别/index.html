@@ -8,8 +8,7 @@
 <link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/-yolo-%E5%AE%9E%E6%97%B6%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%AC%94%E8%AE%B0windows-%E6%91%84%E5%83%8F%E5%A4%B4%E6%8E%A8%E6%B5%81-&#43;-wsl-yolo-%E8%AF%86%E5%88%AB/">
   <meta property="og:site_name" content="LuyangのBlog">
   <meta property="og:title" content="🎯 YOLO 实时目标检测笔记：Windows 摄像头推流 &#43; WSL YOLO 识别">
-  <meta property="og:description" content="🎯 YOLO 实时目标检测笔记：Windows 摄像头推流 &#43; WSL YOLO 识别 🧩 场景说明 Windows 端摄像头（如 HP 5MP Camera） 使用 ffmpeg 推流至本地 RTSP 服务器 WSL 中运行 Ultralytics YOLO，读取 RTSP 流进行目标检测 ⚙️ 环境配置（WSL 中） ✅ 安装依赖 pip install -U pip pip install opencv-python pip install torch torchvision torchaudio ✅ 安装 Ultralytics（源码模式） # 克隆仓库 git clone https://github.com/ultralytics/ultralytics # 进入目录 cd ultralytics # 以开发模式安装（editable） pip install -e . ✅ 优势：你可以随时修改 YOLO 源码，调试/开发更灵活。
-✅ 步骤一：安装并运行 RTSP 服务器（mediamtx） 推荐使用轻量开源 RTSP 服务器 mediamtx（原 rtsp-simple-server）">
+  <meta property="og:description" content="环境声明 $ lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Description: Ubuntu 20.04.6 LTS Release: 20.04 Codename: focal 🎯 YOLO 实时目标检测笔记：Windows 摄像头推流 &#43; WSL YOLO 识别 🧩 场景说明 Windows 端摄像头（如 HP 5MP Camera） 使用 ffmpeg 推流至本地 RTSP 服务器 WSL 中运行 Ultralytics YOLO，读取 RTSP 流进行目标检测 ⚙️ 环境配置（WSL 中） ✅ 安装依赖 pip install -U pip pip install opencv-python pip install torch torchvision torchaudio ✅ 安装 Ultralytics（源码模式） # 克隆仓库 git clone https://github.com/ultralytics/ultralytics # 进入目录 cd ultralytics # 以开发模式安装（editable） # pip install -e . python3 -m pip install -e . ✅ 优势：你可以随时修改 YOLO 源码，调试/开发更灵活。">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -23,8 +22,7 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="🎯 YOLO 实时目标检测笔记：Windows 摄像头推流 &#43; WSL YOLO 识别">
-  <meta name="twitter:description" content="🎯 YOLO 实时目标检测笔记：Windows 摄像头推流 &#43; WSL YOLO 识别 🧩 场景说明 Windows 端摄像头（如 HP 5MP Camera） 使用 ffmpeg 推流至本地 RTSP 服务器 WSL 中运行 Ultralytics YOLO，读取 RTSP 流进行目标检测 ⚙️ 环境配置（WSL 中） ✅ 安装依赖 pip install -U pip pip install opencv-python pip install torch torchvision torchaudio ✅ 安装 Ultralytics（源码模式） # 克隆仓库 git clone https://github.com/ultralytics/ultralytics # 进入目录 cd ultralytics # 以开发模式安装（editable） pip install -e . ✅ 优势：你可以随时修改 YOLO 源码，调试/开发更灵活。
-✅ 步骤一：安装并运行 RTSP 服务器（mediamtx） 推荐使用轻量开源 RTSP 服务器 mediamtx（原 rtsp-simple-server）">
+  <meta name="twitter:description" content="环境声明 $ lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Description: Ubuntu 20.04.6 LTS Release: 20.04 Codename: focal 🎯 YOLO 实时目标检测笔记：Windows 摄像头推流 &#43; WSL YOLO 识别 🧩 场景说明 Windows 端摄像头（如 HP 5MP Camera） 使用 ffmpeg 推流至本地 RTSP 服务器 WSL 中运行 Ultralytics YOLO，读取 RTSP 流进行目标检测 ⚙️ 环境配置（WSL 中） ✅ 安装依赖 pip install -U pip pip install opencv-python pip install torch torchvision torchaudio ✅ 安装 Ultralytics（源码模式） # 克隆仓库 git clone https://github.com/ultralytics/ultralytics # 进入目录 cd ultralytics # 以开发模式安装（editable） # pip install -e . python3 -m pip install -e . ✅ 优势：你可以随时修改 YOLO 源码，调试/开发更灵活。">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
       <link rel="stylesheet" href="/css/bundle.min.ffb26980ae2df7bdfe47815d8a3f0130f36070ee4a3320a5f22d16842be2537f.css" integrity="sha256-/7JpgK4t973&#43;R4Fdij8BMPNgcO5KMyCl8i0WhCviU38=" crossorigin="anonymous">
@@ -121,7 +119,14 @@
       </div><div class="tag">
         <a href="/tags/windows/">#windows</a>
       </div></ol></div>
-  <section class="page-section"><h1 id="-yolo-实时目标检测笔记windows-摄像头推流--wsl-yolo-识别">🎯 YOLO 实时目标检测笔记：Windows 摄像头推流 + WSL YOLO 识别</h1>
+  <section class="page-section"><h2 id="环境声明">环境声明</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ lsb_release -a
+</span></span><span style="display:flex;"><span>No LSB modules are available.
+</span></span><span style="display:flex;"><span>Distributor ID: Ubuntu
+</span></span><span style="display:flex;"><span>Description:    Ubuntu 20.04.6 LTS
+</span></span><span style="display:flex;"><span>Release:        20.04
+</span></span><span style="display:flex;"><span>Codename:       focal
+</span></span></code></pre></div><h1 id="-yolo-实时目标检测笔记windows-摄像头推流--wsl-yolo-识别">🎯 YOLO 实时目标检测笔记：Windows 摄像头推流 + WSL YOLO 识别</h1>
 <h2 id="-场景说明">🧩 场景说明</h2>
 <ul>
 <li>Windows 端摄像头（如 HP 5MP Camera）</li>
@@ -142,7 +147,9 @@
 </span></span><span style="display:flex;"><span>cd ultralytics
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 以开发模式安装（editable）</span>
-</span></span><span style="display:flex;"><span>pip install -e .
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># pip install -e .</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>python3 -m pip install -e .
 </span></span></code></pre></div><blockquote>
 <p>✅ 优势：你可以随时修改 YOLO 源码，调试/开发更灵活。</p></blockquote>
 <hr>
@@ -203,6 +210,43 @@
 </span></span><span style="display:flex;"><span>                                     │
 </span></span><span style="display:flex;"><span>                                     ▼
 </span></span><span style="display:flex;"><span>                            WSL YOLO（读取 RTSP 流识别）
+</span></span></code></pre></div><h2 id="问题说明">问题说明</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  python3 --version
+</span></span><span style="display:flex;"><span>Python 3.8.10
+</span></span><span style="display:flex;"><span>➜  pip --version
+</span></span><span style="display:flex;"><span>/usr/bin/pip:6: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+</span></span><span style="display:flex;"><span>  from pkg_resources import load_entry_point
+</span></span><span style="display:flex;"><span>pip 20.0.2 from /usr/lib/python3/dist-packages/pip <span style="color:#f92672">(</span>python 3.8<span style="color:#f92672">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  git clone https://github.com/ultralytics/ultralytics
+</span></span><span style="display:flex;"><span>Cloning into <span style="color:#e6db74">&#39;ultralytics&#39;</span>...
+</span></span><span style="display:flex;"><span>remote: Enumerating objects: 61803, <span style="color:#66d9ef">done</span>.
+</span></span><span style="display:flex;"><span>remote: Counting objects: 100% <span style="color:#f92672">(</span>201/201<span style="color:#f92672">)</span>, <span style="color:#66d9ef">done</span>.
+</span></span><span style="display:flex;"><span>remote: Compressing objects: 100% <span style="color:#f92672">(</span>140/140<span style="color:#f92672">)</span>, <span style="color:#66d9ef">done</span>.
+</span></span><span style="display:flex;"><span>remote: Total <span style="color:#ae81ff">61803</span> <span style="color:#f92672">(</span>delta 139<span style="color:#f92672">)</span>, reused <span style="color:#ae81ff">78</span> <span style="color:#f92672">(</span>delta 61<span style="color:#f92672">)</span>, pack-reused <span style="color:#ae81ff">61602</span> <span style="color:#f92672">(</span>from 3<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Receiving objects: 100% <span style="color:#f92672">(</span>61803/61803<span style="color:#f92672">)</span>, 33.73 MiB | 11.33 MiB/s, <span style="color:#66d9ef">done</span>.
+</span></span><span style="display:flex;"><span>Resolving deltas: 100% <span style="color:#f92672">(</span>45988/45988<span style="color:#f92672">)</span>, <span style="color:#66d9ef">done</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>➜  cd ultralytics
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>➜  pip install -e .
+</span></span><span style="display:flex;"><span>ERROR: File <span style="color:#e6db74">&#34;setup.py&#34;</span> not found. Directory cannot be installed in editable mode: /home/ultralytics
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>A <span style="color:#e6db74">&#34;pyproject.toml&#34;</span> file was found, but editable mode currently requires a setup.py based build.<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>➜  ls
+</span></span><span style="display:flex;"><span>CITATION.cff  CONTRIBUTING.md  LICENSE  README.md  README.zh-CN.md  docker  docs  examples  mkdocs.yml  pyproject.toml  tests  ultralytics
+</span></span></code></pre></div><h3 id="报错说明">报错说明</h3>
+<p><strong>Ultralytics 现在是基于 <code>pyproject.toml</code> 的现代构建系统</strong>，而 <code>pip install -e .</code> 旧的可编辑模式要求有 <code>setup.py</code>，所以直接用会失败。</p>
+<h3 id="解决方案">解决方案</h3>
+<h4 id="用新的-pep-660-可编辑模式">用新的 PEP 660 可编辑模式</h4>
+<p>Python 3.8+ + pip 21.3+ 才支持。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -m pip install --upgrade pip setuptools wheel
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>python3 -m pip --version
+</span></span><span style="display:flex;"><span>pip 25.0.1 from /home/luyang/.local/lib/python3.8/site-packages/pip <span style="color:#f92672">(</span>python 3.8<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cd ultralytics
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>python3 -m pip install -e <span style="color:#e6db74">&#39;.[dev]&#39;</span>
 </span></span></code></pre></div></section></main>
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
@@ -213,8 +257,12 @@
 </div>
 </footer>
       </div><aside id="side-pane" class="side-sticky"><div class="side-details">
-    <span>188 words</span>
-    <span>2 - 3 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+    <span>393 words</span>
+    <span>4 - 5 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#环境声明">环境声明</a></li>
+  </ul>
+
   <ul>
     <li><a href="#-场景说明">🧩 场景说明</a></li>
     <li><a href="#-环境配置wsl-中">⚙️ 环境配置（WSL 中）</a>
@@ -233,6 +281,12 @@
     <li><a href="#-可选调试-rtsp-流">✅ 可选：调试 RTSP 流</a></li>
     <li><a href="#-常见问题排查">💡 常见问题排查</a></li>
     <li><a href="#-总结流程图">✅ 总结流程图</a></li>
+    <li><a href="#问题说明">问题说明</a>
+      <ul>
+        <li><a href="#报错说明">报错说明</a></li>
+        <li><a href="#解决方案">解决方案</a></li>
+      </ul>
+    </li>
   </ul>
 </nav><h3>Related</h3>
     <ul><li><a href="/posts/windows10_wsl/">windows10 WSL setup</a></li><li><a href="/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/">Windows WSL ubuntu adb 配置</a></li><li><a href="/posts/vcpkg_windows/">windows vcpkg</a></li><li><a href="/posts/python2.7-%E7%8E%AF%E5%A2%83%E5%8F%8A%E5%8C%85%E7%AE%A1%E7%90%86/">python2.7 环境及包管理</a></li><li><a href="/posts/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-python-2.7.16/">交叉编译 Python-2.7.16</a></li></ul></aside></div>

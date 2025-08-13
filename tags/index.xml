@@ -30,6 +30,13 @@
       <description></description>
     </item>
     <item>
+      <title>ADI</title>
+      <link>/tags/adi/</link>
+      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/adi/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>ARM</title>
       <link>/tags/arm/</link>
       <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
@@ -37,10 +44,31 @@
       <description></description>
     </item>
     <item>
+      <title>CRC</title>
+      <link>/tags/crc/</link>
+      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/crc/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Glibc</title>
       <link>/tags/glibc/</link>
       <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
       <guid>/tags/glibc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>GMSL</title>
+      <link>/tags/gmsl/</link>
+      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/gmsl/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>I2C</title>
+      <link>/tags/i2c/</link>
+      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/i2c/</guid>
       <description></description>
     </item>
     <item>
@@ -62,6 +90,20 @@
       <link>/tags/oom/</link>
       <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
       <guid>/tags/oom/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PEC</title>
+      <link>/tags/pec/</link>
+      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/pec/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SMBus</title>
+      <link>/tags/smbus/</link>
+      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/smbus/</guid>
       <description></description>
     </item>
     <item>
@@ -625,13 +667,6 @@
       <description></description>
     </item>
     <item>
-      <title>I2C</title>
-      <link>/tags/i2c/</link>
-      <pubDate>Tue, 07 Feb 2023 00:00:00 +0800</pubDate>
-      <guid>/tags/i2c/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>DDR</title>
       <link>/tags/ddr/</link>
       <pubDate>Fri, 03 Feb 2023 12:00:00 +0800</pubDate>
@@ -734,13 +769,6 @@
       <link>/tags/adc/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
       <guid>/tags/adc/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>ADI</title>
-      <link>/tags/adi/</link>
-      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>/tags/adi/</guid>
       <description></description>
     </item>
     <item>
@@ -916,13 +944,6 @@
       <link>/tags/gitbook/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
       <guid>/tags/gitbook/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>GMSL</title>
-      <link>/tags/gmsl/</link>
-      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>/tags/gmsl/</guid>
       <description></description>
     </item>
     <item>

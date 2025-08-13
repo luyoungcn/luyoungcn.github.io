@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📘 GMSL2 I2C别名与PEC校验的冲突：深层技术解析、根本性解决方案与安全考量 | LuyangのBlog</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/gmsl2-i2c%E5%88%AB%E5%90%8D%E4%B8%8Epec%E6%A0%A1%E9%AA%8C%E7%9A%84%E5%86%B2%E7%AA%81%E6%B7%B1%E5%B1%82%E6%8A%80%E6%9C%AF%E8%A7%A3%E6%9E%90%E6%A0%B9%E6%9C%AC%E6%80%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B8%8E%E5%AE%89%E5%85%A8%E8%80%83%E9%87%8F/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="📘 GMSL2 I2C别名与PEC校验的冲突：深层技术解析、根本性解决方案与安全考量">
+  <meta property="og:description" content="📘GMSL2 I2C别名与PEC校验的冲突：深层技术解析、根本性解决方案与安全考量 摘要 在汽车电子领域，GMSL2（Gigabit Multimedia Serial Link 2）因其高带宽、低延迟的传感器数据传输能力而被广泛应用。其I2C别名功能解决了相同设备（如图像传感器）之间的地址冲突问题，而SMBus/I2C的PEC（Packet Error Checking，数据包错误校验）则增强了通信的可靠性。然而，同时使用这两种功能时，PEC校验会失效，原因在于两者存在固有的不兼容性。本文深入剖析了这一问题，将其归类为“泄露的抽象”，并提供了一个实用的应用层解决方案。
+1. 引言：汽车系统中的通信挑战 随着ADAS（高级驾驶辅助系统）和自动驾驶技术的发展，现代汽车依赖于大量传感器，这些传感器产生海量数据流。GMSL2由Analog Devices开发，凭借其6 Gbps的带宽和15米的传输距离，广泛用于连接传感器和中央处理器。然而，两个挑战随之而来：
+I2C地址冲突：多个相同的传感器（如摄像头）共享相同的I2C地址，导致通信冲突。 数据可靠性：汽车内部的电磁干扰（EMI）可能损坏I2C控制消息，对安全性构成威胁。 GMSL2的I2C别名功能解决了地址冲突问题，而PEC则确保了数据的完整性。然而，同时使用这两种功能会导致PEC校验失败，危及系统稳定性。
+2. GMSL2与I2C别名：工作原理 2.1 GMSL2 SerDes架构 GMSL2采用串行器/解串器（SerDes）架构。传感器端的串行器将数据转换为串行流，处理器端的解串器将其还原。双向控制通道（包括I2C）实现了主机与远程设备之间的透明通信。
+2.2 I2C别名机制 I2C别名通过将唯一别名地址（主机使用）映射到真实地址（远程设备使用）来解决地址冲突。解串器硬件无缝执行这一转换：
+示例：两个真实地址为0x1A的摄像头被分配别名0x70和0x72。主机使用别名通信，解串器将其重映射为0x1A发送给相应设备。 这一抽象简化了系统设计，但与PEC结合使用时会引发问题。
+3. SMBus/I2C PEC：确保可靠性 PEC使用CRC-8校验和（多项式x^8 &#43; x^2 &#43; x^1 &#43; 1）附加到I2C消息中，覆盖整个消息（包括地址字节和数据），确保端到端的数据完整性。如果接收方计算的PEC与发送的PEC不匹配，则通过NACK信号报告错误。
+4. 冲突根源：泄露的抽象 问题的根源在于PEC计算中的地址不匹配：
+主机：使用别名地址（如0x70 → 0xE0含写位）计算PEC。 解串器：将别名转换为真实地址（如0x1A → 0x34）后转发。 远程设备：使用其真实地址（0x34）验证PEC。 由于CRC-8对每个输入字节敏感，不同的地址会导致PEC不一致，校验失败。这是一个“泄露的抽象”——GMSL2的别名功能隐藏了地址转换，但PEC依赖于原始地址，暴露了这一细节。
+5. 根本性解决方案：应用层I2C重构 为解决此问题，需将通信地址（别名）与PEC计算地址（真实）解耦。标准I2C API会自动使用事务地址计算PEC，因此我们使用Linux的I2C_RDWR ioctl绕过这一限制。
+5.1 实施步骤 禁用内核PEC
+阻止自动PEC计算：
+ioctl(fd, I2C_PEC, 0); 手动计算PEC
+使用真实地址进行CRC-8计算：
+uint8_t real_addr = 0x1A; uint8_t data[] = {0xAB, 0xCD}; uint8_t pec_input[] = {(real_addr &lt;&lt; 1) | 0, 0xAB, 0xCD}; uint8_t pec = crc8(pec_input, 3); // 自定义CRC-8函数 构建I2C负载
+将计算的PEC附加到数据中：">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-08T02:30:00+08:00">
+    <meta property="article:modified_time" content="2025-07-08T02:30:00+08:00">
+    <meta property="article:tag" content="GMSL">
+    <meta property="article:tag" content="ADI">
+    <meta property="article:tag" content="I2C">
+    <meta property="article:tag" content="SMBus">
+    <meta property="article:tag" content="PEC">
+    <meta property="article:tag" content="CRC">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="📘 GMSL2 I2C别名与PEC校验的冲突：深层技术解析、根本性解决方案与安全考量">
+  <meta name="twitter:description" content="📘GMSL2 I2C别名与PEC校验的冲突：深层技术解析、根本性解决方案与安全考量 摘要 在汽车电子领域，GMSL2（Gigabit Multimedia Serial Link 2）因其高带宽、低延迟的传感器数据传输能力而被广泛应用。其I2C别名功能解决了相同设备（如图像传感器）之间的地址冲突问题，而SMBus/I2C的PEC（Packet Error Checking，数据包错误校验）则增强了通信的可靠性。然而，同时使用这两种功能时，PEC校验会失效，原因在于两者存在固有的不兼容性。本文深入剖析了这一问题，将其归类为“泄露的抽象”，并提供了一个实用的应用层解决方案。
+1. 引言：汽车系统中的通信挑战 随着ADAS（高级驾驶辅助系统）和自动驾驶技术的发展，现代汽车依赖于大量传感器，这些传感器产生海量数据流。GMSL2由Analog Devices开发，凭借其6 Gbps的带宽和15米的传输距离，广泛用于连接传感器和中央处理器。然而，两个挑战随之而来：
+I2C地址冲突：多个相同的传感器（如摄像头）共享相同的I2C地址，导致通信冲突。 数据可靠性：汽车内部的电磁干扰（EMI）可能损坏I2C控制消息，对安全性构成威胁。 GMSL2的I2C别名功能解决了地址冲突问题，而PEC则确保了数据的完整性。然而，同时使用这两种功能会导致PEC校验失败，危及系统稳定性。
+2. GMSL2与I2C别名：工作原理 2.1 GMSL2 SerDes架构 GMSL2采用串行器/解串器（SerDes）架构。传感器端的串行器将数据转换为串行流，处理器端的解串器将其还原。双向控制通道（包括I2C）实现了主机与远程设备之间的透明通信。
+2.2 I2C别名机制 I2C别名通过将唯一别名地址（主机使用）映射到真实地址（远程设备使用）来解决地址冲突。解串器硬件无缝执行这一转换：
+示例：两个真实地址为0x1A的摄像头被分配别名0x70和0x72。主机使用别名通信，解串器将其重映射为0x1A发送给相应设备。 这一抽象简化了系统设计，但与PEC结合使用时会引发问题。
+3. SMBus/I2C PEC：确保可靠性 PEC使用CRC-8校验和（多项式x^8 &#43; x^2 &#43; x^1 &#43; 1）附加到I2C消息中，覆盖整个消息（包括地址字节和数据），确保端到端的数据完整性。如果接收方计算的PEC与发送的PEC不匹配，则通过NACK信号报告错误。
+4. 冲突根源：泄露的抽象 问题的根源在于PEC计算中的地址不匹配：
+主机：使用别名地址（如0x70 → 0xE0含写位）计算PEC。 解串器：将别名转换为真实地址（如0x1A → 0x34）后转发。 远程设备：使用其真实地址（0x34）验证PEC。 由于CRC-8对每个输入字节敏感，不同的地址会导致PEC不一致，校验失败。这是一个“泄露的抽象”——GMSL2的别名功能隐藏了地址转换，但PEC依赖于原始地址，暴露了这一细节。
+5. 根本性解决方案：应用层I2C重构 为解决此问题，需将通信地址（别名）与PEC计算地址（真实）解耦。标准I2C API会自动使用事务地址计算PEC，因此我们使用Linux的I2C_RDWR ioctl绕过这一限制。
+5.1 实施步骤 禁用内核PEC
+阻止自动PEC计算：
+ioctl(fd, I2C_PEC, 0); 手动计算PEC
+使用真实地址进行CRC-8计算：
+uint8_t real_addr = 0x1A; uint8_t data[] = {0xAB, 0xCD}; uint8_t pec_input[] = {(real_addr &lt;&lt; 1) | 0, 0xAB, 0xCD}; uint8_t pec = crc8(pec_input, 3); // 自定义CRC-8函数 构建I2C负载
+将计算的PEC附加到数据中：">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.ffb26980ae2df7bdfe47815d8a3f0130f36070ee4a3320a5f22d16842be2537f.css" integrity="sha256-/7JpgK4t973&#43;R4Fdij8BMPNgcO5KMyCl8i0WhCviU38=" crossorigin="anonymous">
+
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>📘 GMSL2 I2C别名与PEC校验的冲突：深层技术解析、根本性解决方案与安全考量</h1><time class="dim" datetime="2025-07-08T02:30:00&#43;08:00">July 8, 2025</time><div class="term-container"><div class="tag">
+        <a href="/tags/gmsl/">#GMSL</a>
+      </div><div class="tag">
+        <a href="/tags/adi/">#ADI</a>
+      </div><div class="tag">
+        <a href="/tags/i2c/">#I2C</a>
+      </div><div class="tag">
+        <a href="/tags/smbus/">#SMBus</a>
+      </div><div class="tag">
+        <a href="/tags/pec/">#PEC</a>
+      </div><div class="tag">
+        <a href="/tags/crc/">#CRC</a>
+      </div></ol></div>
+  <section class="page-section"><h1 id="gmsl2-i2c别名与pec校验的冲突深层技术解析根本性解决方案与安全考量">📘GMSL2 I2C别名与PEC校验的冲突：深层技术解析、根本性解决方案与安全考量</h1>
+<h2 id="摘要">摘要</h2>
+<p>在汽车电子领域，GMSL2（Gigabit Multimedia Serial Link 2）因其高带宽、低延迟的传感器数据传输能力而被广泛应用。其I2C别名功能解决了相同设备（如图像传感器）之间的地址冲突问题，而SMBus/I2C的PEC（Packet Error Checking，数据包错误校验）则增强了通信的可靠性。然而，同时使用这两种功能时，PEC校验会失效，原因在于两者存在固有的不兼容性。本文深入剖析了这一问题，将其归类为“泄露的抽象”，并提供了一个实用的应用层解决方案。</p>
+<hr>
+<h2 id="1-引言汽车系统中的通信挑战">1. 引言：汽车系统中的通信挑战</h2>
+<p>随着ADAS（高级驾驶辅助系统）和自动驾驶技术的发展，现代汽车依赖于大量传感器，这些传感器产生海量数据流。GMSL2由Analog Devices开发，凭借其6 Gbps的带宽和15米的传输距离，广泛用于连接传感器和中央处理器。然而，两个挑战随之而来：</p>
+<ul>
+<li><strong>I2C地址冲突</strong>：多个相同的传感器（如摄像头）共享相同的I2C地址，导致通信冲突。</li>
+<li><strong>数据可靠性</strong>：汽车内部的电磁干扰（EMI）可能损坏I2C控制消息，对安全性构成威胁。</li>
+</ul>
+<p>GMSL2的I2C别名功能解决了地址冲突问题，而PEC则确保了数据的完整性。然而，同时使用这两种功能会导致PEC校验失败，危及系统稳定性。</p>
+<hr>
+<h2 id="2-gmsl2与i2c别名工作原理">2. GMSL2与I2C别名：工作原理</h2>
+<h3 id="21-gmsl2-serdes架构">2.1 GMSL2 SerDes架构</h3>
+<p>GMSL2采用串行器/解串器（SerDes）架构。传感器端的串行器将数据转换为串行流，处理器端的解串器将其还原。双向控制通道（包括I2C）实现了主机与远程设备之间的透明通信。</p>
+<h3 id="22-i2c别名机制">2.2 I2C别名机制</h3>
+<p>I2C别名通过将唯一别名地址（主机使用）映射到真实地址（远程设备使用）来解决地址冲突。解串器硬件无缝执行这一转换：</p>
+<ul>
+<li><strong>示例</strong>：两个真实地址为<code>0x1A</code>的摄像头被分配别名<code>0x70</code>和<code>0x72</code>。主机使用别名通信，解串器将其重映射为<code>0x1A</code>发送给相应设备。</li>
+</ul>
+<p>这一抽象简化了系统设计，但与PEC结合使用时会引发问题。</p>
+<hr>
+<h2 id="3-smbusi2c-pec确保可靠性">3. SMBus/I2C PEC：确保可靠性</h2>
+<p>PEC使用CRC-8校验和（多项式<code>x^8 + x^2 + x^1 + 1</code>）附加到I2C消息中，覆盖整个消息（包括地址字节和数据），确保端到端的数据完整性。如果接收方计算的PEC与发送的PEC不匹配，则通过NACK信号报告错误。</p>
+<hr>
+<h2 id="4-冲突根源泄露的抽象">4. 冲突根源：泄露的抽象</h2>
+<p>问题的根源在于PEC计算中的地址不匹配：</p>
+<ul>
+<li><strong>主机</strong>：使用别名地址（如<code>0x70</code> → <code>0xE0</code>含写位）计算PEC。</li>
+<li><strong>解串器</strong>：将别名转换为真实地址（如<code>0x1A</code> → <code>0x34</code>）后转发。</li>
+<li><strong>远程设备</strong>：使用其真实地址（<code>0x34</code>）验证PEC。</li>
+</ul>
+<p>由于CRC-8对每个输入字节敏感，不同的地址会导致PEC不一致，校验失败。这是一个“泄露的抽象”——GMSL2的别名功能隐藏了地址转换，但PEC依赖于原始地址，暴露了这一细节。</p>
+<hr>
+<h2 id="5-根本性解决方案应用层i2c重构">5. 根本性解决方案：应用层I2C重构</h2>
+<p>为解决此问题，需将通信地址（别名）与PEC计算地址（真实）解耦。标准I2C API会自动使用事务地址计算PEC，因此我们使用Linux的<code>I2C_RDWR</code> ioctl绕过这一限制。</p>
+<h3 id="51-实施步骤">5.1 实施步骤</h3>
+<ol>
+<li>
+<p><strong>禁用内核PEC</strong><br>
+阻止自动PEC计算：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">ioctl</span>(fd, I2C_PEC, <span style="color:#ae81ff">0</span>);
+</span></span></code></pre></div></li>
+<li>
+<p><strong>手动计算PEC</strong><br>
+使用真实地址进行CRC-8计算：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">uint8_t</span> real_addr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x1A</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">uint8_t</span> data[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">0xAB</span>, <span style="color:#ae81ff">0xCD</span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">uint8_t</span> pec_input[] <span style="color:#f92672">=</span> {(real_addr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">|</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0xAB</span>, <span style="color:#ae81ff">0xCD</span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">uint8_t</span> pec <span style="color:#f92672">=</span> <span style="color:#a6e22e">crc8</span>(pec_input, <span style="color:#ae81ff">3</span>); <span style="color:#75715e">// 自定义CRC-8函数
+</span></span></span></code></pre></div></li>
+<li>
+<p><strong>构建I2C负载</strong><br>
+将计算的PEC附加到数据中：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">uint8_t</span> payload[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">0xAB</span>, <span style="color:#ae81ff">0xCD</span>, pec};
+</span></span></code></pre></div></li>
+<li>
+<p><strong>使用<code>I2C_RDWR</code>发送</strong><br>
+使用别名地址进行事务：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> i2c_msg msg <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    .addr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x70</span>, <span style="color:#75715e">// 别名地址
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .flags <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    .len <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(payload),
+</span></span><span style="display:flex;"><span>    .buf <span style="color:#f92672">=</span> payload
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> i2c_rdwr_ioctl_data data <span style="color:#f92672">=</span> { <span style="color:#f92672">&amp;</span>msg, <span style="color:#ae81ff">1</span> };
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ioctl</span>(fd, I2C_RDWR, <span style="color:#f92672">&amp;</span>data);
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="52-完整示例代码">5.2 完整示例代码</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/i2c-dev.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/ioctl.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;fcntl.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">uint8_t</span> <span style="color:#a6e22e">crc8</span>(<span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">size_t</span> len) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> crc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">size_t</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        crc <span style="color:#f92672">^=</span> data[i];
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">8</span>; j<span style="color:#f92672">++</span>) crc <span style="color:#f92672">=</span> (crc <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x80</span>) <span style="color:#f92672">?</span> (crc <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">^</span> <span style="color:#ae81ff">0x07</span> <span style="color:#f92672">:</span> crc <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> crc;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> fd <span style="color:#f92672">=</span> <span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;/dev/i2c-0&#34;</span>, O_RDWR);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ioctl</span>(fd, I2C_PEC, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> real_addr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x1A</span>, alias_addr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x70</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> data[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">0xAB</span>, <span style="color:#ae81ff">0xCD</span>};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> pec_input[] <span style="color:#f92672">=</span> {(real_addr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">|</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0xAB</span>, <span style="color:#ae81ff">0xCD</span>};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> pec <span style="color:#f92672">=</span> <span style="color:#a6e22e">crc8</span>(pec_input, <span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> payload[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">0xAB</span>, <span style="color:#ae81ff">0xCD</span>, pec};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> i2c_msg msg <span style="color:#f92672">=</span> {alias_addr, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(payload), payload};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> i2c_rdwr_ioctl_data tx <span style="color:#f92672">=</span> {<span style="color:#f92672">&amp;</span>msg, <span style="color:#ae81ff">1</span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ioctl</span>(fd, I2C_RDWR, <span style="color:#f92672">&amp;</span>tx);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">close</span>(fd);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>此方法确保远程设备接收到与其真实地址匹配的PEC，校验成功。</p>
+<hr>
+<h2 id="6-安全考量">6. 安全考量</h2>
+<p>在符合ISO 26262的汽车系统中，可靠通信至关重要。此解决方案：</p>
+<ul>
+<li>保持了PEC的错误检测能力。</li>
+<li>保留了别名的可扩展性。</li>
+<li>无需硬件修改，适用于现有设计。</li>
+</ul>
+<p>开发者应验证CRC-8实现并测试边缘情况（如EMI引起的位翻转），以确保功能安全。</p>
+<hr>
+<h2 id="7-结论">7. 结论</h2>
+<p>GMSL2 I2C别名与PEC的冲突表明，复杂系统中的抽象可能失效。通过深入了解协议机制并在应用层实施定制解决方案，我们在不牺牲可靠性和可扩展性的前提下解决了这一问题。这一方法强调了深入协议细节以应对集成挑战的重要性。</p>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>270 words</span>
+    <span>5 - 6 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#摘要">摘要</a></li>
+    <li><a href="#1-引言汽车系统中的通信挑战">1. 引言：汽车系统中的通信挑战</a></li>
+    <li><a href="#2-gmsl2与i2c别名工作原理">2. GMSL2与I2C别名：工作原理</a>
+      <ul>
+        <li><a href="#21-gmsl2-serdes架构">2.1 GMSL2 SerDes架构</a></li>
+        <li><a href="#22-i2c别名机制">2.2 I2C别名机制</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-smbusi2c-pec确保可靠性">3. SMBus/I2C PEC：确保可靠性</a></li>
+    <li><a href="#4-冲突根源泄露的抽象">4. 冲突根源：泄露的抽象</a></li>
+    <li><a href="#5-根本性解决方案应用层i2c重构">5. 根本性解决方案：应用层I2C重构</a>
+      <ul>
+        <li><a href="#51-实施步骤">5.1 实施步骤</a></li>
+        <li><a href="#52-完整示例代码">5.2 完整示例代码</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-安全考量">6. 安全考量</a></li>
+    <li><a href="#7-结论">7. 结论</a></li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/adi_gmsl2_serdes_spi/">ADI GMSL2 SERDES SPI</a></li><li><a href="/posts/adi_serdes/">GMSL SERDES 笔记</a></li><li><a href="/posts/i2c_cmd/">I2C command</a></li></ul></aside></div>
+  </div>
+</body>
+</html>
