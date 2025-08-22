@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>wsl 主页 | LuyangのBlog</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/wsl-%E4%B8%BB%E9%A1%B5/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="wsl 主页">
+  <meta property="og:description" content="目录 安装卸载列出 WSL 发行版 WSL kernel 客制化 wsl 挂载 ext4 移动硬盘 安装卸载列出 WSL 发行版 # 列出当前已安装的所有WSL发行版（包括正在运行和已停止的） wsl --list # 列出微软官方提供的、可在线安装的所有WSL发行版 wsl --list --online # 安装指定的WSL发行版，这里是Ubuntu 24.04版本 wsl --install -d Ubuntu-24.04 # 彻底卸载并删除名为Ubuntu-24.04的WSL发行版（数据会全部清除） wsl --unregister Ubuntu-24.04 C:\Users\max_h&gt;wsl --list 适用于 Linux 的 Windows 子系统分发: Ubuntu-24.04 (默认) Ubuntu-20.04 C:\Users\max_h&gt;wsl --list --online 以下是可安装的有效分发的列表。 使用 &#39;wsl.exe --install &lt;Distro&gt;&#39; 安装。 NAME FRIENDLY NAME Ubuntu Ubuntu Debian Debian GNU/Linux kali-linux Kali Linux Rolling Ubuntu-18.04 Ubuntu 18.04 LTS Ubuntu-20.04 Ubuntu 20.04 LTS Ubuntu-22.04 Ubuntu 22.04 LTS Ubuntu-24.04 Ubuntu 24.04 LTS OracleLinux_7_9 Oracle Linux 7.9 OracleLinux_8_7 Oracle Linux 8.7 OracleLinux_9_1 Oracle Linux 9.1 openSUSE-Leap-15.6 openSUSE Leap 15.6 SUSE-Linux-Enterprise-15-SP5 SUSE Linux Enterprise 15 SP5 SUSE-Linux-Enterprise-15-SP6 SUSE Linux Enterprise 15 SP6 openSUSE-Tumbleweed openSUSE Tumbleweed C:\Users\max_h&gt;wsl --install -d Ubuntu-24.04 Ubuntu 24.04 LTS 已安装。 正在启动 Ubuntu 24.04 LTS... Installing, this may take a few minutes... Please create a default UNIX user account. The username does not need to match your Windows username. For more information visit: https://aka.ms/wslusers Enter new UNIX username: luyang New password: Retype new password: passwd: password updated successfully Installation successful! To run a command as administrator (user &#34;root&#34;), use &#34;sudo &lt;command&gt;&#34;. See &#34;man sudo_root&#34; for details. Welcome to Ubuntu 24.04.1 LTS (GNU/Linux 5.15.167.4-microsoft-standard-WSL2 x86_64) * Documentation: https://help.ubuntu.com * Management: https://landscape.canonical.com * Support: https://ubuntu.com/pro System information as of Wed Mar 19 14:19:04 CST 2025 System load: 0.21 Processes: 31 Usage of /: 0.1% of 1006.85GB Users logged in: 0 Memory usage: 3% IPv4 address for eth0: 172.20.24.196 Swap usage: 0% This message is shown once a day. To disable it please create the /home/luyang/.hushlogin file. C:\Users\max_h&gt;wsl --unregister Ubuntu-24.04 正在注销。 操作成功完成。 C:\Users\max_h&gt;wsl --list 适用于 Linux 的 Windows 子系统没有安装的分发版。 使用 &#39;wsl.exe --list --online&#39; 列出可用的分发版 和 &#39;wsl.exe --install &lt;Distro&gt;&#39; 进行安装。 也可以通过访问 Microsoft Store 来安装分发版: https://aka.ms/wslstore 错误代码: Wsl/WSL_E_DEFAULT_DISTRO_NOT_FOUND WSL kernel 客制化 首先运行 wsl 通过如下命令确认当前内核版本：">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-02-09T00:00:00+08:00">
+    <meta property="article:modified_time" content="2023-02-09T00:00:00+08:00">
+    <meta property="article:tag" content="Windows">
+    <meta property="article:tag" content="Wsl">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Ext4">
+    <meta property="article:tag" content="Usbipd">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="wsl 主页">
+  <meta name="twitter:description" content="目录 安装卸载列出 WSL 发行版 WSL kernel 客制化 wsl 挂载 ext4 移动硬盘 安装卸载列出 WSL 发行版 # 列出当前已安装的所有WSL发行版（包括正在运行和已停止的） wsl --list # 列出微软官方提供的、可在线安装的所有WSL发行版 wsl --list --online # 安装指定的WSL发行版，这里是Ubuntu 24.04版本 wsl --install -d Ubuntu-24.04 # 彻底卸载并删除名为Ubuntu-24.04的WSL发行版（数据会全部清除） wsl --unregister Ubuntu-24.04 C:\Users\max_h&gt;wsl --list 适用于 Linux 的 Windows 子系统分发: Ubuntu-24.04 (默认) Ubuntu-20.04 C:\Users\max_h&gt;wsl --list --online 以下是可安装的有效分发的列表。 使用 &#39;wsl.exe --install &lt;Distro&gt;&#39; 安装。 NAME FRIENDLY NAME Ubuntu Ubuntu Debian Debian GNU/Linux kali-linux Kali Linux Rolling Ubuntu-18.04 Ubuntu 18.04 LTS Ubuntu-20.04 Ubuntu 20.04 LTS Ubuntu-22.04 Ubuntu 22.04 LTS Ubuntu-24.04 Ubuntu 24.04 LTS OracleLinux_7_9 Oracle Linux 7.9 OracleLinux_8_7 Oracle Linux 8.7 OracleLinux_9_1 Oracle Linux 9.1 openSUSE-Leap-15.6 openSUSE Leap 15.6 SUSE-Linux-Enterprise-15-SP5 SUSE Linux Enterprise 15 SP5 SUSE-Linux-Enterprise-15-SP6 SUSE Linux Enterprise 15 SP6 openSUSE-Tumbleweed openSUSE Tumbleweed C:\Users\max_h&gt;wsl --install -d Ubuntu-24.04 Ubuntu 24.04 LTS 已安装。 正在启动 Ubuntu 24.04 LTS... Installing, this may take a few minutes... Please create a default UNIX user account. The username does not need to match your Windows username. For more information visit: https://aka.ms/wslusers Enter new UNIX username: luyang New password: Retype new password: passwd: password updated successfully Installation successful! To run a command as administrator (user &#34;root&#34;), use &#34;sudo &lt;command&gt;&#34;. See &#34;man sudo_root&#34; for details. Welcome to Ubuntu 24.04.1 LTS (GNU/Linux 5.15.167.4-microsoft-standard-WSL2 x86_64) * Documentation: https://help.ubuntu.com * Management: https://landscape.canonical.com * Support: https://ubuntu.com/pro System information as of Wed Mar 19 14:19:04 CST 2025 System load: 0.21 Processes: 31 Usage of /: 0.1% of 1006.85GB Users logged in: 0 Memory usage: 3% IPv4 address for eth0: 172.20.24.196 Swap usage: 0% This message is shown once a day. To disable it please create the /home/luyang/.hushlogin file. C:\Users\max_h&gt;wsl --unregister Ubuntu-24.04 正在注销。 操作成功完成。 C:\Users\max_h&gt;wsl --list 适用于 Linux 的 Windows 子系统没有安装的分发版。 使用 &#39;wsl.exe --list --online&#39; 列出可用的分发版 和 &#39;wsl.exe --install &lt;Distro&gt;&#39; 进行安装。 也可以通过访问 Microsoft Store 来安装分发版: https://aka.ms/wslstore 错误代码: Wsl/WSL_E_DEFAULT_DISTRO_NOT_FOUND WSL kernel 客制化 首先运行 wsl 通过如下命令确认当前内核版本：">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.ffb26980ae2df7bdfe47815d8a3f0130f36070ee4a3320a5f22d16842be2537f.css" integrity="sha256-/7JpgK4t973&#43;R4Fdij8BMPNgcO5KMyCl8i0WhCviU38=" crossorigin="anonymous">
+
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>wsl 主页</h1><time class="dim" datetime="2023-02-09T00:00:00&#43;08:00">February 9, 2023</time><div class="term-container"><div class="tag">
+        <a href="/tags/windows/">#windows</a>
+      </div><div class="tag">
+        <a href="/tags/wsl/">#wsl</a>
+      </div><div class="tag">
+        <a href="/tags/linux/">#linux</a>
+      </div><div class="tag">
+        <a href="/tags/ext4/">#ext4</a>
+      </div><div class="tag">
+        <a href="/tags/usbipd/">#usbipd</a>
+      </div></ol></div>
+  <section class="page-section"><h2 id="目录">目录</h2>
+<ul>
+<li>安装卸载列出 WSL 发行版</li>
+<li>WSL kernel 客制化</li>
+<li>wsl 挂载 ext4 移动硬盘</li>
+</ul>
+<h2 id="安装卸载列出-wsl-发行版">安装卸载列出 WSL 发行版</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 列出当前已安装的所有WSL发行版（包括正在运行和已停止的）</span>
+</span></span><span style="display:flex;"><span>wsl --list
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 列出微软官方提供的、可在线安装的所有WSL发行版</span>
+</span></span><span style="display:flex;"><span>wsl --list --online
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 安装指定的WSL发行版，这里是Ubuntu 24.04版本</span>
+</span></span><span style="display:flex;"><span>wsl --install -d Ubuntu-24.04
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 彻底卸载并删除名为Ubuntu-24.04的WSL发行版（数据会全部清除）</span>
+</span></span><span style="display:flex;"><span>wsl --unregister Ubuntu-24.04
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\m</span>ax_h&gt;wsl --list
+</span></span><span style="display:flex;"><span>适用于 Linux 的 Windows 子系统分发:
+</span></span><span style="display:flex;"><span>Ubuntu-24.04 <span style="color:#f92672">(</span>默认<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Ubuntu-20.04
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\m</span>ax_h&gt;wsl --list --online
+</span></span><span style="display:flex;"><span>以下是可安装的有效分发的列表。
+</span></span><span style="display:flex;"><span>使用 <span style="color:#e6db74">&#39;wsl.exe --install &lt;Distro&gt;&#39;</span> 安装。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NAME                            FRIENDLY NAME
+</span></span><span style="display:flex;"><span>Ubuntu                          Ubuntu
+</span></span><span style="display:flex;"><span>Debian                          Debian GNU/Linux
+</span></span><span style="display:flex;"><span>kali-linux                      Kali Linux Rolling
+</span></span><span style="display:flex;"><span>Ubuntu-18.04                    Ubuntu 18.04 LTS
+</span></span><span style="display:flex;"><span>Ubuntu-20.04                    Ubuntu 20.04 LTS
+</span></span><span style="display:flex;"><span>Ubuntu-22.04                    Ubuntu 22.04 LTS
+</span></span><span style="display:flex;"><span>Ubuntu-24.04                    Ubuntu 24.04 LTS
+</span></span><span style="display:flex;"><span>OracleLinux_7_9                 Oracle Linux 7.9
+</span></span><span style="display:flex;"><span>OracleLinux_8_7                 Oracle Linux 8.7
+</span></span><span style="display:flex;"><span>OracleLinux_9_1                 Oracle Linux 9.1
+</span></span><span style="display:flex;"><span>openSUSE-Leap-15.6              openSUSE Leap 15.6
+</span></span><span style="display:flex;"><span>SUSE-Linux-Enterprise-15-SP5    SUSE Linux Enterprise <span style="color:#ae81ff">15</span> SP5
+</span></span><span style="display:flex;"><span>SUSE-Linux-Enterprise-15-SP6    SUSE Linux Enterprise <span style="color:#ae81ff">15</span> SP6
+</span></span><span style="display:flex;"><span>openSUSE-Tumbleweed             openSUSE Tumbleweed
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\m</span>ax_h&gt;wsl --install -d Ubuntu-24.04
+</span></span><span style="display:flex;"><span>Ubuntu 24.04 LTS 已安装。
+</span></span><span style="display:flex;"><span>正在启动 Ubuntu 24.04 LTS...
+</span></span><span style="display:flex;"><span>Installing, this may take a few minutes...
+</span></span><span style="display:flex;"><span>Please create a default UNIX user account. The username does not need to match your Windows username.
+</span></span><span style="display:flex;"><span>For more information visit: https://aka.ms/wslusers
+</span></span><span style="display:flex;"><span>Enter new UNIX username: luyang
+</span></span><span style="display:flex;"><span>New password: 
+</span></span><span style="display:flex;"><span>Retype new password:
+</span></span><span style="display:flex;"><span>passwd: password updated successfully
+</span></span><span style="display:flex;"><span>Installation successful!
+</span></span><span style="display:flex;"><span>To run a command as administrator <span style="color:#f92672">(</span>user <span style="color:#e6db74">&#34;root&#34;</span><span style="color:#f92672">)</span>, use <span style="color:#e6db74">&#34;sudo &lt;command&gt;&#34;</span>.
+</span></span><span style="display:flex;"><span>See <span style="color:#e6db74">&#34;man sudo_root&#34;</span> <span style="color:#66d9ef">for</span> details.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Welcome to Ubuntu 24.04.1 LTS <span style="color:#f92672">(</span>GNU/Linux 5.15.167.4-microsoft-standard-WSL2 x86_64<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> * Documentation:  https://help.ubuntu.com
+</span></span><span style="display:flex;"><span> * Management:     https://landscape.canonical.com
+</span></span><span style="display:flex;"><span> * Support:        https://ubuntu.com/pro
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> System information as of Wed Mar <span style="color:#ae81ff">19</span> 14:19:04 CST <span style="color:#ae81ff">2025</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  System load:  0.21                Processes:             <span style="color:#ae81ff">31</span>
+</span></span><span style="display:flex;"><span>  Usage of /:   0.1% of 1006.85GB   Users logged in:       <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  Memory usage: 3%                  IPv4 address <span style="color:#66d9ef">for</span> eth0: 172.20.24.196
+</span></span><span style="display:flex;"><span>  Swap usage:   0%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>This message is shown once a day. To disable it please create the
+</span></span><span style="display:flex;"><span>/home/luyang/.hushlogin file.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\m</span>ax_h&gt;wsl --unregister Ubuntu-24.04
+</span></span><span style="display:flex;"><span>正在注销。
+</span></span><span style="display:flex;"><span>操作成功完成。 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\m</span>ax_h&gt;wsl --list
+</span></span><span style="display:flex;"><span>适用于 Linux 的 Windows 子系统没有安装的分发版。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>使用 <span style="color:#e6db74">&#39;wsl.exe --list --online&#39;</span> 列出可用的分发版
+</span></span><span style="display:flex;"><span>和 <span style="color:#e6db74">&#39;wsl.exe --install &lt;Distro&gt;&#39;</span> 进行安装。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>也可以通过访问 Microsoft Store 来安装分发版:
+</span></span><span style="display:flex;"><span>https://aka.ms/wslstore
+</span></span><span style="display:flex;"><span>错误代码: Wsl/WSL_E_DEFAULT_DISTRO_NOT_FOUND
+</span></span></code></pre></div><h2 id="wsl-kernel-客制化">WSL kernel 客制化</h2>
+<p>首先运行 wsl 通过如下命令确认当前内核版本：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>uname -a
+</span></span><span style="display:flex;"><span>Linux x 6.6.87.2-microsoft-standard-WSL2+ <span style="color:#75715e">#1 SMP PREEMPT_DYNAMIC Sun Jun 15 21:13:48 CST 2025 x86_64 x86_64 x86_64 GNU/Linux</span>
+</span></span></code></pre></div><h3 id="克隆源代码">克隆源代码</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/microsoft/WSL2-Linux-Kernel.git --depth<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> -b linux-msft-wsl-6.6.y
+</span></span><span style="display:flex;"><span>cd WSL2-Linux-Kernel
+</span></span><span style="display:flex;"><span>git tag -l | grep <span style="color:#e6db74">&#34;6.6.87&#34;</span>
+</span></span><span style="display:flex;"><span>git checkout -b my-6.6.87.2-kernel linux-msft-wsl-6.6.87.2
+</span></span></code></pre></div><ul>
+<li><code>--depth=1</code> clones only the latest commit to save time and space.</li>
+<li><code>-b linux-msft-wsl-6.6.y</code> specifies the branch to clone.</li>
+</ul>
+<p>目前 github <a href="https://github.com/microsoft/WSL2-Linux-Kernel">https://github.com/microsoft/WSL2-Linux-Kernel</a> 主要版本：</p>
+<ul>
+<li>linux-msft-wsl-6.6.y</li>
+<li>linux-msft-wsl-4.19.y</li>
+<li>linux-msft-wsl-5.4.y</li>
+<li>linux-msft-wsl-5.10.y</li>
+<li>linux-msft-wsl-5.15.y</li>
+<li>linux-msft-wsl-6.1.y</li>
+<li>master</li>
+<li>&hellip;</li>
+</ul>
+<h2 id="安装编译环境">安装编译环境</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update <span style="color:#f92672">&amp;&amp;</span> sudo apt install build-essential flex bison libssl-dev libelf-dev bc python3 pahole cpio
+</span></span></code></pre></div><h2 id="配置内核">配置内核</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp /proc/config.gz config.gz
+</span></span><span style="display:flex;"><span>gunzip config.gz
+</span></span><span style="display:flex;"><span>cp config .config
+</span></span><span style="display:flex;"><span>make menuconfig
+</span></span><span style="display:flex;"><span>make -j
+</span></span><span style="display:flex;"><span>sudo make modules_install -j
+</span></span><span style="display:flex;"><span>sudo make install -j
+</span></span><span style="display:flex;"><span>cp vmlinux /mnt/c/Users/luyang/
+</span></span></code></pre></div><h2 id="配置-wsl">配置 WSL</h2>
+<blockquote>
+<p>注意用户名根据实际进行修改</p></blockquote>
+<p>window 用户目录下（例如：<code>C:\Users\luyang</code>）创建文件： <code>.wslconfig</code></p>
+<p>文件内容如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>wsl2<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>kernel<span style="color:#f92672">=</span>C:<span style="color:#ae81ff">\\</span>Users<span style="color:#ae81ff">\\</span>luyang<span style="color:#ae81ff">\\</span>vmlinux
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Limits VM memory to use no more than 16GB.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Set this based on your host&#39;s total RAM. For a 32GB host, 16GB is a good start.</span>
+</span></span><span style="display:flex;"><span>memory<span style="color:#f92672">=</span>16GB
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># How much swap space to add to the WSL 2 VM.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 0 for no swap file. A good starting point is equal to or double your memory setting.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># For a build like Cuttlefish, you might need a lot, e.g., 20GB or more.</span>
+</span></span><span style="display:flex;"><span>swap<span style="color:#f92672">=</span>20GB
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Absolute Windows path to the swap virtual hard disk.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># This file will be created/managed by WSL. Ensure the path exists.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Use double backslashes for Windows paths.</span>
+</span></span><span style="display:flex;"><span>swapFile<span style="color:#f92672">=</span>C:<span style="color:#ae81ff">\\</span>wsl_swap<span style="color:#ae81ff">\\</span>wsl-swap.vhdx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># How many processors to assign to the WSL 2 VM.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Set this to a reasonable number of your CPU cores, e.g., half or two-thirds.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># For heavy builds, too many cores with insufficient RAM can also lead to OOM.</span>
+</span></span><span style="display:flex;"><span>processors<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>
+</span></span></code></pre></div><h2 id="wsl-挂载-ext4-移动硬盘">wsl 挂载 ext4 移动硬盘</h2>
+<p>windows powershell 管理员权限运行</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\l</span>uyang&gt; GET-CimInstance -query <span style="color:#e6db74">&#34;SELECT * from Win32_DiskDrive&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DeviceID           Caption              Partitions Size          Model
+</span></span><span style="display:flex;"><span>--------           -------              ---------- ----          -----
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE2 WD Green SN350 1TB   <span style="color:#ae81ff">1</span>          <span style="color:#ae81ff">1000202273280</span> WD Green SN350 1TB
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE1 WDC WD40EJRX-89AKWY0 <span style="color:#ae81ff">1</span>          <span style="color:#ae81ff">4000784417280</span> WDC WD40EJRX-89AKWY0
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE0 WDC WD10EZEX-08WN4A0 <span style="color:#ae81ff">3</span>          <span style="color:#ae81ff">1000202273280</span> WDC WD10EZEX-08WN4A0
+</span></span></code></pre></div><p>windows 挂载</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ystem32&gt; wsl --mount <span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE3 --bare
+</span></span><span style="display:flex;"><span>操作成功完成。
+</span></span></code></pre></div><p>wsl 终端挂载</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo fdisk -l
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Device     Boot Start        End    Sectors   Size Id Type
+</span></span><span style="display:flex;"><span>/dev/sdc1        <span style="color:#ae81ff">2048</span> <span style="color:#ae81ff">1000148991</span> <span style="color:#ae81ff">1000146944</span> 476.9G <span style="color:#ae81ff">83</span> Linux
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo mount -t ext4 /dev/sdc1 /mnt
+</span></span></code></pre></div><p>wsl 终端卸载</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo umount -t ext4 /dev/sdc1 /mnt
+</span></span></code></pre></div><p>windows 卸载</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl --unmount <span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE3 --bare
+</span></span></code></pre></div><h2 id="wsl-端口映射">WSL 端口映射</h2>
+<h3 id="查询当前已经转发的端口">查询当前已经转发的端口</h3>
+<p>如何查看当前 windows -&gt; WSL 配置了哪些端口转发？
+以管理员身份运行 PowerShell:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS C:\WINDOWS\system32&gt; netsh interface portproxy show all
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>侦听 ipv4<span style="color:#960050;background-color:#1e0010">:</span>                 连接到 ipv4<span style="color:#960050;background-color:#1e0010">:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>地址            端口        地址            端口
+</span></span><span style="display:flex;"><span>--------------- ----------  --------------- ----------
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">8080</span>        <span style="color:#ae81ff">172.18</span>.150.174  <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">9999</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">9999</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">127.0</span>.0.1       <span style="color:#ae81ff">562</span>         <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">562</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">562</span>         <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">562</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">4865</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">4865</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">6666</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">6666</span>
+</span></span></code></pre></div><h3 id="确认-wsl-ip-地址">确认 WSL IP 地址</h3>
+<p>WSL 终端运行:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ifconfig
+</span></span><span style="display:flex;"><span>docker0: flags<span style="color:#f92672">=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span style="color:#ae81ff">1500</span>
+</span></span><span style="display:flex;"><span>        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+</span></span><span style="display:flex;"><span>        inet6 fe80::42:d3ff:fe45:67a4  prefixlen <span style="color:#ae81ff">64</span>  scopeid 0x20&lt;link&gt;
+</span></span><span style="display:flex;"><span>        ether 02:42:d3:45:67:a4  txqueuelen <span style="color:#ae81ff">0</span>  <span style="color:#f92672">(</span>Ethernet<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        RX packets <span style="color:#ae81ff">12553</span>  bytes <span style="color:#ae81ff">108393702</span> <span style="color:#f92672">(</span>108.3 MB<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        RX errors <span style="color:#ae81ff">0</span>  dropped <span style="color:#ae81ff">0</span>  overruns <span style="color:#ae81ff">0</span>  frame <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        TX packets <span style="color:#ae81ff">15258</span>  bytes <span style="color:#ae81ff">1786658</span> <span style="color:#f92672">(</span>1.7 MB<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        TX errors <span style="color:#ae81ff">0</span>  dropped <span style="color:#ae81ff">0</span> overruns <span style="color:#ae81ff">0</span>  carrier <span style="color:#ae81ff">0</span>  collisions <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>eth0: flags<span style="color:#f92672">=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span style="color:#ae81ff">1500</span>
+</span></span><span style="display:flex;"><span>        inet 172.25.198.88  netmask 255.255.240.0  broadcast 172.25.207.255
+</span></span><span style="display:flex;"><span>        inet6 fe80::215:5dff:feec:a420  prefixlen <span style="color:#ae81ff">64</span>  scopeid 0x20&lt;link&gt;
+</span></span><span style="display:flex;"><span>        ether 00:15:5d:ec:a4:20  txqueuelen <span style="color:#ae81ff">1000</span>  <span style="color:#f92672">(</span>Ethernet<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        RX packets <span style="color:#ae81ff">201105667</span>  bytes <span style="color:#ae81ff">290122284896</span> <span style="color:#f92672">(</span>290.1 GB<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        RX errors <span style="color:#ae81ff">0</span>  dropped <span style="color:#ae81ff">0</span>  overruns <span style="color:#ae81ff">0</span>  frame <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        TX packets <span style="color:#ae81ff">55298591</span>  bytes <span style="color:#ae81ff">3209600213</span> <span style="color:#f92672">(</span>3.2 GB<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        TX errors <span style="color:#ae81ff">0</span>  dropped <span style="color:#ae81ff">0</span> overruns <span style="color:#ae81ff">0</span>  carrier <span style="color:#ae81ff">0</span>  collisions <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>lo: flags<span style="color:#f92672">=</span>73&lt;UP,LOOPBACK,RUNNING&gt;  mtu <span style="color:#ae81ff">65536</span>
+</span></span><span style="display:flex;"><span>        inet 127.0.0.1  netmask 255.0.0.0
+</span></span><span style="display:flex;"><span>        inet6 ::1  prefixlen <span style="color:#ae81ff">128</span>  scopeid 0x10&lt;host&gt;
+</span></span><span style="display:flex;"><span>        loop  txqueuelen <span style="color:#ae81ff">1000</span>  <span style="color:#f92672">(</span>Local Loopback<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        RX packets <span style="color:#ae81ff">217290</span>  bytes <span style="color:#ae81ff">624612200</span> <span style="color:#f92672">(</span>624.6 MB<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        RX errors <span style="color:#ae81ff">0</span>  dropped <span style="color:#ae81ff">0</span>  overruns <span style="color:#ae81ff">0</span>  frame <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        TX packets <span style="color:#ae81ff">217290</span>  bytes <span style="color:#ae81ff">624612200</span> <span style="color:#f92672">(</span>624.6 MB<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        TX errors <span style="color:#ae81ff">0</span>  dropped <span style="color:#ae81ff">0</span> overruns <span style="color:#ae81ff">0</span>  carrier <span style="color:#ae81ff">0</span>  collisions <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>veth11e7cb7: flags<span style="color:#f92672">=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span style="color:#ae81ff">1500</span>
+</span></span><span style="display:flex;"><span>        inet6 fe80::fcfb:17ff:fe7d:ad3  prefixlen <span style="color:#ae81ff">64</span>  scopeid 0x20&lt;link&gt;
+</span></span><span style="display:flex;"><span>        ether fe:fb:17:7d:0a:d3  txqueuelen <span style="color:#ae81ff">0</span>  <span style="color:#f92672">(</span>Ethernet<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        RX packets <span style="color:#ae81ff">12553</span>  bytes <span style="color:#ae81ff">108569444</span> <span style="color:#f92672">(</span>108.5 MB<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        RX errors <span style="color:#ae81ff">0</span>  dropped <span style="color:#ae81ff">0</span>  overruns <span style="color:#ae81ff">0</span>  frame <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        TX packets <span style="color:#ae81ff">15279</span>  bytes <span style="color:#ae81ff">1788224</span> <span style="color:#f92672">(</span>1.7 MB<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        TX errors <span style="color:#ae81ff">0</span>  dropped <span style="color:#ae81ff">0</span> overruns <span style="color:#ae81ff">0</span>  carrier <span style="color:#ae81ff">0</span>  collisions <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><p>如上: <code>eth0</code> <code>172.25.198.88</code></p>
+<h3 id="增加端口4864映射">增加端口<code>4864</code>映射</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>netsh interface portproxy add v4tov4 listenaddress=<span style="color:#ae81ff">0.0</span>.0.0 listenport=<span style="color:#ae81ff">4864</span> connectaddress=<span style="color:#ae81ff">172.25</span>.198.88 <span style="color:#ae81ff">4864</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS C:\WINDOWS\system32&gt; netsh interface portproxy show all
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>侦听 ipv4<span style="color:#960050;background-color:#1e0010">:</span>                 连接到 ipv4<span style="color:#960050;background-color:#1e0010">:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>地址            端口        地址            端口
+</span></span><span style="display:flex;"><span>--------------- ----------  --------------- ----------
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">8080</span>        <span style="color:#ae81ff">172.18</span>.150.174  <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">9999</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">9999</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">127.0</span>.0.1       <span style="color:#ae81ff">562</span>         <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">562</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">562</span>         <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">562</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">4865</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">4865</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">6666</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">6666</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">4864</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">4864</span>
+</span></span></code></pre></div><h3 id="删除端口4864映射">删除端口<code>4864</code>映射</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>netsh interface portproxy delete v4tov4 listenport=<span style="color:#ae81ff">4864</span> listenaddress=<span style="color:#ae81ff">0.0</span>.0.0
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS C:\WINDOWS\system32&gt; netsh interface portproxy show all
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>侦听 ipv4<span style="color:#960050;background-color:#1e0010">:</span>                 连接到 ipv4<span style="color:#960050;background-color:#1e0010">:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>地址            端口        地址            端口
+</span></span><span style="display:flex;"><span>--------------- ----------  --------------- ----------
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">8080</span>        <span style="color:#ae81ff">172.18</span>.150.174  <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">9999</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">9999</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">127.0</span>.0.1       <span style="color:#ae81ff">562</span>         <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">562</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">562</span>         <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">562</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">4865</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">4865</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">6666</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">6666</span>
+</span></span></code></pre></div><hr>
+<p>From: <a href="https://learn.microsoft.com/en-us/windows/wsl/networking">https://learn.microsoft.com/en-us/windows/wsl/networking</a></p>
+<p>Here&rsquo;s an example of using the <a href="https://learn.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-interface-portproxy">Netsh interface portproxy</a> Windows command to add a port proxy that listens on your host port and connects that port proxy to the IP address for the WSL 2 VM.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>netsh interface portproxy add v4tov4 listenport=&lt;yourPortToForward&gt; listenaddress=<span style="color:#ae81ff">0.0</span>.0.0 connectport=&lt;yourPortToConnectToInWSL&gt; connectaddress=(wsl hostname -I)
+</span></span></code></pre></div><p>In this example, you will need to update <code>&lt;yourPortToForward&gt;</code> to a port number, for example <code>listenport=4000</code>. <code>listenaddress=0.0.0.0</code> means that incoming requests will be accepted from ANY IP address. The Listen Address specifies the IPv4 address for which to listen and can be changed to values that include: IP address, computer NetBIOS name, or computer DNS name. If an address isn&rsquo;t specified, the default is the local computer. You need to update the <code>&lt;yourPortToConnectToInWSL&gt;</code> value to a port number where you want WSL to connect, for example <code>connectport=4000</code>. Lastly, the <code>connectaddress</code> value needs to be the IP address of your Linux distribution installed via WSL 2 (the WSL 2 VM address), which can be found by entering the command: <code>wsl.exe hostname -I</code>.</p>
+<p>So this command may look something like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>netsh interface portproxy add v4tov4 listenport=<span style="color:#ae81ff">4000</span> listenaddress=<span style="color:#ae81ff">0.0</span>.0.0 connectport=<span style="color:#ae81ff">4000</span> connectaddress=<span style="color:#ae81ff">192.168</span>.101.100
+</span></span></code></pre></div><p>To obtain the IP address, use:</p>
+<ul>
+<li><code>wsl hostname -I</code> for the IP address of your Linux distribution installed via WSL 2 (the WSL 2 VM address)</li>
+<li><code>cat /etc/resolv.conf</code> for the IP address of the Windows machine as seen from WSL 2 (the WSL 2 VM)</li>
+</ul>
+<p>Using <code>listenaddress=0.0.0.0</code> will listen on all <a href="https://stackoverflow.com/questions/9987409/want-to-know-what-is-ipv4-and-ipv6#:%7E:text=The%20basic%20difference%20is%20the,whereas%20IPv6%20has%20128%20bits.">IPv4 ports</a>.</p>
+<pre tabindex="0"><code class="language-Note" data-lang="Note">Using a lowercase &#34;i&#34; with the hostname command will generate a different result than using an uppercase &#34;I&#34;. wsl hostname -i is your local machine (127.0.1.1 is a placeholder diagnostic address), whereas wsl hostname -I will return your local machine&#39;s IP address as seen by other machines and should be used to identify the connectaddress of your Linux distribution running via WSL 2.
+</code></pre><hr>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>1339 words</span>
+    <span>11 - 14 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#安装卸载列出-wsl-发行版">安装卸载列出 WSL 发行版</a></li>
+    <li><a href="#wsl-kernel-客制化">WSL kernel 客制化</a>
+      <ul>
+        <li><a href="#克隆源代码">克隆源代码</a></li>
+      </ul>
+    </li>
+    <li><a href="#安装编译环境">安装编译环境</a></li>
+    <li><a href="#配置内核">配置内核</a></li>
+    <li><a href="#配置-wsl">配置 WSL</a></li>
+    <li><a href="#wsl-挂载-ext4-移动硬盘">wsl 挂载 ext4 移动硬盘</a></li>
+    <li><a href="#wsl-端口映射">WSL 端口映射</a>
+      <ul>
+        <li><a href="#查询当前已经转发的端口">查询当前已经转发的端口</a></li>
+        <li><a href="#确认-wsl-ip-地址">确认 WSL IP 地址</a></li>
+        <li><a href="#增加端口4864映射">增加端口<code>4864</code>映射</a></li>
+        <li><a href="#删除端口4864映射">删除端口<code>4864</code>映射</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/linux_date_cmd/">Linux date 命令用法</a></li><li><a href="/posts/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/">黑芝麻平台交叉编译 openssl</a></li><li><a href="/posts/dmesg_support_iso_timestamp/">dmesg use CST timestamp</a></li><li><a href="/posts/android10%E7%BC%96%E8%AF%91%E5%BC%80%E5%90%AFccache/">Android10编译开启ccache</a></li><li><a href="/posts/linux_test_disk_i_o_with_dd/">Linux Test Disk with dd command</a></li></ul></aside></div>
+  </div>
+</body>
+</html>
