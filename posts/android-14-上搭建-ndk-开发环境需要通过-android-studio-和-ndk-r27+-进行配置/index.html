@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📘Android 14 上搭建 NDK 开发环境需要通过 Android Studio 和 NDK r27&#43; 进行配置 | LuyangのBlog</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/android-14-%E4%B8%8A%E6%90%AD%E5%BB%BA-ndk-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%9C%80%E8%A6%81%E9%80%9A%E8%BF%87-android-studio-%E5%92%8C-ndk-r27&#43;-%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="📘Android 14 上搭建 NDK 开发环境需要通过 Android Studio 和 NDK r27&#43; 进行配置">
+  <meta property="og:description" content="📘 Android 14 上搭建 NDK 开发环境需要通过 Android Studio 和 NDK r27&#43; 进行配置 ## 1. 安装依赖 ```bash sudo apt update sudo apt install openjdk-17-jdk cmake ninja-build unzip git -y JDK 虽然主要用于 Android 构建系统，但有些工具依赖。
+2. 下载并配置 NDK 去 Google NDK 下载页面 下载 NDK r27b (Linux 版本)。
+Linux 64-bit (x86) android-ndk-r27d-linux.zip
+wget https://dl.google.com/android/repository/android-ndk-r27d-linux.zip unzip android-ndk-r27d-linux.zip -d $HOME/ 配置环境变量（写入 ~/.bashrc）：
+export ANDROID_NDK_HOME=$HOME/android-ndk-r27d export PATH=$PATH:$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin 应用：
+source ~/.bashrc 3. 确认交叉编译工具链 NDK r26&#43; 使用 Clang/LLVM toolchain，支持 Android 14 (API 34)。">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-09-08T02:30:00+08:00">
+    <meta property="article:modified_time" content="2025-09-08T02:30:00+08:00">
+    <meta property="article:tag" content="AArch64">
+    <meta property="article:tag" content="ARM">
+    <meta property="article:tag" content="Android">
+    <meta property="article:tag" content="Ndk">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="📘Android 14 上搭建 NDK 开发环境需要通过 Android Studio 和 NDK r27&#43; 进行配置">
+  <meta name="twitter:description" content="📘 Android 14 上搭建 NDK 开发环境需要通过 Android Studio 和 NDK r27&#43; 进行配置 ## 1. 安装依赖 ```bash sudo apt update sudo apt install openjdk-17-jdk cmake ninja-build unzip git -y JDK 虽然主要用于 Android 构建系统，但有些工具依赖。
+2. 下载并配置 NDK 去 Google NDK 下载页面 下载 NDK r27b (Linux 版本)。
+Linux 64-bit (x86) android-ndk-r27d-linux.zip
+wget https://dl.google.com/android/repository/android-ndk-r27d-linux.zip unzip android-ndk-r27d-linux.zip -d $HOME/ 配置环境变量（写入 ~/.bashrc）：
+export ANDROID_NDK_HOME=$HOME/android-ndk-r27d export PATH=$PATH:$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin 应用：
+source ~/.bashrc 3. 确认交叉编译工具链 NDK r26&#43; 使用 Clang/LLVM toolchain，支持 Android 14 (API 34)。">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.ffb26980ae2df7bdfe47815d8a3f0130f36070ee4a3320a5f22d16842be2537f.css" integrity="sha256-/7JpgK4t973&#43;R4Fdij8BMPNgcO5KMyCl8i0WhCviU38=" crossorigin="anonymous">
+
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>📘Android 14 上搭建 NDK 开发环境需要通过 Android Studio 和 NDK r27&#43; 进行配置</h1><time class="dim" datetime="2025-09-08T02:30:00&#43;08:00">September 8, 2025</time><div class="term-container"><div class="tag">
+        <a href="/tags/aarch64/">#AArch64</a>
+      </div><div class="tag">
+        <a href="/tags/arm/">#ARM</a>
+      </div><div class="tag">
+        <a href="/tags/android/">#android</a>
+      </div><div class="tag">
+        <a href="/tags/ndk/">#ndk</a>
+      </div></ol></div>
+  <section class="page-section"><h1 id="-android-14-上搭建-ndk-开发环境需要通过-android-studio-和-ndk-r27-进行配置">📘 Android 14 上搭建 NDK 开发环境需要通过 Android Studio 和 NDK r27+ 进行配置</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#75715e">## 1. 安装依赖
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>```bash
+</span></span><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt install openjdk-17-jdk cmake ninja-build unzip git -y
+</span></span></code></pre></div><blockquote>
+<p>JDK 虽然主要用于 Android 构建系统，但有些工具依赖。</p></blockquote>
+<hr>
+<h2 id="2-下载并配置-ndk">2. 下载并配置 NDK</h2>
+<p>去 <a href="https://developer.android.com/ndk/downloads">Google NDK 下载页面</a> 下载 <strong>NDK r27b</strong> (Linux 版本)。<br>
+Linux 64-bit (x86) <a href="https://dl.google.com/android/repository/android-ndk-r27d-linux.zip">android-ndk-r27d-linux.zip</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://dl.google.com/android/repository/android-ndk-r27d-linux.zip
+</span></span><span style="display:flex;"><span>unzip android-ndk-r27d-linux.zip -d $HOME/
+</span></span></code></pre></div><p>配置环境变量（写入 <code>~/.bashrc</code>）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export ANDROID_NDK_HOME<span style="color:#f92672">=</span>$HOME/android-ndk-r27d
+</span></span><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span>$PATH:$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin
+</span></span></code></pre></div><p>应用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>source ~/.bashrc
+</span></span></code></pre></div><hr>
+<h2 id="3-确认交叉编译工具链">3. 确认交叉编译工具链</h2>
+<p>NDK r26+ 使用 <strong>Clang/LLVM toolchain</strong>，支持 Android 14 (API 34)。</p>
+<p>检查工具链：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ clang --version
+</span></span><span style="display:flex;"><span>Android <span style="color:#f92672">(</span>6443078, based on r416183b1<span style="color:#f92672">)</span> clang version 14.0.6 ...
+</span></span></code></pre></div><p>常用交叉编译器前缀（API 34，arm64-v8a 为例）：</p>
+<ul>
+<li>
+<p><code>aarch64-linux-android34-clang</code></p>
+</li>
+<li>
+<p><code>armv7a-linux-androideabi34-clang</code></p>
+</li>
+<li>
+<p><code>i686-linux-android34-clang</code></p>
+</li>
+<li>
+<p><code>x86_64-linux-android34-clang</code></p>
+</li>
+</ul>
+<h3 id="问题">问题</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>luyang@xretinai:~$ tail ~/.bashrc
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -f /usr/share/bash-completion/bash_completion <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    . /usr/share/bash-completion/bash_completion
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> -f /etc/bash_completion <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    . /etc/bash_completion
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>export ANDROID_NDK_HOME<span style="color:#f92672">=</span>$HOME/android-ndk-r27d
+</span></span><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span>$PATH:$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin
+</span></span><span style="display:flex;"><span>luyang@xretinai:~$ source ~/.bashrc
+</span></span><span style="display:flex;"><span>luyang@xretinai:~$ clang --version
+</span></span><span style="display:flex;"><span>Command <span style="color:#e6db74">&#39;clang&#39;</span> not found, but can be installed with:
+</span></span><span style="display:flex;"><span>sudo apt install clang
+</span></span></code></pre></div><p>从 NDK r19 开始，Google 移除了 clang 这种“裸命令”，改成了 <strong>带三元组的 clang 驱动</strong>。<br>
+所以你在 <code>$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin/</code> 目录下，能看到的是：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>luyang@xretinai:~$ ls android-ndk-r27d/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android* -lah
+</span></span><span style="display:flex;"><span>-rwxr-xr-x <span style="color:#ae81ff">1</span> luyang luyang <span style="color:#ae81ff">201</span> Jul  <span style="color:#ae81ff">9</span> 03:52 android-ndk-r27d/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android21-clang
+</span></span><span style="display:flex;"><span>-rwxr-xr-x <span style="color:#ae81ff">1</span> luyang luyang <span style="color:#ae81ff">205</span> Jul  <span style="color:#ae81ff">9</span> 03:52 android-ndk-r27d/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android21-clang++
+</span></span><span style="display:flex;"><span>-rwxr-xr-x <span style="color:#ae81ff">1</span> luyang luyang <span style="color:#ae81ff">201</span> Jul  <span style="color:#ae81ff">9</span> 03:52 android-ndk-r27d/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android22-clang
+</span></span><span style="display:flex;"><span>-rwxr-xr-x <span style="color:#ae81ff">1</span> luyang luyang <span style="color:#ae81ff">205</span> Jul  <span style="color:#ae81ff">9</span> 03:52 android-ndk-r27d/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android22-clang++
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>-rwxr-xr-x <span style="color:#ae81ff">1</span> luyang luyang <span style="color:#ae81ff">201</span> Jul  <span style="color:#ae81ff">9</span> 03:52 android-ndk-r27d/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android34-clang
+</span></span><span style="display:flex;"><span>-rwxr-xr-x <span style="color:#ae81ff">1</span> luyang luyang <span style="color:#ae81ff">205</span> Jul  <span style="color:#ae81ff">9</span> 03:52 android-ndk-r27d/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android34-clang++
+</span></span><span style="display:flex;"><span>-rwxr-xr-x <span style="color:#ae81ff">1</span> luyang luyang <span style="color:#ae81ff">201</span> Jul  <span style="color:#ae81ff">9</span> 03:52 android-ndk-r27d/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android35-clang
+</span></span><span style="display:flex;"><span>-rwxr-xr-x <span style="color:#ae81ff">1</span> luyang luyang <span style="color:#ae81ff">205</span> Jul  <span style="color:#ae81ff">9</span> 03:52 android-ndk-r27d/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android35-clang++
+</span></span></code></pre></div><p>测试：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>luyang@xretinai:~$ aarch64-linux-android35-clang++ --version
+</span></span><span style="display:flex;"><span>Android <span style="color:#f92672">(</span>13691557, +pgo, +bolt, +lto, +mlgo, based on r522817d<span style="color:#f92672">)</span> clang version 18.0.4 <span style="color:#f92672">(</span>https://android.googlesource.com/toolchain/llvm-project d8003a456d14a3deb8054cdaa529ffbf02d9b262<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Target: aarch64-unknown-linux-android35
+</span></span><span style="display:flex;"><span>Thread model: posix
+</span></span><span style="display:flex;"><span>InstalledDir: /home/luyang/android-ndk-r27d/toolchains/llvm/prebuilt/linux-x86_64/bin
+</span></span></code></pre></div><hr>
+<h2 id="4-创建-cmake-工程">4. 创建 CMake 工程</h2>
+<h3 id="工程目录">工程目录</h3>
+<pre tabindex="0"><code>ndk-demo/
+├── CMakeLists.txt
+├── src/
+│   └── main.cpp
+</code></pre><h3 id="maincpp">main.cpp</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Hello from Android NDK r26 on Ubuntu 24.04!&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="cmakeliststxt">CMakeLists.txt</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>cmake_minimum_required(<span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">3.22</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>project(<span style="color:#e6db74">ndk_demo</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">CMAKE_CXX_STANDARD</span> <span style="color:#e6db74">17</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>add_executable(<span style="color:#e6db74">ndk_demo</span> <span style="color:#e6db74">src/main.cpp</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><hr>
+<h2 id="5-交叉编译配置">5. 交叉编译配置</h2>
+<p>NDK 提供 <strong>CMake toolchain 文件</strong>：<br>
+<code>${ANDROID_NDK_HOME}/build/cmake/android.toolchain.cmake</code></p>
+<p>构建命令（以 arm64-v8a / API 35 为例）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir build <span style="color:#f92672">&amp;&amp;</span> cd build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cmake .. <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-DCMAKE_TOOLCHAIN_FILE<span style="color:#f92672">=</span>$ANDROID_NDK_HOME/build/cmake/android.toolchain.cmake <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-DANDROID_ABI<span style="color:#f92672">=</span>arm64-v8a <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-DANDROID_PLATFORM<span style="color:#f92672">=</span>android-35 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-DCMAKE_BUILD_TYPE<span style="color:#f92672">=</span>Release
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cmake --build .
+</span></span></code></pre></div><p>生成结果：</p>
+<pre tabindex="0"><code>build/
+└── ndk_demo  (Android ARM64 可执行文件)
+</code></pre><hr>
+<h2 id="6-验证可执行文件">6. 验证可执行文件</h2>
+<p>检查目标架构：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>file build/ndk_demo
+</span></span></code></pre></div><p>输出应类似：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>build/ndk_demo: ELF 64-bit LSB pie executable, ARM aarch64, version <span style="color:#ae81ff">1</span> <span style="color:#f92672">(</span>SYSV<span style="color:#f92672">)</span>, dynamically linked, interpreter /system/bin/linker64, BuildID<span style="color:#f92672">[</span>sha1<span style="color:#f92672">]=</span>c8d078ba8f6c9835abf3463e9032debf03ecc7d5, with debug_info, not stripped
+</span></span></code></pre></div><p>拷贝到设备：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adb push build/ndk_demo /data/
+</span></span><span style="display:flex;"><span>adb shell <span style="color:#e6db74">&#34;chmod +x /data/ndk_demo &amp;&amp; /data/ndk_demo&#34;</span>
+</span></span></code></pre></div><p>运行输出：</p>
+<pre tabindex="0"><code>Hello from Android NDK r26 on Ubuntu 24.04!
+</code></pre></section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>382 words</span>
+    <span>4 - 6 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#2-下载并配置-ndk">2. 下载并配置 NDK</a></li>
+    <li><a href="#3-确认交叉编译工具链">3. 确认交叉编译工具链</a>
+      <ul>
+        <li><a href="#问题">问题</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-创建-cmake-工程">4. 创建 CMake 工程</a>
+      <ul>
+        <li><a href="#工程目录">工程目录</a></li>
+        <li><a href="#maincpp">main.cpp</a></li>
+        <li><a href="#cmakeliststxt">CMakeLists.txt</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-交叉编译配置">5. 交叉编译配置</a></li>
+    <li><a href="#6-验证可执行文件">6. 验证可执行文件</a></li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/aarch64-%E4%B8%8B-glibc-open-%E8%B0%83%E7%94%A8%E5%88%B0%E5%86%85%E6%A0%B8%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%85%A5%E5%8F%A3%E7%9A%84%E5%85%A8%E8%B7%AF%E5%BE%84%E8%A7%A3%E6%9E%90/">📘AArch64 下 glibc `open()` 调用到内核系统调用入口的全路径解析</a></li><li><a href="/posts/android-16-pistachio-%E5%BC%80%E5%BF%83%E6%9E%9C-%E5%85%A8%E9%9D%A2%E6%8A%80%E6%9C%AF%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/">Android 16 &#34;Pistachio&#34; ：“开心果”全面技术深度解析</a></li><li><a href="/posts/windows_wsl_ubuntu_adb_%E9%85%8D%E7%BD%AE/">Windows WSL ubuntu adb 配置</a></li><li><a href="/posts/gerrit/">gerrit 环境搭建</a></li><li><a href="/posts/androidjava-.7%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">Android Java 1.7 环境配置</a></li></ul></aside></div>
+  </div>
+</body>
+</html>

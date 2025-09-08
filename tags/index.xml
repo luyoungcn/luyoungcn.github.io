@@ -6,8 +6,36 @@
     <description>Recent content in Tags on LuyangのBlog</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 13 Jul 2025 02:30:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 08 Sep 2025 02:30:00 +0800</lastBuildDate>
     <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AArch64</title>
+      <link>/tags/aarch64/</link>
+      <pubDate>Mon, 08 Sep 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/aarch64/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Android</title>
+      <link>/tags/android/</link>
+      <pubDate>Mon, 08 Sep 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/android/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ARM</title>
+      <link>/tags/arm/</link>
+      <pubDate>Mon, 08 Sep 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/arm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ndk</title>
+      <link>/tags/ndk/</link>
+      <pubDate>Mon, 08 Sep 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/ndk/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Bin</title>
       <link>/tags/bin/</link>
@@ -23,24 +51,10 @@
       <description></description>
     </item>
     <item>
-      <title>AArch64</title>
-      <link>/tags/aarch64/</link>
-      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
-      <guid>/tags/aarch64/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>ADI</title>
       <link>/tags/adi/</link>
       <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
       <guid>/tags/adi/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>ARM</title>
-      <link>/tags/arm/</link>
-      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
-      <guid>/tags/arm/</guid>
       <description></description>
     </item>
     <item>
@@ -251,13 +265,6 @@
       <link>/tags/adl/</link>
       <pubDate>Mon, 23 Jun 2025 00:00:00 +0800</pubDate>
       <guid>/tags/adl/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Android</title>
-      <link>/tags/android/</link>
-      <pubDate>Tue, 10 Jun 2025 00:00:00 +0800</pubDate>
-      <guid>/tags/android/</guid>
       <description></description>
     </item>
     <item>
