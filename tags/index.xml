@@ -6,8 +6,64 @@
     <description>Recent content in Tags on LuyangのBlog</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 08 Sep 2025 02:30:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 09 Sep 2025 00:00:00 +0800</lastBuildDate>
     <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Arch</title>
+      <link>/tags/arch/</link>
+      <pubDate>Tue, 09 Sep 2025 00:00:00 +0800</pubDate>
+      <guid>/tags/arch/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Blog</title>
+      <link>/tags/blog/</link>
+      <pubDate>Tue, 09 Sep 2025 00:00:00 +0800</pubDate>
+      <guid>/tags/blog/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>/tags/linux/</link>
+      <pubDate>Tue, 09 Sep 2025 00:00:00 +0800</pubDate>
+      <guid>/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Node</title>
+      <link>/tags/node/</link>
+      <pubDate>Tue, 09 Sep 2025 00:00:00 +0800</pubDate>
+      <guid>/tags/node/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nodejs</title>
+      <link>/tags/nodejs/</link>
+      <pubDate>Tue, 09 Sep 2025 00:00:00 +0800</pubDate>
+      <guid>/tags/nodejs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Npm</title>
+      <link>/tags/npm/</link>
+      <pubDate>Tue, 09 Sep 2025 00:00:00 +0800</pubDate>
+      <guid>/tags/npm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nvm</title>
+      <link>/tags/nvm/</link>
+      <pubDate>Tue, 09 Sep 2025 00:00:00 +0800</pubDate>
+      <guid>/tags/nvm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Quartz</title>
+      <link>/tags/quartz/</link>
+      <pubDate>Tue, 09 Sep 2025 00:00:00 +0800</pubDate>
+      <guid>/tags/quartz/</guid>
+      <description></description>
+    </item>
     <item>
       <title>AArch64</title>
       <link>/tags/aarch64/</link>
@@ -90,13 +146,6 @@
       <link>/tags/kernel/</link>
       <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
       <guid>/tags/kernel/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Linux</title>
-      <link>/tags/linux/</link>
-      <pubDate>Tue, 08 Jul 2025 02:30:00 +0800</pubDate>
-      <guid>/tags/linux/</guid>
       <description></description>
     </item>
     <item>
@@ -818,13 +867,6 @@
       <link>/tags/beyondcompare/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
       <guid>/tags/beyondcompare/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Blog</title>
-      <link>/tags/blog/</link>
-      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>/tags/blog/</guid>
       <description></description>
     </item>
     <item>

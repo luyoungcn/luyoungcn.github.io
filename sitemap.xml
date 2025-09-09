@@ -8,6 +8,42 @@
     <loc>/posts/configuration/</loc>
     <lastmod>2025-03-24T23:00:00-03:00</lastmod>
   </url><url>
+    <loc>/posts/%E4%BD%BF%E7%94%A8-nvm-%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%E7%9A%84-nodejs-npm/</loc>
+    <lastmod>2025-09-09T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/arch/</loc>
+    <lastmod>2025-09-09T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/blog/</loc>
+    <lastmod>2025-09-09T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/linux/</loc>
+    <lastmod>2025-09-09T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2025-09-09T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/node/</loc>
+    <lastmod>2025-09-09T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/nodejs/</loc>
+    <lastmod>2025-09-09T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/npm/</loc>
+    <lastmod>2025-09-09T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/nvm/</loc>
+    <lastmod>2025-09-09T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2025-09-09T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/quartz/</loc>
+    <lastmod>2025-09-09T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2025-09-09T00:00:00+08:00</lastmod>
+  </url><url>
     <loc>/posts/android-14-%E4%B8%8A%E6%90%AD%E5%BB%BA-ndk-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%9C%80%E8%A6%81%E9%80%9A%E8%BF%87-android-studio-%E5%92%8C-ndk-r27&#43;-%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2025-09-08T02:30:00+08:00</lastmod>
   </url><url>
@@ -20,16 +56,7 @@
     <loc>/tags/arm/</loc>
     <lastmod>2025-09-08T02:30:00+08:00</lastmod>
   </url><url>
-    <loc>/</loc>
-    <lastmod>2025-09-08T02:30:00+08:00</lastmod>
-  </url><url>
     <loc>/tags/ndk/</loc>
-    <lastmod>2025-09-08T02:30:00+08:00</lastmod>
-  </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2025-09-08T02:30:00+08:00</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
     <lastmod>2025-09-08T02:30:00+08:00</lastmod>
   </url><url>
     <loc>/posts/bin-%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E7%89%B9%E5%BE%81%E4%B8%8E%E7%BC%96%E8%BE%91%E5%99%A8%E6%89%93%E5%BC%80%E6%A8%A1%E5%BC%8F%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90/</loc>
@@ -66,9 +93,6 @@
     <lastmod>2025-07-08T02:30:00+08:00</lastmod>
   </url><url>
     <loc>/tags/kernel/</loc>
-    <lastmod>2025-07-08T02:30:00+08:00</lastmod>
-  </url><url>
-    <loc>/tags/linux/</loc>
     <lastmod>2025-07-08T02:30:00+08:00</lastmod>
   </url><url>
     <loc>/tags/oom/</loc>
@@ -618,9 +642,6 @@
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/beyondcompare/</loc>
-    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>/tags/blog/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/boost/</loc>
