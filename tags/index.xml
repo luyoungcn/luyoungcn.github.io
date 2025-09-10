@@ -6,8 +6,22 @@
     <description>Recent content in Tags on LuyangのBlog</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 09 Sep 2025 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 10 Sep 2025 02:30:00 +0800</lastBuildDate>
     <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Svn</title>
+      <link>/tags/svn/</link>
+      <pubDate>Wed, 10 Sep 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/svn/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ubuntu</title>
+      <link>/tags/ubuntu/</link>
+      <pubDate>Wed, 10 Sep 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/ubuntu/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Arch</title>
       <link>/tags/arch/</link>
@@ -443,13 +457,6 @@
       <description></description>
     </item>
     <item>
-      <title>Ubuntu</title>
-      <link>/tags/ubuntu/</link>
-      <pubDate>Thu, 15 May 2025 00:00:00 +0800</pubDate>
-      <guid>/tags/ubuntu/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>定时器</title>
       <link>/tags/%E5%AE%9A%E6%97%B6%E5%99%A8/</link>
       <pubDate>Thu, 15 May 2025 00:00:00 +0800</pubDate>
@@ -552,13 +559,6 @@
       <link>/tags/spidev/</link>
       <pubDate>Mon, 26 Jun 2023 03:00:00 +0800</pubDate>
       <guid>/tags/spidev/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Svn</title>
-      <link>/tags/svn/</link>
-      <pubDate>Mon, 26 Jun 2023 03:00:00 +0800</pubDate>
-      <guid>/tags/svn/</guid>
       <description></description>
     </item>
     <item>

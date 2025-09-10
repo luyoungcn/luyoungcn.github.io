@@ -8,6 +8,24 @@
     <loc>/posts/configuration/</loc>
     <lastmod>2025-03-24T23:00:00-03:00</lastmod>
   </url><url>
+    <loc>/posts/svn-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
+    <lastmod>2025-09-10T02:30:00+08:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2025-09-10T02:30:00+08:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2025-09-10T02:30:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/svn/</loc>
+    <lastmod>2025-09-10T02:30:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2025-09-10T02:30:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/ubuntu/</loc>
+    <lastmod>2025-09-10T02:30:00+08:00</lastmod>
+  </url><url>
     <loc>/posts/%E4%BD%BF%E7%94%A8-nvm-%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%E7%9A%84-nodejs-npm/</loc>
     <lastmod>2025-09-09T00:00:00+08:00</lastmod>
   </url><url>
@@ -18,9 +36,6 @@
     <lastmod>2025-09-09T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/linux/</loc>
-    <lastmod>2025-09-09T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>/</loc>
     <lastmod>2025-09-09T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/node/</loc>
@@ -35,13 +50,7 @@
     <loc>/tags/nvm/</loc>
     <lastmod>2025-09-09T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2025-09-09T00:00:00+08:00</lastmod>
-  </url><url>
     <loc>/tags/quartz/</loc>
-    <lastmod>2025-09-09T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
     <lastmod>2025-09-09T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/posts/android-14-%E4%B8%8A%E6%90%AD%E5%BB%BA-ndk-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%9C%80%E8%A6%81%E9%80%9A%E8%BF%87-android-studio-%E5%92%8C-ndk-r27&#43;-%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE/</loc>
@@ -284,9 +293,6 @@
     <loc>/tags/timer/</loc>
     <lastmod>2025-05-15T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>/tags/ubuntu/</loc>
-    <lastmod>2025-05-15T00:00:00+08:00</lastmod>
-  </url><url>
     <loc>/posts/ubuntu_git_server_build_push_code/</loc>
     <lastmod>2025-05-15T00:00:00+08:00</lastmod>
   </url><url>
@@ -393,9 +399,6 @@
     <lastmod>2023-06-26T03:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/spidev/</loc>
-    <lastmod>2023-06-26T03:00:00+08:00</lastmod>
-  </url><url>
-    <loc>/tags/svn/</loc>
     <lastmod>2023-06-26T03:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/terminal/</loc>
