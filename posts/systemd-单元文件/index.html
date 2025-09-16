@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📘systemd 单元文件 | LuyangのBlog</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/systemd-%E5%8D%95%E5%85%83%E6%96%87%E4%BB%B6/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="📘systemd 单元文件">
+  <meta property="og:description" content="[[systemd]]
+systemd 单元文件 systemd 的核心设计思想是将系统里的一切资源都抽象成“单元”（Unit）。单元是 systemd 管理的基本对象，涵盖了服务、套接字、设备、挂载点乃至系统状态等。
+单元文件就是用来定义一个单元的纯文本配置文件。它清晰地描述了这个单元的属性、行为以及它与其他单元之间的关系。这些文件采用类似 INI 的语法，易于阅读和编写。
+文件位置与优先级 systemd 会从多个目录中加载单元文件，并遵循一套明确的优先级规则
+系统级（只读包）：/usr/lib/systemd/system/ 系统级（本地管理员覆写）：/etc/systemd/system/ 运行时（临时，重启丢失）：/run/systemd/system/ 优先级：/etc 覆盖 /run 覆盖 /usr/lib。同名时，高优先级目录生效。 推荐使用 systemctl edit &lt;unit&gt; 生成 drop-in 覆盖，避免直接改发行文件。
+/etc/systemd/system/：最高优先级。系统管理员存放自定义或修改后的单元文件的地方。这里的配置会覆盖其他位置的同名文件。 /run/systemd/system/：第二优先级。通常由程序在运行时动态创建单元文件。系统重启后该目录内容会丢失。 /usr/lib/systemd/system/：最低优先级。通常由软件包管理器（如 apt、yum`）安装的默认单元文件存放于此。不建议直接修改这里的文件。 核心原则：当需要修改一个默认单元文件时（例如 sshd.service），推荐使用 systemctl edit --full sshd.service 命令。它会自动将文件从 /usr/lib/systemd/system/ 复制到 /etc/systemd/system/ 并打开编辑器，确保你的修改具有最高优先级且不会在软件包升级时被覆盖。
+systemd unit 定义行为、依赖与生命周期
+管理的对象：服务、套接字、计时器、挂载点等。
+常见类型：service、socket、target、timer、path、mount、automount、device、slice、scope。
+单元命名与实例化 文件名格式：name.type，例如：nginx.service、sshd.socket。
+模板单元：name@.type，实例化时用 name@instance.type，适合 per-connection 或 per-device。
+你当前使用的是模板服务 dropbear@.service 配合 dropbear.socket 实现每连接派生。
+单元文件结构 一个单元文件通常由几个配置段（Section）组成，每个段由 [方括号] 标识。其中，[Unit] 和 [Install] 是几乎所有单元类型都通用的。
+[Unit]: 通用元信息、依赖、顺序。 [Service]/[Socket]/[Timer]/…：类型专属的配置段。 [Install]: 启用时的附着点（WantedBy/RequiredBy/Also）。 [Unit] 段：通用元数据与依赖关系 此段定义了单元的通用属性，它不关心单元的类型。">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-09-16T02:30:00+08:00">
+    <meta property="article:modified_time" content="2025-09-16T02:30:00+08:00">
+    <meta property="article:tag" content="Ubuntu">
+    <meta property="article:tag" content="Systemd">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="📘systemd 单元文件">
+  <meta name="twitter:description" content="[[systemd]]
+systemd 单元文件 systemd 的核心设计思想是将系统里的一切资源都抽象成“单元”（Unit）。单元是 systemd 管理的基本对象，涵盖了服务、套接字、设备、挂载点乃至系统状态等。
+单元文件就是用来定义一个单元的纯文本配置文件。它清晰地描述了这个单元的属性、行为以及它与其他单元之间的关系。这些文件采用类似 INI 的语法，易于阅读和编写。
+文件位置与优先级 systemd 会从多个目录中加载单元文件，并遵循一套明确的优先级规则
+系统级（只读包）：/usr/lib/systemd/system/ 系统级（本地管理员覆写）：/etc/systemd/system/ 运行时（临时，重启丢失）：/run/systemd/system/ 优先级：/etc 覆盖 /run 覆盖 /usr/lib。同名时，高优先级目录生效。 推荐使用 systemctl edit &lt;unit&gt; 生成 drop-in 覆盖，避免直接改发行文件。
+/etc/systemd/system/：最高优先级。系统管理员存放自定义或修改后的单元文件的地方。这里的配置会覆盖其他位置的同名文件。 /run/systemd/system/：第二优先级。通常由程序在运行时动态创建单元文件。系统重启后该目录内容会丢失。 /usr/lib/systemd/system/：最低优先级。通常由软件包管理器（如 apt、yum`）安装的默认单元文件存放于此。不建议直接修改这里的文件。 核心原则：当需要修改一个默认单元文件时（例如 sshd.service），推荐使用 systemctl edit --full sshd.service 命令。它会自动将文件从 /usr/lib/systemd/system/ 复制到 /etc/systemd/system/ 并打开编辑器，确保你的修改具有最高优先级且不会在软件包升级时被覆盖。
+systemd unit 定义行为、依赖与生命周期
+管理的对象：服务、套接字、计时器、挂载点等。
+常见类型：service、socket、target、timer、path、mount、automount、device、slice、scope。
+单元命名与实例化 文件名格式：name.type，例如：nginx.service、sshd.socket。
+模板单元：name@.type，实例化时用 name@instance.type，适合 per-connection 或 per-device。
+你当前使用的是模板服务 dropbear@.service 配合 dropbear.socket 实现每连接派生。
+单元文件结构 一个单元文件通常由几个配置段（Section）组成，每个段由 [方括号] 标识。其中，[Unit] 和 [Install] 是几乎所有单元类型都通用的。
+[Unit]: 通用元信息、依赖、顺序。 [Service]/[Socket]/[Timer]/…：类型专属的配置段。 [Install]: 启用时的附着点（WantedBy/RequiredBy/Also）。 [Unit] 段：通用元数据与依赖关系 此段定义了单元的通用属性，它不关心单元的类型。">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.e139b0e3b3aff8f0e8e0272554b671a06c857a42278b36c539d96c69ddee2ca2.css" integrity="sha256-4Tmw47Ov&#43;PDo4CclVLZxoGyFekInizbFOdlsad3uLKI=" crossorigin="anonymous">
+
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>📘systemd 单元文件</h1><time class="dim" datetime="2025-09-16T02:30:00&#43;08:00">September 16, 2025</time><div class="term-container"><div class="tag">
+        <a href="/tags/ubuntu/">#ubuntu</a>
+      </div><div class="tag">
+        <a href="/tags/systemd/">#systemd</a>
+      </div></ol></div>
+  <section class="page-section"><p>[[systemd]]</p>
+<h1 id="systemd-单元文件">systemd 单元文件</h1>
+<p><code>systemd</code> 的核心设计思想是将系统里的一切资源都抽象成“单元”（Unit）。单元是 <code>systemd</code> 管理的基本对象，涵盖了服务、套接字、设备、挂载点乃至系统状态等。</p>
+<p><strong>单元文件</strong>就是用来定义一个单元的纯文本配置文件。它清晰地描述了这个单元的属性、行为以及它与其他单元之间的关系。这些文件采用类似 INI 的语法，易于阅读和编写。</p>
+<h2 id="文件位置与优先级">文件位置与优先级</h2>
+<p><code>systemd</code> 会从多个目录中加载单元文件，并遵循一套明确的优先级规则</p>
+<ul>
+<li>系统级（只读包）：<code>/usr/lib/systemd/system/</code></li>
+<li>系统级（本地管理员覆写）：<code>/etc/systemd/system/</code></li>
+<li>运行时（临时，重启丢失）：<code>/run/systemd/system/</code></li>
+<li>优先级：<code>/etc</code> 覆盖 <code>/run</code> 覆盖 <code>/usr/lib</code>。同名时，高优先级目录生效。</li>
+</ul>
+<p>推荐使用 <code>systemctl edit &lt;unit&gt;</code> 生成 drop-in 覆盖，避免直接改发行文件。</p>
+<ul>
+<li><code>/etc/systemd/system/</code>：最高优先级。系统管理员存放自定义或修改后的单元文件的地方。这里的配置会覆盖其他位置的同名文件。</li>
+<li><code>/run/systemd/system/</code>：第二优先级。通常由程序在运行时动态创建单元文件。系统重启后该目录内容会丢失。</li>
+<li>/usr/lib/systemd/system/<code>：最低优先级。通常由软件包管理器（如 </code>apt<code>、</code>yum`）安装的默认单元文件存放于此。<strong>不建议直接修改这里的文件</strong>。</li>
+</ul>
+<p>核心原则：当需要修改一个默认单元文件时（例如 <code>sshd.service</code>），推荐使用 <code>systemctl edit --full sshd.service</code> 命令。它会自动将文件从 <code>/usr/lib/systemd/system/</code> 复制到 <code>/etc/systemd/system/</code> 并打开编辑器，确保你的修改具有最高优先级且不会在软件包升级时被覆盖。</p>
+<h2 id="systemd-unit">systemd unit</h2>
+<p>定义行为、依赖与生命周期</p>
+<p>管理的对象：服务、套接字、计时器、挂载点等。</p>
+<p>常见类型：<code>service</code>、<code>socket</code>、<code>target</code>、<code>timer</code>、<code>path</code>、<code>mount</code>、<code>automount</code>、<code>device</code>、<code>slice</code>、<code>scope</code>。</p>
+<h3 id="单元命名与实例化">单元命名与实例化</h3>
+<p>文件名格式：<code>name.type</code>，例如：<code>nginx.service</code>、<code>sshd.socket</code>。</p>
+<p>模板单元：<code>name@.type</code>，实例化时用 <code>name@instance.type</code>，适合 per-connection 或 per-device。</p>
+<p>你当前使用的是模板服务 <code>dropbear@.service</code> 配合 <code>dropbear.socket</code> 实现每连接派生。</p>
+<h2 id="单元文件结构">单元文件结构</h2>
+<p>一个单元文件通常由几个配置段（Section）组成，每个段由 <code>[方括号]</code> 标识。其中，<code>[Unit]</code> 和 <code>[Install]</code> 是几乎所有单元类型都通用的。</p>
+<ul>
+<li><code>[Unit]</code>: 通用元信息、依赖、顺序。</li>
+<li><code>[Service]</code>/<code>[Socket]</code>/<code>[Timer]</code>/…：类型专属的配置段。</li>
+<li><code>[Install]</code>: 启用时的附着点（WantedBy/RequiredBy/Also）。</li>
+</ul>
+<h3 id="unit-段通用元数据与依赖关系"><code>[Unit]</code> 段：通用元数据与依赖关系</h3>
+<p>此段定义了单元的通用属性，它不关心单元的类型。</p>
+<ul>
+<li><code>Description=</code>: 一段描述性文本，用于在 <code>systemctl status</code> 等命令中直观地展示单元的用途。</li>
+<li><code>Documentation=</code>: 提供文档链接，可以是 <code>man</code> 手册页或 URL，如 <code>man:sshd(8)</code> 或 <code>https://example.com/docs</code>。</li>
+<li><code>After=</code>: 定义启动顺序。此单元将在 <code>After</code> 列出的单元<strong>启动完成之后</strong>再启动。这是最常用的顺序依赖。</li>
+<li><code>Before=</code>: 定义启动顺序。此单元将在 <code>Before</code> 列出的单元<strong>启动之前</strong>先启动。</li>
+<li><code>Wants=</code>: 定义一种<strong>弱依赖</strong>关系。此单元启动时，<code>systemd</code> 会<strong>尝试</strong>启动 <code>Wants</code> 列出的单元。但即使后者启动失败，也不影响此单元的启动。</li>
+<li><code>Requires=</code>: 定义一种<strong>强依赖</strong>关系。此单元启动时，<code>systemd</code> 必须<strong>成功</strong>启动 <code>Requires</code> 列出的单元。如果后者启动失败，此单元也将被停用。</li>
+<li>Conflicts=<code>: 定义冲突关系。如果此单元启动，</code>Conflicts` 中列出的单元将会被停止。反之亦然。</li>
+</ul>
+<h3 id="install-段启用与开机自启行为"><code>[Install]</code> 段：启用与开机自启行为</h3>
+<p>此段定义了当用户使用 <code>systemctl enable/disable</code> 命令时，该单元应如何表现。</p>
+<ul>
+<li><code>WantedBy=</code>: <strong>最常用</strong>的指令。表示此单元是 <code>WantedBy</code> 所指定的 <code>.target</code> 单元的“一部分”。执行 <code>systemctl enable</code> 时，<code>systemd</code> 会在 <code>/etc/systemd/system/</code> 目录下创建一个指向此单元文件的符号链接，链接位于 <code>multi-user.target.wants/</code> 这样的目录中。</li>
+<li><code>RequiredBy=</code>: 类似于 <code>WantedBy</code>，但表示一个更强的依赖。如果 <code>RequiredBy</code> 指定的 <code>.target</code> 启动，此单元必须成功启动。</li>
+<li>Also=<code>: 指定当此单元被启用/禁用时，</code>Also` 列出的其他单元也应被一同启用/禁用。</li>
+</ul>
+<h2 id="主要单元文件类型详解">主要单元文件类型详解</h2>
+<h3 id="service-unit-service">Service Unit (<code>.service</code>)</h3>
+<p>这是<strong>最核心、最常用</strong>的单元类型，用于定义一个系统服务（守护进程）。</p>
+<p><strong>主要用途</strong>：启动、停止、重启和管理后台服务进程。</p>
+<p><strong>核心配置段</strong>：<code>[Service]</code></p>
+<p><strong>常用指令</strong>：</p>
+<ul>
+<li><code>Type=</code>: 定义服务的启动类型。
+<ul>
+<li><code>simple</code> (默认): <code>ExecStart</code> 后的主进程就是服务进程。</li>
+<li><code>forking</code>: <code>ExecStart</code> 启动的进程会 <code>fork()</code> 一个子进程作为真正的服务进程，父进程会退出。<code>systemd</code> 会等待父进程退出后认为服务启动完成。</li>
+<li><code>oneshot</code>: 类似于 <code>simple</code>，但 <code>systemd</code> 会等待主进程退出后才认为服务启动完成。适用于一次性任务（如内核模块加载、文件系统检查）。</li>
+<li><code>notify</code>: 服务启动后会通过 <code>sd_notify()</code> 函数向 <code>systemd</code> 发送“准备就绪”的信号。</li>
+<li><code>dbus</code>: 服务需要获取一个 D-Bus 名称。</li>
+</ul>
+</li>
+<li><code>ExecStart=</code>: 指定启动服务时要执行的命令。</li>
+<li><code>ExecStop=</code>: 指定停止服务时要执行的命令（可选）。</li>
+<li><code>ExecReload=</code>: 指定重载服务配置时要执行的命令（可选）。</li>
+<li><code>Restart=</code>: 定义服务在何种情况下应被自动重启。常用值有 <code>no</code> (默认)、<code>on-success</code>、<code>on-failure</code>、<code>on-abnormal</code>、<code>always</code>。</li>
+<li><code>User=</code> / <code>Group=</code>: 指定运行服务的用户和用户组。出于安全考虑，推荐使用非 <code>root</code> 用户。</li>
+<li><code>WorkingDirectory=</code>: 指定进程的工作目录。</li>
+<li><code>Environment=</code> / <code>EnvironmentFile=</code>: 为服务进程设置环境变量或从文件中加载环境变量。</li>
+</ul>
+<h3 id="socket-unit-socket">Socket Unit (<code>.socket</code>)</h3>
+<p>用于定义一个网络套接字（TCP/UDP）或本地 IPC 套接字。它是 <code>systemd</code> 实现<strong>按需启动 (Socket Activation)</strong> 的关键。</p>
+<p><strong>主要用途</strong>：代替服务进程监听端口。当有连接请求时，<code>systemd</code> 会激活并启动相应的 <code>.service</code> 单元来处理该连接。</p>
+<p><strong>核心配置段</strong>：<code>[Socket]</code></p>
+<p><strong>常用指令</strong>：</p>
+<ul>
+<li><code>ListenStream=</code>: 监听一个 TCP 套接字。值是端口号。</li>
+<li><code>ListenDatagram=</code>: 监听一个 UDP 套接字。</li>
+<li><code>ListenFIFO=</code>: 监听一个 FIFO (命名管道)。</li>
+<li><code>Accept=</code>: 布尔值。<code>false</code> (默认) 表示 <code>systemd</code> 接受连接后，会启动一个服务实例并将该连接传递给它，然后该服务负责处理后续所有连接。<code>yes</code> 表示 <code>systemd</code> 会为<strong>每一个</strong>进来的连接都启动一个新的服务实例（如 <code>dropbear@.service</code> 模板）。</li>
+<li><code>Service=</code>: 指定当此套接字有活动时要激活的服务名。如果 socket 文件名是 <code>foo.socket</code>，默认激活的服务就是 <code>foo.service</code>。</li>
+</ul>
+<h3 id="target-unit-target">Target Unit (<code>.target</code>)</h3>
+<p>用于对其他单元进行逻辑分组，本身不执行任何操作。它取代了传统 SysVinit 中的“运行级别”（Runlevel）。</p>
+<p><strong>主要用途</strong>：定义系统状态的同步点，管理一组相关的单元。</p>
+<p><strong>核心配置段</strong>：无专属配置段，主要通过 <code>[Unit]</code> 段的 <code>Wants</code> 和 <code>Requires</code> 来聚合其他单元。</p>
+<p><strong>常用 Targets</strong>：</p>
+<ul>
+<li><code>multi-user.target</code>: 类似于运行级别 3，用于启动所有网络服务，进入多用户命令行模式。</li>
+<li><code>graphical.target</code>: 类似于运行级别 5，依赖 <code>multi-user.target</code>，并额外启动图形界面服务。</li>
+<li><code>network.target</code>: 表示网络已就绪。</li>
+<li><code>sockets.target</code>: 所有 <code>.socket</code> 单元都应属于此目标。</li>
+<li><code>reboot.target</code>: 用于重启系统。</li>
+</ul>
+<h3 id="timer-unit-timer">Timer Unit (<code>.timer</code>)</h3>
+<p>用于定义定时器，是 <code>cron</code> 的现代化替代品，可以触发任何 <code>.service</code> 单元。</p>
+<p><strong>主要用途</strong>：定时或周期性地执行任务。</p>
+<p><strong>核心配置段</strong>：<code>[Timer]</code></p>
+<p><strong>常用指令</strong>：</p>
+<ul>
+<li><code>OnCalendar=</code>: 基于日历的绝对时间。语法灵活，如 <code>daily</code>, <code>weekly</code>, <code>*-*-* 12:00:00</code> (每天中午12点)。</li>
+<li><code>OnActiveSec=</code>: 相对于 <code>timer</code> 自身被激活的时间。</li>
+<li><code>OnBootSec=</code>: 相对于系统启动完成的时间。</li>
+<li><code>OnUnitActiveSec=</code>: 相对于它所激活的单元最后一次被激活的时间。</li>
+<li><code>Unit=</code>: 指定此定时器要触发的单元名。默认是同名的 <code>.service</code> 文件。</li>
+<li><code>Persistent=</code>: 布尔值。如果设为 <code>true</code>，当系统关机时错过的执行任务，会在下次开机后立即补上。</li>
+</ul>
+<h3 id="path-unit-path">Path Unit (<code>.path</code>)</h3>
+<p>用于监控文件或目录的变化，当事件发生时触发另一个单元。</p>
+<p><strong>主要用途</strong>：实现基于文件系统事件的按需服务启动。</p>
+<p><strong>核心配置段</strong>：<code>[Path]</code></p>
+<p><strong>常用指令</strong>：</p>
+<ul>
+<li><code>PathExists=</code>: 当指定路径存在时触发。</li>
+<li><code>PathChanged=</code>: 当文件内容发生变化时触发。</li>
+<li><code>PathModified=</code>: 当文件内容或元数据（如权限、时间戳）发生变化时触发。</li>
+<li><code>DirectoryNotEmpty=</code>: 当指定目录从空变为非空时触发。</li>
+<li><code>Unit=</code>: 指定要触发的单元。</li>
+</ul>
+<h3 id="mount-unit-mount--automount-unit-automount">Mount Unit (<code>.mount</code>) &amp; Automount Unit (<code>.automount</code>)</h3>
+<p><strong>.mount</strong>: 用于以声明式的方式管理文件系统的挂载点，可以替代 <code>/etc/fstab</code>。<code>systemd</code> 会在启动时自动将 <code>/etc/fstab</code> 条目转换为 <code>.mount</code> 单元。</p>
+<p><strong>.automount</strong>: 用于实现文件系统的按需挂载。它会监听一个挂载点目录，只有当该目录被访问时，<code>systemd</code> 才会真正执行挂载操作。</p>
+<h3 id="slice-unit-slice">Slice Unit (<code>.slice</code>)</h3>
+<p>用于对一组单元进行资源限制。它基于 Linux 内核的 cgroups (控制组) 功能，本身不包含进程，而是作为一个资源控制的层级。</p>
+<p><strong>主要用途</strong>：对系统、用户或特定服务的 CPU、内存、I/O 等资源进行分组和限制。</p>
+<p><strong>核心配置段</strong>：<code>[Slice]</code>，但资源限制通常直接在此段中定义。</p>
+<p><strong>常用指令</strong>：<code>CPUWeight=</code>, <code>MemoryMax=</code>, <code>IOWeight=</code> 等。</p>
+<p><strong>默认 Slice</strong>：<code>system.slice</code> (系统服务), <code>user.slice</code> (用户会话), <code>machine.slice</code> (虚拟机和容器)。</p>
+<h3 id="scope-unit-scope">Scope Unit (<code>.scope</code>)</h3>
+<p>与 <code>.service</code> 类似，也用于管理一组进程。但 <code>.scope</code> 单元不是通过 <code>systemd</code> 启动进程，而是用于管理由外部进程（如用户登录、容器运行时）创建的进程。</p>
+<h3 id="device-unit-device">Device Unit (<code>.device</code>)</h3>
+<p>由 <code>systemd-udevd</code> 服务自动创建，用于响应内核的设备热插拔事件。通常用户不需要手动创建。</p>
+<h3 id="swap-unit-swap">Swap Unit (<code>.swap</code>)</h3>
+<p>用于定义和管理交换空间（swap分区或文件），可替代 <code>/etc/fstab</code> 中的 <code>swap</code> 条目。</p>
+<h3 id="snapshot-unit-snapshot">Snapshot Unit (<code>.snapshot</code>)</h3>
+<p>一种特殊的单元，用于保存 <code>systemd</code> 管理器的当前状态（所有正在运行的单元）。可以用于临时进入一个不同的状态，然后再恢复到快照时的状态。</p>
+<h2 id="依赖与顺序的要点">依赖与顺序的要点</h2>
+<ul>
+<li><code>Requires=</code> 强依赖；失败会导致依赖者失败。</li>
+<li><code>Wants=</code> 软依赖；失败不导致依赖者失败。</li>
+<li><code>Before=</code>/<code>After=</code> 仅控制顺序，不建立依赖。</li>
+</ul>
+<p>套接字激活时，socket 与 service 的依赖/顺序由 systemd 根据命名自动处理。</p>
+<h2 id="条件与断言">条件与断言</h2>
+<p><code>ConditionPathExists=</code>、<code>ConditionKernelCommandLine=</code> 等，条件不满足时跳过激活且不视为失败。
+<code>Assert*=</code> 不满足时视为失败。</p>
+<h2 id="环境变量与配置注入">环境变量与配置注入</h2>
+<ul>
+<li><code>Environment=&quot;KEY=VAL&quot;</code></li>
+<li>EnvironmentFile=/etc/default/foo`（常见 Debian/BusyBox 习惯）</li>
+</ul>
+<p>建议把可变参数放 <code>EnvironmentFile</code>，便于 OTA/不同机型差异化。</p>
+<h2 id="进程模型与-exec">进程模型与 Exec</h2>
+<ul>
+<li><code>Type=simple</code>：<code>ExecStart</code> 进程为主进程</li>
+<li><code>Type=forking</code>：适配传统 daemonize 程序（会 fork）</li>
+<li><code>Type=notify</code>：进程通过 sd_notify 报告就绪</li>
+<li><code>ExecStartPre=</code>/<code>ExecStartPost=</code>：前后钩子</li>
+<li>TimeoutStartSec=` 避免卡启动</li>
+</ul>
+<h2 id="资源限制与安全沙箱">资源限制与安全沙箱</h2>
+<h3 id="限制">限制</h3>
+<ul>
+<li><code>User=</code>、<code>Group=</code>、<code>SupplementaryGroups=</code></li>
+<li><code>LimitNOFILE=</code>、<code>MemoryMax=</code>、<code>TasksMax=</code></li>
+<li><code>CPUQuota=</code>、<code>IOSchedulingClass=</code> 等</li>
+</ul>
+<h3 id="沙箱">沙箱</h3>
+<ul>
+<li><code>ProtectSystem=full/strict</code></li>
+<li><code>ProtectHome=true</code>、<code>PrivateTmp=true</code>、<code>PrivateDevices=true</code></li>
+<li><code>NoNewPrivileges=true</code></li>
+<li><code>CapabilityBoundingSet=</code>、<code>AmbientCapabilities=</code></li>
+<li>RestrictAddressFamilies=<code>、</code>RestrictSUIDSGID=<code>、</code>LockPersonality=`</li>
+</ul>
+<p>对嵌入式建议：尽量开启 <code>NoNewPrivileges</code>、收窄 capability 集、文件系统 Protect、限制文件句柄与内存。</p>
+<h3 id="systemd-单元文件管理速查表">systemd 单元文件管理速查表</h3>
+<table>
+  <thead>
+      <tr>
+          <th>命令</th>
+          <th>用途</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>systemctl status &lt;unit&gt;</code></td>
+          <td>查看单元的当前状态、日志摘要等详细信息。</td>
+      </tr>
+      <tr>
+          <td><code>journalctl -fu &lt;unit&gt;</code></td>
+          <td>实时跟踪（follow）指定单元的日志输出。</td>
+      </tr>
+      <tr>
+          <td><code>systemctl cat &lt;unit&gt;</code></td>
+          <td>查看单元的最终合成配置（包含所有 drop-in 文件）。</td>
+      </tr>
+      <tr>
+          <td><code>systemctl list-dependencies &lt;unit&gt;</code></td>
+          <td>查看单元依赖的其他单元。</td>
+      </tr>
+      <tr>
+          <td><code>systemctl list-dependencies --reverse &lt;unit&gt;</code></td>
+          <td>查看依赖此单元的其他单元。</td>
+      </tr>
+      <tr>
+          <td><code>systemctl start &lt;unit&gt;</code></td>
+          <td><strong>立即启动</strong>一个单元。只影响当前会话，不设置开机自启。</td>
+      </tr>
+      <tr>
+          <td><code>systemctl stop &lt;unit&gt;</code></td>
+          <td><strong>立即停止</strong>一个单元。只影响当前会话，不影响开机自启设置。</td>
+      </tr>
+      <tr>
+          <td><code>systemctl restart &lt;unit&gt;</code></td>
+          <td>重启一个单元。</td>
+      </tr>
+      <tr>
+          <td><code>systemctl reload &lt;unit&gt;</code></td>
+          <td>重新加载单元的配置（需要单元自身支持）。</td>
+      </tr>
+      <tr>
+          <td><code>systemctl enable &lt;unit&gt;</code></td>
+          <td><strong>设置开机自启</strong>。只创建符号链接，不会启动当前未运行的单元。</td>
+      </tr>
+      <tr>
+          <td><code>systemctl disable &lt;unit&gt;</code></td>
+          <td><strong>取消开机自启</strong>。只移除符号链接，不会停止当前正在运行的单元。</td>
+      </tr>
+      <tr>
+          <td><code>systemctl enable dropbear.socket</code></td>
+          <td><strong>示例</strong>：设置 <code>dropbear</code> 服务为开机 Socket 激活模式。</td>
+      </tr>
+      <tr>
+          <td><code>systemctl start dropbear.socket</code></td>
+          <td><strong>示例</strong>：立即开始监听 <code>dropbear</code> 的套接字（通常在 <code>enable</code> 后可选执行）。</td>
+      </tr>
+      <tr>
+          <td><code>systemctl edit &lt;unit&gt;</code></td>
+          <td>使用 drop-in 文件覆盖部分配置（<strong>最佳实践</strong>）。</td>
+      </tr>
+      <tr>
+          <td><code>systemctl edit --full &lt;unit&gt;</code></td>
+          <td>完整编辑单元文件，覆盖默认配置。</td>
+      </tr>
+      <tr>
+          <td><code>systemctl daemon-reload</code></td>
+          <td>当手动修改磁盘上的单元文件后，执行此命令让 <code>systemd</code> 重新加载所有配置。</td>
+      </tr>
+  </tbody>
+</table>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>535 words</span>
+    <span>13 - 17 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#文件位置与优先级">文件位置与优先级</a></li>
+    <li><a href="#systemd-unit">systemd unit</a>
+      <ul>
+        <li><a href="#单元命名与实例化">单元命名与实例化</a></li>
+      </ul>
+    </li>
+    <li><a href="#单元文件结构">单元文件结构</a>
+      <ul>
+        <li><a href="#unit-段通用元数据与依赖关系"><code>[Unit]</code> 段：通用元数据与依赖关系</a></li>
+        <li><a href="#install-段启用与开机自启行为"><code>[Install]</code> 段：启用与开机自启行为</a></li>
+      </ul>
+    </li>
+    <li><a href="#主要单元文件类型详解">主要单元文件类型详解</a>
+      <ul>
+        <li><a href="#service-unit-service">Service Unit (<code>.service</code>)</a></li>
+        <li><a href="#socket-unit-socket">Socket Unit (<code>.socket</code>)</a></li>
+        <li><a href="#target-unit-target">Target Unit (<code>.target</code>)</a></li>
+        <li><a href="#timer-unit-timer">Timer Unit (<code>.timer</code>)</a></li>
+        <li><a href="#path-unit-path">Path Unit (<code>.path</code>)</a></li>
+        <li><a href="#mount-unit-mount--automount-unit-automount">Mount Unit (<code>.mount</code>) &amp; Automount Unit (<code>.automount</code>)</a></li>
+        <li><a href="#slice-unit-slice">Slice Unit (<code>.slice</code>)</a></li>
+        <li><a href="#scope-unit-scope">Scope Unit (<code>.scope</code>)</a></li>
+        <li><a href="#device-unit-device">Device Unit (<code>.device</code>)</a></li>
+        <li><a href="#swap-unit-swap">Swap Unit (<code>.swap</code>)</a></li>
+        <li><a href="#snapshot-unit-snapshot">Snapshot Unit (<code>.snapshot</code>)</a></li>
+      </ul>
+    </li>
+    <li><a href="#依赖与顺序的要点">依赖与顺序的要点</a></li>
+    <li><a href="#条件与断言">条件与断言</a></li>
+    <li><a href="#环境变量与配置注入">环境变量与配置注入</a></li>
+    <li><a href="#进程模型与-exec">进程模型与 Exec</a></li>
+    <li><a href="#资源限制与安全沙箱">资源限制与安全沙箱</a>
+      <ul>
+        <li><a href="#限制">限制</a></li>
+        <li><a href="#沙箱">沙箱</a></li>
+        <li><a href="#systemd-单元文件管理速查表">systemd 单元文件管理速查表</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/svn-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">📘SVN 服务器环境搭建</a></li><li><a href="/posts/ubuntu_git_server_build_push_code/">Ubuntu git 仓库搭建及代码上传</a></li><li><a href="/posts/ubuntu_2004_%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/">ubuntu 20.04 升级内核</a></li><li><a href="/posts/ubuntu_200406_install_tp_link_ac1300_usb_wifi_adaptor_driver/">ubuntu 20.04.6 install tp link a1300 usb wifi adaptor driver</a></li></ul></aside></div>
+  </div>
+</body>
+</html>
