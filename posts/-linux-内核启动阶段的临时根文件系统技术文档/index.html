@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🧩 Linux 内核启动阶段的临时根文件系统技术文档 | LuyangのBlog</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/-linux-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E9%98%B6%E6%AE%B5%E7%9A%84%E4%B8%B4%E6%97%B6%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="🧩 Linux 内核启动阶段的临时根文件系统技术文档">
+  <meta property="og:description" content="🧩 Linux 内核启动阶段的临时根文件系统技术文档 📘 1. 概述（Overview） 在 Linux 启动的早期阶段，内核尚未挂载实际的根文件系统（例如 eMMC 上的 ext4 或 NFS 根目录）。
+为了让系统具备运行基本命令、加载驱动、挂载真实根文件系统的能力，
+内核引入了一种称为 临时根文件系统 (Early Root Filesystem) 的机制。
+该机制在不同内核时代有两种主要实现：
+阶段 技术名称 实现方式 Linux 2.4 及以前 initrd (initial RAM disk) 将压缩镜像加载为虚拟块设备 /dev/ram0，再挂载 Linux 2.6 及以后 initramfs (initial RAM filesystem) 将 cpio 压缩包直接解包进内存文件系统（ramfs/tmpfs） ⚙️ 2. 启动阶段流程概览 Linux 启动阶段涉及从 bootloader → 内核 → initramfs/initrd → 用户空间 init 的完整链路。
+1. BIOS/UEFI ↓ 2. Bootloader (GRUB/U-Boot) - 加载 vmlinuz (内核映像) - 加载 initramfs/initrd 到内存 ↓ 3. Linux Kernel - 初始化内核子系统 - 创建 rootfs (ramfs/tmpfs) - 解包 initramfs 或挂载 initrd - 执行临时根中的 /init ↓ 4. /init - 探测真实根文件系统（eMMC/NFS/overlay） - 挂载目标根目录 - 调用 `switch_root` 或 `pivot_root` ↓ 5. 启动真正的 /sbin/init 或 systemd 🧩 3. 技术架构与数据流 3.1 逻辑结构图 ┌────────────────────────────┐ │ Bootloader │ │ - 加载 Kernel &#43; Initramfs │ └────────────┬───────────────┘ │ ┌────────────▼───────────────┐ │ Linux Kernel │ │ - 创建 rootfs (ramfs) │ │ - 解包 initramfs.cpio.gz │ │ - 执行 /init │ └────────────┬───────────────┘ │ ┌────────────▼───────────────┐ │ /init 用户态脚本 │ │ - 探测真实根文件系统 │ │ - 挂载 /new_root │ │ - switch_root /new_root │ └────────────┬───────────────┘ │ ┌────────────▼───────────────┐ │ 真正根文件系统 (ext4/NFS) │ │ /sbin/init → systemd/init │ └────────────────────────────┘ 🧱 4. Initramfs 内部结构 Initramfs 是一个 cpio 格式的压缩包，包含早期启动所需的最小文件集：">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-10-11T23:30:00+08:00">
+    <meta property="article:modified_time" content="2025-10-11T23:30:00+08:00">
+    <meta property="article:tag" content="Ubuntu">
+    <meta property="article:tag" content="Systemd">
+    <meta property="article:tag" content="Init">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="🧩 Linux 内核启动阶段的临时根文件系统技术文档">
+  <meta name="twitter:description" content="🧩 Linux 内核启动阶段的临时根文件系统技术文档 📘 1. 概述（Overview） 在 Linux 启动的早期阶段，内核尚未挂载实际的根文件系统（例如 eMMC 上的 ext4 或 NFS 根目录）。
+为了让系统具备运行基本命令、加载驱动、挂载真实根文件系统的能力，
+内核引入了一种称为 临时根文件系统 (Early Root Filesystem) 的机制。
+该机制在不同内核时代有两种主要实现：
+阶段 技术名称 实现方式 Linux 2.4 及以前 initrd (initial RAM disk) 将压缩镜像加载为虚拟块设备 /dev/ram0，再挂载 Linux 2.6 及以后 initramfs (initial RAM filesystem) 将 cpio 压缩包直接解包进内存文件系统（ramfs/tmpfs） ⚙️ 2. 启动阶段流程概览 Linux 启动阶段涉及从 bootloader → 内核 → initramfs/initrd → 用户空间 init 的完整链路。
+1. BIOS/UEFI ↓ 2. Bootloader (GRUB/U-Boot) - 加载 vmlinuz (内核映像) - 加载 initramfs/initrd 到内存 ↓ 3. Linux Kernel - 初始化内核子系统 - 创建 rootfs (ramfs/tmpfs) - 解包 initramfs 或挂载 initrd - 执行临时根中的 /init ↓ 4. /init - 探测真实根文件系统（eMMC/NFS/overlay） - 挂载目标根目录 - 调用 `switch_root` 或 `pivot_root` ↓ 5. 启动真正的 /sbin/init 或 systemd 🧩 3. 技术架构与数据流 3.1 逻辑结构图 ┌────────────────────────────┐ │ Bootloader │ │ - 加载 Kernel &#43; Initramfs │ └────────────┬───────────────┘ │ ┌────────────▼───────────────┐ │ Linux Kernel │ │ - 创建 rootfs (ramfs) │ │ - 解包 initramfs.cpio.gz │ │ - 执行 /init │ └────────────┬───────────────┘ │ ┌────────────▼───────────────┐ │ /init 用户态脚本 │ │ - 探测真实根文件系统 │ │ - 挂载 /new_root │ │ - switch_root /new_root │ └────────────┬───────────────┘ │ ┌────────────▼───────────────┐ │ 真正根文件系统 (ext4/NFS) │ │ /sbin/init → systemd/init │ └────────────────────────────┘ 🧱 4. Initramfs 内部结构 Initramfs 是一个 cpio 格式的压缩包，包含早期启动所需的最小文件集：">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.3ecaab62029c68421263b320760b1d99eb62d6f48764aab41f3d427c5686d178.css" integrity="sha256-PsqrYgKcaEISY7Mgdgsdmeti1vSHZKq0Hz1CfFaG0Xg=" crossorigin="anonymous">
+
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>🧩 Linux 内核启动阶段的临时根文件系统技术文档</h1><time class="dim" datetime="2025-10-11T23:30:00&#43;08:00">October 11, 2025</time><div class="term-container"><div class="tag">
+        <a href="/tags/ubuntu/">#ubuntu</a>
+      </div><div class="tag">
+        <a href="/tags/systemd/">#systemd</a>
+      </div><div class="tag">
+        <a href="/tags/init/">#init</a>
+      </div></ol></div>
+  <section class="page-section"><h1 id="-linux-内核启动阶段的临时根文件系统技术文档">🧩 Linux 内核启动阶段的临时根文件系统技术文档</h1>
+<h2 id="-1-概述overview">📘 1. 概述（Overview）</h2>
+<p>在 Linux 启动的早期阶段，内核尚未挂载实际的根文件系统（例如 eMMC 上的 ext4 或 NFS 根目录）。<br>
+为了让系统具备运行基本命令、加载驱动、挂载真实根文件系统的能力，<br>
+内核引入了一种称为 <strong>临时根文件系统 (Early Root Filesystem)</strong> 的机制。</p>
+<p>该机制在不同内核时代有两种主要实现：</p>
+<table>
+  <thead>
+      <tr>
+          <th>阶段</th>
+          <th>技术名称</th>
+          <th>实现方式</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Linux 2.4 及以前</td>
+          <td><strong>initrd (initial RAM disk)</strong></td>
+          <td>将压缩镜像加载为虚拟块设备 <code>/dev/ram0</code>，再挂载</td>
+      </tr>
+      <tr>
+          <td>Linux 2.6 及以后</td>
+          <td><strong>initramfs (initial RAM filesystem)</strong></td>
+          <td>将 <code>cpio</code> 压缩包直接解包进内存文件系统（ramfs/tmpfs）</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-2-启动阶段流程概览">⚙️ 2. 启动阶段流程概览</h2>
+<p>Linux 启动阶段涉及从 <strong>bootloader → 内核 → initramfs/initrd → 用户空间 init</strong> 的完整链路。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>1. BIOS/UEFI
+</span></span><span style="display:flex;"><span>   ↓
+</span></span><span style="display:flex;"><span>2. Bootloader (GRUB/U-Boot)
+</span></span><span style="display:flex;"><span>   - 加载 vmlinuz (内核映像)
+</span></span><span style="display:flex;"><span>   - 加载 initramfs/initrd 到内存
+</span></span><span style="display:flex;"><span>   ↓
+</span></span><span style="display:flex;"><span>3. Linux Kernel
+</span></span><span style="display:flex;"><span>   - 初始化内核子系统
+</span></span><span style="display:flex;"><span>   - 创建 rootfs (ramfs/tmpfs)
+</span></span><span style="display:flex;"><span>   - 解包 initramfs 或挂载 initrd
+</span></span><span style="display:flex;"><span>   - 执行临时根中的 /init
+</span></span><span style="display:flex;"><span>   ↓
+</span></span><span style="display:flex;"><span>4. /init
+</span></span><span style="display:flex;"><span>   - 探测真实根文件系统（eMMC/NFS/overlay）
+</span></span><span style="display:flex;"><span>   - 挂载目标根目录
+</span></span><span style="display:flex;"><span>   - 调用 `switch_root` 或 `pivot_root`
+</span></span><span style="display:flex;"><span>   ↓
+</span></span><span style="display:flex;"><span>5. 启动真正的 /sbin/init 或 systemd
+</span></span></code></pre></div><hr>
+<h2 id="-3-技术架构与数据流">🧩 3. 技术架构与数据流</h2>
+<h3 id="31-逻辑结构图">3.1 逻辑结构图</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>┌────────────────────────────┐
+</span></span><span style="display:flex;"><span>│ Bootloader                 │
+</span></span><span style="display:flex;"><span>│  - 加载 Kernel + Initramfs │
+</span></span><span style="display:flex;"><span>└────────────┬───────────────┘
+</span></span><span style="display:flex;"><span>             │
+</span></span><span style="display:flex;"><span>┌────────────▼───────────────┐
+</span></span><span style="display:flex;"><span>│ Linux Kernel               │
+</span></span><span style="display:flex;"><span>│  - 创建 rootfs (ramfs)     │
+</span></span><span style="display:flex;"><span>│  - 解包 initramfs.cpio.gz  │
+</span></span><span style="display:flex;"><span>│  - 执行 /init              │
+</span></span><span style="display:flex;"><span>└────────────┬───────────────┘
+</span></span><span style="display:flex;"><span>             │
+</span></span><span style="display:flex;"><span>┌────────────▼───────────────┐
+</span></span><span style="display:flex;"><span>│ /init 用户态脚本           │
+</span></span><span style="display:flex;"><span>│  - 探测真实根文件系统      │
+</span></span><span style="display:flex;"><span>│  - 挂载 /new_root          │
+</span></span><span style="display:flex;"><span>│  - switch_root /new_root   │
+</span></span><span style="display:flex;"><span>└────────────┬───────────────┘
+</span></span><span style="display:flex;"><span>             │
+</span></span><span style="display:flex;"><span>┌────────────▼───────────────┐
+</span></span><span style="display:flex;"><span>│ 真正根文件系统 (ext4/NFS)  │
+</span></span><span style="display:flex;"><span>│ /sbin/init → systemd/init  │
+</span></span><span style="display:flex;"><span>└────────────────────────────┘
+</span></span></code></pre></div><hr>
+<h2 id="-4-initramfs-内部结构">🧱 4. Initramfs 内部结构</h2>
+<p>Initramfs 是一个 <strong>cpio 格式的压缩包</strong>，包含早期启动所需的最小文件集：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>initramfs/
+</span></span><span style="display:flex;"><span>├── bin/
+</span></span><span style="display:flex;"><span>│   └── busybox
+</span></span><span style="display:flex;"><span>├── dev/
+</span></span><span style="display:flex;"><span>├── etc/
+</span></span><span style="display:flex;"><span>├── proc/
+</span></span><span style="display:flex;"><span>├── sys/
+</span></span><span style="display:flex;"><span>├── init          ← 启动脚本（最关键）
+</span></span><span style="display:flex;"><span>└── lib/
+</span></span></code></pre></div><p>典型创建命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find . | cpio -H newc -o | gzip &gt; ../initramfs.cpio.gz
+</span></span></code></pre></div><p>加载方式（由 Bootloader 指定）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qemu-system-x86_64 -kernel bzImage -initrd initramfs.cpio.gz -append <span style="color:#e6db74">&#34;console=ttyS0&#34;</span>
+</span></span></code></pre></div><hr>
+<h2 id="-5-内核解包与挂载流程源码级">🧩 5. 内核解包与挂载流程（源码级）</h2>
+<p>以 Linux 6.x 为例，主流程如下：</p>
+<h3 id="51-调用链概览">5.1 调用链概览</h3>
+<pre tabindex="0"><code>start_kernel()
+ └── rest_init()
+      └── kernel_init()
+           └── prepare_namespace()
+                ├── create_rootfs()
+                ├── unpack_to_rootfs()     ← 解包 initramfs.cpio
+                └── run_init_process(&#34;/init&#34;)
+</code></pre><h3 id="52-关键函数说明">5.2 关键函数说明</h3>
+<table>
+  <thead>
+      <tr>
+          <th>函数</th>
+          <th>文件</th>
+          <th>功能描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>populate_rootfs()</code></td>
+          <td><code>init/initramfs.c</code></td>
+          <td>将 cpio 包内容解包到内存文件系统</td>
+      </tr>
+      <tr>
+          <td><code>do_mounts_initrd()</code></td>
+          <td><code>init/do_mounts_initrd.c</code></td>
+          <td>若为旧版 initrd，挂载 <code>/dev/ram0</code></td>
+      </tr>
+      <tr>
+          <td><code>run_init_process()</code></td>
+          <td><code>init/main.c</code></td>
+          <td>尝试执行 <code>/init</code>、<code>/sbin/init</code> 等</td>
+      </tr>
+      <tr>
+          <td><code>switch_root()</code></td>
+          <td><code>/usr/sbin/switch_root.c</code></td>
+          <td>从 initramfs 切换到真正 rootfs</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-6-关键内核配置项">🧩 6. 关键内核配置项</h2>
+<table>
+  <thead>
+      <tr>
+          <th>配置项</th>
+          <th>作用</th>
+          <th>典型值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>CONFIG_BLK_DEV_INITRD</code></td>
+          <td>启用旧版 initrd 支持</td>
+          <td><code>y</code></td>
+      </tr>
+      <tr>
+          <td><code>CONFIG_INITRAMFS_SOURCE</code></td>
+          <td>指定内嵌 initramfs 源路径</td>
+          <td><code>&quot;initramfs_list&quot;</code></td>
+      </tr>
+      <tr>
+          <td><code>CONFIG_RD_GZIP</code></td>
+          <td>支持 gzip 压缩</td>
+          <td><code>y</code></td>
+      </tr>
+      <tr>
+          <td><code>CONFIG_TMPFS</code></td>
+          <td>允许 tmpfs 用作 rootfs</td>
+          <td><code>y</code></td>
+      </tr>
+      <tr>
+          <td><code>CONFIG_INIT_ENV_ARG_LIMIT</code></td>
+          <td>控制 <code>/init</code> 参数限制</td>
+          <td>默认 32</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-7-内核内嵌-initramfs">🧩 7. 内核内嵌 Initramfs</h2>
+<p>可以直接将 initramfs 打包进内核：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>make menuconfig
+</span></span><span style="display:flex;"><span>→ General setup → Initramfs source file<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>或通过环境变量：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>make INITRAMFS_SOURCE<span style="color:#f92672">=</span>../rootfs
+</span></span></code></pre></div><p>生成的内核会在 <code>usr/initramfs_data.c</code> 中嵌入二进制数据：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> __initramfs_start[];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> __initramfs_end[];
+</span></span></code></pre></div><hr>
+<h2 id="-8-init-启动脚本职责">⚙️ 8. /init 启动脚本职责</h2>
+<p><code>/init</code> 是 initramfs 的“入口点”，它在真正的 <code>/sbin/init</code> 启动前执行。</p>
+<p>典型实现（BusyBox 风格）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>echo <span style="color:#e6db74">&#34;[INITRAMFS] Booting early init system...&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mount -t proc proc /proc
+</span></span><span style="display:flex;"><span>mount -t sysfs sysfs /sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 检测真实根分区</span>
+</span></span><span style="display:flex;"><span>mount /dev/mmcblk0p2 /new_root
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 切换根文件系统</span>
+</span></span><span style="display:flex;"><span>exec switch_root /new_root /sbin/init
+</span></span></code></pre></div><hr>
+<h2 id="-9-与真实根文件系统的切换机制">🔩 9. 与真实根文件系统的切换机制</h2>
+<h3 id="91-pivot_root旧方式">9.1 pivot_root（旧方式）</h3>
+<ul>
+<li>将新根文件系统切换到 <code>/new_root</code></li>
+<li>原根文件系统挂载到 <code>/new_root/initrd</code></li>
+<li>已弃用，需手动卸载旧根</li>
+</ul>
+<h3 id="92-switch_root现代方式">9.2 switch_root（现代方式）</h3>
+<ul>
+<li>替换根并清空旧文件系统</li>
+<li>由 BusyBox 或 util-linux 提供</li>
+<li>更简洁、安全</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>switch_root /new_root /sbin/init
+</span></span></code></pre></div><hr>
+<h2 id="-10-调试与验证">🧩 10. 调试与验证</h2>
+<table>
+  <thead>
+      <tr>
+          <th>操作目标</th>
+          <th>命令或方法</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>查看内核是否加载 initramfs</td>
+          <td><code>dmesg</code></td>
+      </tr>
+      <tr>
+          <td>解包 initramfs 文件</td>
+          <td><code>gzip -dc initramfs.cpio.gz</code></td>
+      </tr>
+      <tr>
+          <td>在 /init 中打调试日志</td>
+          <td><code>echo &quot;step 1...&quot; &gt; /dev/console</code></td>
+      </tr>
+      <tr>
+          <td>查看 rootfs 类型</td>
+          <td><code>cat /proc/filesystems</code></td>
+      </tr>
+      <tr>
+          <td>切换失败原因分析</td>
+          <td>检查 <code>/dev</code>, <code>/proc</code>, <code>/sys</code> 是否挂载</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-11-嵌入式系统应用案例">🧩 11. 嵌入式系统应用案例</h2>
+<table>
+  <thead>
+      <tr>
+          <th>应用场景</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>单镜像系统</strong></td>
+          <td>BusyBox + initramfs 直接作为系统根，无需外部存储</td>
+      </tr>
+      <tr>
+          <td><strong>固件升级系统</strong></td>
+          <td>initramfs 启动后校验、刷写、重启</td>
+      </tr>
+      <tr>
+          <td><strong>加密文件系统启动</strong></td>
+          <td>initramfs 中负责解密根分区后切换根</td>
+      </tr>
+      <tr>
+          <td><strong>容灾/救援系统</strong></td>
+          <td>提供最小恢复环境 (rescue shell)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-12-实验验证qemu-demo">🧩 12. 实验验证（QEMU Demo）</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 构建 busybox</span>
+</span></span><span style="display:flex;"><span>make defconfig
+</span></span><span style="display:flex;"><span>make install
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 构建 initramfs</span>
+</span></span><span style="display:flex;"><span>mkdir -p rootfs/<span style="color:#f92672">{</span>bin,dev,proc,sys<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>cp -a _install/* rootfs/
+</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#39;#!/bin/sh\nmount -t proc proc /proc\nmount -t sysfs sysfs /sys\necho &#34;Hello Initramfs&#34;\nexec /bin/sh&#39;</span> &gt; rootfs/init
+</span></span><span style="display:flex;"><span>chmod +x rootfs/init
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>find . | cpio -H newc -o | gzip &gt; ../initramfs.cpio.gz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 启动 QEMU</span>
+</span></span><span style="display:flex;"><span>qemu-system-x86_64 -kernel bzImage -initrd initramfs.cpio.gz -append <span style="color:#e6db74">&#34;console=ttyS0&#34;</span>
+</span></span></code></pre></div><p>输出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[INITRAMFS] Booting...
+</span></span><span style="display:flex;"><span>Hello Initramfs
+</span></span><span style="display:flex;"><span>/ #
+</span></span></code></pre></div><hr>
+<h2 id="-13-内存占用与性能分析">🧩 13. 内存占用与性能分析</h2>
+<table>
+  <thead>
+      <tr>
+          <th>项目</th>
+          <th>initrd</th>
+          <th>initramfs</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>解包方式</td>
+          <td>解压到块设备</td>
+          <td>直接展开到 tmpfs</td>
+      </tr>
+      <tr>
+          <td>内存占用</td>
+          <td>双倍（块设备+文件系统）</td>
+          <td>单份（直接文件缓存）</td>
+      </tr>
+      <tr>
+          <td>启动速度</td>
+          <td>较慢</td>
+          <td>快 30–50%</td>
+      </tr>
+      <tr>
+          <td>占用结构</td>
+          <td>页缓存 + ramdisk</td>
+          <td>VFS 缓存</td>
+      </tr>
+      <tr>
+          <td>回收机制</td>
+          <td>手动卸载</td>
+          <td>自动回收 tmpfs 空间</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-14-总结">🧩 14. 总结</h2>
+<table>
+  <thead>
+      <tr>
+          <th>项目</th>
+          <th>initrd</th>
+          <th>initramfs</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>文件格式</td>
+          <td>ext2 镜像</td>
+          <td>cpio 包</td>
+      </tr>
+      <tr>
+          <td>是否需块设备</td>
+          <td>是</td>
+          <td>否</td>
+      </tr>
+      <tr>
+          <td>文件系统类型</td>
+          <td>ext2</td>
+          <td>tmpfs/ramfs</td>
+      </tr>
+      <tr>
+          <td>兼容性</td>
+          <td>老内核</td>
+          <td>新内核（2.6+）</td>
+      </tr>
+      <tr>
+          <td>性能</td>
+          <td>一般</td>
+          <td>优秀</td>
+      </tr>
+      <tr>
+          <td>推荐使用</td>
+          <td>❌</td>
+          <td>✅</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-15-参考资料">🧩 15. 参考资料</h2>
+<ul>
+<li>Linux Kernel Documentation<br>
+<code>/usr/src/linux/Documentation/filesystems/ramfs-rootfs-initramfs.txt</code></li>
+<li>BusyBox 官方文档: <a href="https://busybox.net/">https://busybox.net/</a></li>
+<li>内核源码：<code>init/initramfs.c</code>, <code>init/main.c</code></li>
+<li>LWN: <em>&ldquo;Early userspace in Linux 2.6&rdquo;</em></li>
+<li>Yocto Project: <em>initramfs integration guide</em></li>
+</ul>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>604 words</span>
+    <span>7 - 9 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#-1-概述overview">📘 1. 概述（Overview）</a></li>
+    <li><a href="#-2-启动阶段流程概览">⚙️ 2. 启动阶段流程概览</a></li>
+    <li><a href="#-3-技术架构与数据流">🧩 3. 技术架构与数据流</a>
+      <ul>
+        <li><a href="#31-逻辑结构图">3.1 逻辑结构图</a></li>
+      </ul>
+    </li>
+    <li><a href="#-4-initramfs-内部结构">🧱 4. Initramfs 内部结构</a></li>
+    <li><a href="#-5-内核解包与挂载流程源码级">🧩 5. 内核解包与挂载流程（源码级）</a>
+      <ul>
+        <li><a href="#51-调用链概览">5.1 调用链概览</a></li>
+        <li><a href="#52-关键函数说明">5.2 关键函数说明</a></li>
+      </ul>
+    </li>
+    <li><a href="#-6-关键内核配置项">🧩 6. 关键内核配置项</a></li>
+    <li><a href="#-7-内核内嵌-initramfs">🧩 7. 内核内嵌 Initramfs</a></li>
+    <li><a href="#-8-init-启动脚本职责">⚙️ 8. /init 启动脚本职责</a></li>
+    <li><a href="#-9-与真实根文件系统的切换机制">🔩 9. 与真实根文件系统的切换机制</a>
+      <ul>
+        <li><a href="#91-pivot_root旧方式">9.1 pivot_root（旧方式）</a></li>
+        <li><a href="#92-switch_root现代方式">9.2 switch_root（现代方式）</a></li>
+      </ul>
+    </li>
+    <li><a href="#-10-调试与验证">🧩 10. 调试与验证</a></li>
+    <li><a href="#-11-嵌入式系统应用案例">🧩 11. 嵌入式系统应用案例</a></li>
+    <li><a href="#-12-实验验证qemu-demo">🧩 12. 实验验证（QEMU Demo）</a></li>
+    <li><a href="#-13-内存占用与性能分析">🧩 13. 内存占用与性能分析</a></li>
+    <li><a href="#-14-总结">🧩 14. 总结</a></li>
+    <li><a href="#-15-参考资料">🧩 15. 参考资料</a></li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/--dracut-vs-initramfs-tools-%E4%B8%80%E5%9C%BAlinux%E6%97%A9%E6%9C%9F%E5%BC%95%E5%AF%BC%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%8F%98%E9%9D%A9/">🧩  Dracut vs Initramfs-tools 一场Linux早期引导的深度变革</a></li><li><a href="/posts/linux-%E5%88%9D%E5%A7%8B%E5%8C%96%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3%E4%BB%8E-sysvinit-%E5%88%B0-systemd-%E7%9A%84%E6%BC%94%E8%BF%9B/">📘Linux 初始化系统技术文档：从 SysVinit 到 systemd 的演进</a></li><li><a href="/posts/systemd-%E5%8D%95%E5%85%83%E6%96%87%E4%BB%B6/">📘systemd 单元文件</a></li><li><a href="/posts/svn-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">📘SVN 服务器环境搭建</a></li><li><a href="/posts/ubuntu_git_server_build_push_code/">Ubuntu git 仓库搭建及代码上传</a></li></ul></aside></div>
+  </div>
+</body>
+</html>

@@ -15,7 +15,7 @@
   <meta name="twitter:title" content="Posts">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
-      <link rel="stylesheet" href="/css/bundle.min.e139b0e3b3aff8f0e8e0272554b671a06c857a42278b36c539d96c69ddee2ca2.css" integrity="sha256-4Tmw47Ov&#43;PDo4CclVLZxoGyFekInizbFOdlsad3uLKI=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.3ecaab62029c68421263b320760b1d99eb62d6f48764aab41f3d427c5686d178.css" integrity="sha256-PsqrYgKcaEISY7Mgdgsdmeti1vSHZKq0Hz1CfFaG0Xg=" crossorigin="anonymous">
 
       <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
 <script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
@@ -82,6 +82,14 @@
     <div class="flex grow">
       <div id="main-pane">
         <main id="main-content"><h1>Posts</h1><div class="list-group-key">2025</div><div class="list-group-heading">
+        <a href="/posts/-linux-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E9%98%B6%E6%AE%B5%E7%9A%84%E4%B8%B4%E6%97%B6%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/">🧩 Linux 内核启动阶段的临时根文件系统技术文档</a>
+        <time class="dim" style="float: right;" datetime="2023-05-02T00:00:00Z">Oct 11</time>
+      </div>
+      <div class="list-group-summary content-font">该机制在不同内核时代有两种主要实现：</div><div class="list-group-heading">
+        <a href="/posts/--dracut-vs-initramfs-tools-%E4%B8%80%E5%9C%BAlinux%E6%97%A9%E6%9C%9F%E5%BC%95%E5%AF%BC%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%8F%98%E9%9D%A9/">🧩  Dracut vs Initramfs-tools 一场Linux早期引导的深度变革</a>
+        <time class="dim" style="float: right;" datetime="2023-05-02T00:00:00Z">Oct 11</time>
+      </div>
+      <div class="list-group-summary content-font">在Linux系统的启动链条中，一个看似短暂却至关重要的阶段是initramfs（Initial RAM Filesystem）的加载和执行。它的核心任务是搭建一个临时的根文件系统，加载必要的驱动（如存储、文件系统、加密模块），并最终挂载真实的根文件系统，将控制权交给系统的init进程（如systemd）。长期以来，Debian及其衍生版（如Ubuntu）依赖initramfs-tools来生成这个初始环境，而Red Hat生态则选择了更为现代的dracut。</div><div class="list-group-heading">
         <a href="/posts/linux-%E5%88%9D%E5%A7%8B%E5%8C%96%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3%E4%BB%8E-sysvinit-%E5%88%B0-systemd-%E7%9A%84%E6%BC%94%E8%BF%9B/">📘Linux 初始化系统技术文档：从 SysVinit 到 systemd 的演进</a>
         <time class="dim" style="float: right;" datetime="2023-05-02T00:00:00Z">Sep 18</time>
       </div>
@@ -101,15 +109,7 @@
         <a href="/posts/android-14-%E4%B8%8A%E6%90%AD%E5%BB%BA-ndk-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%9C%80%E8%A6%81%E9%80%9A%E8%BF%87-android-studio-%E5%92%8C-ndk-r27&#43;-%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE/">📘Android 14 上搭建 NDK 开发环境需要通过 Android Studio 和 NDK r27&#43; 进行配置</a>
         <time class="dim" style="float: right;" datetime="2023-05-02T00:00:00Z">Sep 8</time>
       </div>
-      <div class="list-group-summary content-font">JDK 虽然主要用于 Android 构建系统，但有些工具依赖。</div><div class="list-group-heading">
-        <a href="/posts/bin-%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E7%89%B9%E5%BE%81%E4%B8%8E%E7%BC%96%E8%BE%91%E5%99%A8%E6%89%93%E5%BC%80%E6%A8%A1%E5%BC%8F%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90/">📘 bin 文件内容特征与编辑器打开模式行为分析</a>
-        <time class="dim" style="float: right;" datetime="2023-05-02T00:00:00Z">Jul 13</time>
-      </div>
-      <div class="list-group-summary content-font">—— 以 UltraEdit 和二进制数据结构为案例剖析</div><div class="list-group-heading">
-        <a href="/posts/aarch64-%E4%B8%8B-glibc-open-%E8%B0%83%E7%94%A8%E5%88%B0%E5%86%85%E6%A0%B8%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%85%A5%E5%8F%A3%E7%9A%84%E5%85%A8%E8%B7%AF%E5%BE%84%E8%A7%A3%E6%9E%90/">📘AArch64 下 glibc `open()` 调用到内核系统调用入口的全路径解析</a>
-        <time class="dim" style="float: right;" datetime="2023-05-02T00:00:00Z">Jul 8</time>
-      </div>
-      <div class="list-group-summary content-font">本文档对 AArch64 (即 ARM64) 架构下从 glibc 中的 open() 函数调用至 Linux 内核中 sys_openat() 系统调用入口的全路径进行全面、精精、严密的分析。选用 AArch64 架构是因为其在嵌入式、手机、服务器等领域应用很广，宜于全面理解 Linux syscall 机制。</div>
+      <div class="list-group-summary content-font">JDK 虽然主要用于 Android 构建系统，但有些工具依赖。</div>
     <ul class="pagination pagination-default">
       <li class="page-item disabled">
         <a aria-disabled="true" aria-label="First" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;&laquo;</span></a>

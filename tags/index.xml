@@ -6,13 +6,34 @@
     <description>Recent content in Tags on LuyangのBlog</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Thu, 18 Sep 2025 02:30:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 11 Oct 2025 23:30:00 +0800</lastBuildDate>
     <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dracut</title>
+      <link>/tags/dracut/</link>
+      <pubDate>Sat, 11 Oct 2025 23:30:00 +0800</pubDate>
+      <guid>/tags/dracut/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Init</title>
+      <link>/tags/init/</link>
+      <pubDate>Sat, 11 Oct 2025 23:30:00 +0800</pubDate>
+      <guid>/tags/init/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Systemd</title>
       <link>/tags/systemd/</link>
-      <pubDate>Thu, 18 Sep 2025 02:30:00 +0800</pubDate>
+      <pubDate>Sat, 11 Oct 2025 23:30:00 +0800</pubDate>
       <guid>/tags/systemd/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ubuntu</title>
+      <link>/tags/ubuntu/</link>
+      <pubDate>Sat, 11 Oct 2025 23:30:00 +0800</pubDate>
+      <guid>/tags/ubuntu/</guid>
       <description></description>
     </item>
     <item>
@@ -20,13 +41,6 @@
       <link>/tags/sysvinit/</link>
       <pubDate>Thu, 18 Sep 2025 02:30:00 +0800</pubDate>
       <guid>/tags/sysvinit/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ubuntu</title>
-      <link>/tags/ubuntu/</link>
-      <pubDate>Thu, 18 Sep 2025 02:30:00 +0800</pubDate>
-      <guid>/tags/ubuntu/</guid>
       <description></description>
     </item>
     <item>
