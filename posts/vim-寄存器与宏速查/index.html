@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vim 寄存器与宏速查 | LuyangのBlog</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/vim-%E5%AF%84%E5%AD%98%E5%99%A8%E4%B8%8E%E5%AE%8F%E9%80%9F%E6%9F%A5/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="Vim 寄存器与宏速查">
+  <meta property="og:description" content="Vim 寄存器与宏速查 在 Vim 中，寄存器和宏是提升编辑效率的关键工具。寄存器用于存储文本，宏用于自动化重复操作。本速查表整理了常见命令，帮助你快速掌握。
+🔹 寄存器基础 &#34;a → 使用寄存器 a &#34;ayy → 复制当前行到寄存器 a &#34;ap → 粘贴寄存器 a 的内容 &#34;bdw → 删除一个单词并存入寄存器 b 🔹 常用寄存器 &#34;&#34; → 默认寄存器（最近一次操作） &#34;0 → 最近一次复制的内容（不受删除影响） &#34;1-&#34;9 → 最近删除的内容（按顺序保存） &#34;&#43; → 系统剪贴板（与操作系统交互） &#34;* → 选择缓冲区（通常与鼠标选择相关） &#34;_ → 黑洞寄存器（丢弃内容，不保存） &#34;% → 当前文件名 &#34;# → 备用文件名 🔹 系统剪贴板操作 &#34;&#43;y → 复制到系统剪贴板 &#34;&#43;p → 从系统剪贴板粘贴 &#34;*y → 复制到选择缓冲区 &#34;*p → 从选择缓冲区粘贴 🔹 宏基础 q{register} → 开始录制宏，存入指定寄存器 q → 停止录制 @{register} → 执行宏 @@ → 重复上一次宏 🔹 宏进阶用法 在多行上执行宏：">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-21T12:10:00+08:00">
+    <meta property="article:modified_time" content="2025-11-21T12:10:00+08:00">
+    <meta property="article:tag" content="Vim">
+    <meta property="article:tag" content="速查表">
+    <meta property="article:tag" content="寄存器">
+    <meta property="article:tag" content="宏">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Vim 寄存器与宏速查">
+  <meta name="twitter:description" content="Vim 寄存器与宏速查 在 Vim 中，寄存器和宏是提升编辑效率的关键工具。寄存器用于存储文本，宏用于自动化重复操作。本速查表整理了常见命令，帮助你快速掌握。
+🔹 寄存器基础 &#34;a → 使用寄存器 a &#34;ayy → 复制当前行到寄存器 a &#34;ap → 粘贴寄存器 a 的内容 &#34;bdw → 删除一个单词并存入寄存器 b 🔹 常用寄存器 &#34;&#34; → 默认寄存器（最近一次操作） &#34;0 → 最近一次复制的内容（不受删除影响） &#34;1-&#34;9 → 最近删除的内容（按顺序保存） &#34;&#43; → 系统剪贴板（与操作系统交互） &#34;* → 选择缓冲区（通常与鼠标选择相关） &#34;_ → 黑洞寄存器（丢弃内容，不保存） &#34;% → 当前文件名 &#34;# → 备用文件名 🔹 系统剪贴板操作 &#34;&#43;y → 复制到系统剪贴板 &#34;&#43;p → 从系统剪贴板粘贴 &#34;*y → 复制到选择缓冲区 &#34;*p → 从选择缓冲区粘贴 🔹 宏基础 q{register} → 开始录制宏，存入指定寄存器 q → 停止录制 @{register} → 执行宏 @@ → 重复上一次宏 🔹 宏进阶用法 在多行上执行宏：">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.3ecaab62029c68421263b320760b1d99eb62d6f48764aab41f3d427c5686d178.css" integrity="sha256-PsqrYgKcaEISY7Mgdgsdmeti1vSHZKq0Hz1CfFaG0Xg=" crossorigin="anonymous">
+
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>Vim 寄存器与宏速查</h1><time class="dim" datetime="2025-11-21T12:10:00&#43;08:00">November 21, 2025</time><div class="term-container"><div class="tag">
+        <a href="/tags/vim/">#Vim</a>
+      </div><div class="tag">
+        <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/">#速查表</a>
+      </div><div class="tag">
+        <a href="/tags/%E5%AF%84%E5%AD%98%E5%99%A8/">#寄存器</a>
+      </div><div class="tag">
+        <a href="/tags/%E5%AE%8F/">#宏</a>
+      </div></ol></div>
+  <section class="page-section"><h1 id="vim-寄存器与宏速查">Vim 寄存器与宏速查</h1>
+<p>在 Vim 中，寄存器和宏是提升编辑效率的关键工具。寄存器用于存储文本，宏用于自动化重复操作。本速查表整理了常见命令，帮助你快速掌握。</p>
+<hr>
+<h2 id="-寄存器基础">🔹 寄存器基础</h2>
+<ul>
+<li><code>&quot;a</code> → 使用寄存器 <code>a</code></li>
+<li><code>&quot;ayy</code> → 复制当前行到寄存器 <code>a</code></li>
+<li><code>&quot;ap</code> → 粘贴寄存器 <code>a</code> 的内容</li>
+<li><code>&quot;bdw</code> → 删除一个单词并存入寄存器 <code>b</code></li>
+</ul>
+<hr>
+<h2 id="-常用寄存器">🔹 常用寄存器</h2>
+<ul>
+<li><code>&quot;&quot;</code> → 默认寄存器（最近一次操作）</li>
+<li><code>&quot;0</code> → 最近一次复制的内容（不受删除影响）</li>
+<li><code>&quot;1</code>-<code>&quot;9</code> → 最近删除的内容（按顺序保存）</li>
+<li><code>&quot;+</code> → 系统剪贴板（与操作系统交互）</li>
+<li><code>&quot;*</code> → 选择缓冲区（通常与鼠标选择相关）</li>
+<li><code>&quot;_</code> → 黑洞寄存器（丢弃内容，不保存）</li>
+<li><code>&quot;%</code> → 当前文件名</li>
+<li><code>&quot;#</code> → 备用文件名</li>
+</ul>
+<hr>
+<h2 id="-系统剪贴板操作">🔹 系统剪贴板操作</h2>
+<ul>
+<li><code>&quot;+y</code> → 复制到系统剪贴板</li>
+<li><code>&quot;+p</code> → 从系统剪贴板粘贴</li>
+<li><code>&quot;*y</code> → 复制到选择缓冲区</li>
+<li><code>&quot;*p</code> → 从选择缓冲区粘贴</li>
+</ul>
+<hr>
+<h2 id="-宏基础">🔹 宏基础</h2>
+<ul>
+<li><code>q{register}</code> → 开始录制宏，存入指定寄存器</li>
+<li><code>q</code> → 停止录制</li>
+<li><code>@{register}</code> → 执行宏</li>
+<li><code>@@</code> → 重复上一次宏</li>
+</ul>
+<hr>
+<h2 id="-宏进阶用法">🔹 宏进阶用法</h2>
+<ul>
+<li>
+<p>在多行上执行宏：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">20</span>normal @<span style="color:#a6e22e">a</span>
+</span></span></code></pre></div><p>→ 在第 10 到 20 行执行寄存器 <code>a</code> 中的宏</p>
+</li>
+<li>
+<p>在可视模式选区执行宏：</p>
+<ol>
+<li>选择文本</li>
+<li>输入：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:<span style="color:#a6e22e">normal</span> @<span style="color:#a6e22e">a</span>
+</span></span></code></pre></div></li>
+</ol>
+</li>
+</ul>
+<hr>
+<h2 id="-实战案例">🔹 实战案例</h2>
+<ul>
+<li>
+<p><strong>批量添加注释</strong>
+录制宏：在行首插入 <code>//</code>，保存到寄存器 <code>a</code><br>
+执行宏：在多行上批量添加注释</p>
+</li>
+<li>
+<p><strong>批量修改函数名</strong>
+录制宏：搜索旧函数名并替换为新函数名<br>
+执行宏：在整个文件中批量修改</p>
+</li>
+<li>
+<p><strong>格式化日志</strong>
+录制宏：调整时间戳格式<br>
+执行宏：在所有日志行上应用</p>
+</li>
+</ul>
+<hr>
+<h2 id="-总结">🔹 总结</h2>
+<ul>
+<li><strong>寄存器</strong>：存储文本，支持系统剪贴板与特殊寄存器</li>
+<li><strong>宏</strong>：录制并执行重复操作，可在多行或选区中应用</li>
+<li><strong>黑洞寄存器</strong>：丢弃内容避免污染剪贴板</li>
+<li><strong>系统剪贴板</strong>：通过 <code>&quot;+</code> 与操作系统交互</li>
+</ul>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>117 words</span>
+    <span>1 - 2 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#-寄存器基础">🔹 寄存器基础</a></li>
+    <li><a href="#-常用寄存器">🔹 常用寄存器</a></li>
+    <li><a href="#-系统剪贴板操作">🔹 系统剪贴板操作</a></li>
+    <li><a href="#-宏基础">🔹 宏基础</a></li>
+    <li><a href="#-宏进阶用法">🔹 宏进阶用法</a></li>
+    <li><a href="#-实战案例">🔹 实战案例</a></li>
+    <li><a href="#-总结">🔹 总结</a></li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/vim-%E7%BC%93%E5%86%B2%E5%8C%BA%E4%B8%8E%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86%E9%80%9F%E6%9F%A5/">Vim 缓冲区与窗口管理速查</a></li><li><a href="/posts/vim-%E7%BC%96%E8%BE%91%E4%B8%8E%E6%93%8D%E4%BD%9C%E9%80%9F%E6%9F%A5/">Vim 编辑与操作速查</a></li><li><a href="/posts/vim-%E7%A7%BB%E5%8A%A8%E4%B8%8E%E5%AF%BC%E8%88%AA%E9%80%9F%E6%9F%A5/">Vim 移动与导航速查</a></li><li><a href="/posts/vim-%E6%9B%BF%E6%8D%A2%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5/">Vim 替换命令速查</a></li></ul></aside></div>
+  </div>
+</body>
+</html>

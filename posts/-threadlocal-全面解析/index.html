@@ -131,7 +131,8 @@ ThreadLocal 简介 ThreadLocal，顾名思义，即“线程局部变量”。�
         <a href="/tags/threadlocal/">#ThreadLocal</a>
       </div></ol></div>
   <section class="page-section"><blockquote>
-<p>The beauty of open source is that it is technically borderless. &mdash; <a href="https://www.reddit.com/user/AlterTableUsernames/">u/AlterTableUsernames</a></p></blockquote>
+<p>The beauty of open source is that it is technically borderless. &mdash; <a href="https://www.reddit.com/user/AlterTableUsernames/">u/AlterTableUsernames</a></p>
+</blockquote>
 <h2 id="threadlocal-全面解析">ThreadLocal 全面解析</h2>
 <p>在多线程并发编程中，保证线程安全是开发者必须面对的核心挑战之一。<code>ThreadLocal</code> 作为 Java 提供的一种独特的线程同步解决方案，它另辟蹊径，通过为每个线程提供变量的独立副本，巧妙地避免了多线程间的数据共享和竞争，从而实现了线程安全。本文将从 <code>ThreadLocal</code> 的基本概念入手，深入剖析其源码实现，探讨其在 C++ 中的对应方案，并结合常见的面试题，为您全方位揭示 <code>ThreadLocal</code> 的奥秘，包括其精妙的弱引用设计以及潜在的内存泄漏风险。</p>
 <h3 id="threadlocal-简介">ThreadLocal 简介</h3>

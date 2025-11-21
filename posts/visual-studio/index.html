@@ -114,7 +114,8 @@ fopen 编译报错 This function or variable may be unsafe 1&gt;xxxxx error C499
         <a href="/tags/visual_studio/">#visual_studio</a>
       </div></ol></div>
   <section class="page-section"><blockquote>
-<p>The beauty of open source is that it is technically borderless. &mdash; <a href="https://www.reddit.com/user/AlterTableUsernames/">u/AlterTableUsernames</a></p></blockquote>
+<p>The beauty of open source is that it is technically borderless. &mdash; <a href="https://www.reddit.com/user/AlterTableUsernames/">u/AlterTableUsernames</a></p>
+</blockquote>
 <h2 id="visual-studio-切换语言">Visual Studio 切换语言</h2>
 <p>在Visual Studio 中切换语言</p>
 <ol>
@@ -165,7 +166,8 @@ fopen 编译报错 This function or variable may be unsafe 1&gt;xxxxx error C499
 <li><strong>重新构建项目</strong>：这将确保更改生效，并且警告 C4996 被抑制。</li>
 </ol>
 <blockquote>
-<p>调试过程中遇到了严格按照上述配置后，即使 Build -&gt; Clean Solution, Build -&gt; Build Solution 仍然报相同的错误。退出 Visual Studio 后再次打开，重新编译，通过。</p></blockquote>
+<p>调试过程中遇到了严格按照上述配置后，即使 Build -&gt; Clean Solution, Build -&gt; Build Solution 仍然报相同的错误。退出 Visual Studio 后再次打开，重新编译，通过。</p>
+</blockquote>
 <p><strong>重要提示</strong>：</p>
 <ul>
 <li><strong>SDL 检查</strong>：如果你使用的是 Visual Studio 2012 或更高版本，还有一个额外的设置，称为“SDL 检查”，位于 C/C++ &gt; 通用。此设置启用了额外的安全代码生成功能，并将安全相关的警告作为错误处理。将“SDL 检查”设置为“否”也可以抑制警告，但通常建议保持启用状态，并尽可能解决底层的安全问题。</li>

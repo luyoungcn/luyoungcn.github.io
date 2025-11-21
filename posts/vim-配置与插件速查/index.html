@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vim 配置与插件速查 | LuyangのBlog</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/vim-%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%8F%92%E4%BB%B6%E9%80%9F%E6%9F%A5/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="Vim 配置与插件速查">
+  <meta property="og:description" content="Vim 配置与插件速查 Vim 的强大不仅在于命令，还在于其高度可配置性和丰富的插件生态。本速查表整理了常见配置与插件技巧，帮助你快速打造个性化工作环境。
+🔹 基础配置（.vimrc） 显示行号
+set number set relativenumber 语法高亮
+syntax on 自动缩进
+set autoindent set smartindent 搜索优化
+set hlsearch &#34; 高亮搜索结果 set incsearch &#34; 输入时即时搜索 set ignorecase &#34; 忽略大小写 set smartcase &#34; 有大写时区分大小写 编码设置
+set encoding=utf-8 set fileencodings=utf-8,gbk,latin1 🔹 键位映射 保存快捷键
+nnoremap &lt;C-s&gt; :w&lt;CR&gt; 退出快捷键
+nnoremap &lt;C-q&gt; :q&lt;CR&gt; 快速切换行号模式
+nnoremap &lt;leader&gt;rn :set relativenumber!&lt;CR&gt; 🔹 常用插件管理器 vim-plug
+call plug#begin(&#39;~/.vim/plugged&#39;) Plug &#39;preservim/nerdtree&#39; Plug &#39;junegunn/fzf&#39; Plug &#39;tpope/vim-commentary&#39; call plug#end() Vundle
+Plugin &#39;preservim/nerdtree&#39; Plugin &#39;junegunn/fzf&#39; Plugin &#39;tpope/vim-commentary&#39; 🔹 常用插件推荐 文件浏览
+NERDTree → 树状文件浏览器 vim-vinegar → 简化 netrw 文件浏览 搜索与跳转">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-21T12:30:00+08:00">
+    <meta property="article:modified_time" content="2025-11-21T12:30:00+08:00">
+    <meta property="article:tag" content="Vim">
+    <meta property="article:tag" content="速查表">
+    <meta property="article:tag" content="配置">
+    <meta property="article:tag" content="插件">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Vim 配置与插件速查">
+  <meta name="twitter:description" content="Vim 配置与插件速查 Vim 的强大不仅在于命令，还在于其高度可配置性和丰富的插件生态。本速查表整理了常见配置与插件技巧，帮助你快速打造个性化工作环境。
+🔹 基础配置（.vimrc） 显示行号
+set number set relativenumber 语法高亮
+syntax on 自动缩进
+set autoindent set smartindent 搜索优化
+set hlsearch &#34; 高亮搜索结果 set incsearch &#34; 输入时即时搜索 set ignorecase &#34; 忽略大小写 set smartcase &#34; 有大写时区分大小写 编码设置
+set encoding=utf-8 set fileencodings=utf-8,gbk,latin1 🔹 键位映射 保存快捷键
+nnoremap &lt;C-s&gt; :w&lt;CR&gt; 退出快捷键
+nnoremap &lt;C-q&gt; :q&lt;CR&gt; 快速切换行号模式
+nnoremap &lt;leader&gt;rn :set relativenumber!&lt;CR&gt; 🔹 常用插件管理器 vim-plug
+call plug#begin(&#39;~/.vim/plugged&#39;) Plug &#39;preservim/nerdtree&#39; Plug &#39;junegunn/fzf&#39; Plug &#39;tpope/vim-commentary&#39; call plug#end() Vundle
+Plugin &#39;preservim/nerdtree&#39; Plugin &#39;junegunn/fzf&#39; Plugin &#39;tpope/vim-commentary&#39; 🔹 常用插件推荐 文件浏览
+NERDTree → 树状文件浏览器 vim-vinegar → 简化 netrw 文件浏览 搜索与跳转">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.3ecaab62029c68421263b320760b1d99eb62d6f48764aab41f3d427c5686d178.css" integrity="sha256-PsqrYgKcaEISY7Mgdgsdmeti1vSHZKq0Hz1CfFaG0Xg=" crossorigin="anonymous">
+
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>Vim 配置与插件速查</h1><time class="dim" datetime="2025-11-21T12:30:00&#43;08:00">November 21, 2025</time><div class="term-container"><div class="tag">
+        <a href="/tags/vim/">#Vim</a>
+      </div><div class="tag">
+        <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/">#速查表</a>
+      </div><div class="tag">
+        <a href="/tags/%E9%85%8D%E7%BD%AE/">#配置</a>
+      </div><div class="tag">
+        <a href="/tags/%E6%8F%92%E4%BB%B6/">#插件</a>
+      </div></ol></div>
+  <section class="page-section"><h1 id="vim-配置与插件速查">Vim 配置与插件速查</h1>
+<p>Vim 的强大不仅在于命令，还在于其高度可配置性和丰富的插件生态。本速查表整理了常见配置与插件技巧，帮助你快速打造个性化工作环境。</p>
+<hr>
+<h2 id="-基础配置vimrc">🔹 基础配置（.vimrc）</h2>
+<ul>
+<li>
+<p><strong>显示行号</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">number</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">relativenumber</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>语法高亮</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#66d9ef">syntax</span> <span style="color:#a6e22e">on</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>自动缩进</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">autoindent</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">smartindent</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>搜索优化</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">hlsearch</span>      <span style="color:#75715e">&#34; 高亮搜索结果</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">incsearch</span>     <span style="color:#75715e">&#34; 输入时即时搜索</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">ignorecase</span>    <span style="color:#75715e">&#34; 忽略大小写</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">smartcase</span>     <span style="color:#75715e">&#34; 有大写时区分大小写</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>编码设置</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">encoding</span>=<span style="color:#a6e22e">utf</span><span style="color:#ae81ff">-8</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">fileencodings</span>=<span style="color:#a6e22e">utf</span><span style="color:#ae81ff">-8</span>,<span style="color:#a6e22e">gbk</span>,<span style="color:#a6e22e">latin1</span>
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h2 id="-键位映射">🔹 键位映射</h2>
+<ul>
+<li>
+<p><strong>保存快捷键</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">s</span>&gt; :<span style="color:#a6e22e">w</span>&lt;<span style="color:#a6e22e">CR</span>&gt;
+</span></span></code></pre></div></li>
+<li>
+<p><strong>退出快捷键</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">q</span>&gt; :<span style="color:#a6e22e">q</span>&lt;<span style="color:#a6e22e">CR</span>&gt;
+</span></span></code></pre></div></li>
+<li>
+<p><strong>快速切换行号模式</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">leader</span>&gt;<span style="color:#a6e22e">rn</span> :<span style="color:#66d9ef">set</span> <span style="color:#a6e22e">relativenumber</span>!&lt;<span style="color:#a6e22e">CR</span>&gt;
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h2 id="-常用插件管理器">🔹 常用插件管理器</h2>
+<ul>
+<li>
+<p><strong>vim-plug</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#a6e22e">call</span> <span style="color:#a6e22e">plug</span>#<span style="color:#a6e22e">begin</span>(<span style="color:#e6db74">&#39;~/.vim/plugged&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;preservim/nerdtree&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;junegunn/fzf&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;tpope/vim-commentary&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">call</span> <span style="color:#a6e22e">plug</span>#<span style="color:#a6e22e">end</span>()
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Vundle</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#a6e22e">Plugin</span> <span style="color:#e6db74">&#39;preservim/nerdtree&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plugin</span> <span style="color:#e6db74">&#39;junegunn/fzf&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plugin</span> <span style="color:#e6db74">&#39;tpope/vim-commentary&#39;</span>
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h2 id="-常用插件推荐">🔹 常用插件推荐</h2>
+<ul>
+<li>
+<p><strong>文件浏览</strong></p>
+<ul>
+<li><a href="https://github.com/preservim/nerdtree">NERDTree</a> → 树状文件浏览器</li>
+<li><a href="https://github.com/tpope/vim-vinegar">vim-vinegar</a> → 简化 netrw 文件浏览</li>
+</ul>
+</li>
+<li>
+<p><strong>搜索与跳转</strong></p>
+<ul>
+<li><a href="https://github.com/junegunn/fzf.vim">fzf.vim</a> → 模糊搜索</li>
+<li><a href="https://github.com/ctrlpvim/ctrlp.vim">ctrlp.vim</a> → 文件快速跳转</li>
+</ul>
+</li>
+<li>
+<p><strong>代码编辑</strong></p>
+<ul>
+<li><a href="https://github.com/tpope/vim-commentary">vim-commentary</a> → 快速注释</li>
+<li><a href="https://github.com/tpope/vim-surround">vim-surround</a> → 操作括号/引号</li>
+<li><a href="https://github.com/dense-analysis/ale">ale</a> → 异步语法检查</li>
+</ul>
+</li>
+<li>
+<p><strong>自动补全</strong></p>
+<ul>
+<li><a href="https://github.com/neoclide/coc.nvim">coc.nvim</a> → 强大的补全与 LSP 支持</li>
+</ul>
+</li>
+<li>
+<p><strong>美化</strong></p>
+<ul>
+<li><a href="https://github.com/vim-airline/vim-airline">vim-airline</a> → 状态栏美化</li>
+<li><a href="https://github.com/morhetz/gruvbox">gruvbox</a> → 经典配色方案</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="-实战案例">🔹 实战案例</h2>
+<ul>
+<li><strong>打造一个现代化 Vim 环境</strong>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">number</span> <span style="color:#a6e22e">relativenumber</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">hlsearch</span> <span style="color:#a6e22e">incsearch</span> <span style="color:#a6e22e">ignorecase</span> <span style="color:#a6e22e">smartcase</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">syntax</span> <span style="color:#a6e22e">on</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">tabstop</span>=<span style="color:#ae81ff">4</span> <span style="color:#a6e22e">shiftwidth</span>=<span style="color:#ae81ff">4</span> <span style="color:#a6e22e">expandtab</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">call</span> <span style="color:#a6e22e">plug</span>#<span style="color:#a6e22e">begin</span>(<span style="color:#e6db74">&#39;~/.vim/plugged&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;preservim/nerdtree&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;junegunn/fzf&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;tpope/vim-commentary&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;neoclide/coc.nvim&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;vim-airline/vim-airline&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;morhetz/gruvbox&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">call</span> <span style="color:#a6e22e">plug</span>#<span style="color:#a6e22e">end</span>()
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h2 id="-总结">🔹 总结</h2>
+<ul>
+<li><strong>基础配置</strong>：行号、缩进、搜索、编码</li>
+<li><strong>键位映射</strong>：自定义快捷键提升效率</li>
+<li><strong>插件管理器</strong>：vim-plug / Vundle</li>
+<li><strong>常用插件</strong>：NERDTree、fzf、vim-commentary、coc.nvim、vim-airline</li>
+<li><strong>美化与扩展</strong>：主题与状态栏</li>
+</ul>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>161 words</span>
+    <span>2 - 3 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#-基础配置vimrc">🔹 基础配置（.vimrc）</a></li>
+    <li><a href="#-键位映射">🔹 键位映射</a></li>
+    <li><a href="#-常用插件管理器">🔹 常用插件管理器</a></li>
+    <li><a href="#-常用插件推荐">🔹 常用插件推荐</a></li>
+    <li><a href="#-实战案例">🔹 实战案例</a></li>
+    <li><a href="#-总结">🔹 总结</a></li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/vim-%E6%90%9C%E7%B4%A2%E4%B8%8E%E6%AD%A3%E5%88%99%E9%80%9F%E6%9F%A5/">Vim 搜索与正则速查</a></li><li><a href="/posts/vim-%E5%AF%84%E5%AD%98%E5%99%A8%E4%B8%8E%E5%AE%8F%E9%80%9F%E6%9F%A5/">Vim 寄存器与宏速查</a></li><li><a href="/posts/vim-%E7%BC%93%E5%86%B2%E5%8C%BA%E4%B8%8E%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86%E9%80%9F%E6%9F%A5/">Vim 缓冲区与窗口管理速查</a></li><li><a href="/posts/vim-%E7%BC%96%E8%BE%91%E4%B8%8E%E6%93%8D%E4%BD%9C%E9%80%9F%E6%9F%A5/">Vim 编辑与操作速查</a></li><li><a href="/posts/vim-%E7%A7%BB%E5%8A%A8%E4%B8%8E%E5%AF%BC%E8%88%AA%E9%80%9F%E6%9F%A5/">Vim 移动与导航速查</a></li></ul></aside></div>
+  </div>
+</body>
+</html>

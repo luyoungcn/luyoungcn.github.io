@@ -129,7 +129,8 @@ template &lt;typename T&gt; void std::default_delete&lt;T&gt;::operator()(T* ptr
       </div></ol></div>
   <section class="page-section"><blockquote>
 <p>c++ 为什么有些类属性使用普通的指针定义，而不是使用智能指针
-<code>DogClass *ptr;</code> 而不是 <code>std::unique_ptr&lt;DogClass&gt; ptr</code>;</p></blockquote>
+<code>DogClass *ptr;</code> 而不是 <code>std::unique_ptr&lt;DogClass&gt; ptr</code>;</p>
+</blockquote>
 <h1 id="c-前向声明与指针使用指南">C++ 前向声明与指针使用指南</h1>
 <h2 id="前向声明与不完整类型">前向声明与不完整类型</h2>
 <p>在 C++ 中，<strong>前向声明</strong>（Forward Declaration）允许我们在不包含完整类定义的情况下引用一个类。这对于减少编译依赖和解决循环依赖问题非常有用。</p>

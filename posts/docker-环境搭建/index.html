@@ -121,7 +121,8 @@ sudo apt-get update sudo apt-get install ca-certificates curl gnupg 2. 添加 Do
 <p>这是一份在 [[Linux]] 发行版 Ubuntu 上安装 [[Docker]] 官方社区版 (Docker-CE) 的完整指南。我们将通过分步详解和最终的一键脚本，实现一个干净、快速的 [[Docker]] 环境搭建。</p>
 <blockquote>
 <p>[!NOTE] 为什么要使用官方仓库?
-使用 Docker 官方的 <code>apt</code> 仓库可以确保你获得最新、最安全的版本，并能方便地安装 [[Docker Compose]] 等官方插件。</p></blockquote>
+使用 Docker 官方的 <code>apt</code> 仓库可以确保你获得最新、最安全的版本，并能方便地安装 [[Docker Compose]] 等官方插件。</p>
+</blockquote>
 <hr>
 <h2 id="-分步详解docker-安装全过程">🛠️ 分步详解：Docker 安装全过程</h2>
 <h3 id="第一步清理旧环境">第一步：清理旧环境</h3>
@@ -139,7 +140,8 @@ sudo apt-get update sudo apt-get install ca-certificates curl gnupg 2. 添加 Do
 </span></span></code></pre></div><h4 id="2-添加-docker-官方-gpg-密钥">2. 添加 Docker 官方 GPG 密钥</h4>
 <blockquote>
 <p>[!TIP] GPG 密钥的作用?
-GPG (GNU Privacy Guard) 密钥用于对软件包进行数字签名。添加 Docker 的官方密钥后，我们的系统在安装 Docker 软件包时会进行验证，确保软件包来自官方且在传输过程中未被篡改，这是保障系统安全的关键一步。</p></blockquote>
+GPG (GNU Privacy Guard) 密钥用于对软件包进行数字签名。添加 Docker 的官方密钥后，我们的系统在安装 Docker 软件包时会进行验证，确保软件包来自官方且在传输过程中未被篡改，这是保障系统安全的关键一步。</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 创建用于存放密钥的目录</span>
 </span></span><span style="display:flex;"><span>sudo install -m <span style="color:#ae81ff">0755</span> -d /etc/apt/keyrings
 </span></span><span style="display:flex;"><span>
@@ -171,7 +173,8 @@ GPG (GNU Privacy Guard) 密钥用于对软件包进行数字签名。添加 Dock
 </span></span></code></pre></div><blockquote>
 <p>[!IMPORTANT]
 <strong>必须重新登录！</strong>
-执行此命令后，你必须<strong>完全退出当前终端会话并重新登录</strong> (或者直接重启系统)，用户组的变更才会生效。否则你仍然会遇到权限不足的错误。</p></blockquote>
+执行此命令后，你必须<strong>完全退出当前终端会话并重新登录</strong> (或者直接重启系统)，用户组的变更才会生效。否则你仍然会遇到权限不足的错误。</p>
+</blockquote>
 <hr>
 <h2 id="-验证安装">✅ 验证安装</h2>
 <p>重新登录后，运行经典的 <code>hello-world</code> 镜像来验证 Docker 是否安装成功。</p>
@@ -185,7 +188,8 @@ GPG (GNU Privacy Guard) 密钥用于对软件包进行数字签名。添加 Dock
 <p>我们将上述所有步骤整合到了一个 Shell 脚本中，你可以通过 <code>curl</code> 直接下载并执行。</p>
 <blockquote>
 <p>[!WARNING] 安全提示
-从网络通过管道 (<code>|</code>) 直接执行脚本是一种高效但有潜在风险的操作。在生产环境或处理敏感数据的机器上，强烈建议先审查脚本内容，再执行。</p></blockquote>
+从网络通过管道 (<code>|</code>) 直接执行脚本是一种高效但有潜在风险的操作。在生产环境或处理敏感数据的机器上，强烈建议先审查脚本内容，再执行。</p>
+</blockquote>
 <p><strong>一键安装命令:</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fsSL https://gist.githubusercontent.com/luyoungcn/706898e7d33543160b96023c46d8acc3/raw/fac1b8893b5ddd9ad7c883b32145fdb00047c9a4/install-docker-ubuntu.sh | sh
 </span></span></code></pre></div><p><strong>脚本源地址:</strong> <a href="https://www.google.com/url?sa=E&amp;source=gmail&amp;q=https://gist.github.com/706898e7d33543160b96023c46d8acc3">https://gist.github.com/706898e7d33543160b96023c46d8acc3</a></p>

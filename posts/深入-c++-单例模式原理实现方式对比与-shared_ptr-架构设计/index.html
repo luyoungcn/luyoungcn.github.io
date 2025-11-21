@@ -134,7 +134,8 @@
 <ol>
 <li>懒汉式 + 线程安全（C++11 标准）局部静态变量（Meyers Singleton）&mdash; 【推荐使用】</li>
 <li>shared_ptr 单例（更灵活）</li>
-</ol></blockquote>
+</ol>
+</blockquote>
 <h3 id="1-饿汉式单例early-instantiation">🍃1. 饿汉式单例（Early Instantiation）</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Singleton</span> {
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>

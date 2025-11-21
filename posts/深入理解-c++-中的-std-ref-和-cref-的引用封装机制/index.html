@@ -14,7 +14,8 @@
 void increment(int&amp; x) { x&#43;&#43;; } int main() { int a = 5; std::thread t(increment, a); // ❌ 编译失败 t.join(); } 你可能以为把 a 传进去就是引用了，但事实并非如此。std::thread 默认按值复制参数。它尝试将 a 拷贝一份传递给 increment，而 increment 期望的是 int&amp;，于是编译器报错。
 这个时候，std::ref(a) 就派上了用场：
 std::thread t(increment, std::ref(a)); // ✅ 传引用成功 std ref 和 cref 是什么 std::ref(obj)：返回一个 可修改引用 的包装器。
-std::cref(obj)：返回一个 const 引用 的包装器。">
+std::cref(obj)：返回一个 const 引用 的包装器。
+这两个函数本质上返回的是一个 std::reference_wrapper&lt;T&gt; 类型，它可以模拟“按引用传参”的行为，但仍然以“按值”方式传递给调用者。">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -30,7 +31,8 @@ std::cref(obj)：返回一个 const 引用 的包装器。">
 void increment(int&amp; x) { x&#43;&#43;; } int main() { int a = 5; std::thread t(increment, a); // ❌ 编译失败 t.join(); } 你可能以为把 a 传进去就是引用了，但事实并非如此。std::thread 默认按值复制参数。它尝试将 a 拷贝一份传递给 increment，而 increment 期望的是 int&amp;，于是编译器报错。
 这个时候，std::ref(a) 就派上了用场：
 std::thread t(increment, std::ref(a)); // ✅ 传引用成功 std ref 和 cref 是什么 std::ref(obj)：返回一个 可修改引用 的包装器。
-std::cref(obj)：返回一个 const 引用 的包装器。">
+std::cref(obj)：返回一个 const 引用 的包装器。
+这两个函数本质上返回的是一个 std::reference_wrapper&lt;T&gt; 类型，它可以模拟“按引用传参”的行为，但仍然以“按值”方式传递给调用者。">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
       <link rel="stylesheet" href="/css/bundle.min.3ecaab62029c68421263b320760b1d99eb62d6f48764aab41f3d427c5686d178.css" integrity="sha256-PsqrYgKcaEISY7Mgdgsdmeti1vSHZKq0Hz1CfFaG0Xg=" crossorigin="anonymous">
@@ -122,7 +124,8 @@ std::cref(obj)：返回一个 const 引用 的包装器。">
   <section class="page-section"><h1 id="深入理解-c-中的-std-ref-和-cref-的引用封装机制">深入理解 C++ 中的 std ref 和 cref 的引用封装机制</h1>
 <blockquote>
 <p>在现代 C++ 编程中，<strong>按值传参是常态，但有时候我们确实需要传引用</strong>。尤其是在使用 <code>std::bind</code>、<code>std::thread</code>、标准算法等场景下，如果不加注意，原本希望传引用的变量却被复制，导致逻辑失效甚至程序崩溃。<br>
-本文将带你深入理解 <code>std::ref</code> 和 <code>std::cref</code> 的设计原理、使用场景以及易踩的坑。</p></blockquote>
+本文将带你深入理解 <code>std::ref</code> 和 <code>std::cref</code> 的设计原理、使用场景以及易踩的坑。</p>
+</blockquote>
 <hr>
 <h2 id="为什么需要引用封装器">为什么需要引用封装器</h2>
 <p>先来看一个例子：</p>

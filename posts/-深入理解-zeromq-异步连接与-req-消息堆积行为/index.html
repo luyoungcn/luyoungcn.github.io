@@ -179,7 +179,8 @@ zmq::socket_t socket(context, zmq::socket_type::req); socket.connect(&#34;tcp://
 <p><strong>这是一个常见误区。</strong></p>
 <h3 id="-正确理解">✅ 正确理解：</h3>
 <blockquote>
-<p><code>connect()</code> 只是将目标 endpoint 添加到内部连接目标列表中，并不会立即发起 TCP 连接或等待对端响应。</p></blockquote>
+<p><code>connect()</code> 只是将目标 endpoint 添加到内部连接目标列表中，并不会立即发起 TCP 连接或等待对端响应。</p>
+</blockquote>
 <p>这是 ZeroMQ 异步非阻塞通信模型的特性。</p>
 <hr>
 <h2 id="2--异步连接机制原理">2. ⚙️ 异步连接机制原理</h2>

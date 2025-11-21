@@ -139,7 +139,8 @@ Thread 对象: 线程的实体。每个 Thread 实例内部都有一个 ThreadLo
         <a href="/tags/%E7%BB%93%E6%9E%84%E5%8C%96%E5%B9%B6%E5%8F%91/">#结构化并发</a>
       </div></ol></div>
   <section class="page-section"><blockquote>
-<p>The beauty of open source is that it is technically borderless. &mdash; <a href="https://www.reddit.com/user/AlterTableUsernames/">u/AlterTableUsernames</a></p></blockquote>
+<p>The beauty of open source is that it is technically borderless. &mdash; <a href="https://www.reddit.com/user/AlterTableUsernames/">u/AlterTableUsernames</a></p>
+</blockquote>
 <h2 id="深入解析-java-线程本地化从-threadlocal-到-scopedvalue-的演进与选择">深入解析 Java 线程本地化：从 ThreadLocal 到 ScopedValue 的演进与选择</h2>
 <h3 id="摘要">摘要</h3>
 <p>在 Java 服务端开发中，将贯穿单次业务流程的上下文信息（如用户身份、分布式追踪ID）在线程内部进行传递，是一项基础且关键的需求。为应对这一挑战，Java 提供了经典的 <code>ThreadLocal</code> 机制，它通过巧妙地将数据与执行线程绑定，实现了高效的无锁化数据隔离。然而，这一经典方案如同一把双刃剑：其精巧的设计背后，是充满陷阱的无界生命周期、难以追踪的可变性，以及在现代线程池模型下极易触发的内存泄漏风险。</p>

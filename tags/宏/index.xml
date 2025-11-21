@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>宏 on LuyangのBlog</title>
+    <link>/tags/%E5%AE%8F/</link>
+    <description>Recent content in 宏 on LuyangのBlog</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Fri, 21 Nov 2025 12:10:00 +0800</lastBuildDate>
+    <atom:link href="/tags/%E5%AE%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vim 寄存器与宏速查</title>
+      <link>/posts/vim-%E5%AF%84%E5%AD%98%E5%99%A8%E4%B8%8E%E5%AE%8F%E9%80%9F%E6%9F%A5/</link>
+      <pubDate>Fri, 21 Nov 2025 12:10:00 +0800</pubDate>
+      <guid>/posts/vim-%E5%AF%84%E5%AD%98%E5%99%A8%E4%B8%8E%E5%AE%8F%E9%80%9F%E6%9F%A5/</guid>
+      <description>&lt;h1 id=&#34;vim-寄存器与宏速查&#34;&gt;Vim 寄存器与宏速查&lt;/h1&gt;&#xA;&lt;p&gt;在 Vim 中，寄存器和宏是提升编辑效率的关键工具。寄存器用于存储文本，宏用于自动化重复操作。本速查表整理了常见命令，帮助你快速掌握。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-寄存器基础&#34;&gt;🔹 寄存器基础&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;&amp;quot;a&lt;/code&gt; → 使用寄存器 &lt;code&gt;a&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;&amp;quot;ayy&lt;/code&gt; → 复制当前行到寄存器 &lt;code&gt;a&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;&amp;quot;ap&lt;/code&gt; → 粘贴寄存器 &lt;code&gt;a&lt;/code&gt; 的内容&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;&amp;quot;bdw&lt;/code&gt; → 删除一个单词并存入寄存器 &lt;code&gt;b&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-常用寄存器&#34;&gt;🔹 常用寄存器&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt; → 默认寄存器（最近一次操作）&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;&amp;quot;0&lt;/code&gt; → 最近一次复制的内容（不受删除影响）&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;&amp;quot;1&lt;/code&gt;-&lt;code&gt;&amp;quot;9&lt;/code&gt; → 最近删除的内容（按顺序保存）&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;&amp;quot;+&lt;/code&gt; → 系统剪贴板（与操作系统交互）&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;&amp;quot;*&lt;/code&gt; → 选择缓冲区（通常与鼠标选择相关）&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;&amp;quot;_&lt;/code&gt; → 黑洞寄存器（丢弃内容，不保存）&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;&amp;quot;%&lt;/code&gt; → 当前文件名&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;&amp;quot;#&lt;/code&gt; → 备用文件名&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-系统剪贴板操作&#34;&gt;🔹 系统剪贴板操作&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;&amp;quot;+y&lt;/code&gt; → 复制到系统剪贴板&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;&amp;quot;+p&lt;/code&gt; → 从系统剪贴板粘贴&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;&amp;quot;*y&lt;/code&gt; → 复制到选择缓冲区&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;&amp;quot;*p&lt;/code&gt; → 从选择缓冲区粘贴&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-宏基础&#34;&gt;🔹 宏基础&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;q{register}&lt;/code&gt; → 开始录制宏，存入指定寄存器&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;q&lt;/code&gt; → 停止录制&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;@{register}&lt;/code&gt; → 执行宏&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;@@&lt;/code&gt; → 重复上一次宏&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-宏进阶用法&#34;&gt;🔹 宏进阶用法&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;在多行上执行宏：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

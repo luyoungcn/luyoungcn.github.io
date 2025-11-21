@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>窗口管理 on LuyangのBlog</title>
+    <link>/tags/%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86/</link>
+    <description>Recent content in 窗口管理 on LuyangのBlog</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Fri, 21 Nov 2025 11:45:00 +0800</lastBuildDate>
+    <atom:link href="/tags/%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vim 缓冲区与窗口管理速查</title>
+      <link>/posts/vim-%E7%BC%93%E5%86%B2%E5%8C%BA%E4%B8%8E%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86%E9%80%9F%E6%9F%A5/</link>
+      <pubDate>Fri, 21 Nov 2025 11:45:00 +0800</pubDate>
+      <guid>/posts/vim-%E7%BC%93%E5%86%B2%E5%8C%BA%E4%B8%8E%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86%E9%80%9F%E6%9F%A5/</guid>
+      <description>&lt;h1 id=&#34;vim-缓冲区与窗口管理速查&#34;&gt;Vim 缓冲区与窗口管理速查&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-缓冲区buffer&#34;&gt;🔹 缓冲区（Buffer）&lt;/h2&gt;&#xA;&lt;p&gt;缓冲区是 Vim 打开的文件在内存中的表示。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;:ls&lt;/code&gt; → 列出所有缓冲区&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;:bN&lt;/code&gt; → 切换到编号为 N 的缓冲区&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;:bn&lt;/code&gt; → 切换到下一个缓冲区&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;:bp&lt;/code&gt; → 切换到上一个缓冲区&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;:bd&lt;/code&gt; → 删除缓冲区（关闭文件但不退出 Vim）&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;:bdelete N&lt;/code&gt; → 删除指定缓冲区&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-窗口分割split&#34;&gt;🔹 窗口分割（Split）&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;:split&lt;/code&gt; 或 &lt;code&gt;:sp&lt;/code&gt; → 水平分割窗口&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;:vsplit&lt;/code&gt; 或 &lt;code&gt;:vsp&lt;/code&gt; → 垂直分割窗口&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;Ctrl-w s&lt;/code&gt; → 水平分割当前窗口&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;Ctrl-w v&lt;/code&gt; → 垂直分割当前窗口&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;窗口切换：&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;Ctrl-w h&lt;/code&gt; → 切换到左边窗口&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;Ctrl-w l&lt;/code&gt; → 切换到右边窗口&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;Ctrl-w j&lt;/code&gt; → 切换到下方窗口&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;Ctrl-w k&lt;/code&gt; → 切换到上方窗口&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;窗口操作：&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;Ctrl-w q&lt;/code&gt; → 关闭当前窗口&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;Ctrl-w o&lt;/code&gt; → 只保留当前窗口，关闭其他窗口&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;Ctrl-w =&lt;/code&gt; → 调整所有窗口大小相等&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;Ctrl-w +&lt;/code&gt; / &lt;code&gt;Ctrl-w -&lt;/code&gt; → 增加/减少当前窗口高度&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;Ctrl-w &amp;gt;&lt;/code&gt; / &lt;code&gt;Ctrl-w &amp;lt;&lt;/code&gt; → 增加/减少当前窗口宽度&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-标签页tab&#34;&gt;🔹 标签页（Tab）&lt;/h2&gt;&#xA;&lt;p&gt;标签页是更高层次的窗口管理方式。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

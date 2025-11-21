@@ -161,7 +161,8 @@ git:x:1003:1004:,,,:/home/git:/usr/bin/git-shell 这样，git 用户可以正常
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd gitproject
 </span></span><span style="display:flex;"><span>git init --bare gitproject.git
 </span></span></code></pre></div><blockquote>
-<p><code>–bare</code> 是指定创建一个裸仓库，裸仓库表示在服务器不存储代码，只存储版本更改信息，因此在服务器看不到对应的项目代码，而且这里必须创建一个裸仓库，否则 push 项目到服务器的时候会报错</p></blockquote>
+<p><code>–bare</code> 是指定创建一个裸仓库，裸仓库表示在服务器不存储代码，只存储版本更改信息，因此在服务器看不到对应的项目代码，而且这里必须创建一个裸仓库，否则 push 项目到服务器的时候会报错</p>
+</blockquote>
 <p>新建了一个裸仓库之后还得将其对应的用户和用户组更改为 git：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chown -R git:git gitproject.git
 </span></span></code></pre></div><h2 id="开发者本地-git-配置">开发者本地 git 配置</h2>

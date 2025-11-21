@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tab on LuyangのBlog</title>
+    <link>/tags/tab/</link>
+    <description>Recent content in Tab on LuyangのBlog</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Fri, 21 Nov 2025 12:40:00 +0800</lastBuildDate>
+    <atom:link href="/tags/tab/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vim 标签页速查</title>
+      <link>/posts/vim-%E6%A0%87%E7%AD%BE%E9%A1%B5%E9%80%9F%E6%9F%A5/</link>
+      <pubDate>Fri, 21 Nov 2025 12:40:00 +0800</pubDate>
+      <guid>/posts/vim-%E6%A0%87%E7%AD%BE%E9%A1%B5%E9%80%9F%E6%9F%A5/</guid>
+      <description>&lt;h1 id=&#34;vim-标签页速查&#34;&gt;Vim 标签页速查&lt;/h1&gt;&#xA;&lt;p&gt;在 Vim 中，标签页（tab）是比缓冲区更高层次的管理方式，适合多文件编辑和复杂工作流。本速查表整理了常见标签页操作，帮助你快速掌握。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-基本操作&#34;&gt;🔹 基本操作&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;:tabnew&lt;/code&gt; → 新建一个空标签页&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;:tabnew filename&lt;/code&gt; → 在新标签页中打开指定文件&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;:tabclose&lt;/code&gt; → 关闭当前标签页&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;:tabonly&lt;/code&gt; → 关闭其他标签页，仅保留当前标签页&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-标签页切换&#34;&gt;🔹 标签页切换&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;gt&lt;/code&gt; → 切换到下一个标签页&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;gT&lt;/code&gt; → 切换到上一个标签页&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;{n}gt&lt;/code&gt; → 切换到第 n 个标签页&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;:tabn&lt;/code&gt; → 切换到下一个标签页&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;:tabp&lt;/code&gt; → 切换到上一个标签页&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;:tabfirst&lt;/code&gt; → 切换到第一个标签页&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;:tablast&lt;/code&gt; → 切换到最后一个标签页&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-标签页管理&#34;&gt;🔹 标签页管理&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;:tabs&lt;/code&gt; → 显示所有标签页及其缓冲区信息&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;:tabmove N&lt;/code&gt; → 将当前标签页移动到第 N 个位置&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;:tabdo command&lt;/code&gt; → 在所有标签页执行指定命令&#xA;&lt;ul&gt;&#xA;&lt;li&gt;示例：&lt;code&gt;:tabdo %s/foo/bar/g&lt;/code&gt; → 在所有标签页中替换 &lt;code&gt;foo&lt;/code&gt; 为 &lt;code&gt;bar&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-启动参数&#34;&gt;🔹 启动参数&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;打开多个文件，每个文件一个标签页：&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vim -p file1 file2 file3&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;→ 使用 &lt;code&gt;-p&lt;/code&gt; 参数启动 Vim 时，每个文件会在单独的标签页中打开&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-实战案例&#34;&gt;🔹 实战案例&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;快速在标签页间跳转&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -115,7 +115,8 @@
       </div></ol></div>
   <section class="page-section"><h1 id="-c类成员函数static-与-const-的声明与定义规则解析">📌 C++类成员函数：<code>static</code> 与 <code>const</code> 的声明与定义规则解析</h1>
 <blockquote>
-<p>为什么头文件声明要写 <code>static/const</code>，而实现时 <code>static</code> 要省略、<code>const</code> 必须保留？</p></blockquote>
+<p>为什么头文件声明要写 <code>static/const</code>，而实现时 <code>static</code> 要省略、<code>const</code> 必须保留？</p>
+</blockquote>
 <h2 id="-核心规则对比表">🔍 核心规则对比表</h2>
 <table>
   <thead>
@@ -162,7 +163,8 @@ void MyClass::sharedFunc() { /* 实现 */ } // 无 static
 </code></pre><p>❌ 错误写法：</p>
 <pre tabindex="0"><code>static void MyClass::sharedFunc() { ... } // ❌ 语义冲突！
 </code></pre><blockquote>
-<p><strong>底层原理</strong>：<code>static</code> 成员函数无 <code>this</code> 指针，属于类而非对象。定义时通过 <code>ClassName::</code> 解析作用域，冗余的 <code>static</code> 会覆盖类作用域。</p></blockquote>
+<p><strong>底层原理</strong>：<code>static</code> 成员函数无 <code>this</code> 指针，属于类而非对象。定义时通过 <code>ClassName::</code> 解析作用域，冗余的 <code>static</code> 会覆盖类作用域。</p>
+</blockquote>
 <hr>
 <h2 id="-二const-关键字的声明与定义一致性">⚙️ 二、<code>const</code> 关键字的声明与定义一致性</h2>
 <h3 id="1-声明时需-1">1. <strong>声明时需 <code>const</code></strong></h3>
@@ -186,7 +188,8 @@ public:
     return value; 
 }
 </code></pre><blockquote>
-<p><strong>底层原理</strong>：<code>const</code> 成员函数的本质是修饰隐含的 <code>this</code> 指针（<code>const MyClass* const this</code>），定义时缺失 <code>const</code> 会导致 <code>this</code> 指针类型不匹配。</p></blockquote>
+<p><strong>底层原理</strong>：<code>const</code> 成员函数的本质是修饰隐含的 <code>this</code> 指针（<code>const MyClass* const this</code>），定义时缺失 <code>const</code> 会导致 <code>this</code> 指针类型不匹配。</p>
+</blockquote>
 <hr>
 <h2 id="-三关键设计原则与常见陷阱">⚡ 三、关键设计原则与常见陷阱</h2>
 <h3 id="1-static">1. <strong><code>static</code> 和 <code>const</code> 的互斥性</strong></h3>
@@ -249,7 +252,8 @@ int MyClass::getValue() { ... }           // ❌ const 丢失
 </ul>
 <p>掌握这些规则，能显著提升代码的健壮性和可维护性。建议在代码审查中重点关注 <code>const</code> 签名一致性，并用 <code>static</code> 优化无状态工具函数！</p>
 <blockquote>
-<p><strong>扩展思考</strong>：C++23 中 <code>constexpr</code> 成员函数的新特性如何与 <code>static</code>/<code>const</code> 协同？欢迎在评论区探讨！</p></blockquote>
+<p><strong>扩展思考</strong>：C++23 中 <code>constexpr</code> 成员函数的新特性如何与 <code>static</code>/<code>const</code> 协同？欢迎在评论区探讨！</p>
+</blockquote>
 </section></main>
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
