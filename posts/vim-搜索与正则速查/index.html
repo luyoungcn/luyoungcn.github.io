@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Vim 搜索与正则速查 | LuyangのBlog</title>
-<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/vim-%E6%90%9C%E7%B4%A2%E4%B8%8E%E6%AD%A3%E5%88%99%E9%80%9F%E6%9F%A5/">
+<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/vim-%E6%90%9C%E7%B4%A2%E4%B8%8E%E6%AD%A3%E5%88%99%E9%80%9F%E6%9F%A5/">
   <meta property="og:site_name" content="LuyangのBlog">
   <meta property="og:title" content="Vim 搜索与正则速查">
   <meta property="og:description" content="Vim 搜索与正则速查 🔹 基本搜索 /pattern → 向前搜索 ?pattern → 向后搜索 n → 重复上一次搜索（同方向） N → 重复上一次搜索（反方向） 🔹 单字符搜索 f{char} → 向右查找字符 F{char} → 向左查找字符 t{char} → 向右查找字符前一位 T{char} → 向左查找字符后一位 ; → 重复上一次字符查找 , → 反向重复上一次字符查找 🔹 正则表达式基础 . → 匹配任意单个字符 * → 匹配零个或多个字符 \&#43; → 匹配一个或多个字符 \? → 匹配零个或一个字符 \{n,m} → 匹配 n 到 m 次 🔹 字符类与边界 [abc] → 匹配 a、b 或 c [^abc] → 匹配除 a、b、c 之外的字符 [0-9] → 匹配数字 \d → 匹配数字（等价于 [0-9]） ^ → 匹配行首 $ → 匹配行尾 \&lt; → 匹配单词开头 \&gt; → 匹配单词结尾 🔹 分组与引用 \(...\) → 分组 \1, \2 → 引用分组内容 示例： :%s/\(foo\)\(bar\)/\2\1/g → 把 foobar 替换成 barfoo 🔹 大小写控制 \c → 忽略大小写 \C → 强制区分大小写 示例： /foo\c → 搜索 foo，忽略大小写 🔹 搜索高亮与取消 :set hlsearch → 开启搜索高亮 :set nohlsearch → 关闭搜索高亮 :noh → 临时取消高亮 🔹 实战案例 搜索所有 IP 地址">
@@ -24,9 +24,9 @@
   <meta name="twitter:description" content="Vim 搜索与正则速查 🔹 基本搜索 /pattern → 向前搜索 ?pattern → 向后搜索 n → 重复上一次搜索（同方向） N → 重复上一次搜索（反方向） 🔹 单字符搜索 f{char} → 向右查找字符 F{char} → 向左查找字符 t{char} → 向右查找字符前一位 T{char} → 向左查找字符后一位 ; → 重复上一次字符查找 , → 反向重复上一次字符查找 🔹 正则表达式基础 . → 匹配任意单个字符 * → 匹配零个或多个字符 \&#43; → 匹配一个或多个字符 \? → 匹配零个或一个字符 \{n,m} → 匹配 n 到 m 次 🔹 字符类与边界 [abc] → 匹配 a、b 或 c [^abc] → 匹配除 a、b、c 之外的字符 [0-9] → 匹配数字 \d → 匹配数字（等价于 [0-9]） ^ → 匹配行首 $ → 匹配行尾 \&lt; → 匹配单词开头 \&gt; → 匹配单词结尾 🔹 分组与引用 \(...\) → 分组 \1, \2 → 引用分组内容 示例： :%s/\(foo\)\(bar\)/\2\1/g → 把 foobar 替换成 barfoo 🔹 大小写控制 \c → 忽略大小写 \C → 强制区分大小写 示例： /foo\c → 搜索 foo，忽略大小写 🔹 搜索高亮与取消 :set hlsearch → 开启搜索高亮 :set nohlsearch → 关闭搜索高亮 :noh → 临时取消高亮 🔹 实战案例 搜索所有 IP 地址">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
-      <link rel="stylesheet" href="/css/bundle.min.3ecaab62029c68421263b320760b1d99eb62d6f48764aab41f3d427c5686d178.css" integrity="sha256-PsqrYgKcaEISY7Mgdgsdmeti1vSHZKq0Hz1CfFaG0Xg=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
 
-      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
 <script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">

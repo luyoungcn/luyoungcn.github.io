@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>📌深入理解 C&#43;&#43; 中的 std ref 和 cref 的引用封装机制 | LuyangのBlog</title>
-<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-c&#43;&#43;-%E4%B8%AD%E7%9A%84-std-ref-%E5%92%8C-cref-%E7%9A%84%E5%BC%95%E7%94%A8%E5%B0%81%E8%A3%85%E6%9C%BA%E5%88%B6/">
+<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-c&#43;&#43;-%E4%B8%AD%E7%9A%84-std-ref-%E5%92%8C-cref-%E7%9A%84%E5%BC%95%E7%94%A8%E5%B0%81%E8%A3%85%E6%9C%BA%E5%88%B6/">
   <meta property="og:site_name" content="LuyangのBlog">
   <meta property="og:title" content="📌深入理解 C&#43;&#43; 中的 std ref 和 cref 的引用封装机制">
   <meta property="og:description" content="深入理解 C&#43;&#43; 中的 std ref 和 cref 的引用封装机制 在现代 C&#43;&#43; 编程中，按值传参是常态，但有时候我们确实需要传引用。尤其是在使用 std::bind、std::thread、标准算法等场景下，如果不加注意，原本希望传引用的变量却被复制，导致逻辑失效甚至程序崩溃。
@@ -35,9 +35,9 @@ std::cref(obj)：返回一个 const 引用 的包装器。
 这两个函数本质上返回的是一个 std::reference_wrapper&lt;T&gt; 类型，它可以模拟“按引用传参”的行为，但仍然以“按值”方式传递给调用者。">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
-      <link rel="stylesheet" href="/css/bundle.min.3ecaab62029c68421263b320760b1d99eb62d6f48764aab41f3d427c5686d178.css" integrity="sha256-PsqrYgKcaEISY7Mgdgsdmeti1vSHZKq0Hz1CfFaG0Xg=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
 
-      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
 <script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">

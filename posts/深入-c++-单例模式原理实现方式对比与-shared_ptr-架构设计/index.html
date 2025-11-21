@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>📌深入 C&#43;&#43; 单例模式：原理、实现方式对比与 shared_ptr 架构设计 | LuyangのBlog</title>
-<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/%E6%B7%B1%E5%85%A5-c&#43;&#43;-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E5%8E%9F%E7%90%86%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%E5%AF%B9%E6%AF%94%E4%B8%8E-shared_ptr-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">
+<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/%E6%B7%B1%E5%85%A5-c&#43;&#43;-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E5%8E%9F%E7%90%86%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%E5%AF%B9%E6%AF%94%E4%B8%8E-shared_ptr-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">
   <meta property="og:site_name" content="LuyangのBlog">
   <meta property="og:title" content="📌深入 C&#43;&#43; 单例模式：原理、实现方式对比与 shared_ptr 架构设计">
   <meta property="og:description" content="📌深入 C&#43;&#43; 单例模式：原理、实现方式对比与 shared_ptr 架构设计 1️⃣ 什么是单例？基本语义与使用场景 单例（[[Singleton]]）是对象创建模式中最常见的一种，其目标是确保类在系统中只有一个实例，并提供全局访问入口。
@@ -27,9 +27,9 @@
 懒汉式 &#43; 线程安全（C&#43;&#43;11 标准）局部静态变量（Meyers Singleton）— 【推荐使用】 shared_ptr 单例（更灵活） 🍃1. 饿汉式单例（Early Instantiation） class Singleton { public: static Singleton&amp; instance() { return inst; } private: Singleton() {} static Singleton inst; }; Singleton Singleton::inst; ✅ 简单易懂，线程安全（由 C&#43;&#43; 静态对象初始化保障） ❌ 资源可能浪费，程序启动就构造实例 🍃2. 懒汉式（Lazy Initialization）&#43; 非线程安全 class Singleton { public: static Singleton* getInstance() { if (!instance_) instance_ = new Singleton; return instance_; } private: Singleton() {} static Singleton* instance_; }; Singleton* Singleton::instance_ = nullptr; ✅ 仅在需要时创建实例 ❌ 非线程安全，多个线程可能同时构造多个实例 🍃3. 懒汉式 &#43; 线程安全（C&#43;&#43;11 标准）局部静态变量（Meyers Singleton）— 【推荐使用】 class Singleton { public: static Singleton&amp; instance() { static Singleton inst; // C&#43;&#43;11 保证线程安全 return inst; } private: Singleton() = default; Singleton(const Singleton&amp;) = delete; Singleton&amp; operator=(const Singleton&amp;) = delete; }; ✅ 推荐使用：线程安全、懒加载、无锁开销 ✅ 析构自动管理，依赖 C&#43;&#43; 静态局部变量特性 ❗ 禁止拷贝构造、赋值运算，防止实例复制 ✅ 最简洁、安全、高效的方式（默认推荐） 后面会有这种方式的语法语义与底层源码解析">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
-      <link rel="stylesheet" href="/css/bundle.min.3ecaab62029c68421263b320760b1d99eb62d6f48764aab41f3d427c5686d178.css" integrity="sha256-PsqrYgKcaEISY7Mgdgsdmeti1vSHZKq0Hz1CfFaG0Xg=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
 
-      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
 <script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">

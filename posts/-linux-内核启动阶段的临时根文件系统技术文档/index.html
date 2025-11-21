@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>🧩 Linux 内核启动阶段的临时根文件系统技术文档 | LuyangのBlog</title>
-<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/-linux-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E9%98%B6%E6%AE%B5%E7%9A%84%E4%B8%B4%E6%97%B6%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/">
+<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/-linux-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E9%98%B6%E6%AE%B5%E7%9A%84%E4%B8%B4%E6%97%B6%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/">
   <meta property="og:site_name" content="LuyangのBlog">
   <meta property="og:title" content="🧩 Linux 内核启动阶段的临时根文件系统技术文档">
   <meta property="og:description" content="🧩 Linux 内核启动阶段的临时根文件系统技术文档 📘 1. 概述（Overview） 在 Linux 启动的早期阶段，内核尚未挂载实际的根文件系统（例如 eMMC 上的 ext4 或 NFS 根目录）。
@@ -33,9 +33,9 @@
 1. BIOS/UEFI ↓ 2. Bootloader (GRUB/U-Boot) - 加载 vmlinuz (内核映像) - 加载 initramfs/initrd 到内存 ↓ 3. Linux Kernel - 初始化内核子系统 - 创建 rootfs (ramfs/tmpfs) - 解包 initramfs 或挂载 initrd - 执行临时根中的 /init ↓ 4. /init - 探测真实根文件系统（eMMC/NFS/overlay） - 挂载目标根目录 - 调用 `switch_root` 或 `pivot_root` ↓ 5. 启动真正的 /sbin/init 或 systemd 🧩 3. 技术架构与数据流 3.1 逻辑结构图 ┌────────────────────────────┐ │ Bootloader │ │ - 加载 Kernel &#43; Initramfs │ └────────────┬───────────────┘ │ ┌────────────▼───────────────┐ │ Linux Kernel │ │ - 创建 rootfs (ramfs) │ │ - 解包 initramfs.cpio.gz │ │ - 执行 /init │ └────────────┬───────────────┘ │ ┌────────────▼───────────────┐ │ /init 用户态脚本 │ │ - 探测真实根文件系统 │ │ - 挂载 /new_root │ │ - switch_root /new_root │ └────────────┬───────────────┘ │ ┌────────────▼───────────────┐ │ 真正根文件系统 (ext4/NFS) │ │ /sbin/init → systemd/init │ └────────────────────────────┘ 🧱 4. Initramfs 内部结构 Initramfs 是一个 cpio 格式的压缩包，包含早期启动所需的最小文件集：">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
-      <link rel="stylesheet" href="/css/bundle.min.3ecaab62029c68421263b320760b1d99eb62d6f48764aab41f3d427c5686d178.css" integrity="sha256-PsqrYgKcaEISY7Mgdgsdmeti1vSHZKq0Hz1CfFaG0Xg=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
 
-      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
 <script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
