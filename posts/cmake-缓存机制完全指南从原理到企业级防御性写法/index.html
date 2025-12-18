@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CMake 缓存机制完全指南：从原理到企业级防御性写法 | LuyangのBlog</title>
+<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/cmake-%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E4%BC%81%E4%B8%9A%E7%BA%A7%E9%98%B2%E5%BE%A1%E6%80%A7%E5%86%99%E6%B3%95/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="CMake 缓存机制完全指南：从原理到企业级防御性写法">
+  <meta property="og:description" content="彻底搞懂 CMakeCache.txt、-D 参数、option()、set(… CACHE …)、FORCE、GUI 显示顺序的底层原理，以及大厂真实落地的防御性写法。">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-12-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-10T00:00:00+00:00">
+    <meta property="article:tag" content="Cmake">
+    <meta property="article:tag" content="构建系统">
+    <meta property="article:tag" content="缓存机制">
+    <meta property="article:tag" content="最佳实践">
+    <meta property="article:tag" content="企业级">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="CMake 缓存机制完全指南：从原理到企业级防御性写法">
+  <meta name="twitter:description" content="彻底搞懂 CMakeCache.txt、-D 参数、option()、set(… CACHE …)、FORCE、GUI 显示顺序的底层原理，以及大厂真实落地的防御性写法。">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
+
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>CMake 缓存机制完全指南：从原理到企业级防御性写法</h1><time class="dim" datetime="2025-12-10T00:00:00&#43;00:00">December 10, 2025</time><div class="term-container"><div class="tag">
+        <a href="/tags/cmake/">#cmake</a>
+      </div><div class="tag">
+        <a href="/tags/%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F/">#构建系统</a>
+      </div><div class="tag">
+        <a href="/tags/%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/">#缓存机制</a>
+      </div><div class="tag">
+        <a href="/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">#最佳实践</a>
+      </div><div class="tag">
+        <a href="/tags/%E4%BC%81%E4%B8%9A%E7%BA%A7/">#企业级</a>
+      </div></ol></div>
+  <section class="page-section"><h2 id="前言">前言</h2>
+<p>如果你曾经被下面任意一种现象折磨过，就说明你已经被 CMake 缓存机制“咬”过：</p>
+<ul>
+<li>第三方库的某个开关怎么关都关不掉</li>
+<li>CI 里加了 <code>-DENABLE_XXX=OFF</code>，本地却还是 ON</li>
+<li>cmake-gui 里改了某个选项，下次重新 configure 又变回来了</li>
+<li>同一个变量名在不同子模块里定义了不同的默认值，最后到底是哪个生效了？</li>
+</ul>
+<p>这篇文章将一次性把 <strong>CMake 缓存的完整模型</strong> 讲透，读完后你将彻底掌握所有配置交互的底层规则。</p>
+<h2 id="1-cmake-缓存到底是什么">1. CMake 缓存到底是什么？</h2>
+<p>CMake 缓存 = 构建目录下的 <code>CMakeCache.txt</code> 文件<br>
+它是一个<strong>全局、持久化、有类型、有描述、有优先级</strong>的键值数据库。</p>
+<p>所有你见过的配置方式，最终都会收敛到这个文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>-D 参数
+</span></span><span style="display:flex;"><span>cmake-gui / ccmake
+</span></span><span style="display:flex;"><span>CMakePresets.json
+</span></span><span style="display:flex;"><span>set(... CACHE ...)
+</span></span><span style="display:flex;"><span>option(...)
+</span></span></code></pre></div><h2 id="2-缓存变量的-6-种类型type及其真实表现">2. 缓存变量的 6 种类型（TYPE）及其真实表现</h2>
+<table>
+  <thead>
+      <tr>
+          <th>TYPE</th>
+          <th>CMakeCache.txt 显示</th>
+          <th>是否在 GUI 显示</th>
+          <th>典型用途</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>BOOL</td>
+          <td>BOOL</td>
+          <td>是（复选框）</td>
+          <td>开关（最常用）</td>
+      </tr>
+      <tr>
+          <td>STRING</td>
+          <td>STRING</td>
+          <td>是</td>
+          <td>版本号、模式枚举</td>
+      </tr>
+      <tr>
+          <td>PATH</td>
+          <td>PATH</td>
+          <td>是（带浏览按钮）</td>
+          <td>目录路径</td>
+      </tr>
+      <tr>
+          <td>FILEPATH</td>
+          <td>FILEPATH</td>
+          <td>是（带浏览按钮）</td>
+          <td>文件路径</td>
+      </tr>
+      <tr>
+          <td>INTERNAL</td>
+          <td>INTERNAL</td>
+          <td>隐藏</td>
+          <td>CMake 内部使用，不希望用户看到</td>
+      </tr>
+      <tr>
+          <td>UNINITIALIZED</td>
+          <td>（无 TYPE）</td>
+          <td>是</td>
+          <td>没写 TYPE 时的默认（不推荐）</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>推荐</strong>：对外暴露的开关一律用 <code>BOOL</code>，路径用 <code>PATH</code>，永远不要偷懒留空。</p>
+<h2 id="3-缓存变量优先级铁律从高到低背下来就无敌了">3. 缓存变量优先级铁律（从高到低，背下来就无敌了）</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>1. 命令行 -D 参数（最高优先级）
+</span></span><span style="display:flex;"><span>2. CMakePresets.json / CMakeUserPresets.json 中的 cacheVariables
+</span></span><span style="display:flex;"><span>3. 当前 CMakeCache.txt 中已存在的条目（上一次配置的结果）
+</span></span><span style="display:flex;"><span>4. 项目代码中显式的 set(... CACHE ...)（父项目优先于子项目）
+</span></span><span style="display:flex;"><span>5. 项目代码中第一次出现的 option(...) 的默认值
+</span></span><span style="display:flex;"><span>6. 普通的 set(...)（不进缓存，最低优先级）
+</span></span></code></pre></div><p>只要记住这 6 条，你就能准确预测任何情况下变量的最终值。</p>
+<h2 id="4-option-的真实实现源码级拆解">4. option() 的真实实现（源码级拆解）</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># CMake 内置的 option() 实际上长这样（简化版）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>if(<span style="color:#e6db74">NOT</span> <span style="color:#e6db74">DEFINED</span> <span style="color:#e6db74">ENABLE_HEAVY_FEATURE</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    set(<span style="color:#e6db74">ENABLE_HEAVY_FEATURE</span> <span style="color:#e6db74">ON</span> <span style="color:#e6db74">CACHE</span> <span style="color:#e6db74">BOOL</span> <span style="color:#e6db74">&#34;description&#34;</span> <span style="color:#e6db74">FORCE</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>结论：<strong>一旦变量已经被定义过（无论来自 -D、CACHE、父项目），option() 的默认值就完全失效</strong>。</p>
+<p>这正是我们“接管第三方开关”的底层原理。</p>
+<h2 id="5-force-关键字的恐怖威力">5. FORCE 关键字的恐怖威力</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>set(<span style="color:#e6db74">MY_VAR</span> <span style="color:#e6db74">OFF</span> <span style="color:#e6db74">CACHE</span> <span style="color:#e6db74">BOOL</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#e6db74">FORCE</span>)   <span style="color:#75715e"># 强制覆盖缓存中已有值
+</span></span></span></code></pre></div><p>加了 <code>FORCE</code> 后，连命令行 <code>-D</code> 都压不住（除非命令行也加 FORCE）。<br>
+企业项目里只在极少数“必须锁死”的地方才用，例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>set(<span style="color:#e6db74">CMAKE_POSITION_INDEPENDENT_CODE</span> <span style="color:#e6db74">ON</span> <span style="color:#e6db74">CACHE</span> <span style="color:#e6db74">BOOL</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#e6db74">FORCE</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h2 id="6-企业级防御性写法大全2025-年标配">6. 企业级防御性写法大全（2025 年标配）</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># cmake/options-thirdparty.cmake
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 所有第三方开关统一在这里接管，子模块的 option() 全部失效
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">ENABLE_HEAVY_FEATURE</span>         <span style="color:#e6db74">OFF</span> <span style="color:#e6db74">CACHE</span> <span style="color:#e6db74">BOOL</span> <span style="color:#e6db74">&#34;[3rdParty] Heavy legacy mode (+6 min build)&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">ENABLE_EXPERIMENTAL_DRIVER</span>   <span style="color:#e6db74">ON</span> <span style="color:#e6db74">开启</span> <span style="color:#e6db74">CACHE</span> <span style="color:#e6db74">BOOL</span> <span style="color:#e6db74">&#34;[3rdParty] Next-gen driver (unstable)&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">THIRD_PARTY_ROOT</span>             <span style="color:#e6db74">&#34;&#34;</span>   <span style="color:#e6db74">CACHE</span> <span style="color:#e6db74">PATH</span>  <span style="color:#e6db74">&#34;[3rdParty] Root directory of all external libs&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 顶级 CMakeLists.txt 最前面
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>include(<span style="color:#e6db74">cmake/options-thirdparty.cmake</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>这样做的好处：</p>
+<ul>
+<li>所有开关集中一处管理</li>
+<li>GUI 里自动分组显示</li>
+<li>CI 可以用 <code>-D</code> 轻松覆盖</li>
+<li>杜绝“有人偷偷打开了我不知道的开关”</li>
+</ul>
+<h2 id="7-实战最常见的-5-种控制方式对比">7. 实战最常见的 5 种控制方式对比</h2>
+<table>
+  <thead>
+      <tr>
+          <th>方式</th>
+          <th>优先级</th>
+          <th>是否推荐</th>
+          <th>适用场景</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>命令行 <code>-DENABLE_XXX=OFF</code></td>
+          <td>1</td>
+          <td>强烈推荐</td>
+          <td>CI 多配置构建</td>
+      </tr>
+      <tr>
+          <td>父项目 <code>set(... CACHE ...)</code></td>
+          <td>4</td>
+          <td>强烈推荐</td>
+          <td>统一接管第三方默认行为</td>
+      </tr>
+      <tr>
+          <td>CMakePresets.json cacheVariables</td>
+          <td>2</td>
+          <td>强烈推荐</td>
+          <td>团队统一配置、IDE 集成</td>
+      </tr>
+      <tr>
+          <td>子模块自己的 <code>option()</code></td>
+          <td>5</td>
+          <td>基本没用</td>
+          <td>只能在完全独立项目时才有效</td>
+      </tr>
+      <tr>
+          <td>普通 <code>set(ENABLE_XXX ON)</code>（无 CACHE）</td>
+          <td>6</td>
+          <td>禁用</td>
+          <td>会被 option() 覆盖，极易出错</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="8-让-gui-更好看的终极技巧">8. 让 GUI 更好看的终极技巧</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>set(<span style="color:#e6db74">MYCOMPANY_ENABLE_DEBUG_LOG</span> <span style="color:#e6db74">OFF</span> <span style="color:#e6db74">CACHE</span> <span style="color:#e6db74">BOOL</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;[MyCompany] Enable verbose debug logging (very noisy)&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">MYCOMPANY_THIRD_PARTY_ROOT</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#e6db74">CACHE</span> <span style="color:#e6db74">PATH</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;[MyCompany] Root directory of all third-party libraries&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>在 cmake-gui/ccmake 中会自动按 <code>[方括号]</code> 分组，体验直接起飞。</p>
+<h2 id="9-总结一句话彻底掌握-cmake-缓存">9. 总结：一句话彻底掌握 CMake 缓存</h2>
+<blockquote>
+<p><strong>谁最后（优先级最高）往 CMakeCache.txt 里写，谁就赢。</strong></p>
+</blockquote>
+<p>掌握了这套模型，你就拥有了：</p>
+<ul>
+<li>完美接管任何第三方库的开关</li>
+<li>让 CI、开发者、GUI、Presets 行为完全一致</li>
+<li>再也不用猜“这个变量到底是哪来的”</li>
+</ul>
+<p>去把你们项目里那些“永远关不掉的开关”全部用 <code>set(... CACHE ...)</code> 接管了吧！</p>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>302 words</span>
+    <span>5 - 6 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#1-cmake-缓存到底是什么">1. CMake 缓存到底是什么？</a></li>
+    <li><a href="#2-缓存变量的-6-种类型type及其真实表现">2. 缓存变量的 6 种类型（TYPE）及其真实表现</a></li>
+    <li><a href="#3-缓存变量优先级铁律从高到低背下来就无敌了">3. 缓存变量优先级铁律（从高到低，背下来就无敌了）</a></li>
+    <li><a href="#4-option-的真实实现源码级拆解">4. option() 的真实实现（源码级拆解）</a></li>
+    <li><a href="#5-force-关键字的恐怖威力">5. FORCE 关键字的恐怖威力</a></li>
+    <li><a href="#6-企业级防御性写法大全2025-年标配">6. 企业级防御性写法大全（2025 年标配）</a></li>
+    <li><a href="#7-实战最常见的-5-种控制方式对比">7. 实战最常见的 5 种控制方式对比</a></li>
+    <li><a href="#8-让-gui-更好看的终极技巧">8. 让 GUI 更好看的终极技巧</a></li>
+    <li><a href="#9-总结一句话彻底掌握-cmake-缓存">9. 总结：一句话彻底掌握 CMake 缓存</a></li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/%E5%91%8A%E5%88%AB%E5%85%A8%E5%B1%80%E6%B1%A1%E6%9F%93modern-cmake-%E7%9A%84%E7%9B%AE%E6%A0%87%E7%BA%A7%E9%9A%94%E7%A6%BB%E8%A7%84%E8%8C%83/">告别全局污染：Modern CMake 的目标级隔离规范</a></li><li><a href="/posts/modern-cmake-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E6%8E%A5%E7%AE%A1%E7%AC%AC%E4%B8%89%E6%96%B9%E5%AD%90%E6%A8%A1%E5%9D%97%E7%9A%84-option-%E5%BC%80%E5%85%B3/">Modern CMake 最佳实践：如何优雅地接管第三方子模块的 option 开关</a></li></ul></aside></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>告别全局污染：Modern CMake 的目标级隔离规范 | LuyangのBlog</title>
+<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/%E5%91%8A%E5%88%AB%E5%85%A8%E5%B1%80%E6%B1%A1%E6%9F%93modern-cmake-%E7%9A%84%E7%9B%AE%E6%A0%87%E7%BA%A7%E9%9A%94%E7%A6%BB%E8%A7%84%E8%8C%83/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="告别全局污染：Modern CMake 的目标级隔离规范">
+  <meta property="og:description" content="为什么 add_definitions 和 include_directories 是技术债务？深度解析 CMake 的 Target-Centric 原则，实现构建系统的依赖隔离。">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-12-10T17:00:00+08:00">
+    <meta property="article:modified_time" content="2024-12-10T17:00:00+08:00">
+    <meta property="article:tag" content="Cmake">
+    <meta property="article:tag" content="构建系统">
+    <meta property="article:tag" content="C&#43;&#43;">
+    <meta property="article:tag" content="最佳实践">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="告别全局污染：Modern CMake 的目标级隔离规范">
+  <meta name="twitter:description" content="为什么 add_definitions 和 include_directories 是技术债务？深度解析 CMake 的 Target-Centric 原则，实现构建系统的依赖隔离。">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
+
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>告别全局污染：Modern CMake 的目标级隔离规范</h1><time class="dim" datetime="2024-12-10T17:00:00&#43;08:00">December 10, 2024</time><div class="term-container"><div class="tag">
+        <a href="/tags/cmake/">#cmake</a>
+      </div><div class="tag">
+        <a href="/tags/%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F/">#构建系统</a>
+      </div><div class="tag">
+        <a href="/tags/c&#43;&#43;/">#C&#43;&#43;</a>
+      </div><div class="tag">
+        <a href="/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">#最佳实践</a>
+      </div></ol></div>
+  <section class="page-section"><h1 id="告别全局污染modern-cmake-的目标级隔离规范">告别全局污染：Modern CMake 的目标级隔离规范</h1>
+<h2 id="-引言为什么你的构建系统总在内耗">🚀 引言：为什么你的构建系统总在“内耗”？</h2>
+<p>如果你维护着一个历史悠久或规模庞大的 C/C++ 项目，你很可能在顶层 <code>CMakeLists.txt</code> 中见到过像 <code>add_definitions</code> 或 <code>include_directories</code> 这样的命令。</p>
+<p>这是一种典型的**目录级作用域（Directory Scope）**配置风格，它带来的问题是灾难性的：<strong>全局污染（Global Pollution）</strong>。</p>
+<p>全局污染会隐式地将配置强加给所有目标，包括第三方库和测试程序，导致依赖关系模糊、模块间隔离失效，最终演变成难以维护的“技术债务”。</p>
+<p><strong>Modern CMake 的核心哲学是 Target-Centric（以目标为中心）</strong>。所有的配置和属性都必须精确地绑定到需要它的 Target 上。本规范旨在全面推行目标级隔离，构建一个健壮、可预测的工程体系。</p>
+<hr>
+<h2 id="1-核心问题清单必须隔离的-5-大污染源">1. 核心问题清单：必须隔离的 5 大污染源</h2>
+<p>我们必须将以下五类配置从全局变量或目录级命令中移除，并转移到 Target 属性中。</p>
+<h3 id="11-宏定义污染-macro-definitions">1.1. 宏定义污染 (Macro Definitions)</h3>
+<p><strong>痛点：</strong> <code>add_definitions()</code> 将宏（如 <code>-DDEBUG</code> 或 <code>-DVERSION_ABC</code>）扩散到所有子目录下的所有 Target。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">❌ 遗留写法</th>
+          <th style="text-align: left">✅ 推荐写法</th>
+          <th style="text-align: left">适用场景说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>add_definitions(-DCTRX8188)</code></td>
+          <td style="text-align: left"><code>target_compile_definitions(IfxRfe PRIVATE CTRX8188)</code></td>
+          <td style="text-align: left">优先使用 <code>PRIVATE</code>，如果该宏被头文件引用，则使用 <code>PUBLIC</code>。宏定义仅作用于指定目标。</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="12-语言标准污染-language-standard">1.2. 语言标准污染 (Language Standard)</h3>
+<p><strong>痛点：</strong> <code>CMAKE_C_STANDARD</code> 全局变量强制所有 Target 使用相同的语言标准，限制了新旧代码共存或测试程序使用更高标准。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">❌ 遗留写法</th>
+          <th style="text-align: left">✅ 推荐写法 A (特性优先)</th>
+          <th style="text-align: left">✅ 推荐写法 B (严格属性)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>set(CMAKE_C_STANDARD 99)</code></td>
+          <td style="text-align: left"><code>target_compile_features(IfxRfe PRIVATE c_std_99)</code></td>
+          <td style="text-align: left"><code>set_target_properties(IfxRfe PROPERTIES C_STANDARD 99 C_STANDARD_REQUIRED ON)</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>set(CMAKE_CXX_STANDARD 17)</code></td>
+          <td style="text-align: left"><code>target_compile_features(MyApp PRIVATE cxx_std_17)</code></td>
+          <td style="text-align: left"><code>set_target_properties(MyApp PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)</code></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="13-头文件路径污染-include-directories">1.3. 头文件路径污染 (Include Directories)</h3>
+<p><strong>痛点：</strong> <code>include_directories()</code> 是最危险的命令之一，它将头文件路径暴露给目录下所有 Target，导致<strong>隐式依赖</strong>。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">❌ 遗留写法</th>
+          <th style="text-align: left">✅ 推荐写法</th>
+          <th style="text-align: left">适用场景说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>include_directories(./includes)</code></td>
+          <td style="text-align: left"><code>target_include_directories(IfxRfe PUBLIC ./includes)</code></td>
+          <td style="text-align: left">使用 <code>target_include_directories</code> 明确声明路径是该 Target 的<strong>公共接口</strong>还是<strong>私有实现</strong>。</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="14-编译选项污染-compile-options">1.4. 编译选项污染 (Compile Options)</h3>
+<p><strong>痛点：</strong> <code>add_compile_options()</code> 或设置 <code>CMAKE_C_FLAGS</code> 会将像 <code>-Wall</code>、<code>-Werror</code> 或 <code>-O3</code> 这样的选项，无差别地应用到所有代码，可能导致第三方库因警告而编译失败。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">❌ 遗留写法</th>
+          <th style="text-align: left">✅ 推荐写法</th>
+          <th style="text-align: left">适用场景说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>add_compile_options(-Werror)</code></td>
+          <td style="text-align: left"><code>target_compile_options(IfxRfe PRIVATE -Werror)</code></td>
+          <td style="text-align: left">推荐使用 <strong>Generator Expressions</strong> 结合配置，如 <code>$&lt;CONFIG:Release&gt;:-O3</code>。</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="15-链接库污染-link-libraries">1.5. 链接库污染 (Link Libraries)</h3>
+<p><strong>痛点：</strong> <code>link_libraries()</code> 强制当前目录下的所有 Target 链接某个库。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">❌ 遗留写法</th>
+          <th style="text-align: left">✅ 推荐写法</th>
+          <th style="text-align: left">适用场景说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>link_libraries(CommonUtils)</code></td>
+          <td style="text-align: left"><code>target_link_libraries(IfxRfe PRIVATE CommonUtils)</code></td>
+          <td style="text-align: left">使用 <code>target_link_libraries</code> 明确定义依赖拓扑，避免不必要的链接。</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="2-target-作用域的精髓private-public-interface">2. Target 作用域的精髓：PRIVATE, PUBLIC, INTERFACE</h2>
+<p>使用 <code>target_...</code> 系列命令时，必须理解三个作用域关键字：</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">关键字</th>
+          <th style="text-align: left">作用范围</th>
+          <th style="text-align: left">依赖传递性</th>
+          <th style="text-align: left">适用场景</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>PRIVATE</strong></td>
+          <td style="text-align: left">仅作用于当前 Target <strong>自身</strong>的源码编译。</td>
+          <td style="text-align: left"><strong>无</strong>。链接我的 Target 不会继承该属性。</td>
+          <td style="text-align: left">内部实现的宏、私有头文件路径、内部编译选项。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>PUBLIC</strong></td>
+          <td style="text-align: left">作用于当前 Target <strong>自身</strong>，并传递给链接它的 Target。</td>
+          <td style="text-align: left"><strong>有</strong>。链接我的 Target 会继承该属性。</td>
+          <td style="text-align: left">对外暴露的 API 头文件路径、库使用的语言标准。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>INTERFACE</strong></td>
+          <td style="text-align: left">仅传递给链接它的 Target，对当前 Target <strong>自身无效</strong>。</td>
+          <td style="text-align: left"><strong>有</strong>。链接我的 Target 会继承该属性。</td>
+          <td style="text-align: left">纯头文件库（Header-only Library）的属性。</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>实践原则：</strong> 永远遵循<strong>最小权限原则</strong>。默认使用 <strong>PRIVATE</strong>，只有当 Target 的公共头文件（API）需要某个配置（如宏或 include 路径）时，才升级为 <strong>PUBLIC</strong>。</p>
+<h2 id="3-迁移与审查行动计划">3. 迁移与审查行动计划</h2>
+<p>为了使项目构建系统更加健壮，我们制定以下行动计划：</p>
+<ol>
+<li>
+<p><strong>全局审计</strong>：使用脚本工具或手动在项目根目录搜索以下遗留命令：</p>
+<ul>
+<li><code>add_definitions</code></li>
+<li><code>include_directories</code></li>
+<li><code>link_libraries</code></li>
+<li><code>set(CMAKE_C_STANDARD</code> 或 <code>set(CMAKE_CXX_STANDARD</code></li>
+<li><code>add_compile_options</code></li>
+</ul>
+</li>
+<li>
+<p><strong>定位与下沉</strong>：将发现的所有全局/目录级配置，准确地迁移到它们所属的 <code>add_executable()</code> 或 <code>add_library()</code> Target 下方，并使用 <code>target_...</code> 命令替代。</p>
+</li>
+<li>
+<p><strong>验证隔离</strong>：确保在移除旧的全局配置后，所有依赖关系都是显式且完整的。任何由隐式依赖导致的编译失败都应被视为一次成功的重构，并用 <code>PUBLIC</code> 或 <code>PRIVATE</code> 关系修复。</p>
+</li>
+</ol>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>238 words</span>
+    <span>5 - 6 minutes read</span><div class="side-details-taxonomy">
+        <small>series: 
+          <span class="details-taxonomy"><a href="/series/modern-cmake-%E8%BF%81%E7%A7%BB%E6%8C%87%E5%8D%97">Modern CMake 迁移指南</a></span></small>
+      </div></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#-引言为什么你的构建系统总在内耗">🚀 引言：为什么你的构建系统总在“内耗”？</a></li>
+    <li><a href="#1-核心问题清单必须隔离的-5-大污染源">1. 核心问题清单：必须隔离的 5 大污染源</a>
+      <ul>
+        <li><a href="#11-宏定义污染-macro-definitions">1.1. 宏定义污染 (Macro Definitions)</a></li>
+        <li><a href="#12-语言标准污染-language-standard">1.2. 语言标准污染 (Language Standard)</a></li>
+        <li><a href="#13-头文件路径污染-include-directories">1.3. 头文件路径污染 (Include Directories)</a></li>
+        <li><a href="#14-编译选项污染-compile-options">1.4. 编译选项污染 (Compile Options)</a></li>
+        <li><a href="#15-链接库污染-link-libraries">1.5. 链接库污染 (Link Libraries)</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-target-作用域的精髓private-public-interface">2. Target 作用域的精髓：PRIVATE, PUBLIC, INTERFACE</a></li>
+    <li><a href="#3-迁移与审查行动计划">3. 迁移与审查行动计划</a></li>
+  </ul>
+</nav></aside></div>
+  </div>
+</body>
+</html>

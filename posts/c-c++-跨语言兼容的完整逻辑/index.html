@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>C C&#43;&#43; 跨语言兼容的完整逻辑 | LuyangのBlog</title>
+<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/c-c&#43;&#43;-%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%85%BC%E5%AE%B9%E7%9A%84%E5%AE%8C%E6%95%B4%E9%80%BB%E8%BE%91/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="C C&#43;&#43; 跨语言兼容的完整逻辑">
+  <meta property="og:description" content="引言：跨语言调用的&#34;隐形陷阱&#34; 如果你曾在C&#43;&#43;项目中调用过C语言编写的库，大概率遇到过这样的链接错误：
+undefined reference to `foo(int)&#39; 明明头文件包含了，函数也实现了，为何编译器找不到符号？这背后的罪魁祸首，正是C&#43;&#43;的名字修饰（Name Mangling） 机制——C和C&#43;&#43;编译器对函数符号的编码规则截然不同，导致跨语言调用时出现&#34;声明与实现对不上号&#34;的尴尬局面。
+而__BEGIN_DECLS与__END_DECLS这对宏，正是解决该问题的&#34;黄金搭档&#34;。它们看似简单，却蕴含着C/C&#43;&#43;混合编程的核心设计思想。本文将从头文件设计、源文件实现、软件风格规范三个维度，带你全方位吃透这对宏的使用逻辑与最佳实践。
+一、跨语言兼容的核心矛盾：名字修饰的坑 要理解__BEGIN_DECLS的价值，首先要搞懂C和C&#43;&#43;在编译链接阶段的本质差异：
+1. 符号编码规则差异 C编译器（如GCC）：函数名直接作为链接符号，不携带参数类型信息。例如void foo(int)编译后符号为_foo（不同编译器前缀可能不同，但无额外类型编码）； C&#43;&#43;编译器（如G&#43;&#43;）：为支持函数重载和模板，会将函数名&#43;参数类型编码为复杂符号。例如void foo(int)编译后符号为_Z3fooi（Z表示编码开始，3表示函数名长度，foo是函数名，i表示int类型）。 2. 跨语言调用的致命问题 当C&#43;&#43;代码调用C语言实现的函数时：
+C&#43;&#43;编译器按自己的规则修饰函数名（如_Z3fooi）； C语言编译的库中，函数符号是原始形态（如_foo）； 链接器找不到匹配的符号，直接报错&#34;未定义引用&#34;。 而C&#43;&#43;提供的extern &#34;C&#34;语法，正是用来解决这个问题——它告诉C&#43;&#43;编译器：&#34;{}内的代码按C语言规则编译，不要进行名字修饰&#34;。
+3. __BEGIN_DECLS的本质：宏封装的&#34;兼容性桥梁&#34; __BEGIN_DECLS与__END_DECLS本质上是对extern &#34;C&#34;的封装，核心目标是：让同一份声明在C和C&#43;&#43;环境下均合法，且编译链接行为一致。
+其原始定义（来自sys/cdefs.h）如下，逻辑非常简洁：
+#ifdef	__cplusplus # define __BEGIN_DECLS	extern &#34;C&#34; { // C&#43;&#43;环境：开启C规则 # define __END_DECLS	} // C&#43;&#43;环境：关闭C规则 #else # define __BEGIN_DECLS // C环境：空宏（无意义） # define __END_DECLS // C环境：空宏（无意义） #endif 二、头文件维度：接口契约的兼容设计 头文件（.h/.hpp）是跨语言调用的&#34;接口契约&#34;，__BEGIN_DECLS的核心应用场景也在这里。一份合格的跨语言头文件，必须满足&#34;C编译器能过，C&#43;&#43;编译器也能过&#34;的基本要求。
+1. 头文件使用规范：三大核心原则 （1）宏的引入与位置 必须将__BEGIN_DECLS定义在公共基础头文件（如sys/cdefs.h或项目自定义的common/cdefs.h）中，避免在多个头文件重复定义； 宏调用必须放在头文件保护宏内部，防止重复包含导致extern &#34;C&#34;嵌套（C&#43;&#43;编译器不允许重复包裹）。 ✅ 正确示例：">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-12-18T10:00:00+08:00">
+    <meta property="article:modified_time" content="2024-12-18T10:00:00+08:00">
+    <meta property="article:tag" content="跨语言开发">
+    <meta property="article:tag" content="编程规范">
+    <meta property="article:tag" content="头文件设计">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="C C&#43;&#43; 跨语言兼容的完整逻辑">
+  <meta name="twitter:description" content="引言：跨语言调用的&#34;隐形陷阱&#34; 如果你曾在C&#43;&#43;项目中调用过C语言编写的库，大概率遇到过这样的链接错误：
+undefined reference to `foo(int)&#39; 明明头文件包含了，函数也实现了，为何编译器找不到符号？这背后的罪魁祸首，正是C&#43;&#43;的名字修饰（Name Mangling） 机制——C和C&#43;&#43;编译器对函数符号的编码规则截然不同，导致跨语言调用时出现&#34;声明与实现对不上号&#34;的尴尬局面。
+而__BEGIN_DECLS与__END_DECLS这对宏，正是解决该问题的&#34;黄金搭档&#34;。它们看似简单，却蕴含着C/C&#43;&#43;混合编程的核心设计思想。本文将从头文件设计、源文件实现、软件风格规范三个维度，带你全方位吃透这对宏的使用逻辑与最佳实践。
+一、跨语言兼容的核心矛盾：名字修饰的坑 要理解__BEGIN_DECLS的价值，首先要搞懂C和C&#43;&#43;在编译链接阶段的本质差异：
+1. 符号编码规则差异 C编译器（如GCC）：函数名直接作为链接符号，不携带参数类型信息。例如void foo(int)编译后符号为_foo（不同编译器前缀可能不同，但无额外类型编码）； C&#43;&#43;编译器（如G&#43;&#43;）：为支持函数重载和模板，会将函数名&#43;参数类型编码为复杂符号。例如void foo(int)编译后符号为_Z3fooi（Z表示编码开始，3表示函数名长度，foo是函数名，i表示int类型）。 2. 跨语言调用的致命问题 当C&#43;&#43;代码调用C语言实现的函数时：
+C&#43;&#43;编译器按自己的规则修饰函数名（如_Z3fooi）； C语言编译的库中，函数符号是原始形态（如_foo）； 链接器找不到匹配的符号，直接报错&#34;未定义引用&#34;。 而C&#43;&#43;提供的extern &#34;C&#34;语法，正是用来解决这个问题——它告诉C&#43;&#43;编译器：&#34;{}内的代码按C语言规则编译，不要进行名字修饰&#34;。
+3. __BEGIN_DECLS的本质：宏封装的&#34;兼容性桥梁&#34; __BEGIN_DECLS与__END_DECLS本质上是对extern &#34;C&#34;的封装，核心目标是：让同一份声明在C和C&#43;&#43;环境下均合法，且编译链接行为一致。
+其原始定义（来自sys/cdefs.h）如下，逻辑非常简洁：
+#ifdef	__cplusplus # define __BEGIN_DECLS	extern &#34;C&#34; { // C&#43;&#43;环境：开启C规则 # define __END_DECLS	} // C&#43;&#43;环境：关闭C规则 #else # define __BEGIN_DECLS // C环境：空宏（无意义） # define __END_DECLS // C环境：空宏（无意义） #endif 二、头文件维度：接口契约的兼容设计 头文件（.h/.hpp）是跨语言调用的&#34;接口契约&#34;，__BEGIN_DECLS的核心应用场景也在这里。一份合格的跨语言头文件，必须满足&#34;C编译器能过，C&#43;&#43;编译器也能过&#34;的基本要求。
+1. 头文件使用规范：三大核心原则 （1）宏的引入与位置 必须将__BEGIN_DECLS定义在公共基础头文件（如sys/cdefs.h或项目自定义的common/cdefs.h）中，避免在多个头文件重复定义； 宏调用必须放在头文件保护宏内部，防止重复包含导致extern &#34;C&#34;嵌套（C&#43;&#43;编译器不允许重复包裹）。 ✅ 正确示例：">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
+
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>C C&#43;&#43; 跨语言兼容的完整逻辑</h1><time class="dim" datetime="2024-12-18T10:00:00&#43;08:00">December 18, 2024</time><div class="term-container"><div class="tag">
+        <a href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%BC%80%E5%8F%91/">#跨语言开发</a>
+      </div><div class="tag">
+        <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/">#编程规范</a>
+      </div><div class="tag">
+        <a href="/tags/%E5%A4%B4%E6%96%87%E4%BB%B6%E8%AE%BE%E8%AE%A1/">#头文件设计</a>
+      </div></ol></div>
+  <section class="page-section"><p><img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?q=80&amp;w=1000&amp;auto=format&amp;fit=crop" alt=""></p>
+<h2 id="引言跨语言调用的隐形陷阱">引言：跨语言调用的&quot;隐形陷阱&quot;</h2>
+<p>如果你曾在C++项目中调用过C语言编写的库，大概率遇到过这样的链接错误：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>undefined reference to <span style="color:#e6db74">`</span>foo<span style="color:#f92672">(</span>int<span style="color:#f92672">)</span><span style="color:#960050;background-color:#1e0010">&#39;</span>
+</span></span></code></pre></div><p>明明头文件包含了，函数也实现了，为何编译器找不到符号？这背后的罪魁祸首，正是C++的<strong>名字修饰（Name Mangling）</strong> 机制——C和C++编译器对函数符号的编码规则截然不同，导致跨语言调用时出现&quot;声明与实现对不上号&quot;的尴尬局面。</p>
+<p>而<code>__BEGIN_DECLS</code>与<code>__END_DECLS</code>这对宏，正是解决该问题的&quot;黄金搭档&quot;。它们看似简单，却蕴含着C/C++混合编程的核心设计思想。本文将从<strong>头文件设计、源文件实现、软件风格规范</strong>三个维度，带你全方位吃透这对宏的使用逻辑与最佳实践。</p>
+<hr>
+<h2 id="一跨语言兼容的核心矛盾名字修饰的坑">一、跨语言兼容的核心矛盾：名字修饰的坑</h2>
+<p>要理解<code>__BEGIN_DECLS</code>的价值，首先要搞懂C和C++在编译链接阶段的本质差异：</p>
+<h3 id="1-符号编码规则差异">1. 符号编码规则差异</h3>
+<ul>
+<li><strong>C编译器</strong>（如GCC）：函数名直接作为链接符号，不携带参数类型信息。例如<code>void foo(int)</code>编译后符号为<code>_foo</code>（不同编译器前缀可能不同，但无额外类型编码）；</li>
+<li><strong>C++编译器</strong>（如G++）：为支持函数重载和模板，会将函数名+参数类型编码为复杂符号。例如<code>void foo(int)</code>编译后符号为<code>_Z3fooi</code>（<code>Z</code>表示编码开始，<code>3</code>表示函数名长度，<code>foo</code>是函数名，<code>i</code>表示int类型）。</li>
+</ul>
+<h3 id="2-跨语言调用的致命问题">2. 跨语言调用的致命问题</h3>
+<p>当C++代码调用C语言实现的函数时：</p>
+<ul>
+<li>C++编译器按自己的规则修饰函数名（如<code>_Z3fooi</code>）；</li>
+<li>C语言编译的库中，函数符号是原始形态（如<code>_foo</code>）；</li>
+<li>链接器找不到匹配的符号，直接报错&quot;未定义引用&quot;。</li>
+</ul>
+<p>而C++提供的<code>extern &quot;C&quot;</code>语法，正是用来解决这个问题——它告诉C++编译器：&quot;{}内的代码按C语言规则编译，不要进行名字修饰&quot;。</p>
+<h3 id="3-__begin_decls的本质宏封装的兼容性桥梁">3. <code>__BEGIN_DECLS</code>的本质：宏封装的&quot;兼容性桥梁&quot;</h3>
+<p><code>__BEGIN_DECLS</code>与<code>__END_DECLS</code>本质上是对<code>extern &quot;C&quot;</code>的封装，核心目标是：<strong>让同一份声明在C和C++环境下均合法，且编译链接行为一致</strong>。</p>
+<p>其原始定义（来自<code>sys/cdefs.h</code>）如下，逻辑非常简洁：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#ifdef	__cplusplus
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># define __BEGIN_DECLS	extern &#34;C&#34; {  </span><span style="color:#75715e">// C++环境：开启C规则
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e"># define __END_DECLS	}             </span><span style="color:#75715e">// C++环境：关闭C规则
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#else
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># define __BEGIN_DECLS              </span><span style="color:#75715e">// C环境：空宏（无意义）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e"># define __END_DECLS                </span><span style="color:#75715e">// C环境：空宏（无意义）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#endif
+</span></span></span></code></pre></div><hr>
+<h2 id="二头文件维度接口契约的兼容设计">二、头文件维度：接口契约的兼容设计</h2>
+<p>头文件（<code>.h/.hpp</code>）是跨语言调用的&quot;接口契约&quot;，<code>__BEGIN_DECLS</code>的核心应用场景也在这里。一份合格的跨语言头文件，必须满足&quot;C编译器能过，C++编译器也能过&quot;的基本要求。</p>
+<h3 id="1-头文件使用规范三大核心原则">1. 头文件使用规范：三大核心原则</h3>
+<h4 id="1宏的引入与位置">（1）宏的引入与位置</h4>
+<ul>
+<li>必须将<code>__BEGIN_DECLS</code>定义在<strong>公共基础头文件</strong>（如<code>sys/cdefs.h</code>或项目自定义的<code>common/cdefs.h</code>）中，避免在多个头文件重复定义；</li>
+<li>宏调用必须放在<strong>头文件保护宏内部</strong>，防止重复包含导致<code>extern &quot;C&quot;</code>嵌套（C++编译器不允许重复包裹）。</li>
+</ul>
+<p>✅ 正确示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// foo.h（跨语言头文件）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#ifndef FOO_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define FOO_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/cdefs.h&gt;</span><span style="color:#75715e">  </span><span style="color:#75715e">// 引入基础宏定义
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>__BEGIN_DECLS  <span style="color:#75715e">// 放在保护宏内部，包裹C风格声明
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 跨语言调用的函数声明
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> foo(<span style="color:#66d9ef">int</span> a);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 跨语言兼容的类型定义
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> u32;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 跨语言兼容的枚举
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">ErrorCode</span> { ERR_OK <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, ERR_IO <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> };
+</span></span><span style="display:flex;"><span>__END_DECLS  <span style="color:#75715e">// 结束C风格声明
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// C++专属代码（不包裹）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>T max(T a, T b) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">&gt;</span> b <span style="color:#f92672">?</span> a : b;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bar</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> func();
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif </span><span style="color:#75715e">// FOO_H
+</span></span></span></code></pre></div><p>❌ 错误示例（宏位置错误）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 错误：__BEGIN_DECLS在保护宏外部，可能重复包裹
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/cdefs.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>__BEGIN_DECLS
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifndef FOO_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define FOO_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> foo(<span style="color:#66d9ef">int</span> a);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>__END_DECLS
+</span></span></code></pre></div><h4 id="2包裹范围仅含c风格声明">（2）包裹范围：仅含C风格声明</h4>
+<p><code>extern &quot;C&quot;</code>不支持任何C++专属特性，因此宏包裹的内容必须严格限制为：</p>
+<ul>
+<li>普通函数声明（无重载、无默认参数）；</li>
+<li><code>typedef</code>类型定义；</li>
+<li>枚举（<code>enum</code>）；</li>
+<li>结构体/联合体（不含成员函数）。</li>
+</ul>
+<p>❌ 禁止包裹这些内容：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>__BEGIN_DECLS
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 错误：extern &#34;C&#34;不支持模板
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span> T min(T a, T b);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 错误：extern &#34;C&#34;不支持类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Foo</span> {};
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 错误：extern &#34;C&#34;不支持函数重载
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">bar</span>(<span style="color:#66d9ef">int</span> a);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">bar</span>(<span style="color:#66d9ef">float</span> a);
+</span></span><span style="display:flex;"><span>__END_DECLS
+</span></span></code></pre></div><h4 id="3单向兼容优先满足c语法">（3）单向兼容：优先满足C语法</h4>
+<p>头文件设计需遵循&quot;C优先&quot;原则：</p>
+<ul>
+<li>C编译器不认识<code>extern &quot;C&quot;</code>，因此宏在C环境下必须为空；</li>
+<li>避免在宏包裹范围内使用C++专属关键字（如<code>bool</code>、<code>namespace</code>）；</li>
+<li>若需使用布尔类型，优先用C风格的<code>typedef enum { false, true } bool;</code>而非C++的<code>bool</code>。</li>
+</ul>
+<h3 id="2-头文件保护宏与宏的配合">2. 头文件保护宏与宏的配合</h3>
+<p>跨语言头文件必须同时满足：</p>
+<ul>
+<li>头文件保护宏（<code>#ifndef FOO_H</code>）：防止重复包含；</li>
+<li><code>__BEGIN_DECLS</code>：保证跨语言兼容；</li>
+<li>两者顺序不可颠倒，必须是&quot;保护宏包裹宏调用&quot;。</li>
+</ul>
+<hr>
+<h2 id="三源文件维度实现层的编译链接适配">三、源文件维度：实现层的编译链接适配</h2>
+<p>源文件（<code>.c/.cpp</code>）是接口的实现载体，其编译规则需与头文件的声明规则严格匹配，否则仍会出现链接错误。</p>
+<h3 id="1-不同源文件类型的处理方式">1. 不同源文件类型的处理方式</h3>
+<table>
+  <thead>
+      <tr>
+          <th>源文件类型</th>
+          <th>编译器</th>
+          <th>是否需要宏包裹</th>
+          <th>核心逻辑</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>.c</code>（C实现）</td>
+          <td>GCC/Clang（C编译器）</td>
+          <td>不需要（宏展开为空）</td>
+          <td>直接实现头文件声明的函数，编译后生成C风格符号（无修饰）</td>
+      </tr>
+      <tr>
+          <td><code>.cpp</code>（C++实现C接口）</td>
+          <td>G++/Clang++（C++编译器）</td>
+          <td>不需要（头文件已包裹）</td>
+          <td>实现头文件中声明的C风格函数，内部可使用C++特性，但对外符号按C规则生成</td>
+      </tr>
+      <tr>
+          <td><code>.cpp</code>（纯C++实现）</td>
+          <td>G++/Clang++（C++编译器）</td>
+          <td>不需要（与跨语言无关）</td>
+          <td>实现C++专属逻辑，生成修饰后的符号</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="示例1c语言实现c接口fooc">示例1：C语言实现C接口（foo.c）</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;foo.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 直接实现，无需任何宏修饰
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">foo</span>(<span style="color:#66d9ef">int</span> a) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 实现C风格枚举相关逻辑
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">enum</span> ErrorCode <span style="color:#a6e22e">check_io</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ERR_OK;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="示例2c实现c接口foocpp">示例2：C++实现C接口（foo.cpp）</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;foo.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">  </span><span style="color:#75715e">// 可使用C++特性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 实现头文件中声明的C风格函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">foo</span>(<span style="color:#66d9ef">int</span> a) {
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;C++实现的C接口：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;  <span style="color:#75715e">// 内部允许C++语法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="2-编译链接效果验证">2. 编译链接效果验证</h3>
+<p>通过<code>nm</code>命令查看目标文件的符号表，可直观验证效果：</p>
+<ul>
+<li>C编译（foo.c）：<code>nm foo.o</code> → 输出 <code>00000000 T foo</code>（无修饰符号）；</li>
+<li>C++编译未加<code>extern &quot;C&quot;</code>：<code>nm foo.o</code> → 输出 <code>00000000 T _Z3fooi</code>（修饰符号）；</li>
+<li>C++编译加<code>extern &quot;C&quot;</code>：<code>nm foo.o</code> → 输出 <code>00000000 T foo</code>（与C一致）。</li>
+</ul>
+<h3 id="3-源文件避坑指南">3. 源文件避坑指南</h3>
+<ol>
+<li>不要在<code>.cpp</code>文件的实现中重复包裹<code>__BEGIN_DECLS</code>（冗余且可能触发语法错误）；</li>
+<li>C风格函数的实现中，避免使用C++专属特性（如重载、模板、类成员访问），即使编译通过也会破坏兼容性；</li>
+<li>若同一源文件同时实现C接口和C++接口，需严格区分：C接口的声明必须在头文件的宏包裹范围内，C++接口则无需。</li>
+</ol>
+<hr>
+<h2 id="四软件风格维度规范与可维护性">四、软件风格维度：规范与可维护性</h2>
+<p><code>__BEGIN_DECLS</code>的使用不仅是技术问题，更是团队协作中&quot;一致性&quot;的体现。良好的风格能降低维护成本，避免踩坑。</p>
+<h3 id="1-命名风格规范">1. 命名风格规范</h3>
+<ul>
+<li>宏命名：遵循系统库风格，使用双下划线开头（<code>__BEGIN_DECLS</code>），区分普通业务宏；</li>
+<li>避免使用单下划线+大写字母开头的宏（如<code>_BEGIN_DECLS</code>）——C标准规定这类标识符为编译器保留，可能引发冲突；</li>
+<li>宏定义的注释：必须说明宏的用途，尤其是跨编译器兼容逻辑。</li>
+</ul>
+<p>✅ 规范的宏定义注释：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// sys/cdefs.h
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#ifdef __cplusplus
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">// __BEGIN_DECLS: 开启C风格声明（适配C++编译器，禁用名字修饰）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e"># define __BEGIN_DECLS extern &#34;C&#34; {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">// __END_DECLS: 结束C风格声明
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e"># define __END_DECLS }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#else
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">// C编译器无需特殊处理，宏展开为空
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e"># define __BEGIN_DECLS
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># define __END_DECLS
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span></code></pre></div><h3 id="2-代码组织风格">2. 代码组织风格</h3>
+<ul>
+<li>宏调用单独占行，包裹的声明保持统一缩进（与项目代码风格一致，通常4个空格）：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>__BEGIN_DECLS
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">foo</span>(<span style="color:#66d9ef">int</span> a);          <span style="color:#75715e">// 缩进对齐，可读性更强
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> u32;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">bar</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> s);
+</span></span><span style="display:flex;"><span>__END_DECLS
+</span></span></code></pre></div></li>
+<li>避免单行包裹（可读性差）：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>__BEGIN_DECLS <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">foo</span>(<span style="color:#66d9ef">int</span> a); __END_DECLS  <span style="color:#75715e">// 不推荐
+</span></span></span></code></pre></div></li>
+</ul>
+<h3 id="3-跨平台兼容风格">3. 跨平台兼容风格</h3>
+<ul>
+<li>编译器适配：<code>__cplusplus</code>是C++标准宏，GCC、Clang、MSVC均支持，无需额外区分编译器；</li>
+<li>MSVC兼容：MSVC的<code>extern &quot;C&quot;</code>语法与GCC一致，但头文件可添加<code>#pragma once</code>增强兼容性（建议与<code>#ifndef</code>双重保护）；</li>
+<li>精简条件编译：避免过度嵌套<code>#ifdef</code>（如区分GCC和MSVC），原始的双层<code>#ifdef __cplusplus</code>已足够。</li>
+</ul>
+<h3 id="4-团队协作规范">4. 团队协作规范</h3>
+<ul>
+<li>编码规范明确：在团队《C/C++编码规范》中添加条款：&ldquo;所有跨C/C++调用的头文件，必须使用<code>__BEGIN_DECLS/__END_DECLS</code>包裹C风格声明&rdquo;；</li>
+<li>代码审查要点：
+<ol>
+<li>宏是否放在头文件保护宏内部；</li>
+<li>是否包裹了C++专属特性；</li>
+<li>源文件是否重复包裹宏；</li>
+</ol>
+</li>
+<li>文档说明：在项目接口文档中明确标记哪些函数是跨语言兼容的（宏包裹范围内的声明）。</li>
+</ul>
+<hr>
+<h2 id="五典型场景与踩坑实录">五、典型场景与踩坑实录</h2>
+<h3 id="1-高频应用场景">1. 高频应用场景</h3>
+<h4 id="1系统库头文件如linux的stdioh">（1）系统库头文件（如Linux的<code>stdio.h</code>）</h4>
+<p>系统库需要同时支持C和C++程序调用，因此所有标准函数声明均用<code>__BEGIN_DECLS</code>包裹：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>__BEGIN_DECLS
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">printf</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>__format, ...);
+</span></span><span style="display:flex;"><span>size_t <span style="color:#a6e22e">fread</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>__ptr, size_t __size, size_t __nitems, FILE <span style="color:#f92672">*</span>__stream);
+</span></span><span style="display:flex;"><span>__END_DECLS
+</span></span></code></pre></div><h4 id="2c语言算法库供c调用">（2）C语言算法库供C++调用</h4>
+<p>用C编写的高效算法库（如排序、加密），通过宏包裹头文件声明，让C++项目无缝调用，同时保留C的性能优势。</p>
+<h4 id="3c库暴露c接口给其他语言">（3）C++库暴露C接口给其他语言</h4>
+<p>C++库需提供接口给Python、Go等语言调用时，需通过<code>__BEGIN_DECLS</code>暴露C风格接口（其他语言通常只支持C调用规则）。</p>
+<h3 id="2-常见踩坑案例">2. 常见踩坑案例</h3>
+<h4 id="踩坑1包裹了c模板">踩坑1：包裹了C++模板</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>__BEGIN_DECLS
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span> T max(T a, T b) { <span style="color:#66d9ef">return</span> a <span style="color:#f92672">&gt;</span> b <span style="color:#f92672">?</span> a : b; }
+</span></span><span style="display:flex;"><span>__END_DECLS
+</span></span></code></pre></div><p>❌ 错误原因：<code>extern &quot;C&quot;</code>不支持模板，C++编译器直接报错。</p>
+<h4 id="踩坑2宏在保护宏外部">踩坑2：宏在保护宏外部</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/cdefs.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>__BEGIN_DECLS
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifndef FOO_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define FOO_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> foo(<span style="color:#66d9ef">int</span> a);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>__END_DECLS
+</span></span></code></pre></div><p>❌ 错误原因：重复包含时，<code>__BEGIN_DECLS</code>会被多次展开，导致<code>extern &quot;C&quot; { {</code>嵌套，触发语法错误。</p>
+<h4 id="踩坑3c源文件重复包裹">踩坑3：C++源文件重复包裹</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// foo.cpp
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;foo.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>__BEGIN_DECLS
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">foo</span>(<span style="color:#66d9ef">int</span> a) { <span style="color:#66d9ef">return</span> a <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>; }
+</span></span><span style="display:flex;"><span>__END_DECLS
+</span></span></code></pre></div><p>❌ 错误原因：头文件已包裹声明，实现层重复包裹会导致<code>extern &quot;C&quot;</code>嵌套，部分编译器报错。</p>
+<hr>
+<h2 id="六最佳实践总结">六、最佳实践总结</h2>
+<h3 id="头文件最佳实践">头文件最佳实践</h3>
+<ol>
+<li>基础宏统一定义在公共头文件（如<code>common/cdefs.h</code>），业务头文件仅引用；</li>
+<li>宏必须放在头文件保护宏内部，避免重复包裹；</li>
+<li>仅包裹C风格声明，排除C++专属特性（模板、类、重载）。</li>
+</ol>
+<h3 id="源文件最佳实践">源文件最佳实践</h3>
+<ol>
+<li>C实现（<code>.c</code>）直接实现声明，无需宏修饰；</li>
+<li>C++实现C接口（<code>.cpp</code>）仅需头文件声明宏，实现层不重复包裹；</li>
+<li>编译后用<code>nm</code>命令验证符号是否为C风格。</li>
+</ol>
+<h3 id="风格规范最佳实践">风格规范最佳实践</h3>
+<ol>
+<li>宏命名遵循系统库风格（<code>__BEGIN_DECLS</code>），避免保留标识符冲突；</li>
+<li>代码缩进对齐，宏定义添加清晰注释；</li>
+<li>团队规范中明确宏的使用规则，代码审查重点覆盖。</li>
+</ol>
+<hr>
+<h2 id="结语">结语</h2>
+<p><code>__BEGIN_DECLS</code>与<code>__END_DECLS</code>看似简单，却浓缩了C/C++跨语言兼容的核心设计思想——<strong>用最小的代码改动，解决最核心的编译链接矛盾</strong>。</p>
+<p>它们不仅是技术层面的&quot;兼容性桥梁&quot;，更是团队协作中&quot;一致性&quot;的体现。掌握这对宏的使用逻辑，不仅能避免跨语言调用的常见坑，更能深刻理解C/C++编译链接的本质差异。</p>
+<p>如果你在实际开发中遇到过跨语言兼容的奇葩问题，或者有更好的实践经验，欢迎在评论区留言交流～</p>
+<hr>
+<p><strong>参考资料</strong></p>
+<ul>
+<li>C++标准文档：<code>extern &quot;C&quot;</code>语法规范</li>
+<li>Linux内核源码：<code>sys/cdefs.h</code>宏定义</li>
+<li>GCC手册：名字修饰与跨语言调用章节</li>
+</ul>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>502 words</span>
+    <span>11 - 14 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#引言跨语言调用的隐形陷阱">引言：跨语言调用的&quot;隐形陷阱&quot;</a></li>
+    <li><a href="#一跨语言兼容的核心矛盾名字修饰的坑">一、跨语言兼容的核心矛盾：名字修饰的坑</a>
+      <ul>
+        <li><a href="#1-符号编码规则差异">1. 符号编码规则差异</a></li>
+        <li><a href="#2-跨语言调用的致命问题">2. 跨语言调用的致命问题</a></li>
+        <li><a href="#3-__begin_decls的本质宏封装的兼容性桥梁">3. <code>__BEGIN_DECLS</code>的本质：宏封装的&#34;兼容性桥梁&#34;</a></li>
+      </ul>
+    </li>
+    <li><a href="#二头文件维度接口契约的兼容设计">二、头文件维度：接口契约的兼容设计</a>
+      <ul>
+        <li><a href="#1-头文件使用规范三大核心原则">1. 头文件使用规范：三大核心原则</a></li>
+        <li><a href="#2-头文件保护宏与宏的配合">2. 头文件保护宏与宏的配合</a></li>
+      </ul>
+    </li>
+    <li><a href="#三源文件维度实现层的编译链接适配">三、源文件维度：实现层的编译链接适配</a>
+      <ul>
+        <li><a href="#1-不同源文件类型的处理方式">1. 不同源文件类型的处理方式</a></li>
+        <li><a href="#2-编译链接效果验证">2. 编译链接效果验证</a></li>
+        <li><a href="#3-源文件避坑指南">3. 源文件避坑指南</a></li>
+      </ul>
+    </li>
+    <li><a href="#四软件风格维度规范与可维护性">四、软件风格维度：规范与可维护性</a>
+      <ul>
+        <li><a href="#1-命名风格规范">1. 命名风格规范</a></li>
+        <li><a href="#2-代码组织风格">2. 代码组织风格</a></li>
+        <li><a href="#3-跨平台兼容风格">3. 跨平台兼容风格</a></li>
+        <li><a href="#4-团队协作规范">4. 团队协作规范</a></li>
+      </ul>
+    </li>
+    <li><a href="#五典型场景与踩坑实录">五、典型场景与踩坑实录</a>
+      <ul>
+        <li><a href="#1-高频应用场景">1. 高频应用场景</a></li>
+        <li><a href="#2-常见踩坑案例">2. 常见踩坑案例</a></li>
+      </ul>
+    </li>
+    <li><a href="#六最佳实践总结">六、最佳实践总结</a>
+      <ul>
+        <li><a href="#头文件最佳实践">头文件最佳实践</a></li>
+        <li><a href="#源文件最佳实践">源文件最佳实践</a></li>
+        <li><a href="#风格规范最佳实践">风格规范最佳实践</a></li>
+      </ul>
+    </li>
+    <li><a href="#结语">结语</a></li>
+  </ul>
+</nav></aside></div>
+  </div>
+</body>
+</html>

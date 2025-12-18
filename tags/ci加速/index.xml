@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CI加速 on LuyangのBlog</title>
+    <link>/tags/ci%E5%8A%A0%E9%80%9F/</link>
+    <description>Recent content in CI加速 on LuyangのBlog</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 10 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/ci%E5%8A%A0%E9%80%9F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Modern CMake 最佳实践：如何优雅地接管第三方子模块的 option 开关</title>
+      <link>/posts/modern-cmake-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E6%8E%A5%E7%AE%A1%E7%AC%AC%E4%B8%89%E6%96%B9%E5%AD%90%E6%A8%A1%E5%9D%97%E7%9A%84-option-%E5%BC%80%E5%85%B3/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>/posts/modern-cmake-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E6%8E%A5%E7%AE%A1%E7%AC%AC%E4%B8%89%E6%96%B9%E5%AD%90%E6%A8%A1%E5%9D%97%E7%9A%84-option-%E5%BC%80%E5%85%B3/</guid>
+      <description>真实项目中遇到一个典型场景：第三方 SDK 默认打开了一个非常重的功能开关，导致全量构建时间暴涨 70%。记录一下用最 Modern 的方式彻底接管它的全过程。</description>
+    </item>
+  </channel>
+</rss>
