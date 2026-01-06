@@ -299,10 +299,28 @@
     <loc>/posts/-threadlocal-%E5%85%A8%E9%9D%A2%E8%A7%A3%E6%9E%90/</loc>
     <lastmod>2025-06-24T02:30:00+08:00</lastmod>
   </url><url>
+    <loc>/posts/--%E5%85%B3%E4%BA%8E-intel-i210-%E7%BD%91%E5%8D%A1%E7%9A%84-device-id/</loc>
+    <lastmod>2025-06-24T02:30:00+08:00</lastmod>
+  </url><url>
     <loc>/posts/%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90-java-%E7%BA%BF%E7%A8%8B%E6%9C%AC%E5%9C%B0%E5%8C%96%E4%BB%8E-threadlocal-%E5%88%B0-scopedvalue-%E7%9A%84%E6%BC%94%E8%BF%9B%E4%B8%8E%E9%80%89%E6%8B%A9/</loc>
     <lastmod>2025-06-24T02:30:00+08:00</lastmod>
   </url><url>
+    <loc>/tags/driver/</loc>
+    <lastmod>2025-06-24T02:30:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/ethernet/</loc>
+    <lastmod>2025-06-24T02:30:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/i210/</loc>
+    <lastmod>2025-06-24T02:30:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/intel/</loc>
+    <lastmod>2025-06-24T02:30:00+08:00</lastmod>
+  </url><url>
     <loc>/tags/java/</loc>
+    <lastmod>2025-06-24T02:30:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/pcie/</loc>
     <lastmod>2025-06-24T02:30:00+08:00</lastmod>
   </url><url>
     <loc>/tags/scopedvalue/</loc>
@@ -839,9 +857,6 @@
     <loc>/tags/dokuwiki/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>/tags/driver/</loc>
-    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
-  </url><url>
     <loc>/tags/dts/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
@@ -954,9 +969,6 @@
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/tags/opensuse/</loc>
-    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>/tags/pcie/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/posts/pcie_m.2_%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/</loc>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>I210 on LuyangのBlog</title>
+    <link>/tags/i210/</link>
+    <description>Recent content in I210 on LuyangのBlog</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Tue, 24 Jun 2025 02:30:00 +0800</lastBuildDate>
+    <atom:link href="/tags/i210/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>📘关于 Intel I210 网卡的 Device ID</title>
+      <link>/posts/--%E5%85%B3%E4%BA%8E-intel-i210-%E7%BD%91%E5%8D%A1%E7%9A%84-device-id/</link>
+      <pubDate>Tue, 24 Jun 2025 02:30:00 +0800</pubDate>
+      <guid>/posts/--%E5%85%B3%E4%BA%8E-intel-i210-%E7%BD%91%E5%8D%A1%E7%9A%84-device-id/</guid>
+      <description>&lt;h1 id=&#34;--关于-intel-i210-网卡的-device-id&#34;&gt;📘  关于 Intel I210 网卡的 Device ID&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;要确认 Intel I210 网卡的 &lt;strong&gt;Device ID&lt;/strong&gt;（设备ID），最直接、可靠的方式是通过 &lt;code&gt;lspci&lt;/code&gt; 命令读取 PCI 设备的配置空间信息（无需拆机或修改代码），以下是具体步骤和验证方法：&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;一核心命令lspci--nn直接显示-device-id&#34;&gt;一、核心命令：&lt;code&gt;lspci -nn&lt;/code&gt;（直接显示 Device ID）&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;lspci&lt;/code&gt; 是 Linux 下查询 PCI 设备的工具，&lt;code&gt;-nn&lt;/code&gt; 参数会显示 &lt;strong&gt;厂商ID（Vendor ID）和设备ID（Device ID）&lt;/strong&gt;（格式：&lt;code&gt;VendorID:DeviceID&lt;/code&gt;），这是最直接的方式：&lt;/p&gt;&#xA;&lt;h3 id=&#34;执行命令&#34;&gt;执行命令：&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 方法1：查询所有以太网设备的 ID（推荐，避免混淆）&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lspci -nn | grep -i Ethernet&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 方法2：精准查询目标 BDF 地址的设备 ID（你的 I210 网卡 BDF 是 0001:18:00.0）&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lspci -nn -s 0001:18:00.0&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;输出解读&#34;&gt;输出解读：&lt;/h3&gt;&#xA;&lt;p&gt;执行后会看到类似如下结果（重点关注 &lt;code&gt;[8086:xxxx]&lt;/code&gt; 部分）：&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;0001:18:00.0 Ethernet controller [0200]: Intel Corporation I210 Gigabit Network Connection [8086:1533] (rev 03)&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;8086&lt;/code&gt;：Intel 的标准 &lt;strong&gt;厂商ID（Vendor ID）&lt;/strong&gt;（固定值，所有 Intel PCI 设备通用）；&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;1533&lt;/code&gt;：就是你要的 &lt;strong&gt;Device ID&lt;/strong&gt;（I210 网卡的设备ID，对应驱动中的宏定义）。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;二验证i210-的-device-id-与驱动宏定义匹配&#34;&gt;二、验证：I210 的 Device ID 与驱动宏定义匹配&lt;/h2&gt;&#xA;&lt;p&gt;结合你之前提供的驱动代码中的宏定义，I210 系列的 Device ID 预定义如下（核对是否与你查询到的一致）：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
