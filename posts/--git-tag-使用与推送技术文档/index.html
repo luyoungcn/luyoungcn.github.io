@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📘Git Tag 使用与推送技术文档 | LuyangのBlog</title>
+<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/--git-tag-%E4%BD%BF%E7%94%A8%E4%B8%8E%E6%8E%A8%E9%80%81%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="📘Git Tag 使用与推送技术文档">
+  <meta property="og:description" content="Git Tag 使用与推送技术文档 适用对象：日常使用 Git/GitHub 的研发工程师 使用场景：版本发布、里程碑标记、回滚定位、团队协作
+1. 文档目的 在项目开发与发布过程中，Git Tag（标签） 是标记版本里程碑的核心工具，例如：
+v1.0.0：正式发布版本 v2.1.0-beta：测试版本 v1.0.1：紧急修复版本 本技术文档用于统一团队对 Git Tag 的认知、创建方式、推送流程与规范，避免以下常见问题：
+本地创建 Tag 后无法推送到 GitHub 正式版本误用轻量标签 标签删除不规范导致远程残留 团队成员标签不同步 2. Git Tag 类型说明（重点） Git 支持两种标签类型，必须按场景正确选择。
+2.1 轻量标签（Lightweight Tag） 定义：
+仅是某个 commit 的别名 不包含作者、时间、备注等信息 特点：
+创建速度快 结构简单 不可追溯变更背景 适用场景：
+临时测试版本 内部调试标记 本地个人使用 示例：
+git tag v1.0.0 2.2 附注标签（Annotated Tag，推荐） 定义：
+Git 官方推荐的标准标签类型 包含完整元数据（作者、时间、备注） 特点：
+信息完整、可追溯 GitHub Releases 页面可直接展示 支持生成发布说明 适用场景（强制）：
+正式版本发布 对外发布版本 生产环境部署版本 示例：">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-01-10T02:30:00+08:00">
+    <meta property="article:modified_time" content="2025-01-10T02:30:00+08:00">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Kernel">
+    <meta property="article:tag" content="Driver">
+    <meta property="article:tag" content="Intel">
+    <meta property="article:tag" content="Ethernet">
+    <meta property="article:tag" content="I210">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="📘Git Tag 使用与推送技术文档">
+  <meta name="twitter:description" content="Git Tag 使用与推送技术文档 适用对象：日常使用 Git/GitHub 的研发工程师 使用场景：版本发布、里程碑标记、回滚定位、团队协作
+1. 文档目的 在项目开发与发布过程中，Git Tag（标签） 是标记版本里程碑的核心工具，例如：
+v1.0.0：正式发布版本 v2.1.0-beta：测试版本 v1.0.1：紧急修复版本 本技术文档用于统一团队对 Git Tag 的认知、创建方式、推送流程与规范，避免以下常见问题：
+本地创建 Tag 后无法推送到 GitHub 正式版本误用轻量标签 标签删除不规范导致远程残留 团队成员标签不同步 2. Git Tag 类型说明（重点） Git 支持两种标签类型，必须按场景正确选择。
+2.1 轻量标签（Lightweight Tag） 定义：
+仅是某个 commit 的别名 不包含作者、时间、备注等信息 特点：
+创建速度快 结构简单 不可追溯变更背景 适用场景：
+临时测试版本 内部调试标记 本地个人使用 示例：
+git tag v1.0.0 2.2 附注标签（Annotated Tag，推荐） 定义：
+Git 官方推荐的标准标签类型 包含完整元数据（作者、时间、备注） 特点：
+信息完整、可追溯 GitHub Releases 页面可直接展示 支持生成发布说明 适用场景（强制）：
+正式版本发布 对外发布版本 生产环境部署版本 示例：">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
+
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>📘Git Tag 使用与推送技术文档</h1><time class="dim" datetime="2025-01-10T02:30:00&#43;08:00">January 10, 2025</time><div class="term-container"><div class="tag">
+        <a href="/tags/linux/">#linux</a>
+      </div><div class="tag">
+        <a href="/tags/kernel/">#kernel</a>
+      </div><div class="tag">
+        <a href="/tags/driver/">#driver</a>
+      </div><div class="tag">
+        <a href="/tags/intel/">#intel</a>
+      </div><div class="tag">
+        <a href="/tags/ethernet/">#ethernet</a>
+      </div><div class="tag">
+        <a href="/tags/i210/">#i210</a>
+      </div><div class="tag">
+        <a href="/tags/pcie/">#PCIe</a>
+      </div></ol></div>
+  <section class="page-section"><h1 id="git-tag-使用与推送技术文档">Git Tag 使用与推送技术文档</h1>
+<blockquote>
+<p><strong>适用对象</strong>：日常使用 Git/GitHub 的研发工程师
+<strong>使用场景</strong>：版本发布、里程碑标记、回滚定位、团队协作</p>
+</blockquote>
+<hr>
+<h2 id="1-文档目的">1. 文档目的</h2>
+<p>在项目开发与发布过程中，<strong>Git Tag（标签）</strong> 是标记版本里程碑的核心工具，例如：</p>
+<ul>
+<li><code>v1.0.0</code>：正式发布版本</li>
+<li><code>v2.1.0-beta</code>：测试版本</li>
+<li><code>v1.0.1</code>：紧急修复版本</li>
+</ul>
+<p>本技术文档用于统一团队对 Git Tag 的<strong>认知、创建方式、推送流程与规范</strong>，避免以下常见问题：</p>
+<ul>
+<li>本地创建 Tag 后无法推送到 GitHub</li>
+<li>正式版本误用轻量标签</li>
+<li>标签删除不规范导致远程残留</li>
+<li>团队成员标签不同步</li>
+</ul>
+<hr>
+<h2 id="2-git-tag-类型说明重点">2. Git Tag 类型说明（重点）</h2>
+<p>Git 支持两种标签类型，<strong>必须按场景正确选择</strong>。</p>
+<h3 id="21-轻量标签lightweight-tag">2.1 轻量标签（Lightweight Tag）</h3>
+<p><strong>定义</strong>：</p>
+<ul>
+<li>仅是某个 commit 的别名</li>
+<li>不包含作者、时间、备注等信息</li>
+</ul>
+<p><strong>特点</strong>：</p>
+<ul>
+<li>创建速度快</li>
+<li>结构简单</li>
+<li>不可追溯变更背景</li>
+</ul>
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li>临时测试版本</li>
+<li>内部调试标记</li>
+<li>本地个人使用</li>
+</ul>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag v1.0.0
+</span></span></code></pre></div><hr>
+<h3 id="22-附注标签annotated-tag推荐">2.2 附注标签（Annotated Tag，推荐）</h3>
+<p><strong>定义</strong>：</p>
+<ul>
+<li>Git 官方推荐的标准标签类型</li>
+<li>包含完整元数据（作者、时间、备注）</li>
+</ul>
+<p><strong>特点</strong>：</p>
+<ul>
+<li>信息完整、可追溯</li>
+<li>GitHub Releases 页面可直接展示</li>
+<li>支持生成发布说明</li>
+</ul>
+<p><strong>适用场景（强制）</strong>：</p>
+<ul>
+<li>正式版本发布</li>
+<li>对外发布版本</li>
+<li>生产环境部署版本</li>
+</ul>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag -a v1.0.0 -m <span style="color:#e6db74">&#34;正式发布 v1.0.0，新增登录与支付功能&#34;</span>
+</span></span></code></pre></div><blockquote>
+<p>✅ <strong>规范建议</strong>：</p>
+<ul>
+<li>正式版本 <strong>必须使用附注标签</strong></li>
+<li>轻量标签仅限本地或临时用途</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="3-创建-git-tag">3. 创建 Git Tag</h2>
+<h3 id="31-给最新-commit-创建标签">3.1 给最新 Commit 创建标签</h3>
+<h4 id="轻量标签">轻量标签</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag v1.0.0
+</span></span></code></pre></div><h4 id="附注标签推荐">附注标签（推荐）</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag -a v1.0.0 -m <span style="color:#e6db74">&#34;发布 v1.0.0：完成核心功能&#34;</span>
+</span></span></code></pre></div><hr>
+<h3 id="32-给历史-commit-补打标签">3.2 给历史 Commit 补打标签</h3>
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li>漏打历史版本标签</li>
+<li>补充测试/回溯版本</li>
+</ul>
+<h4 id="操作步骤">操作步骤</h4>
+<ol>
+<li>查看提交记录</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git log --oneline
+</span></span></code></pre></div><ol start="2">
+<li>给指定 commit 打标签</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag -a v0.9.0 a3f2d4e -m <span style="color:#e6db74">&#34;补打 v0.9.0 测试版本&#34;</span>
+</span></span></code></pre></div><hr>
+<h2 id="4-推送-tag-到-github核心">4. 推送 Tag 到 GitHub（核心）</h2>
+<blockquote>
+<p>⚠️ <strong>重要说明</strong>：
+Git 默认 <strong>不会</strong> 推送 Tag，必须显式执行推送命令。</p>
+</blockquote>
+<h3 id="41-推送单个标签推荐">4.1 推送单个标签（推荐）</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin v1.0.0
+</span></span></code></pre></div><p><strong>适用场景</strong>：</p>
+<ul>
+<li>正式发布</li>
+<li>精准控制版本推送</li>
+</ul>
+<hr>
+<h3 id="42-推送所有本地标签谨慎">4.2 推送所有本地标签（谨慎）</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin --tags
+</span></span></code></pre></div><p><strong>风险说明</strong>：</p>
+<ul>
+<li>会推送所有未同步的标签</li>
+<li>可能包含临时或错误标签</li>
+</ul>
+<p><strong>建议</strong>：</p>
+<ul>
+<li>使用前确认本地标签干净</li>
+</ul>
+<hr>
+<h2 id="5-查看与同步-tag">5. 查看与同步 Tag</h2>
+<h3 id="51-查看本地标签">5.1 查看本地标签</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag          <span style="color:#75715e"># 仅标签名</span>
+</span></span><span style="display:flex;"><span>git tag -n       <span style="color:#75715e"># 标签名 + 备注</span>
+</span></span></code></pre></div><hr>
+<h3 id="52-查看远程标签">5.2 查看远程标签</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git ls-remote --tags origin
+</span></span></code></pre></div><hr>
+<h3 id="53-拉取远程标签团队协作必备">5.3 拉取远程标签（团队协作必备）</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git fetch origin --tags
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 或</span>
+</span></span><span style="display:flex;"><span>git pull origin --tags
+</span></span></code></pre></div><hr>
+<h2 id="6-删除-tag高风险操作">6. 删除 Tag（高风险操作）</h2>
+<blockquote>
+<p>❗ 删除顺序错误会导致远程删除失败</p>
+</blockquote>
+<h3 id="61-删除本地标签">6.1 删除本地标签</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag -d v1.0.0
+</span></span></code></pre></div><hr>
+<h3 id="62-删除远程标签">6.2 删除远程标签</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin --delete v1.0.0
+</span></span></code></pre></div><p><strong>兼容旧写法</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin :refs/tags/v1.0.0
+</span></span></code></pre></div><hr>
+<h2 id="7-常见问题排查">7. 常见问题排查</h2>
+<h3 id="71-无权限推送-tag">7.1 无权限推送 Tag</h3>
+<p><strong>原因</strong>：未配置 GitHub 权限</p>
+<p><strong>解决方案</strong>：</p>
+<ul>
+<li>HTTPS：使用 Personal Access Token</li>
+<li>SSH：确认 SSH Key 已配置</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -T git@github.com
+</span></span></code></pre></div><hr>
+<h3 id="72-标签已存在tag-already-exists">7.2 标签已存在（tag already exists）</h3>
+<p><strong>原因</strong>：远程存在同名标签</p>
+<p><strong>解决方案</strong>：</p>
+<ul>
+<li>标签正确：直接使用</li>
+<li>标签错误：删除后重新创建</li>
+</ul>
+<hr>
+<h3 id="73-拉取后本地无标签">7.3 拉取后本地无标签</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git fetch origin --tags
+</span></span></code></pre></div><hr>
+<h2 id="8-版本号命名规范强烈推荐">8. 版本号命名规范（强烈推荐）</h2>
+<h3 id="81-语义化版本格式">8.1 语义化版本格式</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>v主版本号.次版本号.修订号
+</span></span></code></pre></div><p><strong>示例</strong>：</p>
+<ul>
+<li><code>v1.0.0</code></li>
+<li><code>v1.2.3</code></li>
+<li><code>v2.0.0-beta</code></li>
+</ul>
+<h3 id="82-规则说明">8.2 规则说明</h3>
+<table>
+  <thead>
+      <tr>
+          <th>字段</th>
+          <th>含义</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>主版本</td>
+          <td>不兼容变更</td>
+      </tr>
+      <tr>
+          <td>次版本</td>
+          <td>向后兼容的新功能</td>
+      </tr>
+      <tr>
+          <td>修订号</td>
+          <td>Bug 修复</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="9-高频命令速查表">9. 高频命令速查表</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 创建标签</span>
+</span></span><span style="display:flex;"><span>git tag v1.0.0
+</span></span><span style="display:flex;"><span>git tag -a v1.0.0 -m <span style="color:#e6db74">&#34;备注&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 推送标签</span>
+</span></span><span style="display:flex;"><span>git push origin v1.0.0
+</span></span><span style="display:flex;"><span>git push origin --tags
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看标签</span>
+</span></span><span style="display:flex;"><span>git tag
+</span></span><span style="display:flex;"><span>git tag -n
+</span></span><span style="display:flex;"><span>git ls-remote --tags origin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 同步标签</span>
+</span></span><span style="display:flex;"><span>git fetch origin --tags
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 删除标签</span>
+</span></span><span style="display:flex;"><span>git tag -d v1.0.0
+</span></span><span style="display:flex;"><span>git push origin --delete v1.0.0
+</span></span></code></pre></div><hr>
+<h2 id="10-总结团队规范建议">10. 总结（团队规范建议）</h2>
+<ul>
+<li>✅ 正式版本 <strong>统一使用附注标签</strong></li>
+<li>✅ 推送标签需显式执行 <code>git push origin tag</code></li>
+<li>✅ 删除标签遵循：<strong>先本地 → 后远程</strong></li>
+<li>✅ 标签命名遵循语义化版本规范</li>
+</ul>
+<p>该文档可作为：</p>
+<ul>
+<li>团队 Git 规范附件</li>
+<li>新人入职必读</li>
+<li>Release 流程参考文档</li>
+</ul>
+<hr>
+<p><strong>维护人</strong>：研发效能 / 平台团队</p>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2026 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>347 words</span>
+    <span>4 - 5 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-文档目的">1. 文档目的</a></li>
+    <li><a href="#2-git-tag-类型说明重点">2. Git Tag 类型说明（重点）</a>
+      <ul>
+        <li><a href="#21-轻量标签lightweight-tag">2.1 轻量标签（Lightweight Tag）</a></li>
+        <li><a href="#22-附注标签annotated-tag推荐">2.2 附注标签（Annotated Tag，推荐）</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-创建-git-tag">3. 创建 Git Tag</a>
+      <ul>
+        <li><a href="#31-给最新-commit-创建标签">3.1 给最新 Commit 创建标签</a></li>
+        <li><a href="#32-给历史-commit-补打标签">3.2 给历史 Commit 补打标签</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-推送-tag-到-github核心">4. 推送 Tag 到 GitHub（核心）</a>
+      <ul>
+        <li><a href="#41-推送单个标签推荐">4.1 推送单个标签（推荐）</a></li>
+        <li><a href="#42-推送所有本地标签谨慎">4.2 推送所有本地标签（谨慎）</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-查看与同步-tag">5. 查看与同步 Tag</a>
+      <ul>
+        <li><a href="#51-查看本地标签">5.1 查看本地标签</a></li>
+        <li><a href="#52-查看远程标签">5.2 查看远程标签</a></li>
+        <li><a href="#53-拉取远程标签团队协作必备">5.3 拉取远程标签（团队协作必备）</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-删除-tag高风险操作">6. 删除 Tag（高风险操作）</a>
+      <ul>
+        <li><a href="#61-删除本地标签">6.1 删除本地标签</a></li>
+        <li><a href="#62-删除远程标签">6.2 删除远程标签</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-常见问题排查">7. 常见问题排查</a>
+      <ul>
+        <li><a href="#71-无权限推送-tag">7.1 无权限推送 Tag</a></li>
+        <li><a href="#72-标签已存在tag-already-exists">7.2 标签已存在（tag already exists）</a></li>
+        <li><a href="#73-拉取后本地无标签">7.3 拉取后本地无标签</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-版本号命名规范强烈推荐">8. 版本号命名规范（强烈推荐）</a>
+      <ul>
+        <li><a href="#81-语义化版本格式">8.1 语义化版本格式</a></li>
+        <li><a href="#82-规则说明">8.2 规则说明</a></li>
+      </ul>
+    </li>
+    <li><a href="#9-高频命令速查表">9. 高频命令速查表</a></li>
+    <li><a href="#10-总结团队规范建议">10. 总结（团队规范建议）</a></li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/">vscode 阅读 Linux 内核代码配置</a></li><li><a href="/posts/linux-firmware-node-fwnode-%E7%BB%9F%E4%B8%80%E8%AE%BE%E5%A4%87%E6%A8%A1%E5%9E%8B/">📘 Linux Firmware Node (fwnode) 统一设备模型</a></li><li><a href="/posts/linux_date_cmd/">Linux date 命令用法</a></li><li><a href="/posts/wsl-%E4%B8%BB%E9%A1%B5/">wsl 主页</a></li><li><a href="/posts/%E9%BB%91%E8%8A%9D%E9%BA%BB%E5%B9%B3%E5%8F%B0%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91-openssl/">黑芝麻平台交叉编译 openssl</a></li></ul></aside></div>
+  </div>
+</body>
+</html>
