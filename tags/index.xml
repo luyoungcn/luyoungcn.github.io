@@ -723,6 +723,20 @@
       <description></description>
     </item>
     <item>
+      <title>Log</title>
+      <link>/tags/log/</link>
+      <pubDate>Tue, 14 Jan 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/log/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Spdlog</title>
+      <link>/tags/spdlog/</link>
+      <pubDate>Tue, 14 Jan 2025 02:30:00 +0800</pubDate>
+      <guid>/tags/spdlog/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>头文件设计</title>
       <link>/tags/%E5%A4%B4%E6%96%87%E4%BB%B6%E8%AE%BE%E8%AE%A1/</link>
       <pubDate>Wed, 18 Dec 2024 10:00:00 +0800</pubDate>
