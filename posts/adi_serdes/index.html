@@ -18,16 +18,16 @@
     <meta property="article:tag" content="MAXIM">
     <meta property="article:tag" content="SERDES">
     <meta property="article:tag" content="GMSL">
-    <meta property="article:tag" content="Mipi">
+    <meta property="article:tag" content="MIPI">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="GMSL SERDES 笔记">
   <meta name="twitter:description" content="MAX96724 MAX96724 相关资源 product overview MAX96724/F/R 英文数据手册 Rev.4 MAX96724/F/R Users Guide GMSL2 Channel Specification User Guide Rev 1 MAX96717F: CSI-2 to GMSL2 Serializer Data Sheet (Rev. 5) MAX96724 MAX9295D pipes and csi2 GMSL2 forward link and reverse link In GMSL2, the [[forward link]] transmits data from the serializer (e.g., a camera) to the deserializer (e.g., a display or processor), while the [[[reverse link]]] transmits data in the opposite direction, from the deserializer to the serializer.">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
-      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.35b15f72eff61cbb106d05bab1ea1aebb778d0ba2861c763af0af0d80f43db4f.css" integrity="sha256-NbFfcu/2HLsQbQW6seoa67d40LooYcdjrwrw2A9D208=" crossorigin="anonymous">
 
-      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.3928d3d2172bc0b5f75d9458fb9255f0befce1c7239ba6e5d2c58ed4b82c2073.js" integrity="sha256-OSjT0hcrwLX3XZRY&#43;5JV8L784ccjm6bl0sWO1LgsIHM="></script>
 <script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -241,7 +241,7 @@ VID_TX Z 包含的寄存器就是关于 PIPE Z 的寄存器。</p>
 </span></span></code></pre></div><h1 id="手动控制-ser-mfp-对外输出高低电平">手动控制 SER MFP 对外输出高低电平</h1>
 <p>MAX96717 MFP ctrl register</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// MFP0 ~ MFP16
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">uint16_t</span> max96717_mfp_ctrl_regs[] <span style="color:#f92672">=</span> {
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">uint16_t</span> max96717_mfp_ctrl_regs[] <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">0x02BE</span>, <span style="color:#ae81ff">0x02C1</span>, <span style="color:#ae81ff">0x02C4</span>, <span style="color:#ae81ff">0x02C7</span>,
 </span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">0x02CA</span>, <span style="color:#ae81ff">0x02CD</span>, <span style="color:#ae81ff">0x02D0</span>, <span style="color:#ae81ff">0x02D3</span>,
 </span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">0x02D6</span>, <span style="color:#ae81ff">0x02D9</span>, <span style="color:#ae81ff">0x02DC</span>, <span style="color:#ae81ff">0x02DF</span>,
@@ -261,7 +261,7 @@ VID_TX Z 包含的寄存器就是关于 PIPE Z 的寄存器。</p>
 </span></span></code></pre></div><h1 id="max96724-max96717-i2c-速率配置">MAX96724 MAX96717 I2C 速率配置</h1>
 <p>Fast-mode Plus</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># DES</span>
 </span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x05 0x06 0x40 0x06
 </span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x05 0x06 0x41 0x76

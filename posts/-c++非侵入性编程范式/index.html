@@ -41,9 +41,9 @@ std::sort 算法便是非侵入性的典范。它可以对任何满足其要求�
 // third_party_library.h - 源码无法修改 #pragma once #include &lt;string&gt; class Product { public: Product(std::string id, double price) : id_(std::move(id)), price_(price) {} const std::string&amp; getId() const { return id_; } double getPrice() const { return price_; } // 提供一个稳定的公共接口 private: std::string id_; double price_; }; 我们无法修改 Product 类，但我们可以在外部为其添加比较功能。">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
-      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.35b15f72eff61cbb106d05bab1ea1aebb778d0ba2861c763af0af0d80f43db4f.css" integrity="sha256-NbFfcu/2HLsQbQW6seoa67d40LooYcdjrwrw2A9D208=" crossorigin="anonymous">
 
-      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.3928d3d2172bc0b5f75d9458fb9255f0befce1c7239ba6e5d2c58ed4b82c2073.js" integrity="sha256-OSjT0hcrwLX3XZRY&#43;5JV8L784ccjm6bl0sWO1LgsIHM="></script>
 <script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -151,9 +151,9 @@ std::sort 算法便是非侵入性的典范。它可以对任何满足其要求�
 <p><code>std::sort</code> 算法便是非侵入性的典范。它可以对任何满足其要求的迭代器范围进行排序，而元素类型本身完全无需知晓排序算法的存在。</p>
 <p><strong>示例：为一个无法修改的 <code>Product</code> 类提供排序能力</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">// third_party_library.h - 源码无法修改
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#pragma once
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#pragma once
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Product</span> {
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    Product(std<span style="color:#f92672">::</span>string id, <span style="color:#66d9ef">double</span> price) 
@@ -161,35 +161,35 @@ std::sort 算法便是非侵入性的典范。它可以对任何满足其要求�
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>string<span style="color:#f92672">&amp;</span> getId() <span style="color:#66d9ef">const</span> { <span style="color:#66d9ef">return</span> id_; }
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getPrice</span>() <span style="color:#66d9ef">const</span> { <span style="color:#66d9ef">return</span> price_; } <span style="color:#75715e">// 提供一个稳定的公共接口
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>string id_;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span> price_;
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><p>我们无法修改 <code>Product</code> 类，但我们可以在外部为其添加比较功能。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">// comparison.h - 功能扩展模块
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;third_party_library.h&#34;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;third_party_library.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 为 Product 提供比较操作，这是一个非侵入性的外部函数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&lt;</span>(<span style="color:#66d9ef">const</span> Product<span style="color:#f92672">&amp;</span> lhs, <span style="color:#66d9ef">const</span> Product<span style="color:#f92672">&amp;</span> rhs) {
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&lt;</span>(<span style="color:#66d9ef">const</span> Product<span style="color:#f92672">&amp;</span> lhs, <span style="color:#66d9ef">const</span> Product<span style="color:#f92672">&amp;</span> rhs) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> lhs.getPrice() <span style="color:#f92672">&lt;</span> rhs.getPrice();
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">// main.cpp
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;algorithm&gt;</span><span style="color:#75715e"> </span><span style="color:#75715e">// for std::sort
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;comparison.h&#34;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;comparison.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>Product<span style="color:#f92672">&gt;</span> products;
 </span></span><span style="display:flex;"><span>    products.emplace_back(<span style="color:#e6db74">&#34;P102&#34;</span>, <span style="color:#ae81ff">99.99</span>);
 </span></span><span style="display:flex;"><span>    products.emplace_back(<span style="color:#e6db74">&#34;P055&#34;</span>, <span style="color:#ae81ff">19.95</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 调用 std::sort。Product 类完全不知道排序的存在。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>sort(products.begin(), products.end());
+</span></span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>sort(products.begin(), products.end());
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... 输出排序结果 ...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><hr>
 <h3 id="4-核心机制外部操作符重载详解">4. 核心机制：外部操作符重载详解</h3>
 <p>上述示例引出了一个关键问题：定义在类外部的 <code>operator&lt;</code> 是如何被 <code>std::sort</code> 找到并正确调用的？这背后涉及C++的两个核心机制。</p>
@@ -207,12 +207,12 @@ std::sort 算法便是非侵入性的典范。它可以对任何满足其要求�
 <p>C++允许存在多个同名函数，只要它们的<strong>参数列表</strong>（参数数量或类型）不同即可。一个函数的完整身份由其<strong>函数签名</strong>（函数名 + 参数列表）唯一确定。</p>
 <p><strong>示例：同时为 <code>Product</code> 和 <code>Employee</code> 提供排序</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">// common_types.h (扩展)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#pragma once
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#pragma once
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// --- 类定义 ---
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Product</span> { <span style="color:#75715e">/* ... */</span> };
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Product</span> { <span style="color:#75715e">/* ... */</span> };
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Employee</span> {
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    Employee(std<span style="color:#f92672">::</span>string name, <span style="color:#66d9ef">int</span> salary) <span style="color:#f92672">:</span> name_(name), salary_(salary) {}
@@ -224,17 +224,17 @@ std::sort 算法便是非侵入性的典范。它可以对任何满足其要求�
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// --- 全局命名空间中的函数重载 ---
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 重载版本1: 专用于 Product
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 签名: operator&lt;(const Product&amp;, const Product&amp;)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&lt;</span>(<span style="color:#66d9ef">const</span> Product<span style="color:#f92672">&amp;</span> lhs, <span style="color:#66d9ef">const</span> Product<span style="color:#f92672">&amp;</span> rhs) {
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&lt;</span>(<span style="color:#66d9ef">const</span> Product<span style="color:#f92672">&amp;</span> lhs, <span style="color:#66d9ef">const</span> Product<span style="color:#f92672">&amp;</span> rhs) {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;[DEBUG: 调用 Product 的 operator&lt;]</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> lhs.getPrice() <span style="color:#f92672">&lt;</span> rhs.getPrice();
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 重载版本2: 专用于 Employee
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 签名: operator&lt;(const Employee&amp;, const Employee&amp;)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&lt;</span>(<span style="color:#66d9ef">const</span> Employee<span style="color:#f92672">&amp;</span> lhs, <span style="color:#66d9ef">const</span> Employee<span style="color:#f92672">&amp;</span> rhs) {
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&lt;</span>(<span style="color:#66d9ef">const</span> Employee<span style="color:#f92672">&amp;</span> lhs, <span style="color:#66d9ef">const</span> Employee<span style="color:#f92672">&amp;</span> rhs) {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;[DEBUG: 调用 Employee 的 operator&lt;]</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> lhs.getSalary() <span style="color:#f92672">&lt;</span> rhs.getSalary();
 </span></span><span style="display:flex;"><span>}
@@ -245,22 +245,22 @@ std::sort 算法便是非侵入性的典范。它可以对任何满足其要求�
 <p>“接口应由类的外部、使用类的代码来表达。” 这一思想鼓励我们优先使用非成员非友元函数来扩展类的功能，而非无限制地向类中添加成员函数。这保持了类定义的简洁和稳定。</p>
 <p><strong>示例：非侵入式序列化</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">// json_serializer.h
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;common_types.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;common_types.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 为 Product 类赋予序列化为 JSON 的能力，而无需修改它
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>string toJSON(<span style="color:#66d9ef">const</span> Product<span style="color:#f92672">&amp;</span> p) {
+</span></span></span><span style="display:flex;"><span>std<span style="color:#f92672">::</span>string toJSON(<span style="color:#66d9ef">const</span> Product<span style="color:#f92672">&amp;</span> p) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;{ </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">id</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">: </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> p.getId() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">, </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">price</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">: &#34;</span> <span style="color:#f92672">+</span> std<span style="color:#f92672">::</span>to_string(p.getPrice()) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; }&#34;</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="52-类型萃取-type-traits">5.2 类型萃取 (Type Traits)</h4>
 <p><code>&lt;type_traits&gt;</code> 头文件提供了一套模板元编程工具，允许在<strong>编译期</strong>查询和操作类型的属性，而无需侵入类型本身。这对于编写高度泛化的、能适应不同类型特征的代码至关重要。</p>
 <p><strong>示例：一个只对算术类型有效的泛型<code>add</code>函数</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;type_traits&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>T add(T a, T b) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 编译期检查：如果T不是算术类型(整数或浮点数)，编译将失败
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static_assert</span>(std<span style="color:#f92672">::</span>is_arithmetic_v<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>, <span style="color:#e6db74">&#34;add function only accepts arithmetic types.&#34;</span>);
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static_assert</span>(std<span style="color:#f92672">::</span>is_arithmetic_v<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>, <span style="color:#e6db74">&#34;add function only accepts arithmetic types.&#34;</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><code>add</code> 函数没有要求 <code>T</code> 继承自 <code>Numeric</code> 之类的基类，而是通过类型萃取 <code>std::is_arithmetic_v</code> 非侵入性地约束了适用范围。</p>

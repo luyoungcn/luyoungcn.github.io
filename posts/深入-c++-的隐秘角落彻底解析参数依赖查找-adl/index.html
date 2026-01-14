@@ -34,9 +34,9 @@ ADL 是 C&#43;&#43; 名称查找规则的重要组成部分。它极大地提升
 2.1 ADL 的正式定义 2.2 关键概念：关联命名空间 (Associated Namespaces) 2.3 两阶段查找的协作 第三章：深入 ADL 的规则与细节">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
-      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.35b15f72eff61cbb106d05bab1ea1aebb778d0ba2861c763af0af0d80f43db4f.css" integrity="sha256-NbFfcu/2HLsQbQW6seoa67d40LooYcdjrwrw2A9D208=" crossorigin="anonymous">
 
-      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.3928d3d2172bc0b5f75d9458fb9255f0befce1c7239ba6e5d2c58ed4b82c2073.js" integrity="sha256-OSjT0hcrwLX3XZRY&#43;5JV8L784ccjm6bl0sWO1LgsIHM="></script>
 <script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -187,34 +187,34 @@ ADL 是 C&#43;&#43; 名称查找规则的重要组成部分。它极大地提升
 <h3 id="13-没有-adl-的代码之痛">1.3 没有 ADL 的代码之痛</h3>
 <p>让我们来看一个具体的例子。假设我们正在为一个图形库编写代码，我们定义了一个 <code>Point</code> 类型和相关的操作函数，并将它们都放在 <code>Geometry</code> 命名空间中。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">// a_geometry.h
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">namespace</span> Geometry {
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> Geometry {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Point</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> x, y;
 </span></span><span style="display:flex;"><span>    };
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 一个用于移动 Point 的函数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">move</span>(Point<span style="color:#f92672">&amp;</span> p, <span style="color:#66d9ef">double</span> dx, <span style="color:#66d9ef">double</span> dy) {
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">move</span>(Point<span style="color:#f92672">&amp;</span> p, <span style="color:#66d9ef">double</span> dx, <span style="color:#66d9ef">double</span> dy) {
 </span></span><span style="display:flex;"><span>        p.x <span style="color:#f92672">+=</span> dx;
 </span></span><span style="display:flex;"><span>        p.y <span style="color:#f92672">+=</span> dy;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>现在，在一个应用程序中，我们想使用这个 <code>Point</code> 类型。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">// main.cpp
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;a_geometry.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;a_geometry.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">report_position</span>(<span style="color:#66d9ef">const</span> Geometry<span style="color:#f92672">::</span>Point<span style="color:#f92672">&amp;</span> p) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 假设我们有一个在全局命名空间定义的辅助函数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// print_point(p.x, p.y); // 为了简化，我们暂时忽略这个
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Current position: (&#34;</span> <span style="color:#f92672">&lt;&lt;</span> p.x <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;, &#34;</span> <span style="color:#f92672">&lt;&lt;</span> p.y <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;)</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// print_point(p.x, p.y); // 为了简化，我们暂时忽略这个
+</span></span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Current position: (&#34;</span> <span style="color:#f92672">&lt;&lt;</span> p.x <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;, &#34;</span> <span style="color:#f92672">&lt;&lt;</span> p.y <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;)</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    Geometry<span style="color:#f92672">::</span>Point my_point <span style="color:#f92672">=</span> {<span style="color:#ae81ff">10.0</span>, <span style="color:#ae81ff">20.0</span>};
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 我们想移动这个点
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// move(my_point, 5.0, -5.0); // 编译失败！
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// move(my_point, 5.0, -5.0); // 编译失败！
+</span></span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    report_position(my_point);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>}
@@ -229,7 +229,7 @@ ADL 是 C&#43;&#43; 名称查找规则的重要组成部分。它极大地提升
 <p><code>move</code> 函数被清晰地定义在 <code>Geometry</code> 命名空间中，但常规查找规则并不会“智能”地因为函数参数是 <code>Geometry::Point</code> 就去 <code>Geometry</code> 命名空间里看一看。</p>
 <p>为了让代码通过编译，我们必须使用**限定名称（qualified name）**来显式地告诉编译器去哪里找：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">// 正确但繁琐的写法
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Geometry<span style="color:#f92672">::</span>move(my_point, <span style="color:#ae81ff">5.0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">5.0</span>); <span style="color:#75715e">// 编译成功
+</span></span></span><span style="display:flex;"><span>Geometry<span style="color:#f92672">::</span>move(my_point, <span style="color:#ae81ff">5.0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">5.0</span>); <span style="color:#75715e">// 编译成功
 </span></span></span></code></pre></div><p>这虽然解决了问题，但却带来了新的问题：</p>
 <ul>
 <li><strong>代码冗长</strong>：每次调用都要加上命名空间前缀。</li>
@@ -280,14 +280,14 @@ ADL 是 C&#43;&#43; 名称查找规则的重要组成部分。它极大地提升
 <p><strong>重要的是</strong>：最终的候选函数集合是这两个阶段查找到的所有函数的<strong>并集</strong>。然后，C++ 的**重载决议（Overload Resolution）**机制会从这个并集中选出唯一的最佳匹配函数。如果找不到或者找到多个同样好的匹配，编译就会失败。</p>
 <p>让我们用 ADL 的规则重新审视 <code>move(my_point, ...)</code> 的例子：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">// main.cpp
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;a_geometry.h&#34;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;a_geometry.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    Geometry<span style="color:#f92672">::</span>Point my_point <span style="color:#f92672">=</span> {<span style="color:#ae81ff">10.0</span>, <span style="color:#ae81ff">20.0</span>};
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ADL 生效！
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    move(my_point, <span style="color:#ae81ff">5.0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">5.0</span>); <span style="color:#75715e">// 现在编译成功了！
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>    move(my_point, <span style="color:#ae81ff">5.0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">5.0</span>); <span style="color:#75715e">// 现在编译成功了！
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol>
 <li>
 <p><strong>阶段一：常规查找</strong></p>
@@ -367,11 +367,11 @@ ADL 是 C&#43;&#43; 名称查找规则的重要组成部分。它极大地提升
 </span></span></span></code></pre></div><h3 id="32-adl-的触发条件">3.2 ADL 的触发条件</h3>
 <p>正如之前提到的，ADL 只对<strong>无限定</strong>且<strong>形式为函数调用</strong>的表达式生效。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>N<span style="color:#f92672">::</span>f();      <span style="color:#75715e">// 不触发 ADL (限定了)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>obj.f();     <span style="color:#75715e">// 不触发 ADL (通过成员访问)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>p<span style="color:#f92672">-&gt;</span>f();      <span style="color:#75715e">// 不触发 ADL (通过指针成员访问)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">&amp;</span>f;          <span style="color:#75715e">// 不触发 ADL (不是函数调用，是取地址)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">auto</span> pf <span style="color:#f92672">=</span> f; <span style="color:#75715e">// 不触发 ADL (不是函数调用)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>obj.f();     <span style="color:#75715e">// 不触发 ADL (通过成员访问)
+</span></span></span><span style="display:flex;"><span>p<span style="color:#f92672">-&gt;</span>f();      <span style="color:#75715e">// 不触发 ADL (通过指针成员访问)
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672">&amp;</span>f;          <span style="color:#75715e">// 不触发 ADL (不是函数调用，是取地址)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> pf <span style="color:#f92672">=</span> f; <span style="color:#75715e">// 不触发 ADL (不是函数调用)
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>f();         <span style="color:#75715e">// 触发 ADL！
 </span></span></span></code></pre></div><h3 id="33-adl-与-using-声明指令的交互">3.3 ADL 与 <code>using</code> 声明/指令的交互</h3>
 <p><code>using</code> 是 C++ 中另一个影响名称查找的工具。它与 ADL 的交互非常微妙，是许多混淆的来源。</p>
@@ -394,9 +394,9 @@ ADL 是 C&#43;&#43; 名称查找规则的重要组成部分。它极大地提升
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">work</span>() {
 </span></span><span style="display:flex;"><span>        Lib<span style="color:#f92672">::</span>Data d;
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 如果我们直接调用 process(d)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// ADL 会在 Lib 命名空间中找到 Lib::process
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        process(d); <span style="color:#75715e">// 调用 Lib::process
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ADL 会在 Lib 命名空间中找到 Lib::process
+</span></span></span><span style="display:flex;"><span>        process(d); <span style="color:#75715e">// 调用 Lib::process
+</span></span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> Global {
@@ -405,13 +405,13 @@ ADL 是 C&#43;&#43; 名称查找规则的重要组成部分。它极大地提升
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">test</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> Global<span style="color:#f92672">::</span>process; <span style="color:#75715e">// 使用 &#39;using&#39; 声明
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    Lib<span style="color:#f92672">::</span>Data d;
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 阶段一（常规查找）在当前作用域中找到了通过 &#39;using&#39; 引入的 Global::process。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 因为找到了一个函数，所以 ADL 被抑制了。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// ADL 不会再去 Lib 命名空间中查找。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    process(d); <span style="color:#75715e">// 明确调用 Global::process
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 因为找到了一个函数，所以 ADL 被抑制了。
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ADL 不会再去 Lib 命名空间中查找。
+</span></span></span><span style="display:flex;"><span>    process(d); <span style="color:#75715e">// 明确调用 Global::process
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="34-adl-与友元函数现代-c-的隐藏友元惯用法">3.4 ADL 与友元函数：现代 C++ 的“隐藏友元”惯用法</h3>
 <p>友元函数（<code>friend</code>）与 ADL 的结合催生了一种非常强大的设计模式，通常被称为**“隐藏友元（Hidden Friends）”**。</p>
 <p>当一个 <code>friend</code> 函数的<strong>定义</strong>直接写在类定义的内部时，这个函数有一个特殊的性质：</p>
@@ -424,7 +424,7 @@ ADL 是 C&#43;&#43; 名称查找规则的重要组成部分。它极大地提升
 <p><strong>代码示例：“隐藏友元” <code>operator&lt;&lt;</code></strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> MyProject {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span> {
 </span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>string name;
@@ -433,7 +433,7 @@ ADL 是 C&#43;&#43; 名称查找规则的重要组成部分。它极大地提升
 </span></span><span style="display:flex;"><span>        User(std<span style="color:#f92672">::</span>string n, <span style="color:#66d9ef">int</span> i) <span style="color:#f92672">:</span> name(std<span style="color:#f92672">::</span>move(n)), id(i) {}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 这是一个“隐藏友元”
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">friend</span> std<span style="color:#f92672">::</span>ostream<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&lt;&lt;</span>(std<span style="color:#f92672">::</span>ostream<span style="color:#f92672">&amp;</span> os, <span style="color:#66d9ef">const</span> User<span style="color:#f92672">&amp;</span> user) {
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">friend</span> std<span style="color:#f92672">::</span>ostream<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&lt;&lt;</span>(std<span style="color:#f92672">::</span>ostream<span style="color:#f92672">&amp;</span> os, <span style="color:#66d9ef">const</span> User<span style="color:#f92672">&amp;</span> user) {
 </span></span><span style="display:flex;"><span>            os <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;User(Name: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> user.name <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;, ID: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> user.id <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;)&#34;</span>;
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> os;
 </span></span><span style="display:flex;"><span>        }
@@ -441,23 +441,23 @@ ADL 是 C&#43;&#43; 名称查找规则的重要组成部分。它极大地提升
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 在 MyProject 命名空间之外
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    MyProject<span style="color:#f92672">::</span>User u{<span style="color:#e6db74">&#34;Alice&#34;</span>, <span style="color:#ae81ff">101</span>};
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// operator&lt;&lt;(std::cout, u); // 这是一个无限定的函数调用
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 阶段一（常规查找）：在全局作用域找不到匹配的 operator&lt;&lt;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 阶段二（ADL）：
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//   - 实参1 `std::cout` 的类型是 `std::ostream`，关联命名空间是 `std`。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//   - 实参2 `u` 的类型是 `MyProject::User`，关联命名空间是 `MyProject`，关联类是 `MyProject::User`。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// ADL 会在 `std` 命名空间和 `MyProject::User` 类内部查找友元。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 它在 MyProject::User 类内部找到了我们定义的友元 operator&lt;&lt;。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 阶段二（ADL）：
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">//   - 实参1 `std::cout` 的类型是 `std::ostream`，关联命名空间是 `std`。
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">//   - 实参2 `u` 的类型是 `MyProject::User`，关联命名空间是 `MyProject`，关联类是 `MyProject::User`。
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ADL 会在 `std` 命名空间和 `MyProject::User` 类内部查找友元。
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 它在 MyProject::User 类内部找到了我们定义的友元 operator&lt;&lt;。
+</span></span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> u <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl; <span style="color:#75715e">// 编译成功，并调用了我们的隐藏友元
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 如果我们试图直接调用，它会失败，因为它对常规查找不可见
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// ::operator&lt;&lt;(std::cout, u); // 编译错误！找不到该函数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ::operator&lt;&lt;(std::cout, u); // 编译错误！找不到该函数
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>这种模式是实现自定义 <code>operator&lt;&lt;</code> 的最佳方式，因为它将函数的实现与类紧密绑定，并且避免了在 <code>MyProject</code> 命名空间中暴露一个全局可用的 <code>operator&lt;&lt;</code>。</p>
 <h2 id="第四章adl-的实战应用">第四章：ADL 的实战应用</h2>
 <p>理论知识最终要服务于实践。ADL 在现代 C++ 编程中无处不在。</p>
@@ -473,69 +473,69 @@ ADL 是 C&#43;&#43; 名称查找规则的重要组成部分。它极大地提升
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> Legacy {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Widget</span> {};
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 注意，这个 serialize 函数在 Legacy 命名空间
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">serialize</span>(<span style="color:#66d9ef">const</span> Widget<span style="color:#f92672">&amp;</span>) { <span style="color:#75715e">/* serialize a widget */</span> }
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">serialize</span>(<span style="color:#66d9ef">const</span> Widget<span style="color:#f92672">&amp;</span>) { <span style="color:#75715e">/* serialize a widget */</span> }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> save_object(<span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span> obj) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... 一些通用的保存前准备工作 ...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 这里的 serialize 调用依赖于 ADL
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 如果 T 是 Graphics::Shape，ADL 找不到 serialize，编译可能失败（除非全局有）
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 如果 T 是 Legacy::Widget，ADL 会在 Legacy 命名空间中找到 serialize
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    serialize(obj);
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 如果 T 是 Graphics::Shape，ADL 找不到 serialize，编译可能失败（除非全局有）
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 如果 T 是 Legacy::Widget，ADL 会在 Legacy 命名空间中找到 serialize
+</span></span></span><span style="display:flex;"><span>    serialize(obj);
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... 一些通用的保存后清理工作 ...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    Legacy<span style="color:#f92672">::</span>Widget w;
 </span></span><span style="display:flex;"><span>    save_object(w); <span style="color:#75715e">// 成功，调用 Legacy::serialize
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><code>save_object</code> 模板本身并不知道 <code>serialize</code> 函数位于何处。它只是“信任”当它用一个具体的类型 <code>T</code> 实例化时，ADL 能够找到一个合适的 <code>serialize(const T&amp;)</code> 函数。这使得 <code>save_object</code> 成为一个可扩展的<strong>自定义点（Customization Point）</strong>。</p>
 <h3 id="43-自定义点与-swap-的经典案例">4.3 自定义点与 <code>swap</code> 的经典案例</h3>
 <p><code>swap</code> 是展示 ADL 强大之处的最经典例子。标准库提供了一个通用的 <code>std::swap</code>。但对于某些复杂的自定义类型，我们可能能提供一个比逐成员交换更高效的 <code>swap</code> 实现。</p>
 <p>正确的、健壮的 <code>swap</code> 调用方式是一个著名的惯用法：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;utility&gt;</span><span style="color:#75715e"> </span><span style="color:#75715e">// for std::swap
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> MyLib {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BigObject</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ... 大量数据和资源句柄 ...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 提供一个高效的、非成员的 swap 函数，放在同一个命名空间下
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">friend</span> <span style="color:#66d9ef">void</span> swap(BigObject<span style="color:#f92672">&amp;</span> a, BigObject<span style="color:#f92672">&amp;</span> b) <span style="color:#66d9ef">noexcept</span> {
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">friend</span> <span style="color:#66d9ef">void</span> swap(BigObject<span style="color:#f92672">&amp;</span> a, BigObject<span style="color:#f92672">&amp;</span> b) <span style="color:#66d9ef">noexcept</span> {
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 只交换内部指针或句柄，而不是复制所有数据
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">using</span> std<span style="color:#f92672">::</span>swap;
+</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">using</span> std<span style="color:#f92672">::</span>swap;
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// swap(a.pimpl_, b.pimpl_); // 假设内部实现是 PIMPL
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
+</span></span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    };
+</span></span></span><span style="display:flex;"><span>    };
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> do_something_and_swap(T<span style="color:#f92672">&amp;</span> a, T<span style="color:#f92672">&amp;</span> b) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 健壮的 swap 调用惯用法
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">using</span> std<span style="color:#f92672">::</span>swap; <span style="color:#75715e">// 1. 让 std::swap 进入候选
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    swap(a, b);      <span style="color:#75715e">// 2. 无限定调用 swap
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                     <span style="color:#75715e">//    - 如果 T 有一个自定义的 swap，ADL 会找到它。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                     <span style="color:#75715e">//      由于非模板函数通常比模板函数更匹配，自定义的会被选中。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                     <span style="color:#75715e">//    - 如果 T 没有自定义的 swap，ADL 找不到任何东西，
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                     <span style="color:#75715e">//      但由于 `using std::swap;`，常规查找会找到 std::swap，
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                     <span style="color:#75715e">//      并使用通用的模板版本。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> std<span style="color:#f92672">::</span>swap; <span style="color:#75715e">// 1. 让 std::swap 进入候选
+</span></span></span><span style="display:flex;"><span>    swap(a, b);      <span style="color:#75715e">// 2. 无限定调用 swap
+</span></span></span><span style="display:flex;"><span>                     <span style="color:#75715e">//    - 如果 T 有一个自定义的 swap，ADL 会找到它。
+</span></span></span><span style="display:flex;"><span>                     <span style="color:#75715e">//      由于非模板函数通常比模板函数更匹配，自定义的会被选中。
+</span></span></span><span style="display:flex;"><span>                     <span style="color:#75715e">//    - 如果 T 没有自定义的 swap，ADL 找不到任何东西，
+</span></span></span><span style="display:flex;"><span>                     <span style="color:#75715e">//      但由于 `using std::swap;`，常规查找会找到 std::swap，
+</span></span></span><span style="display:flex;"><span>                     <span style="color:#75715e">//      并使用通用的模板版本。
+</span></span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
 </span></span><span style="display:flex;"><span>    do_something_and_swap(x, y); <span style="color:#75715e">// 调用 std::swap
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    MyLib<span style="color:#f92672">::</span>BigObject obj1, obj2;
 </span></span><span style="display:flex;"><span>    do_something_and_swap(obj1, obj2); <span style="color:#75715e">// 通过 ADL 调用 MyLib::swap
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>这个 <code>using std::swap; swap(a, b);</code> 组合技是 C++ 中利用 ADL 实现自定义和回退（fallback）机制的典范。</p>
 <h2 id="第五章双刃剑的另一面adl-的陷阱与最佳实践">第五章：双刃剑的另一面：ADL 的陷阱与最佳实践</h2>
 <p>ADL 如此强大，也意味着它有被误用的潜力。</p>
@@ -545,30 +545,30 @@ ADL 是 C&#43;&#43; 名称查找规则的重要组成部分。它极大地提升
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MyType</span> {};
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 一个有着非常通用名字的函数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">size</span>(<span style="color:#66d9ef">const</span> MyType<span style="color:#f92672">&amp;</span>) { <span style="color:#75715e">/* ... */</span> }
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">size</span>(<span style="color:#66d9ef">const</span> MyType<span style="color:#f92672">&amp;</span>) { <span style="color:#75715e">/* ... */</span> }
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 甚至可能是恶意的
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">std</span>() {} <span style="color:#75715e">// 函数名和命名空间名一样，是合法的
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">std</span>() {} <span style="color:#75715e">// 函数名和命名空间名一样，是合法的
+</span></span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 假设在另一个库中
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">process_data</span>() {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">process_data</span>() {
 </span></span><span style="display:flex;"><span>    Evil<span style="color:#f92672">::</span>MyType val;
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> vec <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>};
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... 对 vec 做一些操作 ...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 如果有人不小心写了这样的代码，试图获取 vec 的大小
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    size(vec); <span style="color:#75715e">// 编译错误！歧义
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// C++20 之后，由于 std::size 的引入，情况更复杂
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 但这里的核心问题是 ADL 引入了不相关的候选。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span></span><span style="display:flex;"><span>    size(vec); <span style="color:#75715e">// 编译错误！歧义
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// C++20 之后，由于 std::size 的引入，情况更复杂
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 但这里的核心问题是 ADL 引入了不相关的候选。
+</span></span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ADL 会因为 val 的存在而考虑 Evil::size 吗？
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 不会，因为 size(vec) 的参数是 vector，与 Evil::MyType 无关。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 但是，如果有一个函数 f(Evil::MyType, const std::vector&lt;int&gt;&amp;)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 那么调用 f(val, vec) 时，ADL 会在 Evil 和 std 中同时查找。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 不会，因为 size(vec) 的参数是 vector，与 Evil::MyType 无关。
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 但是，如果有一个函数 f(Evil::MyType, const std::vector&lt;int&gt;&amp;)
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 那么调用 f(val, vec) 时，ADL 会在 Evil 和 std 中同时查找。
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>这个例子虽然有些刻意，但它揭示了风险：将具有通用名称的函数放在与类型相同的命名空间中，可能会增加与其他库发生冲突的可能性。</p>
 <h3 id="52-陷阱二调用歧义-ambiguity">5.2 陷阱二：调用歧义 (Ambiguity)</h3>
 <p>当 ADL 从不同的关联命名空间中找到了多个同样好的函数匹配时，就会产生歧义。</p>
@@ -580,18 +580,18 @@ ADL 是 C&#43;&#43; 名称查找规则的重要组成部分。它极大地提升
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> N2 {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">U</span> {};
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f</span>(N1<span style="color:#f92672">::</span>T) {} <span style="color:#75715e">// 在不同的命名空间中，为同一个类型提供函数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">test</span>() {
 </span></span><span style="display:flex;"><span>    N1<span style="color:#f92672">::</span>T t;
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// f(t); // 编译错误：调用有歧义
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           <span style="color:#75715e">// ADL 在 N1 中找到了 N1::f(N1::T)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           <span style="color:#75715e">// 同时，f 的参数类型是 N1::T，其关联命名空间是 N1
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           <span style="color:#75715e">// 但是，如果我们这样调用：
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    N2<span style="color:#f92672">::</span>U u;
+</span></span></span><span style="display:flex;"><span>           <span style="color:#75715e">// ADL 在 N1 中找到了 N1::f(N1::T)
+</span></span></span><span style="display:flex;"><span>           <span style="color:#75715e">// 同时，f 的参数类型是 N1::T，其关联命名空间是 N1
+</span></span></span><span style="display:flex;"><span>           <span style="color:#75715e">// 但是，如果我们这样调用：
+</span></span></span><span style="display:flex;"><span>    N2<span style="color:#f92672">::</span>U u;
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// void g(N1::T, N2::U);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// g(t, u); // 假设 f 也是 f(N1::T, N2::U)，那么 ADL 会在 N1 和 N2 中都查找
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// g(t, u); // 假设 f 也是 f(N1::T, N2::U)，那么 ADL 会在 N1 和 N2 中都查找
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>让我们构造一个更清晰的歧义例子：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> A {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">X</span> {};
@@ -607,12 +607,12 @@ ADL 是 C&#43;&#43; 名称查找规则的重要组成部分。它极大地提升
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">client_code</span>(B<span style="color:#f92672">::</span>Y arg_y, C<span style="color:#f92672">::</span>Z arg_z) { <span style="color:#75715e">// 假设 C::Z 也存在
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    A<span style="color:#f92672">::</span>X arg_x;
+</span></span></span><span style="display:flex;"><span>    A<span style="color:#f92672">::</span>X arg_x;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 假设有一个函数调用 `func(arg_x, arg_y, arg_z);`
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// ADL 会在命名空间 A, B, C 中都查找 `func`。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 如果 B 和 C 中都提供了匹配的 `func`，就会产生歧义。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ADL 会在命名空间 A, B, C 中都查找 `func`。
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 如果 B 和 C 中都提供了匹配的 `func`，就会产生歧义。
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>当函数参数来自多个不同的库，而这些库恰好都为其他库的类型提供了重载时，歧义的风险就会增加。</p>
 <h3 id="53-最佳实践如何驾驭-adl">5.3 最佳实践：如何驾驭 ADL？</h3>
 <ol>

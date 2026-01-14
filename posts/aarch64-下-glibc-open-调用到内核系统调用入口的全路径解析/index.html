@@ -36,9 +36,9 @@ SYSCALL_CANCEL(...) → INLINE_SYSCALL_CALL(...) → __INLINE_SYSCALL_DISP(__INL
 SYSCALL_CANCEL(...) → INLINE_SYSCALL_CALL(...) → __INLINE_SYSCALL_DISP(__INLINE_SYSCALL, ...) → __SYSCALL_CONCAT(__INLINE_SYSCALL, N)(...) → __INLINE_SYSCALL5(name, a1, a2, a3, a4, a5) → INLINE_SYSCALL(name, 5, a1, a2, a3, a4, a5) 2. INLINE_SYSCALL 实现 #define INLINE_SYSCALL(name, nr, args...) \ ({ \ long int sc_ret = INTERNAL_SYSCALL(name, nr, args); \ __glibc_unlikely(INTERNAL_SYSCALL_ERROR_P(sc_ret)) \ ? SYSCALL_ERROR_LABEL(INTERNAL_SYSCALL_ERRNO(sc_ret)) \ : sc_ret; \ }) 三、INTERNAL_SYSCALL 到 svc #0 入核 1. 实际定义分部 在 sysdeps/unix/sysv/linux/aarch64/sysdep.h 中：">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
-      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.35b15f72eff61cbb106d05bab1ea1aebb778d0ba2861c763af0af0d80f43db4f.css" integrity="sha256-NbFfcu/2HLsQbQW6seoa67d40LooYcdjrwrw2A9D208=" crossorigin="anonymous">
 
-      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.3928d3d2172bc0b5f75d9458fb9255f0befce1c7239ba6e5d2c58ed4b82c2073.js" integrity="sha256-OSjT0hcrwLX3XZRY&#43;5JV8L784ccjm6bl0sWO1LgsIHM="></script>
 <script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -130,7 +130,7 @@ SYSCALL_CANCEL(...) → INLINE_SYSCALL_CALL(...) → __INLINE_SYSCALL_DISP(__INL
       </div><div class="tag">
         <a href="/tags/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/">#系统调用</a>
       </div><div class="tag">
-        <a href="/tags/linux/">#linux</a>
+        <a href="/tags/linux/">#Linux</a>
       </div><div class="tag">
         <a href="/tags/kernel/">#kernel</a>
       </div></ol></div>
@@ -177,7 +177,7 @@ SYSCALL_CANCEL(...) → INLINE_SYSCALL_CALL(...) → __INLINE_SYSCALL_DISP(__INL
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">     register long _x8 asm (&#34;x8&#34;) = (name);                \
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">     asm volatile (                                        \
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">       &#34;svc 0  </span><span style="color:#75715e">// syscall &#34; #name                          \
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;=r&#34;</span> (_x0)                                        \
+</span></span></span><span style="display:flex;"><span>       <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;=r&#34;</span> (_x0)                                        \
 </span></span><span style="display:flex;"><span>       <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;r&#34;</span>(_x8) ASM_ARGS_<span style="color:#960050;background-color:#1e0010">##</span>nr                           \
 </span></span><span style="display:flex;"><span>       <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;memory&#34;</span>);                                        \
 </span></span><span style="display:flex;"><span>     _sys_result <span style="color:#f92672">=</span> _x0;                                    \
@@ -185,11 +185,11 @@ SYSCALL_CANCEL(...) → INLINE_SYSCALL_CALL(...) → __INLINE_SYSCALL_DISP(__INL
 </span></span><span style="display:flex;"><span>   _sys_result; })
 </span></span></code></pre></div><h3 id="3-参数装入">3. 参数装入</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x0 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x0&#34;</span>) <span style="color:#f92672">=</span> arg1; <span style="color:#75715e">// fd
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x1 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x1&#34;</span>) <span style="color:#f92672">=</span> arg2; <span style="color:#75715e">// path
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x2 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x2&#34;</span>) <span style="color:#f92672">=</span> arg3; <span style="color:#75715e">// flags
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x3 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x3&#34;</span>) <span style="color:#f92672">=</span> arg4; <span style="color:#75715e">// mode
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x4 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x4&#34;</span>) <span style="color:#f92672">=</span> arg5; <span style="color:#75715e">// reserve
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x8 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x8&#34;</span>) <span style="color:#f92672">=</span> __NR_openat;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x1 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x1&#34;</span>) <span style="color:#f92672">=</span> arg2; <span style="color:#75715e">// path
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x2 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x2&#34;</span>) <span style="color:#f92672">=</span> arg3; <span style="color:#75715e">// flags
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x3 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x3&#34;</span>) <span style="color:#f92672">=</span> arg4; <span style="color:#75715e">// mode
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x4 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x4&#34;</span>) <span style="color:#f92672">=</span> arg5; <span style="color:#75715e">// reserve
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x8 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x8&#34;</span>) <span style="color:#f92672">=</span> __NR_openat;
 </span></span></code></pre></div><h3 id="4-结果">4. 结果</h3>
 <p>执行指令：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span><span style="color:#a6e22e">svc</span> <span style="color:#75715e">#0
@@ -208,7 +208,7 @@ SYSCALL_CANCEL(...) → INLINE_SYSCALL_CALL(...) → __INLINE_SYSCALL_DISP(__INL
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="3-syscall_handler">3. syscall_handler()</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> scno <span style="color:#f92672">=</span> regs<span style="color:#f92672">-&gt;</span>regs[<span style="color:#ae81ff">8</span>]; <span style="color:#75715e">// x8 是 syscall 号
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>sys_call_table[scno] <span style="color:#960050;background-color:#1e0010">→</span> <span style="color:#a6e22e">sys_openat</span>(...)
+</span></span></span><span style="display:flex;"><span>sys_call_table[scno] <span style="color:#960050;background-color:#1e0010">→</span> <span style="color:#a6e22e">sys_openat</span>(...)
 </span></span></code></pre></div><h3 id="4-sys_openat">4. sys_openat()</h3>
 <p>在内核 fs 层：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">SYSCALL_DEFINE4</span>(openat, <span style="color:#66d9ef">int</span> dfd, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> __user <span style="color:#f92672">*</span>filename,

@@ -30,9 +30,9 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 项目中不同目标需要不同的C&#43;&#43;标准 明确指定某个目标的编译标准 覆盖全局设置 编译器选项与警告配置 全局编译选项 if(CMAKE_CXX_COMPILER_ID MATCHES &#34;GNU|Clang&#34;) add_compile_options(-Wall -Wextra -Wpedantic) endif() 目标特定编译选项（推荐） if(CMAKE_CXX_COMPILER_ID MATCHES &#34;GNU|Clang&#34;) target_compile_options(VisionDemo PRIVATE -Wall -Wextra -Wpedantic -Wno-unused-parameter -Wno-unused-variable ) endif() 编译选项说明：">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
-      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.35b15f72eff61cbb106d05bab1ea1aebb778d0ba2861c763af0af0d80f43db4f.css" integrity="sha256-NbFfcu/2HLsQbQW6seoa67d40LooYcdjrwrw2A9D208=" crossorigin="anonymous">
 
-      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.3928d3d2172bc0b5f75d9458fb9255f0befce1c7239ba6e5d2c58ed4b82c2073.js" integrity="sha256-OSjT0hcrwLX3XZRY&#43;5JV8L784ccjm6bl0sWO1LgsIHM="></script>
 <script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -137,7 +137,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 <h3 id="最小版本要求与项目声明">最小版本要求与项目声明</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>cmake_minimum_required(<span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">3.14</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>project(<span style="color:#e6db74">VisionDemo</span> <span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">1.0.0</span> <span style="color:#e6db74">LANGUAGES</span> <span style="color:#e6db74">CXX</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>project(<span style="color:#e6db74">VisionDemo</span> <span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">1.0.0</span> <span style="color:#e6db74">LANGUAGES</span> <span style="color:#e6db74">CXX</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p><strong>说明：</strong></p>
 <ul>
 <li><code>cmake_minimum_required</code>：指定所需的最低CMake版本</li>
@@ -149,9 +149,9 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 <h2 id="c-编译标准设置">C++ 编译标准设置</h2>
 <h3 id="全局标准设置">全局标准设置</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 设置 C++17 标准
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>set(<span style="color:#e6db74">CMAKE_CXX_STANDARD</span> <span style="color:#e6db74">17</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">CMAKE_CXX_STANDARD_REQUIRED</span> <span style="color:#e6db74">ON</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">CMAKE_CXX_EXTENSIONS</span> <span style="color:#e6db74">OFF</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>set(<span style="color:#e6db74">CMAKE_CXX_STANDARD</span> <span style="color:#e6db74">17</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>set(<span style="color:#e6db74">CMAKE_CXX_STANDARD_REQUIRED</span> <span style="color:#e6db74">ON</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>set(<span style="color:#e6db74">CMAKE_CXX_EXTENSIONS</span> <span style="color:#e6db74">OFF</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p><strong>各参数含义：</strong></p>
 <table>
   <thead>
@@ -200,18 +200,18 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 <h2 id="编译器选项与警告配置">编译器选项与警告配置</h2>
 <h3 id="全局编译选项">全局编译选项</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>if(<span style="color:#e6db74">CMAKE_CXX_COMPILER_ID</span> <span style="color:#e6db74">MATCHES</span> <span style="color:#e6db74">&#34;GNU|Clang&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    add_compile_options(<span style="color:#e6db74">-Wall</span> <span style="color:#e6db74">-Wextra</span> <span style="color:#e6db74">-Wpedantic</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    add_compile_options(<span style="color:#e6db74">-Wall</span> <span style="color:#e6db74">-Wextra</span> <span style="color:#e6db74">-Wpedantic</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><h3 id="目标特定编译选项推荐">目标特定编译选项（推荐）</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>if(<span style="color:#e6db74">CMAKE_CXX_COMPILER_ID</span> <span style="color:#e6db74">MATCHES</span> <span style="color:#e6db74">&#34;GNU|Clang&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    target_compile_options(<span style="color:#e6db74">VisionDemo</span> <span style="color:#e6db74">PRIVATE</span>
+</span></span></span><span style="display:flex;"><span>    target_compile_options(<span style="color:#e6db74">VisionDemo</span> <span style="color:#e6db74">PRIVATE</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">-Wall</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">-Wextra</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">-Wpedantic</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">-Wno-unused-parameter</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">-Wno-unused-variable</span>
 </span></span><span style="display:flex;"><span>    )<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p><strong>编译选项说明：</strong></p>
 <table>
   <thead>
@@ -245,17 +245,17 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </table>
 <h3 id="多编译器支持">多编译器支持</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>if(<span style="color:#e6db74">CMAKE_CXX_COMPILER_ID</span> <span style="color:#e6db74">MATCHES</span> <span style="color:#e6db74">&#34;GNU|Clang&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    target_compile_options(<span style="color:#f92672">${</span>TARGET_NAME<span style="color:#f92672">}</span> <span style="color:#e6db74">PRIVATE</span>
+</span></span></span><span style="display:flex;"><span>    target_compile_options(<span style="color:#f92672">${</span>TARGET_NAME<span style="color:#f92672">}</span> <span style="color:#e6db74">PRIVATE</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">-Wall</span> <span style="color:#e6db74">-Wextra</span> <span style="color:#e6db74">-Wpedantic</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">-Wno-unused-parameter</span> <span style="color:#e6db74">-Wno-unused-variable</span>
 </span></span><span style="display:flex;"><span>    )<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>elseif(<span style="color:#e6db74">CMAKE_CXX_COMPILER_ID</span> <span style="color:#e6db74">STREQUAL</span> <span style="color:#e6db74">&#34;MSVC&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    target_compile_options(<span style="color:#f92672">${</span>TARGET_NAME<span style="color:#f92672">}</span> <span style="color:#e6db74">PRIVATE</span>
+</span></span></span><span style="display:flex;"><span>elseif(<span style="color:#e6db74">CMAKE_CXX_COMPILER_ID</span> <span style="color:#e6db74">STREQUAL</span> <span style="color:#e6db74">&#34;MSVC&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    target_compile_options(<span style="color:#f92672">${</span>TARGET_NAME<span style="color:#f92672">}</span> <span style="color:#e6db74">PRIVATE</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">/W4</span>          <span style="color:#75715e"># 高警告级别
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#e6db74">/WX</span>          <span style="color:#75715e"># 将警告视为错误
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#e6db74">/utf-8</span>       <span style="color:#75715e"># 使用UTF-8编码
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    )<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>        <span style="color:#e6db74">/WX</span>          <span style="color:#75715e"># 将警告视为错误
+</span></span></span><span style="display:flex;"><span>        <span style="color:#e6db74">/utf-8</span>       <span style="color:#75715e"># 使用UTF-8编码
+</span></span></span><span style="display:flex;"><span>    )<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p><strong>重要提醒：</strong>
 <code>target_compile_options</code> 必须在 <code>add_executable</code> 或 <code>add_library</code> 之后调用，否则会报错：</p>
 <pre tabindex="0"><code>Cannot specify compile options for target &#34;TargetName&#34; which is not built by this project.
@@ -263,9 +263,9 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 <h2 id="输出目录结构管理">输出目录结构管理</h2>
 <h3 id="构建阶段输出目录">构建阶段输出目录</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 设置构建阶段的输出目录
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>set(<span style="color:#e6db74">CMAKE_RUNTIME_OUTPUT_DIRECTORY</span> <span style="color:#f92672">${</span>CMAKE_BINARY_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/bin</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">CMAKE_LIBRARY_OUTPUT_DIRECTORY</span> <span style="color:#f92672">${</span>CMAKE_BINARY_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/lib</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">CMAKE_ARCHIVE_OUTPUT_DIRECTORY</span> <span style="color:#f92672">${</span>CMAKE_BINARY_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/lib</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>set(<span style="color:#e6db74">CMAKE_RUNTIME_OUTPUT_DIRECTORY</span> <span style="color:#f92672">${</span>CMAKE_BINARY_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/bin</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>set(<span style="color:#e6db74">CMAKE_LIBRARY_OUTPUT_DIRECTORY</span> <span style="color:#f92672">${</span>CMAKE_BINARY_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/lib</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>set(<span style="color:#e6db74">CMAKE_ARCHIVE_OUTPUT_DIRECTORY</span> <span style="color:#f92672">${</span>CMAKE_BINARY_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/lib</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p><strong>目录类型说明：</strong></p>
 <table>
   <thead>
@@ -295,12 +295,12 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </table>
 <h3 id="多配置生成器支持">多配置生成器支持</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 为多配置生成器（如 MSVC）指定每个构建类型的输出路径
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>foreach(<span style="color:#e6db74">OUTPUT_CONFIG</span> <span style="color:#e6db74">IN</span> <span style="color:#e6db74">LISTS</span> <span style="color:#e6db74">CMAKE_CONFIGURATION_TYPES</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    string(<span style="color:#e6db74">TOUPPER</span> <span style="color:#f92672">${</span>OUTPUT_CONFIG<span style="color:#f92672">}</span> <span style="color:#e6db74">OUTPUT_CONFIG</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    set(<span style="color:#e6db74">CMAKE_RUNTIME_OUTPUT_DIRECTORY_</span><span style="color:#f92672">${</span>OUTPUT_CONFIG<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>CMAKE_RUNTIME_OUTPUT_DIRECTORY<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    set(<span style="color:#e6db74">CMAKE_LIBRARY_OUTPUT_DIRECTORY_</span><span style="color:#f92672">${</span>OUTPUT_CONFIG<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>CMAKE_LIBRARY_OUTPUT_DIRECTORY<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    set(<span style="color:#e6db74">CMAKE_ARCHIVE_OUTPUT_DIRECTORY_</span><span style="color:#f92672">${</span>OUTPUT_CONFIG<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>CMAKE_ARCHIVE_OUTPUT_DIRECTORY<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endforeach()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>foreach(<span style="color:#e6db74">OUTPUT_CONFIG</span> <span style="color:#e6db74">IN</span> <span style="color:#e6db74">LISTS</span> <span style="color:#e6db74">CMAKE_CONFIGURATION_TYPES</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    string(<span style="color:#e6db74">TOUPPER</span> <span style="color:#f92672">${</span>OUTPUT_CONFIG<span style="color:#f92672">}</span> <span style="color:#e6db74">OUTPUT_CONFIG</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    set(<span style="color:#e6db74">CMAKE_RUNTIME_OUTPUT_DIRECTORY_</span><span style="color:#f92672">${</span>OUTPUT_CONFIG<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>CMAKE_RUNTIME_OUTPUT_DIRECTORY<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    set(<span style="color:#e6db74">CMAKE_LIBRARY_OUTPUT_DIRECTORY_</span><span style="color:#f92672">${</span>OUTPUT_CONFIG<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>CMAKE_LIBRARY_OUTPUT_DIRECTORY<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    set(<span style="color:#e6db74">CMAKE_ARCHIVE_OUTPUT_DIRECTORY_</span><span style="color:#f92672">${</span>OUTPUT_CONFIG<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>CMAKE_ARCHIVE_OUTPUT_DIRECTORY<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>endforeach()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p><strong>构建结果示例：</strong></p>
 <pre tabindex="0"><code>build/
 ├── bin/
@@ -312,12 +312,12 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 <h2 id="环境检测与路径配置">环境检测与路径配置</h2>
 <h3 id="anaconda-环境检测">Anaconda 环境检测</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 检查是否在 Anaconda 环境中
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>if(<span style="color:#e6db74">DEFINED</span> <span style="color:#e6db74">ENV{CONDA_PREFIX}</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    set(<span style="color:#e6db74">CMAKE_PREFIX_PATH</span> <span style="color:#f92672">$ENV{</span>CONDA_PREFIX<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    set(<span style="color:#e6db74">CMAKE_INCLUDE_PATH</span> <span style="color:#f92672">$ENV{</span>CONDA_PREFIX<span style="color:#f92672">}</span><span style="color:#e6db74">/include</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    set(<span style="color:#e6db74">CMAKE_LIBRARY_PATH</span> <span style="color:#f92672">$ENV{</span>CONDA_PREFIX<span style="color:#f92672">}</span><span style="color:#e6db74">/lib</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;Detected Conda environment: $ENV{CONDA_PREFIX}&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>if(<span style="color:#e6db74">DEFINED</span> <span style="color:#e6db74">ENV{CONDA_PREFIX}</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    set(<span style="color:#e6db74">CMAKE_PREFIX_PATH</span> <span style="color:#f92672">$ENV{</span>CONDA_PREFIX<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    set(<span style="color:#e6db74">CMAKE_INCLUDE_PATH</span> <span style="color:#f92672">$ENV{</span>CONDA_PREFIX<span style="color:#f92672">}</span><span style="color:#e6db74">/include</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    set(<span style="color:#e6db74">CMAKE_LIBRARY_PATH</span> <span style="color:#f92672">$ENV{</span>CONDA_PREFIX<span style="color:#f92672">}</span><span style="color:#e6db74">/lib</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;Detected Conda environment: $ENV{CONDA_PREFIX}&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p><strong>环境变量说明：</strong></p>
 <ul>
 <li><code>CONDA_PREFIX</code>：当前激活的Conda环境路径</li>
@@ -327,28 +327,28 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </ul>
 <h3 id="路径优先级管理">路径优先级管理</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 设置查找路径优先级
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>list(<span style="color:#e6db74">INSERT</span> <span style="color:#e6db74">CMAKE_PREFIX_PATH</span> <span style="color:#e6db74">0</span> <span style="color:#f92672">${</span>CMAKE_CURRENT_SOURCE_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/extern</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>list(<span style="color:#e6db74">INSERT</span> <span style="color:#e6db74">CMAKE_MODULE_PATH</span> <span style="color:#e6db74">0</span> <span style="color:#f92672">${</span>CMAKE_CURRENT_SOURCE_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/cmake</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>list(<span style="color:#e6db74">INSERT</span> <span style="color:#e6db74">CMAKE_PREFIX_PATH</span> <span style="color:#e6db74">0</span> <span style="color:#f92672">${</span>CMAKE_CURRENT_SOURCE_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/extern</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>list(<span style="color:#e6db74">INSERT</span> <span style="color:#e6db74">CMAKE_MODULE_PATH</span> <span style="color:#e6db74">0</span> <span style="color:#f92672">${</span>CMAKE_CURRENT_SOURCE_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/cmake</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><hr>
 <h2 id="第三方依赖管理">第三方依赖管理</h2>
 <h3 id="使用-fetchcontent-自动下载依赖">使用 FetchContent 自动下载依赖</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>include(<span style="color:#e6db74">FetchContent</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 下载并构建 fmt 库
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>FetchContent_Declare(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 下载并构建 fmt 库
+</span></span></span><span style="display:flex;"><span>FetchContent_Declare(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">fmt</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">GIT_REPOSITORY</span> <span style="color:#e6db74">https://github.com/fmtlib/fmt.git</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">GIT_TAG</span> <span style="color:#e6db74">9.1.0</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>FetchContent_MakeAvailable(<span style="color:#e6db74">fmt</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>FetchContent_MakeAvailable(<span style="color:#e6db74">fmt</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 下载并构建 spdlog 库
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>FetchContent_Declare(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 下载并构建 spdlog 库
+</span></span></span><span style="display:flex;"><span>FetchContent_Declare(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">spdlog</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">GIT_REPOSITORY</span> <span style="color:#e6db74">https://github.com/gabime/spdlog.git</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">GIT_TAG</span> <span style="color:#e6db74">v1.11.0</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>FetchContent_MakeAvailable(<span style="color:#e6db74">spdlog</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>FetchContent_MakeAvailable(<span style="color:#e6db74">spdlog</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p><strong>FetchContent 优点：</strong></p>
 <ul>
 <li>📦 无需手动安装第三方库</li>
@@ -358,42 +358,42 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </ul>
 <h3 id="常用第三方库配置">常用第三方库配置</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># Google Test
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>FetchContent_Declare(
+</span></span></span><span style="display:flex;"><span>FetchContent_Declare(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">googletest</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">GIT_REPOSITORY</span> <span style="color:#e6db74">https://github.com/google/googletest.git</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">GIT_TAG</span> <span style="color:#e6db74">release-1.12.1</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>FetchContent_MakeAvailable(<span style="color:#e6db74">googletest</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>FetchContent_MakeAvailable(<span style="color:#e6db74">googletest</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># JSON库
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>FetchContent_Declare(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># JSON库
+</span></span></span><span style="display:flex;"><span>FetchContent_Declare(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">nlohmann_json</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">GIT_REPOSITORY</span> <span style="color:#e6db74">https://github.com/nlohmann/json.git</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">GIT_TAG</span> <span style="color:#e6db74">v3.11.2</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>FetchContent_MakeAvailable(<span style="color:#e6db74">nlohmann_json</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>FetchContent_MakeAvailable(<span style="color:#e6db74">nlohmann_json</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Eigen 数学库
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>FetchContent_Declare(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># Eigen 数学库
+</span></span></span><span style="display:flex;"><span>FetchContent_Declare(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">eigen</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">GIT_REPOSITORY</span> <span style="color:#e6db74">https://gitlab.com/libeigen/eigen.git</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">GIT_TAG</span> <span style="color:#e6db74">3.4.0</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>FetchContent_MakeAvailable(<span style="color:#e6db74">eigen</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>FetchContent_MakeAvailable(<span style="color:#e6db74">eigen</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><h3 id="find_package-方式">find_package 方式</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 查找系统安装的包
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>find_package(<span style="color:#e6db74">OpenCV</span> <span style="color:#e6db74">REQUIRED</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>find_package(<span style="color:#e6db74">Boost</span> <span style="color:#e6db74">REQUIRED</span> <span style="color:#e6db74">COMPONENTS</span> <span style="color:#e6db74">system</span> <span style="color:#e6db74">filesystem</span> <span style="color:#e6db74">thread</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>find_package(<span style="color:#e6db74">PkgConfig</span> <span style="color:#e6db74">REQUIRED</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>pkg_check_modules(<span style="color:#e6db74">GTK3</span> <span style="color:#e6db74">REQUIRED</span> <span style="color:#e6db74">gtk+-3.0</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>find_package(<span style="color:#e6db74">OpenCV</span> <span style="color:#e6db74">REQUIRED</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>find_package(<span style="color:#e6db74">Boost</span> <span style="color:#e6db74">REQUIRED</span> <span style="color:#e6db74">COMPONENTS</span> <span style="color:#e6db74">system</span> <span style="color:#e6db74">filesystem</span> <span style="color:#e6db74">thread</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>find_package(<span style="color:#e6db74">PkgConfig</span> <span style="color:#e6db74">REQUIRED</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>pkg_check_modules(<span style="color:#e6db74">GTK3</span> <span style="color:#e6db74">REQUIRED</span> <span style="color:#e6db74">gtk+-3.0</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><hr>
 <h2 id="目标链接与可见性">目标链接与可见性</h2>
 <h3 id="链接可见性修饰符">链接可见性修饰符</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>target_link_libraries(<span style="color:#e6db74">MyTarget</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">PRIVATE</span>   <span style="color:#e6db74">privately_used_lib</span>     <span style="color:#75715e"># 仅当前目标使用
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#e6db74">PUBLIC</span>    <span style="color:#e6db74">publicly_exposed_lib</span>   <span style="color:#75715e"># 当前目标和依赖者都使用
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#e6db74">INTERFACE</span> <span style="color:#e6db74">interface_only_lib</span>     <span style="color:#75715e"># 仅依赖者使用
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    <span style="color:#e6db74">PUBLIC</span>    <span style="color:#e6db74">publicly_exposed_lib</span>   <span style="color:#75715e"># 当前目标和依赖者都使用
+</span></span></span><span style="display:flex;"><span>    <span style="color:#e6db74">INTERFACE</span> <span style="color:#e6db74">interface_only_lib</span>     <span style="color:#75715e"># 仅依赖者使用
+</span></span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p><strong>可见性对比：</strong></p>
 <table>
   <thead>
@@ -427,64 +427,64 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </table>
 <h3 id="实际应用示例">实际应用示例</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 创建库
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>add_library(<span style="color:#e6db74">MyLib</span> <span style="color:#e6db74">src/mylib.cpp</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>add_library(<span style="color:#e6db74">MyLib</span> <span style="color:#e6db74">src/mylib.cpp</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>target_link_libraries(<span style="color:#e6db74">MyLib</span>
+</span></span></span><span style="display:flex;"><span>target_link_libraries(<span style="color:#e6db74">MyLib</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">PRIVATE</span> <span style="color:#e6db74">spdlog::spdlog</span>        <span style="color:#75715e"># 内部日志，不对外暴露
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#e6db74">PUBLIC</span> <span style="color:#e6db74">fmt::fmt</span>               <span style="color:#75715e"># 公共接口使用fmt格式化
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#e6db74">INTERFACE</span> <span style="color:#e6db74">Eigen3::Eigen</span>       <span style="color:#75715e"># 头文件库，仅依赖者需要
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    <span style="color:#e6db74">PUBLIC</span> <span style="color:#e6db74">fmt::fmt</span>               <span style="color:#75715e"># 公共接口使用fmt格式化
+</span></span></span><span style="display:flex;"><span>    <span style="color:#e6db74">INTERFACE</span> <span style="color:#e6db74">Eigen3::Eigen</span>       <span style="color:#75715e"># 头文件库，仅依赖者需要
+</span></span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 创建应用程序
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>add_executable(<span style="color:#e6db74">MyApp</span> <span style="color:#e6db74">src/main.cpp</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>target_link_libraries(<span style="color:#e6db74">MyApp</span> <span style="color:#e6db74">PRIVATE</span> <span style="color:#e6db74">MyLib</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建应用程序
+</span></span></span><span style="display:flex;"><span>add_executable(<span style="color:#e6db74">MyApp</span> <span style="color:#e6db74">src/main.cpp</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>target_link_libraries(<span style="color:#e6db74">MyApp</span> <span style="color:#e6db74">PRIVATE</span> <span style="color:#e6db74">MyLib</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># MyApp 可以使用 fmt::fmt 和 Eigen，但不能直接使用 spdlog
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># MyApp 可以使用 fmt::fmt 和 Eigen，但不能直接使用 spdlog
 </span></span></span></code></pre></div><h3 id="接口库创建">接口库创建</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 创建纯头文件库
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>add_library(<span style="color:#e6db74">MyHeaderLib</span> <span style="color:#e6db74">INTERFACE</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>target_include_directories(<span style="color:#e6db74">MyHeaderLib</span> <span style="color:#e6db74">INTERFACE</span> 
+</span></span></span><span style="display:flex;"><span>add_library(<span style="color:#e6db74">MyHeaderLib</span> <span style="color:#e6db74">INTERFACE</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>target_include_directories(<span style="color:#e6db74">MyHeaderLib</span> <span style="color:#e6db74">INTERFACE</span> 
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">$&lt;</span>BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">$&lt;</span>INSTALL_INTERFACE:include<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>target_link_libraries(<span style="color:#e6db74">MyHeaderLib</span> <span style="color:#e6db74">INTERFACE</span> <span style="color:#e6db74">fmt::fmt</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>target_link_libraries(<span style="color:#e6db74">MyHeaderLib</span> <span style="color:#e6db74">INTERFACE</span> <span style="color:#e6db74">fmt::fmt</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><hr>
 <h2 id="安装配置与部署">安装配置与部署</h2>
 <h3 id="基础安装配置">基础安装配置</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>include(<span style="color:#e6db74">GNUInstallDirs</span>)  <span style="color:#75715e"># 提供标准安装路径
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 安装可执行文件
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>install(<span style="color:#e6db74">TARGETS</span> <span style="color:#e6db74">VisionDemo</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 安装可执行文件
+</span></span></span><span style="display:flex;"><span>install(<span style="color:#e6db74">TARGETS</span> <span style="color:#e6db74">VisionDemo</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">RUNTIME</span> <span style="color:#e6db74">DESTINATION</span> <span style="color:#f92672">${</span>CMAKE_INSTALL_BINDIR<span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 安装库文件
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>install(<span style="color:#e6db74">TARGETS</span> <span style="color:#e6db74">VisionDemo</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 安装库文件
+</span></span></span><span style="display:flex;"><span>install(<span style="color:#e6db74">TARGETS</span> <span style="color:#e6db74">VisionDemo</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">ARCHIVE</span> <span style="color:#e6db74">DESTINATION</span> <span style="color:#f92672">${</span>CMAKE_INSTALL_LIBDIR<span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">LIBRARY</span> <span style="color:#e6db74">DESTINATION</span> <span style="color:#f92672">${</span>CMAKE_INSTALL_LIBDIR<span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">RUNTIME</span> <span style="color:#e6db74">DESTINATION</span> <span style="color:#f92672">${</span>CMAKE_INSTALL_BINDIR<span style="color:#f92672">}</span>  <span style="color:#75715e"># Windows DLL
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><h3 id="完整安装配置">完整安装配置</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 安装头文件
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>install(<span style="color:#e6db74">DIRECTORY</span> <span style="color:#e6db74">include/VisionDemo</span>
+</span></span></span><span style="display:flex;"><span>install(<span style="color:#e6db74">DIRECTORY</span> <span style="color:#e6db74">include/VisionDemo</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">DESTINATION</span> <span style="color:#f92672">${</span>CMAKE_INSTALL_INCLUDEDIR<span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">FILES_MATCHING</span> <span style="color:#e6db74">PATTERN</span> <span style="color:#e6db74">&#34;*.h&#34;</span> <span style="color:#e6db74">PATTERN</span> <span style="color:#e6db74">&#34;*.hpp&#34;</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 安装配置文件
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>install(<span style="color:#e6db74">FILES</span> <span style="color:#e6db74">config/VisionDemo.conf</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 安装配置文件
+</span></span></span><span style="display:flex;"><span>install(<span style="color:#e6db74">FILES</span> <span style="color:#e6db74">config/VisionDemo.conf</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">DESTINATION</span> <span style="color:#f92672">${</span>CMAKE_INSTALL_SYSCONFDIR<span style="color:#f92672">}</span><span style="color:#e6db74">/VisionDemo</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 生成并安装版本文件
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>include(<span style="color:#e6db74">CMakePackageConfigHelpers</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>write_basic_package_version_file(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 生成并安装版本文件
+</span></span></span><span style="display:flex;"><span>include(<span style="color:#e6db74">CMakePackageConfigHelpers</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>write_basic_package_version_file(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;${CMAKE_CURRENT_BINARY_DIR}/VisionDemoConfigVersion.cmake&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">VERSION</span> <span style="color:#f92672">${</span>PROJECT_VERSION<span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">COMPATIBILITY</span> <span style="color:#e6db74">AnyNewerVersion</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>install(<span style="color:#e6db74">FILES</span> 
+</span></span></span><span style="display:flex;"><span>install(<span style="color:#e6db74">FILES</span> 
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;${CMAKE_CURRENT_BINARY_DIR}/VisionDemoConfigVersion.cmake&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">DESTINATION</span> <span style="color:#f92672">${</span>CMAKE_INSTALL_LIBDIR<span style="color:#f92672">}</span><span style="color:#e6db74">/cmake/VisionDemo</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
@@ -547,38 +547,38 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">VERBATIM</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 让主目标依赖版本信息
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>add_dependencies(<span style="color:#e6db74">VisionDemo</span> <span style="color:#e6db74">version_info</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 让主目标依赖版本信息
+</span></span></span><span style="display:flex;"><span>add_dependencies(<span style="color:#e6db74">VisionDemo</span> <span style="color:#e6db74">version_info</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><h3 id="代码格式化目标">代码格式化目标</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>find_program(<span style="color:#e6db74">CLANG_FORMAT</span> <span style="color:#e6db74">clang-format</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if(<span style="color:#e6db74">CLANG_FORMAT</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    file(<span style="color:#e6db74">GLOB_RECURSE</span> <span style="color:#e6db74">SOURCE_FILES</span> 
+</span></span></span><span style="display:flex;"><span>if(<span style="color:#e6db74">CLANG_FORMAT</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    file(<span style="color:#e6db74">GLOB_RECURSE</span> <span style="color:#e6db74">SOURCE_FILES</span> 
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;${CMAKE_SOURCE_DIR}/src/*.cpp&#34;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;${CMAKE_SOURCE_DIR}/src/*.h&#34;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;${CMAKE_SOURCE_DIR}/include/*.h&#34;</span>
 </span></span><span style="display:flex;"><span>    )<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    add_custom_target(<span style="color:#e6db74">format</span>
+</span></span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    add_custom_target(<span style="color:#e6db74">format</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">COMMAND</span> <span style="color:#f92672">${</span>CLANG_FORMAT<span style="color:#f92672">}</span> <span style="color:#e6db74">-i</span> <span style="color:#f92672">${</span>SOURCE_FILES<span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">COMMENT</span> <span style="color:#e6db74">&#34;Formatting source code with clang-format&#34;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">VERBATIM</span>
 </span></span><span style="display:flex;"><span>    )<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><h3 id="文档生成目标">文档生成目标</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>find_package(<span style="color:#e6db74">Doxygen</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if(<span style="color:#e6db74">DOXYGEN_FOUND</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    set(<span style="color:#e6db74">DOXYGEN_IN</span> <span style="color:#f92672">${</span>CMAKE_CURRENT_SOURCE_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/docs/Doxyfile.in</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    set(<span style="color:#e6db74">DOXYGEN_OUT</span> <span style="color:#f92672">${</span>CMAKE_CURRENT_BINARY_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/Doxyfile</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    configure_file(<span style="color:#f92672">${</span>DOXYGEN_IN<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>DOXYGEN_OUT<span style="color:#f92672">}</span> <span style="color:#e6db74">@ONLY</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    add_custom_target(<span style="color:#e6db74">docs</span>
+</span></span></span><span style="display:flex;"><span>if(<span style="color:#e6db74">DOXYGEN_FOUND</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    set(<span style="color:#e6db74">DOXYGEN_IN</span> <span style="color:#f92672">${</span>CMAKE_CURRENT_SOURCE_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/docs/Doxyfile.in</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    set(<span style="color:#e6db74">DOXYGEN_OUT</span> <span style="color:#f92672">${</span>CMAKE_CURRENT_BINARY_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/Doxyfile</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    configure_file(<span style="color:#f92672">${</span>DOXYGEN_IN<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>DOXYGEN_OUT<span style="color:#f92672">}</span> <span style="color:#e6db74">@ONLY</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    add_custom_target(<span style="color:#e6db74">docs</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">COMMAND</span> <span style="color:#f92672">${</span>DOXYGEN_EXECUTABLE<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>DOXYGEN_OUT<span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">WORKING_DIRECTORY</span> <span style="color:#f92672">${</span>CMAKE_CURRENT_BINARY_DIR<span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">COMMENT</span> <span style="color:#e6db74">&#34;Generating API documentation with Doxygen&#34;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">VERBATIM</span>
 </span></span><span style="display:flex;"><span>    )<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><hr>
 <h2 id="完整示例项目">完整示例项目</h2>
 <h3 id="项目结构">项目结构</h3>
@@ -603,137 +603,137 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </code></pre><h3 id="主-cmakeliststxt">主 CMakeLists.txt</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>cmake_minimum_required(<span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">3.14</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>project(<span style="color:#e6db74">VisionDemo</span> 
+</span></span></span><span style="display:flex;"><span>project(<span style="color:#e6db74">VisionDemo</span> 
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">1.2.0</span> 
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">DESCRIPTION</span> <span style="color:#e6db74">&#34;Modern VisionDemo Management System&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">LANGUAGES</span> <span style="color:#e6db74">CXX</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># --- 编译标准设置 ---
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>set(<span style="color:#e6db74">CMAKE_CXX_STANDARD</span> <span style="color:#e6db74">17</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">CMAKE_CXX_STANDARD_REQUIRED</span> <span style="color:#e6db74">ON</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">CMAKE_CXX_EXTENSIONS</span> <span style="color:#e6db74">OFF</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># --- 编译标准设置 ---
+</span></span></span><span style="display:flex;"><span>set(<span style="color:#e6db74">CMAKE_CXX_STANDARD</span> <span style="color:#e6db74">17</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>set(<span style="color:#e6db74">CMAKE_CXX_STANDARD_REQUIRED</span> <span style="color:#e6db74">ON</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>set(<span style="color:#e6db74">CMAKE_CXX_EXTENSIONS</span> <span style="color:#e6db74">OFF</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># --- 输出目录设置 ---
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>set(<span style="color:#e6db74">CMAKE_RUNTIME_OUTPUT_DIRECTORY</span> <span style="color:#f92672">${</span>CMAKE_BINARY_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/bin</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">CMAKE_LIBRARY_OUTPUT_DIRECTORY</span> <span style="color:#f92672">${</span>CMAKE_BINARY_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/lib</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">CMAKE_ARCHIVE_OUTPUT_DIRECTORY</span> <span style="color:#f92672">${</span>CMAKE_BINARY_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/lib</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># --- 输出目录设置 ---
+</span></span></span><span style="display:flex;"><span>set(<span style="color:#e6db74">CMAKE_RUNTIME_OUTPUT_DIRECTORY</span> <span style="color:#f92672">${</span>CMAKE_BINARY_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/bin</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>set(<span style="color:#e6db74">CMAKE_LIBRARY_OUTPUT_DIRECTORY</span> <span style="color:#f92672">${</span>CMAKE_BINARY_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/lib</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>set(<span style="color:#e6db74">CMAKE_ARCHIVE_OUTPUT_DIRECTORY</span> <span style="color:#f92672">${</span>CMAKE_BINARY_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/lib</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># --- 环境检测 ---
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>if(<span style="color:#e6db74">DEFINED</span> <span style="color:#e6db74">ENV{CONDA_PREFIX}</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    set(<span style="color:#e6db74">CMAKE_PREFIX_PATH</span> <span style="color:#f92672">$ENV{</span>CONDA_PREFIX<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;Using Conda environment: $ENV{CONDA_PREFIX}&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># --- 环境检测 ---
+</span></span></span><span style="display:flex;"><span>if(<span style="color:#e6db74">DEFINED</span> <span style="color:#e6db74">ENV{CONDA_PREFIX}</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    set(<span style="color:#e6db74">CMAKE_PREFIX_PATH</span> <span style="color:#f92672">$ENV{</span>CONDA_PREFIX<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;Using Conda environment: $ENV{CONDA_PREFIX}&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># --- 包含子模块 ---
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>list(<span style="color:#e6db74">APPEND</span> <span style="color:#e6db74">CMAKE_MODULE_PATH</span> <span style="color:#f92672">${</span>CMAKE_CURRENT_SOURCE_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/cmake</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>include(<span style="color:#e6db74">Dependencies</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>include(<span style="color:#e6db74">CompilerOptions</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># --- 包含子模块 ---
+</span></span></span><span style="display:flex;"><span>list(<span style="color:#e6db74">APPEND</span> <span style="color:#e6db74">CMAKE_MODULE_PATH</span> <span style="color:#f92672">${</span>CMAKE_CURRENT_SOURCE_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/cmake</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>include(<span style="color:#e6db74">Dependencies</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>include(<span style="color:#e6db74">CompilerOptions</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># --- 包含目录 ---
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>include_directories(<span style="color:#f92672">${</span>PROJECT_SOURCE_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/include</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># --- 包含目录 ---
+</span></span></span><span style="display:flex;"><span>include_directories(<span style="color:#f92672">${</span>PROJECT_SOURCE_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/include</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># --- 源文件收集 ---
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>file(<span style="color:#e6db74">GLOB_RECURSE</span> <span style="color:#e6db74">SOURCES</span> <span style="color:#e6db74">src/*.cpp</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>file(<span style="color:#e6db74">GLOB_RECURSE</span> <span style="color:#e6db74">HEADERS</span> <span style="color:#e6db74">include/*.h</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># --- 源文件收集 ---
+</span></span></span><span style="display:flex;"><span>file(<span style="color:#e6db74">GLOB_RECURSE</span> <span style="color:#e6db74">SOURCES</span> <span style="color:#e6db74">src/*.cpp</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>file(<span style="color:#e6db74">GLOB_RECURSE</span> <span style="color:#e6db74">HEADERS</span> <span style="color:#e6db74">include/*.h</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># --- 创建库目标 ---
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>add_library(<span style="color:#e6db74">VisionDemoLib</span> <span style="color:#e6db74">STATIC</span> <span style="color:#f92672">${</span>SOURCES<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>HEADERS<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>target_include_directories(<span style="color:#e6db74">VisionDemoLib</span> <span style="color:#e6db74">PUBLIC</span> 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># --- 创建库目标 ---
+</span></span></span><span style="display:flex;"><span>add_library(<span style="color:#e6db74">VisionDemoLib</span> <span style="color:#e6db74">STATIC</span> <span style="color:#f92672">${</span>SOURCES<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>HEADERS<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>target_include_directories(<span style="color:#e6db74">VisionDemoLib</span> <span style="color:#e6db74">PUBLIC</span> 
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">$&lt;</span>BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">$&lt;</span>INSTALL_INTERFACE:include<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># --- 创建可执行目标 ---
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>add_executable(<span style="color:#e6db74">VisionDemo</span> <span style="color:#e6db74">src/main.cpp</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>target_link_libraries(<span style="color:#e6db74">VisionDemo</span> <span style="color:#e6db74">PRIVATE</span> 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># --- 创建可执行目标 ---
+</span></span></span><span style="display:flex;"><span>add_executable(<span style="color:#e6db74">VisionDemo</span> <span style="color:#e6db74">src/main.cpp</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>target_link_libraries(<span style="color:#e6db74">VisionDemo</span> <span style="color:#e6db74">PRIVATE</span> 
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">VisionDemoLib</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">fmt::fmt</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">spdlog::spdlog</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># --- 设置编译选项 ---
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>setup_compiler_options(<span style="color:#e6db74">VisionDemo</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>setup_compiler_options(<span style="color:#e6db74">VisionDemoLib</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># --- 设置编译选项 ---
+</span></span></span><span style="display:flex;"><span>setup_compiler_options(<span style="color:#e6db74">VisionDemo</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>setup_compiler_options(<span style="color:#e6db74">VisionDemoLib</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># --- 版本信息 ---
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>add_custom_target(<span style="color:#e6db74">version_info</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># --- 版本信息 ---
+</span></span></span><span style="display:flex;"><span>add_custom_target(<span style="color:#e6db74">version_info</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">COMMAND</span> <span style="color:#f92672">${</span>CMAKE_COMMAND<span style="color:#f92672">}</span> <span style="color:#e6db74">-E</span> <span style="color:#e6db74">echo</span> <span style="color:#e6db74">&#34;Building ${PROJECT_NAME} ${PROJECT_VERSION}&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">COMMAND</span> <span style="color:#f92672">${</span>CMAKE_COMMAND<span style="color:#f92672">}</span> <span style="color:#e6db74">-E</span> <span style="color:#e6db74">echo</span> <span style="color:#e6db74">&#34;Compiler: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">COMMAND</span> <span style="color:#f92672">${</span>CMAKE_COMMAND<span style="color:#f92672">}</span> <span style="color:#e6db74">-E</span> <span style="color:#e6db74">echo</span> <span style="color:#e6db74">&#34;Build type: ${CMAKE_BUILD_TYPE}&#34;</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>add_dependencies(<span style="color:#e6db74">VisionDemo</span> <span style="color:#e6db74">version_info</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>add_dependencies(<span style="color:#e6db74">VisionDemo</span> <span style="color:#e6db74">version_info</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># --- 测试 ---
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>option(<span style="color:#e6db74">BUILD_TESTS</span> <span style="color:#e6db74">&#34;Build tests&#34;</span> <span style="color:#e6db74">ON</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if(<span style="color:#e6db74">BUILD_TESTS</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    enable_testing()<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    add_subdirectory(<span style="color:#e6db74">tests</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># --- 测试 ---
+</span></span></span><span style="display:flex;"><span>option(<span style="color:#e6db74">BUILD_TESTS</span> <span style="color:#e6db74">&#34;Build tests&#34;</span> <span style="color:#e6db74">ON</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>if(<span style="color:#e6db74">BUILD_TESTS</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    enable_testing()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    add_subdirectory(<span style="color:#e6db74">tests</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># --- 安装配置 ---
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>include(<span style="color:#e6db74">GNUInstallDirs</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># --- 安装配置 ---
+</span></span></span><span style="display:flex;"><span>include(<span style="color:#e6db74">GNUInstallDirs</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>install(<span style="color:#e6db74">TARGETS</span> <span style="color:#e6db74">VisionDemo</span> <span style="color:#e6db74">VisionDemoLib</span>
+</span></span></span><span style="display:flex;"><span>install(<span style="color:#e6db74">TARGETS</span> <span style="color:#e6db74">VisionDemo</span> <span style="color:#e6db74">VisionDemoLib</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">RUNTIME</span> <span style="color:#e6db74">DESTINATION</span> <span style="color:#f92672">${</span>CMAKE_INSTALL_BINDIR<span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">ARCHIVE</span> <span style="color:#e6db74">DESTINATION</span> <span style="color:#f92672">${</span>CMAKE_INSTALL_LIBDIR<span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">LIBRARY</span> <span style="color:#e6db74">DESTINATION</span> <span style="color:#f92672">${</span>CMAKE_INSTALL_LIBDIR<span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>install(<span style="color:#e6db74">DIRECTORY</span> <span style="color:#e6db74">include/VisionDemo</span>
+</span></span></span><span style="display:flex;"><span>install(<span style="color:#e6db74">DIRECTORY</span> <span style="color:#e6db74">include/VisionDemo</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">DESTINATION</span> <span style="color:#f92672">${</span>CMAKE_INSTALL_INCLUDEDIR<span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">FILES_MATCHING</span> <span style="color:#e6db74">PATTERN</span> <span style="color:#e6db74">&#34;*.h&#34;</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># --- 包配置 ---
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>include(<span style="color:#e6db74">CMakePackageConfigHelpers</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>write_basic_package_version_file(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># --- 包配置 ---
+</span></span></span><span style="display:flex;"><span>include(<span style="color:#e6db74">CMakePackageConfigHelpers</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>write_basic_package_version_file(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;${CMAKE_CURRENT_BINARY_DIR}/VisionDemoConfigVersion.cmake&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">VERSION</span> <span style="color:#f92672">${</span>PROJECT_VERSION<span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">COMPATIBILITY</span> <span style="color:#e6db74">SameMajorVersion</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>install(<span style="color:#e6db74">FILES</span> 
+</span></span></span><span style="display:flex;"><span>install(<span style="color:#e6db74">FILES</span> 
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;${CMAKE_CURRENT_BINARY_DIR}/VisionDemoConfigVersion.cmake&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">DESTINATION</span> <span style="color:#f92672">${</span>CMAKE_INSTALL_LIBDIR<span style="color:#f92672">}</span><span style="color:#e6db74">/cmake/VisionDemo</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><h3 id="cmakedependenciescmake">cmake/Dependencies.cmake</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>include(<span style="color:#e6db74">FetchContent</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># fmt 库
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>FetchContent_Declare(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># fmt 库
+</span></span></span><span style="display:flex;"><span>FetchContent_Declare(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">fmt</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">GIT_REPOSITORY</span> <span style="color:#e6db74">https://github.com/fmtlib/fmt.git</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">GIT_TAG</span> <span style="color:#e6db74">9.1.0</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># spdlog 库
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>FetchContent_Declare(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># spdlog 库
+</span></span></span><span style="display:flex;"><span>FetchContent_Declare(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">spdlog</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">GIT_REPOSITORY</span> <span style="color:#e6db74">https://github.com/gabime/spdlog.git</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">GIT_TAG</span> <span style="color:#e6db74">v1.11.0</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 如果构建测试，添加 Google Test
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>option(<span style="color:#e6db74">BUILD_TESTS</span> <span style="color:#e6db74">&#34;Build tests&#34;</span> <span style="color:#e6db74">ON</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if(<span style="color:#e6db74">BUILD_TESTS</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    FetchContent_Declare(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 如果构建测试，添加 Google Test
+</span></span></span><span style="display:flex;"><span>option(<span style="color:#e6db74">BUILD_TESTS</span> <span style="color:#e6db74">&#34;Build tests&#34;</span> <span style="color:#e6db74">ON</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>if(<span style="color:#e6db74">BUILD_TESTS</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    FetchContent_Declare(
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">googletest</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">GIT_REPOSITORY</span> <span style="color:#e6db74">https://github.com/google/googletest.git</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">GIT_TAG</span> <span style="color:#e6db74">release-1.12.1</span>
 </span></span><span style="display:flex;"><span>    )<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    set(<span style="color:#e6db74">gtest_force_shared_crt</span> <span style="color:#e6db74">ON</span> <span style="color:#e6db74">CACHE</span> <span style="color:#e6db74">BOOL</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#e6db74">FORCE</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    set(<span style="color:#e6db74">gtest_force_shared_crt</span> <span style="color:#e6db74">ON</span> <span style="color:#e6db74">CACHE</span> <span style="color:#e6db74">BOOL</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#e6db74">FORCE</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 使所有依赖可用
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>FetchContent_MakeAvailable(<span style="color:#e6db74">fmt</span> <span style="color:#e6db74">spdlog</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if(<span style="color:#e6db74">BUILD_TESTS</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    FetchContent_MakeAvailable(<span style="color:#e6db74">googletest</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 使所有依赖可用
+</span></span></span><span style="display:flex;"><span>FetchContent_MakeAvailable(<span style="color:#e6db74">fmt</span> <span style="color:#e6db74">spdlog</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>if(<span style="color:#e6db74">BUILD_TESTS</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    FetchContent_MakeAvailable(<span style="color:#e6db74">googletest</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><h3 id="cmakecompileroptionscmake">cmake/CompilerOptions.cmake</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>function(<span style="color:#e6db74">setup_compiler_options</span> <span style="color:#e6db74">target</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    if(<span style="color:#e6db74">CMAKE_CXX_COMPILER_ID</span> <span style="color:#e6db74">MATCHES</span> <span style="color:#e6db74">&#34;GNU|Clang&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>        target_compile_options(<span style="color:#f92672">${</span>target<span style="color:#f92672">}</span> <span style="color:#e6db74">PRIVATE</span>
+</span></span></span><span style="display:flex;"><span>    if(<span style="color:#e6db74">CMAKE_CXX_COMPILER_ID</span> <span style="color:#e6db74">MATCHES</span> <span style="color:#e6db74">&#34;GNU|Clang&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>        target_compile_options(<span style="color:#f92672">${</span>target<span style="color:#f92672">}</span> <span style="color:#e6db74">PRIVATE</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#e6db74">-Wall</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#e6db74">-Wextra</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#e6db74">-Wpedantic</span>
@@ -742,15 +742,15 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">$&lt;</span>$&lt;CONFIG:Debug<span style="color:#f92672">&gt;</span><span style="color:#e6db74">:-g3</span> <span style="color:#e6db74">-O0&gt;</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">$&lt;</span>$&lt;CONFIG:Release<span style="color:#f92672">&gt;</span><span style="color:#e6db74">:-O3</span> <span style="color:#e6db74">-DNDEBUG&gt;</span>
 </span></span><span style="display:flex;"><span>        )<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    elseif(<span style="color:#e6db74">CMAKE_CXX_COMPILER_ID</span> <span style="color:#e6db74">STREQUAL</span> <span style="color:#e6db74">&#34;MSVC&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>        target_compile_options(<span style="color:#f92672">${</span>target<span style="color:#f92672">}</span> <span style="color:#e6db74">PRIVATE</span>
+</span></span></span><span style="display:flex;"><span>    elseif(<span style="color:#e6db74">CMAKE_CXX_COMPILER_ID</span> <span style="color:#e6db74">STREQUAL</span> <span style="color:#e6db74">&#34;MSVC&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>        target_compile_options(<span style="color:#f92672">${</span>target<span style="color:#f92672">}</span> <span style="color:#e6db74">PRIVATE</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#e6db74">/W4</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#e6db74">/utf-8</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">$&lt;</span>$&lt;CONFIG:Debug<span style="color:#f92672">&gt;</span><span style="color:#e6db74">:/Od</span> <span style="color:#e6db74">/RTC1&gt;</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">$&lt;</span>$&lt;CONFIG:Release<span style="color:#f92672">&gt;</span><span style="color:#e6db74">:/O2</span> <span style="color:#e6db74">/DNDEBUG&gt;</span>
 </span></span><span style="display:flex;"><span>        )<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    endif()<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endfunction()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>endfunction()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><h3 id="构建和使用">构建和使用</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 克隆项目</span>
 </span></span><span style="display:flex;"><span>git clone &lt;repository_url&gt;
@@ -792,17 +792,17 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </ol>
 <h3 id="-调试技巧">🔧 调试技巧</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 打印变量值
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;PROJECT_VERSION: ${PROJECT_VERSION}&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;PROJECT_VERSION: ${PROJECT_VERSION}&#34;</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 打印所有变量
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>get_cmake_property(<span style="color:#e6db74">_variableNames</span> <span style="color:#e6db74">VARIABLES</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>foreach(<span style="color:#e6db74">_variableName</span> <span style="color:#f92672">${</span>_variableNames<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;${_variableName}=${${_variableName}}&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endforeach()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 打印所有变量
+</span></span></span><span style="display:flex;"><span>get_cmake_property(<span style="color:#e6db74">_variableNames</span> <span style="color:#e6db74">VARIABLES</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>foreach(<span style="color:#e6db74">_variableName</span> <span style="color:#f92672">${</span>_variableNames<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>    message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;${_variableName}=${${_variableName}}&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>endforeach()<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 详细构建输出
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>set(<span style="color:#e6db74">CMAKE_VERBOSE_MAKEFILE</span> <span style="color:#e6db74">ON</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 详细构建输出
+</span></span></span><span style="display:flex;"><span>set(<span style="color:#e6db74">CMAKE_VERBOSE_MAKEFILE</span> <span style="color:#e6db74">ON</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><hr>
 <p>这份指南涵盖了现代CMake项目配置的所有重要方面，从基础设置到高级功能，可以作为实际项目开发的参考模板。</p>
 </section></main>
