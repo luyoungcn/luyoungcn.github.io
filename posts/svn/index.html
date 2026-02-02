@@ -21,9 +21,9 @@
   <meta name="twitter:description" content="安装 subversion sudo apt-get remove --purge subversion sudo apt-get update sudo apt-get install subversion 创建 SVN 用户 sudo adduser svn sudo adduser svn sudo sudo su svn 创建仓库目录 sudo mkdir /svn sudo mkdir /svn/repos sudo mkdir /svn/repos/public sudo chmod 777 -R /svn/repos/public sudo chown svn:svn -R /svn 创建版本库 sudo svnadmin create /svn/repos/public $ ls -lah /svn/repos/public total 32K drwxrwxrwx 6 svn svn 4.0K 6月 19 14:15 . drwxr-xr-x 3 svn svn 4.0K 6月 19 14:15 .. drwxr-xr-x 2 root root 4.0K 6月 19 14:15 conf drwxr-sr-x 6 root root 4.0K 6月 19 14:15 db -r--r--r-- 1 root root 2 6月 19 14:15 format drwxr-xr-x 2 root root 4.0K 6月 19 14:15 hooks drwxr-xr-x 2 root root 4.0K 6月 19 14:15 locks -rw-r--r-- 1 root root 246 6月 19 14:15 README.txt cd /svn/repos/public sudo chmod -R 777 db cd conf sudo cp svnserve.conf svnserve.conf.bak sudo vim svnserve.conf 取消注释：">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
-      <link rel="stylesheet" href="/css/bundle.min.35b15f72eff61cbb106d05bab1ea1aebb778d0ba2861c763af0af0d80f43db4f.css" integrity="sha256-NbFfcu/2HLsQbQW6seoa67d40LooYcdjrwrw2A9D208=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
 
-      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.3928d3d2172bc0b5f75d9458fb9255f0befce1c7239ba6e5d2c58ed4b82c2073.js" integrity="sha256-OSjT0hcrwLX3XZRY&#43;5JV8L784ccjm6bl0sWO1LgsIHM="></script>
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
 <script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -143,33 +143,33 @@
 </span></span></code></pre></div><p>取消注释：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>$ sudo diff -u svnserve.conf svnserve.conf.bak 
 </span></span><span style="display:flex;"><span><span style="color:#f92672">--- svnserve.conf       2023-06-19 13:27:33.473464875 +0800
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+++ svnserve.conf.bak   2023-06-19 13:26:30.071350251 +0800
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">@@ -16,15 +16,15 @@
-</span></span></span><span style="display:flex;"><span> ### The sample settings below are the defaults and specify that anonymous
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ svnserve.conf.bak   2023-06-19 13:26:30.071350251 +0800
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -16,15 +16,15 @@
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> ### The sample settings below are the defaults and specify that anonymous
 </span></span><span style="display:flex;"><span> ### users have read-only access to the repository, while authenticated
 </span></span><span style="display:flex;"><span> ### users have read and write access to the repository.
 </span></span><span style="display:flex;"><span><span style="color:#f92672">-anon-access = read
 </span></span></span><span style="display:flex;"><span><span style="color:#f92672">-auth-access = write
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+# anon-access = read
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+# anon-access = read
 </span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+# auth-access = write
-</span></span></span><span style="display:flex;"><span> ### The password-db option controls the location of the password
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span> ### The password-db option controls the location of the password
 </span></span><span style="display:flex;"><span> ### database file.  Unless you specify a path starting with a /,
 </span></span><span style="display:flex;"><span> ### the file&#39;s location is relative to the directory containing
 </span></span><span style="display:flex;"><span> ### this configuration file.
 </span></span><span style="display:flex;"><span> ### If SASL is enabled (see below), this file will NOT be used.
 </span></span><span style="display:flex;"><span> ### Uncomment the line below to use the default password file.
 </span></span><span style="display:flex;"><span><span style="color:#f92672">-password-db = passwd
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+# password-db = passwd
-</span></span></span><span style="display:flex;"><span> ### The authz-db option controls the location of the authorization
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+# password-db = passwd
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span> ### The authz-db option controls the location of the authorization
 </span></span><span style="display:flex;"><span> ### rules for path-based access control.  Unless you specify a path
 </span></span><span style="display:flex;"><span> ### starting with a /, the file&#39;s location is relative to the
 </span></span><span style="display:flex;"><span><span style="color:#75715e">@@ -33,7 +33,7 @@
-</span></span></span><span style="display:flex;"><span> ### file in a Subversion repository.  If you don&#39;t specify an authz-db,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> ### file in a Subversion repository.  If you don&#39;t specify an authz-db,
 </span></span><span style="display:flex;"><span> ### no path-based access control is done.
 </span></span><span style="display:flex;"><span> ### Uncomment the line below to use the default authorization file.
 </span></span><span style="display:flex;"><span><span style="color:#f92672">-authz-db = authz
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+# authz-db = authz
-</span></span></span><span style="display:flex;"><span> ### The groups-db option controls the location of the file with the
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+# authz-db = authz
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span> ### The groups-db option controls the location of the file with the
 </span></span><span style="display:flex;"><span> ### group definitions and allows maintaining groups separately from the
 </span></span><span style="display:flex;"><span> ### authorization rules.  The groups-db file is of the same format as the
 </span></span></code></pre></div><p>说明：（去掉前面的#，并且顶格）</p>

@@ -36,9 +36,9 @@ REQ (Requester) Socket: 扮演客户端的角色。其协议行为被严格规�
 REQ Socket 状态机: send_ready: 初始状态，可以发送请求。 send_request: 调用 zmq_send() 后，内部状态切换至 expect_reply。 expect_reply: 等待接收响应。此时，再次调用 zmq_send() 将立即失败，返回 EFSM。这是为了防止客户端在未得到确认的情况下发出大量请求，从而压垮服务端。 receive_reply: 成功调用 zmq_recv() 接收到响应后，状态机自动回到 send_ready 状态，可以发起下一次请求。 RSP Socket 状态机: receive_ready: 初始状态，可以接收请求。 receive_request: 成功调用 zmq_recv() 接收到一个请求后，内部状态切换至 send_reply。此时，再次调用 zmq_recv() 将会阻塞（如果配置为阻塞模式），因为它期望程序接下来发送一个响应。 send_reply: 可以调用 zmq_send() 发送响应。 reply_sent: 发送响应后，状态机自动回到 receive_ready 状态，准备处理来自任何已连接客户端的下一个请求。 重要细节: 当一个 RSP 套接字连接到多个 REQ 客户端时，它仍然是串行处理。它从一个客户端接收请求，发送响应，然后才能从另一个（或同一个）客户端接收下一个请求。ZMQ 内部会自动处理来自不同客户端的请求排队。如果你需要并发处理请求，应当选择更高级的模式，如 DEALER/ROUTER。">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
-      <link rel="stylesheet" href="/css/bundle.min.35b15f72eff61cbb106d05bab1ea1aebb778d0ba2861c763af0af0d80f43db4f.css" integrity="sha256-NbFfcu/2HLsQbQW6seoa67d40LooYcdjrwrw2A9D208=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
 
-      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.3928d3d2172bc0b5f75d9458fb9255f0befce1c7239ba6e5d2c58ed4b82c2073.js" integrity="sha256-OSjT0hcrwLX3XZRY&#43;5JV8L784ccjm6bl0sWO1LgsIHM="></script>
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
 <script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -215,71 +215,71 @@ REQ Socket 状态机: send_ready: 初始状态，可以发送请求。 send_requ
 </ul>
 <h4 id="源码概念总结">源码概念总结</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 伪代码，更详细地示意 ZMQ 内部逻辑
-</span></span></span><span style="display:flex;"><span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// zmq_poll 的核心实现
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">zmq_poll</span>(zmq_pollitem_t <span style="color:#f92672">*</span>items, <span style="color:#66d9ef">int</span> nitems, <span style="color:#66d9ef">long</span> timeout)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">zmq_poll</span>(zmq_pollitem_t <span style="color:#f92672">*</span>items, <span style="color:#66d9ef">int</span> nitems, <span style="color:#66d9ef">long</span> timeout)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// === 1. 快速路径 (Fast Path) ===
-</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 立即、无锁地检查所有套接字的队列。
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> events_found <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 立即、无锁地检查所有套接字的队列。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> events_found <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (item in items) {
 </span></span><span style="display:flex;"><span>        zmq<span style="color:#f92672">::</span>socket_base_t<span style="color:#f92672">*</span> s <span style="color:#f92672">=</span> resolve_socket(item<span style="color:#f92672">-&gt;</span>socket);
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 检查 inbox 是否有完整消息
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> ((item<span style="color:#f92672">-&gt;</span>events <span style="color:#f92672">&amp;</span> ZMQ_POLLIN) <span style="color:#f92672">&amp;&amp;</span> s<span style="color:#f92672">-&gt;</span>has_in()) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> ((item<span style="color:#f92672">-&gt;</span>events <span style="color:#f92672">&amp;</span> ZMQ_POLLIN) <span style="color:#f92672">&amp;&amp;</span> s<span style="color:#f92672">-&gt;</span>has_in()) {
 </span></span><span style="display:flex;"><span>            item<span style="color:#f92672">-&gt;</span>revents <span style="color:#f92672">|=</span> ZMQ_POLLIN;
 </span></span><span style="display:flex;"><span>            events_found<span style="color:#f92672">++</span>;
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 对 ZMQ_POLLOUT 的检查也类似 (检查 outbox 是否有空间，未达HWM)
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> ((item<span style="color:#f92672">-&gt;</span>events <span style="color:#f92672">&amp;</span> ZMQ_POLLOUT) <span style="color:#f92672">&amp;&amp;</span> s<span style="color:#f92672">-&gt;</span>has_out()) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> ((item<span style="color:#f92672">-&gt;</span>events <span style="color:#f92672">&amp;</span> ZMQ_POLLOUT) <span style="color:#f92672">&amp;&amp;</span> s<span style="color:#f92672">-&gt;</span>has_out()) {
 </span></span><span style="display:flex;"><span>             item<span style="color:#f92672">-&gt;</span>revents <span style="color:#f92672">|=</span> ZMQ_POLLOUT;
 </span></span><span style="display:flex;"><span>             events_found<span style="color:#f92672">++</span>;
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 如果快速路径找到了事件，或用户指定不等待，直接返回。
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (events_found <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> timeout <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (events_found <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> timeout <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> events_found;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// === 2. 阻塞路径 (Blocking Path) ===
-</span></span></span><span style="display:flex;"><span>    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// a. 向每个 socket 的 mailbox 发送 &#34;订阅&#34; 命令，注册回调。
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (item in items) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (item in items) {
 </span></span><span style="display:flex;"><span>        item<span style="color:#f92672">-&gt;</span>socket<span style="color:#f92672">-&gt;</span>subscribe_events(my_user_thread_mailbox);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// b. 在用户线程自己的 mailbox 上阻塞等待，直到被唤醒或超时。
-</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">//    此操作让出 CPU，进入睡眠。
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> awakened <span style="color:#f92672">=</span> my_user_thread_mailbox<span style="color:#f92672">-&gt;</span>wait(timeout);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//    此操作让出 CPU，进入睡眠。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">bool</span> awakened <span style="color:#f92672">=</span> my_user_thread_mailbox<span style="color:#f92672">-&gt;</span>wait(timeout);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// c. 不论是唤醒还是超时，都需要取消订阅，清理注册。
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (item in items) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (item in items) {
 </span></span><span style="display:flex;"><span>        item<span style="color:#f92672">-&gt;</span>socket<span style="color:#f92672">-&gt;</span>unsubscribe_events(my_user_thread_mailbox);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// d. 如果是被唤醒（而非超时），说明可能有事件，必须再次执行快速路径检查来确认。
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (awakened) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (awakened) {
 </span></span><span style="display:flex;"><span>         <span style="color:#75715e">// 再次扫描所有 socket 的 inbox/outbox
-</span></span></span><span style="display:flex;"><span>         <span style="color:#75715e">// ... 逻辑同快速路径 ...
-</span></span></span><span style="display:flex;"><span>         <span style="color:#66d9ef">return</span> events_found; <span style="color:#75715e">// 返回找到的事件数
-</span></span></span><span style="display:flex;"><span>    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>         <span style="color:#75715e">// ... 逻辑同快速路径 ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>         <span style="color:#66d9ef">return</span> events_found; <span style="color:#75715e">// 返回找到的事件数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// e. 如果是超时，说明等待期间无事发生，返回 0。
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>; 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>; 
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// I/O 线程中的消息处理逻辑
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> zmq<span style="color:#f92672">::</span>io_thread_t<span style="color:#f92672">::</span>in_event()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> zmq<span style="color:#f92672">::</span>io_thread_t<span style="color:#f92672">::</span>in_event()
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 1. 从 TCP socket 读取数据流，根据 ZMTP 协议重组为完整消息 msg。
-</span></span></span><span style="display:flex;"><span>    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 2. 将完整的消息 msg 原子性地推入目标 socket 的 inbox 队列。
-</span></span></span><span style="display:flex;"><span>    target_socket<span style="color:#f92672">-&gt;</span>inbox<span style="color:#f92672">-&gt;</span>push(msg);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    target_socket<span style="color:#f92672">-&gt;</span>inbox<span style="color:#f92672">-&gt;</span>push(msg);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 3. 发送信号：检查 socket 的订阅列表，并向所有订阅了此事件的
-</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">//    用户线程的 mailbox 发送一个轻量级的唤醒信号。
-</span></span></span><span style="display:flex;"><span>    target_socket<span style="color:#f92672">-&gt;</span>mailbox<span style="color:#f92672">-&gt;</span>signal(); 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//    用户线程的 mailbox 发送一个轻量级的唤醒信号。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    target_socket<span style="color:#f92672">-&gt;</span>mailbox<span style="color:#f92672">-&gt;</span>signal(); 
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><strong>结论</strong>: <code>zmq_poll</code> 的高效源于其精妙的<strong>异步协作</strong>模型：它尽可能地在无锁的快速路径上解决问题，只在绝对必要时才通过高效的条件变量机制让用户线程休眠，并通过轻量级的异步信号进行唤醒。它关心的是<strong>逻辑上完整的消息</strong>，而非底层的原始数据，这正是 ZMQ 强大之处的体现。</p>
 <h2 id="3-zmq-reqrsp-与-poll-深入对比">3. ZMQ REQ/RSP 与 <code>poll</code> 深入对比</h2>
@@ -334,13 +334,13 @@ REQ Socket 状态机: send_ready: 初始状态，可以发送请求。 send_requ
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;thread&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;chrono&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 1. 初始化 ZMQ 上下文
-</span></span></span><span style="display:flex;"><span>    zmq<span style="color:#f92672">::</span>context_t context(<span style="color:#ae81ff">1</span>);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    zmq<span style="color:#f92672">::</span>context_t context(<span style="color:#ae81ff">1</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 2. 创建 RSP 套接字并绑定
-</span></span></span><span style="display:flex;"><span>    zmq<span style="color:#f92672">::</span>socket_t responder(context, zmq<span style="color:#f92672">::</span>socket_type<span style="color:#f92672">::</span>rsp);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    zmq<span style="color:#f92672">::</span>socket_t responder(context, zmq<span style="color:#f92672">::</span>socket_type<span style="color:#f92672">::</span>rsp);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
 </span></span><span style="display:flex;"><span>        responder.bind(<span style="color:#e6db74">&#34;tcp://*:5555&#34;</span>);
 </span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#66d9ef">const</span> zmq<span style="color:#f92672">::</span>error_t<span style="color:#f92672">&amp;</span> e) {
@@ -353,24 +353,24 @@ REQ Socket 状态机: send_ready: 初始状态，可以发送请求。 send_requ
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (true) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 3. 等待请求。对于简单服务端，阻塞在这里是符合逻辑的。
-</span></span></span><span style="display:flex;"><span>            zmq<span style="color:#f92672">::</span>message_t request;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            zmq<span style="color:#f92672">::</span>message_t request;
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// recv() 会返回一个 std::optional&lt;size_t&gt;，可以检查其是否有值
-</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">auto</span> result <span style="color:#f92672">=</span> responder.recv(request, zmq<span style="color:#f92672">::</span>recv_flags<span style="color:#f92672">::</span>none);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">auto</span> result <span style="color:#f92672">=</span> responder.recv(request, zmq<span style="color:#f92672">::</span>recv_flags<span style="color:#f92672">::</span>none);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 检查 recv 是否成功接收到消息
-</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (result.has_value()) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (result.has_value()) {
 </span></span><span style="display:flex;"><span>                std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Received request: [&#34;</span> <span style="color:#f92672">&lt;&lt;</span> request.to_string_view() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;]&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 模拟业务处理，例如数据库查询或复杂计算
-</span></span></span><span style="display:flex;"><span>                std<span style="color:#f92672">::</span>this_thread<span style="color:#f92672">::</span>sleep_for(std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>seconds(<span style="color:#ae81ff">1</span>));
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                std<span style="color:#f92672">::</span>this_thread<span style="color:#f92672">::</span>sleep_for(std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>seconds(<span style="color:#ae81ff">1</span>));
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 4. 发送响应。这是 RSP 状态机的要求。
-</span></span></span><span style="display:flex;"><span>                responder.send(zmq<span style="color:#f92672">::</span>buffer(<span style="color:#e6db74">&#34;World&#34;</span>), zmq<span style="color:#f92672">::</span>send_flags<span style="color:#f92672">::</span>none);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                responder.send(zmq<span style="color:#f92672">::</span>buffer(<span style="color:#e6db74">&#34;World&#34;</span>), zmq<span style="color:#f92672">::</span>send_flags<span style="color:#f92672">::</span>none);
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (<span style="color:#66d9ef">const</span> zmq<span style="color:#f92672">::</span>error_t<span style="color:#f92672">&amp;</span> e) {
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 当 zmq::context_t 被销毁时，所有阻塞的调用都会被中断，
-</span></span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 并抛出 ETERM 异常。这是实现优雅停机的关键。
-</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (e.num() <span style="color:#f92672">==</span> ETERM) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// 并抛出 ETERM 异常。这是实现优雅停机的关键。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (e.num() <span style="color:#f92672">==</span> ETERM) {
 </span></span><span style="display:flex;"><span>                std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Context terminated, server is shutting down.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>; 
 </span></span><span style="display:flex;"><span>            }
@@ -387,11 +387,11 @@ REQ Socket 状态机: send_ready: 初始状态，可以发送请求。 send_requ
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;chrono&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 定义常量，使其更易于配置和维护
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">int</span> REQUEST_TIMEOUT_MS <span style="color:#f92672">=</span> <span style="color:#ae81ff">2500</span>; <span style="color:#75715e">// 请求超时时间 (ms)
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">int</span> MAX_RETRIES <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;           <span style="color:#75715e">// 最大重试次数
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>string SERVER_ENDPOINT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;tcp://localhost:5555&#34;</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">int</span> REQUEST_TIMEOUT_MS <span style="color:#f92672">=</span> <span style="color:#ae81ff">2500</span>; <span style="color:#75715e">// 请求超时时间 (ms)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">int</span> MAX_RETRIES <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;           <span style="color:#75715e">// 最大重试次数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>string SERVER_ENDPOINT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;tcp://localhost:5555&#34;</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/**
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @brief 创建一个新的 REQ socket 并连接到服务端。
@@ -404,77 +404,77 @@ REQ Socket 状态机: send_ready: 初始状态，可以发送请求。 send_requ
 </span></span><span style="display:flex;"><span>    socket.connect(SERVER_ENDPOINT);
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 设置 ZMQ_LINGER 套接字选项为 0。
-</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 这意味着当 socket 被 close() 时，任何待发送的消息都会被立即丢弃。
-</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 在我们的重试场景中，这是期望的行为，因为我们即将用新 socket 重发请求。
-</span></span></span><span style="display:flex;"><span>    socket.set(zmq<span style="color:#f92672">::</span>sockopt<span style="color:#f92672">::</span>linger, <span style="color:#ae81ff">0</span>);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 这意味着当 socket 被 close() 时，任何待发送的消息都会被立即丢弃。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 在我们的重试场景中，这是期望的行为，因为我们即将用新 socket 重发请求。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    socket.set(zmq<span style="color:#f92672">::</span>sockopt<span style="color:#f92672">::</span>linger, <span style="color:#ae81ff">0</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> socket;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 1. 初始化 ZMQ 上下文
-</span></span></span><span style="display:flex;"><span>    zmq<span style="color:#f92672">::</span>context_t context(<span style="color:#ae81ff">1</span>);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    zmq<span style="color:#f92672">::</span>context_t context(<span style="color:#ae81ff">1</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Client started, attempting to connect to server at &#34;</span> <span style="color:#f92672">&lt;&lt;</span> SERVER_ENDPOINT <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 创建初始的 socket
-</span></span></span><span style="display:flex;"><span>    zmq<span style="color:#f92672">::</span>socket_t requester <span style="color:#f92672">=</span> create_and_connect_socket(context);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    zmq<span style="color:#f92672">::</span>socket_t requester <span style="color:#f92672">=</span> create_and_connect_socket(context);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> retries_left <span style="color:#f92672">=</span> MAX_RETRIES;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> request_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (retries_left <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 2. 构造并发送请求
-</span></span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>string request_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello-&#34;</span> <span style="color:#f92672">+</span> std<span style="color:#f92672">::</span>to_string(<span style="color:#f92672">++</span>request_num);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        std<span style="color:#f92672">::</span>string request_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello-&#34;</span> <span style="color:#f92672">+</span> std<span style="color:#f92672">::</span>to_string(<span style="color:#f92672">++</span>request_num);
 </span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Sending request #&#34;</span> <span style="color:#f92672">&lt;&lt;</span> request_num <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;: [&#34;</span> <span style="color:#f92672">&lt;&lt;</span> request_str <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;]...&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>        requester.send(zmq<span style="color:#f92672">::</span>buffer(request_str), zmq<span style="color:#f92672">::</span>send_flags<span style="color:#f92672">::</span>none);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 3. 使用 zmq::poll 等待响应，这是模式的核心
-</span></span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>zmq<span style="color:#f92672">::</span>pollitem_t<span style="color:#f92672">&gt;</span> poll_items <span style="color:#f92672">=</span> {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>zmq<span style="color:#f92672">::</span>pollitem_t<span style="color:#f92672">&gt;</span> poll_items <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// poll_items[0]
-</span></span></span><span style="display:flex;"><span>            <span style="color:#75715e">// socket:  要监视的套接字
-</span></span></span><span style="display:flex;"><span>            <span style="color:#75715e">// fd:      (忽略，用于非ZMQ套接字)
-</span></span></span><span style="display:flex;"><span>            <span style="color:#75715e">// events:  我们感兴趣的事件 (这里是 ZMQ_POLLIN - 可读)
-</span></span></span><span style="display:flex;"><span>            <span style="color:#75715e">// revents: (输出) 实际发生的事件
-</span></span></span><span style="display:flex;"><span>            { requester, <span style="color:#ae81ff">0</span>, ZMQ_POLLIN, <span style="color:#ae81ff">0</span> }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// socket:  要监视的套接字
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// fd:      (忽略，用于非ZMQ套接字)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// events:  我们感兴趣的事件 (这里是 ZMQ_POLLIN - 可读)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// revents: (输出) 实际发生的事件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            { requester, <span style="color:#ae81ff">0</span>, ZMQ_POLLIN, <span style="color:#ae81ff">0</span> }
 </span></span><span style="display:flex;"><span>        };
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 调用 poll，超时时间为我们定义的常量
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> rc <span style="color:#f92672">=</span> zmq<span style="color:#f92672">::</span>poll(poll_items, std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>milliseconds(REQUEST_TIMEOUT_MS));
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> rc <span style="color:#f92672">=</span> zmq<span style="color:#f92672">::</span>poll(poll_items, std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>milliseconds(REQUEST_TIMEOUT_MS));
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 4. 根据 poll 的返回值处理结果
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (rc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> poll_items[<span style="color:#ae81ff">0</span>].revents <span style="color:#f92672">&amp;</span> ZMQ_POLLIN) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (rc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> poll_items[<span style="color:#ae81ff">0</span>].revents <span style="color:#f92672">&amp;</span> ZMQ_POLLIN) {
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 成功：poll 返回值大于0，且 revents 标志位被设置
-</span></span></span><span style="display:flex;"><span>            zmq<span style="color:#f92672">::</span>message_t reply;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            zmq<span style="color:#f92672">::</span>message_t reply;
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">auto</span> result <span style="color:#f92672">=</span> requester.recv(reply, zmq<span style="color:#f92672">::</span>recv_flags<span style="color:#f92672">::</span>none);
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (result.has_value()) {
 </span></span><span style="display:flex;"><span>                std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Server replied: [&#34;</span> <span style="color:#f92672">&lt;&lt;</span> reply.to_string_view() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;]&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 成功收到响应，任务完成，退出重试循环
-</span></span></span><span style="display:flex;"><span>                retries_left <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                retries_left <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; 
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 失败：poll 返回0 (超时) 或 -1 (错误)
-</span></span></span><span style="display:flex;"><span>            retries_left<span style="color:#f92672">--</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            retries_left<span style="color:#f92672">--</span>;
 </span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;No response from server, request timed out.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (retries_left <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
 </span></span><span style="display:flex;"><span>                std<span style="color:#f92672">::</span>cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Server seems to be offline. Aborting after &#34;</span> <span style="color:#f92672">&lt;&lt;</span> MAX_RETRIES <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; retries.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>; <span style="color:#75715e">// 耗尽重试次数，退出循环
-</span></span></span><span style="display:flex;"><span>            }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Reconnecting to server... (&#34;</span> <span style="color:#f92672">&lt;&lt;</span> retries_left <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; retries left)&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// **关键: 状态恢复 (State Recovery)**
-</span></span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 旧的 socket 内部状态机已卡在 &#34;expect_reply&#34; 状态。
-</span></span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 必须销毁它并创建一个全新的 socket 来重置状态机。
-</span></span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 在 C++ 中，`zmq.hpp` 的 RAII 特性让此操作非常简单：
-</span></span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 将新 socket 赋值给旧变量时，旧 socket 的析构函数会被自动调用，从而关闭它。
-</span></span></span><span style="display:flex;"><span>            requester <span style="color:#f92672">=</span> create_and_connect_socket(context);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// 旧的 socket 内部状态机已卡在 &#34;expect_reply&#34; 状态。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// 必须销毁它并创建一个全新的 socket 来重置状态机。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// 在 C++ 中，`zmq.hpp` 的 RAII 特性让此操作非常简单：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// 将新 socket 赋值给旧变量时，旧 socket 的析构函数会被自动调用，从而关闭它。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            requester <span style="color:#f92672">=</span> create_and_connect_socket(context);
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 上下文和套接字会在作用域结束时由 zmq.hpp 的析构函数自动安全地销毁
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="客户端模板的关键点说明">客户端模板的关键点说明：</h4>
 <ul>

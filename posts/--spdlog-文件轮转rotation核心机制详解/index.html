@@ -26,9 +26,9 @@
 一、轮转日志的文件命名规则与文件含义 1.1 基础命名模式 spdlog的文件轮转采用数字后缀递增的命名规则，以基础文件名为核心，通过添加数字后缀区分不同轮转版本：">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
-      <link rel="stylesheet" href="/css/bundle.min.35b15f72eff61cbb106d05bab1ea1aebb778d0ba2861c763af0af0d80f43db4f.css" integrity="sha256-NbFfcu/2HLsQbQW6seoa67d40LooYcdjrwrw2A9D208=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
 
-      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.3928d3d2172bc0b5f75d9458fb9255f0befce1c7239ba6e5d2c58ed4b82c2073.js" integrity="sha256-OSjT0hcrwLX3XZRY&#43;5JV8L784ccjm6bl0sWO1LgsIHM="></script>
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
 <script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -186,12 +186,12 @@ a.3.txt      ← 第三轮转归档文件（最旧，可能被删除）
 <li><strong>多级目录支持</strong>：路径分隔符（如<code>logs/app.log</code>）不影响命名规则，仅对文件名部分添加后缀</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 示例：创建轮转日志器
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> logger <span style="color:#f92672">=</span> spdlog<span style="color:#f92672">::</span>rotating_logger_mt(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">auto</span> logger <span style="color:#f92672">=</span> spdlog<span style="color:#f92672">::</span>rotating_logger_mt(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;app_logger&#34;</span>, 
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;logs/app.log&#34;</span>,    <span style="color:#75715e">// base_filename
-</span></span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">1048576</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>,       <span style="color:#75715e">// max_size = 5MB
-</span></span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">3</span>                  <span style="color:#75715e">// max_files = 3 (保留3个归档文件)
-</span></span></span><span style="display:flex;"><span>);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1048576</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>,       <span style="color:#75715e">// max_size = 5MB
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">3</span>                  <span style="color:#75715e">// max_files = 3 (保留3个归档文件)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>);
 </span></span></code></pre></div><blockquote>
 <p><strong>命名规则实现</strong>：spdlog通过<code>calc_filename()</code>方法动态生成带数字后缀的文件名，核心逻辑是将基础文件名拆分为basename和extension，然后插入数字后缀。</p>
 </blockquote>
@@ -295,28 +295,28 @@ a.3.txt      ← 第三轮转归档文件（最旧，可能被删除）
 <p>spdlog会<strong>按从旧到新的顺序</strong>重命名现有归档文件，使每个文件的序号+1，为新的归档腾出<code>a.1.txt</code>位置。</p>
 </blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// spdlog源码核心逻辑（伪代码）
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> rotating_file_sink<span style="color:#f92672">::</span>rotate() {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> rotating_file_sink<span style="color:#f92672">::</span>rotate() {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 1. 删除超出max_files的最旧文件（如果存在）
-</span></span></span><span style="display:flex;"><span>    string old_filename <span style="color:#f92672">=</span> calc_filename(base_filename_, max_files_);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    string old_filename <span style="color:#f92672">=</span> calc_filename(base_filename_, max_files_);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (file_exists(old_filename)) {
 </span></span><span style="display:flex;"><span>        delete_file(old_filename);  <span style="color:#75715e">// 删除 a.3.txt（当max_files=3时）
-</span></span></span><span style="display:flex;"><span>    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 2. 批量重命名：从旧到新，序号+1
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> max_files_ <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span>; <span style="color:#f92672">--</span>i) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> max_files_ <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span>; <span style="color:#f92672">--</span>i) {
 </span></span><span style="display:flex;"><span>        string src <span style="color:#f92672">=</span> calc_filename(base_filename_, i);      <span style="color:#75715e">// 源文件：a.2.txt
-</span></span></span><span style="display:flex;"><span>        string target <span style="color:#f92672">=</span> calc_filename(base_filename_, i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>); <span style="color:#75715e">// 目标：a.3.txt
-</span></span></span><span style="display:flex;"><span>        
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        string target <span style="color:#f92672">=</span> calc_filename(base_filename_, i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>); <span style="color:#75715e">// 目标：a.3.txt
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (file_exists(src)) {
 </span></span><span style="display:flex;"><span>            rename_file(src, target); <span style="color:#75715e">// 重命名操作
-</span></span></span><span style="display:flex;"><span>        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 3. 重命名活跃文件为最新归档
-</span></span></span><span style="display:flex;"><span>    rename_file(base_filename_, calc_filename(base_filename_, <span style="color:#ae81ff">1</span>)); <span style="color:#75715e">// a.txt → a.1.txt
-</span></span></span><span style="display:flex;"><span>    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    rename_file(base_filename_, calc_filename(base_filename_, <span style="color:#ae81ff">1</span>)); <span style="color:#75715e">// a.txt → a.1.txt
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 4. 创建新活跃文件
-</span></span></span><span style="display:flex;"><span>    create_new_file(base_filename_);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    create_new_file(base_filename_);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="执行顺序详解以max_"><strong>执行顺序详解（以max_files=3为例）</strong></h4>
 <p>假设当前已有3个文件：<code>a.txt</code>, <code>a.1.txt</code>, <code>a.2.txt</code></p>
@@ -473,12 +473,12 @@ a.3.txt      ← 第三轮转归档文件（最旧，可能被删除）
 </table>
 <p><strong>优化建议</strong>：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 生产环境推荐配置：限制max_files
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> logger <span style="color:#f92672">=</span> spdlog<span style="color:#f92672">::</span>rotating_logger_mt(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">auto</span> logger <span style="color:#f92672">=</span> spdlog<span style="color:#f92672">::</span>rotating_logger_mt(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;prod_logger&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;logs/app.log&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">1024</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>,  <span style="color:#75715e">// 100MB
-</span></span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">5</span>,                  <span style="color:#75715e">// ⚠️ 严格控制max_files≤10
-</span></span></span><span style="display:flex;"><span>    false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">5</span>,                  <span style="color:#75715e">// ⚠️ 严格控制max_files≤10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    false
 </span></span><span style="display:flex;"><span>);
 </span></span></code></pre></div><h3 id="42-两种核心轮转方式对比">4.2 两种核心轮转方式对比</h3>
 <table>
@@ -534,15 +534,15 @@ a.3.txt      ← 第三轮转归档文件（最旧，可能被删除）
 </ul>
 <h4 id="性能优化建议"><strong>性能优化建议</strong></h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 多线程环境正确用法
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> mt_logger <span style="color:#f92672">=</span> spdlog<span style="color:#f92672">::</span>rotating_logger_mt(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">auto</span> mt_logger <span style="color:#f92672">=</span> spdlog<span style="color:#f92672">::</span>rotating_logger_mt(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;thread_safe_logger&#34;</span>, 
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;logs/app.log&#34;</span>, 
 </span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">1048576</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>,  <span style="color:#75715e">// 10MB
-</span></span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">5</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">5</span>
 </span></span><span style="display:flex;"><span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 避免频繁构造Logger
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">auto</span> logger <span style="color:#f92672">=</span> spdlog<span style="color:#f92672">::</span>get(<span style="color:#e6db74">&#34;thread_safe_logger&#34;</span>);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">auto</span> logger <span style="color:#f92672">=</span> spdlog<span style="color:#f92672">::</span>get(<span style="color:#e6db74">&#34;thread_safe_logger&#34;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>logger) {
 </span></span><span style="display:flex;"><span>    logger <span style="color:#f92672">=</span> spdlog<span style="color:#f92672">::</span>rotating_logger_mt(<span style="color:#e6db74">&#34;thread_safe_logger&#34;</span>, <span style="color:#e6db74">&#34;logs/app.log&#34;</span>, <span style="color:#ae81ff">1048576</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">5</span>);
 </span></span><span style="display:flex;"><span>}
@@ -647,20 +647,20 @@ a.3.txt      ← 第三轮转归档文件（最旧，可能被删除）
 </ul>
 <h4 id="极端情况处理"><strong>极端情况处理</strong></h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// spdlog源码中的异常处理逻辑（简化版）
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">try</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> max_files_ <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span>; <span style="color:#f92672">--</span>i) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> src <span style="color:#f92672">=</span> calc_filename(i);
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> target <span style="color:#f92672">=</span> calc_filename(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
 </span></span><span style="display:flex;"><span>        
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (os<span style="color:#f92672">::</span>path_exists(src)) {
 </span></span><span style="display:flex;"><span>            os<span style="color:#f92672">::</span>rename(src, target); <span style="color:#75715e">// 可能抛出异常
-</span></span></span><span style="display:flex;"><span>        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (<span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>exception<span style="color:#f92672">&amp;</span> ex) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// spdlog会记录错误但不中断程序
-</span></span></span><span style="display:flex;"><span>    SPDLOG_ERROR(<span style="color:#e6db74">&#34;Rotation rename failed: {}&#34;</span>, ex.what());
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    SPDLOG_ERROR(<span style="color:#e6db74">&#34;Rotation rename failed: {}&#34;</span>, ex.what());
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ⚠️ 此时文件命名可能不连续，需要人工干预
-</span></span></span><span style="display:flex;"><span>}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span></code></pre></div><h4 id="windows特有问题"><strong>Windows特有问题</strong></h4>
 <ul>
 <li><strong>权限拒绝</strong>：高轮转率时，Windows可能因杀毒软件扫描导致重命名失败
@@ -696,26 +696,26 @@ a.3.txt      ← 第三轮转归档文件（最旧，可能被删除）
 <h2 id="附录最佳实践配置示例">附录：最佳实践配置示例</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;spdlog/spdlog.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;spdlog/sinks/rotating_file_sink.h&#34;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup_production_logger</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 50MB大小限制，保留7个文件（约350MB总空间）
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> logger <span style="color:#f92672">=</span> spdlog<span style="color:#f92672">::</span>rotating_logger_mt(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">auto</span> logger <span style="color:#f92672">=</span> spdlog<span style="color:#f92672">::</span>rotating_logger_mt(
 </span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;prod_logger&#34;</span>, 
 </span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;/var/log/myapp/app.log&#34;</span>,
 </span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">1024</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">50</span>,  <span style="color:#75715e">// 50MB
-</span></span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">7</span>,                <span style="color:#75715e">// 7个文件（6个归档 + 1个活跃）
-</span></span></span><span style="display:flex;"><span>            false             <span style="color:#75715e">// 启动时不立即轮转
-</span></span></span><span style="display:flex;"><span>        );
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#ae81ff">7</span>,                <span style="color:#75715e">// 7个文件（6个归档 + 1个活跃）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            false             <span style="color:#75715e">// 启动时不立即轮转
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        );
 </span></span><span style="display:flex;"><span>        
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 设置日志级别（生产环境通常WARNING以上）
-</span></span></span><span style="display:flex;"><span>        logger<span style="color:#f92672">-&gt;</span>set_level(spdlog<span style="color:#f92672">::</span>level<span style="color:#f92672">::</span>warn);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        logger<span style="color:#f92672">-&gt;</span>set_level(spdlog<span style="color:#f92672">::</span>level<span style="color:#f92672">::</span>warn);
 </span></span><span style="display:flex;"><span>        
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 设置格式：[时间] [级别] [线程] 消息
-</span></span></span><span style="display:flex;"><span>        logger<span style="color:#f92672">-&gt;</span>set_pattern(<span style="color:#e6db74">&#34;[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] [%t] %v&#34;</span>);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        logger<span style="color:#f92672">-&gt;</span>set_pattern(<span style="color:#e6db74">&#34;[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] [%t] %v&#34;</span>);
 </span></span><span style="display:flex;"><span>        
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 注册为默认logger
-</span></span></span><span style="display:flex;"><span>        spdlog<span style="color:#f92672">::</span>set_default_logger(logger);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        spdlog<span style="color:#f92672">::</span>set_default_logger(logger);
 </span></span><span style="display:flex;"><span>        
 </span></span><span style="display:flex;"><span>        SPDLOG_INFO(<span style="color:#e6db74">&#34;Logger initialized with rotation policy&#34;</span>);
 </span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#66d9ef">const</span> spdlog_ex<span style="color:#f92672">&amp;</span> ex) {

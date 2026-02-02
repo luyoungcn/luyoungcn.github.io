@@ -6,8 +6,36 @@
     <description>Recent content in Tags on LuyangのBlog</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 10 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CAN</title>
+      <link>/tags/can/</link>
+      <pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>/tags/can/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DeviceTree</title>
+      <link>/tags/devicetree/</link>
+      <pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>/tags/devicetree/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>/tags/linux/</link>
+      <pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MCP2518FD</title>
+      <link>/tags/mcp2518fd/</link>
+      <pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>/tags/mcp2518fd/</guid>
+      <description></description>
+    </item>
     <item>
       <title>CI加速</title>
       <link>/tags/ci%E5%8A%A0%E9%80%9F/</link>
@@ -247,13 +275,6 @@
       <description></description>
     </item>
     <item>
-      <title>Linux</title>
-      <link>/tags/linux/</link>
-      <pubDate>Tue, 09 Sep 2025 00:00:00 +0800</pubDate>
-      <guid>/tags/linux/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Node</title>
       <link>/tags/node/</link>
       <pubDate>Tue, 09 Sep 2025 00:00:00 +0800</pubDate>
@@ -464,7 +485,7 @@
       <description></description>
     </item>
     <item>
-      <title>WSL</title>
+      <title>Wsl</title>
       <link>/tags/wsl/</link>
       <pubDate>Fri, 27 Jun 2025 02:30:00 +0800</pubDate>
       <guid>/tags/wsl/</guid>
@@ -800,7 +821,7 @@
       <description></description>
     </item>
     <item>
-      <title>Usb</title>
+      <title>USB</title>
       <link>/tags/usb/</link>
       <pubDate>Thu, 26 Oct 2023 00:00:00 +0800</pubDate>
       <guid>/tags/usb/</guid>
@@ -1199,13 +1220,6 @@
       <description></description>
     </item>
     <item>
-      <title>DeviceTree</title>
-      <link>/tags/devicetree/</link>
-      <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
-      <guid>/tags/devicetree/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Disk</title>
       <link>/tags/disk/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
@@ -1318,7 +1332,7 @@
       <description></description>
     </item>
     <item>
-      <title>MIPI</title>
+      <title>Mipi</title>
       <link>/tags/mipi/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
       <guid>/tags/mipi/</guid>

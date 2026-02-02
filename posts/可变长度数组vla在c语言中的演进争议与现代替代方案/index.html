@@ -37,9 +37,9 @@ void process(size_t n) { int arr[n]; // VLA：长度为运行时变量n // ... �
 ​栈空间不确定性​：引发栈溢出风险（Stack Overflow） ​无错误恢复机制​：分配失败时触发未定义行为（UB）[2] ​释放不可控​：仅在作用域结束时释放，无法手动管理 2.2 编译器兼容性现状 ​完整支持​：[[GCC]], [[Clang]] (默认启用) ​可选支持​：C11起需__STDC_NO_VLA__未定义[3] ​明确禁用​：[[MSVC]]始终拒绝支持（VS2019文档明确标注”不支持C99 VLA”）[4] 3. 安全风险与性能缺陷的实证分析 3.1 栈溢出漏洞测试 #include &lt;stdio.h&gt; void vuln(size_t n) { int vla[n]; printf(&#34;VLA at %p\n&#34;, (void*)vla); } int main() { vuln(1024 * 1024 * 64); // 申请64MB栈空间 return 0; } ​执行结果​：">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
-      <link rel="stylesheet" href="/css/bundle.min.35b15f72eff61cbb106d05bab1ea1aebb778d0ba2861c763af0af0d80f43db4f.css" integrity="sha256-NbFfcu/2HLsQbQW6seoa67d40LooYcdjrwrw2A9D208=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
 
-      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.3928d3d2172bc0b5f75d9458fb9255f0befce1c7239ba6e5d2c58ed4b82c2073.js" integrity="sha256-OSjT0hcrwLX3XZRY&#43;5JV8L784ccjm6bl0sWO1LgsIHM="></script>
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
 <script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -139,8 +139,8 @@ void process(size_t n) { int arr[n]; // VLA：长度为运行时变量n // ... �
 <p>[[可变长度数组]]（Variable-Length Array, [[VLA]]）是 C99 标准（ISO/IEC 9899:1999）引入的革新特性，允许数组维度在运行时确定。其语法形式简洁：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">process</span>(<span style="color:#66d9ef">size_t</span> n) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> arr[n];  <span style="color:#75715e">// VLA：长度为运行时变量n
-</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... 数组操作
-</span></span></span><span style="display:flex;"><span>}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// ... 数组操作
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span></code></pre></div><p>该特性旨在提供优于<code>alloca()</code>的标准化栈上动态内存分配方案[1]。然而，其实际应用引发了持续的技术争议。本文从工程实践角度分析VLA的设计哲学、实现机制及现实困境。</p>
 <hr>
 <h3 id="2-vla的技术实现与内存模型">2. VLA的技术实现与内存模型</h3>
@@ -169,14 +169,14 @@ process:
 <h3 id="3-安全风险与性能缺陷的实证分析">3. 安全风险与性能缺陷的实证分析</h3>
 <h4 id="31-栈溢出漏洞测试">3.1 栈溢出漏洞测试</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vuln</span>(<span style="color:#66d9ef">size_t</span> n) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vuln</span>(<span style="color:#66d9ef">size_t</span> n) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> vla[n];
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;VLA at %p</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, (<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span>)vla);
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">vuln</span>(<span style="color:#ae81ff">1024</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">64</span>); <span style="color:#75715e">// 申请64MB栈空间
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>​<strong>执行结果</strong>​：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ulimit -s <span style="color:#ae81ff">8192</span>        <span style="color:#75715e"># 栈上限8MB</span>
@@ -229,7 +229,7 @@ process:
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> dyn_array {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">size_t</span> len;
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> data[];  <span style="color:#75715e">// C99柔性成员
-</span></span></span><span style="display:flex;"><span>};
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> dyn_array <span style="color:#f92672">*</span>arr <span style="color:#f92672">=</span> <span style="color:#a6e22e">malloc</span>(<span style="color:#66d9ef">sizeof</span> <span style="color:#f92672">*</span>arr <span style="color:#f92672">+</span> n <span style="color:#f92672">*</span> <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">int</span>));
 </span></span><span style="display:flex;"><span>arr<span style="color:#f92672">-&gt;</span>len <span style="color:#f92672">=</span> n;
 </span></span></code></pre></div><p>​<strong>优势</strong>​：堆分配可预测、支持错误处理、内存连续</p>
@@ -238,11 +238,11 @@ process:
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>arr) { <span style="color:#75715e">/* 错误处理 */</span> }
 </span></span></code></pre></div><h5 id="定长数组动态截断"><strong>定长数组+动态截断</strong>​</h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define MAX_DIM 1024
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">process</span>(<span style="color:#66d9ef">size_t</span> n) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">process</span>(<span style="color:#66d9ef">size_t</span> n) {
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> arr[MAX_DIM];
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">assert</span>(n <span style="color:#f92672">&lt;=</span> MAX_DIM); <span style="color:#75715e">// 强制约束
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// ...
-</span></span></span><span style="display:flex;"><span>}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span></code></pre></div><hr>
 <h3 id="5-标准演进与技术趋势">5. 标准演进与技术趋势</h3>
 <ul>

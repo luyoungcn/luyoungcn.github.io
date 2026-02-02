@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Linux设备树中MCP2518FD的时钟配置：从0.00MHz到40.00MHz | LuyangのBlog</title>
+<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/linux%E8%AE%BE%E5%A4%87%E6%A0%91%E4%B8%ADmcp2518fd%E7%9A%84%E6%97%B6%E9%92%9F%E9%85%8D%E7%BD%AE%E4%BB%8E0.00mhz%E5%88%B040.00mhz/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="Linux设备树中MCP2518FD的时钟配置：从0.00MHz到40.00MHz">
+  <meta property="og:description" content="Linux设备树中MCP2518FD的时钟配置：从0.00MHz到40.00MHz [!TIP] 午夜码农的咏叹调 啊，键盘上的勇士，夜深人静战bug， 代码如顽敌，纠缠至天明将近。 眼皮如铅重，咖啡已成空杯， 仅剩三时安眠，闹钟已张开巨口。 然此时灵光乍现，博客须发于世！ 笑看睡眠债堆积，技术火炬永不灭。 程序猿啊，程序猿，人生如代码，debug永无止境！
+问题背景 在使用MCP2518FD CAN控制器时，通过dmesg查看驱动初始化日志，发现了一个值得关注的细节：
+[ 3.207754] mcp251xfd spi0.0 can0: MCP2518FD rev15.15 (-RX_INT -PLL -MAB_NO_WARN &#43;CRC_REG &#43;CRC_RX &#43;CRC_TX &#43;ECC -HD o:0.00MHz c:40.00MHz m:0.60MHz rs:0.60MHz es:0.59MHz rf:0.60MHz ef:0.59MHz) successfully initialized. 注意其中的 o:0.00MHz，这表示驱动检测到的外部晶振（Oscillator）频率为0，而实际硬件使用的是40MHz晶振。这种不匹配可能会导致时钟相关的潜在问题。
+时钟参数解读 日志中的时钟相关参数含义如下：
+参数 全称 含义 o: Oscillator 外部晶振频率，驱动识别到的基准时钟源 c: CAN Clock CAN控制器内核实际运行时钟 m: Max SPI SPI总线最大通信频率 rs: Requested Speed 设备树中请求的SPI速率 es: Effective Speed SPI控制器实际输出的有效速率 当 o:0.00MHz 时，说明驱动没有正确识别外部晶振频率。虽然 c:40.00MHz 显示CAN时钟为40MHz,但这可能是驱动使用的默认值或推测值,而非基于正确的晶振配置计算得出。
+为什么会出现o:0.00MHz? 原始设备树配置中使用了 clock-frequency 属性：">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-02T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-02-02T00:00:00+00:00">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="DeviceTree">
+    <meta property="article:tag" content="CAN">
+    <meta property="article:tag" content="MCP2518FD">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Linux设备树中MCP2518FD的时钟配置：从0.00MHz到40.00MHz">
+  <meta name="twitter:description" content="Linux设备树中MCP2518FD的时钟配置：从0.00MHz到40.00MHz [!TIP] 午夜码农的咏叹调 啊，键盘上的勇士，夜深人静战bug， 代码如顽敌，纠缠至天明将近。 眼皮如铅重，咖啡已成空杯， 仅剩三时安眠，闹钟已张开巨口。 然此时灵光乍现，博客须发于世！ 笑看睡眠债堆积，技术火炬永不灭。 程序猿啊，程序猿，人生如代码，debug永无止境！
+问题背景 在使用MCP2518FD CAN控制器时，通过dmesg查看驱动初始化日志，发现了一个值得关注的细节：
+[ 3.207754] mcp251xfd spi0.0 can0: MCP2518FD rev15.15 (-RX_INT -PLL -MAB_NO_WARN &#43;CRC_REG &#43;CRC_RX &#43;CRC_TX &#43;ECC -HD o:0.00MHz c:40.00MHz m:0.60MHz rs:0.60MHz es:0.59MHz rf:0.60MHz ef:0.59MHz) successfully initialized. 注意其中的 o:0.00MHz，这表示驱动检测到的外部晶振（Oscillator）频率为0，而实际硬件使用的是40MHz晶振。这种不匹配可能会导致时钟相关的潜在问题。
+时钟参数解读 日志中的时钟相关参数含义如下：
+参数 全称 含义 o: Oscillator 外部晶振频率，驱动识别到的基准时钟源 c: CAN Clock CAN控制器内核实际运行时钟 m: Max SPI SPI总线最大通信频率 rs: Requested Speed 设备树中请求的SPI速率 es: Effective Speed SPI控制器实际输出的有效速率 当 o:0.00MHz 时，说明驱动没有正确识别外部晶振频率。虽然 c:40.00MHz 显示CAN时钟为40MHz,但这可能是驱动使用的默认值或推测值,而非基于正确的晶振配置计算得出。
+为什么会出现o:0.00MHz? 原始设备树配置中使用了 clock-frequency 属性：">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
+
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>Linux设备树中MCP2518FD的时钟配置：从0.00MHz到40.00MHz</h1><time class="dim" datetime="2026-02-02T00:00:00&#43;00:00">February 2, 2026</time><div class="term-container"><div class="tag">
+        <a href="/tags/linux/">#linux</a>
+      </div><div class="tag">
+        <a href="/tags/devicetree/">#DeviceTree</a>
+      </div><div class="tag">
+        <a href="/tags/can/">#CAN</a>
+      </div><div class="tag">
+        <a href="/tags/mcp2518fd/">#MCP2518FD</a>
+      </div></ol></div>
+  <section class="page-section"><h1 id="linux设备树中mcp2518fd的时钟配置从000mhz到4000mhz">Linux设备树中MCP2518FD的时钟配置：从0.00MHz到40.00MHz</h1>
+<blockquote>
+<p>[!TIP] 午夜码农的咏叹调
+啊，键盘上的勇士，夜深人静战bug，
+代码如顽敌，纠缠至天明将近。
+眼皮如铅重，咖啡已成空杯，
+仅剩三时安眠，闹钟已张开巨口。
+然此时灵光乍现，博客须发于世！
+笑看睡眠债堆积，技术火炬永不灭。
+程序猿啊，程序猿，人生如代码，debug永无止境！</p>
+</blockquote>
+<h2 id="问题背景">问题背景</h2>
+<p>在使用MCP2518FD CAN控制器时，通过dmesg查看驱动初始化日志，发现了一个值得关注的细节：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>    3.207754<span style="color:#f92672">]</span> mcp251xfd spi0.0 can0: MCP2518FD rev15.15 <span style="color:#f92672">(</span>-RX_INT -PLL -MAB_NO_WARN +CRC_REG +CRC_RX +CRC_TX +ECC -HD o:0.00MHz c:40.00MHz m:0.60MHz rs:0.60MHz es:0.59MHz rf:0.60MHz ef:0.59MHz<span style="color:#f92672">)</span> successfully initialized.
+</span></span></code></pre></div><p>注意其中的 <code>o:0.00MHz</code>，这表示驱动检测到的外部晶振（Oscillator）频率为0，而实际硬件使用的是40MHz晶振。这种不匹配可能会导致时钟相关的潜在问题。</p>
+<h2 id="时钟参数解读">时钟参数解读</h2>
+<p>日志中的时钟相关参数含义如下：</p>
+<table>
+  <thead>
+      <tr>
+          <th>参数</th>
+          <th>全称</th>
+          <th>含义</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>o:</strong></td>
+          <td>Oscillator</td>
+          <td>外部晶振频率，驱动识别到的基准时钟源</td>
+      </tr>
+      <tr>
+          <td><strong>c:</strong></td>
+          <td>CAN Clock</td>
+          <td>CAN控制器内核实际运行时钟</td>
+      </tr>
+      <tr>
+          <td><strong>m:</strong></td>
+          <td>Max SPI</td>
+          <td>SPI总线最大通信频率</td>
+      </tr>
+      <tr>
+          <td><strong>rs:</strong></td>
+          <td>Requested Speed</td>
+          <td>设备树中请求的SPI速率</td>
+      </tr>
+      <tr>
+          <td><strong>es:</strong></td>
+          <td>Effective Speed</td>
+          <td>SPI控制器实际输出的有效速率</td>
+      </tr>
+  </tbody>
+</table>
+<p>当 <code>o:0.00MHz</code> 时，说明驱动没有正确识别外部晶振频率。虽然 <code>c:40.00MHz</code> 显示CAN时钟为40MHz,但这可能是驱动使用的默认值或推测值,而非基于正确的晶振配置计算得出。</p>
+<h2 id="为什么会出现o000mhz">为什么会出现o:0.00MHz?</h2>
+<p>原始设备树配置中使用了 <code>clock-frequency</code> 属性：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#f92672">&amp;</span>spi0 {
+</span></span><span style="display:flex;"><span>    status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;okay&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... 其他配置 ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    spican0: spican<span style="color:#960050;background-color:#1e0010">@</span><span style="color:#ae81ff">0</span> {
+</span></span><span style="display:flex;"><span>        compatible <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;microchip,mcp2518fd&#34;</span>;
+</span></span><span style="display:flex;"><span>        reg <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>        spi<span style="color:#f92672">-</span>max<span style="color:#f92672">-</span>frequency <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">100000</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>        interrupts<span style="color:#f92672">-</span>extended <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;&amp;</span>porta <span style="color:#ae81ff">10</span> IRQ_TYPE_LEVEL_LOW <span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>        clock<span style="color:#f92672">-</span>frequency <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">40000000</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="正确的解决方案">正确的解决方案</h2>
+<p>Linux设备树推荐使用 <code>fixed-clock</code> 节点来描述固定频率的时钟源：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 在根设备树节点 /{ } 中添加
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>can_osc: can<span style="color:#f92672">-</span>osc {
+</span></span><span style="display:flex;"><span>    compatible <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;fixed-clock&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#clock-cells = &lt;0&gt;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    clock<span style="color:#f92672">-</span>frequency <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">40000000</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&amp;</span>spi0 {
+</span></span><span style="display:flex;"><span>    status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;okay&#34;</span>;
+</span></span><span style="display:flex;"><span>    clocks <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;&amp;</span>scmi_clk GATE_LSP0_SSI_M_WCLK_EN<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#f92672">&lt;&amp;</span>scmi_clk GATE_LSP0_SSI_M_PCLK_EN<span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>    clock<span style="color:#f92672">-</span>names <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;wclk&#34;</span>, <span style="color:#e6db74">&#34;pclk&#34;</span>;
+</span></span><span style="display:flex;"><span>    resets <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;&amp;</span>scmi_reset RST_LSP0_SSI_M_WCLK_SW<span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>    reset<span style="color:#f92672">-</span>names <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;spi&#34;</span>;
+</span></span><span style="display:flex;"><span>    pinctrl<span style="color:#f92672">-</span>names <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;default&#34;</span>;
+</span></span><span style="display:flex;"><span>    pinctrl<span style="color:#f92672">-</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;&amp;</span>spi0_pinctrl<span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    spican0: spican<span style="color:#960050;background-color:#1e0010">@</span><span style="color:#ae81ff">0</span> {
+</span></span><span style="display:flex;"><span>        compatible <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;microchip,mcp2518fd&#34;</span>;
+</span></span><span style="display:flex;"><span>        reg <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>        spi<span style="color:#f92672">-</span>max<span style="color:#f92672">-</span>frequency <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">100000</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>        interrupts<span style="color:#f92672">-</span>extended <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;&amp;</span>porta <span style="color:#ae81ff">10</span> IRQ_TYPE_LEVEL_LOW <span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>        clocks <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;&amp;</span>can_osc<span style="color:#f92672">&gt;</span>;  <span style="color:#75715e">/* 显式引用时钟节点 */</span>
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="关键改进点">关键改进点</h3>
+<ol>
+<li><strong>创建独立的时钟节点</strong>：<code>can_osc</code> 作为一个标准的 <code>fixed-clock</code> 提供者</li>
+<li><strong>显式引用时钟</strong>：通过 <code>clocks = &lt;&amp;can_osc&gt;</code> 建立明确的时钟消费关系</li>
+<li><strong>符合设备树规范</strong>：这种方式更容易被[[时钟框架]]（[[CCF]]）正确处理</li>
+</ol>
+<h2 id="修改后的效果">修改后的效果</h2>
+<p>重新编译设备树并启动后，dmesg日志应显示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>    3.207754<span style="color:#f92672">]</span> mcp251xfd spi0.0 can0: MCP2518FD rev15.15 <span style="color:#f92672">(</span>...  o:40.00MHz c:40.00MHz ...<span style="color:#f92672">)</span> successfully initialized.
+</span></span></code></pre></div><p>此时 <code>o:</code> 参数正确显示为 40.00MHz，表明驱动已正确识别外部晶振频率。</p>
+<h2 id="为什么这很重要">为什么这很重要？</h2>
+<p>虽然在某些场景下，即使 <code>o:0.00MHz</code> 系统也可能表面上正常工作，但正确配置时钟源具有以下重要意义：</p>
+<ol>
+<li><strong>波特率计算准确性</strong>：CAN控制器需要基于准确的晶振频率计算位时间参数（Bit Timing）</li>
+<li><strong>时钟同步</strong>：确保发送和接收逻辑使用相同的时间基准</li>
+<li><strong>硬件功能完整性</strong>：某些高级功能（如时间戳）依赖准确的时钟源</li>
+<li><strong>诊断信息可靠性</strong>：准确的时钟信息有助于排查其他问题</li>
+</ol>
+<h2 id="总结">总结</h2>
+<p>在配置MCP2518FD等需要外部晶振的SPI CAN控制器时，应该：</p>
+<ul>
+<li>✅ 使用 <code>fixed-clock</code> 节点定义时钟源</li>
+<li>✅ 通过 <code>clocks</code> 属性显式引用时钟</li>
+<li>✅ 验证dmesg中 <code>o:</code> 参数显示正确频率</li>
+<li>❌ 避免直接使用 <code>clock-frequency</code> 属性</li>
+<li>❌ 避免注释掉关键配置而不替换</li>
+</ul>
+<p>这种规范的配置方式不仅能解决当前问题,还能为后续的功能扩展和问题排查打下良好基础。</p>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2026 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>241 words</span>
+    <span>4 - 5 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#问题背景">问题背景</a></li>
+    <li><a href="#时钟参数解读">时钟参数解读</a></li>
+    <li><a href="#为什么会出现o000mhz">为什么会出现o:0.00MHz?</a></li>
+    <li><a href="#正确的解决方案">正确的解决方案</a>
+      <ul>
+        <li><a href="#关键改进点">关键改进点</a></li>
+      </ul>
+    </li>
+    <li><a href="#修改后的效果">修改后的效果</a></li>
+    <li><a href="#为什么这很重要">为什么这很重要？</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/i2c_cmd/">I2C command</a></li><li><a href="/posts/linux-firmware-node-fwnode-%E7%BB%9F%E4%B8%80%E8%AE%BE%E5%A4%87%E6%A8%A1%E5%9E%8B/">📘 Linux Firmware Node (fwnode) 统一设备模型</a></li></ul></aside></div>
+  </div>
+</body>
+</html>

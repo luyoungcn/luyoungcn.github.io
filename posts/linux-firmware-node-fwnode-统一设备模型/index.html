@@ -30,9 +30,9 @@
 平台依赖性强：ARM 平台主要使用 Device Tree，x86 平台使用 ACPI 代码重复：驱动程序需要为不同固件格式编写重复的解析代码 维护困难：跨平台驱动维护成本高，兼容性问题频发 struct device *dev =...; int ret, irq; /* 检查设备是否关联了设备树节点 */ if (dev-&gt;of_node) { /* 如果存在，则使用 of_* 系列 API 从设备树中读取属性 */ ret = of_property_read_u32(dev-&gt;of_node, &#34;interrupts&#34;, &amp;irq); if (ret) { // 错误处理 } } else if (ACPI_HANDLE(dev)) { /* 否则，检查设备是否有关联的 ACPI 句柄 */ /* 使用 ACPI 特定的 API 来解析 _CRS (Current Resource Settings) */ /* 这通常涉及到一套复杂、冗长的 ACPI 资源解析逻辑 */ //... complex ACPI resource parsing logic... } else { /* 可能还有基于平台数据的传统硬编码方式 */ //... } 2.2 发展时间线 Linux 内核社区对统一设备描述接口的探索始于 2014 年，旨在解决多固件接口并存带来的架构性问题。fwnode 框架正是这一架构演进的核心成果。以下是该框架的演进时间线和关键节点：">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
-      <link rel="stylesheet" href="/css/bundle.min.35b15f72eff61cbb106d05bab1ea1aebb778d0ba2861c763af0af0d80f43db4f.css" integrity="sha256-NbFfcu/2HLsQbQW6seoa67d40LooYcdjrwrw2A9D208=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
 
-      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.3928d3d2172bc0b5f75d9458fb9255f0befce1c7239ba6e5d2c58ed4b82c2073.js" integrity="sha256-OSjT0hcrwLX3XZRY&#43;5JV8L784ccjm6bl0sWO1LgsIHM="></script>
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
 <script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -114,7 +114,7 @@
     <span>&nbsp»&nbsp</span>
 </ol>
 <h1>📘 Linux Firmware Node (fwnode) 统一设备模型</h1><time class="dim" datetime="1970-01-01T00:00:00&#43;08:00">January 1, 1970</time><div class="term-container"><div class="tag">
-        <a href="/tags/linux/">#Linux</a>
+        <a href="/tags/linux/">#linux</a>
       </div><div class="tag">
         <a href="/tags/acpi/">#ACPI</a>
       </div><div class="tag">
@@ -148,16 +148,16 @@
 </span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">of_property_read_u32</span>(dev<span style="color:#f92672">-&gt;</span>of_node, <span style="color:#e6db74">&#34;interrupts&#34;</span>, <span style="color:#f92672">&amp;</span>irq);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ret) {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 错误处理
-</span></span></span><span style="display:flex;"><span>    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
 </span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">ACPI_HANDLE</span>(dev)) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 否则，检查设备是否有关联的 ACPI 句柄 */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 使用 ACPI 特定的 API 来解析 _CRS (Current Resource Settings) */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 这通常涉及到一套复杂、冗长的 ACPI 资源解析逻辑 */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">//... complex ACPI resource parsing logic...
-</span></span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>} <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 可能还有基于平台数据的传统硬编码方式 */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">//...
-</span></span></span><span style="display:flex;"><span>}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span></code></pre></div><h3 id="22-发展时间线">2.2 发展时间线</h3>
 <p>Linux 内核社区对统一设备描述接口的探索始于 2014 年，旨在解决多固件接口并存带来的架构性问题。fwnode 框架正是这一架构演进的核心成果。以下是该框架的演进时间线和关键节点：</p>
 <h3 id="21-时间线与里程碑">2.1 时间线与里程碑</h3>
@@ -344,7 +344,7 @@
 <h3 id="41-fwnode_handle-结构体">4.1 fwnode_handle 结构体</h3>
 <p>fwnode_handle 是整个框架的核心，它代表一个固件节点的抽象：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 示例：获取和释放 fwnode
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span><span style="color:#a6e22e">fwnode_get</span>(<span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span><span style="color:#a6e22e">fwnode_get</span>(<span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>fwnode)
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> NULL;
@@ -407,7 +407,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define fwnode_for_each_child_node(fwnode, child)                  \
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    for (child = fwnode_get_next_child_node(fwnode, NULL); child; \
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">         child = fwnode_get_next_child_node(fwnode, child))
-</span></span></span><span style="display:flex;"><span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span><span style="color:#a6e22e">fwnode_get_next_child_node</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
 </span></span><span style="display:flex;"><span>                                                 <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>child)
 </span></span><span style="display:flex;"><span>{

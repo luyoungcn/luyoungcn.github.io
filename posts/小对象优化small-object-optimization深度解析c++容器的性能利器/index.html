@@ -38,9 +38,9 @@ if (required_size &lt;= internal_buffer_size) { // 使用内部缓冲区，无�
 class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE = 15; union { // 大对象模式：指向堆内存 struct { char* ptr; size_t size; size_t capacity; } heap_data; // 小对象模式：直接存储在对象内部 struct { char buffer[INTERNAL_BUFFER_SIZE &#43; 1]; // &#43;1 for null terminator unsigned char remaining_size; // 用于标识当前模式和剩余空间 } stack_data; }; public: bool is_using_soo() const { // 通过特定位或值判断当前使用的存储模式 return stack_data.remaining_size &lt;= INTERNAL_BUFFER_SIZE; } const char* data() const { return is_using_soo() ? stack_data.buffer : heap_data.ptr; } size_t size() const { return is_using_soo() ? (INTERNAL_BUFFER_SIZE - stack_data.remaining_size) : heap_data.size; } }; 状态区分机制 区分当前使用内部缓冲区还是堆内存是SOO实现的关键技术点。常见策略包括：">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
-      <link rel="stylesheet" href="/css/bundle.min.35b15f72eff61cbb106d05bab1ea1aebb778d0ba2861c763af0af0d80f43db4f.css" integrity="sha256-NbFfcu/2HLsQbQW6seoa67d40LooYcdjrwrw2A9D208=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
 
-      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.3928d3d2172bc0b5f75d9458fb9255f0befce1c7239ba6e5d2c58ed4b82c2073.js" integrity="sha256-OSjT0hcrwLX3XZRY&#43;5JV8L784ccjm6bl0sWO1LgsIHM="></script>
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
 <script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -147,10 +147,10 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 <p>SOO的工作机制可以用简单的条件判断来描述：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (required_size <span style="color:#f92672">&lt;=</span> internal_buffer_size) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 使用内部缓冲区，无需堆分配
-</span></span></span><span style="display:flex;"><span>    store_in_internal_buffer(data);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    store_in_internal_buffer(data);
 </span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 退回到传统的堆内存分配
-</span></span></span><span style="display:flex;"><span>    allocate_on_heap(data);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    allocate_on_heap(data);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="zero-overhead抽象">Zero-Overhead抽象</h3>
 <p>SOO的精妙之处在于对使用者完全透明。无论底层使用的是内部缓冲区还是堆内存，容器提供的接口行为完全一致，这体现了C++中&quot;Zero-Overhead&quot;抽象的设计理念。</p>
@@ -163,23 +163,23 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">union</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 大对象模式：指向堆内存
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">struct</span> {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">struct</span> {
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> ptr;
 </span></span><span style="display:flex;"><span>            size_t size;
 </span></span><span style="display:flex;"><span>            size_t capacity;
 </span></span><span style="display:flex;"><span>        } heap_data;
 </span></span><span style="display:flex;"><span>        
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 小对象模式：直接存储在对象内部
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">struct</span> {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">struct</span> {
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">char</span> buffer[INTERNAL_BUFFER_SIZE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]; <span style="color:#75715e">// +1 for null terminator
-</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> remaining_size; <span style="color:#75715e">// 用于标识当前模式和剩余空间
-</span></span></span><span style="display:flex;"><span>        } stack_data;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> remaining_size; <span style="color:#75715e">// 用于标识当前模式和剩余空间
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        } stack_data;
 </span></span><span style="display:flex;"><span>    };
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> is_using_soo() <span style="color:#66d9ef">const</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 通过特定位或值判断当前使用的存储模式
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> stack_data.remaining_size <span style="color:#f92672">&lt;=</span> INTERNAL_BUFFER_SIZE;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> stack_data.remaining_size <span style="color:#f92672">&lt;=</span> INTERNAL_BUFFER_SIZE;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">data</span>() <span style="color:#66d9ef">const</span> {
@@ -206,24 +206,24 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">constexpr</span> size_t SSO_BUFFER_SIZE <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">constexpr</span> size_t SSO_MASK <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x80</span>;  <span style="color:#75715e">// 最高位作为标志位
-</span></span></span><span style="display:flex;"><span>    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">union</span> <span style="color:#a6e22e">data_union</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 长字符串模式
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">long_string</span> {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">long_string</span> {
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> ptr;
 </span></span><span style="display:flex;"><span>            size_t size;
 </span></span><span style="display:flex;"><span>            size_t capacity;
 </span></span><span style="display:flex;"><span>        } long_data;
 </span></span><span style="display:flex;"><span>        
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 短字符串模式
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">short_string</span> {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">short_string</span> {
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">char</span> buffer[SSO_BUFFER_SIZE];
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> info;  <span style="color:#75715e">// 存储长度和标志位
-</span></span></span><span style="display:flex;"><span>        } short_data;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        } short_data;
 </span></span><span style="display:flex;"><span>    } data_;
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 核心状态判断函数
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">is_short</span>() <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">noexcept</span> {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">is_short</span>() <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">noexcept</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> (data_.short_data.info <span style="color:#f92672">&amp;</span> SSO_MASK) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    
@@ -239,39 +239,39 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 </span></span><span style="display:flex;"><span>        data_.long_data.ptr <span style="color:#f92672">=</span> ptr;
 </span></span><span style="display:flex;"><span>        data_.long_data.size <span style="color:#f92672">=</span> size;
 </span></span><span style="display:flex;"><span>        data_.long_data.capacity <span style="color:#f92672">=</span> cap <span style="color:#f92672">|</span> SSO_MASK;  <span style="color:#75715e">// 设置标志位
-</span></span></span><span style="display:flex;"><span>    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 默认构造函数
-</span></span></span><span style="display:flex;"><span>    soo_string() <span style="color:#66d9ef">noexcept</span> {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    soo_string() <span style="color:#66d9ef">noexcept</span> {
 </span></span><span style="display:flex;"><span>        data_.short_data.buffer[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\0&#39;</span>;
 </span></span><span style="display:flex;"><span>        set_short_size(<span style="color:#ae81ff">0</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 从C字符串构造
-</span></span></span><span style="display:flex;"><span>    soo_string(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> str) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    soo_string(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> str) {
 </span></span><span style="display:flex;"><span>        size_t len <span style="color:#f92672">=</span> strlen(str);
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (len <span style="color:#f92672">&lt;=</span> SSO_BUFFER_SIZE) {
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 使用短字符串优化
-</span></span></span><span style="display:flex;"><span>            memcpy(data_.short_data.buffer, str, len);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            memcpy(data_.short_data.buffer, str, len);
 </span></span><span style="display:flex;"><span>            data_.short_data.buffer[len] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\0&#39;</span>;
 </span></span><span style="display:flex;"><span>            set_short_size(len);
 </span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 分配堆内存
-</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> new_ptr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[len <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> new_ptr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[len <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];
 </span></span><span style="display:flex;"><span>            memcpy(new_ptr, str, len <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
 </span></span><span style="display:flex;"><span>            set_long_data(new_ptr, len, len);
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 拷贝构造函数
-</span></span></span><span style="display:flex;"><span>    soo_string(<span style="color:#66d9ef">const</span> soo_string<span style="color:#f92672">&amp;</span> other) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    soo_string(<span style="color:#66d9ef">const</span> soo_string<span style="color:#f92672">&amp;</span> other) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (other.is_short()) {
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 复制短字符串
-</span></span></span><span style="display:flex;"><span>            data_.short_data <span style="color:#f92672">=</span> other.data_.short_data;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            data_.short_data <span style="color:#f92672">=</span> other.data_.short_data;
 </span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 复制长字符串
-</span></span></span><span style="display:flex;"><span>            size_t len <span style="color:#f92672">=</span> other.data_.long_data.size;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            size_t len <span style="color:#f92672">=</span> other.data_.long_data.size;
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> new_ptr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[len <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];
 </span></span><span style="display:flex;"><span>            memcpy(new_ptr, other.data_.long_data.ptr, len <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
 </span></span><span style="display:flex;"><span>            set_long_data(new_ptr, len, len);
@@ -279,27 +279,27 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 移动构造函数
-</span></span></span><span style="display:flex;"><span>    soo_string(soo_string<span style="color:#f92672">&amp;&amp;</span> other) <span style="color:#66d9ef">noexcept</span> {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    soo_string(soo_string<span style="color:#f92672">&amp;&amp;</span> other) <span style="color:#66d9ef">noexcept</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (other.is_short()) {
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 短字符串需要复制数据
-</span></span></span><span style="display:flex;"><span>            data_.short_data <span style="color:#f92672">=</span> other.data_.short_data;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            data_.short_data <span style="color:#f92672">=</span> other.data_.short_data;
 </span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 长字符串可以直接移动指针
-</span></span></span><span style="display:flex;"><span>            data_.long_data <span style="color:#f92672">=</span> other.data_.long_data;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            data_.long_data <span style="color:#f92672">=</span> other.data_.long_data;
 </span></span><span style="display:flex;"><span>            other.data_.short_data.buffer[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\0&#39;</span>;
 </span></span><span style="display:flex;"><span>            other.set_short_size(<span style="color:#ae81ff">0</span>);
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 析构函数
-</span></span></span><span style="display:flex;"><span>    <span style="color:#f92672">~</span>soo_string() {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">~</span>soo_string() {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>is_short()) {
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">delete</span>[] data_.long_data.ptr;
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 访问器函数
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">c_str</span>() <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">noexcept</span> {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">c_str</span>() <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">noexcept</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> is_short() <span style="color:#f92672">?</span> data_.short_data.buffer : data_.long_data.ptr;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    
@@ -316,7 +316,7 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 利用capacity字段的最高位作为标志
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 长字符串: capacity |= SSO_MASK (最高位为1)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 短字符串: info字段最高位为0
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">constexpr</span> size_t SSO_MASK <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x80</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">constexpr</span> size_t SSO_MASK <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x80</span>;
 </span></span></code></pre></div><h4 id="2-内存布局优化">2. 内存布局优化</h4>
 <p>短字符串模式下，<code>info</code>字段既存储长度信息又作为状态标识：</p>
 <ul>
@@ -325,30 +325,30 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 </ul>
 <h4 id="3-分支预测优化">3. 分支预测优化</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 编译器优化：短字符串是常见情况
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (is_short()) <span style="color:#a6e22e">[[likely]]</span> {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (is_short()) <span style="color:#a6e22e">[[likely]]</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 短字符串处理逻辑
-</span></span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>} <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 长字符串处理逻辑
-</span></span></span><span style="display:flex;"><span>}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span></code></pre></div><h2 id="不同场景下的调用流程分析">不同场景下的调用流程分析</h2>
 <h3 id="场景1短字符串构造流程">场景1：短字符串构造流程</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>soo_string <span style="color:#a6e22e">str</span>(<span style="color:#e6db74">&#34;Hello&#34;</span>);  <span style="color:#75715e">// 5个字符，小于SSO_BUFFER_SIZE(15)
 </span></span></span></code></pre></div><p><strong>调用流程：</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 1. 计算字符串长度
-</span></span></span><span style="display:flex;"><span>size_t len <span style="color:#f92672">=</span> strlen(<span style="color:#e6db74">&#34;Hello&#34;</span>);  <span style="color:#75715e">// len = 5
-</span></span></span><span style="display:flex;"><span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>size_t len <span style="color:#f92672">=</span> strlen(<span style="color:#e6db74">&#34;Hello&#34;</span>);  <span style="color:#75715e">// len = 5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 2. 长度判断
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (len <span style="color:#f92672">&lt;=</span> SSO_BUFFER_SIZE) {  <span style="color:#75715e">// 5 &lt;= 15, 条件成立
-</span></span></span><span style="display:flex;"><span>    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (len <span style="color:#f92672">&lt;=</span> SSO_BUFFER_SIZE) {  <span style="color:#75715e">// 5 &lt;= 15, 条件成立
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 3. 直接复制到内部缓冲区
-</span></span></span><span style="display:flex;"><span>    memcpy(data_.short_data.buffer, <span style="color:#e6db74">&#34;Hello&#34;</span>, <span style="color:#ae81ff">5</span>);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    memcpy(data_.short_data.buffer, <span style="color:#e6db74">&#34;Hello&#34;</span>, <span style="color:#ae81ff">5</span>);
 </span></span><span style="display:flex;"><span>    data_.short_data.buffer[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\0&#39;</span>;
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 4. 设置长度信息
-</span></span></span><span style="display:flex;"><span>    set_short_size(<span style="color:#ae81ff">5</span>);  <span style="color:#75715e">// info = 15 - 5 = 10
-</span></span></span><span style="display:flex;"><span>    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    set_short_size(<span style="color:#ae81ff">5</span>);  <span style="color:#75715e">// info = 15 - 5 = 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 5. 无堆分配，构造完成
-</span></span></span><span style="display:flex;"><span>}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span></code></pre></div><p><strong>性能特征：</strong></p>
 <ul>
 <li>时间복杂度：O(1)</li>
@@ -359,24 +359,24 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>soo_string <span style="color:#a6e22e">str</span>(<span style="color:#e6db74">&#34;This is a very long string that exceeds the buffer size&#34;</span>);
 </span></span></code></pre></div><p><strong>调用流程：</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 1. 计算字符串长度
-</span></span></span><span style="display:flex;"><span>size_t len <span style="color:#f92672">=</span> strlen(input);  <span style="color:#75715e">// len = 58 &gt; 15
-</span></span></span><span style="display:flex;"><span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>size_t len <span style="color:#f92672">=</span> strlen(input);  <span style="color:#75715e">// len = 58 &gt; 15
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 2. 长度判断
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (len <span style="color:#f92672">&lt;=</span> SSO_BUFFER_SIZE) {  <span style="color:#75715e">// 58 &lt;= 15, 条件不成立
-</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 跳过此分支
-</span></span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (len <span style="color:#f92672">&lt;=</span> SSO_BUFFER_SIZE) {  <span style="color:#75715e">// 58 &lt;= 15, 条件不成立
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 跳过此分支
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>} <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 3. 分配堆内存
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> new_ptr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[len <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];  <span style="color:#75715e">// 分配59字节
-</span></span></span><span style="display:flex;"><span>    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> new_ptr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[len <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];  <span style="color:#75715e">// 分配59字节
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 4. 复制数据到堆
-</span></span></span><span style="display:flex;"><span>    memcpy(new_ptr, input, len <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    memcpy(new_ptr, input, len <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 5. 设置长字符串数据
-</span></span></span><span style="display:flex;"><span>    set_long_data(new_ptr, len, len);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    set_long_data(new_ptr, len, len);
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// data_.long_data.ptr = new_ptr
-</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// data_.long_data.size = 58
-</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// data_.long_data.capacity = 58 | SSO_MASK  // 设置标志位
-</span></span></span><span style="display:flex;"><span>}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// data_.long_data.size = 58
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// data_.long_data.capacity = 58 | SSO_MASK  // 设置标志位
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span></code></pre></div><p><strong>性能特征：</strong></p>
 <ul>
 <li>时间复杂度：O(n) + 堆分配开销</li>
@@ -388,14 +388,14 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 </span></span><span style="display:flex;"><span>soo_string str2 <span style="color:#f92672">=</span> str1;  <span style="color:#75715e">// 拷贝构造
 </span></span></span></code></pre></div><p><strong>调用流程：</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 1. 检查源字符串类型
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (other.is_short()) {  <span style="color:#75715e">// 短字符串
-</span></span></span><span style="display:flex;"><span>    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (other.is_short()) {  <span style="color:#75715e">// 短字符串
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 2. 直接复制union数据
-</span></span></span><span style="display:flex;"><span>    data_.short_data <span style="color:#f92672">=</span> other.data_.short_data;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    data_.short_data <span style="color:#f92672">=</span> other.data_.short_data;
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 包括buffer和info字段的完整复制
-</span></span></span><span style="display:flex;"><span>    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 3. 无需额外分配，复制完成
-</span></span></span><span style="display:flex;"><span>}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span></code></pre></div><p><strong>性能特征：</strong></p>
 <ul>
 <li>时间复杂度：O(1)</li>
@@ -407,19 +407,19 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 </span></span><span style="display:flex;"><span>soo_string str2 <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>move(str1);  <span style="color:#75715e">// 移动构造
 </span></span></span></code></pre></div><p><strong>调用流程：</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 1. 检查源字符串类型
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (other.is_short()) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (other.is_short()) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 短字符串无法真正&#34;移动&#34;，需要复制
-</span></span></span><span style="display:flex;"><span>    data_.short_data <span style="color:#f92672">=</span> other.data_.short_data;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    data_.short_data <span style="color:#f92672">=</span> other.data_.short_data;
 </span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 2. 长字符串：转移所有权
-</span></span></span><span style="display:flex;"><span>    data_.long_data <span style="color:#f92672">=</span> other.data_.long_data;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    data_.long_data <span style="color:#f92672">=</span> other.data_.long_data;
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 3. 重置源对象为空短字符串
-</span></span></span><span style="display:flex;"><span>    other.data_.short_data.buffer[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\0&#39;</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    other.data_.short_data.buffer[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\0&#39;</span>;
 </span></span><span style="display:flex;"><span>    other.set_short_size(<span style="color:#ae81ff">0</span>);
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 4. 指针转移完成，无需复制数据
-</span></span></span><span style="display:flex;"><span>}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span></code></pre></div><p><strong>性能特征：</strong></p>
 <ul>
 <li>长字符串：O(1)，仅指针转移</li>
@@ -430,25 +430,25 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 </span></span><span style="display:flex;"><span>str <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34; World! This makes it longer than 15 characters&#34;</span>;
 </span></span></code></pre></div><p><strong>调用流程：</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 1. 计算新长度
-</span></span></span><span style="display:flex;"><span>size_t current_len <span style="color:#f92672">=</span> str.size();  <span style="color:#75715e">// 5
-</span></span></span><span style="display:flex;"><span>size_t append_len <span style="color:#f92672">=</span> strlen(<span style="color:#e6db74">&#34; World! ...&#34;</span>);  <span style="color:#75715e">// 48
-</span></span></span><span style="display:flex;"><span>size_t new_len <span style="color:#f92672">=</span> current_len <span style="color:#f92672">+</span> append_len;  <span style="color:#75715e">// 53
-</span></span></span><span style="display:flex;"><span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>size_t current_len <span style="color:#f92672">=</span> str.size();  <span style="color:#75715e">// 5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>size_t append_len <span style="color:#f92672">=</span> strlen(<span style="color:#e6db74">&#34; World! ...&#34;</span>);  <span style="color:#75715e">// 48
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>size_t new_len <span style="color:#f92672">=</span> current_len <span style="color:#f92672">+</span> append_len;  <span style="color:#75715e">// 53
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 2. 检查是否需要转换为长字符串
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (str.is_short() <span style="color:#f92672">&amp;&amp;</span> new_len <span style="color:#f92672">&gt;</span> SSO_BUFFER_SIZE) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (str.is_short() <span style="color:#f92672">&amp;&amp;</span> new_len <span style="color:#f92672">&gt;</span> SSO_BUFFER_SIZE) {
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 3. 分配新的堆内存
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> new_ptr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[new_len <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> new_ptr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[new_len <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 4. 复制原有数据
-</span></span></span><span style="display:flex;"><span>    memcpy(new_ptr, str.data_.short_data.buffer, current_len);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    memcpy(new_ptr, str.data_.short_data.buffer, current_len);
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 5. 追加新数据
-</span></span></span><span style="display:flex;"><span>    memcpy(new_ptr <span style="color:#f92672">+</span> current_len, append_data, append_len);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    memcpy(new_ptr <span style="color:#f92672">+</span> current_len, append_data, append_len);
 </span></span><span style="display:flex;"><span>    new_ptr[new_len] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\0&#39;</span>;
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 6. 转换为长字符串模式
-</span></span></span><span style="display:flex;"><span>    str.set_long_data(new_ptr, new_len, new_len);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    str.set_long_data(new_ptr, new_len, new_len);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><strong>性能特征：</strong></p>
 <ul>
@@ -503,20 +503,20 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 <h3 id="量化的性能提升">量化的性能提升</h3>
 <p>SOO带来的性能优势在小对象频繁操作场景下尤为显著：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 性能对比示例（概念性）
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">performance_comparison</span>() {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">performance_comparison</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 场景1：SOO优化的短字符串操作
-</span></span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>string short_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello&#34;</span>;  <span style="color:#75715e">// 直接存储在内部缓冲区
-</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 时间复杂度：O(1)，无堆分配开销
-</span></span></span><span style="display:flex;"><span>    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>string short_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello&#34;</span>;  <span style="color:#75715e">// 直接存储在内部缓冲区
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 时间复杂度：O(1)，无堆分配开销
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 场景2：超出SOO阈值的长字符串
-</span></span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>string long_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;This is a very long string that exceeds buffer&#34;</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>string long_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;This is a very long string that exceeds buffer&#34;</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 时间复杂度：O(1) + 堆分配开销
-</span></span></span><span style="display:flex;"><span>    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 在循环中创建大量短字符串时，SOO可带来数倍性能提升
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1000000</span>; <span style="color:#f92672">++</span>i) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1000000</span>; <span style="color:#f92672">++</span>i) {
 </span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>string temp <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;short&#34;</span>;  <span style="color:#75715e">// SOO优化：栈速度
-</span></span></span><span style="display:flex;"><span>        <span style="color:#75715e">// vs 非优化版本需要1000000次堆分配/释放
-</span></span></span><span style="display:flex;"><span>    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// vs 非优化版本需要1000000次堆分配/释放
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="具体优势">具体优势</h3>
 <ol>
@@ -529,7 +529,7 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 <h3 id="空间开销权衡">空间开销权衡</h3>
 <p>SOO的<strong>主要代价是增加了每个容器对象的尺寸</strong>。即使存储大对象时使用堆分配，内部缓冲区的空间仍然被占用：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">sizeof</span>(std<span style="color:#f92672">::</span>string) <span style="color:#75715e">// 通常为24-32字节，包含内部缓冲区
-</span></span></span><span style="display:flex;"><span>vs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>vs
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>) <span style="color:#f92672">+</span> <span style="color:#66d9ef">sizeof</span>(size_t) <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#75715e">// 仅指针+大小信息约为24字节
 </span></span></span></code></pre></div><p>这种空间开销在以下场景中需要特别考虑：</p>
 <ul>
@@ -548,11 +548,11 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 <h3 id="移动语义的复杂性">移动语义的复杂性</h3>
 <p>SOO对移动操作带来了额外考虑：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 移动SOO对象时的考虑
-</span></span></span><span style="display:flex;"><span>optimized_string str1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;short&#34;</span>;    <span style="color:#75715e">// 使用内部缓冲区
-</span></span></span><span style="display:flex;"><span>optimized_string str2 <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>move(str1);  <span style="color:#75715e">// 需要复制内部缓冲区数据
-</span></span></span><span style="display:flex;"><span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>optimized_string str1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;short&#34;</span>;    <span style="color:#75715e">// 使用内部缓冲区
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>optimized_string str2 <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>move(str1);  <span style="color:#75715e">// 需要复制内部缓冲区数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// vs 移动大对象时只需交换指针
-</span></span></span><span style="display:flex;"><span>optimized_string long_str1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;very long string...&#34;</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>optimized_string long_str1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;very long string...&#34;</span>;
 </span></span><span style="display:flex;"><span>optimized_string long_str2 <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>move(long_str1);  <span style="color:#75715e">// 仅指针交换
 </span></span></span></code></pre></div><h2 id="实用价值与应用启发">实用价值与应用启发</h2>
 <h3 id="现实应用场景">现实应用场景</h3>

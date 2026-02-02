@@ -27,9 +27,9 @@
 一、语法层面的根本差异 方案 可访问性 编译器行为 对单例模式的影响 ​私有构造函数​ 仅类内部可访问 允许类内部代码构造对象 实现单例的核心手段 Singleton() = delete 函数被彻底删除 任何构造尝试直接报错 完全无法创建对象 方案 可访问性 编译器行为 对单例模式的影响 ​私有析构函数​ 仅类内部可访问 允许类内部析构对象 防止外部delete操作 ~Singleton() = delete 函数被彻底删除 对象销毁时直接报错 对象无法被正确释放 二、关键错误场景演示 class Singleton { public: static Singleton&amp; getInstance() { static Singleton instance; // 这里会编译失败！ return instance; } Singleton() = delete; // 构造函数被删除 ~Singleton() = delete; // 析构函数被删除 }; 编译器报错信息 error: use of deleted function &#39;Singleton::Singleton()&#39; static Singleton instance; ^ note: declared here Singleton() = delete; ^~~~~~~~~~~ error: use of deleted function &#39;Singleton::~Singleton()&#39; static Singleton instance; ^ note: declared here ~Singleton() = delete; ^ 三、技术原理深度解析 构造函数删除的致命问题 ​静态局部变量初始化​ static Singleton instance本质需要调用构造函数，但构造函数已被删除 → 编译失败 ​单例模式基础破坏​ 删除构造函数意味着该类无法被实例化，完全失去单例存在的意义 析构函数删除的连锁反应 ​静态变量销毁问题​ 程序退出时，静态变量instance需要调用析构函数 → 因析构函数被删除导致链接错误 ​内存泄漏伪装者​ 即使通过特殊手段构造对象，也无法正常释放资源 → 违反RAII原则 四、正确方案对比验证 正确实现（私有构造/析构） class Singleton { public: static Singleton&amp; getInstance() { static Singleton instance; // 正确：调用私有构造函数 return instance; } // 禁用拷贝操作 Singleton(const Singleton&amp;) = delete; Singleton&amp; operator=(const Singleton&amp;) = delete; private: Singleton() = default; // 正确：私有默认构造 ~Singleton() = default; // 正确：私有析构 }; 关键优势 ​构造可控性​ 通过私有构造函数限制对象创建途径，确保唯一实例 ​析构安全性​ 私有析构函数阻止外部delete操作，依赖系统自动释放 ​资源管理合规​ 静态局部变量在程序结束时自动调用析构函数，符合RAII规范 五、特殊场景扩展讨论 Q：如果确实需要完全禁止某个类的实例化？ class UtilityClass { // 工具类，仅包含静态方法 public: UtilityClass() = delete; ~UtilityClass() = delete; static void helper1(); static int helper2(); }; ​适用场景​：">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
-      <link rel="stylesheet" href="/css/bundle.min.35b15f72eff61cbb106d05bab1ea1aebb778d0ba2861c763af0af0d80f43db4f.css" integrity="sha256-NbFfcu/2HLsQbQW6seoa67d40LooYcdjrwrw2A9D208=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
 
-      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.3928d3d2172bc0b5f75d9458fb9255f0befce1c7239ba6e5d2c58ed4b82c2073.js" integrity="sha256-OSjT0hcrwLX3XZRY&#43;5JV8L784ccjm6bl0sWO1LgsIHM="></script>
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
 <script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -173,12 +173,12 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> Singleton<span style="color:#f92672">&amp;</span> getInstance() {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> Singleton instance;  <span style="color:#75715e">// 这里会编译失败！
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> instance;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> instance;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    Singleton() <span style="color:#f92672">=</span> <span style="color:#66d9ef">delete</span>;    <span style="color:#75715e">// 构造函数被删除
-</span></span></span><span style="display:flex;"><span>    <span style="color:#f92672">~</span>Singleton() <span style="color:#f92672">=</span> <span style="color:#66d9ef">delete</span>;   <span style="color:#75715e">// 析构函数被删除
-</span></span></span><span style="display:flex;"><span>};
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">~</span>Singleton() <span style="color:#f92672">=</span> <span style="color:#66d9ef">delete</span>;   <span style="color:#75715e">// 析构函数被删除
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
 </span></span></code></pre></div><h4 id="编译器报错信息">编译器报错信息</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>error: use of deleted <span style="color:#66d9ef">function</span> <span style="color:#e6db74">&#39;Singleton::Singleton()&#39;</span>
 </span></span><span style="display:flex;"><span>         static Singleton instance;
@@ -228,17 +228,17 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> Singleton<span style="color:#f92672">&amp;</span> getInstance() {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> Singleton instance;  <span style="color:#75715e">// 正确：调用私有构造函数
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> instance;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> instance;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 禁用拷贝操作
-</span></span></span><span style="display:flex;"><span>    Singleton(<span style="color:#66d9ef">const</span> Singleton<span style="color:#f92672">&amp;</span>) <span style="color:#f92672">=</span> <span style="color:#66d9ef">delete</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    Singleton(<span style="color:#66d9ef">const</span> Singleton<span style="color:#f92672">&amp;</span>) <span style="color:#f92672">=</span> <span style="color:#66d9ef">delete</span>;
 </span></span><span style="display:flex;"><span>    Singleton<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(<span style="color:#66d9ef">const</span> Singleton<span style="color:#f92672">&amp;</span>) <span style="color:#f92672">=</span> <span style="color:#66d9ef">delete</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    Singleton() <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;   <span style="color:#75715e">// 正确：私有默认构造
-</span></span></span><span style="display:flex;"><span>    <span style="color:#f92672">~</span>Singleton() <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;  <span style="color:#75715e">// 正确：私有析构
-</span></span></span><span style="display:flex;"><span>};
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">~</span>Singleton() <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;  <span style="color:#75715e">// 正确：私有析构
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
 </span></span></code></pre></div><h4 id="关键优势">关键优势</h4>
 <ol>
 <li>​<strong>构造可控性</strong>​
@@ -261,7 +261,7 @@
 <h3 id="五特殊场景扩展讨论">五、特殊场景扩展讨论</h3>
 <h4 id="q如果确实需要完全禁止某个类的实例化">Q：如果确实需要完全禁止某个类的实例化？</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UtilityClass</span> {  <span style="color:#75715e">// 工具类，仅包含静态方法
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    UtilityClass() <span style="color:#f92672">=</span> <span style="color:#66d9ef">delete</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">~</span>UtilityClass() <span style="color:#f92672">=</span> <span style="color:#66d9ef">delete</span>;
 </span></span><span style="display:flex;"><span>    

@@ -31,9 +31,9 @@ if(&lt;condition&gt;) &lt;commands&gt; elseif(&lt;condition&gt;) &lt;commands&gt
 if(&lt;condition&gt;) &lt;commands&gt; elseif(&lt;condition&gt;) &lt;commands&gt; else() &lt;commands&gt; endif() 其中 &lt;condition&gt; 可为布尔常量、数值或字符串比较、变量存在性判断、逻辑组合等多种形式。根据官方文档，以下情形会被视为“假”（False）：0/&#34;0&#34;、OFF/&#34;OFF&#34;、NO/&#34;NO&#34;、FALSE/&#34;FALSE&#34;、NOTFOUND、空字符串，或未定义变量；而 1/&#34;1&#34;、ON/&#34;ON&#34;、YES/&#34;YES&#34;、TRUE/&#34;TRUE&#34;、Y、非零数字等被视为“真”（True）(cmake.org, cmake.org)。">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
-      <link rel="stylesheet" href="/css/bundle.min.35b15f72eff61cbb106d05bab1ea1aebb778d0ba2861c763af0af0d80f43db4f.css" integrity="sha256-NbFfcu/2HLsQbQW6seoa67d40LooYcdjrwrw2A9D208=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
 
-      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.3928d3d2172bc0b5f75d9458fb9255f0befce1c7239ba6e5d2c58ed4b82c2073.js" integrity="sha256-OSjT0hcrwLX3XZRY&#43;5JV8L784ccjm6bl0sWO1LgsIHM="></script>
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
 <script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -130,12 +130,12 @@ if(&lt;condition&gt;) &lt;commands&gt; elseif(&lt;condition&gt;) &lt;commands&gt
 <h3 id="21-if-条件判断语法与行为">2.1 <code>if()</code> 条件判断语法与行为</h3>
 <p>CMake 提供了 <code>if()</code>、<code>elseif()</code>、<code>else()</code>、<code>endif()</code> 等控制结构，用来根据条件选择性地执行脚本代码。其基本语法为：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>if(<span style="color:#e6db74">&lt;condition&gt;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">&lt;commands&gt;
-</span></span></span><span style="display:flex;"><span>elseif(<span style="color:#e6db74">&lt;condition&gt;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">&lt;commands&gt;
-</span></span></span><span style="display:flex;"><span>else()<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">&lt;commands&gt;
-</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#960050;background-color:#1e0010">&lt;commands&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>elseif(<span style="color:#e6db74">&lt;condition&gt;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#960050;background-color:#1e0010">&lt;commands&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>else()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#960050;background-color:#1e0010">&lt;commands&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p>其中 <code>&lt;condition&gt;</code> 可为布尔常量、数值或字符串比较、变量存在性判断、逻辑组合等多种形式。根据官方文档，以下情形会被视为“假”（False）：<code>0</code>/<code>&quot;0&quot;</code>、<code>OFF</code>/<code>&quot;OFF&quot;</code>、<code>NO</code>/<code>&quot;NO&quot;</code>、<code>FALSE</code>/<code>&quot;FALSE&quot;</code>、<code>NOTFOUND</code>、空字符串，或未定义变量；而 <code>1</code>/<code>&quot;1&quot;</code>、<code>ON</code>/<code>&quot;ON&quot;</code>、<code>YES</code>/<code>&quot;YES&quot;</code>、<code>TRUE</code>/<code>&quot;TRUE&quot;</code>、<code>Y</code>、非零数字等被视为“真”（True）(<a href="https://cmake.org/cmake/help/v3.1/command/if.html?utm_source=chatgpt.com" title="if — CMake 3.1.3 Documentation">cmake.org</a>, <a href="https://cmake.org/cmake/help/latest/command/if.html?utm_source=chatgpt.com" title="if — CMake 4.0.2 Documentation">cmake.org</a>)。</p>
 <p>在条件中若直接写 <code>&lt;variable&gt;</code>，CMake 会判别该变量是否已定义，且其值不在上述“假”列表中，则结果为真；否则为假。需特别注意的是，CMake 的 <code>if()</code> 并不会为布尔判断单独创建作用域，位于 <code>if()</code>/<code>endif()</code> 之间用 <code>set()</code> 定义的变量，会绑定到当前目录作用域并影响后续逻辑，而不会在 <code>endif()</code> 时销毁，这与大多数编程语言（如 C/C++）不同(<a href="https://cmake.org/cmake/help/latest/command/if.html?utm_source=chatgpt.com" title="if — CMake 4.0.2 Documentation">cmake.org</a>, <a href="https://cmake.org/cmake/help/latest/manual/cmake-language.7.html?utm_source=chatgpt.com" title="cmake-language(7) — CMake 4.0.0-rc4 Documentation">cmake.org</a>)。</p>
 <p>此外，比较操作（如 <code>EQUAL</code>、<code>LESS</code>、<code>GREATER</code>）、字符串比较（如 <code>STREQUAL</code>、<code>STRLESS</code>）、版本比较（如 <code>VERSION_LESS</code>、<code>VERSION_GREATER</code>）等，在遇到 <code>&lt;variable|string&gt;</code> 形式时，会先判断是否为已定义变量，再取其值进行比较；不存在时即按字面值处理。而逻辑运算符 <code>NOT</code>、<code>AND</code>、<code>OR</code> 则按照优先级自上而下依次解析(<a href="https://cmake.org/cmake/help/v3.18/command/if.html?utm_source=chatgpt.com" title="if — CMake 3.18.6 Documentation">cmake.org</a>, <a href="https://cmake.org/cmake/help/v3.1/command/if.html?utm_source=chatgpt.com" title="if — CMake 3.1.3 Documentation">cmake.org</a>)。</p>
@@ -157,21 +157,21 @@ if(&lt;condition&gt;) &lt;commands&gt; elseif(&lt;condition&gt;) &lt;commands&gt
 <li>
 <p><strong>使用 <code>if()</code></strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>if(<span style="color:#e6db74">WIN32</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  set(<span style="color:#e6db74">PLATFORM_LIBS</span> <span style="color:#e6db74">ws2_32</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>elseif(<span style="color:#e6db74">APPLE</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  set(<span style="color:#e6db74">PLATFORM_LIBS</span> <span style="color:#e6db74">&#34;-framework CoreFoundation&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>else()<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  set(<span style="color:#e6db74">PLATFORM_LIBS</span> <span style="color:#e6db74">pthread</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  set(<span style="color:#e6db74">PLATFORM_LIBS</span> <span style="color:#e6db74">ws2_32</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>elseif(<span style="color:#e6db74">APPLE</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  set(<span style="color:#e6db74">PLATFORM_LIBS</span> <span style="color:#e6db74">&#34;-framework CoreFoundation&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>else()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  set(<span style="color:#e6db74">PLATFORM_LIBS</span> <span style="color:#e6db74">pthread</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>add_executable(<span style="color:#e6db74">MyApp</span> <span style="color:#e6db74">main.cpp</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>target_link_libraries(<span style="color:#e6db74">MyApp</span> <span style="color:#e6db74">PRIVATE</span> <span style="color:#f92672">${</span>PLATFORM_LIBS<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>add_executable(<span style="color:#e6db74">MyApp</span> <span style="color:#e6db74">main.cpp</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>target_link_libraries(<span style="color:#e6db74">MyApp</span> <span style="color:#e6db74">PRIVATE</span> <span style="color:#f92672">${</span>PLATFORM_LIBS<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p>代码直观，对应平台关联系统库。条件判断在配置阶段即时生效(<a href="https://cmake.org/cmake/help/v3.1/command/if.html?utm_source=chatgpt.com" title="if — CMake 3.1.3 Documentation">cmake.org</a>, <a href="https://cmake.org/cmake/help/latest/command/if.html?utm_source=chatgpt.com" title="if — CMake 4.0.2 Documentation">cmake.org</a>)。</p>
 </li>
 <li>
 <p><strong>使用生成器表达式</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>add_executable(<span style="color:#e6db74">MyApp</span> <span style="color:#e6db74">main.cpp</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>target_link_libraries(<span style="color:#e6db74">MyApp</span> <span style="color:#e6db74">PRIVATE</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>target_link_libraries(<span style="color:#e6db74">MyApp</span> <span style="color:#e6db74">PRIVATE</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">$&lt;</span>$&lt;PLATFORM_ID:Windows<span style="color:#f92672">&gt;</span><span style="color:#e6db74">:ws2_32&gt;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">$&lt;</span>$&lt;PLATFORM_ID:Darwin<span style="color:#f92672">&gt;</span><span style="color:#e6db74">:</span><span style="color:#e6db74">&#34;-framework CoreFoundation&#34;</span><span style="color:#e6db74">&gt;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">$&lt;</span>$&lt;PLATFORM_ID:Linux<span style="color:#f92672">&gt;</span><span style="color:#e6db74">:pthread&gt;</span>
@@ -183,12 +183,12 @@ if(&lt;condition&gt;) &lt;commands&gt; elseif(&lt;condition&gt;) &lt;commands&gt
 <p>对于支持多配置的生成器（如 Visual Studio、Ninja Multi-Config），通过生成器表达式管理不同配置下的编译宏与选项是最佳实践：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>add_executable(<span style="color:#e6db74">MyLib</span> <span style="color:#e6db74">lib.cpp</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>target_compile_definitions(<span style="color:#e6db74">MyLib</span> <span style="color:#e6db74">PRIVATE</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>target_compile_definitions(<span style="color:#e6db74">MyLib</span> <span style="color:#e6db74">PRIVATE</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">$&lt;</span>$&lt;CONFIG:Debug<span style="color:#f92672">&gt;</span><span style="color:#e6db74">:DEBUG_MODE&gt;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">$&lt;</span>$&lt;CONFIG:Release<span style="color:#f92672">&gt;</span><span style="color:#e6db74">:NDEBUG&gt;</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>target_compile_options(<span style="color:#e6db74">MyLib</span> <span style="color:#e6db74">PRIVATE</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>target_compile_options(<span style="color:#e6db74">MyLib</span> <span style="color:#e6db74">PRIVATE</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">$&lt;</span>$&lt;CONFIG:Debug<span style="color:#f92672">&gt;</span><span style="color:#e6db74">:-g&gt;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">$&lt;</span>$&lt;CONFIG:RelWithDebInfo<span style="color:#f92672">&gt;</span><span style="color:#e6db74">:-O2</span> <span style="color:#e6db74">-g&gt;</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
@@ -197,17 +197,17 @@ if(&lt;condition&gt;) &lt;commands&gt; elseif(&lt;condition&gt;) &lt;commands&gt
 <p>在大型项目中，常需根据用户选项或检测结果决定是否链接某些第三方库。典型模式如下：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>option(<span style="color:#e6db74">USE_FOO</span> <span style="color:#e6db74">&#34;Enable FOO support&#34;</span> <span style="color:#e6db74">OFF</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>if(<span style="color:#e6db74">USE_FOO</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  find_package(<span style="color:#e6db74">FOO</span> <span style="color:#e6db74">REQUIRED</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  target_compile_definitions(<span style="color:#e6db74">MyApp</span> <span style="color:#e6db74">PRIVATE</span> <span style="color:#e6db74">USE_FOO</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  target_link_libraries(<span style="color:#e6db74">MyApp</span> <span style="color:#e6db74">PRIVATE</span> <span style="color:#e6db74">FOO::FOO</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if(<span style="color:#e6db74">USE_FOO</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  find_package(<span style="color:#e6db74">FOO</span> <span style="color:#e6db74">REQUIRED</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  target_compile_definitions(<span style="color:#e6db74">MyApp</span> <span style="color:#e6db74">PRIVATE</span> <span style="color:#e6db74">USE_FOO</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  target_link_libraries(<span style="color:#e6db74">MyApp</span> <span style="color:#e6db74">PRIVATE</span> <span style="color:#e6db74">FOO::FOO</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p>若用户通过 <code>-DUSE_FOO=ON</code> 开启，则执行 <code>find_package(FOO)</code>，并将 <code>FOO::FOO</code> 链接到目标。若将上述逻辑改为生成器表达式，可在链接阶段再判断：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>find_package(<span style="color:#e6db74">FOO</span> <span style="color:#e6db74">QUIET</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>target_compile_definitions(<span style="color:#e6db74">MyApp</span> <span style="color:#e6db74">PRIVATE</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>target_compile_definitions(<span style="color:#e6db74">MyApp</span> <span style="color:#e6db74">PRIVATE</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">$&lt;</span>$&lt;BOOL:${FOO_FOUND}<span style="color:#f92672">&gt;</span><span style="color:#e6db74">:USE_FOO&gt;</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>target_link_libraries(<span style="color:#e6db74">MyApp</span> <span style="color:#e6db74">PRIVATE</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>target_link_libraries(<span style="color:#e6db74">MyApp</span> <span style="color:#e6db74">PRIVATE</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">$&lt;</span>$&lt;BOOL:${FOO_FOUND}<span style="color:#f92672">&gt;</span><span style="color:#e6db74">:FOO::FOO&gt;</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p>此时，无需显式 <code>if(USE_FOO)</code>，而是通过 <code>$&lt;BOOL:${FOO_FOUND}&gt;</code> 判断 <code>find_package()</code> 成功与否，再决定是否传递宏与链接库，可有效简化脚本层次(<a href="https://stackoverflow.com/questions/68409032/why-cmake-option-command-should-be-on-or-off?utm_source=chatgpt.com" title="Why CMake option command should be ON or OFF? - Stack Overflow">stackoverflow.com</a>, <a href="https://cmake.org/cmake/help/v3.24/manual/cmake-generator-expressions.7.html?utm_source=chatgpt.com" title="cmake-generator-expressions(7) — CMake 3.24.4 Documentation">cmake.org</a>)。</p>
@@ -239,10 +239,10 @@ if(&lt;condition&gt;) &lt;commands&gt; elseif(&lt;condition&gt;) &lt;commands&gt
 <h3 id="42-条件逻辑与变量持久性陷阱">4.2 条件逻辑与变量持久性陷阱</h3>
 <p>CMake <code>if()</code> 本身不创建独立作用域，意味着在 <code>if()</code>/<code>endif()</code> 中用 <code>set()</code> 定义的普通变量，将绑定到当前目录作用域并对后续逻辑生效，除非显示指定 <code>PARENT_SCOPE</code> 或 <code>CACHE</code>。例如：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>if(<span style="color:#e6db74">USE_BAR</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  set(<span style="color:#e6db74">BAR_ENABLED</span> <span style="color:#e6db74">TRUE</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  set(<span style="color:#e6db74">BAR_ENABLED</span> <span style="color:#e6db74">TRUE</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>message(<span style="color:#e6db74">&#34;BAR_ENABLED = ${BAR_ENABLED}&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>message(<span style="color:#e6db74">&#34;BAR_ENABLED = ${BAR_ENABLED}&#34;</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><ul>
 <li>
 <p>若 <code>USE_BAR</code> 为真，则 <code>BAR_ENABLED</code> 被赋值 <code>TRUE</code> 并输出。</p>
@@ -253,9 +253,9 @@ if(&lt;condition&gt;) &lt;commands&gt; elseif(&lt;condition&gt;) &lt;commands&gt
 </ul>
 <p>此行为与许多编程语言不同，后者通常在 <code>if</code> 块结束时销毁局部变量。为避免此类风险，建议在条件外先初始化变量：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>set(<span style="color:#e6db74">BAR_ENABLED</span> <span style="color:#e6db74">FALSE</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>if(<span style="color:#e6db74">USE_BAR</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  set(<span style="color:#e6db74">BAR_ENABLED</span> <span style="color:#e6db74">TRUE</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if(<span style="color:#e6db74">USE_BAR</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  set(<span style="color:#e6db74">BAR_ENABLED</span> <span style="color:#e6db74">TRUE</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p>这样确保无论条件如何，<code>BAR_ENABLED</code> 都有确定值(<a href="https://cmake.org/cmake/help/v3.0/command/set.html?utm_source=chatgpt.com" title="set — CMake 3.0.2 Documentation">cmake.org</a>, <a href="https://manpages.debian.org/jessie/cmake-data/cmake-commands.7.en.html?utm_source=chatgpt.com" title="cmake-commands(7) — cmake-data — Debian jessie — Debian Manpages">manpages.debian.org</a>)。</p>
 <h3 id="43-parent_scope-与-cache-的典型场景">4.3 <code>PARENT_SCOPE</code> 与 <code>CACHE</code> 的典型场景</h3>
 <ul>
@@ -263,25 +263,25 @@ if(&lt;condition&gt;) &lt;commands&gt; elseif(&lt;condition&gt;) &lt;commands&gt
 <p><strong><code>PARENT_SCOPE</code></strong><br>
 用于将某个子目录中定义的变量值“上抛”到直接父目录作用域。例如：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 根 CMakeLists.txt
-</span></span></span><span style="display:flex;"><span>set(<span style="color:#e6db74">FOO_FOUND</span> <span style="color:#e6db74">FALSE</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>add_subdirectory(<span style="color:#e6db74">libfoo</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>if(<span style="color:#e6db74">FOO_FOUND</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;Foo 已启用&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>set(<span style="color:#e6db74">FOO_FOUND</span> <span style="color:#e6db74">FALSE</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>add_subdirectory(<span style="color:#e6db74">libfoo</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if(<span style="color:#e6db74">FOO_FOUND</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;Foo 已启用&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># libfoo/CMakeLists.txt
-</span></span></span><span style="display:flex;"><span>if(<span style="color:#e6db74">USE_FOO</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  add_library(<span style="color:#e6db74">foo</span> <span style="color:#e6db74">STATIC</span> <span style="color:#e6db74">foo.cpp</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  set(<span style="color:#e6db74">FOO_FOUND</span> <span style="color:#e6db74">TRUE</span> <span style="color:#e6db74">PARENT_SCOPE</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>if(<span style="color:#e6db74">USE_FOO</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  add_library(<span style="color:#e6db74">foo</span> <span style="color:#e6db74">STATIC</span> <span style="color:#e6db74">foo.cpp</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  set(<span style="color:#e6db74">FOO_FOUND</span> <span style="color:#e6db74">TRUE</span> <span style="color:#e6db74">PARENT_SCOPE</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p>当 <code>USE_FOO</code> 为真时，<code>FOO_FOUND</code> 在 <code>libfoo</code> 中被置为 <code>TRUE</code> 并传递至根目录，根目录即可检测到子模块状态。但需注意，<code>PARENT_SCOPE</code> 仅将绑定传递给直接父目录，若需跨层次传递，则需多次使用或借助缓存变量(<a href="https://stuff.mit.edu/afs/athena/software/root_v6.12/arch/amd64_linux26/doc/cmake/html/manual/cmake-language.7.html?utm_source=chatgpt.com" title="cmake-language(7) — CMake 3.10.1 Documentation">stuff.mit.edu</a>, <a href="https://releases.llvm.org/18.1.1/docs/CMakePrimer.html?utm_source=chatgpt.com" title="CMake Primer — LLVM 18.1.1 documentation">releases.llvm.org</a>)。</p>
 </li>
 <li>
 <p><strong><code>CACHE</code></strong><br>
 缓存变量适用于用户可在 CMake GUI（如 ccmake、cmake-gui）或命令行 <code>-D</code> 提供交互式配置的场景。例如：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>option(<span style="color:#e6db74">ENABLE_BAZ</span> <span style="color:#e6db74">&#34;Enable BAZ feature&#34;</span> <span style="color:#e6db74">OFF</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>if(<span style="color:#e6db74">ENABLE_BAZ</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  add_subdirectory(<span style="color:#e6db74">baz</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if(<span style="color:#e6db74">ENABLE_BAZ</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  add_subdirectory(<span style="color:#e6db74">baz</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p>该语句将 <code>ENABLE_BAZ</code> 写入缓存，用户可以在后续配置时修改其值。如果使用 <code>set(VAR val CACHE TYPE &quot;doc&quot;)</code>，则在首次加入缓存后，除非加上 <code>FORCE</code>，否则后续同名缓存设置不会覆盖已存在值；当前目录 <code>set(VAR val)</code> 会屏蔽缓存中同名条目，直到该局部变量失效或被 <code>unset()</code> 删除(<a href="https://cmake.org/cmake/help/v3.0/command/set.html?utm_source=chatgpt.com" title="set — CMake 3.0.2 Documentation">cmake.org</a>, <a href="https://manpages.debian.org/jessie/cmake-data/cmake-commands.7.en.html?utm_source=chatgpt.com" title="cmake-commands(7) — cmake-data — Debian jessie — Debian Manpages">manpages.debian.org</a>)。</p>
 </li>
 </ul>
@@ -316,10 +316,10 @@ if(&lt;condition&gt;) &lt;commands&gt; elseif(&lt;condition&gt;) &lt;commands&gt
 <li>
 <p><strong>示例</strong>：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>if(<span style="color:#e6db74">USE_FOO</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;FOO 支持已启用&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>else()<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;FOO 支持未启用&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;FOO 支持已启用&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>else()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;FOO 支持未启用&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p>由于 <code>option()</code> 默认将 <code>USE_FOO</code> 设为 <code>OFF</code>，执行初次配置时，<code>if(USE_FOO)</code> 判断为假，会输出“FOO 支持未启用”。</p>
 </li>
 </ul>
@@ -333,10 +333,10 @@ if(&lt;condition&gt;) &lt;commands&gt; elseif(&lt;condition&gt;) &lt;commands&gt
 <li>
 <p><strong>示例</strong>：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>if(<span style="color:#e6db74">DEFINED</span> <span style="color:#e6db74">USE_FOO</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;USE_FOO 已在缓存或目录中定义，当前值 = ${USE_FOO}&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>else()<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;USE_FOO 未定义，需要先调用 option()&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;USE_FOO 已在缓存或目录中定义，当前值 = ${USE_FOO}&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>else()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;USE_FOO 未定义，需要先调用 option()&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p>首次执行会输出“USE_FOO 已在缓存或目录中定义，当前值 = OFF”；若用户执行 <code>cmake --fresh</code> 删除缓存并未再次调用 <code>option()</code>，则输出“USE_FOO 未定义”。</p>
 </li>
 </ul>
@@ -350,8 +350,8 @@ if(&lt;condition&gt;) &lt;commands&gt; elseif(&lt;condition&gt;) &lt;commands&gt
 <li>
 <p><strong>示例用法</strong>：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>if(<span style="color:#e6db74">NOT</span> <span style="color:#e6db74">DEFINED</span> <span style="color:#e6db74">USE_FOO</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  option(<span style="color:#e6db74">USE_FOO</span> <span style="color:#e6db74">&#34;Enable FOO support&#34;</span> <span style="color:#e6db74">OFF</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  option(<span style="color:#e6db74">USE_FOO</span> <span style="color:#e6db74">&#34;Enable FOO support&#34;</span> <span style="color:#e6db74">OFF</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p>保证了无论在何处首次调用该片段，都只会有一次“写入缓存”操作，避免在多个子模块重复定义而产生冲突。</p>
 </li>
 </ul>
@@ -366,37 +366,37 @@ if(&lt;condition&gt;) &lt;commands&gt; elseif(&lt;condition&gt;) &lt;commands&gt
 <li>
 <p><strong>project_root/CMakeLists.txt</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>cmake_minimum_required(<span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">3.15</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>project(<span style="color:#e6db74">MyProject</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>project(<span style="color:#e6db74">MyProject</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 若尚未定义 USE_FOO，则初始化
-</span></span></span><span style="display:flex;"><span>if(<span style="color:#e6db74">NOT</span> <span style="color:#e6db74">DEFINED</span> <span style="color:#e6db74">USE_FOO</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  option(<span style="color:#e6db74">USE_FOO</span> <span style="color:#e6db74">&#34;Enable FOO support&#34;</span> <span style="color:#e6db74">OFF</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 若尚未定义 USE_FOO，则初始化
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>if(<span style="color:#e6db74">NOT</span> <span style="color:#e6db74">DEFINED</span> <span style="color:#e6db74">USE_FOO</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  option(<span style="color:#e6db74">USE_FOO</span> <span style="color:#e6db74">&#34;Enable FOO support&#34;</span> <span style="color:#e6db74">OFF</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>if(<span style="color:#e6db74">DEFINED</span> <span style="color:#e6db74">USE_FOO</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;根目录：USE_FOO 已定义，当前值 = ${USE_FOO}&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if(<span style="color:#e6db74">DEFINED</span> <span style="color:#e6db74">USE_FOO</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;根目录：USE_FOO 已定义，当前值 = ${USE_FOO}&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>if(<span style="color:#e6db74">USE_FOO</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;根目录：FOO 支持已启用&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>else()<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;根目录：FOO 支持未启用&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if(<span style="color:#e6db74">USE_FOO</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;根目录：FOO 支持已启用&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>else()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;根目录：FOO 支持未启用&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>add_subdirectory(<span style="color:#e6db74">libfoo</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>add_subdirectory(<span style="color:#e6db74">libfoo</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div></li>
 <li>
 <p><strong>libfoo/CMakeLists.txt</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>if(<span style="color:#e6db74">DEFINED</span> <span style="color:#e6db74">USE_FOO</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;libfoo：检测到 USE_FOO，当前值 = ${USE_FOO}&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;libfoo：检测到 USE_FOO，当前值 = ${USE_FOO}&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>if(<span style="color:#e6db74">USE_FOO</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  add_library(<span style="color:#e6db74">foo</span> <span style="color:#e6db74">STATIC</span> <span style="color:#e6db74">foo.cpp</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;libfoo：已构建 foo 库&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>else()<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;libfoo：跳过 foo 库构建&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>if(<span style="color:#e6db74">USE_FOO</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  add_library(<span style="color:#e6db74">foo</span> <span style="color:#e6db74">STATIC</span> <span style="color:#e6db74">foo.cpp</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;libfoo：已构建 foo 库&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>else()<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;libfoo：跳过 foo 库构建&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div></li>
 </ul>
 <p><strong>执行流程示例</strong></p>

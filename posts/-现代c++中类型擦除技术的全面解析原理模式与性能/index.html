@@ -45,9 +45,9 @@ void * 和继承都可以被视为某种形式的类型擦除。然而，在现�
 核心原则：现代C&#43;&#43;类型擦除是一种旨在 将接口与其实现解耦 的技术，它为 不相关的类型 提供了 非侵入式 的 运行时多态，同时保持了 值语义（value semantics）。">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
-      <link rel="stylesheet" href="/css/bundle.min.35b15f72eff61cbb106d05bab1ea1aebb778d0ba2861c763af0af0d80f43db4f.css" integrity="sha256-NbFfcu/2HLsQbQW6seoa67d40LooYcdjrwrw2A9D208=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
 
-      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.3928d3d2172bc0b5f75d9458fb9255f0befce1c7239ba6e5d2c58ed4b82c2073.js" integrity="sha256-OSjT0hcrwLX3XZRY&#43;5JV8L784ccjm6bl0sWO1LgsIHM="></script>
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
 <script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -249,11 +249,11 @@ void * 和继承都可以被视为某种形式的类型擦除。然而，在现�
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;memory&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;ostream&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// --- 1. 待擦除的具体类型 ---
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 这些是我们将要通过类型擦除技术统一处理的类。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 它们之间没有任何继承关系，唯一的共同点是都提供了一个 `draw(std::ostream&amp;)` 方法。
-</span></span></span><span style="display:flex;"><span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Circle</span> {
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">explicit</span> Circle(<span style="color:#66d9ef">double</span> radius) <span style="color:#f92672">:</span> m_radius(radius) {}
@@ -288,80 +288,80 @@ void * 和继承都可以被视为某种形式的类型擦除。然而，在现�
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// --- 2. 类型擦除包装器 (Handle) ---
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// `Drawable` 是公开的句柄类，用户通过它与不同形状进行交互。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 它本身不是模板，因此可以存储在标准容器中。
-</span></span></span><span style="display:flex;"><span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Drawable</span> {
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 模板构造函数，接受任何类型 T 的对象。
-</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 这是类型擦除的入口点。
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 这是类型擦除的入口点。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>    Drawable(T shape)
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 通过 make_unique 创建一个 Model&lt;T&gt; 的实例，并将其存储在 pimpl 中。
-</span></span></span><span style="display:flex;"><span>        <span style="color:#75715e">// pimpl 的类型是 Concept*，从而“擦除”了 T 的具体类型。
-</span></span></span><span style="display:flex;"><span>        <span style="color:#f92672">:</span> pimpl(std<span style="color:#f92672">::</span>make_unique<span style="color:#f92672">&lt;</span>Model<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&gt;</span>(std<span style="color:#f92672">::</span>move(shape))) {}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// pimpl 的类型是 Concept*，从而“擦除”了 T 的具体类型。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#f92672">:</span> pimpl(std<span style="color:#f92672">::</span>make_unique<span style="color:#f92672">&lt;</span>Model<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&gt;</span>(std<span style="color:#f92672">::</span>move(shape))) {}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 拷贝构造函数，实现多态复制。
-</span></span></span><span style="display:flex;"><span>    Drawable(<span style="color:#66d9ef">const</span> Drawable<span style="color:#f92672">&amp;</span> other) <span style="color:#f92672">:</span> pimpl(other.pimpl<span style="color:#f92672">-&gt;</span>clone()) {}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    Drawable(<span style="color:#66d9ef">const</span> Drawable<span style="color:#f92672">&amp;</span> other) <span style="color:#f92672">:</span> pimpl(other.pimpl<span style="color:#f92672">-&gt;</span>clone()) {}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 拷贝赋值运算符。
-</span></span></span><span style="display:flex;"><span>    Drawable<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(<span style="color:#66d9ef">const</span> Drawable<span style="color:#f92672">&amp;</span> other) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    Drawable<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(<span style="color:#66d9ef">const</span> Drawable<span style="color:#f92672">&amp;</span> other) {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 使用 copy-and-swap 惯用法保证强异常安全。
-</span></span></span><span style="display:flex;"><span>        pimpl <span style="color:#f92672">=</span> other.pimpl<span style="color:#f92672">-&gt;</span>clone();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        pimpl <span style="color:#f92672">=</span> other.pimpl<span style="color:#f92672">-&gt;</span>clone();
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">this</span>;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 移动构造函数。
-</span></span></span><span style="display:flex;"><span>    Drawable(Drawable<span style="color:#f92672">&amp;&amp;</span> other) <span style="color:#66d9ef">noexcept</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    Drawable(Drawable<span style="color:#f92672">&amp;&amp;</span> other) <span style="color:#66d9ef">noexcept</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 移动赋值运算符。
-</span></span></span><span style="display:flex;"><span>    Drawable<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(Drawable<span style="color:#f92672">&amp;&amp;</span> other) <span style="color:#66d9ef">noexcept</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    Drawable<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(Drawable<span style="color:#f92672">&amp;&amp;</span> other) <span style="color:#66d9ef">noexcept</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 析构函数（默认实现即可，因为 unique_ptr 会自动管理内存）。
-</span></span></span><span style="display:flex;"><span>    <span style="color:#f92672">~</span>Drawable() <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">~</span>Drawable() <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 公开的 draw 方法，将调用委托给内部实现。
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">draw</span>(std<span style="color:#f92672">::</span>ostream<span style="color:#f92672">&amp;</span> out) <span style="color:#66d9ef">const</span> {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">draw</span>(std<span style="color:#f92672">::</span>ostream<span style="color:#f92672">&amp;</span> out) <span style="color:#66d9ef">const</span> {
 </span></span><span style="display:flex;"><span>        pimpl<span style="color:#f92672">-&gt;</span>draw(out);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// --- 内部实现：Concept 和 Model ---
-</span></span></span><span style="display:flex;"><span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 2a. Concept (概念): 定义了所有可绘制对象必须遵守的内部接口。
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Concept</span> {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Concept</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">virtual</span> <span style="color:#f92672">~</span>Concept() <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">draw</span>(std<span style="color:#f92672">::</span>ostream<span style="color:#f92672">&amp;</span> out) <span style="color:#66d9ef">const</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 原型模式：定义一个纯虚的 clone 方法用于多态复制。
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">virtual</span> std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>Concept<span style="color:#f92672">&gt;</span> clone() <span style="color:#66d9ef">const</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">virtual</span> std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>Concept<span style="color:#f92672">&gt;</span> clone() <span style="color:#66d9ef">const</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>    };
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 2b. Model (模型): 模板类，用于将任意类型 T 适配到 Concept 接口。
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Model</span> <span style="color:#66d9ef">final</span> <span style="color:#f92672">:</span> Concept {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 构造函数，持有具体类型 T 的一个实例。
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">explicit</span> <span style="color:#a6e22e">Model</span>(T shape) <span style="color:#f92672">:</span> m_shape(std<span style="color:#f92672">::</span>move(shape)) {}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">explicit</span> <span style="color:#a6e22e">Model</span>(T shape) <span style="color:#f92672">:</span> m_shape(std<span style="color:#f92672">::</span>move(shape)) {}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 实现 Concept 的 draw 接口，将调用转发给持有的 T 对象。
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">draw</span>(std<span style="color:#f92672">::</span>ostream<span style="color:#f92672">&amp;</span> out) <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">override</span> {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">draw</span>(std<span style="color:#f92672">::</span>ostream<span style="color:#f92672">&amp;</span> out) <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">override</span> {
 </span></span><span style="display:flex;"><span>            m_shape.draw(out);
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 实现多态复制，通过拷贝自身来创建一个新的 Model&lt;T&gt;。
-</span></span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>Concept<span style="color:#f92672">&gt;</span> clone() <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">override</span> {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>Concept<span style="color:#f92672">&gt;</span> clone() <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">override</span> {
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> std<span style="color:#f92672">::</span>make_unique<span style="color:#f92672">&lt;</span>Model<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&gt;</span>(<span style="color:#f92672">*</span><span style="color:#66d9ef">this</span>);
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        T m_shape; <span style="color:#75715e">// 持有的具体形状对象。
-</span></span></span><span style="display:flex;"><span>    };
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    };
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 桥接模式的核心：句柄持有一个指向实现接口的指针。
-</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 这就是所谓的 &#34;Pointer to Implementation&#34; (PIMPL)。
-</span></span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>Concept<span style="color:#f92672">&gt;</span> pimpl;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 这就是所谓的 &#34;Pointer to Implementation&#34; (PIMPL)。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>Concept<span style="color:#f92672">&gt;</span> pimpl;
 </span></span><span style="display:flex;"><span>};
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// --- 3. 客户端代码 ---
-</span></span></span><span style="display:flex;"><span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 一个函数，接受一个包含不同 Drawable 对象的 vector，并依次绘制它们。
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">draw_all_shapes</span>(<span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>Drawable<span style="color:#f92672">&gt;&amp;</span> shapes) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">draw_all_shapes</span>(<span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>Drawable<span style="color:#f92672">&gt;&amp;</span> shapes) {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;--- Drawing all shapes ---</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> shape : shapes) {
 </span></span><span style="display:flex;"><span>        shape.draw(std<span style="color:#f92672">::</span>cout);
@@ -371,22 +371,22 @@ void * 和继承都可以被视为某种形式的类型擦除。然而，在现�
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 创建一个异质容器，它可以存储任何满足 &#34;Drawable&#34; 概念的对象。
-</span></span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>Drawable<span style="color:#f92672">&gt;</span> document;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>Drawable<span style="color:#f92672">&gt;</span> document;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 添加不同类型的对象。注意，我们直接传递具体类型对象，
-</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Drawable 的模板构造函数会自动处理类型擦除。
-</span></span></span><span style="display:flex;"><span>    document.emplace_back(Circle(<span style="color:#ae81ff">2.0</span>));
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// Drawable 的模板构造函数会自动处理类型擦除。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    document.emplace_back(Circle(<span style="color:#ae81ff">2.0</span>));
 </span></span><span style="display:flex;"><span>    document.emplace_back(Square(<span style="color:#ae81ff">3.5</span>));
 </span></span><span style="display:flex;"><span>    document.emplace_back(Triangle(<span style="color:#ae81ff">4.0</span>, <span style="color:#ae81ff">5.0</span>));
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 第一次绘制所有形状。
-</span></span></span><span style="display:flex;"><span>    draw_all_shapes(document);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    draw_all_shapes(document);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 演示值语义：可以对容器中的对象进行复制。
-</span></span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>Drawable<span style="color:#f92672">&gt;</span> copied_document <span style="color:#f92672">=</span> document;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>Drawable<span style="color:#f92672">&gt;</span> copied_document <span style="color:#f92672">=</span> document;
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 修改原始 document 中的一个元素。
-</span></span></span><span style="display:flex;"><span>    document <span style="color:#f92672">=</span> Square(<span style="color:#ae81ff">1.0</span>);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    document <span style="color:#f92672">=</span> Square(<span style="color:#ae81ff">1.0</span>);
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;--- After modifying original document ---</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
 </span></span><span style="display:flex;"><span>    draw_all_shapes(document);
@@ -437,10 +437,10 @@ void * 和继承都可以被视为某种形式的类型擦除。然而，在现�
 <li><strong>缓冲区定义</strong>：在句柄类（如 Drawable）内部，使用 <code>std::aligned_storage</code>（C++11/14）或 <code>std::byte</code>（C++17及以后）定义一块具有特定大小和对齐要求的原始内存缓冲区。</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">// 在 Drawable 类中
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">constexpr</span> size_t SBO_SIZE <span style="color:#f92672">=</span> <span style="color:#ae81ff">32</span>;      <span style="color:#75715e">// 缓冲区大小
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">constexpr</span> size_t SBO_ALIGN <span style="color:#f92672">=</span> <span style="color:#66d9ef">alignof</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span>); <span style="color:#75715e">// 对齐要求
-</span></span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>aligned_storage_t<span style="color:#f92672">&lt;</span>SBO_SIZE, SBO_ALIGN<span style="color:#f92672">&gt;</span> m_buffer;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">constexpr</span> size_t SBO_ALIGN <span style="color:#f92672">=</span> <span style="color:#66d9ef">alignof</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span>); <span style="color:#75715e">// 对齐要求
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>aligned_storage_t<span style="color:#f92672">&lt;</span>SBO_SIZE, SBO_ALIGN<span style="color:#f92672">&gt;</span> m_buffer;
 </span></span></code></pre></div><ol start="2">
 <li><strong>构造时的决策</strong>：在模板构造函数中，使用 <code>static_assert</code> 或<code> if constexpr</code>（C++17）在编译期检查被包装的 <code>Model&lt;T&gt;</code> 对象的大小和对齐是否满足SBO条件。</li>
 </ol>
@@ -449,14 +449,14 @@ void * 和继承都可以被视为某种形式的类型擦除。然而，在现�
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> Model_t <span style="color:#f92672">=</span> Model<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">constexpr</span> (<span style="color:#66d9ef">sizeof</span>(Model_t) <span style="color:#f92672">&lt;=</span> SBO_SIZE <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">alignof</span>(Model_t) <span style="color:#f92672">&lt;=</span> SBO_ALIGN) {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// SBO路径：使用 placement new 在缓冲区内构造
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> (<span style="color:#f92672">&amp;</span>m_buffer) Model_t(std<span style="color:#f92672">::</span>move(shape));
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">new</span> (<span style="color:#f92672">&amp;</span>m_buffer) Model_t(std<span style="color:#f92672">::</span>move(shape));
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 还需要存储一个函数指针来调用正确的析构函数
-</span></span></span><span style="display:flex;"><span>        m_destructor <span style="color:#f92672">=</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> self) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        m_destructor <span style="color:#f92672">=</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> self) {
 </span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>destroy_at(<span style="color:#66d9ef">static_cast</span><span style="color:#f92672">&lt;</span>Model_t<span style="color:#f92672">*&gt;</span>(self));
 </span></span><span style="display:flex;"><span>        };
 </span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 堆分配路径：回退到使用智能指针
-</span></span></span><span style="display:flex;"><span>        pimpl <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>make_unique<span style="color:#f92672">&lt;</span>Model_t<span style="color:#f92672">&gt;</span>(std<span style="color:#f92672">::</span>move(shape));
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        pimpl <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>make_unique<span style="color:#f92672">&lt;</span>Model_t<span style="color:#f92672">&gt;</span>(std<span style="color:#f92672">::</span>move(shape));
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="3">
@@ -510,14 +510,14 @@ void * 和继承都可以被视为某种形式的类型擦除。然而，在现�
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">draw</span>(std<span style="color:#f92672">::</span>ostream<span style="color:#f92672">&amp;</span> out) <span style="color:#66d9ef">const</span> { storage.get()<span style="color:#f92672">-&gt;</span>draw(out); }
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">//...
-</span></span></span><span style="display:flex;"><span>};
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
 </span></span></code></pre></div><ol start="3">
 <li><strong>使用</strong>：用户可以根据具体需求在编译时选择最合适的策略。</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">// 使用动态分配
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> DynamicShape <span style="color:#f92672">=</span> Shape<span style="color:#f92672">&lt;</span>DynamicStoragePolicy<span style="color:#f92672">&gt;</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> DynamicShape <span style="color:#f92672">=</span> Shape<span style="color:#f92672">&lt;</span>DynamicStoragePolicy<span style="color:#f92672">&gt;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 使用32字节的SBO
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> SmallShape <span style="color:#f92672">=</span> Shape<span style="color:#f92672">&lt;</span>SBOStoragePolicy<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">32</span>, <span style="color:#66d9ef">alignof</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span>)<span style="color:#f92672">&gt;&gt;</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> SmallShape <span style="color:#f92672">=</span> Shape<span style="color:#f92672">&lt;</span>SBOStoragePolicy<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">32</span>, <span style="color:#66d9ef">alignof</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span>)<span style="color:#f92672">&gt;&gt;</span>;
 </span></span></code></pre></div><p><strong>优势</strong>：这种方法提供了极高的灵活性，允许用户为不同的应用场景量身定制类型擦除对象的行为，从而在性能和资源使用之间做出最优的权衡。</p>
 <h2 id="第四部分c标准库中的类型擦除">第四部分：C++标准库中的类型擦除</h2>
 <p>C++标准库本身就提供了几个利用类型擦除技术构建的强大组件。分析它们的设计与实现，有助于我们深入理解类型擦除的实际应用和权衡。</p>
