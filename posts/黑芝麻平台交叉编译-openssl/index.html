@@ -192,11 +192,11 @@ root@028337952dd7:/home/misc/openssl-1.1.1k# ./Configure Usage: Configure [no-&l
 <p>按照上述配置完成之后，编译失败：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@028337952dd7:/home/misc/openssl-1.1.1k# make -j
 </span></span><span style="display:flex;"><span>/opt/bstos/linux-23/sysroots/x86_64-bstsdk-linux/usr/bin/perl.real <span style="color:#e6db74">&#34;-I.&#34;</span> -Mconfigdata <span style="color:#e6db74">&#34;util/dofile.pl&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#34;-oMakefile&#34;</span> include/crypto/bn_conf.h.in &gt; include/crypto/bn_conf.h
+</span></span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;-oMakefile&#34;</span> include/crypto/bn_conf.h.in &gt; include/crypto/bn_conf.h
 </span></span><span style="display:flex;"><span>/opt/bstos/linux-23/sysroots/x86_64-bstsdk-linux/usr/bin/perl.real <span style="color:#e6db74">&#34;-I.&#34;</span> -Mconfigdata <span style="color:#e6db74">&#34;util/dofile.pl&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#34;-oMakefile&#34;</span> include/crypto/dso_conf.h.in &gt; include/crypto/dso_conf.h
+</span></span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;-oMakefile&#34;</span> include/crypto/dso_conf.h.in &gt; include/crypto/dso_conf.h
 </span></span><span style="display:flex;"><span>/opt/bstos/linux-23/sysroots/x86_64-bstsdk-linux/usr/bin/perl.real <span style="color:#e6db74">&#34;-I.&#34;</span> -Mconfigdata <span style="color:#e6db74">&#34;util/dofile.pl&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#34;-oMakefile&#34;</span> include/openssl/opensslconf.h.in &gt; include/openssl/opensslconf.h
+</span></span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;-oMakefile&#34;</span> include/openssl/opensslconf.h.in &gt; include/openssl/opensslconf.h
 </span></span><span style="display:flex;"><span>make depend <span style="color:#f92672">&amp;&amp;</span> make _all
 </span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: Entering directory <span style="color:#e6db74">&#39;/home/misc/openssl-1.1.1k&#39;</span>
 </span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: Leaving directory <span style="color:#e6db74">&#39;/home/misc/openssl-1.1.1k&#39;</span>
@@ -257,11 +257,11 @@ root@028337952dd7:/home/misc/openssl-1.1.1k# ./Configure Usage: Configure [no-&l
 </span></span></code></pre></div><p>由于配置的平台是 x86_64 增加了 -m64 编译选项，但是交叉编译器不支持导致编译失败：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@028337952dd7:/home/misc/openssl-1.1.1k# make -j
 </span></span><span style="display:flex;"><span>/opt/bstos/linux-23/sysroots/x86_64-bstsdk-linux/usr/bin/perl.real <span style="color:#e6db74">&#34;-I.&#34;</span> -Mconfigdata <span style="color:#e6db74">&#34;util/dofile.pl&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#34;-oMakefile&#34;</span> include/crypto/bn_conf.h.in &gt; include/crypto/bn_conf.h
+</span></span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;-oMakefile&#34;</span> include/crypto/bn_conf.h.in &gt; include/crypto/bn_conf.h
 </span></span><span style="display:flex;"><span>/opt/bstos/linux-23/sysroots/x86_64-bstsdk-linux/usr/bin/perl.real <span style="color:#e6db74">&#34;-I.&#34;</span> -Mconfigdata <span style="color:#e6db74">&#34;util/dofile.pl&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#34;-oMakefile&#34;</span> include/crypto/dso_conf.h.in &gt; include/crypto/dso_conf.h
+</span></span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;-oMakefile&#34;</span> include/crypto/dso_conf.h.in &gt; include/crypto/dso_conf.h
 </span></span><span style="display:flex;"><span>/opt/bstos/linux-23/sysroots/x86_64-bstsdk-linux/usr/bin/perl.real <span style="color:#e6db74">&#34;-I.&#34;</span> -Mconfigdata <span style="color:#e6db74">&#34;util/dofile.pl&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#34;-oMakefile&#34;</span> include/openssl/opensslconf.h.in &gt; include/openssl/opensslconf.h
+</span></span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;-oMakefile&#34;</span> include/openssl/opensslconf.h.in &gt; include/openssl/opensslconf.h
 </span></span><span style="display:flex;"><span>make depend <span style="color:#f92672">&amp;&amp;</span> make _all
 </span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: Entering directory <span style="color:#e6db74">&#39;/home/misc/openssl-1.1.1k&#39;</span>
 </span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: Leaving directory <span style="color:#e6db74">&#39;/home/misc/openssl-1.1.1k&#39;</span>

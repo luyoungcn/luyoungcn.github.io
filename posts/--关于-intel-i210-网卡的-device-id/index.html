@@ -152,12 +152,12 @@
 <h2 id="二验证i210-的-device-id-与驱动宏定义匹配">二、验证：I210 的 Device ID 与驱动宏定义匹配</h2>
 <p>结合你之前提供的驱动代码中的宏定义，I210 系列的 Device ID 预定义如下（核对是否与你查询到的一致）：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 你之前提供的 igb 驱动宏定义
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define E1000_DEV_ID_I210_COPPER			0x1533  </span><span style="color:#75715e">// 铜缆接口（RJ45）
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define E1000_DEV_ID_I210_FIBER			0x1536  </span><span style="color:#75715e">// 光纤接口
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define E1000_DEV_ID_I210_SERDES			0x1537  </span><span style="color:#75715e">// SERDES 接口
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define E1000_DEV_ID_I210_SGMII			0x1538  </span><span style="color:#75715e">// SGMII 接口
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define E1000_DEV_ID_I210_COPPER_FLASHLESS	0x157B  </span><span style="color:#75715e">// 无闪存铜缆版
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define E1000_DEV_ID_I210_SERDES_FLASHLESS	0x157C  </span><span style="color:#75715e">// 无闪存 SERDES 版
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define E1000_DEV_ID_I210_COPPER			0x1533  </span><span style="color:#75715e">// 铜缆接口（RJ45）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define E1000_DEV_ID_I210_FIBER			0x1536  </span><span style="color:#75715e">// 光纤接口
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define E1000_DEV_ID_I210_SERDES			0x1537  </span><span style="color:#75715e">// SERDES 接口
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define E1000_DEV_ID_I210_SGMII			0x1538  </span><span style="color:#75715e">// SGMII 接口
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define E1000_DEV_ID_I210_COPPER_FLASHLESS	0x157B  </span><span style="color:#75715e">// 无闪存铜缆版
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define E1000_DEV_ID_I210_SERDES_FLASHLESS	0x157C  </span><span style="color:#75715e">// 无闪存 SERDES 版
 </span></span></span></code></pre></div><ul>
 <li>你的 I210 是 <strong>铜缆接口（RJ45）</strong>，查询到的 Device ID 应为 <code>0x1533</code>（对应 <code>E1000_DEV_ID_I210_COPPER</code>）；</li>
 <li>若查询到的 Device ID 是其他值（如 <code>0x1536</code>），则对应 I210 的其他硬件形态（如光纤版）。</li>

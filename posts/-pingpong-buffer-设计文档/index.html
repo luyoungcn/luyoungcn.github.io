@@ -205,10 +205,10 @@ write_idx.store(new_index, std::memory_order_release); read_idx.store(old_write_
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PingPongBuffer</span> {
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> write(<span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span> data);      <span style="color:#75715e">// 写入并 flip
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">read</span>(T<span style="color:#f92672">&amp;</span> data);             <span style="color:#75715e">// 读取 buffer
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">reset</span>();                   <span style="color:#75715e">// 重置状态
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isFresh</span>() <span style="color:#66d9ef">const</span>;           <span style="color:#75715e">// 是否有新数据
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">uint64_t</span> <span style="color:#a6e22e">getFrameId</span>() <span style="color:#66d9ef">const</span>;
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">read</span>(T<span style="color:#f92672">&amp;</span> data);             <span style="color:#75715e">// 读取 buffer
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">reset</span>();                   <span style="color:#75715e">// 重置状态
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isFresh</span>() <span style="color:#66d9ef">const</span>;           <span style="color:#75715e">// 是否有新数据
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint64_t</span> <span style="color:#a6e22e">getFrameId</span>() <span style="color:#66d9ef">const</span>;
 </span></span><span style="display:flex;"><span>    size_t <span style="color:#a6e22e">getOverrunCount</span>() <span style="color:#66d9ef">const</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>

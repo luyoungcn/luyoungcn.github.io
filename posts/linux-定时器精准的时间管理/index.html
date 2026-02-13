@@ -148,16 +148,16 @@ POSIX 定时器简介 POSIX 定时器是符合 POSIX.1b 标准的实时扩展的
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;errno.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">timer_t</span> timerid;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> sigevent sev;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 设置定时器到期时的通知方式为信号
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    sev.sigev_notify <span style="color:#f92672">=</span> SIGEV_SIGNAL;
+</span></span></span><span style="display:flex;"><span>    sev.sigev_notify <span style="color:#f92672">=</span> SIGEV_SIGNAL;
 </span></span><span style="display:flex;"><span>    sev.sigev_signo <span style="color:#f92672">=</span> SIGRTMIN; <span style="color:#75715e">// 使用一个实时信号
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    sev.sigev_value.sival_ptr <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>timerid; <span style="color:#75715e">// 传递定时器 ID
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>    sev.sigev_value.sival_ptr <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>timerid; <span style="color:#75715e">// 传递定时器 ID
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_create</span>(CLOCK_REALTIME, <span style="color:#f92672">&amp;</span>sev, <span style="color:#f92672">&amp;</span>timerid) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;timer_create&#34;</span>);
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(EXIT_FAILURE);
@@ -166,7 +166,7 @@ POSIX 定时器简介 POSIX 定时器是符合 POSIX.1b 标准的实时扩展的
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;定时器创建成功，ID: %ld</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, (<span style="color:#66d9ef">long</span>)timerid);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... 后续设置和使用定时器的代码 ...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><strong>代码解释:</strong></p>
@@ -200,9 +200,9 @@ POSIX 定时器简介 POSIX 定时器是符合 POSIX.1b 标准的实时扩展的
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;errno.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#define TIMER_SIG SIGRTMIN
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">timer_handler</span>(<span style="color:#66d9ef">int</span> sig, <span style="color:#66d9ef">siginfo_t</span> <span style="color:#f92672">*</span>si, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>uc) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">timer_t</span> <span style="color:#f92672">*</span>tidp;
 </span></span><span style="display:flex;"><span>
@@ -217,7 +217,7 @@ POSIX 定时器简介 POSIX 定时器是符合 POSIX.1b 标准的实时扩展的
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> sigaction sa;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 设置信号处理函数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    sa.sa_flags <span style="color:#f92672">=</span> SA_SIGINFO;
+</span></span></span><span style="display:flex;"><span>    sa.sa_flags <span style="color:#f92672">=</span> SA_SIGINFO;
 </span></span><span style="display:flex;"><span>    sa.sa_sigaction <span style="color:#f92672">=</span> timer_handler;
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">sigemptyset</span>(<span style="color:#f92672">&amp;</span>sa.sa_mask);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">sigaction</span>(TIMER_SIG, <span style="color:#f92672">&amp;</span>sa, NULL) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
@@ -226,7 +226,7 @@ POSIX 定时器简介 POSIX 定时器是符合 POSIX.1b 标准的实时扩展的
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 创建定时器
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    sev.sigev_notify <span style="color:#f92672">=</span> SIGEV_SIGNAL;
+</span></span></span><span style="display:flex;"><span>    sev.sigev_notify <span style="color:#f92672">=</span> SIGEV_SIGNAL;
 </span></span><span style="display:flex;"><span>    sev.sigev_signo <span style="color:#f92672">=</span> TIMER_SIG;
 </span></span><span style="display:flex;"><span>    sev.sigev_value.sival_ptr <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>timerid;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_create</span>(CLOCK_REALTIME, <span style="color:#f92672">&amp;</span>sev, <span style="color:#f92672">&amp;</span>timerid) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
@@ -236,10 +236,10 @@ POSIX 定时器简介 POSIX 定时器是符合 POSIX.1b 标准的实时扩展的
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;定时器创建成功，ID: %ld</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, (<span style="color:#66d9ef">long</span>)timerid);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 设置定时器的初始延迟和间隔
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    its.it_value.tv_sec <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;      <span style="color:#75715e">// 初始延迟 2 秒
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    its.it_value.tv_nsec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span></span><span style="display:flex;"><span>    its.it_value.tv_sec <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;      <span style="color:#75715e">// 初始延迟 2 秒
+</span></span></span><span style="display:flex;"><span>    its.it_value.tv_nsec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>    its.it_interval.tv_sec <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;   <span style="color:#75715e">// 间隔时间 1 秒（周期性定时器）
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    its.it_interval.tv_nsec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span></span><span style="display:flex;"><span>    its.it_interval.tv_nsec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_settime</span>(timerid, <span style="color:#ae81ff">0</span>, <span style="color:#f92672">&amp;</span>its, NULL) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;timer_settime&#34;</span>);
@@ -249,10 +249,10 @@ POSIX 定时器简介 POSIX 定时器是符合 POSIX.1b 标准的实时扩展的
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;定时器已启动，每隔 1 秒触发一次，初始延迟 2 秒...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 让程序运行一段时间
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">sleep</span>(<span style="color:#ae81ff">10</span>);
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">sleep</span>(<span style="color:#ae81ff">10</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 停止定时器
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    its.it_value.tv_sec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span></span><span style="display:flex;"><span>    its.it_value.tv_sec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>    its.it_value.tv_nsec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>    its.it_interval.tv_sec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>    its.it_interval.tv_nsec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
@@ -263,7 +263,7 @@ POSIX 定时器简介 POSIX 定时器是符合 POSIX.1b 标准的实时扩展的
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;定时器已停止。</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 删除定时器
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_delete</span>(timerid) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_delete</span>(timerid) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;timer_delete&#34;</span>);
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(EXIT_FAILURE);
 </span></span><span style="display:flex;"><span>    }
@@ -319,7 +319,7 @@ POSIX 定时器简介 POSIX 定时器是符合 POSIX.1b 标准的实时扩展的
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;errno.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">timer_t</span> timerid;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> sigevent sev;
@@ -327,15 +327,15 @@ POSIX 定时器简介 POSIX 定时器是符合 POSIX.1b 标准的实时扩展的
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> itimerspec current_its;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 创建一个单次触发的定时器
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    sev.sigev_notify <span style="color:#f92672">=</span> SIGEV_NONE; <span style="color:#75715e">// 不发送信号
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_create</span>(CLOCK_REALTIME, <span style="color:#f92672">&amp;</span>sev, <span style="color:#f92672">&amp;</span>timerid) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span></span><span style="display:flex;"><span>    sev.sigev_notify <span style="color:#f92672">=</span> SIGEV_NONE; <span style="color:#75715e">// 不发送信号
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_create</span>(CLOCK_REALTIME, <span style="color:#f92672">&amp;</span>sev, <span style="color:#f92672">&amp;</span>timerid) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;timer_create&#34;</span>);
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(EXIT_FAILURE);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;定时器创建成功，ID: %ld</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, (<span style="color:#66d9ef">long</span>)timerid);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 设置定时器在 3 秒后触发一次
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    its.it_value.tv_sec <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+</span></span></span><span style="display:flex;"><span>    its.it_value.tv_sec <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
 </span></span><span style="display:flex;"><span>    its.it_value.tv_nsec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>    its.it_interval.tv_sec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>    its.it_interval.tv_nsec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
@@ -349,7 +349,7 @@ POSIX 定时器简介 POSIX 定时器是符合 POSIX.1b 标准的实时扩展的
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">sleep</span>(<span style="color:#ae81ff">1</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取定时器的当前状态
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_gettime</span>(timerid, <span style="color:#f92672">&amp;</span>current_its) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_gettime</span>(timerid, <span style="color:#f92672">&amp;</span>current_its) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;timer_gettime&#34;</span>);
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(EXIT_FAILURE);
 </span></span><span style="display:flex;"><span>    }
@@ -360,10 +360,10 @@ POSIX 定时器简介 POSIX 定时器是符合 POSIX.1b 标准的实时扩展的
 </span></span><span style="display:flex;"><span>           (<span style="color:#66d9ef">long</span>)current_its.it_interval.tv_sec, (<span style="color:#66d9ef">long</span>)current_its.it_interval.tv_nsec);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 等待定时器触发
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">sleep</span>(<span style="color:#ae81ff">3</span>);
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">sleep</span>(<span style="color:#ae81ff">3</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 再次获取定时器状态（应该已经触发）
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_gettime</span>(timerid, <span style="color:#f92672">&amp;</span>current_its) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">timer_gettime</span>(timerid, <span style="color:#f92672">&amp;</span>current_its) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;timer_gettime&#34;</span>);
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(EXIT_FAILURE);
 </span></span><span style="display:flex;"><span>    }

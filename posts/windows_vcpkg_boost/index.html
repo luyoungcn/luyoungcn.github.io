@@ -17,7 +17,7 @@
     <meta property="article:modified_time" content="1970-01-01T00:00:00+08:00">
     <meta property="article:tag" content="Vcpkg">
     <meta property="article:tag" content="Boost">
-    <meta property="article:tag" content="Cmake">
+    <meta property="article:tag" content="CMake">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="windows vcpkg boost 开发环境">
@@ -113,7 +113,7 @@
       </div><div class="tag">
         <a href="/tags/boost/">#boost</a>
       </div><div class="tag">
-        <a href="/tags/cmake/">#cmake</a>
+        <a href="/tags/cmake/">#CMake</a>
       </div></ol></div>
   <section class="page-section"><h2 id="前置条件">前置条件</h2>
 <ol>
@@ -123,7 +123,7 @@
 <h2 id="cmake-boost-配置">cmake boost 配置</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">if</span> <span style="color:#960050;background-color:#1e0010">(WIN32)</span>  
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 查找 Boost 库  
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">find_package(Boost</span> <span style="color:#960050;background-color:#1e0010">COMPONENTS</span> <span style="color:#960050;background-color:#1e0010">filesystem</span> <span style="color:#960050;background-color:#1e0010">system</span> <span style="color:#960050;background-color:#1e0010">REQUIRED)</span>  
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">find_package(Boost</span> <span style="color:#960050;background-color:#1e0010">COMPONENTS</span> <span style="color:#960050;background-color:#1e0010">filesystem</span> <span style="color:#960050;background-color:#1e0010">system</span> <span style="color:#960050;background-color:#1e0010">REQUIRED)</span>  
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">if</span> <span style="color:#960050;background-color:#1e0010">(Boost_FOUND)</span>  
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">include_directories(${Boost_INCLUDE_DIRS})</span>  
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">link_directories(${Boost_LIBRARY_DIRS})</span>  
@@ -147,7 +147,7 @@
 </span></span></code></pre></div><p>增加 ：<code>set(Boost_INCLUDE_DIR ${_VCPKG_INSTALLED_DIR}/x64-windows/include)</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">if</span> <span style="color:#960050;background-color:#1e0010">(WIN32)</span>  
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 查找 Boost 库  
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">set(Boost_INCLUDE_DIR</span> <span style="color:#960050;background-color:#1e0010">${_VCPKG_INSTALLED_DIR}/x64-windows/include)</span>  
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">set(Boost_INCLUDE_DIR</span> <span style="color:#960050;background-color:#1e0010">${_VCPKG_INSTALLED_DIR}/x64-windows/include)</span>  
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">find_package(Boost</span> <span style="color:#960050;background-color:#1e0010">COMPONENTS</span> <span style="color:#960050;background-color:#1e0010">filesystem</span> <span style="color:#960050;background-color:#1e0010">system</span> <span style="color:#960050;background-color:#1e0010">REQUIRED)</span>  
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">if</span> <span style="color:#960050;background-color:#1e0010">(Boost_FOUND)</span>  
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">include_directories(${Boost_INCLUDE_DIRS})</span>  

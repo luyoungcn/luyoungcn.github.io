@@ -535,7 +535,7 @@ nvme nvme0: fatal error: DNR bit set
 <h3 id="52-性能测试">5.2 性能测试</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 使用 fio 测试随机读写</span>
 </span></span><span style="display:flex;"><span>fio --name<span style="color:#f92672">=</span>randread --ioengine<span style="color:#f92672">=</span>libaio --rw<span style="color:#f92672">=</span>randread --bs<span style="color:#f92672">=</span>4k <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --size<span style="color:#f92672">=</span>1G --numjobs<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span> --direct<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> --runtime<span style="color:#f92672">=</span><span style="color:#ae81ff">60</span> --group_reporting
+</span></span></span><span style="display:flex;"><span>    --size<span style="color:#f92672">=</span>1G --numjobs<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span> --direct<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> --runtime<span style="color:#f92672">=</span><span style="color:#ae81ff">60</span> --group_reporting
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 使用 nvme-cli 查看健康状态</span>
 </span></span><span style="display:flex;"><span>nvme smart-log /dev/nvme0

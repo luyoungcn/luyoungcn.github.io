@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📚LDO（低压差线性稳压器）基础讲解 | LuyangのBlog</title>
+<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/-gmsl2-%E8%8A%AF%E7%89%87-vdd-ldo-%E8%B0%83%E8%8A%82%E5%99%A8%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="📚LDO（低压差线性稳压器）基础讲解">
+  <meta property="og:description" content="GMSL2 芯片 VDD LDO 调节器配置指南 概述 GMSL2芯片通过 REG_ENABLE 和 REG_MNL 两个寄存器位控制VDD LDO调节器，实现核心电路的精准供电管理。
+1. 硬件架构 1.1 LDO基本参数 输出电压：固定 1.0V 输入电压：外部 VDD（1.0V ~ 1.8V） 供电路径： LDO稳压路径：输出稳定1.0V，精度高、纹波小 旁路路径：VDD直通核心，无稳压功能 1.2 控制寄存器 寄存器位 地址 位置 功能 REG_ENABLE CTRL0[2] 0x17 手动控制电路供电使能 REG_MNL CTRL2[4] 0x19 模式选择开关 2. 寄存器详细定义 2.1 CTRL0 寄存器（地址: 0x17） 功能定位：远程唤醒使能、睡眠模式控制、VDD LDO调节器使能、本地唤醒禁用控制
+字段名 位位置 复位值 访问 功能描述 WAKE_EN_D 7 0b0 R/W Link D远程唤醒使能 WAKE_EN_C 6 0b0 R/W Link C远程唤醒使能 WAKE_EN_B 5 0b0 R/W Link B远程唤醒使能 WAKE_EN_A 4 0b1 R/W Link A远程唤醒使能 SLEEP 3 0b0 R/W 睡眠模式激活 REG_ENABLE 2 0x0 R/W VDD LDO调节器使能 DIS_LOCAL_WAKE[1:0] 1:0 0b0 R/W Port 0/1本地唤醒禁用 REG_ENABLE 解码 0b0：VDD LDO调节器禁用（旁路） 0b1：VDD LDO调节器启用（需配合 REG_MNL=1） 2.2 CTRL2 寄存器（地址: 0x19） 功能定位：VDD LDO调节器手动旁路控制">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-09-16T02:30:00+08:00">
+    <meta property="article:modified_time" content="2025-09-16T02:30:00+08:00">
+    <meta property="article:tag" content="ADI">
+    <meta property="article:tag" content="SERDES">
+    <meta property="article:tag" content="GMSL">
+    <meta property="article:tag" content="Ldo">
+    <meta property="article:tag" content="Vdd">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="📚LDO（低压差线性稳压器）基础讲解">
+  <meta name="twitter:description" content="GMSL2 芯片 VDD LDO 调节器配置指南 概述 GMSL2芯片通过 REG_ENABLE 和 REG_MNL 两个寄存器位控制VDD LDO调节器，实现核心电路的精准供电管理。
+1. 硬件架构 1.1 LDO基本参数 输出电压：固定 1.0V 输入电压：外部 VDD（1.0V ~ 1.8V） 供电路径： LDO稳压路径：输出稳定1.0V，精度高、纹波小 旁路路径：VDD直通核心，无稳压功能 1.2 控制寄存器 寄存器位 地址 位置 功能 REG_ENABLE CTRL0[2] 0x17 手动控制电路供电使能 REG_MNL CTRL2[4] 0x19 模式选择开关 2. 寄存器详细定义 2.1 CTRL0 寄存器（地址: 0x17） 功能定位：远程唤醒使能、睡眠模式控制、VDD LDO调节器使能、本地唤醒禁用控制
+字段名 位位置 复位值 访问 功能描述 WAKE_EN_D 7 0b0 R/W Link D远程唤醒使能 WAKE_EN_C 6 0b0 R/W Link C远程唤醒使能 WAKE_EN_B 5 0b0 R/W Link B远程唤醒使能 WAKE_EN_A 4 0b1 R/W Link A远程唤醒使能 SLEEP 3 0b0 R/W 睡眠模式激活 REG_ENABLE 2 0x0 R/W VDD LDO调节器使能 DIS_LOCAL_WAKE[1:0] 1:0 0b0 R/W Port 0/1本地唤醒禁用 REG_ENABLE 解码 0b0：VDD LDO调节器禁用（旁路） 0b1：VDD LDO调节器启用（需配合 REG_MNL=1） 2.2 CTRL2 寄存器（地址: 0x19） 功能定位：VDD LDO调节器手动旁路控制">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
+
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>📚LDO（低压差线性稳压器）基础讲解</h1><time class="dim" datetime="2025-09-16T02:30:00&#43;08:00">September 16, 2025</time><div class="term-container"><div class="tag">
+        <a href="/tags/adi/">#ADI</a>
+      </div><div class="tag">
+        <a href="/tags/serdes/">#SERDES</a>
+      </div><div class="tag">
+        <a href="/tags/gmsl/">#GMSL</a>
+      </div><div class="tag">
+        <a href="/tags/ldo/">#ldo</a>
+      </div><div class="tag">
+        <a href="/tags/vdd/">#vdd</a>
+      </div></ol></div>
+  <section class="page-section"><h1 id="gmsl2-芯片-vdd-ldo-调节器配置指南">GMSL2 芯片 VDD LDO 调节器配置指南</h1>
+<h2 id="概述">概述</h2>
+<p>GMSL2芯片通过 <code>REG_ENABLE</code> 和 <code>REG_MNL</code> 两个寄存器位控制VDD LDO调节器，实现核心电路的精准供电管理。</p>
+<hr>
+<h2 id="1-硬件架构">1. 硬件架构</h2>
+<h3 id="11-ldo基本参数">1.1 LDO基本参数</h3>
+<ul>
+<li><strong>输出电压</strong>：固定 <strong>1.0V</strong></li>
+<li><strong>输入电压</strong>：外部 <strong>VDD</strong>（1.0V ~ 1.8V）</li>
+<li><strong>供电路径</strong>：
+<ol>
+<li><strong>LDO稳压路径</strong>：输出稳定1.0V，精度高、纹波小</li>
+<li><strong>旁路路径</strong>：VDD直通核心，无稳压功能</li>
+</ol>
+</li>
+</ul>
+<h3 id="12-控制寄存器">1.2 控制寄存器</h3>
+<table>
+  <thead>
+      <tr>
+          <th>寄存器位</th>
+          <th>地址</th>
+          <th>位置</th>
+          <th>功能</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>REG_ENABLE</code></td>
+          <td>CTRL0[2]</td>
+          <td>0x17</td>
+          <td>手动控制电路供电使能</td>
+      </tr>
+      <tr>
+          <td><code>REG_MNL</code></td>
+          <td>CTRL2[4]</td>
+          <td>0x19</td>
+          <td>模式选择开关</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="2-寄存器详细定义">2. 寄存器详细定义</h2>
+<h3 id="21-ctrl0-寄存器地址-0x17">2.1 CTRL0 寄存器（地址: 0x17）</h3>
+<p><strong>功能定位</strong>：远程唤醒使能、睡眠模式控制、VDD LDO调节器使能、本地唤醒禁用控制</p>
+<table>
+  <thead>
+      <tr>
+          <th>字段名</th>
+          <th>位位置</th>
+          <th>复位值</th>
+          <th>访问</th>
+          <th>功能描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>WAKE_EN_D</td>
+          <td>7</td>
+          <td>0b0</td>
+          <td>R/W</td>
+          <td>Link D远程唤醒使能</td>
+      </tr>
+      <tr>
+          <td>WAKE_EN_C</td>
+          <td>6</td>
+          <td>0b0</td>
+          <td>R/W</td>
+          <td>Link C远程唤醒使能</td>
+      </tr>
+      <tr>
+          <td>WAKE_EN_B</td>
+          <td>5</td>
+          <td>0b0</td>
+          <td>R/W</td>
+          <td>Link B远程唤醒使能</td>
+      </tr>
+      <tr>
+          <td>WAKE_EN_A</td>
+          <td>4</td>
+          <td>0b1</td>
+          <td>R/W</td>
+          <td>Link A远程唤醒使能</td>
+      </tr>
+      <tr>
+          <td>SLEEP</td>
+          <td>3</td>
+          <td>0b0</td>
+          <td>R/W</td>
+          <td>睡眠模式激活</td>
+      </tr>
+      <tr>
+          <td><strong>REG_ENABLE</strong></td>
+          <td><strong>2</strong></td>
+          <td><strong>0x0</strong></td>
+          <td><strong>R/W</strong></td>
+          <td><strong>VDD LDO调节器使能</strong></td>
+      </tr>
+      <tr>
+          <td>DIS_LOCAL_WAKE[1:0]</td>
+          <td>1:0</td>
+          <td>0b0</td>
+          <td>R/W</td>
+          <td>Port 0/1本地唤醒禁用</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="reg_enable-解码">REG_ENABLE 解码</h4>
+<ul>
+<li><code>0b0</code>：VDD LDO调节器禁用（旁路）</li>
+<li><code>0b1</code>：VDD LDO调节器启用（需配合 <code>REG_MNL=1</code>）</li>
+</ul>
+<h3 id="22-ctrl2-寄存器地址-0x19">2.2 CTRL2 寄存器（地址: 0x19）</h3>
+<p><strong>功能定位</strong>：VDD LDO调节器手动旁路控制</p>
+<table>
+  <thead>
+      <tr>
+          <th>字段名</th>
+          <th>位位置</th>
+          <th>复位值</th>
+          <th>访问</th>
+          <th>功能描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>RSVD</td>
+          <td>7</td>
+          <td>0x1</td>
+          <td>R/W</td>
+          <td>保留位</td>
+      </tr>
+      <tr>
+          <td>RSVD</td>
+          <td>6</td>
+          <td>0b0</td>
+          <td>R/W</td>
+          <td>保留位</td>
+      </tr>
+      <tr>
+          <td>RSVD</td>
+          <td>5</td>
+          <td>0x0</td>
+          <td>R/W</td>
+          <td>保留位</td>
+      </tr>
+      <tr>
+          <td><strong>REG_MNL</strong></td>
+          <td><strong>4</strong></td>
+          <td><strong>0b0</strong></td>
+          <td><strong>R/W</strong></td>
+          <td><strong>手动旁路控制使能</strong></td>
+      </tr>
+      <tr>
+          <td>RSVD[1:0]</td>
+          <td>2:1</td>
+          <td>0x1</td>
+          <td>R/W</td>
+          <td>保留位</td>
+      </tr>
+      <tr>
+          <td>RSVD[0]</td>
+          <td>0</td>
+          <td>0x0</td>
+          <td>R/W</td>
+          <td>保留位</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="reg_mnl-解码">REG_MNL 解码</h4>
+<ul>
+<li><code>0b0</code>：自动模式（范围感应），旁路状态关闭</li>
+<li><code>0b1</code>：手动模式，旁路控制启用</li>
+</ul>
+<hr>
+<h2 id="3-工作模式详解">3. 工作模式详解</h2>
+<h3 id="31-自动模式reg_mnl--0">3.1 自动模式（REG_MNL = 0）</h3>
+<p>芯片内部电压比较器根据VDD电压自动选择供电路径：</p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph LR
+    A[VDD输入] --&gt; B{电压检测}
+    B --&gt;|VDD ≤ 1.05V| C[旁路模式]
+    B --&gt;|1.05V &lt; VDD &lt; 1.14V| D[盲区/抖动]
+    B --&gt;|VDD ≥ 1.14V| E[LDO稳压模式]
+</code></pre><h4 id="自动切换阈值">自动切换阈值</h4>
+<ul>
+<li><strong>VDD ≤ 1.05V</strong>：压差不足，强制旁路</li>
+<li><strong>1.05V ~ 1.14V</strong>：硬件盲区，可能抖动</li>
+<li><strong>VDD ≥ 1.14V</strong>：压差充足（≥140mV），LDO稳压</li>
+</ul>
+<blockquote>
+<p>[!warning] 临界区风险
+在1.05V~1.14V范围内，比较器可能因电压波动导致模式反复切换</p>
+</blockquote>
+<h3 id="32-手动模式reg_mnl--1">3.2 手动模式（REG_MNL = 1）</h3>
+<p>软件强制控制LDO状态，绕过自动检测逻辑。</p>
+<h4 id="前置条件">前置条件</h4>
+<p>必须先置 <code>REG_ENABLE = 1</code>，否则手动控制电路处于断电状态，<code>REG_MNL</code> 设置无效。</p>
+<hr>
+<h2 id="4-双寄存器配合逻辑">4. 双寄存器配合逻辑</h2>
+<h3 id="41-硬件本质">4.1 硬件本质</h3>
+<table>
+  <thead>
+      <tr>
+          <th>寄存器位</th>
+          <th>硬件角色</th>
+          <th>功能说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>REG_MNL</code></td>
+          <td>模式选择开关</td>
+          <td>0=自动模式，1=手动模式</td>
+      </tr>
+      <tr>
+          <td><code>REG_ENABLE</code></td>
+          <td>供电使能</td>
+          <td>0=手动电路断电，1=手动电路上电</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="42-四种组合状态">4.2 四种组合状态</h3>
+<table>
+  <thead>
+      <tr>
+          <th>REG_MNL</th>
+          <th>REG_ENABLE</th>
+          <th>实际工作模式</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>0</td>
+          <td>0</td>
+          <td>自动模式</td>
+      </tr>
+      <tr>
+          <td>0</td>
+          <td>1</td>
+          <td>自动模式</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>0</td>
+          <td><strong>自动模式</strong>（手动电路未上电）</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>1</td>
+          <td><strong>手动模式</strong>（生效）</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>[!important] 关键结论
+只有 <code>REG_ENABLE=1</code> 且 <code>REG_MNL=1</code> 时，手动模式才真正生效</p>
+</blockquote>
+<h3 id="43-硬件工作流程">4.3 硬件工作流程</h3>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph TD
+    A[VDD输入] --&gt; B{REG_MNL?}
+    B --&gt;|0| C[自动模式]
+    C --&gt; D{电压检测}
+    D --&gt;|≥1.14V| E[LDO稳压]
+    D --&gt;|≤1.05V| F[旁路]
+    D --&gt;|盲区| G[可能抖动]
+    
+    B --&gt;|1| H{REG_ENABLE?}
+    H --&gt;|0| C
+    H --&gt;|1| I[手动模式]
+    I --&gt; J[强制LDO稳压]
+</code></pre><hr>
+<h2 id="5-vdd12v-临界问题分析">5. VDD=1.2V 临界问题分析</h2>
+<h3 id="51-为什么12v是坑点">5.1 为什么1.2V是&quot;坑点&quot;？</h3>
+<p>虽然1.2V在标称范围（1.0V~1.8V）内，但存在三重风险：</p>
+<ol>
+<li>
+<p><strong>极度靠近自动切换阈值</strong></p>
+<ul>
+<li>1.2V距离1.14V仅60mV</li>
+<li>VDD波动±50mV即可跨越阈值</li>
+</ul>
+</li>
+<li>
+<p><strong>LDO压差接近极限</strong></p>
+<ul>
+<li>实际压差：1.2V - 1.0V = 200mV</li>
+<li>最小压差：140mV</li>
+<li>裕量仅60mV</li>
+</ul>
+</li>
+<li>
+<p><strong>自动模式下的后果</strong></p>
+<pre tabindex="0"><code>VDD波动 → 反复跨阈值 → LDO稳压⇄旁路疯狂切换 → 核心供电不稳
+</code></pre></li>
+</ol>
+<h3 id="52-解决方案强制手动模式">5.2 解决方案：强制手动模式</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 正确配置顺序
+</span></span></span><span style="display:flex;"><span>step1: REG_ENABLE <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;  <span style="color:#75715e">// 上电手动控制电路
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">delay_us</span>(<span style="color:#ae81ff">1</span>);            <span style="color:#75715e">// 等待稳定（1-2个I2C时钟周期）
+</span></span></span><span style="display:flex;"><span>step2: REG_MNL <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;     <span style="color:#75715e">// 切换到手动模式，强制LDO稳压
+</span></span></span></code></pre></div><blockquote>
+<p>[!danger] 顺序错误的后果
+如果先写 <code>REG_MNL=1</code>，再写 <code>REG_ENABLE=1</code>：</p>
+<ul>
+<li>手动控制电路未上电时，REG_MNL指令丢失</li>
+<li>芯片继续运行在自动模式，问题依旧</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="6-配置时序要求">6. 配置时序要求</h2>
+<h3 id="61-标准配置流程">6.1 标准配置流程</h3>
+<pre tabindex="0"><code>启用手动模式（VDD=1.2V）：
+┌─────────────────────────────────────┐
+│ 1. 写 REG_ENABLE = 1                │
+│    ↓                                │
+│ 2. 延迟 1-2 个 I2C 时钟周期         │
+│    ↓                                │
+│ 3. 写 REG_MNL = 1                   │
+│    ↓                                │
+│ 4. LDO 进入强制稳压状态             │
+└─────────────────────────────────────┘
+</code></pre><h3 id="62-时序细节">6.2 时序细节</h3>
+<table>
+  <thead>
+      <tr>
+          <th>步骤</th>
+          <th>时间</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>写REG_ENABLE</td>
+          <td>t0</td>
+          <td>启动手动控制电路上电</td>
+      </tr>
+      <tr>
+          <td>稳定延迟</td>
+          <td>t0+几十ns</td>
+          <td>手动控制模块稳定</td>
+      </tr>
+      <tr>
+          <td>写REG_MNL</td>
+          <td>t0+延迟</td>
+          <td>切换到手动路径</td>
+      </tr>
+      <tr>
+          <td>LDO响应</td>
+          <td>t0+延迟+响应</td>
+          <td>强制进入稳压状态</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="7-工程实践指南">7. 工程实践指南</h2>
+<h3 id="71-配置决策树">7.1 配置决策树</h3>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph TD
+    A[需要配置LDO] --&gt; B{VDD电压?}
+    B --&gt;|≤1.05V| C[不支持LDO稳压&lt;br/&gt;只能旁路]
+    B --&gt;|1.05V~1.14V| D[临界区&lt;br/&gt;建议手动模式]
+    B --&gt;|1.14V~1.8V| E{稳定性要求?}
+    E --&gt;|高| F[手动模式&lt;br/&gt;强制稳压]
+    E --&gt;|一般| G[自动模式&lt;br/&gt;即可]
+    B --&gt;|1.2V| H[**必须手动模式**&lt;br/&gt;先REG_ENABLE=1&lt;br/&gt;再REG_MNL=1]
+</code></pre><h3 id="72-常见错误">7.2 常见错误</h3>
+<table>
+  <thead>
+      <tr>
+          <th>错误操作</th>
+          <th>后果</th>
+          <th>正确做法</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>只设 REG_MNL=1</td>
+          <td>手动电路未上电，仍为自动模式</td>
+          <td>先设 REG_ENABLE=1</td>
+      </tr>
+      <tr>
+          <td>顺序颠倒</td>
+          <td>REG_MNL指令丢失</td>
+          <td>严格按序：ENABLE→MNL</td>
+      </tr>
+      <tr>
+          <td>VDD=1.2V用自动模式</td>
+          <td>LDO稳压⇄旁路抖动</td>
+          <td>强制使用手动模式</td>
+      </tr>
+      <tr>
+          <td>未加延迟</td>
+          <td>手动电路未稳定</td>
+          <td>两次写操作间加延迟</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="73-代码示例">7.3 代码示例</h3>
+<h4 id="c语言配置i2c接口">C语言配置（I2C接口）</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// VDD=1.2V 配置示例
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">configure_ldo_for_1v2</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> ctrl0_val, ctrl2_val;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 1. 读取当前CTRL0值
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">i2c_read</span>(GMSL2_ADDR, <span style="color:#ae81ff">0x17</span>, <span style="color:#f92672">&amp;</span>ctrl0_val);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 2. 设置REG_ENABLE=1（保持其他位不变）
+</span></span></span><span style="display:flex;"><span>    ctrl0_val <span style="color:#f92672">|=</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">i2c_write</span>(GMSL2_ADDR, <span style="color:#ae81ff">0x17</span>, ctrl0_val);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 3. 延迟等待稳定（至少1us）
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">delay_us</span>(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 4. 读取当前CTRL2值
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">i2c_read</span>(GMSL2_ADDR, <span style="color:#ae81ff">0x19</span>, <span style="color:#f92672">&amp;</span>ctrl2_val);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 5. 设置REG_MNL=1（保持保留位不变）
+</span></span></span><span style="display:flex;"><span>    ctrl2_val <span style="color:#f92672">|=</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">4</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">i2c_write</span>(GMSL2_ADDR, <span style="color:#ae81ff">0x19</span>, ctrl2_val);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 6. 验证配置
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">verify_ldo_mode</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="python配置示例">Python配置示例</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">configure_ldo_manual_mode</span>(i2c_dev, vdd_voltage):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    配置GMSL2 LDO为手动模式
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        i2c_dev: I2C设备对象
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        vdd_voltage: VDD电压值（V）
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    CTRL0_ADDR <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x17</span>
+</span></span><span style="display:flex;"><span>    CTRL2_ADDR <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x19</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 检查是否需要手动模式</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#ae81ff">1.05</span> <span style="color:#f92672">&lt;=</span> vdd_voltage <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1.25</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;VDD=</span><span style="color:#e6db74">{</span>vdd_voltage<span style="color:#e6db74">}</span><span style="color:#e6db74">V 在临界区，使用手动模式&#34;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Step 1: 设置 REG_ENABLE=1</span>
+</span></span><span style="display:flex;"><span>        ctrl0 <span style="color:#f92672">=</span> i2c_dev<span style="color:#f92672">.</span>read_byte(CTRL0_ADDR)
+</span></span><span style="display:flex;"><span>        ctrl0 <span style="color:#f92672">|=</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>        i2c_dev<span style="color:#f92672">.</span>write_byte(CTRL0_ADDR, ctrl0)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Step 2: 延迟</span>
+</span></span><span style="display:flex;"><span>        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">0.000002</span>)  <span style="color:#75715e"># 2us</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Step 3: 设置 REG_MNL=1</span>
+</span></span><span style="display:flex;"><span>        ctrl2 <span style="color:#f92672">=</span> i2c_dev<span style="color:#f92672">.</span>read_byte(CTRL2_ADDR)
+</span></span><span style="display:flex;"><span>        ctrl2 <span style="color:#f92672">|=</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>        i2c_dev<span style="color:#f92672">.</span>write_byte(CTRL2_ADDR, ctrl2)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;LDO手动模式配置完成&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;VDD=</span><span style="color:#e6db74">{</span>vdd_voltage<span style="color:#e6db74">}</span><span style="color:#e6db74">V 可使用自动模式&#34;</span>)
+</span></span></code></pre></div><hr>
+<h2 id="8-调试与验证">8. 调试与验证</h2>
+<h3 id="81-验证清单">8.1 验证清单</h3>
+<ul>
+<li>REG_ENABLE 已设置为1</li>
+<li>已等待足够的稳定时间</li>
+<li>REG_MNL 已设置为1</li>
+<li>读回寄存器值验证配置</li>
+<li>测量核心电路供电电压（应稳定在1.0V）</li>
+<li>观察VDD波动时供电是否稳定</li>
+</ul>
+<h3 id="82-常见问题排查">8.2 常见问题排查</h3>
+<table>
+  <thead>
+      <tr>
+          <th>症状</th>
+          <th>可能原因</th>
+          <th>排查方法</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>核心电压不稳定</td>
+          <td>仍在自动模式</td>
+          <td>读取CTRL0[2]和CTRL2[4]确认</td>
+      </tr>
+      <tr>
+          <td>配置无效</td>
+          <td>顺序错误</td>
+          <td>确认先ENABLE后MNL</td>
+      </tr>
+      <tr>
+          <td>间歇性故障</td>
+          <td>延迟不足</td>
+          <td>增加延迟时间</td>
+      </tr>
+      <tr>
+          <td>LDO无输出</td>
+          <td>VDD压差不足</td>
+          <td>检查VDD电压是否≥1.14V</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="9-关键要点总结">9. 关键要点总结</h2>
+<blockquote>
+<p>[!summary] 核心结论
+<strong>VDD=1.2V 必须用手动模式，且必须先 REG_ENABLE=1，再 REG_MNL=1，强制 LDO 稳压，避开自动模式的临界抖动。</strong></p>
+</blockquote>
+<h3 id="91-记忆要点">9.1 记忆要点</h3>
+<ol>
+<li>
+<p><strong>REG_MNL</strong>：模式选择开关</p>
+<ul>
+<li>0 = 自动模式（硬件决策）</li>
+<li>1 = 手动模式（软件决策）</li>
+</ul>
+</li>
+<li>
+<p><strong>REG_ENABLE</strong>：手动电路供电开关</p>
+<ul>
+<li>0 = 手动电路断电（REG_MNL无效）</li>
+<li>1 = 手动电路上电（REG_MNL生效）</li>
+</ul>
+</li>
+<li>
+<p><strong>1.2V临界问题</strong></p>
+<ul>
+<li>距离自动切换阈值1.14V仅60mV</li>
+<li>压差仅200mV，裕量不足</li>
+<li>自动模式下会导致LDO稳压⇄旁路抖动</li>
+</ul>
+</li>
+<li>
+<p><strong>配置顺序</strong></p>
+<pre tabindex="0"><code>REG_ENABLE=1 → 延迟 → REG_MNL=1
+</code></pre><p>顺序错误将导致配置失败</p>
+</li>
+</ol>
+<hr>
+<h2 id="10-参考资料">10. 参考资料</h2>
+<h3 id="101-相关寄存器">10.1 相关寄存器</h3>
+<ul>
+<li>[[CTRL0寄存器详解]]（地址0x17）</li>
+<li>[[CTRL2寄存器详解]]（地址0x19）</li>
+<li>[[DEV_REG14寄存器]]（地址0xE，Port 2唤醒控制）</li>
+</ul>
+<h3 id="102-相关主题">10.2 相关主题</h3>
+<ul>
+<li>[[LDO稳压器原理]]</li>
+<li>[[I2C寄存器配置]]</li>
+<li>[[GMSL2电源管理]]</li>
+<li>[[硬件调试技巧]]</li>
+</ul>
+<hr>
+<h2 id="附录术语表">附录：术语表</h2>
+<table>
+  <thead>
+      <tr>
+          <th>术语</th>
+          <th>英文</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>LDO</td>
+          <td>Low Dropout Regulator</td>
+          <td>低压差线性稳压器</td>
+      </tr>
+      <tr>
+          <td>VDD</td>
+          <td>Voltage Drain Drain</td>
+          <td>芯片供电电压</td>
+      </tr>
+      <tr>
+          <td>旁路模式</td>
+          <td>Bypass Mode</td>
+          <td>LDO不工作，VDD直通</td>
+      </tr>
+      <tr>
+          <td>稳压模式</td>
+          <td>Regulation Mode</td>
+          <td>LDO主动稳压输出</td>
+      </tr>
+      <tr>
+          <td>压差</td>
+          <td>Dropout Voltage</td>
+          <td>输入输出电压差</td>
+      </tr>
+      <tr>
+          <td>DXA</td>
+          <td>Document Units</td>
+          <td>文档单位（1440 DXA = 1英寸）</td>
+      </tr>
+      <tr>
+          <td>RSID</td>
+          <td>Revision Save ID</td>
+          <td>修订保存标识</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="附录寄存器说明">附录：寄存器说明</h2>
+<h3 id="寄存器-ctrl0-地址-0x17">寄存器 CTRL0 (地址: 0x17)</h3>
+<p><strong>功能定位</strong>：远程唤醒使能、睡眠模式控制、VDD LDO调节器使能、本地唤醒禁用控制。</p>
+<table>
+  <thead>
+      <tr>
+          <th>字段名</th>
+          <th>位位置</th>
+          <th>复位值</th>
+          <th>访问类型</th>
+          <th>功能描述</th>
+          <th>解码说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>WAKE_EN_D</td>
+          <td>7</td>
+          <td>0b0</td>
+          <td>R/W</td>
+          <td>使能连接到Link D的远程芯片唤醒功能</td>
+          <td>0b0: Link D远程唤醒禁用<!-- raw HTML omitted -->0b1: Link D远程唤醒启用</td>
+      </tr>
+      <tr>
+          <td>WAKE_EN_C</td>
+          <td>6</td>
+          <td>0b0</td>
+          <td>R/W</td>
+          <td>使能连接到Link C的远程芯片唤醒功能</td>
+          <td>0b0: Link C远程唤醒禁用<!-- raw HTML omitted -->0b1: Link C远程唤醒启用</td>
+      </tr>
+      <tr>
+          <td>WAKE_EN_B</td>
+          <td>5</td>
+          <td>0b0</td>
+          <td>R/W</td>
+          <td>使能连接到Link B的远程芯片唤醒功能</td>
+          <td>0b0: Link B远程唤醒禁用<!-- raw HTML omitted -->0b1: Link B远程唤醒启用</td>
+      </tr>
+      <tr>
+          <td>WAKE_EN_A</td>
+          <td>4</td>
+          <td>0b1</td>
+          <td>R/W</td>
+          <td>使能连接到Link A的远程芯片唤醒功能</td>
+          <td>0b0: Link A远程唤醒禁用<!-- raw HTML omitted -->0b1: Link A远程唤醒启用</td>
+      </tr>
+      <tr>
+          <td>SLEEP</td>
+          <td>3</td>
+          <td>0b0</td>
+          <td>R/W</td>
+          <td>激活睡眠模式</td>
+          <td>0b0: 睡眠模式禁用<!-- raw HTML omitted -->0b1: 睡眠模式启用</td>
+      </tr>
+      <tr>
+          <td>REG_ENABLE</td>
+          <td>2</td>
+          <td>0x0</td>
+          <td>R/W</td>
+          <td>VDD LDO调节器使能，与CTRL2的REG_MNL配合使用：<!-- raw HTML omitted -->- 当REG_MNL=1时，此位为1则调节器启用<!-- raw HTML omitted -->- 当REG_MNL=0时，手动控制不可用，需先设此位为1再写REG_MNL=1</td>
+          <td>0b0: VDD LDO调节器禁用（旁路）<!-- raw HTML omitted -->0b1: VDD LDO调节器启用（当REG_MNL=1时）</td>
+      </tr>
+      <tr>
+          <td>DIS_LOCAL_WAKE[1:0]</td>
+          <td>1:0</td>
+          <td>0b0</td>
+          <td>R/W</td>
+          <td>禁用Port 0/1的本地唤醒（来自SDA_RX引脚）：<!-- raw HTML omitted -->- 位[1]控制Port 1<!-- raw HTML omitted -->- 位[0]控制Port 0<!-- raw HTML omitted -->Port 2的本地唤醒控制见DEV_REG14 (0xE)</td>
+          <td>0bX0: Port 0本地唤醒启用<!-- raw HTML omitted -->0bX1: Port 0本地唤醒禁用<!-- raw HTML omitted -->0b0X: Port 1本地唤醒启用<!-- raw HTML omitted -->0b1X: Port 1本地唤醒禁用</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="寄存器-ctrl2-地址-0x19">寄存器 CTRL2 (地址: 0x19)</h3>
+<p><strong>功能定位</strong>：VDD LDO调节器手动旁路控制，其余为保留位。</p>
+<table>
+  <thead>
+      <tr>
+          <th>字段名</th>
+          <th>位位置</th>
+          <th>复位值</th>
+          <th>访问类型</th>
+          <th>功能描述</th>
+          <th>解码说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>RSVD</td>
+          <td>7</td>
+          <td>0x1</td>
+          <td>R/W</td>
+          <td>保留位，写操作需写入复位值，读操作返回当前值</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>RSVD</td>
+          <td>6</td>
+          <td>0b0</td>
+          <td>R/W</td>
+          <td>保留位，写操作需写入复位值，读操作返回当前值</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>RSVD</td>
+          <td>5</td>
+          <td>0x0</td>
+          <td>R/W</td>
+          <td>保留位，写操作需写入复位值，读操作返回当前值</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>REG_MNL</td>
+          <td>4</td>
+          <td>0b0</td>
+          <td>R/W</td>
+          <td>使能VDD LDO调节器手动旁路控制，与CTRL0的REG_ENABLE配合使用</td>
+          <td>0b0: VDD LDO调节器范围感应开启，旁路状态关闭<!-- raw HTML omitted -->0b1: VDD LDO调节器旁路控制启用，当VDD=1.2V时，先设REG_ENABLE=1再写此位为1以启用调节器</td>
+      </tr>
+      <tr>
+          <td>RSVD[1:0]</td>
+          <td>2:1</td>
+          <td>0x1</td>
+          <td>R/W</td>
+          <td>保留位，写操作需写入复位值，读操作返回当前值</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>RSVD[0]</td>
+          <td>0</td>
+          <td>0x0</td>
+          <td>R/W</td>
+          <td>保留位，写操作需写入复位值，读操作返回当前值</td>
+          <td>-</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="关键关联说明">关键关联说明</h3>
+<ul>
+<li><strong>REG_ENABLE (CTRL0[2]) 与 REG_MNL (CTRL2[4]) 的配合逻辑</strong>：
+<ol>
+<li>当需要手动控制VDD LDO调节器时，需先将 <code>REG_ENABLE</code> 置1，再将 <code>REG_MNL</code> 置1，此时调节器启用。</li>
+<li>若 <code>REG_MNL</code> 为0，调节器处于范围感应模式，旁路状态关闭，手动控制不可用。</li>
+<li>当VDD电压为1.2V时，必须遵循“先置REG_ENABLE=1，再置REG_MNL=1”的顺序来启用调节器。</li>
+</ol>
+</li>
+</ul>
+<p><strong>标签</strong>：#GMSL2 #LDO #寄存器配置 #硬件调试</p>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2026 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>842 words</span>
+    <span>14 - 17 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#概述">概述</a></li>
+    <li><a href="#1-硬件架构">1. 硬件架构</a>
+      <ul>
+        <li><a href="#11-ldo基本参数">1.1 LDO基本参数</a></li>
+        <li><a href="#12-控制寄存器">1.2 控制寄存器</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-寄存器详细定义">2. 寄存器详细定义</a>
+      <ul>
+        <li><a href="#21-ctrl0-寄存器地址-0x17">2.1 CTRL0 寄存器（地址: 0x17）</a></li>
+        <li><a href="#22-ctrl2-寄存器地址-0x19">2.2 CTRL2 寄存器（地址: 0x19）</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-工作模式详解">3. 工作模式详解</a>
+      <ul>
+        <li><a href="#31-自动模式reg_mnl--0">3.1 自动模式（REG_MNL = 0）</a></li>
+        <li><a href="#32-手动模式reg_mnl--1">3.2 手动模式（REG_MNL = 1）</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-双寄存器配合逻辑">4. 双寄存器配合逻辑</a>
+      <ul>
+        <li><a href="#41-硬件本质">4.1 硬件本质</a></li>
+        <li><a href="#42-四种组合状态">4.2 四种组合状态</a></li>
+        <li><a href="#43-硬件工作流程">4.3 硬件工作流程</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-vdd12v-临界问题分析">5. VDD=1.2V 临界问题分析</a>
+      <ul>
+        <li><a href="#51-为什么12v是坑点">5.1 为什么1.2V是&quot;坑点&quot;？</a></li>
+        <li><a href="#52-解决方案强制手动模式">5.2 解决方案：强制手动模式</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-配置时序要求">6. 配置时序要求</a>
+      <ul>
+        <li><a href="#61-标准配置流程">6.1 标准配置流程</a></li>
+        <li><a href="#62-时序细节">6.2 时序细节</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-工程实践指南">7. 工程实践指南</a>
+      <ul>
+        <li><a href="#71-配置决策树">7.1 配置决策树</a></li>
+        <li><a href="#72-常见错误">7.2 常见错误</a></li>
+        <li><a href="#73-代码示例">7.3 代码示例</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-调试与验证">8. 调试与验证</a>
+      <ul>
+        <li><a href="#81-验证清单">8.1 验证清单</a></li>
+        <li><a href="#82-常见问题排查">8.2 常见问题排查</a></li>
+      </ul>
+    </li>
+    <li><a href="#9-关键要点总结">9. 关键要点总结</a>
+      <ul>
+        <li><a href="#91-记忆要点">9.1 记忆要点</a></li>
+      </ul>
+    </li>
+    <li><a href="#10-参考资料">10. 参考资料</a>
+      <ul>
+        <li><a href="#101-相关寄存器">10.1 相关寄存器</a></li>
+        <li><a href="#102-相关主题">10.2 相关主题</a></li>
+      </ul>
+    </li>
+    <li><a href="#附录术语表">附录：术语表</a></li>
+    <li><a href="#附录寄存器说明">附录：寄存器说明</a>
+      <ul>
+        <li><a href="#寄存器-ctrl0-地址-0x17">寄存器 CTRL0 (地址: 0x17)</a></li>
+        <li><a href="#寄存器-ctrl2-地址-0x19">寄存器 CTRL2 (地址: 0x19)</a></li>
+        <li><a href="#关键关联说明">关键关联说明</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/adi_gmsl2_serdes_spi/">ADI GMSL2 SERDES SPI</a></li><li><a href="/posts/adi_serdes/">GMSL SERDES 笔记</a></li><li><a href="/posts/gmsl2-i2c%E5%88%AB%E5%90%8D%E4%B8%8Epec%E6%A0%A1%E9%AA%8C%E7%9A%84%E5%86%B2%E7%AA%81%E6%B7%B1%E5%B1%82%E6%8A%80%E6%9C%AF%E8%A7%A3%E6%9E%90%E6%A0%B9%E6%9C%AC%E6%80%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B8%8E%E5%AE%89%E5%85%A8%E8%80%83%E9%87%8F/">📘 GMSL2 I2C别名与PEC校验的冲突：深层技术解析、根本性解决方案与安全考量</a></li><li><a href="/posts/ldo%E4%BD%8E%E5%8E%8B%E5%B7%AE%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B%E5%99%A8%E5%9F%BA%E7%A1%80%E8%AE%B2%E8%A7%A3/">📚LDO（低压差线性稳压器）基础讲解</a></li></ul></aside></div>
+  </div>
+</body>
+</html>

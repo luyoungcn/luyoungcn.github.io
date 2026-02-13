@@ -117,7 +117,7 @@ usbipd: USB/IP open-source project
 <h1>wsl2 ubuntu 访问 USB 设备</h1><time class="dim" datetime="1970-01-01T00:00:00&#43;08:00">January 1, 1970</time><div class="term-container"><div class="tag">
         <a href="/tags/public/">#PUBLIC</a>
       </div><div class="tag">
-        <a href="/tags/usb/">#usb</a>
+        <a href="/tags/usb/">#USB</a>
       </div><div class="tag">
         <a href="/tags/wsl/">#wsl</a>
       </div><div class="tag">
@@ -230,17 +230,17 @@ usbipd: USB/IP open-source project
 </span></span></code></pre></div><h2 id="测试打开-devttyusb0">测试打开 /dev/ttyUSB0</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;fcntl.h&gt;</span><span style="color:#75715e">      </span><span style="color:#75715e">// open()
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">     </span><span style="color:#75715e">// close()
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;errno.h&gt;</span><span style="color:#75715e">      </span><span style="color:#75715e">// errno
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">     </span><span style="color:#75715e">// strerror()
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">     </span><span style="color:#75715e">// close()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;errno.h&gt;</span><span style="color:#75715e">      </span><span style="color:#75715e">// errno
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">     </span><span style="color:#75715e">// strerror()
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> device <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/dev/ttyUSB0&#34;</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// O_RDWR: 读写模式
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// O_NOCTTY: 不让这个设备成为控制终端
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// O_NONBLOCK: 非阻塞模式打开
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> fd <span style="color:#f92672">=</span> open(device, O_RDWR <span style="color:#f92672">|</span> O_NOCTTY <span style="color:#f92672">|</span> O_NONBLOCK);
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// O_NOCTTY: 不让这个设备成为控制终端
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// O_NONBLOCK: 非阻塞模式打开
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> fd <span style="color:#f92672">=</span> open(device, O_RDWR <span style="color:#f92672">|</span> O_NOCTTY <span style="color:#f92672">|</span> O_NONBLOCK);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (fd <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
 </span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Failed to open &#34;</span> <span style="color:#f92672">&lt;&lt;</span> device <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;: &#34;</span>
@@ -251,7 +251,7 @@ usbipd: USB/IP open-source project
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Successfully opened &#34;</span> <span style="color:#f92672">&lt;&lt;</span> device <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; with fd = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> fd <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 后续可以添加串口配置代码（termios 等）
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    close(fd);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>}

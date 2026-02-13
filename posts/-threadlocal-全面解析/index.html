@@ -197,7 +197,7 @@ ThreadLocal 简介 ThreadLocal，顾名思义，即“线程局部变量”。�
 C++11 引入了 <code>thread_local</code> 存储说明符。任何用 <code>thread_local</code> 声明的变量，在每个线程中都有其独立的实例。该变量的生命周期与线程的生命周期相同。这是在现代 C++ 中实现线程局部存储的首选和标准方式。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;thread&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">thread_local</span> <span style="color:#66d9ef">int</span> g_tls_var <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">thread_func</span>(<span style="color:#66d9ef">int</span> id) {

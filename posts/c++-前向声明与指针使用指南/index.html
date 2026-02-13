@@ -135,17 +135,17 @@ template &lt;typename T&gt; void std::default_delete&lt;T&gt;::operator()(T* ptr
 <h2 id="前向声明与不完整类型">前向声明与不完整类型</h2>
 <p>在 C++ 中，<strong>前向声明</strong>（Forward Declaration）允许我们在不包含完整类定义的情况下引用一个类。这对于减少编译依赖和解决循环依赖问题非常有用。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 前向声明示例
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyClass</span>; <span style="color:#75715e">// 只声明存在性，不提供定义
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyClass</span>; <span style="color:#75715e">// 只声明存在性，不提供定义
 </span></span></span></code></pre></div><p>此时，<code>MyClass</code> 被称为<strong>不完整类型</strong>（Incomplete Type），因为编译器只知道该类存在，但不知道它的大小、成员或方法。</p>
 <h2 id="stdunique_ptr-与不完整类型">std::unique_ptr 与不完整类型</h2>
 <p>当使用 <code>std::unique_ptr</code> 管理前向声明类的对象时，会出现问题：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 头文件中
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyForwardDeclaredClass</span>; <span style="color:#75715e">// 前向声明
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyForwardDeclaredClass</span>; <span style="color:#75715e">// 前向声明
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Container</span> {
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>MyForwardDeclaredClass<span style="color:#f92672">&gt;</span> ptr_; <span style="color:#75715e">// 编译错误!
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><p>上述代码在编译时会失败，错误类似于：</p>
 <pre tabindex="0"><code>error: invalid application of &#39;sizeof&#39; to incomplete type &#39;MyForwardDeclaredClass&#39;
 </code></pre><h3 id="原因分析">原因分析</h3>
@@ -165,8 +165,8 @@ template &lt;typename T&gt; void std::default_delete&lt;T&gt;::operator()(T* ptr
 <h2 id="解决方案">解决方案</h2>
 <h3 id="1-使用原始指针配合手动内存管理">1. 使用原始指针配合手动内存管理</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 头文件
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyForwardDeclaredClass</span>; <span style="color:#75715e">// 前向声明
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyForwardDeclaredClass</span>; <span style="color:#75715e">// 前向声明
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Container</span> {
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    MyForwardDeclaredClass<span style="color:#f92672">*</span> ptr_ <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
@@ -182,7 +182,7 @@ template &lt;typename T&gt; void std::default_delete&lt;T&gt;::operator()(T* ptr
 </span></span></code></pre></div><p>这种方法避免了编译期 <code>sizeof</code> 检查，因为原始指针不需要知道所指向对象的大小。但必须注意手动管理内存，避免内存泄漏。</p>
 <h3 id="2-将-unique_ptr-的定义移至实现文件">2. 将 unique_ptr 的定义移至实现文件</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 头文件 Container.h
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyForwardDeclaredClass</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyForwardDeclaredClass</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Container</span> {
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
@@ -191,18 +191,18 @@ template &lt;typename T&gt; void std::default_delete&lt;T&gt;::operator()(T* ptr
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    Container();
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">~</span>Container(); <span style="color:#75715e">// 声明析构函数，但在实现文件中定义
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span></span><span style="display:flex;"><span>};
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 实现文件 Container.cpp
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Container.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Container.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;MyForwardDeclaredClass.h&#34;</span><span style="color:#75715e"> </span><span style="color:#75715e">// 包含完整定义
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Container<span style="color:#f92672">::</span>Container() <span style="color:#f92672">:</span> ptr_(<span style="color:#66d9ef">new</span> MyForwardDeclaredClass()) {}
 </span></span><span style="display:flex;"><span>Container<span style="color:#f92672">::~</span>Container() <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>; <span style="color:#75715e">// 在这里，类型已完整，析构函数可以正常工作
 </span></span></span></code></pre></div><p>这种方法是PIMPL（Pointer to Implementation）模式的一种应用。</p>
 <h3 id="3-使用自定义删除器">3. 使用自定义删除器</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 头文件
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyForwardDeclaredClass</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyForwardDeclaredClass</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Container</span> {
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
@@ -214,9 +214,9 @@ template &lt;typename T&gt; void std::default_delete&lt;T&gt;::operator()(T* ptr
 </span></span><span style="display:flex;"><span>};
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 实现文件
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Container.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Container.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;MyForwardDeclaredClass.h&#34;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">deleter</span>(MyForwardDeclaredClass<span style="color:#f92672">*</span> ptr) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">delete</span> ptr;
 </span></span><span style="display:flex;"><span>}

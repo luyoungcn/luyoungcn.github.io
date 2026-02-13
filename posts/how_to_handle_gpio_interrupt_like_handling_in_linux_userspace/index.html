@@ -167,7 +167,7 @@
 </span></span></code></pre></div><h2 id="demo">demo</h2>
 <p>一坨屎样代码</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define GPIO_PIN_NUMBER 666
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">gpio_irq</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> fd;
@@ -175,7 +175,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> value;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 如果没有GPIO 导出文件，则打开 GPIO 导出文件
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> exportFd <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> exportFd <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> stat dir_stat;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> gpioDir[<span style="color:#ae81ff">64</span>];
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">sprintf</span>(gpioDir, <span style="color:#e6db74">&#34;/sys/class/gpio/gpio%d&#34;</span>, GPIO_PIN_NUMBER);
@@ -187,7 +187,7 @@
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 将 GPIO 口编号写入到导出文件中
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">write</span>(exportFd, <span style="color:#e6db74">&#34;666&#34;</span>, <span style="color:#ae81ff">3</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">3</span>) {
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">write</span>(exportFd, <span style="color:#e6db74">&#34;666&#34;</span>, <span style="color:#ae81ff">3</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">3</span>) {
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;Error writing to export file&#34;</span>);
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">close</span>(exportFd);
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> EXIT_FAILURE;
@@ -196,10 +196,10 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 等待一小段时间，以确保 GPIO 口创建完成
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">usleep</span>(<span style="color:#ae81ff">10000</span>);
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">usleep</span>(<span style="color:#ae81ff">10000</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 打开 GPIO 方向文件
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">char</span> gpioDirectionPath[<span style="color:#ae81ff">64</span>];
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> gpioDirectionPath[<span style="color:#ae81ff">64</span>];
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">sprintf</span>(gpioDirectionPath, <span style="color:#e6db74">&#34;/sys/class/gpio/gpio%d/direction&#34;</span>, GPIO_PIN_NUMBER);
 </span></span><span style="display:flex;"><span>    fd <span style="color:#f92672">=</span> <span style="color:#a6e22e">open</span>(gpioDirectionPath, O_WRONLY);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (fd <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
@@ -208,7 +208,7 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 将 GPIO 口方向设置为输入
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">write</span>(fd, <span style="color:#e6db74">&#34;in&#34;</span>, <span style="color:#ae81ff">2</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">2</span>) {
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">write</span>(fd, <span style="color:#e6db74">&#34;in&#34;</span>, <span style="color:#ae81ff">2</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">2</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;Error setting GPIO direction&#34;</span>);
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">close</span>(fd);
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> NULL;
@@ -217,7 +217,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 打开 GPIO edge 文件
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">char</span> gpioEdgePath[<span style="color:#ae81ff">64</span>];
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> gpioEdgePath[<span style="color:#ae81ff">64</span>];
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">sprintf</span>(gpioEdgePath, <span style="color:#e6db74">&#34;/sys/class/gpio/gpio%d/edge&#34;</span>, GPIO_PIN_NUMBER);
 </span></span><span style="display:flex;"><span>    fd <span style="color:#f92672">=</span> <span style="color:#a6e22e">open</span>(gpioEdgePath, O_WRONLY);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (fd <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
@@ -226,7 +226,7 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 将 GPIO edge both
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">write</span>(fd, <span style="color:#e6db74">&#34;rising&#34;</span>, <span style="color:#ae81ff">6</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">6</span>) {
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">write</span>(fd, <span style="color:#e6db74">&#34;rising&#34;</span>, <span style="color:#ae81ff">6</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">6</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;Error setting GPIO edge&#34;</span>);
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">close</span>(fd);
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> NULL;
@@ -239,7 +239,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 打开 GPIO 值文件
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">char</span> gpioValuePath[<span style="color:#ae81ff">64</span>];
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> gpioValuePath[<span style="color:#ae81ff">64</span>];
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">sprintf</span>(gpioValuePath, <span style="color:#e6db74">&#34;/sys/class/gpio/gpio%d/value&#34;</span>, GPIO_PIN_NUMBER);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> value_fd <span style="color:#f92672">=</span> <span style="color:#a6e22e">open</span>(gpioValuePath, O_RDONLY);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (value_fd <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
@@ -249,51 +249,51 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 创建文件描述符集合
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">FD_ZERO</span>(<span style="color:#f92672">&amp;</span>readFds);
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">FD_ZERO</span>(<span style="color:#f92672">&amp;</span>readFds);
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">FD_SET</span>(value_fd, <span style="color:#f92672">&amp;</span>readFds);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 监听 GPIO 的下降沿触发事件
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">while</span> (true) {
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (true) {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 重新设置文件描述符集合
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        fd_set tempFds <span style="color:#f92672">=</span> readFds;
+</span></span></span><span style="display:flex;"><span>        fd_set tempFds <span style="color:#f92672">=</span> readFds;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 监听文件描述符变化
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> selectResult <span style="color:#f92672">=</span> <span style="color:#a6e22e">select</span>(value_fd <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, NULL, NULL, <span style="color:#f92672">&amp;</span>tempFds, NULL);
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> selectResult <span style="color:#f92672">=</span> <span style="color:#a6e22e">select</span>(value_fd <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, NULL, NULL, <span style="color:#f92672">&amp;</span>tempFds, NULL);
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (selectResult <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;Error in select&#34;</span>);
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>;
 </span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (selectResult <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 检查 GPIO 的文件描述符是否可读
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">FD_ISSET</span>(value_fd, <span style="color:#f92672">&amp;</span>tempFds)) {
+</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">FD_ISSET</span>(value_fd, <span style="color:#f92672">&amp;</span>tempFds)) {
 </span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">DBG_PRINT</span>(<span style="color:#e6db74">&#34;====================</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
 </span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 读取 GPIO 的值
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#a6e22e">lseek</span>(value_fd, <span style="color:#ae81ff">0</span>, SEEK_SET);
+</span></span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">lseek</span>(value_fd, <span style="color:#ae81ff">0</span>, SEEK_SET);
 </span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">read</span>(value_fd, <span style="color:#f92672">&amp;</span>value, <span style="color:#ae81ff">1</span>);
 </span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">DBG_PRINT</span>(<span style="color:#e6db74">&#34;read value: %c</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, value);
 </span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (value <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;0&#39;</span>) {
 </span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">DBG_PRINT</span>(<span style="color:#e6db74">&#34;+++++++++++++++ Falling edge detected! ++++++++++++++</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
 </span></span><span style="display:flex;"><span>                    <span style="color:#75715e">// 在这里执行 GPIO 下降沿触发事件的处理
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                }
+</span></span></span><span style="display:flex;"><span>                }
 </span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">DBG_PRINT</span>(<span style="color:#e6db74">&#34;--------------------Rising edge detected!--------------</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
 </span></span><span style="display:flex;"><span>                    <span style="color:#75715e">// 在这里执行 GPIO 上升沿触发事件的处理
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                }
+</span></span></span><span style="display:flex;"><span>                }
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// usleep(1000*20);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
+</span></span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">close</span>(value_fd);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 关闭 GPIO 导出文件
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> unexportFd <span style="color:#f92672">=</span> <span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;/sys/class/gpio/unexport&#34;</span>, O_WRONLY);
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> unexportFd <span style="color:#f92672">=</span> <span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;/sys/class/gpio/unexport&#34;</span>, O_WRONLY);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (unexportFd <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;Error opening unexport file&#34;</span>);
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> NULL;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 将 GPIO 口编号写入到取消导出文件中
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">write</span>(unexportFd, <span style="color:#e6db74">&#34;124&#34;</span>, <span style="color:#ae81ff">3</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">3</span>) {
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">write</span>(unexportFd, <span style="color:#e6db74">&#34;124&#34;</span>, <span style="color:#ae81ff">3</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">3</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;Error writing to unexport file&#34;</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">close</span>(unexportFd);

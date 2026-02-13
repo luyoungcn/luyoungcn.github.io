@@ -117,7 +117,7 @@
       </div><div class="tag">
         <a href="/tags/gmsl/">#GMSL</a>
       </div><div class="tag">
-        <a href="/tags/mipi/">#MIPI</a>
+        <a href="/tags/mipi/">#mipi</a>
       </div></ol></div>
   <section class="page-section"><h1 id="max96724">MAX96724</h1>
 <h1 id="max96724-相关资源">MAX96724 相关资源</h1>
@@ -241,7 +241,7 @@ VID_TX Z 包含的寄存器就是关于 PIPE Z 的寄存器。</p>
 </span></span></code></pre></div><h1 id="手动控制-ser-mfp-对外输出高低电平">手动控制 SER MFP 对外输出高低电平</h1>
 <p>MAX96717 MFP ctrl register</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// MFP0 ~ MFP16
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">uint16_t</span> max96717_mfp_ctrl_regs[] <span style="color:#f92672">=</span> {
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">uint16_t</span> max96717_mfp_ctrl_regs[] <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">0x02BE</span>, <span style="color:#ae81ff">0x02C1</span>, <span style="color:#ae81ff">0x02C4</span>, <span style="color:#ae81ff">0x02C7</span>,
 </span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">0x02CA</span>, <span style="color:#ae81ff">0x02CD</span>, <span style="color:#ae81ff">0x02D0</span>, <span style="color:#ae81ff">0x02D3</span>,
 </span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">0x02D6</span>, <span style="color:#ae81ff">0x02D9</span>, <span style="color:#ae81ff">0x02DC</span>, <span style="color:#ae81ff">0x02DF</span>,
@@ -261,7 +261,7 @@ VID_TX Z 包含的寄存器就是关于 PIPE Z 的寄存器。</p>
 </span></span></code></pre></div><h1 id="max96724-max96717-i2c-速率配置">MAX96724 MAX96717 I2C 速率配置</h1>
 <p>Fast-mode Plus</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># DES</span>
 </span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x05 0x06 0x40 0x06
 </span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x05 0x06 0x41 0x76

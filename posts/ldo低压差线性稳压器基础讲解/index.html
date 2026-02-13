@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📚LDO（低压差线性稳压器）基础讲解 | LuyangのBlog</title>
+<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/ldo%E4%BD%8E%E5%8E%8B%E5%B7%AE%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B%E5%99%A8%E5%9F%BA%E7%A1%80%E8%AE%B2%E8%A7%A3/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="📚LDO（低压差线性稳压器）基础讲解">
+  <meta property="og:description" content="LDO（低压差线性稳压器）技术文档 📝 文档说明：本文档详细介绍LDO的工作原理、关键参数及应用要点
+1. LDO概述 1.1 定义 LDO（Low Dropout Regulator） 是一种低压差线性稳压器，属于电源管理芯片的重要组成部分。
+1.2 核心功能 将不稳定、电压偏高的输入电压 $V_{IN}$ 转换为稳定、精准的输出电压 $V_{OUT}$ 为芯片内部核心电路（CPU、SerDes、逻辑单元）提供稳定供电 采用线性稳压方式，通过消耗多余电压实现稳压（区别于开关电源的能量转换） 2. LDO基本结构 2.1 核心组件 LDO由四个核心模块组成：
+graph LR A[输入VIN] --&gt; B[调整管] B --&gt; C[输出VOUT] C --&gt; D[反馈网络] D --&gt; E[误差放大器] F[参考电压源] --&gt; E E --&gt; B 2.1.1 调整管（Pass Transistor） 类型：功率MOS管或双极型晶体管 位置：串联在输入和输出之间 作用：导通程度决定输出电压 导通充分 → 压降小 导通受限 → 压降大 2.1.2 误差放大器（Error Amplifier） 实时比较反馈电压 $V_{FB}$ 与参考电压 $V_{REF}$ 输出控制信号调节调整管导通状态 2.1.3 参考电压源（Voltage Reference） 提供稳定、精准的基准电压（如0.8V、1.0V） 作为稳压的目标值 2.1.4 反馈网络（Feedback Network） 由电阻分压网络组成 将输出电压按比例缩小后反馈至误差放大器 3. 工作原理：负反馈稳压机制 3.1 闭环控制逻辑 目标设定 → 电压采样 → 误差检测 → 调整修正 → 稳定输出 ↑ ↓ └───────────────── 反馈 ─────────────────────┘ 3.2 详细步骤 目标设定：参考电压源提供基准电压 $V_{REF}$">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-09-16T02:30:00+08:00">
+    <meta property="article:modified_time" content="2025-09-16T02:30:00+08:00">
+    <meta property="article:tag" content="Ldo">
+    <meta property="article:tag" content="Power">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="📚LDO（低压差线性稳压器）基础讲解">
+  <meta name="twitter:description" content="LDO（低压差线性稳压器）技术文档 📝 文档说明：本文档详细介绍LDO的工作原理、关键参数及应用要点
+1. LDO概述 1.1 定义 LDO（Low Dropout Regulator） 是一种低压差线性稳压器，属于电源管理芯片的重要组成部分。
+1.2 核心功能 将不稳定、电压偏高的输入电压 $V_{IN}$ 转换为稳定、精准的输出电压 $V_{OUT}$ 为芯片内部核心电路（CPU、SerDes、逻辑单元）提供稳定供电 采用线性稳压方式，通过消耗多余电压实现稳压（区别于开关电源的能量转换） 2. LDO基本结构 2.1 核心组件 LDO由四个核心模块组成：
+graph LR A[输入VIN] --&gt; B[调整管] B --&gt; C[输出VOUT] C --&gt; D[反馈网络] D --&gt; E[误差放大器] F[参考电压源] --&gt; E E --&gt; B 2.1.1 调整管（Pass Transistor） 类型：功率MOS管或双极型晶体管 位置：串联在输入和输出之间 作用：导通程度决定输出电压 导通充分 → 压降小 导通受限 → 压降大 2.1.2 误差放大器（Error Amplifier） 实时比较反馈电压 $V_{FB}$ 与参考电压 $V_{REF}$ 输出控制信号调节调整管导通状态 2.1.3 参考电压源（Voltage Reference） 提供稳定、精准的基准电压（如0.8V、1.0V） 作为稳压的目标值 2.1.4 反馈网络（Feedback Network） 由电阻分压网络组成 将输出电压按比例缩小后反馈至误差放大器 3. 工作原理：负反馈稳压机制 3.1 闭环控制逻辑 目标设定 → 电压采样 → 误差检测 → 调整修正 → 稳定输出 ↑ ↓ └───────────────── 反馈 ─────────────────────┘ 3.2 详细步骤 目标设定：参考电压源提供基准电压 $V_{REF}$">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
+
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>📚LDO（低压差线性稳压器）基础讲解</h1><time class="dim" datetime="2025-09-16T02:30:00&#43;08:00">September 16, 2025</time><div class="term-container"><div class="tag">
+        <a href="/tags/ldo/">#ldo</a>
+      </div><div class="tag">
+        <a href="/tags/power/">#power</a>
+      </div></ol></div>
+  <section class="page-section"><h1 id="ldo低压差线性稳压器技术文档">LDO（低压差线性稳压器）技术文档</h1>
+<blockquote>
+<p>📝 <strong>文档说明</strong>：本文档详细介绍LDO的工作原理、关键参数及应用要点</p>
+</blockquote>
+<hr>
+<h2 id="1-ldo概述">1. LDO概述</h2>
+<h3 id="11-定义">1.1 定义</h3>
+<p><strong>LDO（Low Dropout Regulator）</strong> 是一种低压差线性稳压器，属于电源管理芯片的重要组成部分。</p>
+<h3 id="12-核心功能">1.2 核心功能</h3>
+<ul>
+<li>将<strong>不稳定、电压偏高</strong>的输入电压 $V_{IN}$ 转换为<strong>稳定、精准</strong>的输出电压 $V_{OUT}$</li>
+<li>为芯片内部核心电路（CPU、SerDes、逻辑单元）提供稳定供电</li>
+<li>采用<strong>线性稳压</strong>方式，通过消耗多余电压实现稳压（区别于开关电源的能量转换）</li>
+</ul>
+<hr>
+<h2 id="2-ldo基本结构">2. LDO基本结构</h2>
+<h3 id="21-核心组件">2.1 核心组件</h3>
+<p>LDO由四个核心模块组成：</p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph LR
+    A[输入VIN] --&gt; B[调整管]
+    B --&gt; C[输出VOUT]
+    C --&gt; D[反馈网络]
+    D --&gt; E[误差放大器]
+    F[参考电压源] --&gt; E
+    E --&gt; B
+</code></pre><h4 id="211-调整管pass-transistor">2.1.1 调整管（Pass Transistor）</h4>
+<ul>
+<li><strong>类型</strong>：功率MOS管或双极型晶体管</li>
+<li><strong>位置</strong>：串联在输入和输出之间</li>
+<li><strong>作用</strong>：导通程度决定输出电压
+<ul>
+<li>导通充分 → 压降小</li>
+<li>导通受限 → 压降大</li>
+</ul>
+</li>
+</ul>
+<h4 id="212-误差放大器error-amplifier">2.1.2 误差放大器（Error Amplifier）</h4>
+<ul>
+<li>实时比较反馈电压 $V_{FB}$ 与参考电压 $V_{REF}$</li>
+<li>输出控制信号调节调整管导通状态</li>
+</ul>
+<h4 id="213-参考电压源voltage-reference">2.1.3 参考电压源（Voltage Reference）</h4>
+<ul>
+<li>提供稳定、精准的基准电压（如0.8V、1.0V）</li>
+<li>作为稳压的目标值</li>
+</ul>
+<h4 id="214-反馈网络feedback-network">2.1.4 反馈网络（Feedback Network）</h4>
+<ul>
+<li>由电阻分压网络组成</li>
+<li>将输出电压按比例缩小后反馈至误差放大器</li>
+</ul>
+<hr>
+<h2 id="3-工作原理负反馈稳压机制">3. 工作原理：负反馈稳压机制</h2>
+<h3 id="31-闭环控制逻辑">3.1 闭环控制逻辑</h3>
+<pre tabindex="0"><code>目标设定 → 电压采样 → 误差检测 → 调整修正 → 稳定输出
+    ↑                                           ↓
+    └───────────────── 反馈 ─────────────────────┘
+</code></pre><h3 id="32-详细步骤">3.2 详细步骤</h3>
+<ol>
+<li>
+<p><strong>目标设定</strong>：参考电压源提供基准电压 $V_{REF}$</p>
+</li>
+<li>
+<p><strong>电压采样</strong>：反馈网络将输出电压分压得到反馈电压 $V_{FB}$</p>
+</li>
+<li>
+<p><strong>误差检测</strong>：误差放大器比较 $V_{FB}$ 和 $V_{REF}$</p>
+</li>
+<li>
+<p><strong>调整修正</strong>：</p>
+<ul>
+<li>
+<p><strong>情况A</strong>：$V_{OUT}$ 偏高
+$$V_{FB} &gt; V_{REF} \Rightarrow \text{误差放大器输出降低} \Rightarrow \text{调整管导通减小} \Rightarrow \text{压降增大} \Rightarrow V_{OUT} \downarrow$$</p>
+</li>
+<li>
+<p><strong>情况B</strong>：$V_{OUT}$ 偏低
+$$V_{FB} &lt; V_{REF} \Rightarrow \text{误差放大器输出升高} \Rightarrow \text{调整管导通增大} \Rightarrow \text{压降减小} \Rightarrow V_{OUT} \uparrow$$</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>通过持续的负反馈调节，LDO将输出电压稳定在目标值附近。</p>
+<hr>
+<h2 id="4-关键参数压差dropout-voltage">4. 关键参数：压差（Dropout Voltage）</h2>
+<h3 id="41-定义">4.1 定义</h3>
+<p><strong>压差</strong> $V_{DO}$ 是指在保证输出电压稳定在额定值的前提下，输入电压与输出电压之间的<strong>最小差值</strong>。</p>
+<p>$$V_{IN(min)} = V_{OUT} + V_{DO}$$</p>
+<h3 id="42-示例计算">4.2 示例计算</h3>
+<blockquote>
+<p><strong>例</strong>：某LDO额定输出 $V_{OUT} = 1.0V$，压差 $V_{DO} = 140mV$</p>
+<p>最小输入电压：
+$$V_{IN(min)} = 1.0V + 0.14V = 1.14V$$</p>
+</blockquote>
+<h3 id="43-物理意义">4.3 物理意义</h3>
+<p>压差本质上是<strong>调整管在最大导通状态下的压降</strong>：</p>
+<ul>
+<li>当 $V_{IN} = V_{OUT} + V_{DO}$ 时，调整管完全导通，压降达到最小值</li>
+<li>当 $V_{IN} &lt; V_{OUT} + V_{DO}$ 时，LDO失去稳压能力，进入<strong>dropout状态</strong></li>
+<li>输出电压随输入电压下降而下降</li>
+</ul>
+<h3 id="44-压差裕量设计原则">4.4 压差裕量设计原则</h3>
+<table>
+  <thead>
+      <tr>
+          <th>工作模式</th>
+          <th>压差值</th>
+          <th>LDO状态</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>正常稳压</td>
+          <td>$V_{IN} - V_{OUT} \gg V_{DO}$</td>
+          <td>正常工作</td>
+          <td>推荐裕量≥2倍 $V_{DO}$</td>
+      </tr>
+      <tr>
+          <td>临界状态</td>
+          <td>$V_{IN} - V_{OUT} \approx V_{DO}$</td>
+          <td>不稳定</td>
+          <td>易受负载波动影响</td>
+      </tr>
+      <tr>
+          <td>Dropout</td>
+          <td>$V_{IN} - V_{OUT} &lt; V_{DO}$</td>
+          <td>失效</td>
+          <td>输出跟随输入下降</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="45-压差设计实例">4.5 压差设计实例</h3>
+<blockquote>
+<p><strong>例</strong>：某芯片内部LDO需要输出1.0V，压差为140mV</p>
+<ul>
+<li><strong>不推荐</strong>：使用1.2V供电，压差仅200mV（1.43倍裕量）</li>
+<li><strong>推荐</strong>：使用1.4V供电，压差400mV（2.86倍裕量）</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="5-ldo应用案例分析">5. LDO应用案例分析</h2>
+<h3 id="51-工作模式">5.1 工作模式</h3>
+<p><strong>场景</strong>：某高速SerDes芯片内部LDO，$V_{OUT} = 1.0V$，$V_{DO} = 140mV$</p>
+<h4 id="511-不同供电电压下的工作状态">5.1.1 不同供电电压下的工作状态</h4>
+<table>
+  <thead>
+      <tr>
+          <th>外部供电</th>
+          <th>实际压差</th>
+          <th>压差裕量</th>
+          <th>LDO状态</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1.2V</td>
+          <td>200mV</td>
+          <td>1.43×</td>
+          <td>⚠️ 临界</td>
+          <td>接近最小压差，易受干扰</td>
+      </tr>
+      <tr>
+          <td>1.15V</td>
+          <td>150mV</td>
+          <td>1.07×</td>
+          <td>⚠️ 危险</td>
+          <td>几乎达到极限</td>
+      </tr>
+      <tr>
+          <td>1.13V</td>
+          <td>130mV</td>
+          <td>0.93×</td>
+          <td>❌ Dropout</td>
+          <td>无法稳压，切换旁路</td>
+      </tr>
+      <tr>
+          <td>1.4V</td>
+          <td>400mV</td>
+          <td>2.86×</td>
+          <td>✅ 正常</td>
+          <td>足够裕量</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="52-临界工作点分析">5.2 临界工作点分析</h3>
+<p>当外部供电电压为1.2V时：</p>
+<p>$$\text{压差} = 1.2V - 1.0V = 200mV = 1.43 \times V_{DO}$$</p>
+<p><strong>潜在问题</strong>：</p>
+<ul>
+<li>负载波动可能导致供电电压瞬间下降</li>
+<li>如电压降至1.15V，压差仅为150mV（1.07倍 $V_{DO}$）</li>
+<li>LDO可能在&quot;正常稳压&quot;和&quot;dropout&quot;模式间反复切换</li>
+<li>导致输出电压不稳定，影响系统可靠性</li>
+</ul>
+<p><strong>解决方案</strong>：</p>
+<ol>
+<li><strong>提高输入电压</strong>：使用1.4V以上供电，确保充足压差裕量</li>
+<li><strong>强制工作模式</strong>：手动控制LDO工作模式，避免自动切换</li>
+<li><strong>增加输入滤波</strong>：减少供电电压波动</li>
+<li><strong>优化负载设计</strong>：降低负载电流突变幅度</li>
+</ol>
+<hr>
+<h2 id="6-ldo特性分析">6. LDO特性分析</h2>
+<h3 id="61-优点">6.1 优点</h3>
+<table>
+  <thead>
+      <tr>
+          <th>特性</th>
+          <th>说明</th>
+          <th>适用场景</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>纹波小、噪声低</td>
+          <td>无开关频率，输出干净</td>
+          <td>模拟电路、高速SerDes</td>
+      </tr>
+      <tr>
+          <td>响应快</td>
+          <td>闭环带宽高</td>
+          <td>负载快速变化场景</td>
+      </tr>
+      <tr>
+          <td>电路简单</td>
+          <td>无需电感等复杂元件</td>
+          <td>空间受限应用</td>
+      </tr>
+      <tr>
+          <td>成本低</td>
+          <td>集成度高</td>
+          <td>消费电子</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="62-缺点">6.2 缺点</h3>
+<h4 id="621-效率问题">6.2.1 效率问题</h4>
+<p>转换效率公式：</p>
+<p>$$\eta = \frac{V_{OUT}}{V_{IN}} \times 100%$$</p>
+<p><strong>示例</strong>：</p>
+<ul>
+<li>输入1.8V，输出1.0V：$\eta = 55.6%$</li>
+<li>输入3.3V，输出1.0V：$\eta = 30.3%$</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>注意</strong>：压差越大，效率越低，发热越严重</p>
+</blockquote>
+<h4 id="622-功耗与散热">6.2.2 功耗与散热</h4>
+<p>调整管功耗：</p>
+<p>$$P_{dissipation} = (V_{IN} - V_{OUT}) \times I_{OUT}$$</p>
+<p><strong>设计要点</strong>：</p>
+<ul>
+<li>大电流应用需考虑散热设计</li>
+<li>选择合适封装（如散热增强型封装）</li>
+<li>必要时添加散热片</li>
+</ul>
+<h4 id="623-输入电压范围">6.2.3 输入电压范围</h4>
+<p>必须满足：</p>
+<p>$$V_{IN} &gt; V_{OUT} + V_{DO}$$</p>
+<p>否则无法正常稳压。</p>
+<hr>
+<h2 id="7-ldo选型要点">7. LDO选型要点</h2>
+<h3 id="71-关键参数清单">7.1 关键参数清单</h3>
+<table>
+  <thead>
+      <tr>
+          <th>参数</th>
+          <th>考量因素</th>
+          <th>设计建议</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>压差</strong> $V_{DO}$</td>
+          <td>最小输入电压要求</td>
+          <td>留2-3倍裕量</td>
+      </tr>
+      <tr>
+          <td><strong>输出电流</strong> $I_{OUT}$</td>
+          <td>负载需求</td>
+          <td>留20-30%余量</td>
+      </tr>
+      <tr>
+          <td><strong>输出电压精度</strong></td>
+          <td>稳压精度要求</td>
+          <td>典型±1%~±3%</td>
+      </tr>
+      <tr>
+          <td><strong>PSRR</strong></td>
+          <td>输入纹波抑制</td>
+          <td>高速电路需&gt;60dB</td>
+      </tr>
+      <tr>
+          <td><strong>噪声</strong></td>
+          <td>输出噪声电压</td>
+          <td>敏感电路需&lt;50μVrms</td>
+      </tr>
+      <tr>
+          <td><strong>静态电流</strong> $I_Q$</td>
+          <td>待机功耗</td>
+          <td>电池供电需&lt;10μA</td>
+      </tr>
+      <tr>
+          <td><strong>热阻</strong> $\theta_{JA}$</td>
+          <td>散热能力</td>
+          <td>根据功耗计算结温</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="72-应用注意事项">7.2 应用注意事项</h3>
+<h4 id="输入输出电容配置">输入输出电容配置</h4>
+<ul>
+<li><strong>输入电容</strong>：通常1-10μF，抑制输入噪声</li>
+<li><strong>输出电容</strong>：根据datasheet要求，影响稳定性和瞬态响应</li>
+<li><strong>ESR要求</strong>：部分LDO对输出电容ESR有特定要求</li>
+</ul>
+<h4 id="负载瞬态响应">负载瞬态响应</h4>
+<ul>
+<li>负载突变时输出电压会产生下冲/上冲</li>
+<li>通过增大输出电容或选择快速响应LDO改善</li>
+</ul>
+<h4 id="热设计">热设计</h4>
+<p>结温计算公式：</p>
+<p>$$T_J = T_A + P_{dissipation} \times \theta_{JA}$$</p>
+<p>确保 $T_J &lt; T_{J(max)}$（通常125-150°C）</p>
+<hr>
+<h2 id="8-总结">8. 总结</h2>
+<h3 id="81-ldo核心要点">8.1 LDO核心要点</h3>
+<ol>
+<li><strong>工作原理</strong>：基于负反馈的线性稳压</li>
+<li><strong>关键参数</strong>：压差决定最小输入电压要求</li>
+<li><strong>优势</strong>：低噪声、快响应、电路简单</li>
+<li><strong>劣势</strong>：效率低、发热大、输入范围受限</li>
+</ol>
+<h3 id="82-设计黄金法则">8.2 设计黄金法则</h3>
+<blockquote>
+<p>💡 <strong>压差裕量充足 + 合理热设计 + 适当电容配置 = 稳定可靠的LDO应用</strong></p>
+</blockquote>
+<h3 id="83-典型应用场景">8.3 典型应用场景</h3>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph TD
+    A[LDO应用] --&gt; B[数字电路供电]
+    A --&gt; C[模拟电路供电]
+    A --&gt; D[RF电路供电]
+    A --&gt; E[传感器供电]
+    B --&gt; F[CPU核心电压]
+    C --&gt; G[ADC/DAC参考电压]
+    D --&gt; H[VCO/PLL电源]
+    E --&gt; I[低功耗传感器]
+</code></pre><hr>
+<h2 id="参考资源">参考资源</h2>
+<ul>
+<li>📚 LDO数据手册（各厂商）</li>
+<li>📐 电源设计工具（TI WEBENCH、ADI Design Tools）</li>
+<li>🔧 PCB Layout指南（输入输出电容布局、散热设计）s</li>
+</ul>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2026 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>453 words</span>
+    <span>7 - 9 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-ldo概述">1. LDO概述</a>
+      <ul>
+        <li><a href="#11-定义">1.1 定义</a></li>
+        <li><a href="#12-核心功能">1.2 核心功能</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-ldo基本结构">2. LDO基本结构</a>
+      <ul>
+        <li><a href="#21-核心组件">2.1 核心组件</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-工作原理负反馈稳压机制">3. 工作原理：负反馈稳压机制</a>
+      <ul>
+        <li><a href="#31-闭环控制逻辑">3.1 闭环控制逻辑</a></li>
+        <li><a href="#32-详细步骤">3.2 详细步骤</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-关键参数压差dropout-voltage">4. 关键参数：压差（Dropout Voltage）</a>
+      <ul>
+        <li><a href="#41-定义">4.1 定义</a></li>
+        <li><a href="#42-示例计算">4.2 示例计算</a></li>
+        <li><a href="#43-物理意义">4.3 物理意义</a></li>
+        <li><a href="#44-压差裕量设计原则">4.4 压差裕量设计原则</a></li>
+        <li><a href="#45-压差设计实例">4.5 压差设计实例</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-ldo应用案例分析">5. LDO应用案例分析</a>
+      <ul>
+        <li><a href="#51-工作模式">5.1 工作模式</a></li>
+        <li><a href="#52-临界工作点分析">5.2 临界工作点分析</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-ldo特性分析">6. LDO特性分析</a>
+      <ul>
+        <li><a href="#61-优点">6.1 优点</a></li>
+        <li><a href="#62-缺点">6.2 缺点</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-ldo选型要点">7. LDO选型要点</a>
+      <ul>
+        <li><a href="#71-关键参数清单">7.1 关键参数清单</a></li>
+        <li><a href="#72-应用注意事项">7.2 应用注意事项</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-总结">8. 总结</a>
+      <ul>
+        <li><a href="#81-ldo核心要点">8.1 LDO核心要点</a></li>
+        <li><a href="#82-设计黄金法则">8.2 设计黄金法则</a></li>
+        <li><a href="#83-典型应用场景">8.3 典型应用场景</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考资源">参考资源</a></li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/-gmsl2-%E8%8A%AF%E7%89%87-vdd-ldo-%E8%B0%83%E8%8A%82%E5%99%A8%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/">📚LDO（低压差线性稳压器）基础讲解</a></li></ul></aside></div>
+  </div>
+</body>
+</html>

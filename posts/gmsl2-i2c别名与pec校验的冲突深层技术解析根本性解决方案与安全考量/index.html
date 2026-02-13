@@ -213,7 +213,7 @@ uint8_t real_addr = 0x1A; uint8_t data[] = {0xAB, 0xCD}; uint8_t pec_input[] = {
 使用别名地址进行事务：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> i2c_msg msg <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>    .addr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x70</span>, <span style="color:#75715e">// 别名地址
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .flags <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>,
+</span></span></span><span style="display:flex;"><span>    .flags <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>,
 </span></span><span style="display:flex;"><span>    .len <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(payload),
 </span></span><span style="display:flex;"><span>    .buf <span style="color:#f92672">=</span> payload
 </span></span><span style="display:flex;"><span>};
@@ -226,7 +226,7 @@ uint8_t real_addr = 0x1A; uint8_t data[] = {0xAB, 0xCD}; uint8_t pec_input[] = {
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/ioctl.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;fcntl.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">uint8_t</span> <span style="color:#a6e22e">crc8</span>(<span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>data, <span style="color:#66d9ef">size_t</span> len) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> crc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">size_t</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; i<span style="color:#f92672">++</span>) {

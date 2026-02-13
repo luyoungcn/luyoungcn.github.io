@@ -143,7 +143,7 @@ AIAgent API 的主要特性：
 </ul>
 <p>以下是一个概念性代码片段，展示了如何定义一个 <code>AIAgent</code> 来在后台自动分类和标记照片：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 在您的 AndroidManifest.xml 中
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>&lt;service
+</span></span></span><span style="display:flex;"><span>&lt;service
 </span></span><span style="display:flex;"><span>    android:name=<span style="color:#e6db74">&#34;.services.PhotoTaggerAgentService&#34;</span>
 </span></span><span style="display:flex;"><span>    android:permission=<span style="color:#e6db74">&#34;android.permission.BIND_AI_AGENT&#34;</span>
 </span></span><span style="display:flex;"><span>    android:exported=<span style="color:#e6db74">&#34;true&#34;</span>&gt;
@@ -153,34 +153,34 @@ AIAgent API 的主要特性：
 </span></span><span style="display:flex;"><span>&lt;/service&gt;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// PhotoTaggerAgent.kt
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PhotoTaggerAgent</span> : AIAgent() {
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PhotoTaggerAgent</span> : AIAgent() {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取一个模型实例
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> imageTagger = <span style="color:#a6e22e">Model</span>.getInstance(<span style="color:#e6db74">&#34;google:ai/mobilenet-v4/classify&#34;</span>)
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> imageTagger = <span style="color:#a6e22e">Model</span>.getInstance(<span style="color:#e6db74">&#34;google:ai/mobilenet-v4/classify&#34;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">suspend</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">onTask</span>(params: AgentTaskParams): Result {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> imageUri = params.getUri(<span style="color:#e6db74">&#34;imageUri&#34;</span>) <span style="color:#f92672">?:</span> <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Result</span>.failure()
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 系统处理高效的加载和到张量的转换
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">val</span> inputTensor = <span style="color:#a6e22e">Tensor</span>.fromUri(contentResolver, imageUri)
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> inputTensor = <span style="color:#a6e22e">Tensor</span>.fromUri(contentResolver, imageUri)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 模型执行会被卸载到 NPU（如果可用）
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">val</span> output = imageTagger.execute(inputTensor)
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> output = imageTagger.execute(inputTensor)
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> tags = processOutputToTags(output)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 将标签保存到数据库或媒体存储
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        saveTagsForImage(imageUri, tags)
+</span></span></span><span style="display:flex;"><span>        saveTagsForImage(imageUri, tags)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Result</span>.success()
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 触发 Agent
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">tagNewPhoto</span>(context: Context, imageUri: Uri) {
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">tagNewPhoto</span>(context: Context, imageUri: Uri) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> taskRequest = <span style="color:#a6e22e">AgentTaskRequest</span>.Builder(PhotoTaggerAgent<span style="color:#f92672">::</span><span style="color:#66d9ef">class</span>.java)
 </span></span><span style="display:flex;"><span>        .addUri(<span style="color:#e6db74">&#34;imageUri&#34;</span>, imageUri)
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 设置触发条件，例如设备空闲时
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        .setCondition(<span style="color:#a6e22e">Condition</span>.DEVICE_IDLE)
+</span></span></span><span style="display:flex;"><span>        .setCondition(<span style="color:#a6e22e">Condition</span>.DEVICE_IDLE)
 </span></span><span style="display:flex;"><span>        .build()
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">AIAgentManager</span>.getInstance(context).enqueue(taskRequest)
@@ -203,7 +203,7 @@ AIAgent API 的主要特性：
 </span></span><span style="display:flex;"><span>    GenerativeLayout(
 </span></span><span style="display:flex;"><span>        prompt = prompt,
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 定义允许生成模型使用的组件类型
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        allowedComponents = setOf(
+</span></span></span><span style="display:flex;"><span>        allowedComponents = setOf(
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">GenerativeComponent</span>.Card,
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">GenerativeComponent</span>.Button,
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">GenerativeComponent</span>.Icon
@@ -211,14 +211,14 @@ AIAgent API 的主要特性：
 </span></span><span style="display:flex;"><span>        modifier = <span style="color:#a6e22e">Modifier</span>.fillMaxSize()
 </span></span><span style="display:flex;"><span>    ) {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 这个代码块为模型可以使用的组件提供了 Composable 实现
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">GenerativeComponent</span>.Card { modifier, content <span style="color:#f92672">-&gt;</span>
-</span></span><span style="display:flex;"><span>            Card(modifier = modifier, elevation = <span style="color:#ae81ff">4.</span>dp) { content() }
+</span></span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">GenerativeComponent</span>.Card { modifier, content <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>            Card(modifier = modifier, elevation = <span style="color:#ae81ff">4</span>.dp) { content() }
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">GenerativeComponent</span>.Button { modifier, onClick, text <span style="color:#f92672">-&gt;</span>
 </span></span><span style="display:flex;"><span>            Button(modifier = modifier, onClick = onClick) { Text(text) }
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ... 以此类推
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>结果可能是每次查看屏幕时都有一个完全独特的布局，专为用户的即时情境量身定制。在雨天，它可能会生成一个建议“舒适地看场电影”的卡片；而在晴天公园里，它可能会生成另一个带有“寻找附近的小径”按钮的布局。</p>
 <p>这是一个实验性的 API，我们才刚刚触及可能性的皮毛。我们预见它将被用于动态的入门引导流程、个性化的购物体验和自适应的教育内容。</p>
@@ -230,19 +230,19 @@ AIAgent API 的主要特性：
 <p>新的隐私信息中心现在为用户提供任何敏感数据访问的详细、带时间戳的事件日志。用户不仅能看到某个应用使用了他们的位置，还能看到_何时_使用、使用了_多长时间_，以及至关重要的，开发者为该次访问提供的理由。</p>
 <p>这得益于全新的 <strong><code>PermissionLog</code> API</strong>。现在，当您执行需要敏感权限的操作时，系统强烈建议您记录一个上下文相关的字符串来解释_为什么_。这不仅仅是一条注释；它是一个结构化的数据，系统用它来填充用户的隐私信息中心。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 在您的定位服务中
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> justification = <span style="color:#e6db74">&#34;为您的搜索查找附近的餐馆。&#34;</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> justification = <span style="color:#e6db74">&#34;为您的搜索查找附近的餐馆。&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 一个应用定义的归因标签
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> attributionTag = <span style="color:#e6db74">&#34;restaurant-search&#34;</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> attributionTag = <span style="color:#e6db74">&#34;restaurant-search&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 使用新的 withJustification API
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    locationManager.withJustification(justification, attributionTag) {
+</span></span></span><span style="display:flex;"><span>    locationManager.withJustification(justification, attributionTag) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> location = <span style="color:#66d9ef">it</span>.getCurrentLocation(<span style="color:#e6db74">&#34;gps&#34;</span>)
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ... 处理位置信息
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (e: SecurityException) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 处理权限被拒绝的情况
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>这个简单的补充具有深远的影响。它促进了透明度，让开发者对他们的数据使用负责，并为用户提供了做出明智决策所需的信息。那些持续提供清晰理由的应用更有可能留住用户的信任和权限。</p>
 <h3 id="动态沙盒与资源控制">动态沙盒与资源控制</h3>
 <p>Android 的应用沙盒是其安全模型的基石。在 Android 16 中，这个沙盒变得动态化。系统现在可以根据应用的实时行为和上下文，动态调整其沙盒可用的资源和能力。</p>
@@ -300,10 +300,10 @@ AIAgent API 的主要特性：
 <p>想象一下，一个用户正在手机上的购物应用中浏览产品列表。当他们打开平板电脑时，系统会弹出一个提示，询问他们是否想继续他们的会话。如果他们接受，您在平板电脑上的应用将打开到完全相同的产品列表，并保持相同的滚动位置。</p>
 <p>以下是您如何使一个会话可转移：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Kotlin" data-lang="Kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 在您的产品列表 Activity/Composable 中
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> continuumManager = getSystemService(ContinuumManager<span style="color:#f92672">::</span><span style="color:#66d9ef">class</span>.java)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> continuumManager = getSystemService(ContinuumManager<span style="color:#f92672">::</span><span style="color:#66d9ef">class</span>.java)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 定义恢复此状态所需的数据
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> sessionState = bundleOf(
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> sessionState = bundleOf(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;list_query&#34;</span> to currentQuery,
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;scroll_position&#34;</span> to lazyListState.firstVisibleItemIndex
 </span></span><span style="display:flex;"><span>)
@@ -315,15 +315,15 @@ AIAgent API 的主要特性：
 </span></span><span style="display:flex;"><span>    .build()
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 发布会话，使其可被转移
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>continuumManager.publishSession(transferableSession)
+</span></span></span><span style="display:flex;"><span>continuumManager.publishSession(transferableSession)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 在接收设备的 ProductListActivity 的 onCreate() 中
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (intent.action <span style="color:#f92672">==</span> <span style="color:#a6e22e">ContinuumManager</span>.ACTION_RESTORE_SESSION) {
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (intent.action <span style="color:#f92672">==</span> <span style="color:#a6e22e">ContinuumManager</span>.ACTION_RESTORE_SESSION) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> sessionState = intent.getBundleExtra(<span style="color:#a6e22e">ContinuumManager</span>.EXTRA_SESSION_STATE)
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> query = sessionState.getString(<span style="color:#e6db74">&#34;list_query&#34;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> scrollPosition = sessionState.getInt(<span style="color:#e6db74">&#34;scroll_position&#34;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 恢复 UI 状态
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    viewModel.loadProducts(query)
+</span></span></span><span style="display:flex;"><span>    viewModel.loadProducts(query)
 </span></span><span style="display:flex;"><span>    lazyListState.scrollToItem(scrollPosition)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Project Continuum 还引入了<strong>共享画布 (Shared Canvases)</strong>，允许实时的、多用户的交互。例如，两个用户可以共同在一个绘图或文档上协作，他们的输入通过系统管理的低延迟连接在设备间同步。这为协作游戏、生产力工具和创意应用开辟了难以置信的可能性。</p>
@@ -334,38 +334,38 @@ AIAgent API 的主要特性：
 </span></span><span style="display:flex;"><span>    colorScheme = colorScheme,
 </span></span><span style="display:flex;"><span>    typography = Typography,
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Android 16 中的新功能
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    enableLivingPalettes = <span style="color:#66d9ef">true</span>,
+</span></span></span><span style="display:flex;"><span>    enableLivingPalettes = <span style="color:#66d9ef">true</span>,
 </span></span><span style="display:flex;"><span>    onContextualColorChange = { newColorScheme <span style="color:#f92672">-&gt;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 当调色板变化时，可选择性地获得回调
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// 以便在需要时更新非 Material 组件
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 以便在需要时更新非 Material 组件
+</span></span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 您的应用 UI
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>当 <code>enableLivingPalettes</code> 为 true 时，随着上下文的变化，系统将对您主题中的 <code>primary</code> 和 <code>secondary</code> 颜色角色应用微妙的、动画化的过渡。对于所有标准的 Material 组件，这都是自动处理的。其结果是一个感觉充满活力、与现实世界联系更紧密的 UI。</p>
 <h3 id="面向大屏幕的高级窗口-api">面向大屏幕的高级窗口 API</h3>
 <p>随着折叠屏、平板电脑和 ChromeOS 设备的普及，为大屏幕构建应用已不再是可选项。Android 16 提供了一套<strong>高级窗口 API</strong>，使构建复杂的、多窗格的布局比以往任何时候都更容易。</p>
 <p>Jetpack 中新的 <code>SlidingPaneLayout2</code> 和 <code>FoldableLayout</code> 组件提供了声明式的、Compose-first 的方式来创建自适应 UI。它们能够感知设备的物理属性，例如铰链位置和方向。</p>
 <p>一个关键的补充是 <strong><code>PaneAnchor</code> API</strong>。您现在可以将一个窗格或对话框“锚定”到另一个窗格。当用户调整布局大小时，被锚定的组件将智能地重排或重新定位，以维持其与锚点的空间关系。这对于创建复杂的 UI（如图像编辑器，其中工具面板应始终靠近主画布）非常有价值。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Kotlin" data-lang="Kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 将工具面板锚定到画布的示例
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Box(modifier = <span style="color:#a6e22e">Modifier</span>.fillMaxSize()) {
+</span></span></span><span style="display:flex;"><span>Box(modifier = <span style="color:#a6e22e">Modifier</span>.fillMaxSize()) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> canvasPaneId = <span style="color:#e6db74">&#34;canvas&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> toolsPaneId = <span style="color:#e6db74">&#34;tools&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 主要内容窗格
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    Surface(modifier = <span style="color:#a6e22e">Modifier</span>.paneId(canvasPaneId)) {
+</span></span></span><span style="display:flex;"><span>    Surface(modifier = <span style="color:#a6e22e">Modifier</span>.paneId(canvasPaneId)) {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ... 您的图像画布
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 工具面板，锚定到画布
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    DraggablePane(
+</span></span></span><span style="display:flex;"><span>    DraggablePane(
 </span></span><span style="display:flex;"><span>        modifier = <span style="color:#a6e22e">Modifier</span>.paneId(toolsPaneId),
 </span></span><span style="display:flex;"><span>        anchorTo = canvasPaneId,
 </span></span><span style="display:flex;"><span>        anchorEdge = <span style="color:#a6e22e">PaneAnchor</span>.<span style="color:#a6e22e">Edge</span>.End,
-</span></span><span style="display:flex;"><span>        margin = <span style="color:#ae81ff">16.</span>dp
+</span></span><span style="display:flex;"><span>        margin = <span style="color:#ae81ff">16</span>.dp
 </span></span><span style="display:flex;"><span>    ) {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ... 您的工具按钮
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><hr>
 <h2 id="第四部分底层探秘性能功耗与核心系统变更">第四部分：底层探秘：性能、功耗与核心系统变更</h2>

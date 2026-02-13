@@ -309,7 +309,7 @@
 <p><code>/init</code> 是 initramfs 的“入口点”，它在真正的 <code>/sbin/init</code> 启动前执行。</p>
 <p>典型实现（BusyBox 风格）：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>echo <span style="color:#e6db74">&#34;[INITRAMFS] Booting early init system...&#34;</span>
+</span></span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;[INITRAMFS] Booting early init system...&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>mount -t proc proc /proc
 </span></span><span style="display:flex;"><span>mount -t sysfs sysfs /sys

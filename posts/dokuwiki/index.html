@@ -132,15 +132,15 @@
 配置 <code>apache2 document root</code> 为 dokuwiki 根目录</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span><span style="color:#f92672">- DocumentRoot /var/www/html
-</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+ DocumentRoot /var/www/wikihub
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+ DocumentRoot /var/www/wikihub
 </span></span></span></code></pre></div><ol start="2">
 <li>修改文件 <code>/etc/apache2/apache2.conf</code> 配置 apache security</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>&lt;Directory /&gt;
 </span></span><span style="display:flex;"><span>        Options FollowSymLinks
 </span></span><span style="display:flex;"><span><span style="color:#f92672">-       AllowOverride none
-</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+       AllowOverride All
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span>        Require all denied
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       AllowOverride All
+</span></span></span><span style="display:flex;"><span>        Require all denied
 </span></span><span style="display:flex;"><span>&lt;/Directory&gt;
 </span></span><span style="display:flex;"><span>&lt;Directory /usr/share&gt;
 </span></span><span style="display:flex;"><span>        AllowOverride None
@@ -149,8 +149,8 @@
 </span></span><span style="display:flex;"><span>&lt;Directory /var/www/&gt;
 </span></span><span style="display:flex;"><span>        Options Indexes FollowSymLinks
 </span></span><span style="display:flex;"><span><span style="color:#f92672">-       AllowOverride none
-</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+       AllowOverride All
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span>        Require all granted
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       AllowOverride All
+</span></span></span><span style="display:flex;"><span>        Require all granted
 </span></span><span style="display:flex;"><span>&lt;/Directory&gt;
 </span></span></code></pre></div><ol start="3">
 <li>Activate the &lsquo;mod_rewrite&rsquo; in apache2 to enable .htaccess</li>

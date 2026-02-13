@@ -143,33 +143,33 @@
 </span></span></code></pre></div><p>取消注释：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>$ sudo diff -u svnserve.conf svnserve.conf.bak 
 </span></span><span style="display:flex;"><span><span style="color:#f92672">--- svnserve.conf       2023-06-19 13:27:33.473464875 +0800
-</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ svnserve.conf.bak   2023-06-19 13:26:30.071350251 +0800
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -16,15 +16,15 @@
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> ### The sample settings below are the defaults and specify that anonymous
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+++ svnserve.conf.bak   2023-06-19 13:26:30.071350251 +0800
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">@@ -16,15 +16,15 @@
+</span></span></span><span style="display:flex;"><span> ### The sample settings below are the defaults and specify that anonymous
 </span></span><span style="display:flex;"><span> ### users have read-only access to the repository, while authenticated
 </span></span><span style="display:flex;"><span> ### users have read and write access to the repository.
 </span></span><span style="display:flex;"><span><span style="color:#f92672">-anon-access = read
 </span></span></span><span style="display:flex;"><span><span style="color:#f92672">-auth-access = write
-</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+# anon-access = read
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+# anon-access = read
 </span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+# auth-access = write
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span> ### The password-db option controls the location of the password
+</span></span></span><span style="display:flex;"><span> ### The password-db option controls the location of the password
 </span></span><span style="display:flex;"><span> ### database file.  Unless you specify a path starting with a /,
 </span></span><span style="display:flex;"><span> ### the file&#39;s location is relative to the directory containing
 </span></span><span style="display:flex;"><span> ### this configuration file.
 </span></span><span style="display:flex;"><span> ### If SASL is enabled (see below), this file will NOT be used.
 </span></span><span style="display:flex;"><span> ### Uncomment the line below to use the default password file.
 </span></span><span style="display:flex;"><span><span style="color:#f92672">-password-db = passwd
-</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+# password-db = passwd
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span> ### The authz-db option controls the location of the authorization
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+# password-db = passwd
+</span></span></span><span style="display:flex;"><span> ### The authz-db option controls the location of the authorization
 </span></span><span style="display:flex;"><span> ### rules for path-based access control.  Unless you specify a path
 </span></span><span style="display:flex;"><span> ### starting with a /, the file&#39;s location is relative to the
 </span></span><span style="display:flex;"><span><span style="color:#75715e">@@ -33,7 +33,7 @@
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> ### file in a Subversion repository.  If you don&#39;t specify an authz-db,
+</span></span></span><span style="display:flex;"><span> ### file in a Subversion repository.  If you don&#39;t specify an authz-db,
 </span></span><span style="display:flex;"><span> ### no path-based access control is done.
 </span></span><span style="display:flex;"><span> ### Uncomment the line below to use the default authorization file.
 </span></span><span style="display:flex;"><span><span style="color:#f92672">-authz-db = authz
-</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+# authz-db = authz
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span> ### The groups-db option controls the location of the file with the
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+# authz-db = authz
+</span></span></span><span style="display:flex;"><span> ### The groups-db option controls the location of the file with the
 </span></span><span style="display:flex;"><span> ### group definitions and allows maintaining groups separately from the
 </span></span><span style="display:flex;"><span> ### authorization rules.  The groups-db file is of the same format as the
 </span></span></code></pre></div><p>说明：（去掉前面的#，并且顶格）</p>
