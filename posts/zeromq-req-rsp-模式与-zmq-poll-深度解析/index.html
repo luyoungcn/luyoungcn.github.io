@@ -214,7 +214,7 @@ REQ Socket 状态机: send_ready: 初始状态，可以发送请求。 send_requ
 <li><strong>超时</strong>: 如果在指定的 <code>timeout</code> 时间内，没有任何 I/O 线程发送唤醒信号，用户线程的 <code>wait()</code> 会超时返回，<code>zmq_poll</code> 最终返回 0，表示没有任何事件发生。</li>
 </ul>
 <h4 id="源码概念总结">源码概念总结</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 伪代码，更详细地示意 ZMQ 内部逻辑
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 伪代码，更详细地示意 ZMQ 内部逻辑
 </span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// zmq_poll 的核心实现
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">zmq_poll</span>(zmq_pollitem_t <span style="color:#f92672">*</span>items, <span style="color:#66d9ef">int</span> nitems, <span style="color:#66d9ef">long</span> timeout)
@@ -329,7 +329,7 @@ REQ Socket 状态机: send_ready: 初始状态，可以发送请求。 send_requ
 <h3 id="41-服务端-rsp-模板">4.1 服务端 (RSP) 模板</h3>
 <p>服务端通常是被动的，其主要职责就是等待并响应。因此，在简单的场景下，直接使用阻塞的 <code>recv</code> 是可以接受的，因为“阻塞等待”正是它的设计意图。</p>
 <p>然而，即使是服务端，在更复杂的应用中也可能需要 <code>poll</code>。例如，一个服务器可能需要同时监听一个用于接收客户端业务请求的 RSP socket，以及一个用于接收管理员“优雅停机”命令的 SUB socket。这时，就必须使用 <code>poll</code> 来同时监视两个 socket 上的事件。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;zmq.hpp&gt;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;zmq.hpp&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;thread&gt;</span><span style="color:#75715e">
@@ -382,7 +382,7 @@ REQ Socket 状态机: send_ready: 初始状态，可以发送请求。 send_requ
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="42-健壮的客户端-req-模板---lazy-pirate-pattern">4.2 健壮的客户端 (REQ) 模板 - Lazy Pirate Pattern</h3>
 <p>客户端是 <code>poll</code> 发挥核心作用的地方。这个模板完整地展示了如何实现超时、重试和状态恢复。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;zmq.hpp&gt;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;zmq.hpp&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">

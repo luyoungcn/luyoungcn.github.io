@@ -108,22 +108,22 @@
         <a href="/tags/svn/">#svn</a>
       </div></ol></div>
   <section class="page-section"><h2 id="安装-subversion">安装 subversion</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get remove --purge subversion
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get remove --purge subversion
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo apt-get update
 </span></span><span style="display:flex;"><span>sudo apt-get install subversion
 </span></span></code></pre></div><h2 id="创建-svn-用户">创建 SVN 用户</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo adduser svn
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo adduser svn
 </span></span><span style="display:flex;"><span>sudo adduser svn sudo
 </span></span><span style="display:flex;"><span>sudo su svn
 </span></span></code></pre></div><h2 id="创建仓库目录">创建仓库目录</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mkdir /svn
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mkdir /svn
 </span></span><span style="display:flex;"><span>sudo mkdir /svn/repos
 </span></span><span style="display:flex;"><span>sudo mkdir /svn/repos/public
 </span></span><span style="display:flex;"><span>sudo chmod <span style="color:#ae81ff">777</span> -R /svn/repos/public
 </span></span><span style="display:flex;"><span>sudo chown svn:svn -R /svn
 </span></span></code></pre></div><h2 id="创建版本库">创建版本库</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo svnadmin create /svn/repos/public
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo svnadmin create /svn/repos/public
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>$ ls -lah /svn/repos/public
 </span></span><span style="display:flex;"><span>total 32K
@@ -135,13 +135,13 @@
 </span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">2</span> root root 4.0K 6月  <span style="color:#ae81ff">19</span> 14:15 hooks
 </span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">2</span> root root 4.0K 6月  <span style="color:#ae81ff">19</span> 14:15 locks
 </span></span><span style="display:flex;"><span>-rw-r--r-- <span style="color:#ae81ff">1</span> root root  <span style="color:#ae81ff">246</span> 6月  <span style="color:#ae81ff">19</span> 14:15 README.txt
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /svn/repos/public
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /svn/repos/public
 </span></span><span style="display:flex;"><span>sudo chmod -R <span style="color:#ae81ff">777</span> db
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd conf
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd conf
 </span></span><span style="display:flex;"><span>sudo cp svnserve.conf svnserve.conf.bak
 </span></span><span style="display:flex;"><span>sudo vim svnserve.conf
 </span></span></code></pre></div><p>取消注释：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>$ sudo diff -u svnserve.conf svnserve.conf.bak 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>$ sudo diff -u svnserve.conf svnserve.conf.bak 
 </span></span><span style="display:flex;"><span><span style="color:#f92672">--- svnserve.conf       2023-06-19 13:27:33.473464875 +0800
 </span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+++ svnserve.conf.bak   2023-06-19 13:26:30.071350251 +0800
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">@@ -16,15 +16,15 @@
@@ -180,9 +180,9 @@
 <li><code>authz-db = authz</code> 权限文件为 <code>authz</code></li>
 </ul>
 <h2 id="修改-passwd">修改 passwd</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo cp passwd passwd.bak
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo cp passwd passwd.bak
 </span></span><span style="display:flex;"><span>sudo vim passwd
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat /svn/repos/public/conf/passwd 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat /svn/repos/public/conf/passwd 
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### This file is an example password file for svnserve.</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### Its format is similar to that of svnserve.conf. As shown in the</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### example below it contains one section labelled [users].</span>
@@ -193,9 +193,9 @@
 </span></span><span style="display:flex;"><span>lilei <span style="color:#f92672">=</span> helloworld
 </span></span></code></pre></div><p>新增用户格式：名字 = 密码</p>
 <h2 id="修改-authz">修改 authz</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo cp authz authz.bak
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo cp authz authz.bak
 </span></span><span style="display:flex;"><span>sudo vim authz
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat /svn/repos/public/conf/authz 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat /svn/repos/public/conf/authz 
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### This file is an example authorization file for svnserve.</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### Its format is identical to that of mod_authz_svn authorization</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### files.</span>
@@ -233,7 +233,7 @@
 </span></span><span style="display:flex;"><span>@students <span style="color:#f92672">=</span> rw
 </span></span><span style="display:flex;"><span>* <span style="color:#f92672">=</span>
 </span></span></code></pre></div><h2 id="启动服务">启动服务</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo su svn
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo su svn
 </span></span><span style="display:flex;"><span>sudo svnserve -d -r /svn --listen-port <span style="color:#ae81ff">81</span>
 </span></span></code></pre></div><h2 id="下载安装-windows-小乌龟">下载安装 windows 小乌龟</h2>
 <p><a href="https://tortoisesvn.net/downloads.zh.html">https://tortoisesvn.net/downloads.zh.html</a></p>

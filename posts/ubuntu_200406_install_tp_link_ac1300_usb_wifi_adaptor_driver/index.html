@@ -123,22 +123,22 @@
 <p><img src="tp_link_ac1300_usb_wifi_adaptor.jpg" alt=""></p>
 <h2 id="确认-ubuntu-系统信息">确认 Ubuntu 系统信息</h2>
 <h3 id="lsb_release--a">lsb_release -a</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ lsb_release -a
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ lsb_release -a
 </span></span><span style="display:flex;"><span>No LSB modules are available.
 </span></span><span style="display:flex;"><span>Distributor ID:	Ubuntu
 </span></span><span style="display:flex;"><span>Description:	Ubuntu 20.04.6 LTS
 </span></span><span style="display:flex;"><span>Release:	20.04
 </span></span><span style="display:flex;"><span>Codename:	focal
 </span></span></code></pre></div><h3 id="uname--a">uname -a</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ uname -a
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ uname -a
 </span></span><span style="display:flex;"><span>Linux kkg12333-HP-ProBook-440-14-inch-G10-Notebook-PC 5.15.0-119-generic <span style="color:#75715e">#129~20.04.1-Ubuntu SMP Wed Aug 7 13:07:13 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux</span>
 </span></span></code></pre></div><h2 id="安装依赖工具">安装依赖工具</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">## see uname -a</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">## see uname -a</span>
 </span></span><span style="display:flex;"><span>sudo apt-get install git linux-headers-5.15.0-119-generic build-essential dkms
 </span></span></code></pre></div><h2 id="下载驱动源码">下载驱动源码</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/cilynx/rtl88x2bu.git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/cilynx/rtl88x2bu.git
 </span></span></code></pre></div><h2 id="驱动安装步骤">驱动安装步骤</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd rtl88x2bu
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd rtl88x2bu
 </span></span><span style="display:flex;"><span>export VER<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>sed -n <span style="color:#e6db74">&#39;s/\PACKAGE_VERSION=&#34;\(.*\)&#34;/\1/p&#39;</span> dkms.conf<span style="color:#66d9ef">)</span>
 </span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">${</span>VER<span style="color:#e6db74">}</span>
 </span></span><span style="display:flex;"><span>sudo rsync -rvhP ./ /usr/src/rtl88x2bu-<span style="color:#e6db74">${</span>VER<span style="color:#e6db74">}</span>
@@ -148,10 +148,10 @@
 </span></span><span style="display:flex;"><span>sudo modprobe 88x2bu
 </span></span></code></pre></div><h2 id="各个安装阶段的日志供参考">各个安装阶段的日志供参考</h2>
 <h3 id="ver">VER</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ echo <span style="color:#e6db74">${</span>VER<span style="color:#e6db74">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ echo <span style="color:#e6db74">${</span>VER<span style="color:#e6db74">}</span>
 </span></span><span style="display:flex;"><span>5.8.7.1
 </span></span></code></pre></div><h3 id="rsync">rsync</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo rsync -rvhP ./ /usr/src/rtl88x2bu-<span style="color:#e6db74">${</span>VER<span style="color:#e6db74">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo rsync -rvhP ./ /usr/src/rtl88x2bu-<span style="color:#e6db74">${</span>VER<span style="color:#e6db74">}</span>
 </span></span><span style="display:flex;"><span>sending incremental file list
 </span></span><span style="display:flex;"><span>created directory /usr/src/rtl88x2bu-5.8.7.1
 </span></span><span style="display:flex;"><span>./
@@ -1493,14 +1493,14 @@
 </span></span><span style="display:flex;"><span>sent 27.55M bytes  received 12.68K bytes  55.12M bytes/sec
 </span></span><span style="display:flex;"><span>total size is 27.50M  speedup is 1.00
 </span></span></code></pre></div><h3 id="dkms-add">dkms add</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo dkms add -m rtl88x2bu -v <span style="color:#e6db74">${</span>VER<span style="color:#e6db74">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo dkms add -m rtl88x2bu -v <span style="color:#e6db74">${</span>VER<span style="color:#e6db74">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Creating symlink /var/lib/dkms/rtl88x2bu/5.8.7.1/source -&gt;
 </span></span><span style="display:flex;"><span>                 /usr/src/rtl88x2bu-5.8.7.1
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>DKMS: add completed.
 </span></span></code></pre></div><h3 id="dkms-build">dkms build</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo dkms build -m rtl88x2bu -v <span style="color:#e6db74">${</span>VER<span style="color:#e6db74">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo dkms build -m rtl88x2bu -v <span style="color:#e6db74">${</span>VER<span style="color:#e6db74">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Kernel preparation unnecessary <span style="color:#66d9ef">for</span> this kernel.  Skipping...
 </span></span><span style="display:flex;"><span>
@@ -1522,7 +1522,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>DKMS: build completed.
 </span></span></code></pre></div><h3 id="dkms-install">dkms install</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo dkms install -m rtl88x2bu -v <span style="color:#e6db74">${</span>VER<span style="color:#e6db74">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo dkms install -m rtl88x2bu -v <span style="color:#e6db74">${</span>VER<span style="color:#e6db74">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>88x2bu.ko:
 </span></span><span style="display:flex;"><span>Running module version sanity check.

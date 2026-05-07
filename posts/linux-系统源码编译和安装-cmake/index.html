@@ -114,7 +114,7 @@ git clone --branch v4.0.3 --single-branch https://github.com/Kitware/CMake.git c
     <span>&nbsp»&nbsp</span>
 </ol>
 <h1>📘 Linux 系统源码编译和安装 CMake</h1><time class="dim" datetime="1970-01-01T00:00:00&#43;08:00">January 1, 1970</time><div class="term-container"><div class="tag">
-        <a href="/tags/linux/">#linux</a>
+        <a href="/tags/linux/">#Linux</a>
       </div><div class="tag">
         <a href="/tags/cmake/">#CMake</a>
       </div></ol></div>
@@ -122,7 +122,7 @@ git clone --branch v4.0.3 --single-branch https://github.com/Kitware/CMake.git c
 <p>CMake 是一个跨平台的开源构建系统生成器，广泛用于软件开发项目。本文将介绍如何在 Linux 系统上从源代码编译并安装 CMake，确保你能够使用最新版本的功能。</p>
 <h2 id="准备工作">准备工作</h2>
 <p>在开始之前，确保你的系统已经安装了必要的开发工具和库。对于基于 Debian 的系统（如 Ubuntu），可以运行以下命令来安装所需的依赖项：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get update
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get update
 </span></span><span style="display:flex;"><span>sudo apt-get install build-essential libssl-dev
 </span></span></code></pre></div><ul>
 <li>build-essential：包含编译 C/C++ 程序所需的工具，如 gcc、g++ 和 make。</li>
@@ -130,7 +130,7 @@ git clone --branch v4.0.3 --single-branch https://github.com/Kitware/CMake.git c
 </ul>
 <h2 id="克隆-cmake-源代码">克隆 CMake 源代码</h2>
 <p>从 CMake 的官方 GitHub 仓库克隆指定版本的源代码。这里以 v4.0.3 版本为例：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone --branch v4.0.3 --single-branch https://github.com/Kitware/CMake.git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone --branch v4.0.3 --single-branch https://github.com/Kitware/CMake.git
 </span></span><span style="display:flex;"><span>cd CMake
 </span></span></code></pre></div><ul>
 <li><code>--branch v4.0.3</code>：指定克隆的分支为 v4.0.3，这是你想要安装的版本。</li>
@@ -138,23 +138,23 @@ git clone --branch v4.0.3 --single-branch https://github.com/Kitware/CMake.git c
 </ul>
 <h2 id="配置和编译-cmake">配置和编译 CMake</h2>
 <p>在 CMake 的源代码目录中，运行以下命令进行配置和编译：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./bootstrap <span style="color:#f92672">&amp;&amp;</span> make -j8
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./bootstrap <span style="color:#f92672">&amp;&amp;</span> make -j8
 </span></span></code></pre></div><ul>
 <li><code>./bootstrap</code>：运行 CMake 的配置脚本，它会检查系统环境并生成适合当前系统的构建文件。</li>
 <li><code>make -j8</code>：使用 make 命令进行编译，-j8 参数表示同时使用 8 个线程进行编译，可以加快编译速度（根据你的 CPU 核心数调整）。</li>
 </ul>
 <p>如果系统中没有安装 OpenSSL，或者你不想使用 OpenSSL，可以在配置时添加 <code>-DCMAKE_USE_OPENSSL=OFF</code> 参数：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./bootstrap -- -DCMAKE_USE_OPENSSL<span style="color:#f92672">=</span>OFF
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./bootstrap -- -DCMAKE_USE_OPENSSL<span style="color:#f92672">=</span>OFF
 </span></span><span style="display:flex;"><span>make -j8
 </span></span></code></pre></div><h2 id="安装-cmake">安装 CMake</h2>
 <p>编译完成后，运行以下命令将 CMake 安装到系统中：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo make install
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo make install
 </span></span></code></pre></div><p>默认情况下，CMake 会被安装到 /usr/local/bin 目录下。</p>
 <h2 id="验证安装">验证安装</h2>
 <p>你可以通过以下命令验证安装是否成功：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cmake --version
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cmake --version
 </span></span></code></pre></div><p>如果安装成功，你应该能够看到类似以下的输出：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cmake version 4.0.3
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cmake version 4.0.3
 </span></span></code></pre></div></section></main>
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>

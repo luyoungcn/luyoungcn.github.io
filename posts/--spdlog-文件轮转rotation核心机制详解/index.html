@@ -185,7 +185,7 @@ a.3.txt      ← 第三轮转归档文件（最旧，可能被删除）
 <li><strong>扩展名保留</strong>：原始文件的扩展名（如<code>.txt</code>、<code>.log</code>）在轮转后保持不变</li>
 <li><strong>多级目录支持</strong>：路径分隔符（如<code>logs/app.log</code>）不影响命名规则，仅对文件名部分添加后缀</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 示例：创建轮转日志器
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 示例：创建轮转日志器
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> logger <span style="color:#f92672">=</span> spdlog<span style="color:#f92672">::</span>rotating_logger_mt(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;app_logger&#34;</span>, 
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;logs/app.log&#34;</span>,    <span style="color:#75715e">// base_filename
@@ -294,7 +294,7 @@ a.3.txt      ← 第三轮转归档文件（最旧，可能被删除）
 <p><strong>🚨 核心机制：批量序号平移</strong></p>
 <p>spdlog会<strong>按从旧到新的顺序</strong>重命名现有归档文件，使每个文件的序号+1，为新的归档腾出<code>a.1.txt</code>位置。</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// spdlog源码核心逻辑（伪代码）
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// spdlog源码核心逻辑（伪代码）
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> rotating_file_sink<span style="color:#f92672">::</span>rotate() {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 1. 删除超出max_files的最旧文件（如果存在）
 </span></span></span><span style="display:flex;"><span>    string old_filename <span style="color:#f92672">=</span> calc_filename(base_filename_, max_files_);
@@ -357,7 +357,7 @@ a.3.txt      ← 第三轮转归档文件（最旧，可能被删除）
 <h4 id="步骤5活跃文件归档"><strong>步骤5：活跃文件归档</strong></h4>
 <ul>
 <li>将当前活跃文件重命名为最新的归档文件：
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>rename_file(base_filename_, calc_filename(base_filename_, <span style="color:#ae81ff">1</span>)); <span style="color:#75715e">// a.txt → a.1.txt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>rename_file(base_filename_, calc_filename(base_filename_, <span style="color:#ae81ff">1</span>)); <span style="color:#75715e">// a.txt → a.1.txt
 </span></span></span></code></pre></div></li>
 <li><strong>原子操作</strong>：重命名操作是原子的，确保日志完整性</li>
 </ul>
@@ -472,7 +472,7 @@ a.3.txt      ← 第三轮转归档文件（最旧，可能被删除）
   </tbody>
 </table>
 <p><strong>优化建议</strong>：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 生产环境推荐配置：限制max_files
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 生产环境推荐配置：限制max_files
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> logger <span style="color:#f92672">=</span> spdlog<span style="color:#f92672">::</span>rotating_logger_mt(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;prod_logger&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;logs/app.log&#34;</span>,
@@ -533,7 +533,7 @@ a.3.txt      ← 第三轮转归档文件（最旧，可能被删除）
 <li><strong>全局日志器</strong>：通过<code>spdlog::rotating_logger_mt()</code>创建的Logger内部使用<code>rotating_file_sink_mt</code></li>
 </ul>
 <h4 id="性能优化建议"><strong>性能优化建议</strong></h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 多线程环境正确用法
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 多线程环境正确用法
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> mt_logger <span style="color:#f92672">=</span> spdlog<span style="color:#f92672">::</span>rotating_logger_mt(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;thread_safe_logger&#34;</span>, 
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;logs/app.log&#34;</span>, 
@@ -622,7 +622,7 @@ a.3.txt      ← 第三轮转归档文件（最旧，可能被删除）
 <li><strong>合并分析</strong>：将多个文件内容按时间顺序合并分析</li>
 </ol>
 <h4 id="工具推荐"><strong>工具推荐</strong></h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 按时间顺序合并所有日志</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 按时间顺序合并所有日志</span>
 </span></span><span style="display:flex;"><span>cat app.3.txt app.2.txt app.1.txt app.txt | less
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 使用grep搜索特定内容</span>
@@ -646,7 +646,7 @@ a.3.txt      ← 第三轮转归档文件（最旧，可能被删除）
 <li><strong>磁盘空间不足</strong>：重命名操作不需要额外空间，但如果使用copy+delete策略会需要</li>
 </ul>
 <h4 id="极端情况处理"><strong>极端情况处理</strong></h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// spdlog源码中的异常处理逻辑（简化版）
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// spdlog源码中的异常处理逻辑（简化版）
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> max_files_ <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span>; <span style="color:#f92672">--</span>i) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> src <span style="color:#f92672">=</span> calc_filename(i);
@@ -694,7 +694,7 @@ a.3.txt      ← 第三轮转归档文件（最旧，可能被删除）
 </blockquote>
 <hr>
 <h2 id="附录最佳实践配置示例">附录：最佳实践配置示例</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;spdlog/spdlog.h&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;spdlog/spdlog.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;spdlog/sinks/rotating_file_sink.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup_production_logger</span>() {
@@ -723,7 +723,7 @@ a.3.txt      ← 第三轮转归档文件（最旧，可能被删除）
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span>;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 推荐的日志目录结构</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 推荐的日志目录结构</span>
 </span></span><span style="display:flex;"><span>/var/log/myapp/
 </span></span><span style="display:flex;"><span>├── app.log          <span style="color:#75715e"># 当前活跃文件</span>
 </span></span><span style="display:flex;"><span>├── app.1.log        <span style="color:#75715e"># 最新归档</span>

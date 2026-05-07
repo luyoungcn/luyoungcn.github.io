@@ -138,16 +138,16 @@ Windows PowerShell 版权所有（C） Microsoft Corporation。保留所有权�
 <p>去这里下载一个自己喜欢的字体，并配置 windows terminal power shell profile 使用该字体。</p>
 <h2 id="配置-profile">配置 profile</h2>
 <p>判断当前的 shell 类型：<code>oh-my-posh get shell</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\l</span>uyang<span style="color:#ae81ff">\D</span>esktop&gt; oh-my-posh get shell
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\l</span>uyang<span style="color:#ae81ff">\D</span>esktop&gt; oh-my-posh get shell
 </span></span><span style="display:flex;"><span>powershell
 </span></span></code></pre></div><p>修改配置文件：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>notepad $PROFILE
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>notepad $PROFILE
 </span></span></code></pre></div><p>添加如下内容：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oh-my-posh init pwsh | Invoke-Expression
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oh-my-posh init pwsh | Invoke-Expression
 </span></span></code></pre></div><p>如果 <code>notepad $PROFILE</code> 报错，说配置文件不存在需要自己创建一个：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>New-Item -Path $PROFILE -Type File -Force
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>New-Item -Path $PROFILE -Type File -Force
 </span></span></code></pre></div><p>加载配置：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>. $PROFILE
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>. $PROFILE
 </span></span></code></pre></div><h2 id="qa">Q&amp;A</h2>
 <p>运行报错：</p>
 <pre tabindex="0"><code>Windows PowerShell
@@ -164,12 +164,12 @@ Windows PowerShell 版权所有（C） Microsoft Corporation。保留所有权�
     + FullyQualifiedErrorId : UnauthorizedAccess
 </code></pre><p>原因：PowerShell 默认禁止运行脚本，PowerShell 默认禁止运行脚本;</p>
 <p><code>Restricted</code> 表示在 PowerShell 中运行脚本是禁止的</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\l</span>uyang&gt; get-ExecutionPolicy
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\l</span>uyang&gt; get-ExecutionPolicy
 </span></span><span style="display:flex;"><span>Restricted
 </span></span></code></pre></div><p>解决方案：</p>
 <p>以管理员身份运行 windows PowerShell，执行如下命令，并选择 <code>Y</code>, 之后再运行 PowerShell 即可恢复正常。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set-ExecutionPolicy RemoteSigned
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\W</span>INDOWS<span style="color:#ae81ff">\s</span>ystem32&gt; set-ExecutionPolicy RemoteSigned
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set-ExecutionPolicy RemoteSigned
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\W</span>INDOWS<span style="color:#ae81ff">\s</span>ystem32&gt; set-ExecutionPolicy RemoteSigned
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>执行策略更改
 </span></span><span style="display:flex;"><span>执行策略可帮助你防止执行不信任的脚本。更改执行策略可能会产生安全风险，如 https:/go.microsoft.com/fwlink/?LinkID<span style="color:#f92672">=</span><span style="color:#ae81ff">135170</span>

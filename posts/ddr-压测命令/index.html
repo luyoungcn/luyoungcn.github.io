@@ -118,7 +118,7 @@ sudo apt install stressapptest stressapptest help » stressapptest -h Stats: SAT
       </div></ol></div>
   <section class="page-section"><h1 id="ddr-压测命令">DDR 压测命令</h1>
 <p>测试之前可以使用 <code>free -m</code> 查看内存使用情况。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>» free
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>» free
 </span></span><span style="display:flex;"><span>              total        used        free      shared  buff/cache   available
 </span></span><span style="display:flex;"><span>Mem:       <span style="color:#ae81ff">16193884</span>     <span style="color:#ae81ff">1268028</span>    <span style="color:#ae81ff">13921020</span>        <span style="color:#ae81ff">6528</span>     <span style="color:#ae81ff">1004836</span>    <span style="color:#ae81ff">14587148</span>
 </span></span><span style="display:flex;"><span>Swap:       <span style="color:#ae81ff">4194304</span>           <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">4194304</span>
@@ -130,9 +130,9 @@ sudo apt install stressapptest stressapptest help » stressapptest -h Stats: SAT
 <h2 id="stressapptest">stressapptest</h2>
 <h3 id="安装-stressapptest">安装 stressapptest</h3>
 <p>stressapptest - stress test application for simulating high load situations</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install stressapptest
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install stressapptest
 </span></span></code></pre></div><h3 id="stressapptest-help">stressapptest help</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>» stressapptest -h
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>» stressapptest -h
 </span></span><span style="display:flex;"><span>Stats: SAT revision 1.0.6_autoconf, <span style="color:#ae81ff">64</span> bit binary
 </span></span><span style="display:flex;"><span>Log: buildd @ lgw01-amd64-029 on Sun Mar <span style="color:#ae81ff">22</span> 18:14:26 UTC <span style="color:#ae81ff">2020</span> from open source release
 </span></span><span style="display:flex;"><span>Usage: ./sat<span style="color:#f92672">(</span>32|64<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>
@@ -182,7 +182,7 @@ sudo apt install stressapptest stressapptest help » stressapptest -h Stats: SAT
 </span></span><span style="display:flex;"><span> --memory_channel u1,u2   defines a comma-separated list of names
 </span></span><span style="display:flex;"><span>                          <span style="color:#66d9ef">for</span> dram packages in a memory channel.
 </span></span><span style="display:flex;"><span>                          Use multiple times to define multiple channels.
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./stressapptest -M <span style="color:#ae81ff">14200</span> -s <span style="color:#ae81ff">36000</span> -m <span style="color:#ae81ff">8</span> -i <span style="color:#ae81ff">8</span> -C <span style="color:#ae81ff">8</span> -l /data/stressapptest.log
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./stressapptest -M <span style="color:#ae81ff">14200</span> -s <span style="color:#ae81ff">36000</span> -m <span style="color:#ae81ff">8</span> -i <span style="color:#ae81ff">8</span> -C <span style="color:#ae81ff">8</span> -l /data/stressapptest.log
 </span></span></code></pre></div><h3 id="参数说明">参数说明</h3>
 <ul>
 <li><code>-M 14200</code>: 测试内存大小 14200M</li>
@@ -193,7 +193,7 @@ sudo apt install stressapptest stressapptest help » stressapptest -h Stats: SAT
 </ul>
 <p>若测试通过，则终端会打印：<code>Status: PASS – please verify no corrected errors。</code></p>
 <h1 id="bw_mem">bw_mem</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./bw_mem 128M rdwr
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./bw_mem 128M rdwr
 </span></span></code></pre></div></section></main>
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>

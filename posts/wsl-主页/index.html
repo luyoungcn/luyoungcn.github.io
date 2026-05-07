@@ -113,7 +113,7 @@
       </div><div class="tag">
         <a href="/tags/wsl/">#wsl</a>
       </div><div class="tag">
-        <a href="/tags/linux/">#linux</a>
+        <a href="/tags/linux/">#Linux</a>
       </div><div class="tag">
         <a href="/tags/ext4/">#ext4</a>
       </div><div class="tag">
@@ -126,7 +126,7 @@
 <li>wsl 挂载 ext4 移动硬盘</li>
 </ul>
 <h2 id="安装卸载列出-wsl-发行版">安装卸载列出 WSL 发行版</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 列出当前已安装的所有WSL发行版（包括正在运行和已停止的）</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 列出当前已安装的所有WSL发行版（包括正在运行和已停止的）</span>
 </span></span><span style="display:flex;"><span>wsl --list
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 列出微软官方提供的、可在线安装的所有WSL发行版</span>
@@ -137,7 +137,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 彻底卸载并删除名为Ubuntu-24.04的WSL发行版（数据会全部清除）</span>
 </span></span><span style="display:flex;"><span>wsl --unregister Ubuntu-24.04
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\m</span>ax_h&gt;wsl --list
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\m</span>ax_h&gt;wsl --list
 </span></span><span style="display:flex;"><span>适用于 Linux 的 Windows 子系统分发:
 </span></span><span style="display:flex;"><span>Ubuntu-24.04 <span style="color:#f92672">(</span>默认<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>Ubuntu-20.04
@@ -220,10 +220,10 @@
 </span></span><span style="display:flex;"><span>错误代码: Wsl/WSL_E_DEFAULT_DISTRO_NOT_FOUND
 </span></span></code></pre></div><h2 id="wsl-kernel-客制化">WSL kernel 客制化</h2>
 <p>首先运行 wsl 通过如下命令确认当前内核版本：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>uname -a
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>uname -a
 </span></span><span style="display:flex;"><span>Linux x 6.6.87.2-microsoft-standard-WSL2+ <span style="color:#75715e">#1 SMP PREEMPT_DYNAMIC Sun Jun 15 21:13:48 CST 2025 x86_64 x86_64 x86_64 GNU/Linux</span>
 </span></span></code></pre></div><h3 id="克隆源代码">克隆源代码</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/microsoft/WSL2-Linux-Kernel.git --depth<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> -b linux-msft-wsl-6.6.y
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/microsoft/WSL2-Linux-Kernel.git --depth<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> -b linux-msft-wsl-6.6.y
 </span></span><span style="display:flex;"><span>cd WSL2-Linux-Kernel
 </span></span><span style="display:flex;"><span>git tag -l | grep <span style="color:#e6db74">&#34;6.6.87&#34;</span>
 </span></span><span style="display:flex;"><span>git checkout -b my-6.6.87.2-kernel linux-msft-wsl-6.6.87.2
@@ -243,9 +243,9 @@
 <li>&hellip;</li>
 </ul>
 <h2 id="安装编译环境">安装编译环境</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update <span style="color:#f92672">&amp;&amp;</span> sudo apt install build-essential flex bison libssl-dev libelf-dev bc python3 pahole cpio
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update <span style="color:#f92672">&amp;&amp;</span> sudo apt install build-essential flex bison libssl-dev libelf-dev bc python3 pahole cpio
 </span></span></code></pre></div><h2 id="配置内核">配置内核</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp /proc/config.gz config.gz
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp /proc/config.gz config.gz
 </span></span><span style="display:flex;"><span>gunzip config.gz
 </span></span><span style="display:flex;"><span>cp config .config
 </span></span><span style="display:flex;"><span>make menuconfig
@@ -259,7 +259,7 @@
 </blockquote>
 <p>window 用户目录下（例如：<code>C:\Users\luyang</code>）创建文件： <code>.wslconfig</code></p>
 <p>文件内容如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>wsl2<span style="color:#f92672">]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>wsl2<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>kernel<span style="color:#f92672">=</span>C:<span style="color:#ae81ff">\\</span>Users<span style="color:#ae81ff">\\</span>luyang<span style="color:#ae81ff">\\</span>vmlinux
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Limits VM memory to use no more than 16GB.</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Set this based on your host&#39;s total RAM. For a 32GB host, 16GB is a good start.</span>
@@ -281,7 +281,7 @@
 </span></span><span style="display:flex;"><span>processors<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>
 </span></span></code></pre></div><h2 id="wsl-挂载-ext4-移动硬盘">wsl 挂载 ext4 移动硬盘</h2>
 <p>windows powershell 管理员权限运行</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\l</span>uyang&gt; GET-CimInstance -query <span style="color:#e6db74">&#34;SELECT * from Win32_DiskDrive&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\l</span>uyang&gt; GET-CimInstance -query <span style="color:#e6db74">&#34;SELECT * from Win32_DiskDrive&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>DeviceID           Caption              Partitions Size          Model
 </span></span><span style="display:flex;"><span>--------           -------              ---------- ----          -----
@@ -289,10 +289,10 @@
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE1 WDC WD40EJRX-89AKWY0 <span style="color:#ae81ff">1</span>          <span style="color:#ae81ff">4000784417280</span> WDC WD40EJRX-89AKWY0
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE0 WDC WD10EZEX-08WN4A0 <span style="color:#ae81ff">3</span>          <span style="color:#ae81ff">1000202273280</span> WDC WD10EZEX-08WN4A0
 </span></span></code></pre></div><p>windows 挂载</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ystem32&gt; wsl --mount <span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE3 --bare
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ystem32&gt; wsl --mount <span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE3 --bare
 </span></span><span style="display:flex;"><span>操作成功完成。
 </span></span></code></pre></div><p>wsl 终端挂载</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo fdisk -l
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo fdisk -l
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Device     Boot Start        End    Sectors   Size Id Type
 </span></span><span style="display:flex;"><span>/dev/sdc1        <span style="color:#ae81ff">2048</span> <span style="color:#ae81ff">1000148991</span> <span style="color:#ae81ff">1000146944</span> 476.9G <span style="color:#ae81ff">83</span> Linux
@@ -300,14 +300,14 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo mount -t ext4 /dev/sdc1 /mnt
 </span></span></code></pre></div><p>wsl 终端卸载</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo umount -t ext4 /dev/sdc1 /mnt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo umount -t ext4 /dev/sdc1 /mnt
 </span></span></code></pre></div><p>windows 卸载</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl --unmount <span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE3 --bare
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wsl --unmount <span style="color:#ae81ff">\\</span>.<span style="color:#ae81ff">\P</span>HYSICALDRIVE3 --bare
 </span></span></code></pre></div><h2 id="wsl-端口映射">WSL 端口映射</h2>
 <h3 id="查询当前已经转发的端口">查询当前已经转发的端口</h3>
 <p>如何查看当前 windows -&gt; WSL 配置了哪些端口转发？
 以管理员身份运行 PowerShell:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS C:\WINDOWS\system32&gt; netsh interface portproxy show all
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS C:\WINDOWS\system32&gt; netsh interface portproxy show all
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>侦听 ipv4<span style="color:#960050;background-color:#1e0010">:</span>                 连接到 ipv4<span style="color:#960050;background-color:#1e0010">:</span>
 </span></span><span style="display:flex;"><span>
@@ -321,7 +321,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">6666</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">6666</span>
 </span></span></code></pre></div><h3 id="确认-wsl-ip-地址">确认 WSL IP 地址</h3>
 <p>WSL 终端运行:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ifconfig
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ifconfig
 </span></span><span style="display:flex;"><span>docker0: flags<span style="color:#f92672">=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span style="color:#ae81ff">1500</span>
 </span></span><span style="display:flex;"><span>        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
 </span></span><span style="display:flex;"><span>        inet6 fe80::42:d3ff:fe45:67a4  prefixlen <span style="color:#ae81ff">64</span>  scopeid 0x20&lt;link&gt;
@@ -358,8 +358,8 @@
 </span></span><span style="display:flex;"><span>        TX errors <span style="color:#ae81ff">0</span>  dropped <span style="color:#ae81ff">0</span> overruns <span style="color:#ae81ff">0</span>  carrier <span style="color:#ae81ff">0</span>  collisions <span style="color:#ae81ff">0</span>
 </span></span></code></pre></div><p>如上: <code>eth0</code> <code>172.25.198.88</code></p>
 <h3 id="增加端口4864映射">增加端口<code>4864</code>映射</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>netsh interface portproxy add v4tov4 listenaddress=<span style="color:#ae81ff">0.0</span>.0.0 listenport=<span style="color:#ae81ff">4864</span> connectaddress=<span style="color:#ae81ff">172.25</span>.198.88 <span style="color:#ae81ff">4864</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS C:\WINDOWS\system32&gt; netsh interface portproxy show all
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>netsh interface portproxy add v4tov4 listenaddress=<span style="color:#ae81ff">0.0</span>.0.0 listenport=<span style="color:#ae81ff">4864</span> connectaddress=<span style="color:#ae81ff">172.25</span>.198.88 <span style="color:#ae81ff">4864</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS C:\WINDOWS\system32&gt; netsh interface portproxy show all
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>侦听 ipv4<span style="color:#960050;background-color:#1e0010">:</span>                 连接到 ipv4<span style="color:#960050;background-color:#1e0010">:</span>
 </span></span><span style="display:flex;"><span>
@@ -373,8 +373,8 @@
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">6666</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">6666</span>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">0.0</span>.0.0         <span style="color:#ae81ff">4864</span>        <span style="color:#ae81ff">172.25</span>.198.88   <span style="color:#ae81ff">4864</span>
 </span></span></code></pre></div><h3 id="删除端口4864映射">删除端口<code>4864</code>映射</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>netsh interface portproxy delete v4tov4 listenport=<span style="color:#ae81ff">4864</span> listenaddress=<span style="color:#ae81ff">0.0</span>.0.0
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS C:\WINDOWS\system32&gt; netsh interface portproxy show all
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>netsh interface portproxy delete v4tov4 listenport=<span style="color:#ae81ff">4864</span> listenaddress=<span style="color:#ae81ff">0.0</span>.0.0
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS C:\WINDOWS\system32&gt; netsh interface portproxy show all
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>侦听 ipv4<span style="color:#960050;background-color:#1e0010">:</span>                 连接到 ipv4<span style="color:#960050;background-color:#1e0010">:</span>
 </span></span><span style="display:flex;"><span>
@@ -389,10 +389,10 @@
 </span></span></code></pre></div><hr>
 <p>From: <a href="https://learn.microsoft.com/en-us/windows/wsl/networking">https://learn.microsoft.com/en-us/windows/wsl/networking</a></p>
 <p>Here&rsquo;s an example of using the <a href="https://learn.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-interface-portproxy">Netsh interface portproxy</a> Windows command to add a port proxy that listens on your host port and connects that port proxy to the IP address for the WSL 2 VM.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>netsh interface portproxy add v4tov4 listenport=&lt;yourPortToForward&gt; listenaddress=<span style="color:#ae81ff">0.0</span>.0.0 connectport=&lt;yourPortToConnectToInWSL&gt; connectaddress=(wsl hostname -I)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>netsh interface portproxy add v4tov4 listenport=&lt;yourPortToForward&gt; listenaddress=<span style="color:#ae81ff">0.0</span>.0.0 connectport=&lt;yourPortToConnectToInWSL&gt; connectaddress=(wsl hostname -I)
 </span></span></code></pre></div><p>In this example, you will need to update <code>&lt;yourPortToForward&gt;</code> to a port number, for example <code>listenport=4000</code>. <code>listenaddress=0.0.0.0</code> means that incoming requests will be accepted from ANY IP address. The Listen Address specifies the IPv4 address for which to listen and can be changed to values that include: IP address, computer NetBIOS name, or computer DNS name. If an address isn&rsquo;t specified, the default is the local computer. You need to update the <code>&lt;yourPortToConnectToInWSL&gt;</code> value to a port number where you want WSL to connect, for example <code>connectport=4000</code>. Lastly, the <code>connectaddress</code> value needs to be the IP address of your Linux distribution installed via WSL 2 (the WSL 2 VM address), which can be found by entering the command: <code>wsl.exe hostname -I</code>.</p>
 <p>So this command may look something like:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>netsh interface portproxy add v4tov4 listenport=<span style="color:#ae81ff">4000</span> listenaddress=<span style="color:#ae81ff">0.0</span>.0.0 connectport=<span style="color:#ae81ff">4000</span> connectaddress=<span style="color:#ae81ff">192.168</span>.101.100
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>netsh interface portproxy add v4tov4 listenport=<span style="color:#ae81ff">4000</span> listenaddress=<span style="color:#ae81ff">0.0</span>.0.0 connectport=<span style="color:#ae81ff">4000</span> connectaddress=<span style="color:#ae81ff">192.168</span>.101.100
 </span></span></code></pre></div><p>To obtain the IP address, use:</p>
 <ul>
 <li><code>wsl hostname -I</code> for the IP address of your Linux distribution installed via WSL 2 (the WSL 2 VM address)</li>

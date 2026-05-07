@@ -153,7 +153,7 @@ write_idx.store(new_index, std::memory_order_release); read_idx.store(old_write_
 <hr>
 <h3 id="22-原子切换机制">2.2 原子切换机制</h3>
 <p>采用 <code>std::atomic&lt;int&gt;</code> 索引变量配合 <code>memory_order_release/acquire</code> 保证跨线程或中断的数据可见性与一致性。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>write_idx.store(new_index, std<span style="color:#f92672">::</span>memory_order_release);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>write_idx.store(new_index, std<span style="color:#f92672">::</span>memory_order_release);
 </span></span><span style="display:flex;"><span>read_idx.store(old_write_index, std<span style="color:#f92672">::</span>memory_order_acquire);
 </span></span></code></pre></div><hr>
 <h3 id="23-数据完整性控制">2.3 数据完整性控制</h3>
@@ -169,7 +169,7 @@ write_idx.store(new_index, std::memory_order_release); read_idx.store(old_write_
 <li>当前写 buffer flip 后，若旧 buffer 尚未消费 → 记录覆盖行为</li>
 <li>引入 <code>overrun_counter</code>，并提供异常提示接口</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>buffer_valid[read_idx]) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>buffer_valid[read_idx]) {
 </span></span><span style="display:flex;"><span>    overrun_counter<span style="color:#f92672">++</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="32-异常帧检测">3.2 异常帧检测</h3>
@@ -201,7 +201,7 @@ write_idx.store(new_index, std::memory_order_release); read_idx.store(old_write_
 </ul>
 <hr>
 <h2 id="六接口定义c11-示例">六、接口定义（C++11 示例）</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PingPongBuffer</span> {
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> write(<span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span> data);      <span style="color:#75715e">// 写入并 flip

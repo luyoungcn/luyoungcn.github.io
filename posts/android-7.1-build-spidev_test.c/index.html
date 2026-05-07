@@ -138,7 +138,7 @@
 <li>将<code>spidev_test.c</code>文件复制到<code>spi</code>文件夹中。</li>
 <li>在<code>spi</code>文件夹中创建一个<code>Android.mk</code>文件，内容如下：</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span>LOCAL_PATH <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>call my-dir<span style="color:#66d9ef">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span>LOCAL_PATH <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>call my-dir<span style="color:#66d9ef">)</span>
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">include</span> <span style="color:#66d9ef">$(</span>CLEAR_VARS<span style="color:#66d9ef">)</span>
 </span></span><span style="display:flex;"><span>LOCAL_MODULE <span style="color:#f92672">:=</span> spidev_test
 </span></span><span style="display:flex;"><span>LOCAL_SRC_FILES <span style="color:#f92672">:=</span> spidev_test.c
@@ -158,13 +158,13 @@
 <ul>
 <li>使用<code>adb push</code>命令将<code>spidev_test</code>推送到设备上的某个目录，例如：</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adb push out/target/product/&lt;your_device&gt;/symbols/system/spidev_test /data/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adb push out/target/product/&lt;your_device&gt;/symbols/system/spidev_test /data/
 </span></span></code></pre></div></li>
 <li><strong>在设备上运行测试程序</strong>：
 <ul>
 <li>使用<code>adb shell</code>连接到设备，切换到包含<code>spidev_test</code>的目录，并运行程序：</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adb shell
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adb shell
 </span></span><span style="display:flex;"><span>cd /data/
 </span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">777</span> spidev_test
 </span></span><span style="display:flex;"><span>./spidev_test
@@ -177,11 +177,11 @@
 </ul>
 <h1 id="adb-指定被操作设备">adb 指定被操作设备</h1>
 <p>如果 PC 当前连接了多个正在运行 adb 的设备，可以通过 <code>adb -s</code> 指定操作特定设备</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt;adb devices
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt;adb devices
 </span></span><span style="display:flex;"><span>List of devices attached
 </span></span><span style="display:flex;"><span>J6-9f81e1412b08443 device
 </span></span><span style="display:flex;"><span>EE02FL9SR5 device
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adb -s &lt;序列号&gt; shell
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adb -s &lt;序列号&gt; shell
 </span></span></code></pre></div></section></main>
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>

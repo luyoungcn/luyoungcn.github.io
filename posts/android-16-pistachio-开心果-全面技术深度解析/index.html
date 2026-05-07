@@ -142,7 +142,7 @@ AIAgent API 的主要特性：
 <li><strong>模型管理与缓存 (Model Management and Caching):</strong> 系统现在负责管理设备端模型的下载、版本控制和缓存。您可以声明对特定模型的依赖（例如 <code>'google:ai/gemini-nano-2.0/summarize'</code>），操作系统将与 Google Play 服务协同，确保设备上始终有最高效、最新的版本可用。</li>
 </ul>
 <p>以下是一个概念性代码片段，展示了如何定义一个 <code>AIAgent</code> 来在后台自动分类和标记照片：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 在您的 AndroidManifest.xml 中
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 在您的 AndroidManifest.xml 中
 </span></span></span><span style="display:flex;"><span>&lt;service
 </span></span><span style="display:flex;"><span>    android:name=<span style="color:#e6db74">&#34;.services.PhotoTaggerAgentService&#34;</span>
 </span></span><span style="display:flex;"><span>    android:permission=<span style="color:#e6db74">&#34;android.permission.BIND_AI_AGENT&#34;</span>
@@ -191,7 +191,7 @@ AIAgent API 的主要特性：
 <p>该框架允许您不再使用静态布局来定义 UI 的某些部分，而是使用由提示（prompt）和约束（constraints）来定义，这些提示和约束在运行时由设备端生成模型来完成。这使得创建真正动态、个性化和情境感知的界面成为可能。</p>
 <p><strong>工作原理：</strong> 一个 <code>GenerativeLayout</code> Composable 接受一个自然语言提示、一组允许使用的组件和上下文数据作为输入。然后，它使用一个专门的、高度优化的 Gemini 版本来动态生成一个 Compose 布局。</p>
 <p>想象一个为用户推荐活动的应用。与其使用一个固定的 <code>LazyColumn</code> 卡片列表，您可以使用 <code>GenerativeLayout</code>：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> androidx.compose.generative.*
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> androidx.compose.generative.*
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">SuggestionScreen</span>(userContext: UserContext) {
@@ -229,7 +229,7 @@ AIAgent API 的主要特性：
 <p>多年来，用户在安装时或运行时授予权限，但“之后发生了什么”通常是一个黑匣子。Android 16 通过 <strong>隐私信息中心 2.0 (Privacy Dashboard 2.0)</strong> 和 <strong><code>PermissionLog</code> API</strong> 改变了这一点。</p>
 <p>新的隐私信息中心现在为用户提供任何敏感数据访问的详细、带时间戳的事件日志。用户不仅能看到某个应用使用了他们的位置，还能看到_何时_使用、使用了_多长时间_，以及至关重要的，开发者为该次访问提供的理由。</p>
 <p>这得益于全新的 <strong><code>PermissionLog</code> API</strong>。现在，当您执行需要敏感权限的操作时，系统强烈建议您记录一个上下文相关的字符串来解释_为什么_。这不仅仅是一条注释；它是一个结构化的数据，系统用它来填充用户的隐私信息中心。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 在您的定位服务中
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 在您的定位服务中
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> justification = <span style="color:#e6db74">&#34;为您的搜索查找附近的餐馆。&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 一个应用定义的归因标签
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> attributionTag = <span style="color:#e6db74">&#34;restaurant-search&#34;</span>
@@ -247,7 +247,7 @@ AIAgent API 的主要特性：
 <h3 id="动态沙盒与资源控制">动态沙盒与资源控制</h3>
 <p>Android 的应用沙盒是其安全模型的基石。在 Android 16 中，这个沙盒变得动态化。系统现在可以根据应用的实时行为和上下文，动态调整其沙盒可用的资源和能力。</p>
 <p>我们引入了一个新的清单属性 <code>&lt;uses-context&gt;</code>，允许您为不同的应用状态声明不同的能力集。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-XML" data-lang="XML"><span style="display:flex;"><span><span style="color:#f92672">&lt;manifest</span> <span style="color:#960050;background-color:#1e0010">...</span><span style="color:#f92672">&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-XML" data-lang="XML"><span style="display:flex;"><span><span style="color:#f92672">&lt;manifest</span> <span style="color:#960050;background-color:#1e0010">...</span><span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;application</span> <span style="color:#960050;background-color:#1e0010">...</span><span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;uses-context</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;FullFunctionality&#34;</span><span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;uses-permission</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.permission.ACCESS_FINE_LOCATION&#34;</span> <span style="color:#f92672">/&gt;</span>
@@ -277,7 +277,7 @@ AIAgent API 的主要特性：
 <p>虽然来自量子计算机的威胁仍在遥远的地平线上，但我们相信要为长远未来做准备。Android 16 引入了对<strong>抗量子计算加密技术 (Quantum-Resistant Cryptography, QRC)</strong> 算法的支持，用于应用签名和安全通信。</p>
 <p><code>KeyStore</code> 提供程序现在支持用于密钥建立的 CRYSTALS-Kyber 和用于数字签名的 CRYSTALS-Dilithium。虽然这些默认并未启用，但我们现在提供它们，以便高安全性应用（例如银行、政府、关键基础设施）的开发者可以开始试验和规划他们的过渡。</p>
 <p>您可以这样生成一个兼容 QRC 的密钥对：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// 需要 API 级别 36</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// 需要 API 级别 36</span>
 </span></span><span style="display:flex;"><span>KeyPairGenerator keyPairGenerator <span style="color:#f92672">=</span> KeyPairGenerator.<span style="color:#a6e22e">getInstance</span>(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Dilithium&#34;</span>, <span style="color:#e6db74">&#34;AndroidKeyStore&#34;</span>);
 </span></span><span style="display:flex;"><span>
@@ -299,7 +299,7 @@ AIAgent API 的主要特性：
 <p>Project Continuum 的核心是新的 <strong><code>ContinuumManager</code></strong> 和 <strong><code>TransferableSession</code></strong>（可转移会话）的概念。您现在可以将应用 UI 的一部分和其状态封装到一个 <code>TransferableSession</code> 中，然后可以将其交接给另一台设备。</p>
 <p>想象一下，一个用户正在手机上的购物应用中浏览产品列表。当他们打开平板电脑时，系统会弹出一个提示，询问他们是否想继续他们的会话。如果他们接受，您在平板电脑上的应用将打开到完全相同的产品列表，并保持相同的滚动位置。</p>
 <p>以下是您如何使一个会话可转移：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Kotlin" data-lang="Kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 在您的产品列表 Activity/Composable 中
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Kotlin" data-lang="Kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 在您的产品列表 Activity/Composable 中
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> continuumManager = getSystemService(ContinuumManager<span style="color:#f92672">::</span><span style="color:#66d9ef">class</span>.java)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 定义恢复此状态所需的数据
@@ -330,7 +330,7 @@ AIAgent API 的主要特性：
 <h3 id="material-you-的演进活性调色板-living-palettes">Material You 的演进：“活性调色板” (Living Palettes)</h3>
 <p>Material You 为 Android 带来了动态颜色主题。Android 16 以 <strong>“活性调色板” (Living Palettes)</strong> 的概念发展了这一理念。系统现在可以根据上下文（例如一天中的时间、环境光照条件（如果传感器可用），甚至是屏幕上当前内容的主色调）来巧妙地改变 UI 的强调色。</p>
 <p>对开发者而言，这意味着您的应用主题能够感觉更融入环境，对用户的环境做出更灵敏的响应。Jetpack Compose 中的 <code>MaterialTheme</code> 现在包含了新的可选属性：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Kotlin" data-lang="Kotlin"><span style="display:flex;"><span>MaterialTheme(
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Kotlin" data-lang="Kotlin"><span style="display:flex;"><span>MaterialTheme(
 </span></span><span style="display:flex;"><span>    colorScheme = colorScheme,
 </span></span><span style="display:flex;"><span>    typography = Typography,
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Android 16 中的新功能
@@ -347,7 +347,7 @@ AIAgent API 的主要特性：
 <p>随着折叠屏、平板电脑和 ChromeOS 设备的普及，为大屏幕构建应用已不再是可选项。Android 16 提供了一套<strong>高级窗口 API</strong>，使构建复杂的、多窗格的布局比以往任何时候都更容易。</p>
 <p>Jetpack 中新的 <code>SlidingPaneLayout2</code> 和 <code>FoldableLayout</code> 组件提供了声明式的、Compose-first 的方式来创建自适应 UI。它们能够感知设备的物理属性，例如铰链位置和方向。</p>
 <p>一个关键的补充是 <strong><code>PaneAnchor</code> API</strong>。您现在可以将一个窗格或对话框“锚定”到另一个窗格。当用户调整布局大小时，被锚定的组件将智能地重排或重新定位，以维持其与锚点的空间关系。这对于创建复杂的 UI（如图像编辑器，其中工具面板应始终靠近主画布）非常有价值。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Kotlin" data-lang="Kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 将工具面板锚定到画布的示例
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Kotlin" data-lang="Kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 将工具面板锚定到画布的示例
 </span></span></span><span style="display:flex;"><span>Box(modifier = <span style="color:#a6e22e">Modifier</span>.fillMaxSize()) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> canvasPaneId = <span style="color:#e6db74">&#34;canvas&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> toolsPaneId = <span style="color:#e6db74">&#34;tools&#34;</span>
@@ -378,7 +378,7 @@ AIAgent API 的主要特性：
 <p>确保流畅、无卡顿的 UI 是一个永恒的挑战。Android 16 为 UI 工作引入了一个名为 <strong>“绿色线程” (Green-Threading)</strong> 的新概念。这是一种专门为主线程上的任务设计的协作式、用户空间线程模型。</p>
 <p>当您向主线程 <code>Looper</code> 发布一系列任务时，系统现在可以分析这些任务，并且如果它们被标记为 <code>interruptible</code>（可中断的），系统可以交错执行它们。这可以防止单个长时间运行的任务（例如，复杂布局的解析、错误地在主线程上进行数据库查询）阻塞短而关键的任务（例如，输入事件处理、动画帧）。</p>
 <p>新的 <code>Handler.postInterruptible()</code> 方法允许您发布一个 <code>Runnable</code>，系统可以在处理其他工作时暂停和恢复它。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// 发布一个可能耗时较长但可中断的任务</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// 发布一个可能耗时较长但可中断的任务</span>
 </span></span><span style="display:flex;"><span>mainThreadHandler.<span style="color:#a6e22e">postInterruptible</span>(<span style="color:#66d9ef">new</span> Runnable() {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {

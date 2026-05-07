@@ -116,19 +116,19 @@ sudo pacman -Sy samba smbclient 配置文件 /etc/samba/smb.conf 末尾追加如
 <h1>samba</h1><time class="dim" datetime="1970-01-01T00:00:00&#43;08:00">January 1, 1970</time><div class="term-container"><div class="tag">
         <a href="/tags/samba/">#samba</a>
       </div><div class="tag">
-        <a href="/tags/linux/">#linux</a>
+        <a href="/tags/linux/">#Linux</a>
       </div></ol></div>
   <section class="page-section"><h2 id="安装">安装</h2>
 <p>For ubuntu</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># smbclient 用来测试 samba 服务</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># smbclient 用来测试 samba 服务</span>
 </span></span><span style="display:flex;"><span>sudo apt install samba smbclient
 </span></span></code></pre></div><p>For arch</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -Sy samba smbclient
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -Sy samba smbclient
 </span></span></code></pre></div><h2 id="配置文件">配置文件</h2>
 <p><code>/etc/samba/smb.conf</code> 末尾追加如下内容:</p>
 <p><em>注意这里的 <code>[share]</code></em>
 <em>windows 映射网络驱动器的时候路径为: <code>\\&lt;ubuntu ip&gt;\share</code></em></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>[share]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>[share]
 </span></span><span style="display:flex;"><span>path = /home/username/Public
 </span></span><span style="display:flex;"><span>public = yes
 </span></span><span style="display:flex;"><span>writable = yes
@@ -139,16 +139,16 @@ sudo pacman -Sy samba smbclient 配置文件 /etc/samba/smb.conf 末尾追加如
 </span></span><span style="display:flex;"><span>force directory mode = 0755
 </span></span><span style="display:flex;"><span>available = yes
 </span></span></code></pre></div><h2 id="设置密码">设置密码</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo touch /etc/samba/smbpasswd
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo touch /etc/samba/smbpasswd
 </span></span><span style="display:flex;"><span>sudo smbpasswd -a username
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># then insert password</span>
 </span></span></code></pre></div><h2 id="重启-samba-服务">重启 samba 服务</h2>
 <p>For ubuntu</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo service smbd restart
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo service smbd restart
 </span></span></code></pre></div><p>For arch</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl restart smb
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl restart smb
 </span></span></code></pre></div><h2 id="测试-samba-服务">测试 samba 服务</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>smbclient -L //localhost/Public
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>smbclient -L //localhost/Public
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 如果提示输入密码说明共享服务成功</span>
 </span></span></code></pre></div><h2 id="windows-挂载-samba-共享">windows 挂载 samba 共享</h2>
 <p>两种挂载方式</p>
@@ -157,13 +157,13 @@ sudo pacman -Sy samba smbclient 配置文件 /etc/samba/smb.conf 末尾追加如
 <li>windows 文件管理器, 映射网络驱动器, 输入路径 <code>\\&lt;ubuntu ip&gt;\share</code></li>
 </ol>
 <h2 id="linux-cli-挂载-samba-共享">Linux CLI 挂载 samba 共享</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mount -t cifs -o username<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>USER<span style="color:#e6db74">}</span>,password<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>PASSWORD<span style="color:#e6db74">}</span>,uid<span style="color:#f92672">=</span>&lt;user&gt;,gid<span style="color:#f92672">=</span>&lt;group&gt; //server-address/folder /mount/path/on/ubuntu
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mount -t cifs -o username<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>USER<span style="color:#e6db74">}</span>,password<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>PASSWORD<span style="color:#e6db74">}</span>,uid<span style="color:#f92672">=</span>&lt;user&gt;,gid<span style="color:#f92672">=</span>&lt;group&gt; //server-address/folder /mount/path/on/ubuntu
 </span></span></code></pre></div><ul>
 <li><code>uid,gid</code> 指定为对应smb client用户的id，如果不指定挂载后所有文件显示为<code>root:root</code> mode.</li>
 </ul>
 <h2 id="多用户多目录-samba-配置">多用户多目录 samba 配置</h2>
 <h3 id="创建共享目录并配置权限">创建共享目录并配置权限</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># samba 用户，仅用于配置文件目录用户及用户组，不用于 samba 客户端访问登录账号</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># samba 用户，仅用于配置文件目录用户及用户组，不用于 samba 客户端访问登录账号</span>
 </span></span><span style="display:flex;"><span>sudo useradd samba
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo mkdir /samba
@@ -183,7 +183,7 @@ sudo pacman -Sy samba smbclient 配置文件 /etc/samba/smb.conf 末尾追加如
 </li>
 <li>sbin/nologin 不需要这些账号登录服务器权限</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 管理者用户</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 管理者用户</span>
 </span></span><span style="display:flex;"><span>sudo useradd -s /sbin/nologin henan
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 部门级公共用户</span>
@@ -196,17 +196,17 @@ sudo pacman -Sy samba smbclient 配置文件 /etc/samba/smb.conf 末尾追加如
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">777</span> /samba/public
 </span></span></code></pre></div><h3 id="smbpasswd-命令设置密码用于-samba-服务中对用户权限进行管理">smbpasswd 命令设置密码，用于 samba 服务中对用户权限进行管理</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo smbpasswd -a henan
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo smbpasswd -a henan
 </span></span><span style="display:flex;"><span>sudo smbpasswd -a software
 </span></span><span style="display:flex;"><span>sudo smbpasswd -a hardware
 </span></span></code></pre></div><p>参数说明：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-a 添加用户 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-a 添加用户 
 </span></span><span style="display:flex;"><span>-x 删除用户
 </span></span><span style="display:flex;"><span>-d 冻结用户
 </span></span><span style="display:flex;"><span>-n 密码置空
 </span></span></code></pre></div><h3 id="配置samba">配置samba</h3>
 <p><code>/etc/samba/smb.conf</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>public<span style="color:#f92672">]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>public<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>   path<span style="color:#f92672">=</span>/samba/public
 </span></span><span style="display:flex;"><span>   public<span style="color:#f92672">=</span>yes
 </span></span><span style="display:flex;"><span>   writeable<span style="color:#f92672">=</span>yes
@@ -330,7 +330,7 @@ sudo pacman -Sy samba smbclient 配置文件 /etc/samba/smb.conf 末尾追加如
 </table>
 <h2 id="解决访问共享时提示多重连接的问题">解决访问共享时提示多重连接的问题</h2>
 <p>windows 命令行执行：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>net use * /del /y
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>net use * /del /y
 </span></span></code></pre></div></section></main>
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>

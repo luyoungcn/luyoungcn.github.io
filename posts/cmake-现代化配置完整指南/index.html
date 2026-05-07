@@ -135,7 +135,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 <hr>
 <h2 id="项目基础配置">项目基础配置</h2>
 <h3 id="最小版本要求与项目声明">最小版本要求与项目声明</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>cmake_minimum_required(<span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">3.14</span>)<span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>cmake_minimum_required(<span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">3.14</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>project(<span style="color:#e6db74">VisionDemo</span> <span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">1.0.0</span> <span style="color:#e6db74">LANGUAGES</span> <span style="color:#e6db74">CXX</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><p><strong>说明：</strong></p>
@@ -148,7 +148,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 <hr>
 <h2 id="c-编译标准设置">C++ 编译标准设置</h2>
 <h3 id="全局标准设置">全局标准设置</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 设置 C++17 标准
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 设置 C++17 标准
 </span></span></span><span style="display:flex;"><span>set(<span style="color:#e6db74">CMAKE_CXX_STANDARD</span> <span style="color:#e6db74">17</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>set(<span style="color:#e6db74">CMAKE_CXX_STANDARD_REQUIRED</span> <span style="color:#e6db74">ON</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>set(<span style="color:#e6db74">CMAKE_CXX_EXTENSIONS</span> <span style="color:#e6db74">OFF</span>)<span style="color:#960050;background-color:#1e0010">
@@ -185,7 +185,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 <li>MSVC: <code>/std:c++17</code></li>
 </ul>
 <h3 id="针对特定目标的标准设置">针对特定目标的标准设置</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>set_target_properties(<span style="color:#e6db74">VisionDemo</span> <span style="color:#e6db74">PROPERTIES</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>set_target_properties(<span style="color:#e6db74">VisionDemo</span> <span style="color:#e6db74">PROPERTIES</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">CXX_STANDARD</span> <span style="color:#e6db74">17</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">CXX_STANDARD_REQUIRED</span> <span style="color:#e6db74">ON</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">CXX_EXTENSIONS</span> <span style="color:#e6db74">OFF</span>
@@ -199,11 +199,11 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 <hr>
 <h2 id="编译器选项与警告配置">编译器选项与警告配置</h2>
 <h3 id="全局编译选项">全局编译选项</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>if(<span style="color:#e6db74">CMAKE_CXX_COMPILER_ID</span> <span style="color:#e6db74">MATCHES</span> <span style="color:#e6db74">&#34;GNU|Clang&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>if(<span style="color:#e6db74">CMAKE_CXX_COMPILER_ID</span> <span style="color:#e6db74">MATCHES</span> <span style="color:#e6db74">&#34;GNU|Clang&#34;</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>    add_compile_options(<span style="color:#e6db74">-Wall</span> <span style="color:#e6db74">-Wextra</span> <span style="color:#e6db74">-Wpedantic</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><h3 id="目标特定编译选项推荐">目标特定编译选项（推荐）</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>if(<span style="color:#e6db74">CMAKE_CXX_COMPILER_ID</span> <span style="color:#e6db74">MATCHES</span> <span style="color:#e6db74">&#34;GNU|Clang&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>if(<span style="color:#e6db74">CMAKE_CXX_COMPILER_ID</span> <span style="color:#e6db74">MATCHES</span> <span style="color:#e6db74">&#34;GNU|Clang&#34;</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>    target_compile_options(<span style="color:#e6db74">VisionDemo</span> <span style="color:#e6db74">PRIVATE</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">-Wall</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">-Wextra</span>
@@ -244,7 +244,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
   </tbody>
 </table>
 <h3 id="多编译器支持">多编译器支持</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>if(<span style="color:#e6db74">CMAKE_CXX_COMPILER_ID</span> <span style="color:#e6db74">MATCHES</span> <span style="color:#e6db74">&#34;GNU|Clang&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>if(<span style="color:#e6db74">CMAKE_CXX_COMPILER_ID</span> <span style="color:#e6db74">MATCHES</span> <span style="color:#e6db74">&#34;GNU|Clang&#34;</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>    target_compile_options(<span style="color:#f92672">${</span>TARGET_NAME<span style="color:#f92672">}</span> <span style="color:#e6db74">PRIVATE</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">-Wall</span> <span style="color:#e6db74">-Wextra</span> <span style="color:#e6db74">-Wpedantic</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">-Wno-unused-parameter</span> <span style="color:#e6db74">-Wno-unused-variable</span>
@@ -262,7 +262,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </code></pre><hr>
 <h2 id="输出目录结构管理">输出目录结构管理</h2>
 <h3 id="构建阶段输出目录">构建阶段输出目录</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 设置构建阶段的输出目录
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 设置构建阶段的输出目录
 </span></span></span><span style="display:flex;"><span>set(<span style="color:#e6db74">CMAKE_RUNTIME_OUTPUT_DIRECTORY</span> <span style="color:#f92672">${</span>CMAKE_BINARY_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/bin</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>set(<span style="color:#e6db74">CMAKE_LIBRARY_OUTPUT_DIRECTORY</span> <span style="color:#f92672">${</span>CMAKE_BINARY_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/lib</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>set(<span style="color:#e6db74">CMAKE_ARCHIVE_OUTPUT_DIRECTORY</span> <span style="color:#f92672">${</span>CMAKE_BINARY_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/lib</span>)<span style="color:#960050;background-color:#1e0010">
@@ -294,7 +294,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
   </tbody>
 </table>
 <h3 id="多配置生成器支持">多配置生成器支持</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 为多配置生成器（如 MSVC）指定每个构建类型的输出路径
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 为多配置生成器（如 MSVC）指定每个构建类型的输出路径
 </span></span></span><span style="display:flex;"><span>foreach(<span style="color:#e6db74">OUTPUT_CONFIG</span> <span style="color:#e6db74">IN</span> <span style="color:#e6db74">LISTS</span> <span style="color:#e6db74">CMAKE_CONFIGURATION_TYPES</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>    string(<span style="color:#e6db74">TOUPPER</span> <span style="color:#f92672">${</span>OUTPUT_CONFIG<span style="color:#f92672">}</span> <span style="color:#e6db74">OUTPUT_CONFIG</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>    set(<span style="color:#e6db74">CMAKE_RUNTIME_OUTPUT_DIRECTORY_</span><span style="color:#f92672">${</span>OUTPUT_CONFIG<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>CMAKE_RUNTIME_OUTPUT_DIRECTORY<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
@@ -311,7 +311,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </code></pre><hr>
 <h2 id="环境检测与路径配置">环境检测与路径配置</h2>
 <h3 id="anaconda-环境检测">Anaconda 环境检测</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 检查是否在 Anaconda 环境中
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 检查是否在 Anaconda 环境中
 </span></span></span><span style="display:flex;"><span>if(<span style="color:#e6db74">DEFINED</span> <span style="color:#e6db74">ENV{CONDA_PREFIX}</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>    set(<span style="color:#e6db74">CMAKE_PREFIX_PATH</span> <span style="color:#f92672">$ENV{</span>CONDA_PREFIX<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>    set(<span style="color:#e6db74">CMAKE_INCLUDE_PATH</span> <span style="color:#f92672">$ENV{</span>CONDA_PREFIX<span style="color:#f92672">}</span><span style="color:#e6db74">/include</span>)<span style="color:#960050;background-color:#1e0010">
@@ -326,13 +326,13 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 <li><code>CMAKE_LIBRARY_PATH</code>：库文件查找路径</li>
 </ul>
 <h3 id="路径优先级管理">路径优先级管理</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 设置查找路径优先级
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 设置查找路径优先级
 </span></span></span><span style="display:flex;"><span>list(<span style="color:#e6db74">INSERT</span> <span style="color:#e6db74">CMAKE_PREFIX_PATH</span> <span style="color:#e6db74">0</span> <span style="color:#f92672">${</span>CMAKE_CURRENT_SOURCE_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/extern</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>list(<span style="color:#e6db74">INSERT</span> <span style="color:#e6db74">CMAKE_MODULE_PATH</span> <span style="color:#e6db74">0</span> <span style="color:#f92672">${</span>CMAKE_CURRENT_SOURCE_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/cmake</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><hr>
 <h2 id="第三方依赖管理">第三方依赖管理</h2>
 <h3 id="使用-fetchcontent-自动下载依赖">使用 FetchContent 自动下载依赖</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>include(<span style="color:#e6db74">FetchContent</span>)<span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>include(<span style="color:#e6db74">FetchContent</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 下载并构建 fmt 库
 </span></span></span><span style="display:flex;"><span>FetchContent_Declare(
@@ -357,7 +357,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 <li>🧩 与CMake依赖管理无缝集成</li>
 </ul>
 <h3 id="常用第三方库配置">常用第三方库配置</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># Google Test
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># Google Test
 </span></span></span><span style="display:flex;"><span>FetchContent_Declare(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">googletest</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">GIT_REPOSITORY</span> <span style="color:#e6db74">https://github.com/google/googletest.git</span>
@@ -381,7 +381,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>FetchContent_MakeAvailable(<span style="color:#e6db74">eigen</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><h3 id="find_package-方式">find_package 方式</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 查找系统安装的包
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 查找系统安装的包
 </span></span></span><span style="display:flex;"><span>find_package(<span style="color:#e6db74">OpenCV</span> <span style="color:#e6db74">REQUIRED</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>find_package(<span style="color:#e6db74">Boost</span> <span style="color:#e6db74">REQUIRED</span> <span style="color:#e6db74">COMPONENTS</span> <span style="color:#e6db74">system</span> <span style="color:#e6db74">filesystem</span> <span style="color:#e6db74">thread</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>find_package(<span style="color:#e6db74">PkgConfig</span> <span style="color:#e6db74">REQUIRED</span>)<span style="color:#960050;background-color:#1e0010">
@@ -389,7 +389,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </span></span></span></code></pre></div><hr>
 <h2 id="目标链接与可见性">目标链接与可见性</h2>
 <h3 id="链接可见性修饰符">链接可见性修饰符</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>target_link_libraries(<span style="color:#e6db74">MyTarget</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>target_link_libraries(<span style="color:#e6db74">MyTarget</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">PRIVATE</span>   <span style="color:#e6db74">privately_used_lib</span>     <span style="color:#75715e"># 仅当前目标使用
 </span></span></span><span style="display:flex;"><span>    <span style="color:#e6db74">PUBLIC</span>    <span style="color:#e6db74">publicly_exposed_lib</span>   <span style="color:#75715e"># 当前目标和依赖者都使用
 </span></span></span><span style="display:flex;"><span>    <span style="color:#e6db74">INTERFACE</span> <span style="color:#e6db74">interface_only_lib</span>     <span style="color:#75715e"># 仅依赖者使用
@@ -426,7 +426,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
   </tbody>
 </table>
 <h3 id="实际应用示例">实际应用示例</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 创建库
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 创建库
 </span></span></span><span style="display:flex;"><span>add_library(<span style="color:#e6db74">MyLib</span> <span style="color:#e6db74">src/mylib.cpp</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>target_link_libraries(<span style="color:#e6db74">MyLib</span>
@@ -441,7 +441,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"># MyApp 可以使用 fmt::fmt 和 Eigen，但不能直接使用 spdlog
 </span></span></span></code></pre></div><h3 id="接口库创建">接口库创建</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 创建纯头文件库
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 创建纯头文件库
 </span></span></span><span style="display:flex;"><span>add_library(<span style="color:#e6db74">MyHeaderLib</span> <span style="color:#e6db74">INTERFACE</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>target_include_directories(<span style="color:#e6db74">MyHeaderLib</span> <span style="color:#e6db74">INTERFACE</span> 
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">$&lt;</span>BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include<span style="color:#f92672">&gt;</span>
@@ -451,7 +451,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </span></span></span></code></pre></div><hr>
 <h2 id="安装配置与部署">安装配置与部署</h2>
 <h3 id="基础安装配置">基础安装配置</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>include(<span style="color:#e6db74">GNUInstallDirs</span>)  <span style="color:#75715e"># 提供标准安装路径
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>include(<span style="color:#e6db74">GNUInstallDirs</span>)  <span style="color:#75715e"># 提供标准安装路径
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 安装可执行文件
 </span></span></span><span style="display:flex;"><span>install(<span style="color:#e6db74">TARGETS</span> <span style="color:#e6db74">VisionDemo</span>
@@ -465,7 +465,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">RUNTIME</span> <span style="color:#e6db74">DESTINATION</span> <span style="color:#f92672">${</span>CMAKE_INSTALL_BINDIR<span style="color:#f92672">}</span>  <span style="color:#75715e"># Windows DLL
 </span></span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><h3 id="完整安装配置">完整安装配置</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 安装头文件
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 安装头文件
 </span></span></span><span style="display:flex;"><span>install(<span style="color:#e6db74">DIRECTORY</span> <span style="color:#e6db74">include/VisionDemo</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">DESTINATION</span> <span style="color:#f92672">${</span>CMAKE_INSTALL_INCLUDEDIR<span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">FILES_MATCHING</span> <span style="color:#e6db74">PATTERN</span> <span style="color:#e6db74">&#34;*.h&#34;</span> <span style="color:#e6db74">PATTERN</span> <span style="color:#e6db74">&#34;*.hpp&#34;</span>
@@ -527,7 +527,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
   </tbody>
 </table>
 <h3 id="使用安装">使用安装</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 配置并构建</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 配置并构建</span>
 </span></span><span style="display:flex;"><span>cmake -S . -B build -DCMAKE_BUILD_TYPE<span style="color:#f92672">=</span>Release
 </span></span><span style="display:flex;"><span>cmake --build build
 </span></span><span style="display:flex;"><span>
@@ -539,7 +539,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </span></span></code></pre></div><hr>
 <h2 id="自定义构建目标">自定义构建目标</h2>
 <h3 id="版本信息目标">版本信息目标</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>add_custom_target(<span style="color:#e6db74">version_info</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>add_custom_target(<span style="color:#e6db74">version_info</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">COMMAND</span> <span style="color:#f92672">${</span>CMAKE_COMMAND<span style="color:#f92672">}</span> <span style="color:#e6db74">-E</span> <span style="color:#e6db74">echo</span> <span style="color:#e6db74">&#34;Building ${PROJECT_NAME} version ${PROJECT_VERSION}&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">COMMAND</span> <span style="color:#f92672">${</span>CMAKE_COMMAND<span style="color:#f92672">}</span> <span style="color:#e6db74">-E</span> <span style="color:#e6db74">echo</span> <span style="color:#e6db74">&#34;C++ compiler: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">COMMAND</span> <span style="color:#f92672">${</span>CMAKE_COMMAND<span style="color:#f92672">}</span> <span style="color:#e6db74">-E</span> <span style="color:#e6db74">echo</span> <span style="color:#e6db74">&#34;Build type: ${CMAKE_BUILD_TYPE}&#34;</span>
@@ -550,7 +550,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 让主目标依赖版本信息
 </span></span></span><span style="display:flex;"><span>add_dependencies(<span style="color:#e6db74">VisionDemo</span> <span style="color:#e6db74">version_info</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><h3 id="代码格式化目标">代码格式化目标</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>find_program(<span style="color:#e6db74">CLANG_FORMAT</span> <span style="color:#e6db74">clang-format</span>)<span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>find_program(<span style="color:#e6db74">CLANG_FORMAT</span> <span style="color:#e6db74">clang-format</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>if(<span style="color:#e6db74">CLANG_FORMAT</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>    file(<span style="color:#e6db74">GLOB_RECURSE</span> <span style="color:#e6db74">SOURCE_FILES</span> 
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;${CMAKE_SOURCE_DIR}/src/*.cpp&#34;</span>
@@ -565,7 +565,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </span></span><span style="display:flex;"><span>    )<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><h3 id="文档生成目标">文档生成目标</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>find_package(<span style="color:#e6db74">Doxygen</span>)<span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>find_package(<span style="color:#e6db74">Doxygen</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>if(<span style="color:#e6db74">DOXYGEN_FOUND</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>    set(<span style="color:#e6db74">DOXYGEN_IN</span> <span style="color:#f92672">${</span>CMAKE_CURRENT_SOURCE_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/docs/Doxyfile.in</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>    set(<span style="color:#e6db74">DOXYGEN_OUT</span> <span style="color:#f92672">${</span>CMAKE_CURRENT_BINARY_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/Doxyfile</span>)<span style="color:#960050;background-color:#1e0010">
@@ -601,7 +601,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 │   └── Doxyfile.in
 └── README.md
 </code></pre><h3 id="主-cmakeliststxt">主 CMakeLists.txt</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>cmake_minimum_required(<span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">3.14</span>)<span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>cmake_minimum_required(<span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">3.14</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>project(<span style="color:#e6db74">VisionDemo</span> 
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">1.2.0</span> 
@@ -698,7 +698,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">DESTINATION</span> <span style="color:#f92672">${</span>CMAKE_INSTALL_LIBDIR<span style="color:#f92672">}</span><span style="color:#e6db74">/cmake/VisionDemo</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><h3 id="cmakedependenciescmake">cmake/Dependencies.cmake</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>include(<span style="color:#e6db74">FetchContent</span>)<span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>include(<span style="color:#e6db74">FetchContent</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"># fmt 库
 </span></span></span><span style="display:flex;"><span>FetchContent_Declare(
@@ -731,7 +731,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </span></span></span><span style="display:flex;"><span>    FetchContent_MakeAvailable(<span style="color:#e6db74">googletest</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><h3 id="cmakecompileroptionscmake">cmake/CompilerOptions.cmake</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>function(<span style="color:#e6db74">setup_compiler_options</span> <span style="color:#e6db74">target</span>)<span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>function(<span style="color:#e6db74">setup_compiler_options</span> <span style="color:#e6db74">target</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>    if(<span style="color:#e6db74">CMAKE_CXX_COMPILER_ID</span> <span style="color:#e6db74">MATCHES</span> <span style="color:#e6db74">&#34;GNU|Clang&#34;</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>        target_compile_options(<span style="color:#f92672">${</span>target<span style="color:#f92672">}</span> <span style="color:#e6db74">PRIVATE</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#e6db74">-Wall</span>
@@ -752,7 +752,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 </span></span></span><span style="display:flex;"><span>    endif()<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>endfunction()<span style="color:#960050;background-color:#1e0010">
 </span></span></span></code></pre></div><h3 id="构建和使用">构建和使用</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 克隆项目</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 克隆项目</span>
 </span></span><span style="display:flex;"><span>git clone &lt;repository_url&gt;
 </span></span><span style="display:flex;"><span>cd VisionDemo
 </span></span><span style="display:flex;"><span>
@@ -791,7 +791,7 @@ GCC/Clang: -std=c&#43;&#43;17 MSVC: /std:c&#43;&#43;17 针对特定目标的标�
 <li><strong>不要混用全局和目标特定的设置</strong></li>
 </ol>
 <h3 id="-调试技巧">🔧 调试技巧</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 打印变量值
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 打印变量值
 </span></span></span><span style="display:flex;"><span>message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}&#34;</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span>message(<span style="color:#e6db74">STATUS</span> <span style="color:#e6db74">&#34;PROJECT_VERSION: ${PROJECT_VERSION}&#34;</span>)<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">

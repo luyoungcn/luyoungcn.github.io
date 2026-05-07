@@ -141,7 +141,7 @@ Vim 替换命令速查 在 Vim 中，替换命令的基本格式是：
   <section class="page-section"><p>:w</p>
 <h1 id="vim-替换命令速查">Vim 替换命令速查</h1>
 <p>在 Vim 中，替换命令的基本格式是：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:[<span style="color:#a6e22e">range</span>]<span style="color:#a6e22e">s</span><span style="color:#e6db74">/pattern/</span><span style="color:#a6e22e">replacement</span>/[<span style="color:#a6e22e">flags</span>]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:[<span style="color:#a6e22e">range</span>]<span style="color:#a6e22e">s</span><span style="color:#e6db74">/pattern/</span><span style="color:#a6e22e">replacement</span>/[<span style="color:#a6e22e">flags</span>]
 </span></span></code></pre></div><ul>
 <li><strong>range</strong>：指定替换的行范围</li>
 <li><strong>pattern</strong>：要查找的模式（可用正则表达式）</li>
@@ -153,26 +153,26 @@ Vim 替换命令速查 在 Vim 中，替换命令的基本格式是：
 <ul>
 <li>
 <p><strong>当前行替换</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:<span style="color:#a6e22e">s</span><span style="color:#e6db74">/foo/</span><span style="color:#a6e22e">bar</span>/<span style="color:#a6e22e">g</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:<span style="color:#a6e22e">s</span><span style="color:#e6db74">/foo/</span><span style="color:#a6e22e">bar</span>/<span style="color:#a6e22e">g</span>
 </span></span></code></pre></div></li>
 <li>
 <p><strong>指定行号范围</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">20</span>s<span style="color:#e6db74">/foo/</span><span style="color:#a6e22e">bar</span>/<span style="color:#a6e22e">g</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">20</span>s<span style="color:#e6db74">/foo/</span><span style="color:#a6e22e">bar</span>/<span style="color:#a6e22e">g</span>
 </span></span></code></pre></div></li>
 <li>
 <p><strong>从当前行到文件末尾</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:.,$<span style="color:#a6e22e">s</span><span style="color:#e6db74">/foo/</span><span style="color:#a6e22e">bar</span>/<span style="color:#a6e22e">g</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:.,$<span style="color:#a6e22e">s</span><span style="color:#e6db74">/foo/</span><span style="color:#a6e22e">bar</span>/<span style="color:#a6e22e">g</span>
 </span></span></code></pre></div></li>
 <li>
 <p><strong>全文件替换</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/foo/</span><span style="color:#a6e22e">bar</span>/<span style="color:#a6e22e">g</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/foo/</span><span style="color:#a6e22e">bar</span>/<span style="color:#a6e22e">g</span>
 </span></span></code></pre></div></li>
 <li>
 <p><strong>可视模式选区替换</strong></p>
 <ol>
 <li>进入可视模式（<code>v</code> 或 <code>V</code>）选择文本</li>
 <li>输入：
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:<span style="color:#a6e22e">s</span><span style="color:#e6db74">/foo/</span><span style="color:#a6e22e">bar</span>/<span style="color:#a6e22e">g</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:<span style="color:#a6e22e">s</span><span style="color:#e6db74">/foo/</span><span style="color:#a6e22e">bar</span>/<span style="color:#a6e22e">g</span>
 </span></span></code></pre></div></li>
 </ol>
 </li>
@@ -186,28 +186,28 @@ Vim 替换命令速查 在 Vim 中，替换命令的基本格式是：
 <li><code>I</code> → 强制区分大小写</li>
 </ul>
 <p>示例：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/foo/</span><span style="color:#a6e22e">bar</span>/<span style="color:#a6e22e">gc</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/foo/</span><span style="color:#a6e22e">bar</span>/<span style="color:#a6e22e">gc</span>
 </span></span></code></pre></div><p>→ 全文件替换，每次确认</p>
 <hr>
 <h2 id="-特殊字符处理">🔹 特殊字符处理</h2>
 <ul>
 <li>
 <p><strong>路径替换（避免 <code>/</code> 冲突）</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span>#<span style="color:#e6db74">/usr/</span><span style="color:#a6e22e">local</span><span style="color:#e6db74">/bin#/</span><span style="color:#a6e22e">opt</span>/<span style="color:#a6e22e">bin</span>#<span style="color:#a6e22e">g</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span>#<span style="color:#e6db74">/usr/</span><span style="color:#a6e22e">local</span><span style="color:#e6db74">/bin#/</span><span style="color:#a6e22e">opt</span>/<span style="color:#a6e22e">bin</span>#<span style="color:#a6e22e">g</span>
 </span></span><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span>|<span style="color:#a6e22e">C</span>:\<span style="color:#a6e22e">Program</span> <span style="color:#a6e22e">Files</span>|<span style="color:#a6e22e">D</span>:\<span style="color:#a6e22e">Apps</span>|<span style="color:#a6e22e">g</span>
 </span></span></code></pre></div></li>
 <li>
 <p><strong>转义特殊字符</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/\/usr\/local\/bin/</span>\<span style="color:#e6db74">/opt\/bin/</span><span style="color:#a6e22e">g</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/\/usr\/local\/bin/</span>\<span style="color:#e6db74">/opt\/bin/</span><span style="color:#a6e22e">g</span>
 </span></span></code></pre></div></li>
 <li>
 <p><strong>替换为包含 <code>&amp;</code> 的内容</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/foo/</span>\&amp;<span style="color:#a6e22e">bar</span>/<span style="color:#a6e22e">g</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/foo/</span>\&amp;<span style="color:#a6e22e">bar</span>/<span style="color:#a6e22e">g</span>
 </span></span></code></pre></div><p>→ <code>&amp;</code> 在替换中表示“匹配到的内容”，需转义</p>
 </li>
 <li>
 <p><strong>替换为包含反斜杠 <code>\</code></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/path/</span>\\\\<span style="color:#a6e22e">newpath</span>/<span style="color:#a6e22e">g</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/path/</span>\\\\<span style="color:#a6e22e">newpath</span>/<span style="color:#a6e22e">g</span>
 </span></span></code></pre></div><p>→ 实际结果是 <code>\\newpath</code></p>
 </li>
 </ul>
@@ -216,16 +216,16 @@ Vim 替换命令速查 在 Vim 中，替换命令的基本格式是：
 <ul>
 <li>
 <p><strong>匹配数字</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/[0-9]\+/</span><span style="color:#a6e22e">NUMBER</span>/<span style="color:#a6e22e">g</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/[0-9]\+/</span><span style="color:#a6e22e">NUMBER</span>/<span style="color:#a6e22e">g</span>
 </span></span></code></pre></div></li>
 <li>
 <p><strong>匹配行首/行尾</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/^foo/</span><span style="color:#a6e22e">bar</span>/<span style="color:#a6e22e">g</span>   <span style="color:#75715e">&#34; 行首</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/^foo/</span><span style="color:#a6e22e">bar</span>/<span style="color:#a6e22e">g</span>   <span style="color:#75715e">&#34; 行首</span>
 </span></span><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/foo$/</span><span style="color:#a6e22e">bar</span>/<span style="color:#a6e22e">g</span>   <span style="color:#75715e">&#34; 行尾</span>
 </span></span></code></pre></div></li>
 <li>
 <p><strong>分组与引用</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/\(foo\)\(bar\)/</span>\<span style="color:#ae81ff">2</span>\<span style="color:#ae81ff">1</span>/<span style="color:#a6e22e">g</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/\(foo\)\(bar\)/</span>\<span style="color:#ae81ff">2</span>\<span style="color:#ae81ff">1</span>/<span style="color:#a6e22e">g</span>
 </span></span></code></pre></div><p>→ 把 <code>foobar</code> 替换成 <code>barfoo</code></p>
 </li>
 </ul>
@@ -237,26 +237,26 @@ Vim 替换命令速查 在 Vim 中，替换命令的基本格式是：
 <li><code>~</code> → 上一次替换的 replacement</li>
 </ul>
 <p>示例：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/foo/</span>&amp;<span style="color:#a6e22e">bar</span>/<span style="color:#a6e22e">g</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/foo/</span>&amp;<span style="color:#a6e22e">bar</span>/<span style="color:#a6e22e">g</span>
 </span></span></code></pre></div><p>→ 把 <code>foo</code> 替换成 <code>foobar</code></p>
 <hr>
 <h2 id="-特殊场景">🔹 特殊场景</h2>
 <ul>
 <li>
 <p><strong>替换空格</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/ /</span><span style="color:#a6e22e">_</span>/<span style="color:#a6e22e">g</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/ /</span><span style="color:#a6e22e">_</span>/<span style="color:#a6e22e">g</span>
 </span></span></code></pre></div></li>
 <li>
 <p><strong>替换 Tab</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/\t/</span>    /<span style="color:#a6e22e">g</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/\t/</span>    /<span style="color:#a6e22e">g</span>
 </span></span></code></pre></div></li>
 <li>
 <p><strong>替换换行符（合并行）</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/\n/</span> /<span style="color:#a6e22e">g</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/\n/</span> /<span style="color:#a6e22e">g</span>
 </span></span></code></pre></div></li>
 <li>
 <p><strong>大小写转换</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/foo/</span>\<span style="color:#a6e22e">Ubar</span>/<span style="color:#a6e22e">g</span>   <span style="color:#75715e">&#34; 转大写</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/foo/</span>\<span style="color:#a6e22e">Ubar</span>/<span style="color:#a6e22e">g</span>   <span style="color:#75715e">&#34; 转大写</span>
 </span></span><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/foo/</span>\<span style="color:#a6e22e">lbar</span>/<span style="color:#a6e22e">g</span>   <span style="color:#75715e">&#34; 转小写</span>
 </span></span><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/foo/</span>\<span style="color:#a6e22e">u</span>&amp;/<span style="color:#a6e22e">g</span>     <span style="color:#75715e">&#34; 首字母大写</span>
 </span></span></code></pre></div></li>
@@ -266,15 +266,15 @@ Vim 替换命令速查 在 Vim 中，替换命令的基本格式是：
 <ul>
 <li>
 <p><strong>批量修改函数名</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/my_func/</span><span style="color:#a6e22e">new_func</span>/<span style="color:#a6e22e">g</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/my_func/</span><span style="color:#a6e22e">new_func</span>/<span style="color:#a6e22e">g</span>
 </span></span></code></pre></div></li>
 <li>
 <p><strong>替换配置文件路径</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span>#<span style="color:#e6db74">/etc/</span><span style="color:#a6e22e">nginx</span><span style="color:#e6db74">/conf.d#/</span><span style="color:#a6e22e">etc</span><span style="color:#e6db74">/nginx/</span><span style="color:#a6e22e">sites</span>-<span style="color:#a6e22e">enabled</span>#<span style="color:#a6e22e">g</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span>#<span style="color:#e6db74">/etc/</span><span style="color:#a6e22e">nginx</span><span style="color:#e6db74">/conf.d#/</span><span style="color:#a6e22e">etc</span><span style="color:#e6db74">/nginx/</span><span style="color:#a6e22e">sites</span>-<span style="color:#a6e22e">enabled</span>#<span style="color:#a6e22e">g</span>
 </span></span></code></pre></div></li>
 <li>
 <p><strong>日志文件中替换时间格式</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/\([0-9]\{4\}\)-\([0-9]\{2\}\)-\([0-9]\{2\}\)/</span>\<span style="color:#ae81ff">2</span>\<span style="color:#e6db74">/\3\/\1/</span><span style="color:#a6e22e">g</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/\([0-9]\{4\}\)-\([0-9]\{2\}\)-\([0-9]\{2\}\)/</span>\<span style="color:#ae81ff">2</span>\<span style="color:#e6db74">/\3\/\1/</span><span style="color:#a6e22e">g</span>
 </span></span></code></pre></div><p>→ 把 <code>YYYY-MM-DD</code> 转换成 <code>MM/DD/YYYY</code></p>
 </li>
 </ul>

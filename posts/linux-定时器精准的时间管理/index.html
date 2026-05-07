@@ -124,7 +124,7 @@ POSIX 定时器简介 POSIX 定时器是符合 POSIX.1b 标准的实时扩展的
       </div><div class="tag">
         <a href="/tags/%E5%AE%9A%E6%97%B6%E5%99%A8/">#定时器</a>
       </div><div class="tag">
-        <a href="/tags/linux/">#linux</a>
+        <a href="/tags/linux/">#Linux</a>
       </div><div class="tag">
         <a href="/tags/posix/">#posix</a>
       </div></ol></div>
@@ -143,7 +143,7 @@ POSIX 定时器简介 POSIX 定时器是符合 POSIX.1b 标准的实时扩展的
 <p>接下来，我们重点介绍用于创建、设置和管理 POSIX 定时器的关键系统调用。</p>
 <h4 id="1-timer_create-创建定时器">1. <code>timer_create()</code>: 创建定时器</h4>
 <p><code>timer_create()</code> 系统调用用于创建一个新的 POSIX 定时器。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;signal.h&gt;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;signal.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;time.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
@@ -187,14 +187,14 @@ POSIX 定时器简介 POSIX 定时器是符合 POSIX.1b 标准的实时扩展的
 <li>成功创建后，我们打印了定时器的 ID。</li>
 </ul>
 <p><strong>编译和运行:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gcc timer_create_example.c -o timer_create_example -lrt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gcc timer_create_example.c -o timer_create_example -lrt
 </span></span><span style="display:flex;"><span>./timer_create_example
 </span></span></code></pre></div><p><strong>可能的运行结果:</strong></p>
 <pre tabindex="0"><code>定时器创建成功，ID: 0
 </code></pre><p>（实际的定时器 ID 可能不同）</p>
 <h4 id="2-timer_settime-设置定时器">2. <code>timer_settime()</code>: 设置定时器</h4>
 <p><code>timer_settime()</code> 系统调用用于启动或停止定时器，并设置其初始延迟和间隔时间。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;signal.h&gt;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;signal.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;time.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
@@ -295,7 +295,7 @@ POSIX 定时器简介 POSIX 定时器是符合 POSIX.1b 标准的实时扩展的
 <li>最后，我们使用 <code>timer_delete()</code> 系统调用删除了不再需要的定时器。</li>
 </ul>
 <p><strong>编译和运行:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>gcc timer_settime_example.c -o timer_settime_example -lrt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>gcc timer_settime_example.c -o timer_settime_example -lrt
 </span></span><span style="display:flex;"><span>./timer_settime_example
 </span></span></code></pre></div><p><strong>可能的运行结果:</strong></p>
 <pre tabindex="0"><code>定时器创建成功，ID: 0
@@ -313,7 +313,7 @@ POSIX 定时器简介 POSIX 定时器是符合 POSIX.1b 标准的实时扩展的
 </code></pre><p>（实际的定时器 ID 和信号编号可能不同，34 对应 <code>SIGRTMIN</code>）</p>
 <h4 id="3-timer_gettime-获取定时器状态">3. <code>timer_gettime()</code>: 获取定时器状态</h4>
 <p><code>timer_gettime()</code> 系统调用用于获取当前定时器的剩余时间和间隔。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;signal.h&gt;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;signal.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;time.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
@@ -391,7 +391,7 @@ POSIX 定时器简介 POSIX 定时器是符合 POSIX.1b 标准的实时扩展的
 <li>再次调用 <code>timer_gettime()</code>，可以看到触发后剩余时间通常为 0。</li>
 </ul>
 <p><strong>编译和运行:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>gcc timer_gettime_example.c -o timer_gettime_example -lrt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>gcc timer_gettime_example.c -o timer_gettime_example -lrt
 </span></span><span style="display:flex;"><span>./timer_gettime_example
 </span></span></code></pre></div><p><strong>可能的运行结果:</strong></p>
 <pre tabindex="0"><code>定时器创建成功，ID: 0

@@ -114,7 +114,7 @@
     <span>&nbsp»&nbsp</span>
 </ol>
 <h1>📘 Linux Firmware Node (fwnode) 统一设备模型</h1><time class="dim" datetime="1970-01-01T00:00:00&#43;08:00">January 1, 1970</time><div class="term-container"><div class="tag">
-        <a href="/tags/linux/">#linux</a>
+        <a href="/tags/linux/">#Linux</a>
       </div><div class="tag">
         <a href="/tags/acpi/">#ACPI</a>
       </div><div class="tag">
@@ -139,7 +139,7 @@
 <li><strong>代码重复</strong>：驱动程序需要为不同固件格式编写重复的解析代码</li>
 <li><strong>维护困难</strong>：跨平台驱动维护成本高，兼容性问题频发</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> device <span style="color:#f92672">*</span>dev <span style="color:#f92672">=</span>...;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> device <span style="color:#f92672">*</span>dev <span style="color:#f92672">=</span>...;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> ret, irq;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/* 检查设备是否关联了设备树节点 */</span>
@@ -286,7 +286,7 @@
         │  fwnode   │
         └───────────┘
 </code></pre><h3 id="32-核心数据结构">3.2 核心数据结构</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/**
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/**
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * struct fwnode_handle - firmware node handle
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @secondary: 指向次要固件节点的指针
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @ops: 操作函数集合指针
@@ -301,7 +301,7 @@
 </span></span><span style="display:flex;"><span>    u8 flags;
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h3 id="33-操作函数接口">3.3 操作函数接口</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/**
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/**
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * struct fwnode_operations - fwnode 操作函数集
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fwnode_operations {
@@ -343,7 +343,7 @@
 </span></span></code></pre></div><h2 id="4-核心组件详解">4. 核心组件详解</h2>
 <h3 id="41-fwnode_handle-结构体">4.1 fwnode_handle 结构体</h3>
 <p>fwnode_handle 是整个框架的核心，它代表一个固件节点的抽象：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 示例：获取和释放 fwnode
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 示例：获取和释放 fwnode
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span><span style="color:#a6e22e">fwnode_get</span>(<span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>fwnode)
@@ -362,7 +362,7 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="42-设备属性操作">4.2 设备属性操作</h3>
 <h4 id="421-属性存在性检查">4.2.1 属性存在性检查</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">fwnode_property_present</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">fwnode_property_present</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
 </span></span><span style="display:flex;"><span>                             <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>propname)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> ret;
@@ -376,7 +376,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ret;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="422-整数属性读取">4.2.2 整数属性读取</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fwnode_property_read_u32_array</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fwnode_property_read_u32_array</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
 </span></span><span style="display:flex;"><span>                                   <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>propname, u32 <span style="color:#f92672">*</span>val, <span style="color:#66d9ef">size_t</span> nval)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> ret;
@@ -389,7 +389,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ret;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="423-字符串属性读取">4.2.3 字符串属性读取</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fwnode_property_read_string_array</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fwnode_property_read_string_array</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
 </span></span><span style="display:flex;"><span>                                      <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>propname, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>val,
 </span></span><span style="display:flex;"><span>                                      <span style="color:#66d9ef">size_t</span> nval)
 </span></span><span style="display:flex;"><span>{
@@ -404,7 +404,7 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="43-节点遍历操作">4.3 节点遍历操作</h3>
 <h4 id="431-子节点遍历">4.3.1 子节点遍历</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define fwnode_for_each_child_node(fwnode, child)                  \
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define fwnode_for_each_child_node(fwnode, child)                  \
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    for (child = fwnode_get_next_child_node(fwnode, NULL); child; \
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">         child = fwnode_get_next_child_node(fwnode, child))
 </span></span></span><span style="display:flex;"><span>
@@ -417,7 +417,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fwnode_call_ptr_op</span>(fwnode, get_next_child_node, child);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="432-父节点获取">4.3.2 父节点获取</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span><span style="color:#a6e22e">fwnode_get_parent</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span><span style="color:#a6e22e">fwnode_get_parent</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">IS_ERR_OR_NULL</span>(fwnode))
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> NULL;
@@ -426,7 +426,7 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="44-图形节点支持">4.4 图形节点支持</h3>
 <p>图形节点用于描述设备间的连接关系，特别是在多媒体子系统中：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/**
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/**
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * struct fwnode_endpoint - 端点描述结构体
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fwnode_endpoint {
@@ -445,7 +445,7 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="5-实现机制">5. 实现机制</h2>
 <h3 id="51-device-tree-fwnode-实现">5.1 Device Tree fwnode 实现</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_operations of_fwnode_ops <span style="color:#f92672">=</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_operations of_fwnode_ops <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>    .get <span style="color:#f92672">=</span> of_fwnode_get,
 </span></span><span style="display:flex;"><span>    .put <span style="color:#f92672">=</span> of_fwnode_put,
 </span></span><span style="display:flex;"><span>    .device_is_available <span style="color:#f92672">=</span> of_fwnode_device_is_available,
@@ -473,7 +473,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> node <span style="color:#f92672">?</span> <span style="color:#f92672">&amp;</span>node<span style="color:#f92672">-&gt;</span>fwnode : NULL;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="52-acpi-fwnode-实现">5.2 ACPI fwnode 实现</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_operations acpi_fwnode_ops <span style="color:#f92672">=</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_operations acpi_fwnode_ops <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>    .get <span style="color:#f92672">=</span> acpi_fwnode_get,
 </span></span><span style="display:flex;"><span>    .put <span style="color:#f92672">=</span> acpi_fwnode_put,
 </span></span><span style="display:flex;"><span>    .device_is_available <span style="color:#f92672">=</span> acpi_fwnode_device_is_available,
@@ -507,7 +507,7 @@
    ↓
 5. 释放 fwnode 引用
 </code></pre><h3 id="62-代码示例">6.2 代码示例</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/**
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/**
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 示例驱动程序使用 fwnode API
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">example_driver_probe</span>(<span style="color:#66d9ef">struct</span> platform_device <span style="color:#f92672">*</span>pdev)
@@ -551,7 +551,7 @@
 </span></span></code></pre></div><h2 id="7-高级功能">7. 高级功能</h2>
 <h3 id="71-引用计数管理">7.1 引用计数管理</h3>
 <p>fwnode 框架实现了自动引用计数管理，确保节点在使用期间不会被释放：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span><span style="color:#a6e22e">fwnode_handle_get</span>(<span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span><span style="color:#a6e22e">fwnode_handle_get</span>(<span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fwnode_get</span>(fwnode);
 </span></span><span style="display:flex;"><span>}
@@ -562,7 +562,7 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="72-设备链接管理">7.2 设备链接管理</h3>
 <p>fwnode 支持设备间依赖关系的自动管理：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fwnode_link_add</span>(<span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>con, <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>sup)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fwnode_link_add</span>(<span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>con, <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>sup)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> fwnode_link <span style="color:#f92672">*</span>link;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> ret <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
@@ -590,7 +590,7 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="73-图形节点扩展">7.3 图形节点扩展</h3>
 <p>支持复杂的设备连接图描述：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span><span style="color:#a6e22e">fwnode_graph_get_next_endpoint</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span><span style="color:#a6e22e">fwnode_graph_get_next_endpoint</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode,
 </span></span><span style="display:flex;"><span>                                                     <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>prev)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">IS_ERR_OR_NULL</span>(fwnode))
@@ -611,7 +611,7 @@
 <ol>
 <li>
 <p><strong>统一接口使用</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* 推荐：使用 fwnode API */</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* 推荐：使用 fwnode API */</span>
 </span></span><span style="display:flex;"><span>ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">fwnode_property_read_u32</span>(<span style="color:#a6e22e">dev_fwnode</span>(dev), <span style="color:#e6db74">&#34;reg&#34;</span>, <span style="color:#f92672">&amp;</span>reg);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/* 不推荐：直接使用特定固件 API */</span>
@@ -619,7 +619,7 @@
 </span></span></span></code></pre></div></li>
 <li>
 <p><strong>错误处理</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>child;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>child;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">fwnode_for_each_child_node</span>(fwnode, child) {
 </span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">process_child_node</span>(child);
@@ -631,7 +631,7 @@
 </span></span></code></pre></div></li>
 <li>
 <p><strong>资源清理</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">example_driver_cleanup</span>(<span style="color:#66d9ef">struct</span> device <span style="color:#f92672">*</span>dev)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">example_driver_cleanup</span>(<span style="color:#66d9ef">struct</span> device <span style="color:#f92672">*</span>dev)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode <span style="color:#f92672">=</span> <span style="color:#a6e22e">dev_fwnode</span>(dev);
 </span></span><span style="display:flex;"><span>
@@ -644,7 +644,7 @@
 <ol>
 <li>
 <p><strong>缓存常用属性</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> example_data {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> example_data {
 </span></span><span style="display:flex;"><span>    u32 cached_reg;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>cached_name;
 </span></span><span style="display:flex;"><span>};
@@ -661,7 +661,7 @@
 </span></span></code></pre></div></li>
 <li>
 <p><strong>避免重复查找</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* 不推荐：重复查找 */</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* 不推荐：重复查找 */</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">fwnode_property_present</span>(fwnode, <span style="color:#e6db74">&#34;enable-gpios&#34;</span>)) {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fwnode_property_read_u32</span>(fwnode, <span style="color:#e6db74">&#34;enable-gpios&#34;</span>, <span style="color:#f92672">&amp;</span>gpio);
 </span></span><span style="display:flex;"><span>}
@@ -677,7 +677,7 @@
 <ol>
 <li>
 <p><strong>属性检查</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">debug_print_properties</span>(<span style="color:#66d9ef">struct</span> device <span style="color:#f92672">*</span>dev)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">debug_print_properties</span>(<span style="color:#66d9ef">struct</span> device <span style="color:#f92672">*</span>dev)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode <span style="color:#f92672">=</span> <span style="color:#a6e22e">dev_fwnode</span>(dev);
 </span></span><span style="display:flex;"><span>
@@ -690,7 +690,7 @@
 </span></span></code></pre></div></li>
 <li>
 <p><strong>节点层次结构调试</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">debug_print_node_hierarchy</span>(<span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode, <span style="color:#66d9ef">int</span> level)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">debug_print_node_hierarchy</span>(<span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>fwnode, <span style="color:#66d9ef">int</span> level)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> fwnode_handle <span style="color:#f92672">*</span>child;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name;
@@ -709,7 +709,7 @@
 <ol>
 <li>
 <p><strong>属性不存在错误</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* 问题：假设属性存在 */</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* 问题：假设属性存在 */</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">fwnode_property_read_u32</span>(fwnode, <span style="color:#e6db74">&#34;missing-prop&#34;</span>, <span style="color:#f92672">&amp;</span>value);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/* 解决：检查返回值 */</span>
@@ -719,7 +719,7 @@
 </span></span></code></pre></div></li>
 <li>
 <p><strong>节点引用泄漏</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* 问题：忘记释放子节点引用 */</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* 问题：忘记释放子节点引用 */</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">fwnode_for_each_child_node</span>(fwnode, child) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (error_condition)
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span>EFAULT;  <span style="color:#75715e">/* 泄漏了 child 引用 */</span>
@@ -738,13 +738,13 @@
 <ol>
 <li>
 <p><strong>内核调试选项</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 启用设备树调试</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 启用设备树调试</span>
 </span></span><span style="display:flex;"><span>echo <span style="color:#ae81ff">1</span> &gt; /sys/kernel/debug/dynamic_debug/control
 </span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;file drivers/of/* +p&#39;</span> &gt; /sys/kernel/debug/dynamic_debug/control
 </span></span></code></pre></div></li>
 <li>
 <p><strong>sysfs 接口</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看设备固件信息</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看设备固件信息</span>
 </span></span><span style="display:flex;"><span>cat /sys/devices/.../firmware_node/...
 </span></span></code></pre></div></li>
 </ol>

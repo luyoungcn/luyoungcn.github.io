@@ -130,14 +130,14 @@ git:x:1003:1004:,,,:/home/git:/usr/bin/git-shell 这样，git 用户可以正常
 <h2 id="git-仓库服务器搭建">git 仓库服务器搭建</h2>
 <h3 id="1安装-git">1.安装 git</h3>
 <p>首先在服务器上安装 <code>git</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get install git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get install git
 </span></span></code></pre></div><h3 id="2创建-git-账户">2.创建 git 账户</h3>
 <p>接下来得创建一个专门用来进行 git 仓库版本控制的 Linux 用户，为了方便，这里建议切换到 root 用户 <strong>（下面的所有操作都是在 root 账户下完成）</strong>：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo -i adduser git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo -i adduser git
 </span></span></code></pre></div><p>接下来会要求输入密码等信息，直接按照提示输入即可。</p>
 <h3 id="3-建立秘钥授权配置文件">3. 建立秘钥授权配置文件</h3>
 <p>为了保证仓库的安全性，必须得要求登录仓库时使用密钥登录。首先执行下面的命令创建密钥的存放路径：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /home/git/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /home/git/
 </span></span><span style="display:flex;"><span>mkdir .ssh
 </span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">755</span> .ssh
 </span></span><span style="display:flex;"><span>touch .ssh/authorized_keys
@@ -145,26 +145,26 @@ git:x:1003:1004:,,,:/home/git:/usr/bin/git-shell 这样，git 用户可以正常
 </span></span></code></pre></div><p>接下来收集所有需要登录的用户的公钥，就是他们自己的 <code>id_rsa.pub</code> 文件，把所有公钥导入到 <code>/home/git/.ssh/authorized_keys</code> 文件里，一行一个。</p>
 <h3 id="4禁用-git-用户-shell-登录">4.禁用 git 用户 shell 登录</h3>
 <p>出于安全考虑，创建的 git 用户是不允许登录 shell 的</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vi /etc/passwd
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vi /etc/passwd
 </span></span></code></pre></div><p>找到 passwd 文件中的：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git:x:1003:1004:,,,:/home/git:/bin/bash
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git:x:1003:1004:,,,:/home/git:/bin/bash
 </span></span></code></pre></div><p>将其修改为：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git:x:1003:1004:,,,:/home/git:/usr/bin/git-shell
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git:x:1003:1004:,,,:/home/git:/usr/bin/git-shell
 </span></span></code></pre></div><p>这样，git 用户可以正常通过 ssh 使用 git ，但无法登录 shell，因为我们为 git 用户指定的 git-shell 每次一登录就自动退出。</p>
 <h2 id="服务器新建仓库">服务器新建仓库</h2>
 <p>首先创建一个空的文件夹来作为 git 仓库的目录，这里选择在 /home 目录下创建，文件夹名根据实际项目来起，这里使用 gitproject：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /home
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /home
 </span></span><span style="display:flex;"><span>mkdir gitproject
 </span></span></code></pre></div><p>为 gitproject 指定用户和用户组：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chown git:git gitproject
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chown git:git gitproject
 </span></span></code></pre></div><p>之后进入该文件夹下创建一个新的裸仓库：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd gitproject
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd gitproject
 </span></span><span style="display:flex;"><span>git init --bare gitproject.git
 </span></span></code></pre></div><blockquote>
 <p><code>–bare</code> 是指定创建一个裸仓库，裸仓库表示在服务器不存储代码，只存储版本更改信息，因此在服务器看不到对应的项目代码，而且这里必须创建一个裸仓库，否则 push 项目到服务器的时候会报错</p>
 </blockquote>
 <p>新建了一个裸仓库之后还得将其对应的用户和用户组更改为 git：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chown -R git:git gitproject.git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chown -R git:git gitproject.git
 </span></span></code></pre></div><h2 id="开发者本地-git-配置">开发者本地 git 配置</h2>
 <h3 id="1安装-git-应用">1.安装 git 应用</h3>
 <p>这里直接到 git 官网下载对应操作系统版本的软件安装就好：</p>
@@ -175,10 +175,10 @@ git:x:1003:1004:,,,:/home/git:/usr/bin/git-shell 这样，git 用户可以正常
 </ul>
 <h3 id="2git-账户配置">2.git 账户配置</h3>
 <p>首先设置 git 的 user name 和 email：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git config --global user.name <span style="color:#e6db74">&#34;username&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git config --global user.name <span style="color:#e6db74">&#34;username&#34;</span>
 </span></span><span style="display:flex;"><span>git config --global user.email <span style="color:#e6db74">&#34;email@qq.com&#34;</span>
 </span></span></code></pre></div><p>接下来生成对应的密钥：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh-keygen -t rsa -C <span style="color:#e6db74">&#34;email@qq.com&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh-keygen -t rsa -C <span style="color:#e6db74">&#34;email@qq.com&#34;</span>
 </span></span></code></pre></div><h3 id="3密钥使用">3.密钥使用</h3>
 <p>创建好密钥之后可以将公钥保存到 git 服务器的 <code>authorized_keys</code> （<code>/home/git/.ssh/authorized_keys</code>）中使其可以访问 git 服务器，或者填写到 github 上，来向 github 上传项目。</p>
 <p>密钥的位置：</p>
@@ -188,7 +188,7 @@ git:x:1003:1004:,,,:/home/git:/usr/bin/git-shell 这样，git 用户可以正常
 </ul>
 <h2 id="开发者本地克隆仓库">开发者本地克隆仓库</h2>
 <p>接下来就可以在客户端克隆服务器的项目了</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone git:server-ip:/home/gitproject/gitproject.git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone git:server-ip:/home/gitproject/gitproject.git
 </span></span></code></pre></div><p>此时会提示克隆了一个空的项目</p>
 <p>接下来就可以在客户端写入一些文件 commit 到 git 服务器上去了。</p>
 <p>这里有关的 git 操作推荐去看：<a href="http://rogerdudler.github.io/git-guide/index.zh.html">git - 简明指南</a></p>
@@ -200,14 +200,14 @@ git:x:1003:1004:,,,:/home/git:/usr/bin/git-shell 这样，git 用户可以正常
 </ol>
 <p>添加文件，并提交到本地都一样：</p>
 <p>准备好需要提交的文件，为了将空目录添加到 git 仓库，需要在空目录下创建 <code>.gitkeep</code> 文件, 忽略 <code>.git</code> 目录</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find . -type d -empty -not -path <span style="color:#e6db74">&#39;./.git*&#39;</span> -exec sh -c <span style="color:#e6db74">&#39;test -z &#34;$(git ls-files &#34;{}&#34;)&#34; &amp;&amp; touch &#34;{}/.gitkeep&#34;&#39;</span> <span style="color:#ae81ff">\;</span> -print
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find . -type d -empty -not -path <span style="color:#e6db74">&#39;./.git*&#39;</span> -exec sh -c <span style="color:#e6db74">&#39;test -z &#34;$(git ls-files &#34;{}&#34;)&#34; &amp;&amp; touch &#34;{}/.gitkeep&#34;&#39;</span> <span style="color:#ae81ff">\;</span> -print
 </span></span></code></pre></div><p>在源码跟目录下添加所有文件并提交</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git add .; git commit -m <span style="color:#e6db74">&#34;init commit&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git add .; git commit -m <span style="color:#e6db74">&#34;init commit&#34;</span>
 </span></span></code></pre></div><p>关联本地仓库和远程仓库</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /path/to/your/local/repository
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /path/to/your/local/repository
 </span></span><span style="display:flex;"><span>git remote add origin git@192.168.2.2:/path/to/my_project.git
 </span></span></code></pre></div><p>将本地代码推送到服务器</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push -u origin master
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push -u origin master
 </span></span></code></pre></div></section></main>
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>

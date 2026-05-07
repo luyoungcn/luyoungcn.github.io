@@ -9,7 +9,7 @@
   <meta property="og:site_name" content="LuyangのBlog">
   <meta property="og:title" content="📘SVN 服务器环境搭建">
   <meta property="og:description" content="📘SVN 服务器环境搭建 环境声明 ubuntu 24.04
-lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Description: Ubuntu 24.04.3 LTS Release: 24.04 Codename: noble 安装服务端 subversion sudo apt install subversion svn --version svn, version 1.14.3 (r1914484) compiled Apr 1 2024, 04:55:49 on x86_64-pc-linux-gnu Copyright (C) 2023 The Apache Software Foundation. This software consists of contributions made by many people; see the NOTICE file for more information. Subversion is open source software, see http://subversion.apache.org/ The following repository access (RA) modules are available: * ra_svn : Module for accessing a repository using the svn network protocol. - with Cyrus SASL authentication - handles &#39;svn&#39; scheme * ra_local : Module for accessing a repository on local disk. - handles &#39;file&#39; scheme * ra_serf : Module for accessing a repository via WebDAV protocol using serf. - using serf 1.3.10 (compiled with 1.3.10) - handles &#39;http&#39; scheme - handles &#39;https&#39; scheme The following authentication credential caches are available: * Plaintext cache in /home/luyang/.subversion * Gnome Keyring * GPG-Agent * KWallet (KDE) 创建版本库 mkdir -p /home/luyang/svn cd /home/luyang/svn sudo svnadmin create material sudo chmod 777 material -R ls material/ README.txt conf/ db/ format hooks/ locks/ 修改 SVN 配置">
+lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Description: Ubuntu 24.04.3 LTS Release: 24.04 Codename: noble 安装服务端 subversion sudo apt install subversion svn --version svn, version 1.14.3 (r1914484) compiled Apr 1 2024, 04:55:49 on x86_64-pc-linux-gnu Copyright (C) 2023 The Apache Software Foundation. This software consists of contributions made by many people; see the NOTICE file for more information. Subversion is open source software, see http://subversion.apache.org/ The following repository access (RA) modules are available: * ra_svn : Module for accessing a repository using the svn network protocol. - with Cyrus SASL authentication - handles &#39;svn&#39; scheme * ra_local : Module for accessing a repository on local disk. - handles &#39;file&#39; scheme * ra_serf : Module for accessing a repository via WebDAV protocol using serf. - using serf 1.3.10 (compiled with 1.3.10) - handles &#39;http&#39; scheme - handles &#39;https&#39; scheme The following authentication credential caches are available: * Plaintext cache in /home/luyang/.subversion * Gnome Keyring * GPG-Agent * KWallet (KDE) 创建版本库 mkdir -p /home/luyang/svn cd /home/luyang/svn sudo svnadmin create material sudo chmod 777 material -R sudo chown svn:svn material -R ls material/ README.txt conf/ db/ format hooks/ locks/ 修改 SVN 配置">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -21,7 +21,7 @@ lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Description:
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="📘SVN 服务器环境搭建">
   <meta name="twitter:description" content="📘SVN 服务器环境搭建 环境声明 ubuntu 24.04
-lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Description: Ubuntu 24.04.3 LTS Release: 24.04 Codename: noble 安装服务端 subversion sudo apt install subversion svn --version svn, version 1.14.3 (r1914484) compiled Apr 1 2024, 04:55:49 on x86_64-pc-linux-gnu Copyright (C) 2023 The Apache Software Foundation. This software consists of contributions made by many people; see the NOTICE file for more information. Subversion is open source software, see http://subversion.apache.org/ The following repository access (RA) modules are available: * ra_svn : Module for accessing a repository using the svn network protocol. - with Cyrus SASL authentication - handles &#39;svn&#39; scheme * ra_local : Module for accessing a repository on local disk. - handles &#39;file&#39; scheme * ra_serf : Module for accessing a repository via WebDAV protocol using serf. - using serf 1.3.10 (compiled with 1.3.10) - handles &#39;http&#39; scheme - handles &#39;https&#39; scheme The following authentication credential caches are available: * Plaintext cache in /home/luyang/.subversion * Gnome Keyring * GPG-Agent * KWallet (KDE) 创建版本库 mkdir -p /home/luyang/svn cd /home/luyang/svn sudo svnadmin create material sudo chmod 777 material -R ls material/ README.txt conf/ db/ format hooks/ locks/ 修改 SVN 配置">
+lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Description: Ubuntu 24.04.3 LTS Release: 24.04 Codename: noble 安装服务端 subversion sudo apt install subversion svn --version svn, version 1.14.3 (r1914484) compiled Apr 1 2024, 04:55:49 on x86_64-pc-linux-gnu Copyright (C) 2023 The Apache Software Foundation. This software consists of contributions made by many people; see the NOTICE file for more information. Subversion is open source software, see http://subversion.apache.org/ The following repository access (RA) modules are available: * ra_svn : Module for accessing a repository using the svn network protocol. - with Cyrus SASL authentication - handles &#39;svn&#39; scheme * ra_local : Module for accessing a repository on local disk. - handles &#39;file&#39; scheme * ra_serf : Module for accessing a repository via WebDAV protocol using serf. - using serf 1.3.10 (compiled with 1.3.10) - handles &#39;http&#39; scheme - handles &#39;https&#39; scheme The following authentication credential caches are available: * Plaintext cache in /home/luyang/.subversion * Gnome Keyring * GPG-Agent * KWallet (KDE) 创建版本库 mkdir -p /home/luyang/svn cd /home/luyang/svn sudo svnadmin create material sudo chmod 777 material -R sudo chown svn:svn material -R ls material/ README.txt conf/ db/ format hooks/ locks/ 修改 SVN 配置">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
       <link rel="stylesheet" href="/css/bundle.min.d95a325399a05b50fe47dcf35b8229b8a2a014fcee5435cfb28204c6ac335fc5.css" integrity="sha256-2VoyU5mgW1D&#43;R9zzW4IpuKKgFPzuVDXPsoIExqwzX8U=" crossorigin="anonymous">
@@ -115,15 +115,15 @@ lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Description:
   <section class="page-section"><h1 id="svn-服务器环境搭建">📘SVN 服务器环境搭建</h1>
 <h2 id="环境声明">环境声明</h2>
 <p>ubuntu 24.04</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>lsb_release -a
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>lsb_release -a
 </span></span><span style="display:flex;"><span>No LSB modules are available.
 </span></span><span style="display:flex;"><span>Distributor ID: Ubuntu
 </span></span><span style="display:flex;"><span>Description:    Ubuntu 24.04.3 LTS
 </span></span><span style="display:flex;"><span>Release:        24.04
 </span></span><span style="display:flex;"><span>Codename:       noble
 </span></span></code></pre></div><h2 id="安装服务端--subversion">安装服务端  subversion</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install subversion
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>svn --version
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install subversion
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>svn --version
 </span></span><span style="display:flex;"><span>svn, version 1.14.3 <span style="color:#f92672">(</span>r1914484<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>   compiled Apr  <span style="color:#ae81ff">1</span> 2024, 04:55:49 on x86_64-pc-linux-gnu
 </span></span><span style="display:flex;"><span>
@@ -151,13 +151,14 @@ lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Description:
 </span></span><span style="display:flex;"><span>* GPG-Agent
 </span></span><span style="display:flex;"><span>* KWallet <span style="color:#f92672">(</span>KDE<span style="color:#f92672">)</span>
 </span></span></code></pre></div><h2 id="创建版本库">创建版本库</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p /home/luyang/svn
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p /home/luyang/svn
 </span></span><span style="display:flex;"><span>cd /home/luyang/svn
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo svnadmin create material
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo chmod <span style="color:#ae81ff">777</span> material -R
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls material/
+</span></span><span style="display:flex;"><span>sudo chown svn:svn material -R
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls material/
 </span></span><span style="display:flex;"><span>README.txt  conf/  db/  format  hooks/  locks/
 </span></span></code></pre></div><h2 id="修改-svn-配置">修改 SVN 配置</h2>
 <p><img src="svn_svnserve.conf_PixPin_2025-09-10_13-03-22.png" alt=""></p>
@@ -165,7 +166,7 @@ lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Description:
 <p><img src="svn_authz_PixPin_2025-09-10_13-04-52.png" alt=""></p>
 <p>高端配置</p>
 <p><code>conf/authz</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>aliases<span style="color:#f92672">]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>aliases<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># demo_alias = /C=XX/ST=YY/L=ZZ/O=Demo Corp/OU=Research/CN=John Doe</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>groups<span style="color:#f92672">]</span>
@@ -190,7 +191,7 @@ lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Description:
 </span></span><span style="display:flex;"><span>@algo     <span style="color:#f92672">=</span> rw
 </span></span><span style="display:flex;"><span>* <span style="color:#f92672">=</span>
 </span></span></code></pre></div><p><code>/conf/passwd</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>users<span style="color:#f92672">]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>users<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>user1 <span style="color:#f92672">=</span> pass_user1
 </span></span><span style="display:flex;"><span>user2 <span style="color:#f92672">=</span> pass_user2
 </span></span><span style="display:flex;"><span>user3 <span style="color:#f92672">=</span> pass_user3
@@ -199,13 +200,15 @@ lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Description:
 </span></span><span style="display:flex;"><span>user6 <span style="color:#f92672">=</span> pass_user6
 </span></span><span style="display:flex;"><span>user7 <span style="color:#f92672">=</span> pass_user7
 </span></span></code></pre></div><h2 id="重启-svn-服务">重启 svn 服务</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo svnserve -d -r /home/luyang/workspace/svn/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo killall svnserve
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo svnserve -d -r /home/luyang/workspace/svn/
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>ps aux | grep svnserve
 </span></span><span style="display:flex;"><span>root      <span style="color:#ae81ff">128325</span>  0.0  0.0  <span style="color:#ae81ff">16580</span>  <span style="color:#ae81ff">2476</span> ?        Ss   13:05   0:00 svnserve -d -r material/
 </span></span><span style="display:flex;"><span>luyang    <span style="color:#ae81ff">128450</span>  0.0  0.0   <span style="color:#ae81ff">4092</span>  <span style="color:#ae81ff">1920</span> pts/4    S+   13:05   0:00 grep --color<span style="color:#f92672">=</span>auto svnserve
 </span></span></code></pre></div><p>svn 默认端口：3690</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ss -tuln | grep <span style="color:#ae81ff">3690</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ss -tuln | grep <span style="color:#ae81ff">3690</span>
 </span></span><span style="display:flex;"><span>tcp   LISTEN <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">128</span>           0.0.0.0:3690      0.0.0.0:*
 </span></span></code></pre></div><h2 id="客户端检出仓库">客户端检出仓库</h2>
 <p>安装 TortoiseSVN
@@ -225,7 +228,7 @@ lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Description:
 </div>
 </footer>
       </div><aside id="side-pane" class="side-sticky"><div class="side-details">
-    <span>345 words</span>
+    <span>353 words</span>
     <span>2 - 3 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
   <ul>
     <li><a href="#环境声明">环境声明</a></li>

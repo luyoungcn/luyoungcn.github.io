@@ -145,7 +145,7 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 <p><strong>小对象优化的核心策略</strong>是在容器对象内部预留一个<strong>固定大小的内部缓冲区（Internal Buffer）</strong>。这个缓冲区作为&quot;快速通道&quot;，专门用于存储小对象的数据。</p>
 <h3 id="大小判定逻辑">大小判定逻辑</h3>
 <p>SOO的工作机制可以用简单的条件判断来描述：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (required_size <span style="color:#f92672">&lt;=</span> internal_buffer_size) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (required_size <span style="color:#f92672">&lt;=</span> internal_buffer_size) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 使用内部缓冲区，无需堆分配
 </span></span></span><span style="display:flex;"><span>    store_in_internal_buffer(data);
 </span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
@@ -157,7 +157,7 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 <h2 id="实现剖析以stdstring为例">实现剖析：以std::string为例</h2>
 <h3 id="典型数据结构设计">典型数据结构设计</h3>
 <p>一个支持SOO的<code>std::string</code>内部结构可能如下所示：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">optimized_string</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">optimized_string</span> {
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">constexpr</span> size_t INTERNAL_BUFFER_SIZE <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>;
 </span></span><span style="display:flex;"><span>    
@@ -202,7 +202,7 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 <h2 id="源码实现原理深度剖析">源码实现原理深度剖析</h2>
 <h3 id="完整的soo实现框架">完整的SOO实现框架</h3>
 <p>为了深入理解SOO的工作机制，我们来看一个更完整的实现框架：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">soo_string</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">soo_string</span> {
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">constexpr</span> size_t SSO_BUFFER_SIZE <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">constexpr</span> size_t SSO_MASK <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x80</span>;  <span style="color:#75715e">// 最高位作为标志位
@@ -313,7 +313,7 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h3 id="关键实现细节解析">关键实现细节解析</h3>
 <h4 id="1-标志位巧妙设计">1. 标志位巧妙设计</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 利用capacity字段的最高位作为标志
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 利用capacity字段的最高位作为标志
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 长字符串: capacity |= SSO_MASK (最高位为1)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 短字符串: info字段最高位为0
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">constexpr</span> size_t SSO_MASK <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x80</span>;
@@ -324,7 +324,7 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 <li>最高位始终为0，表示短字符串模式</li>
 </ul>
 <h4 id="3-分支预测优化">3. 分支预测优化</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 编译器优化：短字符串是常见情况
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 编译器优化：短字符串是常见情况
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (is_short()) <span style="color:#a6e22e">[[likely]]</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 短字符串处理逻辑
 </span></span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
@@ -332,9 +332,9 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 </span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="不同场景下的调用流程分析">不同场景下的调用流程分析</h2>
 <h3 id="场景1短字符串构造流程">场景1：短字符串构造流程</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>soo_string <span style="color:#a6e22e">str</span>(<span style="color:#e6db74">&#34;Hello&#34;</span>);  <span style="color:#75715e">// 5个字符，小于SSO_BUFFER_SIZE(15)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>soo_string <span style="color:#a6e22e">str</span>(<span style="color:#e6db74">&#34;Hello&#34;</span>);  <span style="color:#75715e">// 5个字符，小于SSO_BUFFER_SIZE(15)
 </span></span></span></code></pre></div><p><strong>调用流程：</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 1. 计算字符串长度
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 1. 计算字符串长度
 </span></span></span><span style="display:flex;"><span>size_t len <span style="color:#f92672">=</span> strlen(<span style="color:#e6db74">&#34;Hello&#34;</span>);  <span style="color:#75715e">// len = 5
 </span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 2. 长度判断
@@ -356,9 +356,9 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 <li>缓存友好：数据存储在对象内部</li>
 </ul>
 <h3 id="场景2长字符串构造流程">场景2：长字符串构造流程</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>soo_string <span style="color:#a6e22e">str</span>(<span style="color:#e6db74">&#34;This is a very long string that exceeds the buffer size&#34;</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>soo_string <span style="color:#a6e22e">str</span>(<span style="color:#e6db74">&#34;This is a very long string that exceeds the buffer size&#34;</span>);
 </span></span></code></pre></div><p><strong>调用流程：</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 1. 计算字符串长度
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 1. 计算字符串长度
 </span></span></span><span style="display:flex;"><span>size_t len <span style="color:#f92672">=</span> strlen(input);  <span style="color:#75715e">// len = 58 &gt; 15
 </span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 2. 长度判断
@@ -384,10 +384,10 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 <li>额外开销：分配器调用、内存管理开销</li>
 </ul>
 <h3 id="场景3短字符串复制流程">场景3：短字符串复制流程</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>soo_string <span style="color:#a6e22e">str1</span>(<span style="color:#e6db74">&#34;Hello&#34;</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>soo_string <span style="color:#a6e22e">str1</span>(<span style="color:#e6db74">&#34;Hello&#34;</span>);
 </span></span><span style="display:flex;"><span>soo_string str2 <span style="color:#f92672">=</span> str1;  <span style="color:#75715e">// 拷贝构造
 </span></span></span></code></pre></div><p><strong>调用流程：</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 1. 检查源字符串类型
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 1. 检查源字符串类型
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (other.is_short()) {  <span style="color:#75715e">// 短字符串
 </span></span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 2. 直接复制union数据
@@ -403,10 +403,10 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 <li>操作：简单的内存复制</li>
 </ul>
 <h3 id="场景4长字符串移动流程">场景4：长字符串移动流程</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>soo_string <span style="color:#a6e22e">str1</span>(<span style="color:#e6db74">&#34;Very long string...&#34;</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>soo_string <span style="color:#a6e22e">str1</span>(<span style="color:#e6db74">&#34;Very long string...&#34;</span>);
 </span></span><span style="display:flex;"><span>soo_string str2 <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>move(str1);  <span style="color:#75715e">// 移动构造
 </span></span></span></code></pre></div><p><strong>调用流程：</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 1. 检查源字符串类型
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 1. 检查源字符串类型
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (other.is_short()) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 短字符串无法真正&#34;移动&#34;，需要复制
 </span></span></span><span style="display:flex;"><span>    data_.short_data <span style="color:#f92672">=</span> other.data_.short_data;
@@ -426,10 +426,10 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 <li>短字符串：O(1)，但需要数据复制</li>
 </ul>
 <h3 id="场景5动态增长流程">场景5：动态增长流程</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>soo_string <span style="color:#a6e22e">str</span>(<span style="color:#e6db74">&#34;Hello&#34;</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>soo_string <span style="color:#a6e22e">str</span>(<span style="color:#e6db74">&#34;Hello&#34;</span>);
 </span></span><span style="display:flex;"><span>str <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34; World! This makes it longer than 15 characters&#34;</span>;
 </span></span></code></pre></div><p><strong>调用流程：</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 1. 计算新长度
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 1. 计算新长度
 </span></span></span><span style="display:flex;"><span>size_t current_len <span style="color:#f92672">=</span> str.size();  <span style="color:#75715e">// 5
 </span></span></span><span style="display:flex;"><span>size_t append_len <span style="color:#f92672">=</span> strlen(<span style="color:#e6db74">&#34; World! ...&#34;</span>);  <span style="color:#75715e">// 48
 </span></span></span><span style="display:flex;"><span>size_t new_len <span style="color:#f92672">=</span> current_len <span style="color:#f92672">+</span> append_len;  <span style="color:#75715e">// 53
@@ -502,7 +502,7 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 <h2 id="性能优势分析">性能优势分析</h2>
 <h3 id="量化的性能提升">量化的性能提升</h3>
 <p>SOO带来的性能优势在小对象频繁操作场景下尤为显著：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 性能对比示例（概念性）
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 性能对比示例（概念性）
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">performance_comparison</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 场景1：SOO优化的短字符串操作
 </span></span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>string short_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello&#34;</span>;  <span style="color:#75715e">// 直接存储在内部缓冲区
@@ -528,7 +528,7 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 <h2 id="关键考量与局限">关键考量与局限</h2>
 <h3 id="空间开销权衡">空间开销权衡</h3>
 <p>SOO的<strong>主要代价是增加了每个容器对象的尺寸</strong>。即使存储大对象时使用堆分配，内部缓冲区的空间仍然被占用：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">sizeof</span>(std<span style="color:#f92672">::</span>string) <span style="color:#75715e">// 通常为24-32字节，包含内部缓冲区
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">sizeof</span>(std<span style="color:#f92672">::</span>string) <span style="color:#75715e">// 通常为24-32字节，包含内部缓冲区
 </span></span></span><span style="display:flex;"><span>vs
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>) <span style="color:#f92672">+</span> <span style="color:#66d9ef">sizeof</span>(size_t) <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#75715e">// 仅指针+大小信息约为24字节
 </span></span></span></code></pre></div><p>这种空间开销在以下场景中需要特别考虑：</p>
@@ -547,7 +547,7 @@ class optimized_string { private: static constexpr size_t INTERNAL_BUFFER_SIZE =
 <p>选择过小会降低优化覆盖率，选择过大会增加不必要的空间开销。</p>
 <h3 id="移动语义的复杂性">移动语义的复杂性</h3>
 <p>SOO对移动操作带来了额外考虑：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 移动SOO对象时的考虑
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 移动SOO对象时的考虑
 </span></span></span><span style="display:flex;"><span>optimized_string str1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;short&#34;</span>;    <span style="color:#75715e">// 使用内部缓冲区
 </span></span></span><span style="display:flex;"><span>optimized_string str2 <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>move(str1);  <span style="color:#75715e">// 需要复制内部缓冲区数据
 </span></span></span><span style="display:flex;"><span>

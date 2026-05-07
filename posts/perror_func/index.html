@@ -150,7 +150,7 @@ const char * __get_errlist (int errnum) { int mapped = ERR_MAP (errnum); if (map
 </ul>
 <h1 id="__strerror_r">__strerror_r</h1>
 <p><code>string/_strerror.c</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* Return a string describing the errno code in ERRNUM.  */</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* Return a string describing the errno code in ERRNUM.  */</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">__strerror_r</span> (<span style="color:#66d9ef">int</span> errnum, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>buf, <span style="color:#66d9ef">size_t</span> buflen)
 </span></span><span style="display:flex;"><span>{
@@ -165,7 +165,7 @@ const char * __get_errlist (int errnum) { int mapped = ERR_MAP (errnum); if (map
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h1 id="__get_errlist">__get_errlist</h1>
 <p><code>stdio-common/errlist.c</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">__get_errlist</span> (<span style="color:#66d9ef">int</span> errnum)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> mapped <span style="color:#f92672">=</span> <span style="color:#a6e22e">ERR_MAP</span> (errnum);
@@ -175,7 +175,7 @@ const char * __get_errlist (int errnum) { int mapped = ERR_MAP (errnum); if (map
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h1 id="_sys_errlist_internal"><code>_sys_errlist_internal</code></h1>
 <p><code>stdio-common/errlist-data-gen.c</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">const</span> _sys_errlist_internal[] <span style="color:#f92672">=</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">const</span> _sys_errlist_internal[] <span style="color:#f92672">=</span>
 </span></span><span style="display:flex;"><span>  {
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#define _S(n, str)         [ERR_MAP(n)] = str,
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;errlist.h&gt;</span><span style="color:#75715e">
@@ -184,7 +184,7 @@ const char * __get_errlist (int errnum) { int mapped = ERR_MAP (errnum); if (map
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">size_t</span> _sys_errlist_internal_len <span style="color:#f92672">=</span> <span style="color:#a6e22e">array_length</span> (_sys_errlist_internal);
 </span></span></code></pre></div><h1 id="_s"><code>_S</code></h1>
 <p><code>sysdeps/gnu/errlist.h</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">_S</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">N_</span>(<span style="color:#e6db74">&#34;Success&#34;</span>))
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">_S</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">N_</span>(<span style="color:#e6db74">&#34;Success&#34;</span>))
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#ifdef EPERM
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">/*
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">TRANS Only the owner of the file (or other resource)

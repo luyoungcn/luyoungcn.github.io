@@ -525,7 +525,7 @@ nvme nvme0: fatal error: DNR bit set
 </code></pre><hr>
 <h2 id="5-linux-工具链与运维实践">5. Linux 工具链与运维实践</h2>
 <h3 id="51-设备识别">5.1 设备识别</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>lspci -v | grep -A <span style="color:#ae81ff">10</span> -i nvme
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>lspci -v | grep -A <span style="color:#ae81ff">10</span> -i nvme
 </span></span><span style="display:flex;"><span>lsblk                      <span style="color:#75715e"># 查看块设备</span>
 </span></span><span style="display:flex;"><span>ls -l /dev/disk/by-id/     <span style="color:#75715e"># 持久化命名（推荐用于 fstab）</span>
 </span></span></code></pre></div><blockquote>
@@ -533,7 +533,7 @@ nvme nvme0: fatal error: DNR bit set
 <code>/dev/disk/by-id/nvme-SAMSUNG_MZVL21T0HCLR-00B00_S699NF0R234567</code></p>
 </blockquote>
 <h3 id="52-性能测试">5.2 性能测试</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 使用 fio 测试随机读写</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 使用 fio 测试随机读写</span>
 </span></span><span style="display:flex;"><span>fio --name<span style="color:#f92672">=</span>randread --ioengine<span style="color:#f92672">=</span>libaio --rw<span style="color:#f92672">=</span>randread --bs<span style="color:#f92672">=</span>4k <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>    --size<span style="color:#f92672">=</span>1G --numjobs<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span> --direct<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> --runtime<span style="color:#f92672">=</span><span style="color:#ae81ff">60</span> --group_reporting
 </span></span><span style="display:flex;"><span>
@@ -542,26 +542,26 @@ nvme nvme0: fatal error: DNR bit set
 </span></span><span style="display:flex;"><span>nvme id-ctrl /dev/nvme0    <span style="color:#75715e"># 控制器信息</span>
 </span></span><span style="display:flex;"><span>nvme id-ns /dev/nvme0n1    <span style="color:#75715e"># 命名空间信息</span>
 </span></span></code></pre></div><h3 id="53-固件管理">5.3 固件管理</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nvme fw-download /dev/nvme0 --fw<span style="color:#f92672">=</span>file.bin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nvme fw-download /dev/nvme0 --fw<span style="color:#f92672">=</span>file.bin
 </span></span><span style="display:flex;"><span>nvme fw-activate /dev/nvme0 --action<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> --slot<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>  <span style="color:#75715e"># 激活并下次启动生效</span>
 </span></span></code></pre></div><h3 id="54-分区与文件系统">5.4 分区与文件系统</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>fdisk /dev/nvme0n1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>fdisk /dev/nvme0n1
 </span></span><span style="display:flex;"><span>mkfs.ext4 /dev/nvme0n1p1
 </span></span><span style="display:flex;"><span>mount /dev/disk/by-id/nvme-... /mnt/ssd
 </span></span></code></pre></div><h3 id="55-监控工具">5.5 监控工具</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>iostat -x <span style="color:#ae81ff">1</span>                 <span style="color:#75715e"># 实时 I/O 统计</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>iostat -x <span style="color:#ae81ff">1</span>                 <span style="color:#75715e"># 实时 I/O 统计</span>
 </span></span><span style="display:flex;"><span>iotop -o                    <span style="color:#75715e"># 按进程 I/O 排序</span>
 </span></span><span style="display:flex;"><span>smartctl -d nvme -a /dev/nvme0  <span style="color:#75715e"># SMART 信息（需 smartmontools ≥ 7.0）</span>
 </span></span></code></pre></div><h3 id="56-内核调优">5.6 内核调优</h3>
 <ul>
 <li><strong>队列深度</strong>（默认通常足够）：
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#ae81ff">1024</span> &gt; /sys/block/nvme0n1/queue/nr_requests
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#ae81ff">1024</span> &gt; /sys/block/nvme0n1/queue/nr_requests
 </span></span></code></pre></div></li>
 <li><strong>I/O 调度器</strong>（NVMe 推荐 mq-deadline 或 none）：
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo mq-deadline &gt; /sys/block/nvme0n1/queue/scheduler
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo mq-deadline &gt; /sys/block/nvme0n1/queue/scheduler
 </span></span></code></pre></div></li>
 <li><strong>中断亲和性</strong>（多核优化）：
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看 IRQ</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看 IRQ</span>
 </span></span><span style="display:flex;"><span>cat /proc/interrupts | grep nvme
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 绑定到 CPU 0-3</span>
 </span></span><span style="display:flex;"><span>echo 0f &gt; /proc/irq/123/smp_affinity

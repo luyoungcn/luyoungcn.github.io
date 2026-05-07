@@ -118,7 +118,7 @@
     <span>&nbsp»&nbsp</span>
 </ol>
 <h1>Linux设备树中MCP2518FD的时钟配置：从0.00MHz到40.00MHz</h1><time class="dim" datetime="2026-02-02T00:00:00&#43;00:00">February 2, 2026</time><div class="term-container"><div class="tag">
-        <a href="/tags/linux/">#linux</a>
+        <a href="/tags/linux/">#Linux</a>
       </div><div class="tag">
         <a href="/tags/devicetree/">#DeviceTree</a>
       </div><div class="tag">
@@ -139,7 +139,7 @@
 </blockquote>
 <h2 id="问题背景">问题背景</h2>
 <p>在使用MCP2518FD CAN控制器时，通过dmesg查看驱动初始化日志，发现了一个值得关注的细节：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>    3.207754<span style="color:#f92672">]</span> mcp251xfd spi0.0 can0: MCP2518FD rev15.15 <span style="color:#f92672">(</span>-RX_INT -PLL -MAB_NO_WARN +CRC_REG +CRC_RX +CRC_TX +ECC -HD o:0.00MHz c:40.00MHz m:0.60MHz rs:0.60MHz es:0.59MHz rf:0.60MHz ef:0.59MHz<span style="color:#f92672">)</span> successfully initialized.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>    3.207754<span style="color:#f92672">]</span> mcp251xfd spi0.0 can0: MCP2518FD rev15.15 <span style="color:#f92672">(</span>-RX_INT -PLL -MAB_NO_WARN +CRC_REG +CRC_RX +CRC_TX +ECC -HD o:0.00MHz c:40.00MHz m:0.60MHz rs:0.60MHz es:0.59MHz rf:0.60MHz ef:0.59MHz<span style="color:#f92672">)</span> successfully initialized.
 </span></span></code></pre></div><p>注意其中的 <code>o:0.00MHz</code>，这表示驱动检测到的外部晶振（Oscillator）频率为0，而实际硬件使用的是40MHz晶振。这种不匹配可能会导致时钟相关的潜在问题。</p>
 <h2 id="时钟参数解读">时钟参数解读</h2>
 <p>日志中的时钟相关参数含义如下：</p>
@@ -182,7 +182,7 @@
 <p>当 <code>o:0.00MHz</code> 时，说明驱动没有正确识别外部晶振频率。虽然 <code>c:40.00MHz</code> 显示CAN时钟为40MHz,但这可能是驱动使用的默认值或推测值,而非基于正确的晶振配置计算得出。</p>
 <h2 id="为什么会出现o000mhz">为什么会出现o:0.00MHz?</h2>
 <p>原始设备树配置中使用了 <code>clock-frequency</code> 属性：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#f92672">&amp;</span>spi0 {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#f92672">&amp;</span>spi0 {
 </span></span><span style="display:flex;"><span>    status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;okay&#34;</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... 其他配置 ...
 </span></span></span><span style="display:flex;"><span>    spican0: spican<span style="color:#960050;background-color:#1e0010">@</span><span style="color:#ae81ff">0</span> {
@@ -195,7 +195,7 @@
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h2 id="正确的解决方案">正确的解决方案</h2>
 <p>Linux设备树推荐使用 <code>fixed-clock</code> 节点来描述固定频率的时钟源：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 在根设备树节点 /{ } 中添加
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 在根设备树节点 /{ } 中添加
 </span></span></span><span style="display:flex;"><span>can_osc: can<span style="color:#f92672">-</span>osc {
 </span></span><span style="display:flex;"><span>    compatible <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;fixed-clock&#34;</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">#clock-cells = &lt;0&gt;;
@@ -228,7 +228,7 @@
 </ol>
 <h2 id="修改后的效果">修改后的效果</h2>
 <p>重新编译设备树并启动后，dmesg日志应显示：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>    3.207754<span style="color:#f92672">]</span> mcp251xfd spi0.0 can0: MCP2518FD rev15.15 <span style="color:#f92672">(</span>...  o:40.00MHz c:40.00MHz ...<span style="color:#f92672">)</span> successfully initialized.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>    3.207754<span style="color:#f92672">]</span> mcp251xfd spi0.0 can0: MCP2518FD rev15.15 <span style="color:#f92672">(</span>...  o:40.00MHz c:40.00MHz ...<span style="color:#f92672">)</span> successfully initialized.
 </span></span></code></pre></div><p>此时 <code>o:</code> 参数正确显示为 40.00MHz，表明驱动已正确识别外部晶振频率。</p>
 <h2 id="为什么这很重要">为什么这很重要？</h2>
 <p>虽然在某些场景下，即使 <code>o:0.00MHz</code> 系统也可能表面上正常工作，但正确配置时钟源具有以下重要意义：</p>

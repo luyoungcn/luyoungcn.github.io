@@ -134,7 +134,7 @@ C&#43;&#43;编译器按自己的规则修饰函数名（如_Z3fooi）； C语言
   <section class="page-section"><p><img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?q=80&amp;w=1000&amp;auto=format&amp;fit=crop" alt=""></p>
 <h2 id="引言跨语言调用的隐形陷阱">引言：跨语言调用的&quot;隐形陷阱&quot;</h2>
 <p>如果你曾在C++项目中调用过C语言编写的库，大概率遇到过这样的链接错误：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>undefined reference to <span style="color:#e6db74">`</span>foo<span style="color:#f92672">(</span>int<span style="color:#f92672">)</span><span style="color:#960050;background-color:#1e0010">&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>undefined reference to <span style="color:#e6db74">`</span>foo<span style="color:#f92672">(</span>int<span style="color:#f92672">)</span><span style="color:#960050;background-color:#1e0010">&#39;</span>
 </span></span></code></pre></div><p>明明头文件包含了，函数也实现了，为何编译器找不到符号？这背后的罪魁祸首，正是C++的<strong>名字修饰（Name Mangling）</strong> 机制——C和C++编译器对函数符号的编码规则截然不同，导致跨语言调用时出现&quot;声明与实现对不上号&quot;的尴尬局面。</p>
 <p>而<code>__BEGIN_DECLS</code>与<code>__END_DECLS</code>这对宏，正是解决该问题的&quot;黄金搭档&quot;。它们看似简单，却蕴含着C/C++混合编程的核心设计思想。本文将从<strong>头文件设计、源文件实现、软件风格规范</strong>三个维度，带你全方位吃透这对宏的使用逻辑与最佳实践。</p>
 <hr>
@@ -156,7 +156,7 @@ C&#43;&#43;编译器按自己的规则修饰函数名（如_Z3fooi）； C语言
 <h3 id="3-__begin_decls的本质宏封装的兼容性桥梁">3. <code>__BEGIN_DECLS</code>的本质：宏封装的&quot;兼容性桥梁&quot;</h3>
 <p><code>__BEGIN_DECLS</code>与<code>__END_DECLS</code>本质上是对<code>extern &quot;C&quot;</code>的封装，核心目标是：<strong>让同一份声明在C和C++环境下均合法，且编译链接行为一致</strong>。</p>
 <p>其原始定义（来自<code>sys/cdefs.h</code>）如下，逻辑非常简洁：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#ifdef	__cplusplus
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#ifdef	__cplusplus
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"># define __BEGIN_DECLS	extern &#34;C&#34; {  </span><span style="color:#75715e">// C++环境：开启C规则
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"># define __END_DECLS	}             </span><span style="color:#75715e">// C++环境：关闭C规则
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#else
@@ -173,7 +173,7 @@ C&#43;&#43;编译器按自己的规则修饰函数名（如_Z3fooi）； C语言
 <li>宏调用必须放在<strong>头文件保护宏内部</strong>，防止重复包含导致<code>extern &quot;C&quot;</code>嵌套（C++编译器不允许重复包裹）。</li>
 </ul>
 <p>✅ 正确示例：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// foo.h（跨语言头文件）
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// foo.h（跨语言头文件）
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#ifndef FOO_H
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define FOO_H
 </span></span></span><span style="display:flex;"><span>
@@ -201,7 +201,7 @@ C&#43;&#43;编译器按自己的规则修饰函数名（如_Z3fooi）； C语言
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#endif </span><span style="color:#75715e">// FOO_H
 </span></span></span></code></pre></div><p>❌ 错误示例（宏位置错误）：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 错误：__BEGIN_DECLS在保护宏外部，可能重复包裹
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 错误：__BEGIN_DECLS在保护宏外部，可能重复包裹
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/cdefs.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span>__BEGIN_DECLS
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#ifndef FOO_H
@@ -220,7 +220,7 @@ C&#43;&#43;编译器按自己的规则修饰函数名（如_Z3fooi）； C语言
 <li>结构体/联合体（不含成员函数）。</li>
 </ul>
 <p>❌ 禁止包裹这些内容：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>__BEGIN_DECLS
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>__BEGIN_DECLS
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 错误：extern &#34;C&#34;不支持模板
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span> T min(T a, T b);
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 错误：extern &#34;C&#34;不支持类
@@ -278,7 +278,7 @@ C&#43;&#43;编译器按自己的规则修饰函数名（如_Z3fooi）； C语言
   </tbody>
 </table>
 <h4 id="示例1c语言实现c接口fooc">示例1：C语言实现C接口（foo.c）</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;foo.h&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;foo.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 直接实现，无需任何宏修饰
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">foo</span>(<span style="color:#66d9ef">int</span> a) {
@@ -290,7 +290,7 @@ C&#43;&#43;编译器按自己的规则修饰函数名（如_Z3fooi）； C语言
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ERR_OK;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="示例2c实现c接口foocpp">示例2：C++实现C接口（foo.cpp）</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;foo.h&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;foo.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">  </span><span style="color:#75715e">// 可使用C++特性
 </span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 实现头文件中声明的C风格函数
@@ -321,7 +321,7 @@ C&#43;&#43;编译器按自己的规则修饰函数名（如_Z3fooi）； C语言
 <li>宏定义的注释：必须说明宏的用途，尤其是跨编译器兼容逻辑。</li>
 </ul>
 <p>✅ 规范的宏定义注释：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// sys/cdefs.h
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// sys/cdefs.h
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#ifdef __cplusplus
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// __BEGIN_DECLS: 开启C风格声明（适配C++编译器，禁用名字修饰）
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"># define __BEGIN_DECLS extern &#34;C&#34; {
@@ -335,14 +335,14 @@ C&#43;&#43;编译器按自己的规则修饰函数名（如_Z3fooi）； C语言
 </span></span></span></code></pre></div><h3 id="2-代码组织风格">2. 代码组织风格</h3>
 <ul>
 <li>宏调用单独占行，包裹的声明保持统一缩进（与项目代码风格一致，通常4个空格）：
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>__BEGIN_DECLS
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>__BEGIN_DECLS
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">foo</span>(<span style="color:#66d9ef">int</span> a);          <span style="color:#75715e">// 缩进对齐，可读性更强
 </span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> u32;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">bar</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> s);
 </span></span><span style="display:flex;"><span>__END_DECLS
 </span></span></code></pre></div></li>
 <li>避免单行包裹（可读性差）：
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>__BEGIN_DECLS <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">foo</span>(<span style="color:#66d9ef">int</span> a); __END_DECLS  <span style="color:#75715e">// 不推荐
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>__BEGIN_DECLS <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">foo</span>(<span style="color:#66d9ef">int</span> a); __END_DECLS  <span style="color:#75715e">// 不推荐
 </span></span></span></code></pre></div></li>
 </ul>
 <h3 id="3-跨平台兼容风格">3. 跨平台兼容风格</h3>
@@ -368,7 +368,7 @@ C&#43;&#43;编译器按自己的规则修饰函数名（如_Z3fooi）； C语言
 <h3 id="1-高频应用场景">1. 高频应用场景</h3>
 <h4 id="1系统库头文件如linux的stdioh">（1）系统库头文件（如Linux的<code>stdio.h</code>）</h4>
 <p>系统库需要同时支持C和C++程序调用，因此所有标准函数声明均用<code>__BEGIN_DECLS</code>包裹：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>__BEGIN_DECLS
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>__BEGIN_DECLS
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">printf</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>__format, ...);
 </span></span><span style="display:flex;"><span>size_t <span style="color:#a6e22e">fread</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>__ptr, size_t __size, size_t __nitems, FILE <span style="color:#f92672">*</span>__stream);
 </span></span><span style="display:flex;"><span>__END_DECLS
@@ -378,12 +378,12 @@ C&#43;&#43;编译器按自己的规则修饰函数名（如_Z3fooi）； C语言
 <p>C++库需提供接口给Python、Go等语言调用时，需通过<code>__BEGIN_DECLS</code>暴露C风格接口（其他语言通常只支持C调用规则）。</p>
 <h3 id="2-常见踩坑案例">2. 常见踩坑案例</h3>
 <h4 id="踩坑1包裹了c模板">踩坑1：包裹了C++模板</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>__BEGIN_DECLS
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>__BEGIN_DECLS
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span> T max(T a, T b) { <span style="color:#66d9ef">return</span> a <span style="color:#f92672">&gt;</span> b <span style="color:#f92672">?</span> a : b; }
 </span></span><span style="display:flex;"><span>__END_DECLS
 </span></span></code></pre></div><p>❌ 错误原因：<code>extern &quot;C&quot;</code>不支持模板，C++编译器直接报错。</p>
 <h4 id="踩坑2宏在保护宏外部">踩坑2：宏在保护宏外部</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/cdefs.h&gt;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/cdefs.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span>__BEGIN_DECLS
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#ifndef FOO_H
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define FOO_H
@@ -392,7 +392,7 @@ C&#43;&#43;编译器按自己的规则修饰函数名（如_Z3fooi）； C语言
 </span></span></span><span style="display:flex;"><span>__END_DECLS
 </span></span></code></pre></div><p>❌ 错误原因：重复包含时，<code>__BEGIN_DECLS</code>会被多次展开，导致<code>extern &quot;C&quot; { {</code>嵌套，触发语法错误。</p>
 <h4 id="踩坑3c源文件重复包裹">踩坑3：C++源文件重复包裹</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// foo.cpp
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// foo.cpp
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;foo.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span>__BEGIN_DECLS
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">foo</span>(<span style="color:#66d9ef">int</span> a) { <span style="color:#66d9ef">return</span> a <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>; }

@@ -160,14 +160,14 @@ adb shell am start -n com.android.gallery3d/.app.GalleryActivity --display 3 这
 </code></pre><p>这个命令将在显示屏 3 上打开图库应用的 <code>GalleryActivity</code>。</p>
 <h2 id="如何获取-package_name-以及-activity_name">如何获取 package_name 以及 activity_name</h2>
 <p><code>pm list packages</code> 命令获取当前系统中的所有 package。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>130|console:/ <span style="color:#75715e"># pm list packages</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>130|console:/ <span style="color:#75715e"># pm list packages</span>
 </span></span><span style="display:flex;"><span>......
 </span></span><span style="display:flex;"><span>package:com.android.internal.systemui.navbar.gestural
 </span></span><span style="display:flex;"><span>package:com.android.gallery3d
 </span></span><span style="display:flex;"><span>package:com.android.providers.userdictionary
 </span></span><span style="display:flex;"><span>......
 </span></span></code></pre></div><p>以 gallery3d <code>com.android.gallery3d</code> 为例：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>console:/ <span style="color:#75715e"># dumpsys package com.android.gallery3d | grep -A 1 &#39;MAIN&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>console:/ <span style="color:#75715e"># dumpsys package com.android.gallery3d | grep -A 1 &#39;MAIN&#39;</span>
 </span></span><span style="display:flex;"><span>      android.intent.action.MAIN:<span style="color:#f92672">[</span> 1080.400705<span style="color:#f92672">]</span> servicemanager: Since <span style="color:#e6db74">&#39;artd&#39;</span> could not be found, trying to start it as a lazy AIDL service. <span style="color:#f92672">(</span><span style="color:#66d9ef">if</span> it<span style="color:#e6db74">&#39;s not configured to be a lazy service, it may be stuck starting or still starting).
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        c99ebe com.android.gallery3d/.app.GalleryActivity filter 92aab1f
@@ -194,7 +194,7 @@ adb shell am start -n com.android.gallery3d/.app.GalleryActivity --display 3 这
 </span></span></code></pre></div><p>关键信息：<code>c99ebe com.android.gallery3d/.app.GalleryActivity filter 92aab1f</code></p>
 <p>对应的 package and activity name 组合：<code>com.android.gallery3d/.app.GalleryActivity</code></p>
 <p>套用到 am 命令中就是：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>am start -n com.android.gallery3d/.app.GalleryActivity --display <span style="color:#ae81ff">3</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>am start -n com.android.gallery3d/.app.GalleryActivity --display <span style="color:#ae81ff">3</span>
 </span></span></code></pre></div></section></main>
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>

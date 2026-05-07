@@ -118,15 +118,15 @@ missing port in specification: tcp:10.100.2.5 Answer 使用命令 adb connect 10
       </div></ol></div>
   <section class="page-section"><h2 id="操作手顺">操作手顺</h2>
 <p>手机USB连接电脑</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adb shell <span style="color:#e6db74">&#34;setprop persist.adb.tcp.port 5555&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adb shell <span style="color:#e6db74">&#34;setprop persist.adb.tcp.port 5555&#34;</span>
 </span></span><span style="display:flex;"><span>adb tcpip <span style="color:#ae81ff">5555</span>
 </span></span></code></pre></div><p>手机连上wifi，确认ip地址
 此时可以断开手USB，然后通过wifiadb连接</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adb connect 10.100.2.5
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adb connect 10.100.2.5
 </span></span></code></pre></div><h2 id="qa">Q&amp;A</h2>
 <h3 id="issue">Issue</h3>
 <p>执行命令 <code>adb connect 10.100.2.5</code> 报错</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>missing port in specification: tcp:10.100.2.5
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>missing port in specification: tcp:10.100.2.5
 </span></span></code></pre></div><h3 id="answer">Answer</h3>
 <p>使用命令 <code>adb connect 10.100.2.5:5555</code> 解决</p>
 </section></main>

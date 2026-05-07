@@ -118,7 +118,7 @@ export USE_CCACHE=true export CCACHE_DIR=$HOME/.cache prebuilts/misc/linux-x86/c
         <a href="/tags/ccache/">#ccache</a>
       </div></ol></div>
   <section class="page-section"><p>Android10的基线代码google已经将prebuilt的ccache移除,但是保留了相关功能选项</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>commit 326e7e2cbd95fc2b1a1f858fb29904c9d3974843
 </span></span><span style="display:flex;"><span>Author: Dan Willemsen &lt;dwillemsen@google.com&gt;
 </span></span><span style="display:flex;"><span>Date:   Thu Apr 5 15:48:16 2018 -0700
 </span></span><span style="display:flex;"><span>
@@ -132,11 +132,11 @@ export USE_CCACHE=true export CCACHE_DIR=$HOME/.cache prebuilts/misc/linux-x86/c
 </span></span><span style="display:flex;"><span>    Test: cs/ccache
 </span></span><span style="display:flex;"><span>    Change-Id: I894a11445127bf8cb3a7ac5a119c500f2c572fb9
 </span></span></code></pre></div><p>安卓10之前配置</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export USE_CCACHE<span style="color:#f92672">=</span>true
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export USE_CCACHE<span style="color:#f92672">=</span>true
 </span></span><span style="display:flex;"><span>export CCACHE_DIR<span style="color:#f92672">=</span>$HOME/.cache
 </span></span><span style="display:flex;"><span>prebuilts/misc/linux-x86/ccache/ccache -M 10G
 </span></span></code></pre></div><p>安卓10+通过使用的HOST操作系统安装对应的ccache软件包</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export USE_CCACHE<span style="color:#f92672">=</span>true
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export USE_CCACHE<span style="color:#f92672">=</span>true
 </span></span><span style="display:flex;"><span>export CCACHE_EXEC<span style="color:#f92672">=</span>/usr/bin/ccache
 </span></span><span style="display:flex;"><span>export CCACHE_DIR<span style="color:#f92672">=</span>$HOME/.cache
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">${</span>CCACHE_EXEC<span style="color:#e6db74">}</span> -M 50G

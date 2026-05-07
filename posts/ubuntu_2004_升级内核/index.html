@@ -108,16 +108,16 @@
         <a href="/tags/ubuntu/">#ubuntu</a>
       </div></ol></div>
   <section class="page-section"><h1 id="系统信息">系统信息</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ lsb_release -a
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ lsb_release -a
 </span></span><span style="display:flex;"><span>No LSB modules are available.
 </span></span><span style="display:flex;"><span>Distributor ID: Ubuntu
 </span></span><span style="display:flex;"><span>Description:    Ubuntu 20.04.6 LTS
 </span></span><span style="display:flex;"><span>Release:        20.04
 </span></span><span style="display:flex;"><span>Codename:       focal
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ uname -a
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ uname -a
 </span></span><span style="display:flex;"><span>Linux kang-HP-ProBook-440-14-inch-G10-Notebook-PC 5.15.0-67-generic <span style="color:#75715e">#74~20.04.1-Ubuntu SMP Wed Feb 22 14:52:34 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux</span>
 </span></span></code></pre></div><h1 id="安装依赖">安装依赖</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update <span style="color:#f92672">&amp;&amp;</span> sudo apt upgrade
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update <span style="color:#f92672">&amp;&amp;</span> sudo apt upgrade
 </span></span><span style="display:flex;"><span>sudo apt install binutils build-essential gcc make perl net-tools libncurses-dev <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>				openssh-server git fakeroot libssl-dev bc flex libelf-dev bison <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>				dwarves zstd
@@ -129,18 +129,18 @@
 </ul>
 <h1 id="拷贝-config-配置文件">拷贝 .config 配置文件</h1>
 <p>解压源代码并进入源码根目录，然后执行</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp /boot/config-<span style="color:#66d9ef">$(</span>uname -r<span style="color:#66d9ef">)</span> .config
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp /boot/config-<span style="color:#66d9ef">$(</span>uname -r<span style="color:#66d9ef">)</span> .config
 </span></span></code></pre></div><p>修改 .config 文件，左侧为修改后，解决编译报错问题</p>
 <p><img src="ubuntu_2004_%E5%86%85%E6%A0%B8%E5%8D%87%E7%BA%A7_1.png" alt=""></p>
 <h1 id="编译">编译</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>make menuconfig <span style="color:#75715e"># 弹出的不做任何修改，直接保存。</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>make menuconfig <span style="color:#75715e"># 弹出的不做任何修改，直接保存。</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>make -j16
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo make modules_install
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo make install
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> sudo make modules_install
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> sudo make modules_install
 </span></span><span style="display:flex;"><span>  SYMLINK <span style="color:#f92672">/</span>lib<span style="color:#f92672">/</span>modules<span style="color:#f92672">/</span><span style="color:#ae81ff">6.11.7</span><span style="color:#f92672">/</span>build
 </span></span><span style="display:flex;"><span>  INSTALL <span style="color:#f92672">/</span>lib<span style="color:#f92672">/</span>modules<span style="color:#f92672">/</span><span style="color:#ae81ff">6.11.7</span><span style="color:#f92672">/</span>modules.order
 </span></span><span style="display:flex;"><span>  INSTALL <span style="color:#f92672">/</span>lib<span style="color:#f92672">/</span>modules<span style="color:#f92672">/</span><span style="color:#ae81ff">6.11.7</span><span style="color:#f92672">/</span>modules.builtin
@@ -200,7 +200,7 @@
 </span></span><span style="display:flex;"><span>Adding boot menu entry <span style="color:#66d9ef">for</span> UEFI Firmware Settings
 </span></span><span style="display:flex;"><span>done
 </span></span></code></pre></div><h1 id="解决-wifi-不工作">解决 WIFI 不工作</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo cp iwlwifi-* /lib/firmware/<span style="color:#e6db74">`</span>
 </span></span><span style="display:flex;"><span>

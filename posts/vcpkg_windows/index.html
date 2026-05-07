@@ -127,10 +127,10 @@ vcpkg supports auto-completion of commands, package names, and options in both 
   <section class="page-section"><h1 id="install-vcpkg">Install vcpkg</h1>
 <p><a href="https://github.com/microsoft/vcpkg#quick-start-windows">https://github.com/microsoft/vcpkg#quick-start-windows</a></p>
 <p>powershell 终端执行如下命令：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/microsoft/vcpkg
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/microsoft/vcpkg
 </span></span><span style="display:flex;"><span>.<span style="color:#ae81ff">\v</span>cpkg<span style="color:#ae81ff">\b</span>ootstrap-vcpkg.bat
 </span></span></code></pre></div><h1 id="install-package">Install Package</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># To install the libraries for your project, run:</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># To install the libraries for your project, run:</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># This will install x86 libraries by default.</span>
 </span></span><span style="display:flex;"><span>.<span style="color:#ae81ff">\v</span>cpkg<span style="color:#ae81ff">\v</span>cpkg install <span style="color:#f92672">[</span>packages to install<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>
@@ -139,7 +139,7 @@ vcpkg supports auto-completion of commands, package names, and options in both 
 </span></span></code></pre></div><h1 id="tab-completionauto-completion">Tab-Completion/Auto-Completion</h1>
 <p><a href="https://github.com/microsoft/vcpkg#tab-completionauto-completion">https://github.com/microsoft/vcpkg#tab-completionauto-completion</a></p>
 <p><code>vcpkg</code> supports auto-completion of commands, package names, and options in both powershell and bash. To enable tab-completion in the shell of your choice, run:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>&gt; .\vcpkg integrate powershell
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>&gt; .\vcpkg integrate powershell
 </span></span></code></pre></div><h1 id="vsmsbuild-项目-用户范围的集成">VS/MSBuild 项目 (用户范围的集成)</h1>
 <p><a href="https://learn.microsoft.com/zh-cn/vcpkg/examples/installing-and-using-packages#msbuild">https://learn.microsoft.com/zh-cn/vcpkg/examples/installing-and-using-packages#msbuild</a></p>
 <p>使用 vcpkg 的建议且最高效的方法是通过用户范围的集成，使系统可用于你生成的所有项目。 首次在给定计算机上使用时，用户范围的集成将提示管理员进行访问，但之后不再需要该集成，并且集成按用户进行配置。</p>
@@ -159,9 +159,9 @@ Installing new libraries will make them instantly available.
 <pre tabindex="0"><code>-DCMAKE_TOOLCHAIN_FILE=[vcpkg root]/scripts/buildsystems/vcpkg.cmake
 </code></pre><p>You must add this line to each profile.</p>
 <h1 id="install-cppzmq-package">Install cppzmq package</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.<span style="color:#ae81ff">\v</span>cpkg<span style="color:#ae81ff">\v</span>cpkg install cppzmq:x64-windows
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.<span style="color:#ae81ff">\v</span>cpkg<span style="color:#ae81ff">\v</span>cpkg install cppzmq:x64-windows
 </span></span></code></pre></div><h1 id="to-find-and-use-cppzmq-in-cmakeliststxt">To find and use cppzmq in CMakeLists.txt</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>WIN32<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>WIN32<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>find_package<span style="color:#f92672">(</span>cppzmq REQUIRED<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>endif <span style="color:#f92672">(</span>WIN32<span style="color:#f92672">)</span>
 </span></span></code></pre></div></section></main>

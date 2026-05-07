@@ -121,7 +121,7 @@
 <li>vcpkg install boost-system:x64-windows boost-filesystem:x64-windows</li>
 </ol>
 <h2 id="cmake-boost-配置">cmake boost 配置</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">if</span> <span style="color:#960050;background-color:#1e0010">(WIN32)</span>  
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">if</span> <span style="color:#960050;background-color:#1e0010">(WIN32)</span>  
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 查找 Boost 库  
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">find_package(Boost</span> <span style="color:#960050;background-color:#1e0010">COMPONENTS</span> <span style="color:#960050;background-color:#1e0010">filesystem</span> <span style="color:#960050;background-color:#1e0010">system</span> <span style="color:#960050;background-color:#1e0010">REQUIRED)</span>  
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">if</span> <span style="color:#960050;background-color:#1e0010">(Boost_FOUND)</span>  
@@ -130,7 +130,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">endif</span> <span style="color:#960050;background-color:#1e0010">()</span>  
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">endif</span> <span style="color:#960050;background-color:#1e0010">(WIN32)</span>
 </span></span></code></pre></div><p>编译报错</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">====================[</span> Build | radar_data_local_storage | Release-Visual Studio <span style="color:#f92672">]====</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">====================[</span> Build | radar_data_local_storage | Release-Visual Studio <span style="color:#f92672">]====</span>
 </span></span><span style="display:flex;"><span>......
 </span></span><span style="display:flex;"><span>CMake Error at C:/Program Files/JetBrains/CLion 2023.1.4/bin/cmake/win/x64/share/cmake-3.25/Modules/FindPackageHandleStandardArgs.cmake:230 <span style="color:#f92672">(</span>message<span style="color:#f92672">)</span>:
 </span></span><span style="display:flex;"><span>  Could NOT find Boost <span style="color:#f92672">(</span>missing: Boost_INCLUDE_DIR filesystem system<span style="color:#f92672">)</span>
@@ -145,7 +145,7 @@
 </span></span><span style="display:flex;"><span>-- Configuring incomplete, errors occurred!
 </span></span><span style="display:flex;"><span>See also <span style="color:#e6db74">&#34;C:/Users/luyang/Documents/TestDemo/cmake-build-release-visual-studio/CMakeFiles/CMakeOutput.log&#34;</span>.
 </span></span></code></pre></div><p>增加 ：<code>set(Boost_INCLUDE_DIR ${_VCPKG_INSTALLED_DIR}/x64-windows/include)</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">if</span> <span style="color:#960050;background-color:#1e0010">(WIN32)</span>  
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">if</span> <span style="color:#960050;background-color:#1e0010">(WIN32)</span>  
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 查找 Boost 库  
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">set(Boost_INCLUDE_DIR</span> <span style="color:#960050;background-color:#1e0010">${_VCPKG_INSTALLED_DIR}/x64-windows/include)</span>  
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">find_package(Boost</span> <span style="color:#960050;background-color:#1e0010">COMPONENTS</span> <span style="color:#960050;background-color:#1e0010">filesystem</span> <span style="color:#960050;background-color:#1e0010">system</span> <span style="color:#960050;background-color:#1e0010">REQUIRED)</span>  
@@ -155,7 +155,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">endif</span> <span style="color:#960050;background-color:#1e0010">()</span>  
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">endif</span> <span style="color:#960050;background-color:#1e0010">(WIN32)</span>
 </span></span></code></pre></div><h2 id="链接-boost-system-boost-filesystem">链接 boost-system boost-filesystem</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">if</span> <span style="color:#960050;background-color:#1e0010">(WIN32)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">if</span> <span style="color:#960050;background-color:#1e0010">(WIN32)</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">target_link_libraries(radar_data_local_storage Boost</span><span style="color:#f92672">::</span>filesystem Boost::system)
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">endif(WIN32)</span>
 </span></span></code></pre></div></section></main>

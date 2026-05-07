@@ -129,6 +129,7 @@
 <li><a href="https://www.analog.com/media/en/technical-documentation/data-sheets/max96717f.pdf" title="Open Data Sheet in PDF">MAX96717F: CSI-2 to GMSL2 Serializer Data Sheet (Rev. 5)</a></li>
 </ul>
 <h2 id="max96724-max9295d-pipes-and-csi2">MAX96724 MAX9295D pipes and csi2</h2>
+
 <script src="https://gist.github.com/luyoungcn/7b0f38d4f4ed39299afb48a3ac34295a.js"></script>
 
 <h2 id="gmsl2-forward-link-and-reverse-link">GMSL2 forward link and reverse link</h2>
@@ -188,7 +189,7 @@ VID_TX Z 包含的寄存器就是关于 PIPE Z 的寄存器。</p>
 <li>如果 GMSL 已经为 6G 就只能优化 mipi 带宽或调整方案。</li>
 </ul>
 <p>e.g. MAX9295D 为例：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w2@&lt;slave address&gt; 0x01 0x02 r1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w2@&lt;slave address&gt; 0x01 0x02 r1
 </span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w2@&lt;slave address&gt; 0x01 0x0A r1
 </span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w2@&lt;slave address&gt; 0x01 0x12 r1
 </span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w2@&lt;slave address&gt; 0x01 0x1A r1
@@ -230,7 +231,7 @@ VID_TX Z 包含的寄存器就是关于 PIPE Z 的寄存器。</p>
 <p><img src="max96717_0x43_i2c_alias.png" alt="Untitled"></p>
 <p><img src="max96717_0x44_i2c_alias.png" alt="Untitled"></p>
 <p><img src="max96717_0x45_i2c_alias.png" alt="Untitled"></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># i2ctransfer -y -f 0 w2@0x44 0x00 0x42 r1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># i2ctransfer -y -f 0 w2@0x44 0x00 0x42 r1</span>
 </span></span><span style="display:flex;"><span>0xa8 <span style="color:#f92672">=</span> 0x54 <span style="color:#e6db74">&lt;&lt; 1
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># i2ctransfer -y -f 0 w2@0x44 0x00 0x43 r1</span>
 </span></span><span style="display:flex;"><span>0x52 <span style="color:#f92672">=</span> 0x29 <span style="color:#e6db74">&lt;&lt; 1
@@ -240,7 +241,7 @@ VID_TX Z 包含的寄存器就是关于 PIPE Z 的寄存器。</p>
 </span></span><span style="display:flex;"><span>0x50 <span style="color:#f92672">=</span> 0x28 &lt;&lt; <span style="color:#ae81ff">1</span>
 </span></span></code></pre></div><h1 id="手动控制-ser-mfp-对外输出高低电平">手动控制 SER MFP 对外输出高低电平</h1>
 <p>MAX96717 MFP ctrl register</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// MFP0 ~ MFP16
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// MFP0 ~ MFP16
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">uint16_t</span> max96717_mfp_ctrl_regs[] <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">0x02BE</span>, <span style="color:#ae81ff">0x02C1</span>, <span style="color:#ae81ff">0x02C4</span>, <span style="color:#ae81ff">0x02C7</span>,
 </span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">0x02CA</span>, <span style="color:#ae81ff">0x02CD</span>, <span style="color:#ae81ff">0x02D0</span>, <span style="color:#ae81ff">0x02D3</span>,
@@ -251,16 +252,16 @@ VID_TX Z 包含的寄存器就是关于 PIPE Z 的寄存器。</p>
 <p>输出高电平，value 设置为 0x90</p>
 <p>serializer device i2c address （如果已经别名请使用alias i2c address）</p>
 <p>命令格式：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>i2ctransfer -y -f &lt;i2c_bus&gt; w3@&lt;i2c_addr&gt; &lt;reg_high_8bit&gt; &lt;reg_low_8bit&gt; &lt;value&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>i2ctransfer -y -f &lt;i2c_bus&gt; w3@&lt;i2c_addr&gt; &lt;reg_high_8bit&gt; &lt;reg_low_8bit&gt; &lt;value&gt;
 </span></span></code></pre></div><p>假设 i2c bus 0, i2c alias address 0x44，MFP6, MFP7 输出低电平</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x44 0x02 0xD0 0x80
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x44 0x02 0xD0 0x80
 </span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x44 0x02 0xD3 0x80
 </span></span></code></pre></div><p>假设 i2c bus 0, i2c alias address 0x44，MFP6, MFP7 输出高电平</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x44 0x02 0xD0 0x90
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x44 0x02 0xD0 0x90
 </span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x44 0x02 0xD3 0x90
 </span></span></code></pre></div><h1 id="max96724-max96717-i2c-速率配置">MAX96724 MAX96717 I2C 速率配置</h1>
 <p>Fast-mode Plus</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
 </span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># DES</span>
 </span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x05 0x06 0x40 0x06
@@ -377,6 +378,7 @@ VID_TX Z 包含的寄存器就是关于 PIPE Z 的寄存器。</p>
   </tbody>
 </table>
 <hr>
+
 <script src="https://gist.github.com/luyoungcn/45e7865bfd98a05fc1906d63096f3f79.js"></script>
 
 </section></main>

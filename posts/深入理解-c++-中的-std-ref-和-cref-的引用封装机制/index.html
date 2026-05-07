@@ -129,7 +129,7 @@ std::cref(obj)：返回一个 const 引用 的包装器。
 <hr>
 <h2 id="为什么需要引用封装器">为什么需要引用封装器</h2>
 <p>先来看一个例子：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">increment</span>(<span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> x) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">increment</span>(<span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> x) {
 </span></span><span style="display:flex;"><span>    x<span style="color:#f92672">++</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
@@ -140,7 +140,7 @@ std::cref(obj)：返回一个 const 引用 的包装器。
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>你可能以为把 <code>a</code> 传进去就是引用了，但事实并非如此。<code>std::thread</code> 默认按值复制参数。它尝试将 <code>a</code> 拷贝一份传递给 <code>increment</code>，而 <code>increment</code> 期望的是 <code>int&amp;</code>，于是编译器报错。</p>
 <p>这个时候，<code>std::ref(a)</code> 就派上了用场：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span> t(increment, std<span style="color:#f92672">::</span>ref(a));  <span style="color:#75715e">// ✅ 传引用成功
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span> t(increment, std<span style="color:#f92672">::</span>ref(a));  <span style="color:#75715e">// ✅ 传引用成功
 </span></span></span></code></pre></div><hr>
 <h2 id="std-ref-和-cref-是什么">std ref 和 cref 是什么</h2>
 <ul>
@@ -155,7 +155,7 @@ std::cref(obj)：返回一个 const 引用 的包装器。
 <hr>
 <h2 id="典型使用场景">典型使用场景</h2>
 <h3 id="1-stdthread">1. std::thread</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print</span>(<span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> x) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print</span>(<span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> x) {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> x <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
@@ -167,7 +167,7 @@ std::cref(obj)：返回一个 const 引用 的包装器。
 </span></span></code></pre></div><p>如果不使用 <code>std::ref</code>，代码会因为引用绑定失败而无法通过编译。</p>
 <hr>
 <h3 id="2-stdbind">2. std::bind</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;functional&gt;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;functional&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">set_to_100</span>(<span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> x) {
 </span></span><span style="display:flex;"><span>    x <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>;
@@ -181,7 +181,7 @@ std::cref(obj)：返回一个 const 引用 的包装器。
 </span></span></code></pre></div><p>若不使用 <code>std::ref</code>，<code>a</code> 会被拷贝，<code>set_to_100</code> 内部修改的是拷贝，而不是原变量。</p>
 <hr>
 <h3 id="3-标准算法">3. 标准算法</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;algorithm&gt;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;algorithm&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;functional&gt;</span><span style="color:#75715e">
@@ -195,7 +195,7 @@ std::cref(obj)：返回一个 const 引用 的包装器。
 </span></span></code></pre></div><hr>
 <h2 id="cref-的使用场景">cref 的使用场景</h2>
 <p>当你希望以只读引用方式传参时，使用 <code>std::cref</code>：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">show</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> x) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">show</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> x) {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> x <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
@@ -207,7 +207,7 @@ std::cref(obj)：返回一个 const 引用 的包装器。
 </span></span></code></pre></div><hr>
 <h2 id="实现原理简析">实现原理简析</h2>
 <p>标准库中的 <code>reference_wrapper</code> 本质上就是用一个指针模拟引用：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">reference_wrapper</span> {
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">explicit</span> reference_wrapper(T<span style="color:#f92672">&amp;</span> ref) <span style="color:#66d9ef">noexcept</span> <span style="color:#f92672">:</span> ptr(std<span style="color:#f92672">::</span>addressof(ref)) {}
@@ -228,11 +228,11 @@ std::cref(obj)：返回一个 const 引用 的包装器。
 <hr>
 <h2 id="使用注意事项">使用注意事项</h2>
 <h3 id="1-不可绑定右值">1. 不可绑定右值</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>std<span style="color:#f92672">::</span>ref(<span style="color:#ae81ff">42</span>);     <span style="color:#75715e">// ❌ 错误：不能对临时对象创建可修改引用
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>std<span style="color:#f92672">::</span>ref(<span style="color:#ae81ff">42</span>);     <span style="color:#75715e">// ❌ 错误：不能对临时对象创建可修改引用
 </span></span></span><span style="display:flex;"><span>std<span style="color:#f92672">::</span>cref(<span style="color:#ae81ff">42</span>);    <span style="color:#75715e">// ✅ 正确：const 引用可以绑定右值
 </span></span></span></code></pre></div><h3 id="2-生命周期问题">2. 生命周期问题</h3>
 <p>不要对临时变量使用 <code>std::ref</code>：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> f <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>bind(print, std<span style="color:#f92672">::</span>ref(temp()));  <span style="color:#75715e">// ❌ 悬垂引用
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> f <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>bind(print, std<span style="color:#f92672">::</span>ref(temp()));  <span style="color:#75715e">// ❌ 悬垂引用
 </span></span></span></code></pre></div><hr>
 <h2 id="应用总结">应用总结</h2>
 <table>

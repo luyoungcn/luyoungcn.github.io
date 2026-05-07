@@ -120,7 +120,7 @@
         <a href="/tags/windows/">#windows</a>
       </div></ol></div>
   <section class="page-section"><h2 id="环境声明">环境声明</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ lsb_release -a
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ lsb_release -a
 </span></span><span style="display:flex;"><span>No LSB modules are available.
 </span></span><span style="display:flex;"><span>Distributor ID: Ubuntu
 </span></span><span style="display:flex;"><span>Description:    Ubuntu 20.04.6 LTS
@@ -136,11 +136,11 @@
 <hr>
 <h2 id="-环境配置wsl-中">⚙️ 环境配置（WSL 中）</h2>
 <h3 id="-安装依赖">✅ 安装依赖</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install -U pip
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install -U pip
 </span></span><span style="display:flex;"><span>pip install opencv-python
 </span></span><span style="display:flex;"><span>pip install torch torchvision torchaudio
 </span></span></code></pre></div><h3 id="-安装-ultralytics源码模式">✅ 安装 Ultralytics（源码模式）</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 克隆仓库</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 克隆仓库</span>
 </span></span><span style="display:flex;"><span>git clone https://github.com/ultralytics/ultralytics
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 进入目录</span>
@@ -157,24 +157,24 @@
 <h2 id="-步骤一安装并运行-rtsp-服务器mediamtx">✅ 步骤一：安装并运行 RTSP 服务器（mediamtx）</h2>
 <p>推荐使用轻量开源 RTSP 服务器 <a href="https://github.com/bluenviron/mediamtx"><strong>mediamtx</strong>（原 rtsp-simple-server）</a></p>
 <h3 id="安装wsl-中">安装（WSL 中）：</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://github.com/bluenviron/mediamtx/releases/download/v1.12.3/mediamtx_v1.12.3_linux_amd64.tar.gz
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://github.com/bluenviron/mediamtx/releases/download/v1.12.3/mediamtx_v1.12.3_linux_amd64.tar.gz
 </span></span><span style="display:flex;"><span>tar -xvzf mediamtx_linux_amd64.tar.gz
 </span></span><span style="display:flex;"><span>cd mediamtx
 </span></span><span style="display:flex;"><span>./mediamtx
 </span></span></code></pre></div><hr>
 <h2 id="-步骤二windows-端摄像头推流ffmpeg">✅ 步骤二：Windows 端摄像头推流（FFmpeg）</h2>
 <p>推荐推流命令如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ffmpeg -f dshow -i video<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;HP 5MP Camera&#34;</span> -vf <span style="color:#e6db74">&#34;yadif,format=yuv420p&#34;</span> -vcodec libx264 -preset ultrafast -tune zerolatency -color_primaries bt709 -colorspace bt709 -color_trc bt709 -r <span style="color:#ae81ff">30</span> -g <span style="color:#ae81ff">30</span> -threads <span style="color:#ae81ff">2</span> -pix_fmt yuv420p -f rtsp rtsp://172.20.24.196:8554/live.sdp
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ffmpeg -f dshow -i video<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;HP 5MP Camera&#34;</span> -vf <span style="color:#e6db74">&#34;yadif,format=yuv420p&#34;</span> -vcodec libx264 -preset ultrafast -tune zerolatency -color_primaries bt709 -colorspace bt709 -color_trc bt709 -r <span style="color:#ae81ff">30</span> -g <span style="color:#ae81ff">30</span> -threads <span style="color:#ae81ff">2</span> -pix_fmt yuv420p -f rtsp rtsp://172.20.24.196:8554/live.sdp
 </span></span></code></pre></div><hr>
 <h2 id="-步骤三wsl-中运行-yolo-目标检测">✅ 步骤三：WSL 中运行 YOLO 目标检测</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yolo detect predict <span style="color:#ae81ff">\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yolo detect predict <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>    model<span style="color:#f92672">=</span>yolov8n.pt <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>    source<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rtsp://127.0.0.1:8554/live.sdp&#34;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>    show<span style="color:#f92672">=</span>True <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>    device<span style="color:#f92672">=</span>cpu
 </span></span></code></pre></div><hr>
 <h2 id="-可选调试-rtsp-流">✅ 可选：调试 RTSP 流</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ffplay rtsp://127.0.0.1:8554/live.sdp
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ffplay rtsp://127.0.0.1:8554/live.sdp
 </span></span></code></pre></div><hr>
 <h2 id="-常见问题排查">💡 常见问题排查</h2>
 <table>
@@ -205,20 +205,20 @@
 </table>
 <hr>
 <h2 id="-总结流程图">✅ 总结流程图</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Windows 摄像头
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Windows 摄像头
 </span></span><span style="display:flex;"><span>     │
 </span></span><span style="display:flex;"><span>     └───▶ FFmpeg（推送） ───▶ RTSP Server（Mediamtx）
 </span></span><span style="display:flex;"><span>                                     │
 </span></span><span style="display:flex;"><span>                                     ▼
 </span></span><span style="display:flex;"><span>                            WSL YOLO（读取 RTSP 流识别）
 </span></span></code></pre></div><h2 id="问题说明-1">问题说明 1</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  python3 --version
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  python3 --version
 </span></span><span style="display:flex;"><span>Python 3.8.10
 </span></span><span style="display:flex;"><span>➜  pip --version
 </span></span><span style="display:flex;"><span>/usr/bin/pip:6: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
 </span></span><span style="display:flex;"><span>  from pkg_resources import load_entry_point
 </span></span><span style="display:flex;"><span>pip 20.0.2 from /usr/lib/python3/dist-packages/pip <span style="color:#f92672">(</span>python 3.8<span style="color:#f92672">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  git clone https://github.com/ultralytics/ultralytics
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜  git clone https://github.com/ultralytics/ultralytics
 </span></span><span style="display:flex;"><span>Cloning into <span style="color:#e6db74">&#39;ultralytics&#39;</span>...
 </span></span><span style="display:flex;"><span>remote: Enumerating objects: 61803, <span style="color:#66d9ef">done</span>.
 </span></span><span style="display:flex;"><span>remote: Counting objects: 100% <span style="color:#f92672">(</span>201/201<span style="color:#f92672">)</span>, <span style="color:#66d9ef">done</span>.
@@ -240,7 +240,7 @@
 <h3 id="解决方案">解决方案</h3>
 <h4 id="用新的-pep-660-可编辑模式">用新的 PEP 660 可编辑模式</h4>
 <p>Python 3.8+ + pip 21.3+ 才支持。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -m pip install --upgrade pip setuptools wheel
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python -m pip install --upgrade pip setuptools wheel
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>python3 -m pip --version
 </span></span><span style="display:flex;"><span>pip 25.0.1 from /home/luyang/.local/lib/python3.8/site-packages/pip <span style="color:#f92672">(</span>python 3.8<span style="color:#f92672">)</span>
@@ -250,7 +250,7 @@
 </span></span><span style="display:flex;"><span>python3 -m pip install -e <span style="color:#e6db74">&#39;.[dev]&#39;</span>
 </span></span></code></pre></div><h2 id="问题说明-2">问题说明 2</h2>
 <p>第一次运行 yolo 时由于权重文件不存在，会先下载权重文件。如果下载过程中 ctrl c 异常结束后，再次运行就会报错。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yolo detect predict model<span style="color:#f92672">=</span>yolo11n.pt source<span style="color:#f92672">=</span>./demo.mp4
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yolo detect predict model<span style="color:#f92672">=</span>yolo11n.pt source<span style="color:#f92672">=</span>./demo.mp4
 </span></span><span style="display:flex;"><span>Traceback <span style="color:#f92672">(</span>most recent call last<span style="color:#f92672">)</span>:
 </span></span><span style="display:flex;"><span>  File <span style="color:#e6db74">&#34;/home/max/.local/bin//yolo&#34;</span>, line 8, in &lt;module&gt;
 </span></span><span style="display:flex;"><span>    sys.exit<span style="color:#f92672">(</span>entrypoint<span style="color:#f92672">())</span>
@@ -275,7 +275,7 @@
 </span></span><span style="display:flex;"><span>RuntimeError: PytorchStreamReader failed reading zip archive: failed finding central directory
 </span></span></code></pre></div><h3 id="说明-1">说明</h3>
 <p>关键日志：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>RuntimeError: PytorchStreamReader failed reading zip archive: failed finding central directory
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>RuntimeError: PytorchStreamReader failed reading zip archive: failed finding central directory
 </span></span></code></pre></div><p>意思是 PyTorch 在加载权重文件时发现文件不是一个有效的 .pt zip 格式，通常有几种原因：</p>
 <ol>
 <li><strong><code>yolo11n.pt</code> 文件损坏或下载不完整</strong>

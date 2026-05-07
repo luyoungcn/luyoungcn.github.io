@@ -153,7 +153,7 @@
 <hr>
 <h2 id="-2-启动阶段流程概览">⚙️ 2. 启动阶段流程概览</h2>
 <p>Linux 启动阶段涉及从 <strong>bootloader → 内核 → initramfs/initrd → 用户空间 init</strong> 的完整链路。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>1. BIOS/UEFI
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>1. BIOS/UEFI
 </span></span><span style="display:flex;"><span>   ↓
 </span></span><span style="display:flex;"><span>2. Bootloader (GRUB/U-Boot)
 </span></span><span style="display:flex;"><span>   - 加载 vmlinuz (内核映像)
@@ -174,7 +174,7 @@
 </span></span></code></pre></div><hr>
 <h2 id="-3-技术架构与数据流">🧩 3. 技术架构与数据流</h2>
 <h3 id="31-逻辑结构图">3.1 逻辑结构图</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>┌────────────────────────────┐
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>┌────────────────────────────┐
 </span></span><span style="display:flex;"><span>│ Bootloader                 │
 </span></span><span style="display:flex;"><span>│  - 加载 Kernel + Initramfs │
 </span></span><span style="display:flex;"><span>└────────────┬───────────────┘
@@ -200,7 +200,7 @@
 </span></span></code></pre></div><hr>
 <h2 id="-4-initramfs-内部结构">🧱 4. Initramfs 内部结构</h2>
 <p>Initramfs 是一个 <strong>cpio 格式的压缩包</strong>，包含早期启动所需的最小文件集：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>initramfs/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>initramfs/
 </span></span><span style="display:flex;"><span>├── bin/
 </span></span><span style="display:flex;"><span>│   └── busybox
 </span></span><span style="display:flex;"><span>├── dev/
@@ -210,9 +210,9 @@
 </span></span><span style="display:flex;"><span>├── init          ← 启动脚本（最关键）
 </span></span><span style="display:flex;"><span>└── lib/
 </span></span></code></pre></div><p>典型创建命令：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find . | cpio -H newc -o | gzip &gt; ../initramfs.cpio.gz
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find . | cpio -H newc -o | gzip &gt; ../initramfs.cpio.gz
 </span></span></code></pre></div><p>加载方式（由 Bootloader 指定）：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qemu-system-x86_64 -kernel bzImage -initrd initramfs.cpio.gz -append <span style="color:#e6db74">&#34;console=ttyS0&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qemu-system-x86_64 -kernel bzImage -initrd initramfs.cpio.gz -append <span style="color:#e6db74">&#34;console=ttyS0&#34;</span>
 </span></span></code></pre></div><hr>
 <h2 id="-5-内核解包与挂载流程源码级">🧩 5. 内核解包与挂载流程（源码级）</h2>
 <p>以 Linux 6.x 为例，主流程如下：</p>
@@ -297,18 +297,18 @@
 <hr>
 <h2 id="-7-内核内嵌-initramfs">🧩 7. 内核内嵌 Initramfs</h2>
 <p>可以直接将 initramfs 打包进内核：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>make menuconfig
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>make menuconfig
 </span></span><span style="display:flex;"><span>→ General setup → Initramfs source file<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>
 </span></span></code></pre></div><p>或通过环境变量：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>make INITRAMFS_SOURCE<span style="color:#f92672">=</span>../rootfs
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>make INITRAMFS_SOURCE<span style="color:#f92672">=</span>../rootfs
 </span></span></code></pre></div><p>生成的内核会在 <code>usr/initramfs_data.c</code> 中嵌入二进制数据：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> __initramfs_start[];
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> __initramfs_start[];
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> __initramfs_end[];
 </span></span></code></pre></div><hr>
 <h2 id="-8-init-启动脚本职责">⚙️ 8. /init 启动脚本职责</h2>
 <p><code>/init</code> 是 initramfs 的“入口点”，它在真正的 <code>/sbin/init</code> 启动前执行。</p>
 <p>典型实现（BusyBox 风格）：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
 </span></span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;[INITRAMFS] Booting early init system...&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>mount -t proc proc /proc
@@ -333,7 +333,7 @@
 <li>由 BusyBox 或 util-linux 提供</li>
 <li>更简洁、安全</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>switch_root /new_root /sbin/init
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>switch_root /new_root /sbin/init
 </span></span></code></pre></div><hr>
 <h2 id="-10-调试与验证">🧩 10. 调试与验证</h2>
 <table>
@@ -396,7 +396,7 @@
 </table>
 <hr>
 <h2 id="-12-实验验证qemu-demo">🧩 12. 实验验证（QEMU Demo）</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 构建 busybox</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 构建 busybox</span>
 </span></span><span style="display:flex;"><span>make defconfig
 </span></span><span style="display:flex;"><span>make install
 </span></span><span style="display:flex;"><span>
@@ -411,7 +411,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 启动 QEMU</span>
 </span></span><span style="display:flex;"><span>qemu-system-x86_64 -kernel bzImage -initrd initramfs.cpio.gz -append <span style="color:#e6db74">&#34;console=ttyS0&#34;</span>
 </span></span></code></pre></div><p>输出：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[INITRAMFS] Booting...
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[INITRAMFS] Booting...
 </span></span><span style="display:flex;"><span>Hello Initramfs
 </span></span><span style="display:flex;"><span>/ #
 </span></span></code></pre></div><hr>

@@ -130,7 +130,7 @@ SYSCALL_CANCEL(...) → INLINE_SYSCALL_CALL(...) → __INLINE_SYSCALL_DISP(__INL
       </div><div class="tag">
         <a href="/tags/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/">#系统调用</a>
       </div><div class="tag">
-        <a href="/tags/linux/">#linux</a>
+        <a href="/tags/linux/">#Linux</a>
       </div><div class="tag">
         <a href="/tags/kernel/">#kernel</a>
       </div></ol></div>
@@ -139,24 +139,24 @@ SYSCALL_CANCEL(...) → INLINE_SYSCALL_CALL(...) → __INLINE_SYSCALL_DISP(__INL
 <p>本文档对 AArch64 (即 ARM64) 架构下从 glibc 中的 <code>open()</code> 函数调用至 Linux 内核中 <code>sys_openat()</code> 系统调用入口的全路径进行全面、精精、严密的分析。选用 AArch64 架构是因为其在嵌入式、手机、服务器等领域应用很广，宜于全面理解 Linux syscall 机制。</p>
 <hr>
 <h2 id="一从-glibc-open-函数调用开始">一、从 glibc <code>open()</code> 函数调用开始</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> fd <span style="color:#f92672">=</span> <span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;/tmp/a.txt&#34;</span>, O_RDONLY);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> fd <span style="color:#f92672">=</span> <span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;/tmp/a.txt&#34;</span>, O_RDONLY);
 </span></span></code></pre></div><p><code>open()</code> 是 POSIX API，glibc 中实际是一层展开：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define open(...) SYSCALL_CANCEL(openat, AT_FDCWD, __VA_ARGS__)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define open(...) SYSCALL_CANCEL(openat, AT_FDCWD, __VA_ARGS__)
 </span></span></span></code></pre></div><p>即使用 <code>openat()</code> 实现。</p>
 <hr>
 <h2 id="二glibc-syscall-展开层层结构">二、glibc syscall 展开层层结构</h2>
 <p>以 5 个参数为例：</p>
 <h3 id="1-调用链进程">1. 调用链进程</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">SYSCALL_CANCEL</span>(openat, AT_FDCWD, file, flags, mode)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">SYSCALL_CANCEL</span>(openat, AT_FDCWD, file, flags, mode)
 </span></span></code></pre></div><p>展开层层如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">SYSCALL_CANCEL</span>(...)                
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">SYSCALL_CANCEL</span>(...)                
 </span></span><span style="display:flex;"><span> <span style="color:#960050;background-color:#1e0010">→</span> <span style="color:#a6e22e">INLINE_SYSCALL_CALL</span>(...)            
 </span></span><span style="display:flex;"><span> <span style="color:#960050;background-color:#1e0010">→</span> <span style="color:#a6e22e">__INLINE_SYSCALL_DISP</span>(__INLINE_SYSCALL, ...)
 </span></span><span style="display:flex;"><span> <span style="color:#960050;background-color:#1e0010">→</span> <span style="color:#a6e22e">__SYSCALL_CONCAT</span>(__INLINE_SYSCALL, N)(...)
 </span></span><span style="display:flex;"><span> <span style="color:#960050;background-color:#1e0010">→</span> <span style="color:#a6e22e">__INLINE_SYSCALL5</span>(name, a1, a2, a3, a4, a5)
 </span></span><span style="display:flex;"><span> <span style="color:#960050;background-color:#1e0010">→</span> <span style="color:#a6e22e">INLINE_SYSCALL</span>(name, <span style="color:#ae81ff">5</span>, a1, a2, a3, a4, a5)
 </span></span></code></pre></div><h3 id="2-inline_syscall-实现">2. INLINE_SYSCALL 实现</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define INLINE_SYSCALL(name, nr, args...) \
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define INLINE_SYSCALL(name, nr, args...) \
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">({ \
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">  long int sc_ret = INTERNAL_SYSCALL(name, nr, args); \
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">  __glibc_unlikely(INTERNAL_SYSCALL_ERROR_P(sc_ret)) \
@@ -167,10 +167,10 @@ SYSCALL_CANCEL(...) → INLINE_SYSCALL_CALL(...) → __INLINE_SYSCALL_DISP(__INL
 <h2 id="三internal_syscall-到-svc-0-入核">三、INTERNAL_SYSCALL 到 svc #0 入核</h2>
 <h3 id="1-实际定义分部">1. 实际定义分部</h3>
 <p>在 <code>sysdeps/unix/sysv/linux/aarch64/sysdep.h</code> 中：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define INTERNAL_SYSCALL(name, nr, args...) \
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define INTERNAL_SYSCALL(name, nr, args...) \
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">  INTERNAL_SYSCALL_RAW(__NR_##name, nr, args)
 </span></span></span></code></pre></div><h3 id="2-internal_syscall_raw-核心实现">2. INTERNAL_SYSCALL_RAW 核心实现</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define INTERNAL_SYSCALL_RAW(name, nr, args...)            \
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define INTERNAL_SYSCALL_RAW(name, nr, args...)            \
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">({ long _sys_result;                                       \
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">   {                                                       \
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">     LOAD_ARGS_##nr (args)                                 \
@@ -184,7 +184,7 @@ SYSCALL_CANCEL(...) → INLINE_SYSCALL_CALL(...) → __INLINE_SYSCALL_DISP(__INL
 </span></span><span style="display:flex;"><span>   }                                                       \
 </span></span><span style="display:flex;"><span>   _sys_result; })
 </span></span></code></pre></div><h3 id="3-参数装入">3. 参数装入</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x0 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x0&#34;</span>) <span style="color:#f92672">=</span> arg1; <span style="color:#75715e">// fd
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x0 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x0&#34;</span>) <span style="color:#f92672">=</span> arg1; <span style="color:#75715e">// fd
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x1 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x1&#34;</span>) <span style="color:#f92672">=</span> arg2; <span style="color:#75715e">// path
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x2 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x2&#34;</span>) <span style="color:#f92672">=</span> arg3; <span style="color:#75715e">// flags
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x3 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x3&#34;</span>) <span style="color:#f92672">=</span> arg4; <span style="color:#75715e">// mode
@@ -192,26 +192,26 @@ SYSCALL_CANCEL(...) → INLINE_SYSCALL_CALL(...) → __INLINE_SYSCALL_DISP(__INL
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">register</span> <span style="color:#66d9ef">long</span> _x8 <span style="color:#a6e22e">asm</span>(<span style="color:#e6db74">&#34;x8&#34;</span>) <span style="color:#f92672">=</span> __NR_openat;
 </span></span></code></pre></div><h3 id="4-结果">4. 结果</h3>
 <p>执行指令：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span><span style="color:#a6e22e">svc</span> <span style="color:#75715e">#0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span><span style="color:#a6e22e">svc</span> <span style="color:#75715e">#0
 </span></span></span></code></pre></div><hr>
 <h2 id="四内核端调用扩展">四、内核端调用扩展</h2>
 <h3 id="1-输入异常向量-entrys">1. 输入异常向量 entry.S</h3>
 <p>文件：<code>arch/arm64/kernel/entry.S</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span>el0_sync:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span>el0_sync:
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">kernel_entry</span> <span style="color:#ae81ff">0</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">bl</span> <span style="color:#66d9ef">el0_sync_handler</span>
 </span></span></code></pre></div><h3 id="2-el0_sync_handler">2. el0_sync_handler()</h3>
 <p>文件：<code>arch/arm64/kernel/syscall.c</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">el0_sync_handler</span>(<span style="color:#66d9ef">struct</span> pt_regs <span style="color:#f92672">*</span>regs) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">el0_sync_handler</span>(<span style="color:#66d9ef">struct</span> pt_regs <span style="color:#f92672">*</span>regs) {
 </span></span><span style="display:flex;"><span>    ...
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">syscall_handler</span>(regs);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="3-syscall_handler">3. syscall_handler()</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> scno <span style="color:#f92672">=</span> regs<span style="color:#f92672">-&gt;</span>regs[<span style="color:#ae81ff">8</span>]; <span style="color:#75715e">// x8 是 syscall 号
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> scno <span style="color:#f92672">=</span> regs<span style="color:#f92672">-&gt;</span>regs[<span style="color:#ae81ff">8</span>]; <span style="color:#75715e">// x8 是 syscall 号
 </span></span></span><span style="display:flex;"><span>sys_call_table[scno] <span style="color:#960050;background-color:#1e0010">→</span> <span style="color:#a6e22e">sys_openat</span>(...)
 </span></span></code></pre></div><h3 id="4-sys_openat">4. sys_openat()</h3>
 <p>在内核 fs 层：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">SYSCALL_DEFINE4</span>(openat, <span style="color:#66d9ef">int</span> dfd, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> __user <span style="color:#f92672">*</span>filename,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">SYSCALL_DEFINE4</span>(openat, <span style="color:#66d9ef">int</span> dfd, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> __user <span style="color:#f92672">*</span>filename,
 </span></span><span style="display:flex;"><span>                         <span style="color:#66d9ef">int</span> flags, <span style="color:#66d9ef">umode_t</span> mode)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">do_sys_openat2</span>(dfd, filename, flags, mode);
@@ -219,7 +219,7 @@ SYSCALL_CANCEL(...) → INLINE_SYSCALL_CALL(...) → __INLINE_SYSCALL_DISP(__INL
 </span></span></code></pre></div><p>经由 VFS 层扩展到文件系统，最终返回 fd 或错误码</p>
 <hr>
 <h2 id="五完整调用链流程图">五、完整调用链流程图</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>glibc:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>glibc:
 </span></span><span style="display:flex;"><span>    open(path, flags, mode)
 </span></span><span style="display:flex;"><span>      → SYSCALL_CANCEL(openat, AT_FDCWD, ...)
 </span></span><span style="display:flex;"><span>      → __INLINE_SYSCALL5(...)

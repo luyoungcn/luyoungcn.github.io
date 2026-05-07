@@ -108,24 +108,24 @@
 <h1>I2C command</h1><time class="dim" datetime="2023-02-07T00:00:00&#43;08:00">February 7, 2023</time><div class="term-container"><div class="tag">
         <a href="/tags/i2c/">#I2C</a>
       </div><div class="tag">
-        <a href="/tags/linux/">#linux</a>
+        <a href="/tags/linux/">#Linux</a>
       </div></ol></div>
   <section class="page-section"><h1 id="i2c-寄存器读写命令">I2C 寄存器读写命令</h1>
 <h2 id="探测设备">探测设备</h2>
 <h3 id="i2cdetect">i2cdetect</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HELLO@WORLD:~# i2cdetect
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HELLO@WORLD:~# i2cdetect
 </span></span><span style="display:flex;"><span>Error: No i2c-bus specified!
 </span></span><span style="display:flex;"><span>Usage: i2cdetect <span style="color:#f92672">[</span>-y<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-a<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-q|-r<span style="color:#f92672">]</span> I2CBUS <span style="color:#f92672">[</span>FIRST LAST<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>       i2cdetect -F I2CBUS
 </span></span><span style="display:flex;"><span>       i2cdetect -l
 </span></span><span style="display:flex;"><span>  I2CBUS is an integer or an I2C bus name
 </span></span><span style="display:flex;"><span>  If provided, FIRST and LAST limit the probing range.
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># I2CBUS: 0 1 2 ...</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># I2CBUS: 0 1 2 ...</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Notice: -r 参数很重要，不带 -r 参数有些设备探测不到</span>
 </span></span><span style="display:flex;"><span>i2cdetect -y -r &lt;I2CBUS&gt;
 </span></span></code></pre></div><h2 id="对于8bit的reg-value-可以使用-i2cget--i2cset">对于8bit的reg, value 可以使用 <code>i2cget / i2cset</code></h2>
 <h3 id="i2cget">i2cget</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HELLO@WORLD:~# i2cget
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HELLO@WORLD:~# i2cget
 </span></span><span style="display:flex;"><span>Usage: i2cget <span style="color:#f92672">[</span>-f<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-y<span style="color:#f92672">]</span> I2CBUS CHIP-ADDRESS <span style="color:#f92672">[</span>DATA-ADDRESS <span style="color:#f92672">[</span>MODE<span style="color:#f92672">]]</span>
 </span></span><span style="display:flex;"><span>  I2CBUS is an integer or an I2C bus name
 </span></span><span style="display:flex;"><span>  ADDRESS is an integer <span style="color:#f92672">(</span>0x03 - 0x77<span style="color:#f92672">)</span>
@@ -134,10 +134,10 @@
 </span></span><span style="display:flex;"><span>    w <span style="color:#f92672">(</span>read word data<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>    c <span style="color:#f92672">(</span>write byte/read byte<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>    Append p <span style="color:#66d9ef">for</span> SMBus PEC
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># SLAVE_ADDRESS: 使用i2cdetect 出来的结果</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># SLAVE_ADDRESS: 使用i2cdetect 出来的结果</span>
 </span></span><span style="display:flex;"><span>i2cget -y -f &lt;I2CBUS&gt; &lt;SLAVE_ADDRESS&gt; &lt;REG&gt;
 </span></span></code></pre></div><h3 id="i2cset">i2cset</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HELLO@WORLD:~# i2cset
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HELLO@WORLD:~# i2cset
 </span></span><span style="display:flex;"><span>Usage: i2cset <span style="color:#f92672">[</span>-f<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-y<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-m MASK<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-r<span style="color:#f92672">]</span> I2CBUS CHIP-ADDRESS DATA-ADDRESS <span style="color:#f92672">[</span>VALUE<span style="color:#f92672">]</span> ... <span style="color:#f92672">[</span>MODE<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>  I2CBUS is an integer or an I2C bus name
 </span></span><span style="display:flex;"><span>  ADDRESS is an integer <span style="color:#f92672">(</span>0x03 - 0x77<span style="color:#f92672">)</span>
@@ -148,10 +148,10 @@
 </span></span><span style="display:flex;"><span>    i <span style="color:#f92672">(</span>I2C block data<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>    s <span style="color:#f92672">(</span>SMBus block data<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>    Append p <span style="color:#66d9ef">for</span> SMBus PEC
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>i2cset -y -f &lt;I2CBUS&gt; &lt;SLAVE_ADDRESS&gt; &lt;REG&gt; &lt;VALUE&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>i2cset -y -f &lt;I2CBUS&gt; &lt;SLAVE_ADDRESS&gt; &lt;REG&gt; &lt;VALUE&gt;
 </span></span></code></pre></div><h2 id="对于16bit的reg-value-需要使用-i2ctransfer">对于16bit+的reg, value 需要使用 <code>i2ctransfer</code></h2>
 <h3 id="i2ctransfer">i2ctransfer</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>root@J3Pilot-B:~# i2ctransfer
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>root@J3Pilot-B:~# i2ctransfer
 </span></span><span style="display:flex;"><span>Usage: i2ctransfer <span style="color:#f92672">[</span>-f<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-y<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-v<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-V<span style="color:#f92672">]</span> I2CBUS DESC <span style="color:#f92672">[</span>DATA<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>DESC <span style="color:#f92672">[</span>DATA<span style="color:#f92672">]]</span>...
 </span></span><span style="display:flex;"><span>  I2CBUS is an integer or an I2C bus name
 </span></span><span style="display:flex;"><span>  DESC describes the transfer in the form: <span style="color:#f92672">{</span>r|w<span style="color:#f92672">}</span>LENGTH<span style="color:#f92672">[</span>@address<span style="color:#f92672">]</span>
@@ -166,18 +166,18 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e"># i2ctransfer 0 w1@0x50 0x64 r8</span>
 </span></span><span style="display:flex;"><span>Example <span style="color:#f92672">(</span>same EEPROM, at offset 0x42 write 0xff 0xfe ... 0xf0<span style="color:#f92672">)</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e"># i2ctransfer 0 w17@0x50 0x42 0xff-</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># W3 写三个参数 16bit 寄存器 （2 Bytes）+ value（1 Byte）</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># W3 写三个参数 16bit 寄存器 （2 Bytes）+ value（1 Byte）</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># i2c bus 0</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># slave address 0x36</span>
 </span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w3@0x33 0x3B 0x9D 0x01
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># w2 （16bit寄存器）写两个参数 0x4F 0x0C 寄存器（0x4F0C）到 0x36 slave address</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># w2 （16bit寄存器）写两个参数 0x4F 0x0C 寄存器（0x4F0C）到 0x36 slave address</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># i2c bus 总线 0</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 读取 i2c 总线 0 的 slave address 为 0x36 的设备的寄存器 0x4F0C, 读一个 char</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 0x36 是 ovx3c 的 slave address （7bit i2c address）</span>
 </span></span><span style="display:flex;"><span>i2ctransfer -y -f <span style="color:#ae81ff">0</span> w2@0x36 0x4F 0x0C r1
 </span></span></code></pre></div><h2 id="dump-寄存器-00ff">dump 寄存器 00~FF</h2>
 <h3 id="i2cdump">i2cdump</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HELLO@WORLD:~# i2cdump 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>HELLO@WORLD:~# i2cdump 
 </span></span><span style="display:flex;"><span>Error: No i2c-bus specified!
 </span></span><span style="display:flex;"><span>Usage: i2cdump <span style="color:#f92672">[</span>-f<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-y<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-r first-last<span style="color:#f92672">]</span> I2CBUS ADDRESS <span style="color:#f92672">[</span>MODE <span style="color:#f92672">[</span>BANK <span style="color:#f92672">[</span>BANKREG<span style="color:#f92672">]]]</span>
 </span></span><span style="display:flex;"><span>  I2CBUS is an integer or an I2C bus name
@@ -190,7 +190,7 @@
 </span></span><span style="display:flex;"><span>    i <span style="color:#f92672">(</span>I2C block<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>    c <span style="color:#f92672">(</span>consecutive byte<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>    Append p <span style="color:#66d9ef">for</span> SMBus PEC
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>i2cdump -f -y &lt;I2CBUS&gt; &lt;SLAVE_ADDRESS&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>i2cdump -f -y &lt;I2CBUS&gt; &lt;SLAVE_ADDRESS&gt;
 </span></span></code></pre></div></section></main>
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>

@@ -193,12 +193,12 @@ uint8_t real_addr = 0x1A; uint8_t data[] = {0xAB, 0xCD}; uint8_t pec_input[] = {
 <li>
 <p><strong>禁用内核PEC</strong><br>
 阻止自动PEC计算：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">ioctl</span>(fd, I2C_PEC, <span style="color:#ae81ff">0</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">ioctl</span>(fd, I2C_PEC, <span style="color:#ae81ff">0</span>);
 </span></span></code></pre></div></li>
 <li>
 <p><strong>手动计算PEC</strong><br>
 使用真实地址进行CRC-8计算：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">uint8_t</span> real_addr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x1A</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">uint8_t</span> real_addr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x1A</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">uint8_t</span> data[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">0xAB</span>, <span style="color:#ae81ff">0xCD</span>};
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">uint8_t</span> pec_input[] <span style="color:#f92672">=</span> {(real_addr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">|</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0xAB</span>, <span style="color:#ae81ff">0xCD</span>};
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">uint8_t</span> pec <span style="color:#f92672">=</span> <span style="color:#a6e22e">crc8</span>(pec_input, <span style="color:#ae81ff">3</span>); <span style="color:#75715e">// 自定义CRC-8函数
@@ -206,12 +206,12 @@ uint8_t real_addr = 0x1A; uint8_t data[] = {0xAB, 0xCD}; uint8_t pec_input[] = {
 <li>
 <p><strong>构建I2C负载</strong><br>
 将计算的PEC附加到数据中：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">uint8_t</span> payload[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">0xAB</span>, <span style="color:#ae81ff">0xCD</span>, pec};
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">uint8_t</span> payload[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">0xAB</span>, <span style="color:#ae81ff">0xCD</span>, pec};
 </span></span></code></pre></div></li>
 <li>
 <p><strong>使用<code>I2C_RDWR</code>发送</strong><br>
 使用别名地址进行事务：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> i2c_msg msg <span style="color:#f92672">=</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> i2c_msg msg <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>    .addr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x70</span>, <span style="color:#75715e">// 别名地址
 </span></span></span><span style="display:flex;"><span>    .flags <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>,
 </span></span><span style="display:flex;"><span>    .len <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(payload),
@@ -222,7 +222,7 @@ uint8_t real_addr = 0x1A; uint8_t data[] = {0xAB, 0xCD}; uint8_t pec_input[] = {
 </span></span></code></pre></div></li>
 </ol>
 <h3 id="52-完整示例代码">5.2 完整示例代码</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/i2c-dev.h&gt;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/i2c-dev.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/ioctl.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;fcntl.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">

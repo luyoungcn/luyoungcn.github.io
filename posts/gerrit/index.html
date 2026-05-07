@@ -124,15 +124,15 @@
 <li>openjdk version &ldquo;11.0.19&rdquo; 2023-04-18</li>
 </ul>
 <h1 id="安装依赖软件包">安装依赖软件包</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install openjdk-11-jdk openjdk-11-jdk-headless openjdk-11-jre openjdk-11-jre-headless
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install openjdk-11-jdk openjdk-11-jdk-headless openjdk-11-jre openjdk-11-jre-headless
 </span></span></code></pre></div><h1 id="创建-gerrit-用户">创建 Gerrit 用户</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo adduser gerrit
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo adduser gerrit
 </span></span><span style="display:flex;"><span>sudo usermod -a -G sudo gerrit
 </span></span><span style="display:flex;"><span>sudo su gerrit
 </span></span><span style="display:flex;"><span>mkdir ~/gerrit
 </span></span><span style="display:flex;"><span>java -jar gerrit-3.8.0.war init -d ~/gerrit
 </span></span></code></pre></div><h1 id="安装-gerrit">安装 Gerrit</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ java -jar gerrit-3.8.0.war init -d ~/gerrit
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ java -jar gerrit-3.8.0.war init -d ~/gerrit
 </span></span><span style="display:flex;"><span>Using secure store: com.google.gerrit.server.securestore.DefaultSecureStore
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>2023-06-03 12:19:03,027<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> INFO  com.google.gerrit.server.config.GerritServerConfigProvider : No /home/gerrit/gerrit/etc/gerrit.config; assuming defaults
 </span></span><span style="display:flex;"><span>
@@ -275,7 +275,7 @@
 </span></span><span style="display:flex;"><span>Please open the following URL in the browser: http://luyang-VirtualBox/#/admin/projects/
 </span></span></code></pre></div><h1 id="配置-gerrit">配置 Gerrit</h1>
 <p><code>etc/gerrit.config</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>gerrit<span style="color:#f92672">]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>gerrit<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>        basePath <span style="color:#f92672">=</span> git
 </span></span><span style="display:flex;"><span>        canonicalWebUrl <span style="color:#f92672">=</span> http://192.168.56.104:8080
 </span></span><span style="display:flex;"><span>        serverId <span style="color:#f92672">=</span> d00cca90-af13-4298-9273-72d50cce94ce
@@ -308,7 +308,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>cache<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>        directory <span style="color:#f92672">=</span> cache
 </span></span></code></pre></div><h1 id="安装配置-nginx">安装配置 Nginx</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install nginx
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install nginx
 </span></span></code></pre></div><p><code>/etc/nginx/conf.d/gerrit.conf</code></p>
 <pre tabindex="0"><code class="language-conf" data-lang="conf">server {
 

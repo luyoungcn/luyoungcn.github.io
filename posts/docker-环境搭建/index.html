@@ -127,7 +127,7 @@ sudo apt-get update sudo apt-get install ca-certificates curl gnupg 2. 添加 Do
 <h2 id="-分步详解docker-安装全过程">🛠️ 分步详解：Docker 安装全过程</h2>
 <h3 id="第一步清理旧环境">第一步：清理旧环境</h3>
 <p>一个最佳实践是先清理系统中可能存在的旧版本或冲突的容器运行时，以避免潜在问题。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> pkg in docker.io docker-doc docker-compose podman-docker containerd runc; <span style="color:#66d9ef">do</span> sudo apt-get remove $pkg; <span style="color:#66d9ef">done</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> pkg in docker.io docker-doc docker-compose podman-docker containerd runc; <span style="color:#66d9ef">do</span> sudo apt-get remove $pkg; <span style="color:#66d9ef">done</span>
 </span></span></code></pre></div><ul>
 <li><strong>说明</strong>: 这个 <code>for</code> 循环会尝试卸载一系列已知的旧版 Docker 相关软件包。即使某个包未安装，命令也会安全地跳过。</li>
 </ul>
@@ -135,14 +135,14 @@ sudo apt-get update sudo apt-get install ca-certificates curl gnupg 2. 添加 Do
 <p>这是整个过程中最核心的一步，目的是让系统信任并从 Docker 官方源下载软件。</p>
 <h4 id="1-安装基础依赖">1. 安装基础依赖</h4>
 <p>我们需要 <code>curl</code> 来下载文件，<code>gnupg</code> 来处理密钥。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get update
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get update
 </span></span><span style="display:flex;"><span>sudo apt-get install ca-certificates curl gnupg
 </span></span></code></pre></div><h4 id="2-添加-docker-官方-gpg-密钥">2. 添加 Docker 官方 GPG 密钥</h4>
 <blockquote>
 <p>[!TIP] GPG 密钥的作用?
 GPG (GNU Privacy Guard) 密钥用于对软件包进行数字签名。添加 Docker 的官方密钥后，我们的系统在安装 Docker 软件包时会进行验证，确保软件包来自官方且在传输过程中未被篡改，这是保障系统安全的关键一步。</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 创建用于存放密钥的目录</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 创建用于存放密钥的目录</span>
 </span></span><span style="display:flex;"><span>sudo install -m <span style="color:#ae81ff">0755</span> -d /etc/apt/keyrings
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 下载 GPG 密钥并存放到指定位置</span>
@@ -152,7 +152,7 @@ GPG (GNU Privacy Guard) 密钥用于对软件包进行数字签名。添加 Dock
 </span></span><span style="display:flex;"><span>sudo chmod a+r /etc/apt/keyrings/docker.gpg
 </span></span></code></pre></div><h4 id="3-将-docker-仓库写入系统源列表">3. 将 Docker 仓库写入系统源列表</h4>
 <p>这条命令会自动检测你的系统架构和 Ubuntu 版本代号，生成对应的仓库配置。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#ae81ff">\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;deb [arch=&#34;</span><span style="color:#66d9ef">$(</span>dpkg --print-architecture<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34; signed-by=/etc/apt/keyrings/docker.gpg] [https://download.docker.com/linux/ubuntu](https://download.docker.com/linux/ubuntu) \
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;</span><span style="color:#66d9ef">$(</span>. /etc/os-release <span style="color:#f92672">&amp;&amp;</span> echo <span style="color:#e6db74">&#34;</span>$VERSION_CODENAME<span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34; stable&#34;</span> | <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>  sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
@@ -162,14 +162,14 @@ GPG (GNU Privacy Guard) 密钥用于对软件包进行数字签名。添加 Dock
 </ul>
 <h3 id="第三步安装-docker-引擎">第三步：安装 Docker 引擎</h3>
 <p>现在万事俱备，可以正式安装 Docker 了。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 再次更新 apt 包索引，以加载刚刚添加的 Docker 仓库</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 再次更新 apt 包索引，以加载刚刚添加的 Docker 仓库</span>
 </span></span><span style="display:flex;"><span>sudo apt-get update
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 安装 Docker 引擎、CLI、containerd 和其他关键插件</span>
 </span></span><span style="display:flex;"><span>sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 </span></span></code></pre></div><h3 id="第四步配置用户权限">第四步：配置用户权限</h3>
 <p>默认情况下，<code>docker</code> 命令需要 <code>sudo</code> 权限。为了方便日常使用，我们将当前用户添加到 <code>docker</code> 用户组。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo usermod -aG docker $USER
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo usermod -aG docker $USER
 </span></span></code></pre></div><blockquote>
 <p>[!IMPORTANT]
 <strong>必须重新登录！</strong>
@@ -178,9 +178,9 @@ GPG (GNU Privacy Guard) 密钥用于对软件包进行数字签名。添加 Dock
 <hr>
 <h2 id="-验证安装">✅ 验证安装</h2>
 <p>重新登录后，运行经典的 <code>hello-world</code> 镜像来验证 Docker 是否安装成功。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run hello-world
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run hello-world
 </span></span></code></pre></div><p>如果一切正常，你将看到来自 Docker 的欢迎信息。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Hello from Docker!
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Hello from Docker!
 </span></span><span style="display:flex;"><span>This message shows that your installation appears to be working correctly.
 </span></span><span style="display:flex;"><span>...
 </span></span></code></pre></div><hr>
@@ -191,7 +191,7 @@ GPG (GNU Privacy Guard) 密钥用于对软件包进行数字签名。添加 Dock
 从网络通过管道 (<code>|</code>) 直接执行脚本是一种高效但有潜在风险的操作。在生产环境或处理敏感数据的机器上，强烈建议先审查脚本内容，再执行。</p>
 </blockquote>
 <p><strong>一键安装命令:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fsSL https://gist.githubusercontent.com/luyoungcn/706898e7d33543160b96023c46d8acc3/raw/fac1b8893b5ddd9ad7c883b32145fdb00047c9a4/install-docker-ubuntu.sh | sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fsSL https://gist.githubusercontent.com/luyoungcn/706898e7d33543160b96023c46d8acc3/raw/fac1b8893b5ddd9ad7c883b32145fdb00047c9a4/install-docker-ubuntu.sh | sh
 </span></span></code></pre></div><p><strong>脚本源地址:</strong> <a href="https://www.google.com/url?sa=E&amp;source=gmail&amp;q=https://gist.github.com/706898e7d33543160b96023c46d8acc3">https://gist.github.com/706898e7d33543160b96023c46d8acc3</a></p>
 <hr>
 <h2 id="-相关概念">📚 相关概念</h2>
@@ -202,7 +202,7 @@ GPG (GNU Privacy Guard) 密钥用于对软件包进行数字签名。添加 Dock
 <li>[[Docker Compose]]</li>
 </ul>
 <hr>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> pkg in docker.io docker-doc docker-compose podman-docker containerd runc; <span style="color:#66d9ef">do</span> sudo apt-get remove $pkg; <span style="color:#66d9ef">done</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> pkg in docker.io docker-doc docker-compose podman-docker containerd runc; <span style="color:#66d9ef">do</span> sudo apt-get remove $pkg; <span style="color:#66d9ef">done</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo apt-get update
 </span></span><span style="display:flex;"><span>sudo apt-get install ca-certificates curl gnupg

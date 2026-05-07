@@ -132,7 +132,7 @@ Git 官方推荐的标准标签类型 包含完整元数据（作者、时间、
     <span>&nbsp»&nbsp</span>
 </ol>
 <h1>📘Git Tag 使用与推送技术文档</h1><time class="dim" datetime="2025-01-10T02:30:00&#43;08:00">January 10, 2025</time><div class="term-container"><div class="tag">
-        <a href="/tags/linux/">#linux</a>
+        <a href="/tags/linux/">#Linux</a>
       </div><div class="tag">
         <a href="/tags/kernel/">#kernel</a>
       </div><div class="tag">
@@ -188,7 +188,7 @@ Git 官方推荐的标准标签类型 包含完整元数据（作者、时间、
 <li>本地个人使用</li>
 </ul>
 <p><strong>示例</strong>：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag v1.0.0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag v1.0.0
 </span></span></code></pre></div><hr>
 <h3 id="22-附注标签annotated-tag推荐">2.2 附注标签（Annotated Tag，推荐）</h3>
 <p><strong>定义</strong>：</p>
@@ -209,7 +209,7 @@ Git 官方推荐的标准标签类型 包含完整元数据（作者、时间、
 <li>生产环境部署版本</li>
 </ul>
 <p><strong>示例</strong>：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag -a v1.0.0 -m <span style="color:#e6db74">&#34;正式发布 v1.0.0，新增登录与支付功能&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag -a v1.0.0 -m <span style="color:#e6db74">&#34;正式发布 v1.0.0，新增登录与支付功能&#34;</span>
 </span></span></code></pre></div><blockquote>
 <p>✅ <strong>规范建议</strong>：</p>
 <ul>
@@ -221,9 +221,9 @@ Git 官方推荐的标准标签类型 包含完整元数据（作者、时间、
 <h2 id="3-创建-git-tag">3. 创建 Git Tag</h2>
 <h3 id="31-给最新-commit-创建标签">3.1 给最新 Commit 创建标签</h3>
 <h4 id="轻量标签">轻量标签</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag v1.0.0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag v1.0.0
 </span></span></code></pre></div><h4 id="附注标签推荐">附注标签（推荐）</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag -a v1.0.0 -m <span style="color:#e6db74">&#34;发布 v1.0.0：完成核心功能&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag -a v1.0.0 -m <span style="color:#e6db74">&#34;发布 v1.0.0：完成核心功能&#34;</span>
 </span></span></code></pre></div><hr>
 <h3 id="32-给历史-commit-补打标签">3.2 给历史 Commit 补打标签</h3>
 <p><strong>适用场景</strong>：</p>
@@ -235,11 +235,11 @@ Git 官方推荐的标准标签类型 包含完整元数据（作者、时间、
 <ol>
 <li>查看提交记录</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git log --oneline
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git log --oneline
 </span></span></code></pre></div><ol start="2">
 <li>给指定 commit 打标签</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag -a v0.9.0 a3f2d4e -m <span style="color:#e6db74">&#34;补打 v0.9.0 测试版本&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag -a v0.9.0 a3f2d4e -m <span style="color:#e6db74">&#34;补打 v0.9.0 测试版本&#34;</span>
 </span></span></code></pre></div><hr>
 <h2 id="4-推送-tag-到-github核心">4. 推送 Tag 到 GitHub（核心）</h2>
 <blockquote>
@@ -247,7 +247,7 @@ Git 官方推荐的标准标签类型 包含完整元数据（作者、时间、
 Git 默认 <strong>不会</strong> 推送 Tag，必须显式执行推送命令。</p>
 </blockquote>
 <h3 id="41-推送单个标签推荐">4.1 推送单个标签（推荐）</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin v1.0.0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin v1.0.0
 </span></span></code></pre></div><p><strong>适用场景</strong>：</p>
 <ul>
 <li>正式发布</li>
@@ -255,7 +255,7 @@ Git 默认 <strong>不会</strong> 推送 Tag，必须显式执行推送命令�
 </ul>
 <hr>
 <h3 id="42-推送所有本地标签谨慎">4.2 推送所有本地标签（谨慎）</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin --tags
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin --tags
 </span></span></code></pre></div><p><strong>风险说明</strong>：</p>
 <ul>
 <li>会推送所有未同步的标签</li>
@@ -268,14 +268,14 @@ Git 默认 <strong>不会</strong> 推送 Tag，必须显式执行推送命令�
 <hr>
 <h2 id="5-查看与同步-tag">5. 查看与同步 Tag</h2>
 <h3 id="51-查看本地标签">5.1 查看本地标签</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag          <span style="color:#75715e"># 仅标签名</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag          <span style="color:#75715e"># 仅标签名</span>
 </span></span><span style="display:flex;"><span>git tag -n       <span style="color:#75715e"># 标签名 + 备注</span>
 </span></span></code></pre></div><hr>
 <h3 id="52-查看远程标签">5.2 查看远程标签</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git ls-remote --tags origin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git ls-remote --tags origin
 </span></span></code></pre></div><hr>
 <h3 id="53-拉取远程标签团队协作必备">5.3 拉取远程标签（团队协作必备）</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git fetch origin --tags
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git fetch origin --tags
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 或</span>
 </span></span><span style="display:flex;"><span>git pull origin --tags
 </span></span></code></pre></div><hr>
@@ -284,12 +284,12 @@ Git 默认 <strong>不会</strong> 推送 Tag，必须显式执行推送命令�
 <p>❗ 删除顺序错误会导致远程删除失败</p>
 </blockquote>
 <h3 id="61-删除本地标签">6.1 删除本地标签</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag -d v1.0.0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git tag -d v1.0.0
 </span></span></code></pre></div><hr>
 <h3 id="62-删除远程标签">6.2 删除远程标签</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin --delete v1.0.0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin --delete v1.0.0
 </span></span></code></pre></div><p><strong>兼容旧写法</strong>：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin :refs/tags/v1.0.0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin :refs/tags/v1.0.0
 </span></span></code></pre></div><hr>
 <h2 id="7-常见问题排查">7. 常见问题排查</h2>
 <h3 id="71-无权限推送-tag">7.1 无权限推送 Tag</h3>
@@ -299,7 +299,7 @@ Git 默认 <strong>不会</strong> 推送 Tag，必须显式执行推送命令�
 <li>HTTPS：使用 Personal Access Token</li>
 <li>SSH：确认 SSH Key 已配置</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -T git@github.com
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -T git@github.com
 </span></span></code></pre></div><hr>
 <h3 id="72-标签已存在tag-already-exists">7.2 标签已存在（tag already exists）</h3>
 <p><strong>原因</strong>：远程存在同名标签</p>
@@ -310,11 +310,11 @@ Git 默认 <strong>不会</strong> 推送 Tag，必须显式执行推送命令�
 </ul>
 <hr>
 <h3 id="73-拉取后本地无标签">7.3 拉取后本地无标签</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git fetch origin --tags
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git fetch origin --tags
 </span></span></code></pre></div><hr>
 <h2 id="8-版本号命名规范强烈推荐">8. 版本号命名规范（强烈推荐）</h2>
 <h3 id="81-语义化版本格式">8.1 语义化版本格式</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>v主版本号.次版本号.修订号
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>v主版本号.次版本号.修订号
 </span></span></code></pre></div><p><strong>示例</strong>：</p>
 <ul>
 <li><code>v1.0.0</code></li>
@@ -346,7 +346,7 @@ Git 默认 <strong>不会</strong> 推送 Tag，必须显式执行推送命令�
 </table>
 <hr>
 <h2 id="9-高频命令速查表">9. 高频命令速查表</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 创建标签</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 创建标签</span>
 </span></span><span style="display:flex;"><span>git tag v1.0.0
 </span></span><span style="display:flex;"><span>git tag -a v1.0.0 -m <span style="color:#e6db74">&#34;备注&#34;</span>
 </span></span><span style="display:flex;"><span>
