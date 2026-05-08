@@ -857,6 +857,9 @@
     <loc>/tags/androidstudio/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
+    <loc>/tags/aosp/</loc>
+    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
+  </url><url>
     <loc>/tags/awr2243/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
@@ -948,6 +951,12 @@
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/posts/harmony-hpm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</loc>
+    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/tags/hidl/</loc>
+    <lastmod>1970-01-01T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>/posts/hidl_%E6%B7%B1%E5%BA%A6%E6%8C%87%E5%8D%97_%E4%BB%8E%E6%8E%A5%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0/</loc>
     <lastmod>1970-01-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>/posts/hugo/</loc>

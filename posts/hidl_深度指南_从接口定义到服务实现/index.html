@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HIDL 深度指南：从接口定义到服务实现 | LuyangのBlog</title>
+<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/hidl_%E6%B7%B1%E5%BA%A6%E6%8C%87%E5%8D%97_%E4%BB%8E%E6%8E%A5%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="HIDL 深度指南：从接口定义到服务实现">
+  <meta property="og:description" content="HIDL 深度指南：从接口定义到服务实现 本文档基于工程实战整理，完整覆盖 HIDL 运作机制、源码框架、编译流程、服务注册与客户端访问，并补充线程模型、内存共享、类型映射、Return 对象等关键概念，可作为从入门到落地的第一手参考。原有已验证的脚本与代码将原样保留，并附上必要的上下文解释与纠错。
+1. 概述 HIDL (HAL Interface Definition Language) 是 Android 8.0 (Project Treble) 引入的接口描述语言，用于定义硬件抽象层 (HAL) 与其用户之间的接口。HIDL 将 Android 框架 (framework) 与硬件相关实现 (vendor) 解耦，使得系统镜像可以独立于供应商实现进行更新。
+核心目标 模块化：通过接口契约隔离系统与供应商。 向前兼容：版本化接口支持平滑升级。 多传输模式：binder 化（跨进程）与直通模式（同进程）灵活选择。 高效数据传递：支持零拷贝共享内存。 2. 参考资源 HIDL Demo Android HIDL 实例 Android HIDL 中 hidl-gen使用 AndroidO Treble架构下的接口文件编译 服务和数据转移 数据类型 线程模型 HIDL 内存块 3. 软件包与接口 3.1 软件包命名与目录位置 软件包是 HIDL 接口的逻辑组织单元，命名与文件系统路径强关联。
+软件包前缀 位置 android.hardware.* hardware/interfaces/* android.frameworks.* frameworks/hardware/interfaces/* android.system.* system/hardware/interfaces/* android.hidl.* system/libhidl/transport/* vendor.xxx.hardware.* vendor/xxx/interfaces/* 以 android.hardware 为例：">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="1970-01-01T00:00:00+08:00">
+    <meta property="article:modified_time" content="1970-01-01T00:00:00+08:00">
+    <meta property="article:tag" content="HIDL">
+    <meta property="article:tag" content="Android">
+    <meta property="article:tag" content="AOSP">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="HIDL 深度指南：从接口定义到服务实现">
+  <meta name="twitter:description" content="HIDL 深度指南：从接口定义到服务实现 本文档基于工程实战整理，完整覆盖 HIDL 运作机制、源码框架、编译流程、服务注册与客户端访问，并补充线程模型、内存共享、类型映射、Return 对象等关键概念，可作为从入门到落地的第一手参考。原有已验证的脚本与代码将原样保留，并附上必要的上下文解释与纠错。
+1. 概述 HIDL (HAL Interface Definition Language) 是 Android 8.0 (Project Treble) 引入的接口描述语言，用于定义硬件抽象层 (HAL) 与其用户之间的接口。HIDL 将 Android 框架 (framework) 与硬件相关实现 (vendor) 解耦，使得系统镜像可以独立于供应商实现进行更新。
+核心目标 模块化：通过接口契约隔离系统与供应商。 向前兼容：版本化接口支持平滑升级。 多传输模式：binder 化（跨进程）与直通模式（同进程）灵活选择。 高效数据传递：支持零拷贝共享内存。 2. 参考资源 HIDL Demo Android HIDL 实例 Android HIDL 中 hidl-gen使用 AndroidO Treble架构下的接口文件编译 服务和数据转移 数据类型 线程模型 HIDL 内存块 3. 软件包与接口 3.1 软件包命名与目录位置 软件包是 HIDL 接口的逻辑组织单元，命名与文件系统路径强关联。
+软件包前缀 位置 android.hardware.* hardware/interfaces/* android.frameworks.* frameworks/hardware/interfaces/* android.system.* system/hardware/interfaces/* android.hidl.* system/libhidl/transport/* vendor.xxx.hardware.* vendor/xxx/interfaces/* 以 android.hardware 为例：">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.35b15f72eff61cbb106d05bab1ea1aebb778d0ba2861c763af0af0d80f43db4f.css" integrity="sha256-NbFfcu/2HLsQbQW6seoa67d40LooYcdjrwrw2A9D208=" crossorigin="anonymous">
+
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.3928d3d2172bc0b5f75d9458fb9255f0befce1c7239ba6e5d2c58ed4b82c2073.js" integrity="sha256-OSjT0hcrwLX3XZRY&#43;5JV8L784ccjm6bl0sWO1LgsIHM="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>HIDL 深度指南：从接口定义到服务实现</h1><time class="dim" datetime="1970-01-01T00:00:00&#43;08:00">January 1, 1970</time><div class="term-container"><div class="tag">
+        <a href="/tags/hidl/">#HIDL</a>
+      </div><div class="tag">
+        <a href="/tags/android/">#android</a>
+      </div><div class="tag">
+        <a href="/tags/aosp/">#AOSP</a>
+      </div></ol></div>
+  <section class="page-section"><h1 id="hidl-深度指南从接口定义到服务实现">HIDL 深度指南：从接口定义到服务实现</h1>
+<blockquote>
+<p>本文档基于工程实战整理，完整覆盖 HIDL 运作机制、源码框架、编译流程、服务注册与客户端访问，并补充线程模型、内存共享、类型映射、Return 对象等关键概念，可作为从入门到落地的第一手参考。原有已验证的脚本与代码将原样保留，并附上必要的上下文解释与纠错。</p>
+</blockquote>
+<hr>
+<h2 id="1-概述">1. 概述</h2>
+<p><strong>HIDL (HAL Interface Definition Language)</strong> 是 Android 8.0 (Project Treble) 引入的接口描述语言，用于定义硬件抽象层 (HAL) 与其用户之间的接口。HIDL 将 Android 框架 (<code>framework</code>) 与硬件相关实现 (<code>vendor</code>) 解耦，使得系统镜像可以独立于供应商实现进行更新。</p>
+<h3 id="核心目标">核心目标</h3>
+<ul>
+<li><strong>模块化</strong>：通过接口契约隔离系统与供应商。</li>
+<li><strong>向前兼容</strong>：版本化接口支持平滑升级。</li>
+<li><strong>多传输模式</strong>：binder 化（跨进程）与直通模式（同进程）灵活选择。</li>
+<li><strong>高效数据传递</strong>：支持零拷贝共享内存。</li>
+</ul>
+<hr>
+<h2 id="2-参考资源">2. 参考资源</h2>
+<ul>
+<li><a href="https://github.com/anlory/LedHidl">HIDL Demo</a></li>
+<li><a href="https://blog.csdn.net/shift_wwx/article/details/86530600">Android HIDL 实例</a></li>
+<li><a href="https://blog.csdn.net/shift_wwx/article/details/86525079">Android HIDL 中 hidl-gen使用</a></li>
+<li><a href="https://blog.csdn.net/yangwen123/article/details/79840569">AndroidO Treble架构下的接口文件编译</a></li>
+<li><a href="https://source.android.google.cn/devices/architecture/hidl/services">服务和数据转移</a></li>
+<li><a href="https://source.android.google.cn/devices/architecture/hidl/types">数据类型</a></li>
+<li><a href="https://source.android.google.cn/devices/architecture/hidl/threading">线程模型</a></li>
+<li><a href="https://source.android.google.cn/devices/architecture/hidl/memoryblock">HIDL 内存块</a></li>
+</ul>
+<hr>
+<h2 id="3-软件包与接口">3. 软件包与接口</h2>
+<h3 id="31-软件包命名与目录位置">3.1 软件包命名与目录位置</h3>
+<p>软件包是 HIDL 接口的逻辑组织单元，命名与文件系统路径强关联。</p>
+<table>
+  <thead>
+      <tr>
+          <th>软件包前缀</th>
+          <th>位置</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>android.hardware.*</code></td>
+          <td><code>hardware/interfaces/*</code></td>
+      </tr>
+      <tr>
+          <td><code>android.frameworks.*</code></td>
+          <td><code>frameworks/hardware/interfaces/*</code></td>
+      </tr>
+      <tr>
+          <td><code>android.system.*</code></td>
+          <td><code>system/hardware/interfaces/*</code></td>
+      </tr>
+      <tr>
+          <td><code>android.hidl.*</code></td>
+          <td><code>system/libhidl/transport/*</code></td>
+      </tr>
+      <tr>
+          <td><code>vendor.xxx.hardware.*</code></td>
+          <td><code>vendor/xxx/interfaces/*</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>以 <code>android.hardware</code> 为例：</p>
+<ul>
+<li><code>.hal</code> 文件路径：<code>hardware/interfaces/&lt;module&gt;/[&lt;submodule&gt;]/&lt;ver-major.ver-minor&gt;/</code></li>
+<li>文件头必须声明：
+<code>package android.hardware.&lt;module&gt;.[&lt;submodule&gt;]@&lt;ver-major.ver-minor&gt;;</code></li>
+</ul>
+<p><strong>hidl-gen 的 <code>-r</code> 参数</strong>：用于指定包根目录到物理路径的映射。例如：</p>
+<pre tabindex="0"><code>hidl-gen -r android.hardware:hardware/interfaces ...
+</code></pre><p>若包为 <code>vendor.awesome.foo@1.0::IFoo</code>，且通过 <code>-r vendor.awesome:some/device/independent/path/interfaces</code> 映射，则接口文件应位于：</p>
+<pre tabindex="0"><code>$ANDROID_BUILD_TOP/some/device/independent/path/interfaces/foo/1.0/IFoo.hal
+</code></pre><h3 id="32-接口与代码样式">3.2 接口与代码样式</h3>
+<p><code>.hal</code> 文件必须遵循 <a href="https://source.android.google.cn/devices/architecture/hidl/code-style">HIDL 代码样式指南</a>。基本元素包括：</p>
+<ul>
+<li>方法声明（支持单向 <code>oneway</code>、同步返回、异步回调）</li>
+<li>自定义类型（<code>enum</code>、<code>struct</code>、<code>union</code>）</li>
+<li>注释、版本化、导入其他包的类型</li>
+</ul>
+<hr>
+<h2 id="4-hidl-实现步步通-step-by-step">4. HIDL 实现步步通 (Step-by-Step)</h2>
+<p>本章以自定义包 <code>vendor.huawei.helloworld@1.0</code> 为例，完整演示从接口定义到服务运行的流程。</p>
+<h3 id="41-整体流程">4.1 整体流程</h3>
+<ol>
+<li>生成 <code>hidl-gen</code> 工具：<code>make hidl-gen -j8</code></li>
+<li>编写 <code>.hal</code> 接口文件</li>
+<li>使用 <code>hidl-gen</code> 生成 <code>Android.bp</code>、C++/Java 实现骨架</li>
+<li>在生成的服务实现中填充逻辑</li>
+<li>创建服务入口函数 (<code>service.cpp</code>)</li>
+<li>编写启动服务的 <code>.rc</code> 文件</li>
+<li>配置 SELinux 策略</li>
+</ol>
+<h3 id="42-源码框架设计">4.2 源码框架设计</h3>
+<p>项目目录结构（已实际验证）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>android$ tree vendor/huawei/
+</span></span><span style="display:flex;"><span>vendor/huawei/
+</span></span><span style="display:flex;"><span>└── interfaces
+</span></span><span style="display:flex;"><span>    ├── helloworld
+</span></span><span style="display:flex;"><span>    │   └── 1.0
+</span></span><span style="display:flex;"><span>    │       ├── IHelloWorld.hal
+</span></span><span style="display:flex;"><span>    │       └── types.hal
+</span></span><span style="display:flex;"><span>    ├── update-files.sh
+</span></span><span style="display:flex;"><span>    └── update-makefiles.sh
+</span></span></code></pre></div><p><strong>核心文件内容：</strong></p>
+<ul>
+<li>
+<p><strong>IHelloWorld.hal</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> vendor.huawei.helloworld<span style="color:#a6e22e">@1.0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IHelloWorld</span> {
+</span></span><span style="display:flex;"><span>    justTest(string name) generates (string result, HelloTest value);
+</span></span><span style="display:flex;"><span>    justTest1(HelloTest name);
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div></li>
+<li>
+<p><strong>types.hal</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> vendor.huawei.helloworld<span style="color:#a6e22e">@1.0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">enum</span> HelloTest : uint8_t {
+</span></span><span style="display:flex;"><span>    V_TEST1 <span style="color:#f92672">=</span> 0,
+</span></span><span style="display:flex;"><span>    V_TEST2 <span style="color:#f92672">=</span> 1,
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="43-使用-hidl-gen-生成骨架">4.3 使用 hidl-gen 生成骨架</h3>
+<p><strong>脚本 <code>update-files.sh</code></strong>：生成 C++ 实现骨架及编译规则。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span>LOC<span style="color:#f92672">=</span>vendor/huawei/interfaces/helloworld/1.0/default/
+</span></span><span style="display:flex;"><span>PACKAGE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vendor.huawei.helloworld@1.0&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># make hidl-gen -j8</span>
+</span></span><span style="display:flex;"><span>hidl-gen -o $LOC -Lc++-impl -rvendor.huawei:vendor/huawei/interfaces -randroid.hidl:system/libhidl/transport $PACKAGE
+</span></span><span style="display:flex;"><span>hidl-gen -o $LOC -Landroidbp-impl -rvendor.huawei:vendor/huawei/interfaces -randroid.hidl:system/libhidl/transport $PACKAGE
+</span></span></code></pre></div><p>执行后将在 <code>default/</code> 下生成：</p>
+<ul>
+<li><code>HelloWorld.cpp</code> ：服务实现存根</li>
+<li><code>HelloWorld.h</code>   ：头文件</li>
+<li><code>Android.bp</code>     ：实现库的编译规则</li>
+</ul>
+<blockquote>
+<p><strong>执行位置</strong>：必须在 Android 源码根目录运行，且已执行 <code>source</code> 和 <code>lunch</code>。</p>
+</blockquote>
+<h3 id="44-更新全局-makefile">4.4 更新全局 Makefile</h3>
+<p>脚本 <code>update-makefiles.sh</code> 生成接口本身的 <code>Android.bp</code>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span>source $ANDROID_BUILD_TOP/system/tools/hidl/update-makefiles-helper.sh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>do_makefiles_update <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;vendor.huawei:vendor/huawei/interfaces&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;android.hidl:system/libhidl/transport&#34;</span>
+</span></span></code></pre></div><p>执行后会在 <code>helloworld/1.0/</code> 下创建 <code>Android.bp</code>。</p>
+<h3 id="45-编译并解决包根路径问题">4.5 编译并解决包根路径问题</h3>
+<p>首次编译接口时常见错误：</p>
+<pre tabindex="0"><code>error: ... Cannot find package root specification for package root &#39;vendor.huawei&#39; ...
+</code></pre><p>解决方法：在 <code>helloworld/1.0/Android.bp</code> 中添加：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">hidl_package_root</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#f92672">&#34;vendor.huawei&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">path:</span> <span style="color:#f92672">&#34;vendor/huawei/interfaces&#34;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>然后执行 <code>mmm vendor/huawei/interfaces/helloworld/1.0/</code> 编译。</p>
+<p><strong>编译产物概览</strong>（位于 <code>out/soong/.intermediates/vendor/huawei/interfaces/helloworld/1.0/</code>）：</p>
+<ul>
+<li><code>vendor.huawei.helloworld@1.0.so</code> : Binder 化客户端库</li>
+<li><code>vendor.huawei.helloworld@1.0-impl.so</code> : 服务实现库</li>
+<li><code>vendor.huawei.helloworld@1.0-adapter-helper.so</code> : 直通模式辅助库</li>
+<li>Java 库 <code>vendor.huawei.helloworld-V1.0-java.jar</code></li>
+<li>生成的头文件（<code>gen/</code> 目录），如 <code>BnHwHelloWorld.h</code>, <code>BpHwHelloWorld.h</code> 等</li>
+</ul>
+<p>这些产物对应 HIDL 开发各阶段的目标文件：客户端链接 <code>.so</code>，服务实现需链接 <code>-impl.so</code>，Java 层访问则用 jar 包。</p>
+<h3 id="46-实现服务端与启动配置">4.6 实现服务端与启动配置</h3>
+<p>在 <code>default/</code> 目录下添加 <code>service.cpp</code> 和 <code>.rc</code> 文件。</p>
+<p><strong>service.cpp</strong>
+使用 <code>defaultPassthroughServiceImplementation</code> 注册服务，同时支持 binder 和直通模式。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#define LOG_TAG &#34;vendor.huawei.helloworld@1.0-service&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vendor/huawei/helloworld/1.0/IHelloWorld.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;hidl/LegacySupport.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> vendor<span style="color:#f92672">::</span>huawei<span style="color:#f92672">::</span>helloworld<span style="color:#f92672">::</span>V1_0<span style="color:#f92672">::</span>IHelloWorld;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> android<span style="color:#f92672">::</span>hardware<span style="color:#f92672">::</span>defaultPassthroughServiceImplementation;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> defaultPassthroughServiceImplementation<span style="color:#f92672">&lt;</span>IHelloWorld<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong><a href="mailto:vendor.huawei.helloworld@1.0-service.rc">vendor.huawei.helloworld@1.0-service.rc</a></strong>
+原笔记中接口名 <code>Ihelloworld</code> 大小写错误，应为 <code>IHelloWorld</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#a6e22e">service vendor.huawei.helloworld /vendor/bin/hw/vendor.huawei.helloworld@1.0-service</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">interface vendor::huawei::helloworld@1.0::IHelloWorld default</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">class hal</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">user system</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">group system</span>
+</span></span></code></pre></div><p><strong>在 <code>default/Android.bp</code> 中添加编译规则</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">cc_binary</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#f92672">&#34;vendor.huawei.helloworld@1.0-service&#34;</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">defaults:</span> <span style="color:#960050;background-color:#1e0010">[</span><span style="color:#f92672">&#34;hidl_defaults&#34;</span><span style="color:#960050;background-color:#1e0010">]</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">proprietary:</span> <span style="color:#960050;background-color:#1e0010">true,</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">relative_install_path:</span> <span style="color:#f92672">&#34;hw&#34;</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">srcs:</span> <span style="color:#960050;background-color:#1e0010">[</span><span style="color:#f92672">&#34;service.cpp&#34;</span><span style="color:#960050;background-color:#1e0010">]</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">init_rc:</span> <span style="color:#960050;background-color:#1e0010">[</span><span style="color:#f92672">&#34;vendor.huawei.helloworld@1.0-service.rc&#34;</span><span style="color:#960050;background-color:#1e0010">]</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">shared_libs:</span> <span style="color:#960050;background-color:#1e0010">[</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">&#34;libhidlbase&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">&#34;libhidltransport&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">&#34;libutils&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">&#34;liblog&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">&#34;vendor.huawei.helloworld@1.0&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">&#34;vendor.huawei.helloworld@1.0-impl&#34;</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">],</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="47-客户端测试程序">4.7 客户端测试程序</h3>
+<p>创建 <code>test/HelloWorldTest.cpp</code> 和对应 <code>Android.bp</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vendor/huawei/helloworld/1.0/IHelloWorld.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;hidl/Status.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;hidl/LegacySupport.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;hidl/HidlSupport.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> vendor<span style="color:#f92672">::</span>huawei<span style="color:#f92672">::</span>helloworld<span style="color:#f92672">::</span>V1_0<span style="color:#f92672">::</span>IHelloWorld;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> android<span style="color:#f92672">::</span>sp;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> android<span style="color:#f92672">::</span>hardware<span style="color:#f92672">::</span>hidl_string;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    android<span style="color:#f92672">::</span>sp<span style="color:#f92672">&lt;</span>IHelloWorld<span style="color:#f92672">&gt;</span> service <span style="color:#f92672">=</span> IHelloWorld<span style="color:#f92672">::</span>getService();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(service <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>) {
+</span></span><span style="display:flex;"><span>        printf(<span style="color:#e6db74">&#34;Failed to get service</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 异步调用示例
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// service-&gt;justTest(&#34;test&#34;, [&amp;](hidl_string result, HelloTest value) {
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">//     printf(&#34;result: %s, enum: %hhu\n&#34;, result.c_str(), static_cast&lt;uint8_t&gt;(value));
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// });
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>test/Android.bp</code> 链接所需库即可。</p>
+<h3 id="48-配置-manifest-文件">4.8 配置 manifest 文件</h3>
+<p><code>hwservicemanager</code> 依赖 manifest 文件来发现服务。在设备 manifest 中添加：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;hal</span> <span style="color:#a6e22e">format=</span><span style="color:#e6db74">&#34;hidl&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;name&gt;</span>vendor.huawei.helloworld<span style="color:#f92672">&lt;/name&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;transport&gt;</span>hwbinder<span style="color:#f92672">&lt;/transport&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;version&gt;</span>1.0<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;interface&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;name&gt;</span>IHelloWorld<span style="color:#f92672">&lt;/name&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;instance&gt;</span>default<span style="color:#f92672">&lt;/instance&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/interface&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/hal&gt;</span>
+</span></span></code></pre></div><p>该文件通常位于 <code>device/&lt;vendor&gt;/&lt;product&gt;/manifest.xml</code>。</p>
+<p><strong>常见错误</strong>：</p>
+<pre tabindex="0"><code>getTransport: Cannot find entry vendor.weiluocn.BinderUtils
+</code></pre><p>表示 manifest.xml 中未声明对应 HIDL 服务或实例名不匹配，请核对包名、版本与实例。</p>
+<hr>
+<h2 id="5-核心机制详析">5. 核心机制详析</h2>
+<h3 id="51-hidl-gen-命令详解">5.1 hidl-gen 命令详解</h3>
+<p><code>hidl-gen</code> 是 HIDL 开发的核心工具，常用参数：</p>
+<ul>
+<li><code>-L</code> : 输出语言/类型，如 <code>c++-impl</code>（实现骨架）、<code>androidbp</code>（编译规则）、<code>java</code> 等。</li>
+<li><code>-o</code> : 输出目录。</li>
+<li><code>-r</code> : 包前缀与路径映射，可重复使用。</li>
+<li>输入格式：<code>package@version::interface</code> 或整个包名。</li>
+</ul>
+<h3 id="52-生成代码的继承体系">5.2 生成代码的继承体系</h3>
+<p>以 <code>IHelloWorld</code> 为例，生成的核心类：</p>
+<ul>
+<li><code>IHelloWorld</code> ：客户端代理基类。</li>
+<li><code>BpHelloWorld</code> (Binder proxy) ：binder 代理具体实现。</li>
+<li><code>BnHelloWorld</code> (Binder native) ：服务端 binder 桩。</li>
+<li><code>IHwHelloWorld</code> ：HIDL 硬件绑定模板。</li>
+<li><code>BsHelloWorld</code> (Binder server) ：服务实现包装。</li>
+</ul>
+<p><strong>直通模式 (Passthrough)</strong>：服务运行在调用者进程，无 binder 开销。<code>defaultPassthroughServiceImplementation</code> 会先尝试 binder 注册，失败则回退到直通模式。</p>
+<h3 id="53-hidl-语法与类型映射">5.3 HIDL 语法与类型映射</h3>
+<p>HIDL 定义了一套独立于语言的数据类型系统，与 C++ 的映射需严格遵循。</p>
+<h4 id="基础类型">基础类型</h4>
+<table>
+  <thead>
+      <tr>
+          <th>HIDL 类型</th>
+          <th>C++ 等价类型</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>int8_t</code></td>
+          <td><code>int8_t</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>uint16_t</code></td>
+          <td><code>uint16_t</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>int32_t</code></td>
+          <td><code>int32_t</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>uint64_t</code></td>
+          <td><code>uint64_t</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>float</code></td>
+          <td><code>float</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>double</code></td>
+          <td><code>double</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>string</code></td>
+          <td><code>hidl_string</code></td>
+          <td>UTF-8 字符串</td>
+      </tr>
+      <tr>
+          <td><code>vec&lt;T&gt;</code></td>
+          <td><code>hidl_vec&lt;T&gt;</code></td>
+          <td>动态数组，使用 <code>setToExternal()</code> 可引用外部内存</td>
+      </tr>
+      <tr>
+          <td><code>enum</code></td>
+          <td>枚举类，底层类型由 <code>:</code> 指定</td>
+          <td>默认 <code>int32_t</code>，也可声明 <code>uint8_t</code> 等</td>
+      </tr>
+      <tr>
+          <td><code>struct</code></td>
+          <td>C++ 结构体</td>
+          <td>支持嵌套，注意内存对齐</td>
+      </tr>
+      <tr>
+          <td><code>union</code></td>
+          <td>联合体</td>
+          <td>需标记 <code>discriminated</code> 并使用安全访问</td>
+      </tr>
+      <tr>
+          <td><code>memory</code></td>
+          <td><code>hidl_memory</code></td>
+          <td>共享内存块，用于高效数据传输</td>
+      </tr>
+      <tr>
+          <td><code>handle</code></td>
+          <td><code>native_handle_t*</code></td>
+          <td>原生句柄</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="枚举定义示例">枚举定义示例</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">enum</span> MyEnum : uint8_t {
+</span></span><span style="display:flex;"><span>    A <span style="color:#f92672">=</span> 0,
+</span></span><span style="display:flex;"><span>    B <span style="color:#f92672">=</span> 1,
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>生成的 C++ 代码包含 <code>operator==</code>、数组大小等辅助方法。</p>
+<h4 id="struct-内存对齐">struct 内存对齐</h4>
+<p>HIDL 的 <code>struct</code> 布局与 C 语言一致，成员按声明顺序排列，遵循自然对齐规则。在跨平台通信时需确保兼容。</p>
+<h4 id="vec-使用技巧">vec<!-- raw HTML omitted --> 使用技巧</h4>
+<ul>
+<li>避免频繁拷贝：使用 <code>hidl_vec::setToExternal()</code> 指向已有数据。</li>
+<li>接收大数组：使用 <code>const hidl_vec&lt;T&gt;&amp;</code> 或直接传递 <code>hidl_vec</code>（所有权转移）。</li>
+</ul>
+<p>更完整的类型参考见 <a href="https://source.android.google.cn/devices/architecture/hidl/types">官方数据类型</a>。</p>
+<h3 id="54-返回值-return-对象">5.4 返回值 Return 对象</h3>
+<p>HIDL 方法通常返回 <code>Return&lt;T&gt;</code> 或 <code>Return&lt;void&gt;</code>，该对象封装了 Binder 调用的传输状态和返回值。</p>
+<p><strong>正确使用模式</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>Return<span style="color:#f92672">&lt;</span>ResultType<span style="color:#f92672">&gt;</span> result <span style="color:#f92672">=</span> service<span style="color:#f92672">-&gt;</span>method(args);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>result.isOk()) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 传输失败：服务端崩溃、binder 断开、权限不足等
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ERR_FAILED;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>ResultType val <span style="color:#f92672">=</span> result; <span style="color:#75715e">// 或 result.withDefault(defaultVal);
+</span></span></span></code></pre></div><p><strong>关键点</strong>：</p>
+<ul>
+<li><code>Return::isOk()</code> 判断通信是否成功，失败时返回值不可用。</li>
+<li><code>Return&lt;T&gt;</code> 支持隐式转换为 <code>T</code>（可能 crash），推荐显式检查。</li>
+<li>异步回调返回 <code>Return&lt;void&gt;</code>，同样需检查 <code>isOk()</code>。</li>
+</ul>
+<h3 id="55-线程模型">5.5 线程模型</h3>
+<p>HIDL 服务可运行在不同线程模式下：</p>
+<ul>
+<li><strong>单独线程</strong>：每个接口实例运行在自己的线程中，方法调用串行执行。</li>
+<li><strong>线程池</strong>：服务可指定共享线程池，方法可并发执行。</li>
+<li><strong>直通模式</strong>：运行在调用者线程，可能阻塞调用者。</li>
+</ul>
+<p>通过 <code>interface</code> 注解或在 <code>.rc</code> 文件中配置线程策略。详见 <a href="https://source.android.google.cn/devices/architecture/hidl/threading">线程模型</a>。</p>
+<h3 id="56-内存共享-memoryblock">5.6 内存共享 (MemoryBlock)</h3>
+<p>HIDL 支持 <code>memory</code> 类型以实现大块数据的零拷贝传递，适用于音频、视频等场景。通过 <code>IAllocator</code> 或 <code>IMapper</code> 分配共享内存，客户端和服务端通过句柄访问同一物理内存。</p>
+<p>工作流程：</p>
+<ol>
+<li>服务端创建 <code>hidl_memory</code> 对象。</li>
+<li>通过 binder 调用将句柄传给客户端。</li>
+<li>客户端使用 <code>mapMemory()</code> 方法获得本地映射。</li>
+</ol>
+<h3 id="57-源码框架分析">5.7 源码框架分析</h3>
+<p>AOSP 中 <code>hardware/interfaces/</code> 提供了大量标准 HAL 实现，可作为开发范本：</p>
+<ul>
+<li><code>graphics/composer</code>：硬件合成器接口。</li>
+<li><code>audio</code>：音频 HAL 接口与效应器。</li>
+<li><code>camera</code>：相机设备与流配置。</li>
+</ul>
+<p>其目录结构、<code>Android.bp</code>、<code>update-makefiles.sh</code> 等均可直接复用为自定义接口的模板。</p>
+<hr>
+<h2 id="6-调试与排错">6. 调试与排错</h2>
+<ul>
+<li><strong>语法检查</strong>：<code>hidl-gen -L check package@version::Interface</code></li>
+<li><strong>服务列表</strong>：<code>lshal</code> 列出所有 treble HAL 服务。</li>
+<li><strong>binder 调试</strong>：<code>service call &lt;service&gt; &lt;code&gt;</code>。</li>
+<li><strong>内核日志</strong>：<code>dmesg | grep hidl</code> 查看服务启动失败信息。</li>
+<li><strong>常见问题</strong>：
+<ul>
+<li><code>getTransport: Cannot find entry</code>：检查 manifest.xml。</li>
+<li>编译缺少 <code>hidl_package_root</code>：在顶级 <code>Android.bp</code> 添加该模块。</li>
+<li>类型不匹配：参考官方类型映射表，注意枚举底层类型。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="总结卡片">总结卡片</h2>
+<h3 id="hidl-开发核心流程">HIDL 开发核心流程</h3>
+<pre tabindex="0"><code>编写.hal → hidl-gen 生成骨架 → 实现服务函数 → 编写 service 入口 + rc
+         → 配置 Android.bp → 配置 manifest.xml → 编译 → 客户端调用
+</code></pre><h3 id="关键设计思想">关键设计思想</h3>
+<ul>
+<li><strong>接口与实现分离</strong>：<code>interface</code> 与 <code>package</code> 解耦系统与供应商。</li>
+<li><strong>版本化</strong>：<code>@&lt;major&gt;.&lt;minor&gt;</code> 支持向前兼容。</li>
+<li><strong>双模式</strong>：binder 化（跨进程）与直通（同进程）灵活选择。</li>
+<li><strong>无痛数据传输</strong>：<code>memory</code> 和 <code>handle</code> 支持零拷贝。</li>
+</ul>
+<h3 id="类型映射速查">类型映射速查</h3>
+<table>
+  <thead>
+      <tr>
+          <th>HIDL</th>
+          <th>C++</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>string</code></td>
+          <td><code>hidl_string</code></td>
+      </tr>
+      <tr>
+          <td><code>vec&lt;T&gt;</code></td>
+          <td><code>hidl_vec&lt;T&gt;</code></td>
+      </tr>
+      <tr>
+          <td><code>enum</code></td>
+          <td>枚举类，<code>:</code> 后为底层类型</td>
+      </tr>
+      <tr>
+          <td><code>struct</code></td>
+          <td>结构体，C 对齐规则</td>
+      </tr>
+      <tr>
+          <td><code>memory</code></td>
+          <td><code>hidl_memory</code></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="排错口诀">排错口诀</h3>
+<ul>
+<li>“服务拿不到，先查 manifest”</li>
+<li>“编译通不过，检查 <code>hidl_package_root</code>”</li>
+<li>“方法调用崩溃，检查 <code>Return::isOk()</code>”</li>
+<li>“类型对不上，翻阅官方类型映射表”</li>
+</ul>
+<p>掌握 HIDL 即掌握了 Android 硬件抽象层的“大动脉”，是通向 GSI/CTS 兼容性、独立更新系统镜像的必经之路。</p>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2026 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>821 words</span>
+    <span>14 - 18 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-概述">1. 概述</a>
+      <ul>
+        <li><a href="#核心目标">核心目标</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-参考资源">2. 参考资源</a></li>
+    <li><a href="#3-软件包与接口">3. 软件包与接口</a>
+      <ul>
+        <li><a href="#31-软件包命名与目录位置">3.1 软件包命名与目录位置</a></li>
+        <li><a href="#32-接口与代码样式">3.2 接口与代码样式</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-hidl-实现步步通-step-by-step">4. HIDL 实现步步通 (Step-by-Step)</a>
+      <ul>
+        <li><a href="#41-整体流程">4.1 整体流程</a></li>
+        <li><a href="#42-源码框架设计">4.2 源码框架设计</a></li>
+        <li><a href="#43-使用-hidl-gen-生成骨架">4.3 使用 hidl-gen 生成骨架</a></li>
+        <li><a href="#44-更新全局-makefile">4.4 更新全局 Makefile</a></li>
+        <li><a href="#45-编译并解决包根路径问题">4.5 编译并解决包根路径问题</a></li>
+        <li><a href="#46-实现服务端与启动配置">4.6 实现服务端与启动配置</a></li>
+        <li><a href="#47-客户端测试程序">4.7 客户端测试程序</a></li>
+        <li><a href="#48-配置-manifest-文件">4.8 配置 manifest 文件</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-核心机制详析">5. 核心机制详析</a>
+      <ul>
+        <li><a href="#51-hidl-gen-命令详解">5.1 hidl-gen 命令详解</a></li>
+        <li><a href="#52-生成代码的继承体系">5.2 生成代码的继承体系</a></li>
+        <li><a href="#53-hidl-语法与类型映射">5.3 HIDL 语法与类型映射</a></li>
+        <li><a href="#54-返回值-return-对象">5.4 返回值 Return 对象</a></li>
+        <li><a href="#55-线程模型">5.5 线程模型</a></li>
+        <li><a href="#56-内存共享-memoryblock">5.6 内存共享 (MemoryBlock)</a></li>
+        <li><a href="#57-源码框架分析">5.7 源码框架分析</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-调试与排错">6. 调试与排错</a></li>
+    <li><a href="#总结卡片">总结卡片</a>
+      <ul>
+        <li><a href="#hidl-开发核心流程">HIDL 开发核心流程</a></li>
+        <li><a href="#关键设计思想">关键设计思想</a></li>
+        <li><a href="#类型映射速查">类型映射速查</a></li>
+        <li><a href="#排错口诀">排错口诀</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></aside></div>
+  </div>
+</body>
+</html>
