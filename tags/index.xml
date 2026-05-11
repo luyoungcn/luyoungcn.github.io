@@ -541,7 +541,7 @@
       <description></description>
     </item>
     <item>
-      <title>WSL</title>
+      <title>Wsl</title>
       <link>/tags/wsl/</link>
       <pubDate>Fri, 27 Jun 2025 02:30:00 +0800</pubDate>
       <guid>/tags/wsl/</guid>
@@ -1164,6 +1164,27 @@
       <description></description>
     </item>
     <item>
+      <title>Archlinux</title>
+      <link>/tags/archlinux/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0000</pubDate>
+      <guid>/tags/archlinux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Containerd</title>
+      <link>/tags/containerd/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0000</pubDate>
+      <guid>/tags/containerd/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>滚动更新</title>
+      <link>/tags/%E6%BB%9A%E5%8A%A8%E6%9B%B4%E6%96%B0/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0000</pubDate>
+      <guid>/tags/%E6%BB%9A%E5%8A%A8%E6%9B%B4%E6%96%B0/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Iostat</title>
       <link>/tags/iostat/</link>
       <pubDate>Thu, 01 Jan 1970 03:00:00 +0800</pubDate>
@@ -1437,7 +1458,7 @@
       <description></description>
     </item>
     <item>
-      <title>MIPI</title>
+      <title>Mipi</title>
       <link>/tags/mipi/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
       <guid>/tags/mipi/</guid>

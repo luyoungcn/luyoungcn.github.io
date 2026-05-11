@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>解决 Docker &#34;Unimplemented: unknown service containerd.services.leases.v1.Leases&#34; 错误 | LuyangのBlog</title>
+<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/%E8%A7%A3%E5%86%B3_docker_unimplemented_unknown_service_containerd.services.leases.v1.leases/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="解决 Docker &#34;Unimplemented: unknown service containerd.services.leases.v1.Leases&#34; 错误">
+  <meta property="og:description" content="在 Arch Linux 滚动更新后，Docker 突然罢工并报出 leases 服务未实现的错误。本文详细剖析根因，并提供将 containerd 降级并锁定版本的完整修复方案。">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="1970-01-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="1970-01-01T00:00:00+00:00">
+    <meta property="article:tag" content="Docker">
+    <meta property="article:tag" content="Containerd">
+    <meta property="article:tag" content="Archlinux">
+    <meta property="article:tag" content="滚动更新">
+    <meta property="article:tag" content="Linux">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="解决 Docker &#34;Unimplemented: unknown service containerd.services.leases.v1.Leases&#34; 错误">
+  <meta name="twitter:description" content="在 Arch Linux 滚动更新后，Docker 突然罢工并报出 leases 服务未实现的错误。本文详细剖析根因，并提供将 containerd 降级并锁定版本的完整修复方案。">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.35b15f72eff61cbb106d05bab1ea1aebb778d0ba2861c763af0af0d80f43db4f.css" integrity="sha256-NbFfcu/2HLsQbQW6seoa67d40LooYcdjrwrw2A9D208=" crossorigin="anonymous">
+
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.3928d3d2172bc0b5f75d9458fb9255f0befce1c7239ba6e5d2c58ed4b82c2073.js" integrity="sha256-OSjT0hcrwLX3XZRY&#43;5JV8L784ccjm6bl0sWO1LgsIHM="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>解决 Docker &#34;Unimplemented: unknown service containerd.services.leases.v1.Leases&#34; 错误</h1><time class="dim" datetime="1970-01-01T00:00:00&#43;00:00">January 1, 1970</time><div class="term-container"><div class="tag">
+        <a href="/tags/docker/">#docker</a>
+      </div><div class="tag">
+        <a href="/tags/containerd/">#containerd</a>
+      </div><div class="tag">
+        <a href="/tags/archlinux/">#archlinux</a>
+      </div><div class="tag">
+        <a href="/tags/%E6%BB%9A%E5%8A%A8%E6%9B%B4%E6%96%B0/">#滚动更新</a>
+      </div><div class="tag">
+        <a href="/tags/linux/">#linux</a>
+      </div></ol></div>
+  <section class="page-section"><h2 id="事故现场一次崩溃的滚动升级">事故现场：一次崩溃的滚动升级</h2>
+<p>作为一名 Arch Linux 用户，我习惯性地执行了 <code>sudo pacman -Syu</code> 将系统更新到最新。然而更新后，所有 Docker 容器都无法启动，命令行抛出如下错误：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>Error response from daemon: Unimplemented: unknown service containerd.services.leases.v1.Leases
+</span></span><span style="display:flex;"><span>failed to start containers: a1000b-sdk-fad-2.3.0.4
+</span></span></code></pre></div><p>检查版本信息，得到的却是两个看起来都很新的组件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ containerd --version
+</span></span><span style="display:flex;"><span>containerd github.com/containerd/containerd/v2 v2.3.0 2976f38ccbfcda5ef1364d63d60b0a304e4bf94a.m
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ docker version
+</span></span><span style="display:flex;"><span>Server: Engine:
+</span></span><span style="display:flex;"><span>  Version:          29.4.2
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ docker info | grep -i <span style="color:#e6db74">&#34;containerd version&#34;</span>
+</span></span><span style="display:flex;"><span> containerd version: N/A
+</span></span></code></pre></div><p><code>docker info</code> 中居然显示 <strong>containerd version: N/A</strong>！显然 Docker 已经无法正确识别 containerd 的服务了。</p>
+<h2 id="错误根因版本新的错觉与-api-断裂">错误根因：版本“新”的错觉与 API 断裂</h2>
+<p>很多人第一反应是：Docker 29.x 太老了？或者是 containerd 2.x 太新了？<br>
+实际上，<strong>containerd 2.x 是“主动变新”的一方，Docker 29.x 还在使用旧接口</strong>。</p>
+<p>关键点在于：</p>
+<ul>
+<li>containerd 从 1.5 开始引入了 <code>leases</code>（资源租约）服务，对应的 gRPC 服务名为 <code>containerd.services.leases.v1.Leases</code>，主要用于镜像层的生命周期管理（避免垃圾回收过早删除正在使用的快照）。</li>
+<li><strong>containerd 2.0 是一个包含破坏性变更的大版本</strong>，它彻底重命名或移除了旧版的 <code>leases.v1.Leases</code> 服务（改用新的服务结构）。</li>
+<li>Docker Engine 29.x（以及当前的整个 29 系列）在启动容器和拉取镜像时，仍然会调用旧版的 <code>leases.v1.Leases</code> 接口，因为它的代码尚未适配 containerd 2.x 的新 API。</li>
+</ul>
+<p>因此，当 Arch Linux 将 containerd 独立滚动升级到 2.x 后，Docker 29.x 尝试调用一个已经不复存在的 gRPC 服务，containerd 返回 <code>Unimplemented</code>，容器启动失败。<code>docker info</code> 中的 <code>N/A</code> 则是 Docker daemon 连接 containerd 失败后给出的默认显示。</p>
+<blockquote>
+<p><strong>一句话总结</strong>：containerd 2.x 是新版本，但 Docker 29.x 还在用旧版 containerd 的 API，两者出现了严重的版本脱节，导致 Docker 完全无法工作。</p>
+</blockquote>
+<h2 id="解决方案降级-containerd-并锁定版本">解决方案：降级 containerd 并锁定版本</h2>
+<p>由于 Docker 官方尚未发布支持 containerd 2.x 的版本，目前最稳妥、社区验证有效的方法是将 containerd 降级到 <strong>1.7.x</strong>（建议 1.7.22），然后锁定其版本，阻止后续滚动更新自动升级。</p>
+<h3 id="选择正确的降级版本">选择正确的降级版本</h3>
+<p>从 <a href="https://archive.archlinux.org/packages/c/containerd/">Arch Linux Archive</a> 查看 containerd 历史版本发现，官方存档中 1.7.x 系列的最后一个版本是 <strong>containerd-1.7.22-1-x86_64.pkg.tar.zst</strong>（发布日期 2024-09-09）。该版本与 Docker 29.4.2 完全兼容，可以作为降级目标。</p>
+<blockquote>
+<p>⚠️ 注意：存档中并不存在 1.7.25 等更高版本，不要选错。</p>
+</blockquote>
+<h3 id="方法一使用-downgrade-工具推荐">方法一：使用 <code>downgrade</code> 工具（推荐）</h3>
+<p>对于 Arch Linux 用户，社区工具 <code>downgrade</code> 是最方便的降级助手，它能自动搜索本地缓存、归档站和镜像，并解决下载时可能出现的 SSL 兼容问题。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 安装 downgrade</span>
+</span></span><span style="display:flex;"><span>sudo pacman -S downgrade
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行降级</span>
+</span></span><span style="display:flex;"><span>sudo downgrade containerd
+</span></span></code></pre></div><p>在出现的交互式列表中，选择 <strong>1.7.22-1</strong> 版本，确认后工具会自动完成下载和安装。</p>
+<h3 id="方法二手动下载并安装绕过-ssl-错误">方法二：手动下载并安装（绕过 SSL 错误）</h3>
+<p>如果因 OpenSSL 版本过高导致 <code>pacman -U</code> 从 archive 下载失败（出现 <code>TLS connect error</code>），可以使用 <code>curl</code> 临时跳过证书校验，然后本地安装。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 手动下载包（-k 忽略证书错误，确保网络可信）</span>
+</span></span><span style="display:flex;"><span>curl -k -O https://archive.archlinux.org/packages/c/containerd/containerd-1.7.22-1-x86_64.pkg.tar.zst
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 本地安装</span>
+</span></span><span style="display:flex;"><span>sudo pacman -U containerd-1.7.22-1-x86_64.pkg.tar.zst
+</span></span></code></pre></div><h3 id="锁定-containerd-版本">锁定 containerd 版本</h3>
+<p>降级完成后，必须立即编辑 <code>/etc/pacman.conf</code>，找到 <code>IgnorePkg</code> 所在行，修改为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#a6e22e">IgnorePkg</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">containerd</span>
+</span></span></code></pre></div><p>这样即使之后执行 <code>pacman -Syu</code>，containerd 也会被忽略，不会再被自动升级到 2.x。</p>
+<h3 id="重启-docker-并验证">重启 Docker 并验证</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 重启服务（containerd 会在 docker 之前被自动启动）</span>
+</span></span><span style="display:flex;"><span>sudo systemctl restart docker
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 检查 containerd 版本是否正确识别</span>
+</span></span><span style="display:flex;"><span>docker info | grep -i <span style="color:#e6db74">&#34;containerd version&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 期望输出： containerd version: 1.7.22</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 测试启动之前出问题的容器</span>
+</span></span><span style="display:flex;"><span>docker start a1000b-sdk-fad-2.3.0.4
+</span></span></code></pre></div><p>此时容器应该能够正常启动，错误彻底消失。</p>
+<h2 id="其他可能相关的环境问题">其他可能相关的环境问题</h2>
+<p>虽然绝大多数案例都是版本不兼容导致的，但以下情况也可能引发类似错误，排查时可以作为参考：</p>
+<ul>
+<li><strong>XFS 文件系统的 <code>ftype=0</code></strong>：containerd 2.x 的 overlayfs 快照器要求 XFS 在格式化时带有 <code>ftype=1</code>，否则会加载失败并伴随 <code>Unimplemented</code> 或插件错误。如果问题出现在 XFS 分区上，可以检查 <code>/var/lib/containerd</code> 所在分区的 <code>ftype</code> 设置。</li>
+<li><strong>服务启动顺序错误</strong>：更新后仅重启了 Docker 而未重启 containerd，导致旧进程残留，这时 Docker 仍会尝试连接旧的 socket，也可能触发相同的错误。重启整个服务栈即可解决。</li>
+</ul>
+<h2 id="总结滚动更新中的依赖陷阱">总结：滚动更新中的依赖陷阱</h2>
+<p>Arch Linux 的滚动更新策略让我们能够迅速获得最新的上游软件，但也意味着不同的软件包可能以不同的节奏跨越大版本。containerd 2.x 的发布就是一个典型例子：它带来了架构重构，但下游的 Docker 尚未完成适配，直接升级就会导致整个容器栈瘫痪。</p>
+<p>本次故障的修复路径清晰且经过大规模验证：</p>
+<ol>
+<li>将 containerd 降级至最后一个兼容的 1.7.x 版本（如 1.7.22）。</li>
+<li>锁定该包防止再次误升级。</li>
+<li>等待未来 Docker 官方宣布支持 containerd 2.x 后，再解除锁定进行升级。</li>
+</ol>
+<blockquote>
+<p>对于其他发行版的用户（如 Ubuntu），如果是通过 Docker 官方仓库安装的 Docker，通常 containerd 会作为 Docker 的依赖被一起锁定版本，不会突然升级到 2.x。但如果手动安装了新版的 containerd，同样会出现此问题，解决方案也是降级 containerd。</p>
+</blockquote>
+<p>希望这篇博客能帮助你在面对同样的错误时快速定位问题，恢复 Docker 的正常运行。如果你在修复过程中遇到其他特殊情况，欢迎在评论区交流或查阅 Arch Wiki 及 Docker 官方文档获取最新信息。</p>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2026 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>339 words</span>
+    <span>5 - 7 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#事故现场一次崩溃的滚动升级">事故现场：一次崩溃的滚动升级</a></li>
+    <li><a href="#错误根因版本新的错觉与-api-断裂">错误根因：版本“新”的错觉与 API 断裂</a></li>
+    <li><a href="#解决方案降级-containerd-并锁定版本">解决方案：降级 containerd 并锁定版本</a>
+      <ul>
+        <li><a href="#选择正确的降级版本">选择正确的降级版本</a></li>
+        <li><a href="#方法一使用-downgrade-工具推荐">方法一：使用 <code>downgrade</code> 工具（推荐）</a></li>
+        <li><a href="#方法二手动下载并安装绕过-ssl-错误">方法二：手动下载并安装（绕过 SSL 错误）</a></li>
+        <li><a href="#锁定-containerd-版本">锁定 containerd 版本</a></li>
+        <li><a href="#重启-docker-并验证">重启 Docker 并验证</a></li>
+      </ul>
+    </li>
+    <li><a href="#其他可能相关的环境问题">其他可能相关的环境问题</a></li>
+    <li><a href="#总结滚动更新中的依赖陷阱">总结：滚动更新中的依赖陷阱</a></li>
+  </ul>
+</nav></aside></div>
+  </div>
+</body>
+</html>

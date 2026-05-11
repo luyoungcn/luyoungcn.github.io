@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Archlinux on LuyangのBlog</title>
+    <link>/tags/archlinux/</link>
+    <description>Recent content in Archlinux on LuyangのBlog</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/archlinux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>解决 Docker &#34;Unimplemented: unknown service containerd.services.leases.v1.Leases&#34; 错误</title>
+      <link>/posts/%E8%A7%A3%E5%86%B3_docker_unimplemented_unknown_service_containerd.services.leases.v1.leases/</link>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 +0000</pubDate>
+      <guid>/posts/%E8%A7%A3%E5%86%B3_docker_unimplemented_unknown_service_containerd.services.leases.v1.leases/</guid>
+      <description>&lt;h2 id=&#34;事故现场一次崩溃的滚动升级&#34;&gt;事故现场：一次崩溃的滚动升级&lt;/h2&gt;&#xA;&lt;p&gt;作为一名 Arch Linux 用户，我习惯性地执行了 &lt;code&gt;sudo pacman -Syu&lt;/code&gt; 将系统更新到最新。然而更新后，所有 Docker 容器都无法启动，命令行抛出如下错误：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Error response from daemon: Unimplemented: unknown service containerd.services.leases.v1.Leases&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;failed to start containers: a1000b-sdk-fad-2.3.0.4&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;检查版本信息，得到的却是两个看起来都很新的组件：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ containerd --version&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;containerd github.com/containerd/containerd/v2 v2.3.0 2976f38ccbfcda5ef1364d63d60b0a304e4bf94a.m&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ docker version&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Server: Engine:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Version:          29.4.2&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ...&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ docker info | grep -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;containerd version&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; containerd version: N/A&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;docker info&lt;/code&gt; 中居然显示 &lt;strong&gt;containerd version: N/A&lt;/strong&gt;！显然 Docker 已经无法正确识别 containerd 的服务了。&lt;/p&gt;&#xA;&lt;h2 id=&#34;错误根因版本新的错觉与-api-断裂&#34;&gt;错误根因：版本“新”的错觉与 API 断裂&lt;/h2&gt;&#xA;&lt;p&gt;很多人第一反应是：Docker 29.x 太老了？或者是 containerd 2.x 太新了？&lt;br&gt;&#xA;实际上，&lt;strong&gt;containerd 2.x 是“主动变新”的一方，Docker 29.x 还在使用旧接口&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
