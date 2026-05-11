@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sysstat 工具集速查表：sar, mpstat, iostat, pidstat, sadf | LuyangのBlog</title>
+<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="/posts/sysstat-cheatsheet/">
+  <meta property="og:site_name" content="LuyangのBlog">
+  <meta property="og:title" content="Sysstat 工具集速查表：sar, mpstat, iostat, pidstat, sadf">
+  <meta property="og:description" content="掌握 sysstat 工具集的常用命令和典型场景，轻松应对 CPU、内存、I/O、进程性能分析。">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="1970-01-01T03:00:00+08:00">
+    <meta property="article:modified_time" content="1970-01-01T03:00:00+08:00">
+    <meta property="article:tag" content="Sysstat">
+    <meta property="article:tag" content="Pidstat">
+    <meta property="article:tag" content="Mpstat">
+    <meta property="article:tag" content="Iostat">
+    <meta property="article:tag" content="性能分析">
+    <meta property="article:tag" content="Linux">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Sysstat 工具集速查表：sar, mpstat, iostat, pidstat, sadf">
+  <meta name="twitter:description" content="掌握 sysstat 工具集的常用命令和典型场景，轻松应对 CPU、内存、I/O、进程性能分析。">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.35b15f72eff61cbb106d05bab1ea1aebb778d0ba2861c763af0af0d80f43db4f.css" integrity="sha256-NbFfcu/2HLsQbQW6seoa67d40LooYcdjrwrw2A9D208=" crossorigin="anonymous">
+
+      <script src="/js/bundle.cc8ae9952dbfb731affafabdf26e5c60a6910047ff59ccdeaf1daebaa26c8830.js" integrity="sha256-zIrplS2/tzGv&#43;vq98m5cYKaRAEf/Wczerx2uuqJsiDA=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.3928d3d2172bc0b5f75d9458fb9255f0befce1c7239ba6e5d2c58ed4b82c2073.js" integrity="sha256-OSjT0hcrwLX3XZRY&#43;5JV8L784ccjm6bl0sWO1LgsIHM="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="/" style="color: inherit;">LuyangのBlog</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a aria-current="true" class="ancestor" href="/posts/"
+      >Posts</a>
+    </div>
+    <div class="nav-item">
+      <a href="/features/"
+      >Features</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>Sysstat 工具集速查表：sar, mpstat, iostat, pidstat, sadf</h1><time class="dim" datetime="1970-01-01T03:00:00&#43;08:00">January 1, 1970</time><div class="term-container"><div class="tag">
+        <a href="/tags/sysstat/">#sysstat</a>
+      </div><div class="tag">
+        <a href="/tags/pidstat/">#pidstat</a>
+      </div><div class="tag">
+        <a href="/tags/mpstat/">#mpstat</a>
+      </div><div class="tag">
+        <a href="/tags/iostat/">#iostat</a>
+      </div><div class="tag">
+        <a href="/tags/%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/">#性能分析</a>
+      </div><div class="tag">
+        <a href="/tags/linux/">#Linux</a>
+      </div></ol></div>
+  <section class="page-section"><h2 id="1-为什么要用-sysstat">1. 为什么要用 sysstat？</h2>
+<p><code>sysstat</code> 是 Linux 上老牌的性能监控工具包，包含了 <code>sar</code>、<code>mpstat</code>、<code>iostat</code>、<code>pidstat</code>、<code>sadf</code> 等。它们轻量、无外部依赖，非常适合嵌入式 ARM64 平台（如 Bsta1000）的现场调试和长期监控。</p>
+<p><strong>核心思想：先宏观，再微观；先整体，再局部。</strong></p>
+<ul>
+<li><strong>宏观</strong>：<code>sar</code> / <code>mpstat</code> / <code>iostat</code> 把握系统级指标</li>
+<li><strong>微观</strong>：<code>pidstat</code> 定位进程/线程</li>
+<li><strong>导出</strong>：<code>sadf</code> 把历史数据变成 CSV/JSON 报告</li>
+</ul>
+<hr>
+<h2 id="2-速查表总览">2. 速查表总览</h2>
+<table>
+  <thead>
+      <tr>
+          <th>工具</th>
+          <th>主要用途</th>
+          <th>关键选项</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>sar</code></td>
+          <td>系统活动历史回溯（CPU/内存/IO/网络）</td>
+          <td><code>-u</code> (CPU), <code>-r</code> (内存), <code>-b</code> (IO), <code>-n DEV</code> (网络), <code>-f</code> (读历史文件)</td>
+      </tr>
+      <tr>
+          <td><code>mpstat</code></td>
+          <td>每个 CPU 核心的详细使用率</td>
+          <td><code>-P ALL</code> (所有核), <code>-P 0,2</code> (指定核)</td>
+      </tr>
+      <tr>
+          <td><code>iostat</code></td>
+          <td>块设备和分区 I/O 性能</td>
+          <td><code>-x</code> (扩展统计), <code>-p &lt;设备&gt;</code> (指定设备), <code>-d</code></td>
+      </tr>
+      <tr>
+          <td><code>pidstat</code></td>
+          <td>进程/线程的 CPU、内存、I/O 占用</td>
+          <td><code>-r</code> (内存), <code>-d</code> (I/O), <code>-t</code> (线程), <code>-p &lt;PID&gt;</code></td>
+      </tr>
+      <tr>
+          <td><code>sadf</code></td>
+          <td>将 sar 二进制数据导出为多种格式</td>
+          <td><code>-d</code> (CSV), <code>-j</code> (JSON), <code>-x</code> (XML)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="3-常用命令集合">3. 常用命令集合</h2>
+<h3 id="31-sar--系统活动记录仪">3.1 sar – 系统活动记录仪</h3>
+<h4 id="实时采样">实时采样</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># CPU 使用率，每秒1次，共5次</span>
+</span></span><span style="display:flex;"><span>sar -u <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 内存 (空闲、已用、缓存等)</span>
+</span></span><span style="display:flex;"><span>sar -r <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 磁盘 I/O 传输速率 (tps, rtps, wtps, bread/s, bwrtn/s)</span>
+</span></span><span style="display:flex;"><span>sar -b <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 网络接口流量 (rxkB/s, txkB/s)</span>
+</span></span><span style="display:flex;"><span>sar -n DEV <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span>
+</span></span></code></pre></div><h4 id="历史数据回溯">历史数据回溯</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看当天的历史数据 (需事先配置数据采集)</span>
+</span></span><span style="display:flex;"><span>sar -u -f /var/log/sa/sa<span style="color:#66d9ef">$(</span>date +%d<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看某日特定时段 (例如 10:00:00 到 11:00:00)</span>
+</span></span><span style="display:flex;"><span>sar -u -f /var/log/sa/sa11 -s 10:00:00 -e 11:00:00
+</span></span></code></pre></div><h3 id="32-mpstat--多核-cpu-分析器">3.2 mpstat – 多核 CPU 分析器</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 所有核每秒刷新，共 5 次</span>
+</span></span><span style="display:flex;"><span>mpstat -P ALL <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 只看 cpu0 和 cpu2</span>
+</span></span><span style="display:flex;"><span>mpstat -P 0,2 <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span>
+</span></span></code></pre></div><p><strong>关注指标</strong>：</p>
+<ul>
+<li><code>%usr</code> 用户态，<code>%sys</code> 内核态，<code>%iowait</code> I/O 等待</li>
+<li><code>%irq</code> 硬中断，<code>%soft</code> 软中断 – 可用于定位中断风暴</li>
+</ul>
+<h3 id="33-iostat--存储设备脉搏">3.3 iostat – 存储设备脉搏</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 扩展统计，每秒刷新，共 5 次</span>
+</span></span><span style="display:flex;"><span>iostat -x <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 只监控 mmcblk0 (eMMC)</span>
+</span></span><span style="display:flex;"><span>iostat -x -p mmcblk0 <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span>
+</span></span></code></pre></div><p><strong>关键列解读</strong>：</p>
+<ul>
+<li><code>await</code> – 平均 I/O 响应时间 (&gt;20ms 需关注)</li>
+<li><code>%util</code> – 磁盘繁忙度 (&gt;90% 意味饱和)</li>
+<li><code>r/s</code>, <code>w/s</code>, <code>rkB/s</code>, <code>wkB/s</code> – 读写并发与吞吐</li>
+</ul>
+<h3 id="34-pidstat--进程资源显微镜">3.4 pidstat – 进程资源显微镜</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 每 2 秒打印所有进程的 CPU 占用</span>
+</span></span><span style="display:flex;"><span>pidstat <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看进程内存 (RSS, %MEM)</span>
+</span></span><span style="display:flex;"><span>pidstat -r -p &lt;PID&gt; <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看进程引发的 I/O (kB_rd/s, kB_wr/s)</span>
+</span></span><span style="display:flex;"><span>pidstat -d -p &lt;PID&gt; <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 显示线程级统计</span>
+</span></span><span style="display:flex;"><span>pidstat -t -p &lt;PID&gt; <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span>
+</span></span></code></pre></div><p><strong>内存泄漏排查</strong>：持续监控 RSS 是否单调上升而不回落。</p>
+<h3 id="35-sadf--数据导出器">3.5 sadf – 数据导出器</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 将当日的 CPU 历史记录导出为 CSV</span>
+</span></span><span style="display:flex;"><span>sadf -d /var/log/sa/sa<span style="color:#66d9ef">$(</span>date +%d<span style="color:#66d9ef">)</span> -- -u &gt; cpu.csv
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 导出为 JSON 用于 API 或可视化</span>
+</span></span><span style="display:flex;"><span>sadf -j /var/log/sa/sa11 -- -r -b &gt; mem_io.json
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 导出 XML (可读性好)</span>
+</span></span><span style="display:flex;"><span>sadf -x /var/log/sa/sa11 -- -n DEV &gt; net.xml
+</span></span></code></pre></div><hr>
+<h2 id="4-典型排查路径">4. 典型排查路径</h2>
+<p><strong>CPU 使用率高 → 定位进程 → 分析线程</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mpstat -P ALL <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span>                  <span style="color:#75715e"># 看哪个核忙</span>
+</span></span><span style="display:flex;"><span>pidstat <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span>                        <span style="color:#75715e"># 找占用高的进程</span>
+</span></span><span style="display:flex;"><span>pidstat -t -p &lt;PID&gt; <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span>            <span style="color:#75715e"># 进一步到线程</span>
+</span></span></code></pre></div><p><strong>内存疑似泄漏 → 长期监控 RSS</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pidstat -r -p &lt;PID&gt; <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">360</span> &gt; mem.log   <span style="color:#75715e"># 监控1小时</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 事后分析 mem.log 中的 RSS 趋势</span>
+</span></span></code></pre></div><p><strong>磁盘 I/O 慢 → 定位设备 → 找肇事进程</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>iostat -x <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span>                      <span style="color:#75715e"># 看哪块盘 await 高或 util 接近 100%</span>
+</span></span><span style="display:flex;"><span>pidstat -d <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span>                     <span style="color:#75715e"># 哪个进程在疯狂读写</span>
+</span></span></code></pre></div><p><strong>网络异常 → 流量与软中断</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sar -n DEV <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span>                     <span style="color:#75715e"># 网络接口流量</span>
+</span></span><span style="display:flex;"><span>mpstat -P ALL <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span>                  <span style="color:#75715e"># 查看 %soft 分布，判断中断亲和性</span>
+</span></span></code></pre></div><hr>
+<h2 id="5-生产环境实践要点">5. 生产环境实践要点</h2>
+<ul>
+<li><strong>开启 sar 历史采集</strong>：在 <code>/etc/cron.d/sysstat</code> 或手动启动 sar 后台采集，保留一周左右数据，便于回溯偶发问题。</li>
+<li><strong>静态编译部署</strong>：对于裁剪的嵌入式系统，交叉编译 sysstat 时使用 <code>-static</code> 选项，消除库依赖，直接拷贝到 <code>/userdata/sysstat/bin</code> 即可运行。</li>
+<li><strong>非侵入执行</strong>：所有命令均只需读取 <code>/proc</code> 和 <code>/sys</code>，无需安装内核模块，安全可靠。</li>
+</ul>
+<hr>
+<h2 id="6-总结">6. 总结</h2>
+<p>这是一个「无侵入、零依赖」的工具集。无论你是在调试客户现场的 ARM 设备，还是在云端分析性能瓶颈，熟练掌握这五个命令，就能用极低成本绘制出系统的资源使用全景图。</p>
+<p><strong>记住这个心法</strong>：</p>
+<ul>
+<li><strong>sar</strong> 回到过去</li>
+<li><strong>mpstat / iostat</strong> 看清现在</li>
+<li><strong>pidstat</strong> 锁定真凶</li>
+<li><strong>sadf</strong> 交付报告</li>
+</ul>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2026 Lu Yang</div>
+    <div>Made with ❤️ and powered by <a href="https://github.com/math-queiroz/rusty-typewriter" target="_blank">Rusty Typewriter</a> theme for <a href="https://gohugo.io/" target="_blank">Hugo</a></div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class="side-sticky"><div class="side-details">
+    <span>442 words</span>
+    <span>4 - 5 minutes read</span></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-为什么要用-sysstat">1. 为什么要用 sysstat？</a></li>
+    <li><a href="#2-速查表总览">2. 速查表总览</a></li>
+    <li><a href="#3-常用命令集合">3. 常用命令集合</a>
+      <ul>
+        <li><a href="#31-sar--系统活动记录仪">3.1 sar – 系统活动记录仪</a></li>
+        <li><a href="#32-mpstat--多核-cpu-分析器">3.2 mpstat – 多核 CPU 分析器</a></li>
+        <li><a href="#33-iostat--存储设备脉搏">3.3 iostat – 存储设备脉搏</a></li>
+        <li><a href="#34-pidstat--进程资源显微镜">3.4 pidstat – 进程资源显微镜</a></li>
+        <li><a href="#35-sadf--数据导出器">3.5 sadf – 数据导出器</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-典型排查路径">4. 典型排查路径</a></li>
+    <li><a href="#5-生产环境实践要点">5. 生产环境实践要点</a></li>
+    <li><a href="#6-总结">6. 总结</a></li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/linux_test_disk_i_o_with_dd/">Linux Test Disk with dd command</a></li><li><a href="/posts/virtualboxopensuse%E6%97%A0%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91/">Virtualbox Opensuse 无网络图标 无法上网</a></li><li><a href="/posts/samba/">samba</a></li><li><a href="/posts/vscode-%E9%98%85%E8%AF%BB-linux-%E5%86%85%E6%A0%B8%E4%BB%A3%E7%A0%81%E9%85%8D%E7%BD%AE/">vscode 阅读 Linux 内核代码配置</a></li><li><a href="/posts/%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%80%E9%9C%80linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/">一文搞懂应用开发所需 Linux 系统时间的相关知识点</a></li></ul></aside></div>
+  </div>
+</body>
+</html>

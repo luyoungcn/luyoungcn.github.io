@@ -674,6 +674,13 @@
       <description>&lt;h1 id=&#34;anaconda-安装&#34;&gt;Anaconda 安装&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/akfamily/akshare/blob/main/docs/topic/anaconda/anaconda-00.md&#34;&gt;https://github.com/akfamily/akshare/blob/main/docs/topic/anaconda/anaconda-00.md&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;resources&#34;&gt;Resources&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://akshare.akfamily.xyz/index.html&#34;&gt;akshare wiki&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.jetbrains.com/help/pycharm/jupyter-notebook-support.html&#34;&gt;PyCharm Jupyter notebook support&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
+      <title>Sysstat 工具集速查表：sar, mpstat, iostat, pidstat, sadf</title>
+      <link>/posts/sysstat-cheatsheet/</link>
+      <pubDate>Thu, 01 Jan 1970 03:00:00 +0800</pubDate>
+      <guid>/posts/sysstat-cheatsheet/</guid>
+      <description>掌握 sysstat 工具集的常用命令和典型场景，轻松应对 CPU、内存、I/O、进程性能分析。</description>
+    </item>
+    <item>
       <title>📘 Git Submodule 全面技术文档</title>
       <link>/posts/-git-submodule-%E5%85%A8%E9%9D%A2%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/</link>
       <pubDate>Thu, 01 Jan 1970 00:00:00 +0800</pubDate>
