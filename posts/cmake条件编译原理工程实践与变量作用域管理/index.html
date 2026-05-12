@@ -19,7 +19,7 @@ if(&lt;condition&gt;) &lt;commands&gt; elseif(&lt;condition&gt;) &lt;commands&gt
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-06-03T00:00:00+08:00">
     <meta property="article:modified_time" content="2025-06-03T00:00:00+08:00">
-    <meta property="article:tag" content="CMake">
+    <meta property="article:tag" content="Cmake">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="CMake条件编译：原理、工程实践与变量作用域管理">
@@ -115,7 +115,7 @@ if(&lt;condition&gt;) &lt;commands&gt; elseif(&lt;condition&gt;) &lt;commands&gt
     <span>&nbsp»&nbsp</span>
 </ol>
 <h1>CMake条件编译：原理、工程实践与变量作用域管理</h1><time class="dim" datetime="2025-06-03T00:00:00&#43;08:00">June 3, 2025</time><div class="term-container"><div class="tag">
-        <a href="/tags/cmake/">#CMake</a>
+        <a href="/tags/cmake/">#cmake</a>
       </div></ol></div>
   <section class="page-section"><p><strong>摘要</strong><br>
 条件编译（Conditional Compilation）是 CMake 构建系统实现跨平台、多配置、多功能模块化构建的重要机制。本文以学术论文的严谨风格，系统剖析 CMake 条件编译的原理，结合实际工程案例探讨其在大型项目中的应用，并深入分析变量作用域对条件逻辑的影响。文中还专门介绍 <code>option(USE_FOO &quot;Enable FOO support&quot; OFF)</code> 语句的行为及其在条件判断中的应用与区别。通过对官方文档与经典社区资料的引用，力求为 CMake 工程师提供全面、可复用的指导与最佳实践。</p>
