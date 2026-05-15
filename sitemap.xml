@@ -8,19 +8,37 @@
     <loc>/posts/configuration/</loc>
     <lastmod>2025-03-24T23:00:00-03:00</lastmod>
   </url><url>
+    <loc>/posts/cpp-code-style-automation/</loc>
+    <lastmod>2026-05-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/c&#43;&#43;/</loc>
+    <lastmod>2026-05-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/devops/</loc>
+    <lastmod>2026-05-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/llvm/</loc>
+    <lastmod>2026-05-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2026-05-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2026-05-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2026-05-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/</loc>
+    <lastmod>2026-05-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2026-05-15T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/tags/efficiency/</loc>
     <lastmod>2026-05-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/</loc>
-    <lastmod>2026-05-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2026-05-12T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/tags/programming/</loc>
-    <lastmod>2026-05-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
     <lastmod>2026-05-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/vim/</loc>
@@ -580,9 +598,6 @@
   </url><url>
     <loc>/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2024-12-18T10:00:00+08:00</lastmod>
-  </url><url>
-    <loc>/tags/c&#43;&#43;/</loc>
-    <lastmod>2024-12-10T17:00:00+08:00</lastmod>
   </url><url>
     <loc>/series/modern-cmake-%E8%BF%81%E7%A7%BB%E6%8C%87%E5%8D%97/</loc>
     <lastmod>2024-12-10T17:00:00+08:00</lastmod>
